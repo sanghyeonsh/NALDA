@@ -5,9 +5,11 @@
 
 ## 프로젝트 기획 및 설계
 
-#### wireframe
-![Website_Wireframing_Template](/uploads/248c261502f266c7c5166a8152de2a52/Website_Wireframing_Template.jpg)
+#### 기획
 
+외국에서 다녀온 후 돌아오는 길, 세관신고서를 매번 수기로 작성해야 하는 불편함이 있습니다. 이에 기내에서 미리 세관신고서를 작성할 수 있는 서비스를 제공하고, 이와 더불어 기내에서 필요한 다른 서비스들을 제공하는 "날다" 를 기획했습니다.
+
+#### wireframe
 ![Website_Wireframing_Template](/uploads/248c261502f266c7c5166a8152de2a52/Website_Wireframing_Template.jpg)
 
 #### Logo
