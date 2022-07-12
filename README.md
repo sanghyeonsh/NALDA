@@ -20,3 +20,36 @@
 |  |  | :white_large_square: |  |  |
 |  |  | :white_large_square: |  |  |
 |  |  | :white_large_square: |  |  |
+
+### 부품 구매
+
+부품 구매 완료
+[구매링크](https://eduino.kr/product/detail.html?product_no=1498&gclid=Cj0KCQjwlK-WBhDjARIsAO2sErTVKwdZeUwV51LiLANYUSgYUev3jP6TdAjH_hNdCOZQtRS23jfBNjMaAgeZEALw_wcB#none)
+
+### TIL(Today I Learned)
+
+#### 박명규
+
+<br>
+
+#### 김혜수
+
+<br>
+
+#### 김정아
+
+<br>
+
+#### 곽영후
+
+<br>
+
+#### 김상현
+
+<br>
+
+#### 정형진
+
+- 07.12
+    요구사항 명세서 구체화하면서 삭제기능 토의
+<br>
