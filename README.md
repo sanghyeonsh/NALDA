@@ -16,10 +16,11 @@
 |  |  | :white_check_mark: | [기능 상세](/%EA%B8%B0%EB%8A%A5%EC%83%81%EC%84%B8.md) | 승객/승무원 |
 |  |  | :white_check_mark: | [Logo](/logo.md) |  |
 |  |  | :white_check_mark: | [기기 구매 목록](/%EA%B5%AC%EB%A7%A4%EB%AA%A9%EB%A1%9D.md) |  |
-|  | 2022/07/12 |:white_large_square: |  |  |
-|  |  | :white_large_square: |  |  |
-|  |  | :white_large_square: |  |  |
-|  |  | :white_large_square: |  |  |
+|  | 2022/07/12 |:white_check_mark: | 기능 상세 추가 |  |
+|  |  | :white_check_mark: | 모니터 1280x800 구매 완료 |  |
+|  |  | :white_large_square: | git branch 각자 생성하기 |  |
+|  |  | :white_large_square: | jira 업로드하기 |  |
+
 
 ### 부품 구매
 
