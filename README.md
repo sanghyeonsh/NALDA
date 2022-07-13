@@ -1,4 +1,4 @@
-# 날다 ✈
+S# 날다 ✈
 
 당신의 여행에 날개를 달다.
 
@@ -18,8 +18,8 @@
 |  |  | :white_check_mark: | [기기 구매 목록](/%EA%B5%AC%EB%A7%A4%EB%AA%A9%EB%A1%9D.md) |  |
 |  | 2022/07/12 |:white_check_mark: | 기능 상세 추가 |  |
 |  |  | :white_check_mark: | 모니터 1280x800 구매 완료 |  |
-|  |  | :white_large_square: | git branch 각자 생성하기 |  |
-|  |  | :white_large_square: | jira 업로드하기 |  |
+|  |  | :white_check_mark: | git branch 각자 생성하기 |  |
+|  |  | :white_check_mark: | jira 업로드하기 |  |
 
 
 ### 부품 구매
@@ -34,6 +34,8 @@
 <br>
 
 #### 김혜수
+- 07.12
+  LCD 모니터 구매 및 공유 노션 생성 
 
 <br>
 
