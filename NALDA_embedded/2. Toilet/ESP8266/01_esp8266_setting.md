@@ -4,7 +4,7 @@
 
 ## 1. WIFI ESP8266 모듈의 핀배열
 
-![Untitled](/NALDA_embedded/1.%20Toilet/ESP8266/Manual_img/Untitled.png)
+![Untitled](/NALDA_embedded/2.%20Toilet/ESP8266/01_esp8266_setting_img/Untitled.png)
 
 - ESP8266(ESP-01)은 시리얼 통신을 통해 AT명령으로 설정 변경이 가능하며, 3.3V에서 동작한다.
 
@@ -40,9 +40,9 @@
 
 ## 2. 초기 설정 결선도
 
-![Untitled](/NALDA_embedded/1.%20Toilet/ESP8266/Manual_img/Untitled%201.png)
+![Untitled](/NALDA_embedded/2.%20Toilet/ESP8266/01_esp8266_setting_img/Untitled%201.png)
 
-![Untitled](/NALDA_embedded/1.%20Toilet/ESP8266/Manual_img/Untitled%202.png)
+![Untitled](/NALDA_embedded/2.%20Toilet/ESP8266/01_esp8266_setting_img/Untitled%202.png)
 
 - CH_PD와 3.3V는 아두이노의 3.3V 구멍에 연결, GND와 *GPIO0*은 아두이노의 GND 구멍에 연결
 - Tx와 Rx는 그대로 연결
@@ -53,9 +53,9 @@
 1. 펌웨어 업데이트 툴 다운로드 후 C:\ 루트 드라이버에서 압축 풀기
 2. 실행
     
-    ![Untitled](/NALDA_embedded/1.%20Toilet/ESP8266/Manual_img/Untitled%203.png)
+    ![Untitled](/NALDA_embedded/2.%20Toilet/ESP8266/01_esp8266_setting_img/Untitled%203.png)
     
-    ![Untitled](/NALDA_embedded/1.%20Toilet/ESP8266/Manual_img//Untitled%204.png)
+    ![Untitled](/NALDA_embedded/2.%20Toilet/ESP8266/01_esp8266_setting_img/Untitled%204.png)
     
     - Bin 버튼에서 업데이트용 펌웨어 파일 불러오기
     - v0.9.2.2 AT Firmware.bin 파일
