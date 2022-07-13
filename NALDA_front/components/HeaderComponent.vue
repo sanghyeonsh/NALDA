@@ -1,29 +1,28 @@
 <template>
-  <div class="init-screen" @click="moveMain">
+  <div class="header">
+    <div></div>
     <img class="logo" src="../static/logo.png" />
+    <div>profile</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MainPage',
-  methods: {
-    moveMain() {
-      this.$router.push('/main')
-    },
-  },
+  name: 'HeaderComponent',
 }
 </script>
 
 <style scoped>
 .logo {
-  cursor: pointer;
+  width: 8%;
 }
-.init-screen {
-  height: 100vh;
+
+.header {
   display: flex;
+  height: 30;
+  /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 </style>
