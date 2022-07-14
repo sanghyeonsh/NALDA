@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div>
-      <header-component> </header-component>
-    </div>
     <div class="container1">
       <div class="container-box">
         <div>
@@ -27,12 +24,9 @@
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
   name: 'MainIndex',
-  components: {
-    HeaderComponent,
-  },
+  components: {},
 }
 </script>
 
