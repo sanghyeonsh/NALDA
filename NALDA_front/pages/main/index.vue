@@ -10,13 +10,13 @@
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Service</h4>
+          <h4>Custom Declaration</h4>
         </div>
       </div>
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Service</h4>
+          <h4>Airport Info</h4>
         </div>
       </div>
     </div>
@@ -44,6 +44,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .image {

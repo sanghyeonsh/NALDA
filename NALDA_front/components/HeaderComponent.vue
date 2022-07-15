@@ -2,13 +2,20 @@
   <div class="header">
     <div></div>
     <img class="logo" src="../static/logo.png" />
-    <div>profile</div>
+    <div @click="MoveSignup">
+      signup
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HeaderComponent',
+  methods: {
+    MoveSignup() {
+      this.$router.push('user/signup')
+    }
+  },
 }
 </script>
 
