@@ -8,7 +8,7 @@
         </div>
       </div>
       <div class="container-box">
-        <div>
+        <div @click="moveLogin">
           <img class="image" src="../../static/service.png" alt="service" />
           <h4>Custom Declaration</h4>
         </div>
@@ -27,6 +27,11 @@
 export default {
   name: 'MainIndex',
   components: {},
+  methods: {
+    moveLogin() {
+      this.$router.push({ name: 'user-login' })
+    },
+  },
 }
 </script>
 
