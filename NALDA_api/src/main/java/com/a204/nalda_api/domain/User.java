@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -35,8 +36,18 @@ public class User {
     private String tell;
     private String email;
 
+    private String roles;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<CustomsDeclaration> customsDeclarations = new ArrayList<>();
+
+    public List<String> getRoleList() {
+        if(this.roles.length() > 0) {
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+
 
     //연관 관계 메소드
     public void addCustomsDeclarations(CustomsDeclaration customsDeclaration) {
