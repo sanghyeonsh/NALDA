@@ -19,7 +19,7 @@
             <h6>아이디</h6>
             <div class="signup-input-id-wrap">
               <input id="input-id" placeholder="Username" type="text" />
-              <input id="id-check-btn" type="button" value="아디이 중복 검사" />
+              <input id="id-check-btn" type="button" value="아이디 중복 검사" />
             </div>
           </div>
           <div>
