@@ -26,17 +26,17 @@
           </div>
           <div class="login-stay-sign-in">
             <i class="far fa-check-circle"></i>
-            <span>Sign up</span>
+            <span @click="moveSignup">Sign up</span>
           </div>
         </section>
-        <section class="non-member-wrap">
-          <h2>Guest</h2>
-          <!-- <div class="guest-input-list">
+        <!-- <section class="non-member-wrap">
+        <h2>Guest</h2>-->
+        <!-- <div class="guest-input-list">
                     <li><button><i class="fas fa-qrcode"></i><span>Sign in with QR code</span></button></li>
                     <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
                     <li><button><i class="fab fa-line"></i><span>line</span></button></li>
-          </div>-->
-          <section class="guest-input-section-wrap">
+        </div>-->
+        <!-- <section class="guest-input-section-wrap">
             <div class="guest-input-wrap">
               <input placeholder="Username" type="text" />
             </div>
@@ -48,7 +48,7 @@
             </div>
           </section>
           <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-        </section>
+        </section>-->
         <footer>
           <div class="copyright-wrap">
             <!-- <div><img src="../static/logo.png"></div> -->
@@ -65,21 +65,35 @@
 <script>
 export default {
   name: 'LoginUser',
+  methods: {
+    moveSignup() {
+      this.$router.push({ name: 'user-signup' })
+    },
+  },
 }
 </script>
 
 <style>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
   --border-gray-color: #dadada;
-  --naver-green-color: #206e95;
-  --naver-green-border-color: #88c0c5;
+  --nalda-blue-color: #206e95;
+  --nalda-blue-border-color: #88c0c5;
 }
 
 * {
   margin: 0;
   padding: 0;
+  font-family: 'twayfly';
 }
 
 body {
@@ -152,11 +166,13 @@ body {
 .guest-input-wrap input,
 .login-input-wrap input {
   border: none;
-  width: 430px;
-  margin-top: 10px;
+  width: 465px;
+  /* margin-top: 10px; */
   font-size: 14px;
-  margin-left: 10px;
-  height: 30px;
+  /* margin-left: 10px; */
+  height: 48px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .guest-button-wrap,
@@ -169,9 +185,9 @@ body {
   width: 465px;
   height: 48px;
   font-size: 18px;
-  background: var(--naver-green-color);
+  background: var(--nalda-blue-color);
   color: white;
-  border: solid 1px var(--naver-green-border-color);
+  border: solid 1px var(--nalda-blue-border-color);
   border-radius: 10px;
 }
 
