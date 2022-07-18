@@ -19,6 +19,9 @@
 |          | 2022/07/12 | :white_check_mark:   | 기능 상세 추가                                             |             |
 |          |            | :white_check_mark:   | 모니터 1280x800 구매 완료                                  |             |
 |          |            | :white_large_square: | git branch 각자 생성하기                                   |             |
+<<<<<<< README.md
+|          |            | :white_large_square: | jira 업로드하기                                            |             |
+=======
 |          |            | :white_check_mark:   | jira 업로드하기                                            |             |
 |          | 2022/07/13 | :white_check_mark:   | 오전 Vue component 구성 + main page 작성                   |             |
 |          |            | :white_check_mark:   | naming convention 정하기                                   |             |
@@ -26,65 +29,9 @@
 |          |            | :white_check_mark:   | user 화면 - 로그인 페이지                                  |             |
 |          | 2022/07/15 | :white_check_mark:   | 와이어프레임 재설계                                        |             |
 |          |            | :white_large_square: | DB 모델링                                                  |             |
+>>>>>>> README.md
 
 ### 부품 구매
 
 부품 구매 완료
 [구매링크](https://eduino.kr/product/detail.html?product_no=1498&gclid=Cj0KCQjwlK-WBhDjARIsAO2sErTVKwdZeUwV51LiLANYUSgYUev3jP6TdAjH_hNdCOZQtRS23jfBNjMaAgeZEALw_wcB#none)
-
-### TIL(Today I Learned)
-
-#### 박명규
-
-<br>
-
-#### 김혜수
-
-<br>
-
-#### 김정아
-
-- 07.12
-
-  요구사항 명세서 상세 기능 추가 및 화면구성 논의
-
-- 07.13
-
-  DB 설계 (ERD 모델링) 및 FE Nuxt.js 컴포넌트 생성 & 메인 화면 구성
-  
-- 07.14
-
-  와이어프레임 재설계 및 DB 논리적 모델링
-
-<br>
-
-#### 곽영후
-
-- 07.12
-  부품 구매 완료 및 환경세팅
-  
-- 07.13
-  노션을 통한 ESP32 및 아두이노 학습 자료 정리 및 공유
-  
-- 07.14
-
-  JPA 학습, 사용자 화면 중 로그인 페이지 구현 (login.vue)
-
-  <br>
-
-#### 김상현
-
-- 07.12
-  DB설계를 위한 JPA 학습(연관관계 매핑 및 고급 매핑)
-- 07.13
-  DB설계를 위한 JPA 학습(프록시), 프론트엔드를 위한 Vue 복습
-  <br>
-
-#### 정형진
-
-- 07.12
-    요구사항 명세서 구체화하면서 삭제기능 토의
-    07.13
-    nuxt.js를 활용한 프론트엔드 구성 학습(기본구조, 라우터)
-
-<br>
