@@ -4,7 +4,7 @@
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Service</h4>
+          <h4>티웨이</h4>
         </div>
       </div>
       <div class="container-box">
