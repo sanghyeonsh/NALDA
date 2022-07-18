@@ -8,15 +8,15 @@
         </div>
       </div>
       <div class="container-box">
-        <div>
+        <div @click="moveLogin">
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Service</h4>
+          <h4>Custom Declaration</h4>
         </div>
       </div>
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Service</h4>
+          <h4>Airport Info</h4>
         </div>
       </div>
     </div>
@@ -27,6 +27,11 @@
 export default {
   name: 'MainIndex',
   components: {},
+  methods: {
+    moveLogin() {
+      this.$router.push({ name: 'user-login' })
+    },
+  },
 }
 </script>
 
@@ -44,6 +49,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .image {

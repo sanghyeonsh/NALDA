@@ -1,20 +1,20 @@
 <template>
   <div class="menu-container">
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
-      <div>아직</div>
+      <img src="../../static/water.png" alt="물" />
+      <div>물</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
-      <div>아직</div>
+      <img src="../../static/water.png" alt="물" />
+      <div>물</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
-      <div>아직</div>
+      <img src="../../static/water.png" alt="물" />
+      <div>물</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
-      <div>아직</div>
+      <img src="../../static/water.png" alt="물" />
+      <div>물</div>
     </div>
   </div>
 </template>

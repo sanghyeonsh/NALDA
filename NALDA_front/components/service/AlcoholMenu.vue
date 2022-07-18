@@ -1,19 +1,19 @@
 <template>
   <div class="menu-container">
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
+      <img src="../../static/sparkling-wine.png" alt="스파클링 와인" />
       <div>술임</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
+      <img src="../../static/sparkling-wine.png" alt="스파클링 와인" />
       <div>술임</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
+      <img src="../../static/sparkling-wine.png" alt="스파클링 와인" />
       <div>술임</div>
     </div>
     <div>
-      <img src="../../static/nacho.jpg" alt="나쵸" />
+      <img src="../../static/sparkling-wine.png" alt="스파클링 와인" />
       <div>술임</div>
     </div>
   </div>
