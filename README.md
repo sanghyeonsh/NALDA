@@ -19,13 +19,7 @@
 |          | 2022/07/12 | :white_check_mark:   | 기능 상세 추가                                             |             |
 |          |            | :white_check_mark:   | 모니터 1280x800 구매 완료                                  |             |
 |          |            | :white_large_square: | git branch 각자 생성하기                                   |             |
-|          |            | :white_check_mark:   | jira 업로드하기                                            |             |
-|          | 2022/07/13 | :white_check_mark:   | 오전 Vue component 구성 + main page 작성                   |             |
-|          |            | :white_check_mark:   | naming convention 정하기                                   |             |
-|          | 2022/07/14 | :white_check_mark:   | jira 작성                                                  |             |
-|          |            | :white_check_mark:   | user 화면 - 로그인 페이지                                  |             |
-|          | 2022/07/15 | :white_check_mark:   | 와이어프레임 재설계                                        |             |
-|          |            | :white_large_square: | DB 모델링                                                  |             |
+|          |            | :white_large_square: | jira 업로드하기                                            |             |
 
 ### 부품 구매
 
