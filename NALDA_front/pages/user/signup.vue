@@ -19,7 +19,7 @@
             <h6>아이디</h6>
             <div class="signup-input-id-wrap">
               <input id="input-id" placeholder="Username" type="text" />
-              <input id="id-check-btn" type="button" value="아디이 중복 검사" />
+              <input id="id-check-btn" type="button" value="아이디 중복 검사" />
             </div>
           </div>
           <div>
@@ -44,6 +44,9 @@
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
               <div class="signup-input-birth">
+              <input type="date">
+              </div>
+              <!-- <div class="signup-input-birth">
                 <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
@@ -65,7 +68,7 @@
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
                 <input id="signup-birth-dd" type="text" placeholder="일" />
-              </div>
+              </div> -->
             </div>
           </div>
           <div>
@@ -413,6 +416,20 @@ body {
 }
 
 .signup-input-birth {
+  width: 145px;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+}
+.signup-input-birth input {
+  border: none;
+  width: 145px;
+  padding: 10px;
+  border: solid 1px var(--border-gray-color);
+  border-radius: 10px;
+}
+
+/* .signup-input-birth {
   display: block;
   position: relative;
   width: 100%;
@@ -433,10 +450,10 @@ body {
   border-radius: 10px;
 }
 #signup-birth-mm {
-  /* border: none; */
   outline: none;
   border: solid 1px var(--border-gray-color);
-}
+} */
+
 
 /* 이메일 CSS */
 .email-wrap {
