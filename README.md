@@ -18,47 +18,10 @@
 |  |  | :white_check_mark: | [기기 구매 목록](/%EA%B5%AC%EB%A7%A4%EB%AA%A9%EB%A1%9D.md) |  |
 |  | 2022/07/12 |:white_check_mark: | 기능 상세 추가 |  |
 |  |  | :white_check_mark: | 모니터 1280x800 구매 완료 |  |
-|  |  | :white_large_square: | git branch 각자 생성하기 |  |
-|  |  | :white_large_square: | jira 업로드하기 |  |
-
+|  |  | :white_check_mark: | git branch 각자 생성하기 |  |
+|  |  | :white_check_mark: | jira 업로드하기 |  |
 
 ### 부품 구매
 
 부품 구매 완료
 [구매링크](https://eduino.kr/product/detail.html?product_no=1498&gclid=Cj0KCQjwlK-WBhDjARIsAO2sErTVKwdZeUwV51LiLANYUSgYUev3jP6TdAjH_hNdCOZQtRS23jfBNjMaAgeZEALw_wcB#none)
-
-### TIL(Today I Learned)
-
-#### 박명규
-
-<br>
-
-#### 김혜수
-
-<br>
-
-#### 김정아
-
-<br>
-
-#### 곽영후
-- 07.12
-    부품 구매 완료 및 환경세팅
-- 07.13
-    노션을 통한 ESP32 및 아두이노 학습 자료 정리 및 공유
-- 07.14
-    아두이노 설치 방법 자료 정리, 지라 최신화
-- 07.15
-     와이어 프레임 1차 완성, 디비 프레임 작업 중   
-<br>
-
-#### 김상현
-- 07.12
-    DB설계를 위한 JPA 학습(연관관계 매핑 및 고급 매핑)
-<br>
-
-#### 정형진
-
-- 07.12
-    요구사항 명세서 구체화하면서 삭제기능 토의
-<br>
