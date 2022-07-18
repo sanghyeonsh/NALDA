@@ -26,7 +26,7 @@
           </div>
           <div class="login-stay-sign-in">
             <i class="far fa-check-circle"></i>
-            <span @click="moveSignup">Sign up</span>
+            <nuxt-link to="/user/signup"><span>Sign up</span></nuxt-link>
           </div>
         </section>
         <!-- <section class="non-member-wrap">
@@ -66,14 +66,12 @@
 export default {
   name: 'LoginUser',
   methods: {
-    moveSignup() {
-      this.$router.push({ name: 'user-signup' })
-    },
+   
   },
 }
 </script>
 
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
