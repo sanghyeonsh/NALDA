@@ -1,7 +1,5 @@
 package com.a204.nalda_api.config.auth;
 
-import com.a204.nalda_api.domain.User;
-import com.a204.nalda_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
