@@ -1,6 +1,7 @@
 package com.a204.nalda_api.config;
 
 
+import com.a204.nalda_api.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
