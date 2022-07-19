@@ -44,7 +44,7 @@
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
               <div class="signup-input-birth">
-              <input type="date">
+                <input type="date" />
               </div>
               <!-- <div class="signup-input-birth">
                 <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
@@ -68,7 +68,7 @@
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
                 <input id="signup-birth-dd" type="text" placeholder="일" />
-              </div> -->
+              </div>-->
             </div>
           </div>
           <div>
@@ -164,7 +164,7 @@
           </div>
 
           <div class="signup-button-wrap">
-            <button>Sign up</button>
+            <button @click="moveMain">Sign up</button>
           </div>
           <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -199,6 +199,10 @@ export default {
     }
   },
   methods: {
+    moveMain() {
+      this.$router.push('/main')
+    },
+
     /*
     KAKAO API 사용한부분
     https://postcode.map.daum.net/guide#sample 이거에서 
@@ -453,7 +457,6 @@ body {
   outline: none;
   border: solid 1px var(--border-gray-color);
 } */
-
 
 /* 이메일 CSS */
 .email-wrap {

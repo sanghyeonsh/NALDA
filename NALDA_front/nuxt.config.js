@@ -15,6 +15,8 @@ export default {
     script: [
       // 다음 주소 검색 API
       { src: '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js' },
+      // font awesome favicon
+      { src: 'https://kit.fontawesome.com/454a2244bd.js' },
     ],
   },
 

@@ -4,19 +4,19 @@
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>티웨이</h4>
+          <h3>service</h3>
         </div>
       </div>
       <div class="container-box">
         <div @click="moveLogin">
-          <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Custom Declaration</h4>
+          <img class="image" src="../../static/custom_declaration.png" alt="custom_declaration" />
+          <h3>Custom Declaration</h3>
         </div>
       </div>
       <div class="container-box">
         <div>
-          <img class="image" src="../../static/service.png" alt="service" />
-          <h4>Airport Info</h4>
+          <img class="image" src="../../static/airport_info.png" alt="airport_info" />
+          <h3>Airport Info</h3>
         </div>
       </div>
     </div>
@@ -26,7 +26,6 @@
 <script>
 export default {
   name: 'MainIndex',
-  components: {},
   methods: {
     moveLogin() {
       this.$router.push({ name: 'user-login' })
@@ -36,6 +35,13 @@ export default {
 </script>
 
 <style>
+:root {
+  --body-background-color: #f5f6f7;
+  --font-color: #4e4e4e;
+  --border-gray-color: #dadada;
+  --nalda-blue-color: #206e95;
+  --nalda-blue-border-color: #88c0c5;
+}
 .container1 {
   margin: auto;
   display: flex;
@@ -52,12 +58,21 @@ export default {
   cursor: pointer;
 }
 
-.image {
+.container-box h3 {
+  margin-top: 40px;
+}
+
+.container-box img {
   width: 70%;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
 
 .container-box {
   display: flex;
+}
+.container-box div {
+  padding: 30px;
 }
 .content {
   width: 33%;

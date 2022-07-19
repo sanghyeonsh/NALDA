@@ -26,7 +26,9 @@
           </div>
           <div class="login-stay-sign-in">
             <i class="far fa-check-circle"></i>
-            <nuxt-link to="/user/signup"><span>Sign up</span></nuxt-link>
+            <nuxt-link to="/user/termsuse">
+              <span>Sign up</span>
+            </nuxt-link>
           </div>
         </section>
         <!-- <section class="non-member-wrap">
@@ -65,13 +67,11 @@
 <script>
 export default {
   name: 'LoginUser',
-  methods: {
-   
-  },
+  methods: {},
 }
 </script>
 
-<style scoped>
+<style >
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
