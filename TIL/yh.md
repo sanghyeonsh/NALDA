@@ -11,5 +11,7 @@
  - 07.15
   wireframe 1차적 완성 민 ERD-diagram 제작 시작
  - 07.18
-  ERD-diagram 제작 및 키트 종류 확인, Rasberry pi 연결 완료 및 아두이노 esp-8266모듈 연결 작업 중   
+  ERD-diagram 제작 및 키트 종류 확인, Rasberry pi 연결 완료 및 아두이노 esp-8266모듈 연결 작업 중 
+ - 07.19
+  esp-8266 와이파이 연결 성공 및 IOT DB 공부  
   <br>
