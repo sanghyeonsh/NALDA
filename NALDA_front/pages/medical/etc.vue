@@ -6,23 +6,49 @@
         <div class="title">증상 및 요청사항을 입력해주세요.</div>
         <div class="content">
           <input
+            :value="input"
             class="input"
             placeholder="Tap on the virtual keyboard to start"
+            @input="onInputChange"
           />
+
           <button>확인</button>
         </div>
       </div>
+      <simple-keyboard
+        :input="input"
+        @onChange="onChange"
+        @onKeyPress="onKeyPress"
+      ></simple-keyboard>
     </div>
   </div>
 </template>
 
 <script>
 import HeaderComponent from '../../components/HeaderComponent.vue'
+import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
   name: 'EtcPage',
   components: {
     HeaderComponent,
+    SimpleKeyboard,
+  },
+  data() {
+    return {
+      input: '',
+    }
+  },
+  methods: {
+    onChange(input) {
+      this.input = input
+    },
+    onKeyPress(button) {
+      // console.log('button', button)
+    },
+    onInputChange(input) {
+      this.input = input.target.value
+    },
   },
 }
 </script>

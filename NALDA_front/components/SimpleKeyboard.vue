@@ -5,6 +5,9 @@
 <script>
 import Keyboard from 'simple-keyboard'
 import 'simple-keyboard/build/css/index.css'
+import layout from './keyboard/layout'
+
+// import layout from 'simple-keyboard-layouts/build/layouts/korean'
 
 export default {
   name: 'SimpleKeyboard',
@@ -25,6 +28,7 @@ export default {
     this.keyboard = new Keyboard(this.keyboardClass, {
       onChange: this.onChange,
       onKeyPress: this.onKeyPress,
+      ...layout,
     })
   },
   methods: {
