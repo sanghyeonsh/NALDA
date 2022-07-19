@@ -84,6 +84,7 @@ button {
 }
 
 .toilet-wrap {
+  background-color: var(--border-gray-color);
   color: var(--nalda-navy-color);
 }
 

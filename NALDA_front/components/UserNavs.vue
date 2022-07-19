@@ -3,7 +3,7 @@
     <div class="usernav-container">
       <header class="profile-wrap">
         <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../static/flight_attendant_w.png" />
+          <img class="thumb" src="../static/user_profile_w.png" />
           <!-- <div class="badge">7</div> -->
         </div>
 
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="modify mouse-effect stagger-item">
+        <div class="modify mouse-effect stagger-item" @click="moveModify">
           <div>modify</div>
         </div>
       </header>
@@ -23,11 +23,11 @@
       <ul class="list">
         <li class="item mouse-effect stagger-item">
           <div class="left">
-            <img src="img/icon/bookmark.svg" />
+            <i class="fa-solid fa-bookmark"></i>
             <div class="name">Bookmark</div>
           </div>
           <div class="right">
-            <img src="img/icon/right_arrow.svg" />
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
 
@@ -37,7 +37,7 @@
             <div class="name">Account Info</div>
           </div>
           <div class="right">
-            <img src="img/icon/right_arrow.svg" />
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
 
@@ -47,7 +47,7 @@
             <div class="name">Past Journey</div>
           </div>
           <div class="right">
-            <img src="img/icon/right_arrow.svg" />
+            <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
       </ul>
@@ -58,6 +58,12 @@
 <script>
 export default {
   name: 'UserNavs',
+  components: {},
+  methods: {
+    moveModify() {
+      this.$router.push({ name: 'user-modify' })
+    },
+  },
 }
 </script>
 
@@ -74,9 +80,10 @@ export default {
 .usernav-container {
   background-color: var(--nalda-blue-color);
   color: #ffe6cf;
+  height: 700px;
 }
 .profile-wrap {
-  padding: 30px;
+  padding: 80px 40px;
 }
 
 /* body {
@@ -219,7 +226,8 @@ header .modify {
   opacity: 0.5;
 }
 
-.list .item img {
+/* 이부분 수정 필요 */
+.list .item i {
   padding: 20px 22px;
 }
 
