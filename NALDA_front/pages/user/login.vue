@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="main-container">
-      <div class="main-wrap">
+    <div class="login-main-container">
+      <div class="login-main-wrap">
         <header>
           <div class="sel-lang-wrap">
             <select class="lang-select">
@@ -48,14 +48,6 @@
           </section>
           <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
         </section>-->
-        <footer>
-          <div class="copyright-wrap">
-            <!-- <div><img src="../static/logo.png"></div> -->
-            <div>
-              <span>Copyright © NALDA Corp. All Rights Reserved.</span>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   </div>
@@ -95,40 +87,42 @@ body {
   background: var(--body-background-color);
 }
 
-.main-container {
+.login-main-container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 21px;
 }
 
-.main-container .main-wrap {
+.login-main-container .login-main-wrap {
   width: 768px;
+  height: 100%;
 }
 
-.main-container .main-wrap .sel-lang-wrap .lang-select {
+.login-main-container .login-main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
 }
 
-.main-container .main-wrap .logo-wrap {
+.login-main-container .login-main-wrap .logo-wrap {
   padding-top: 55px;
 }
 
-.main-container .main-wrap .logo-wrap img {
+.login-main-container .login-main-wrap .logo-wrap img {
   width: 300px;
   height: 300px;
 }
 
-.main-container .main-wrap header .sel-lang-wrap {
+.login-main-container .login-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.main-container .main-wrap header .logo-wrap {
+.login-main-container .login-main-wrap header .logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,33 +213,5 @@ body {
   color: var(--font-color);
   font-size: 14px;
   padding-top: 10px;
-}
-
-footer {
-  padding-top: 95px;
-  padding-bottom: 15px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 768px;
-}
-
-.copyright-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 15px;
-}
-
-footer .copyright-wrap div img {
-  width: 50px;
-
-  height: 50px;
-}
-
-footer .copyright-wrap span {
-  font-size: 13px;
-  line-height: 15px;
 }
 </style>

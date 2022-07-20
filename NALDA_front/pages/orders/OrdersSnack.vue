@@ -1,5 +1,51 @@
 <template>
   <div>
+    <b-card no-body>
+      <b-tabs card>
+        <b-tab no-body active>
+          <template #title>
+            <div class="movehome" @click="movehome">
+              <h2>날다</h2>
+              <h2>HOME</h2>
+            </div>
+          </template>
+        </b-tab>
+
+        <b-tab active>
+          <template #title>
+            <b-img
+              class="menu-image"
+              src="../../static/orders/dessert.png"
+            ></b-img>
+            <div>간식</div>
+          </template>
+          <p class="p-3">Tab contents 1</p>
+        </b-tab>
+
+        <b-tab active>
+          <template #title>
+            <b-img
+              class="menu-image"
+              src="../../static/orders/drink.png"
+            ></b-img>
+            <div>주류</div>
+          </template>
+          <p class="p-3">Tab contents 2</p>
+        </b-tab>
+
+        <b-tab active>
+          <template #title>
+            <b-img
+              class="menu-image"
+              src="../../static/orders/coffee_cup.png"
+            ></b-img>
+            <div>비주류</div>
+          </template>
+          <p class="p-3">Tab contents 3</p>
+        </b-tab>
+      </b-tabs>
+    </b-card>
+
     <div class="snack-flex-container">
       <div class="item">
         <h5>메뉴</h5>
@@ -13,6 +59,7 @@
 
 <script>
 import { mapState } from 'vuex'
+
 // import axios from 'axios'
 
 export default {
@@ -49,20 +96,16 @@ export default {
 </script>
 
 <style scoped>
+.card-header {
+  background-color: rgb(69, 169, 200);
+}
 .menu-image {
   width: 80px;
   height: 80px;
 }
 .movehome {
-  color: white;
+  color: black;
   text-align: center;
-}
-.card-header {
-  background-color: rgb(69, 169, 200);
-  color: black;
-}
-a {
-  color: black;
 }
 .snack-flex-container {
   display: flex;

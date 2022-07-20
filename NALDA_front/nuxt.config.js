@@ -18,6 +18,7 @@ export default {
       // font awesome favicon
       { src: 'https://kit.fontawesome.com/454a2244bd.js' },
     ],
+    css: [],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

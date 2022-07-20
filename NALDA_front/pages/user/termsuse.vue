@@ -1275,6 +1275,7 @@ export default {
     format('woff');
   font-weight: normal;
   font-style: normal;
+  src: local();
 }
 
 :root {

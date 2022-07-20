@@ -115,7 +115,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import UserNavs from '../../components/UserNavs.vue'
 export default {
   name: 'MyPage',

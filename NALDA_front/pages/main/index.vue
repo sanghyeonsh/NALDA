@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container1">
-      <div class="main-container-box" @click="moveOrders">
+    <div class="main-container1">
+      <div class="main-container-box" @click="MoveOrders">
         <div>
           <img
             class="image"
@@ -46,8 +46,8 @@ export default {
     moveLogin() {
       this.$router.push('/user/login')
     },
-    moveOrders() {
-      this.$router.push({ name: 'orders' })
+    MoveOrders() {
+      this.$router.push('/orders')
     },
   },
 }
@@ -62,7 +62,7 @@ export default {
   --nalda-blue-border-color: #88c0c5;
 }
 
-.container1 {
+.main-container1 {
   margin: auto;
   display: flex;
   height: 70vh;
