@@ -3,11 +3,11 @@
     <div class="footer-container">
       <div class="service-btn-wrap">
         <button class="toilet-wrap">
-          <img src="../static/toilet_navy.png" alt="toilet" />
+          <img src="../static/main/toilet_navy.png" alt="toilet" />
           <h3>화장실</h3>
         </button>
         <button class="service-wrap" style="background-color: var(--nalda-blue-color);">
-          <img src="../static/flight_attendant_w.png" alt="toilet" />
+          <img src="../static/main/flight_attendant_w.png" alt="toilet" />
           <h3>승무원호출</h3>
         </button>
       </div>
@@ -111,10 +111,10 @@ button:hover {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  margin-top: 10px;
+  background-color: rgba(239, 239, 239, 0.511);
 }
-
-footer {
+.footer-container footer {
+  width: 100%;
   margin-bottom: 10px;
   text-align: center;
   font-size: smaller;

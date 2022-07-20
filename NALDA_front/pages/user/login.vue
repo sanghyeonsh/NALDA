@@ -9,9 +9,6 @@
               <option>English</option>
             </select>
           </div>
-          <div class="logo-wrap">
-            <img src="../../static/logo.png" />
-          </div>
         </header>
         <section class="login-input-section-wrap">
           <h2>Member</h2>

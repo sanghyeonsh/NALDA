@@ -1,8 +1,6 @@
 <template>
   <div class="user-page">
-    <div class="logo-wrap">
-      <img class="user-logo" src="../static/logo.png" />
-    </div>
+    <header-component></header-component>
     <nuxt-child></nuxt-child>
     <footer-component></footer-component>
   </div>
@@ -10,9 +8,10 @@
 
 <script>
 import FooterComponent from '../components/FooterComponent.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
 export default {
   name: 'UserPage',
-  components: { FooterComponent },
+  components: { FooterComponent, HeaderComponent },
 }
 </script>
 

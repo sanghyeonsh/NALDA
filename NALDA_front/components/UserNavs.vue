@@ -3,7 +3,7 @@
     <div class="usernav-container">
       <header class="profile-wrap">
         <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../static/user_profile_w.png" />
+          <img class="thumb" src="../static/main/user_profile_w.png" />
           <!-- <div class="badge">7</div> -->
         </div>
 
@@ -21,17 +21,7 @@
       </header>
 
       <ul class="list">
-        <li class="item mouse-effect stagger-item">
-          <div class="left">
-            <i class="fa-solid fa-bookmark"></i>
-            <div class="name">Bookmark</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-
-        <li class="item mouse-effect stagger-item">
+        <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
           <div class="left">
             <i class="fa-solid fa-user"></i>
             <div class="name">Account Info</div>
@@ -41,10 +31,19 @@
           </div>
         </li>
 
-        <li class="item mouse-effect stagger-item">
+        <li class="item mouse-effect stagger-item" @click="movecustomList">
           <div class="left">
             <i class="fa-solid fa-suitcase-rolling"></i>
             <div class="name">Past Journey</div>
+          </div>
+          <div class="right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </li>
+        <li class="item mouse-effect stagger-item">
+          <div class="left">
+            <i class="fa-solid fa-bookmark"></i>
+            <div class="name">Bookmark</div>
           </div>
           <div class="right">
             <i class="fa-solid fa-chevron-right"></i>
@@ -62,6 +61,12 @@ export default {
   methods: {
     moveModify() {
       this.$router.push({ name: 'user-modify' })
+    },
+    moveAccountInfo() {
+      this.$router.push('/user/mypage')
+    },
+    movecustomList() {
+      this.$router.push('/user/custom')
     },
   },
 }
@@ -81,7 +86,7 @@ export default {
   background-color: var(--nalda-blue-color);
   color: #ffe6cf;
   height: auto;
-  width: 400px;
+  width: auto;
   margin-left: 0;
 }
 .profile-wrap {
@@ -118,7 +123,7 @@ li {
   list-style: none;
 }
 
-button {
+.usernav-container button {
   background-color: transparent;
   border: none;
   outline: none;
@@ -199,6 +204,7 @@ header .modify {
   border-radius: 20px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
   margin-top: 18px;
+  cursor: pointer;
 }
 
 /* 리스트 */
@@ -213,6 +219,7 @@ header .modify {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 15px;
+  cursor: pointer;
 }
 
 .list .item .left {

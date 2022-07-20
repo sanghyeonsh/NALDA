@@ -3,21 +3,25 @@
     <div class="container1">
       <div class="container-box">
         <div>
-          <img class="image" src="../../static/service.png" alt="service" />
+          <img class="image" src="../../static/main/service.png" alt="service" />
           <h3>service</h3>
         </div>
       </div>
       <div class="container-box">
         <nuxt-link to="/user/login" style="text-decoration: none;">
           <div>
-            <img class="image" src="../../static/custom_declaration.png" alt="custom_declaration" />
+            <img
+              class="image"
+              src="../../static/main/custom_declaration.png"
+              alt="custom_declaration"
+            />
             <h3>Custom Declaration</h3>
           </div>
         </nuxt-link>
       </div>
       <div class="container-box">
         <div>
-          <img class="image" src="../../static/airport_info.png" alt="airport_info" />
+          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
           <h3>Airport Info</h3>
         </div>
       </div>

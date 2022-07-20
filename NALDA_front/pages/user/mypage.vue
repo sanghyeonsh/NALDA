@@ -3,105 +3,35 @@
     <div class="user-nav">
       <user-navs></user-navs>
     </div>
-    <div class="user-info-page">
-      <div class="user-page-wrap">
-        <div class="subindex-item">
-          <div class="subindex-bluebox">
-            <div class="myprofile-wrap">
-              <div class="info-title">
-                <div class="info-wrap">
-                  <div class="title-text">기본정보</div>
-                  <span>
-                    <i class="fa-solid fa-circle-info"></i>
-                  </span>
-                </div>
+    <div class="user-page-wrap">
+      <div class="subindex-item">
+        <h4>내 정보</h4>
+        <div class="subindex-bluebox">
+          <div class="myprofile-wrap">
+            <div class="info-title">
+              <div class="info-wrap">
+                <div class="title-text">기본정보</div>
+                <span>
+                  <i class="fa-solid fa-circle-info"></i>
+                </span>
               </div>
-              <ul class="myinfo-area">
-                <li>
-                  <div class="myphoto">
-                    <img
-                      src="https://static.nid.naver.com/images/web/user/default.png"
-                      width="56"
-                      height="56"
-                      alt="내 프로필 이미지"
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div class="myaccount" style="width: 651px;">
-                    <div class="myname">
-                      <div class="name-text">익명규</div>
-                      <div class="myId">anonymous-ku</div>
-                    </div>
-                    <button type="button" class="btn-edit">
-                      <span class="text">수정</span>
-                    </button>
-                  </div>
-                </li>
-              </ul>
             </div>
-
-            <ul class="subindex-row">
+            <ul class="myinfo-area">
               <li>
-                <div class="row-item phone">
-                  <div>
-                    <i class="fa-solid fa-mobile-button"></i>
-                    <span class="item-text">+82 10-3***-7***</span>
-                  </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
+                <div class="myphoto">
+                  <img
+                    src="https://static.nid.naver.com/images/web/user/default.png"
+                    width="56"
+                    height="56"
+                    alt="내 프로필 이미지"
+                  />
                 </div>
-                <div class="row-item mail">
-                  <div>
-                    <i class="fa-solid fa-envelope"></i>
-                    <span class="item-text">jk******@n*******.com</span>
-                  </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
-                </div>
-                <!-- 만일 email 등록이 안되어 있을 경우 뜨게 할 부분 -->
-                <!-- <div class="row-item mail not">
-                        <div>
-                            <i class="fa-solid fa-envelope"></i>
-                            <span class="item-text">본인확인 이메일 없음</span>
-                        </div>
-                        <button type="button" class="btn-accent">
-                            <span class="text">등록</span>
-                        </button>
-                </div>-->
-                <div class="row-item gender">
-                  <div>
-                    <i class="fa-solid fa-mobile-button"></i>
-                    <span class="item-text">+82 10-3***-7***</span>
-                  </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
-                </div>
-                <div class="row-item address">
-                  <div>
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span class="item-text">서울시 동대문구</span>
-                  </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
-                </div>
-                <div class="row-item passportnumber">
-                  <div>
-                    <i class="fa-solid fa-passport"></i>
-                    <span class="item-text">M77139987</span>
-                  </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
-                </div>
-                <div class="row-item job">
-                  <div>
-                    <i class="fa-solid fa-briefcase"></i>
-                    <span class="item-text">SW engineer</span>
+              </li>
+              <li>
+                <div class="myaccount" style="width: 651px;">
+                  <div class="myname">
+                    <div class="name-text">익명규</div>
+                    <div class="myId">anonymous-ku</div>
                   </div>
                   <button type="button" class="btn-edit">
                     <span class="text">수정</span>
@@ -110,6 +40,75 @@
               </li>
             </ul>
           </div>
+
+          <ul class="subindex-row">
+            <li>
+              <div class="row-item phone">
+                <div>
+                  <i class="fa-solid fa-mobile-button"></i>
+                  <span class="item-text">+82 10-3***-7***</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <div class="row-item mail">
+                <div>
+                  <i class="fa-solid fa-envelope"></i>
+                  <span class="item-text">jk******@n*******.com</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <!-- 만일 email 등록이 안되어 있을 경우 뜨게 할 부분 -->
+              <!-- <div class="row-item mail not">
+                        <div>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span class="item-text">본인확인 이메일 없음</span>
+                        </div>
+                        <button type="button" class="btn-accent">
+                            <span class="text">등록</span>
+                        </button>
+              </div>-->
+              <div class="row-item gender">
+                <div>
+                  <i class="fa-solid fa-mobile-button"></i>
+                  <span class="item-text">+82 10-3***-7***</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <div class="row-item address">
+                <div>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span class="item-text">서울시 동대문구</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <div class="row-item passportnumber">
+                <div>
+                  <i class="fa-solid fa-passport"></i>
+                  <span class="item-text">M77139987</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <div class="row-item job">
+                <div>
+                  <i class="fa-solid fa-briefcase"></i>
+                  <span class="item-text">SW engineer</span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -148,12 +147,15 @@ export default {
 }
 
 .mypage-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .user-page-wrap {
-  height: 700px;
+  height: auto;
+  width: 80%;
   color: #1e3c4b;
   display: flex;
   justify-content: center;
@@ -168,7 +170,7 @@ ul {
   padding-left: 0;
 }
 
-button {
+.user-page-wrap button {
   width: 80px;
   height: 30px;
   font-size: 11px;
@@ -185,11 +187,16 @@ button {
   outline: none;
 }
 
-button:hover {
+.user-page-wrap button:hover {
   background-color: #88c0c5;
   box-shadow: 5px 5px 10px rgba(46, 205, 229, 0.4);
   color: #fff;
   transform: translateY(-7px);
+}
+
+.subindex-item h4 {
+  text-align: right;
+  margin-bottom: 20px;
 }
 
 .subindex-bluebox {

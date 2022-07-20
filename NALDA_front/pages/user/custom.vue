@@ -5,7 +5,7 @@
     </div>
     <div class="custom-declaration-wrap">
       <div class="mycustom-subindex-item">
-        <h3>세관신고서 목록</h3>
+        <h4>세관신고서 목록</h4>
         <div class="mycustom-subindex-bluebox">
           <div class="overflow-auto">
             <p class="mt-3">현재 페이지: {{ currentPage }}</p>
@@ -48,21 +48,21 @@ export default {
         { no: 3, journey: 'Madrid', date: '2019-01-24' },
         { no: 4, journey: 'Madrid', date: '2019-01-24' },
         { no: 5, journey: 'Madrid', date: '2019-01-24' },
-        { no: 1, journey: 'Madrid', date: '2019-01-24' },
-        { no: 2, journey: 'Madrid', date: '2019-01-24' },
-        { no: 3, journey: 'Madrid', date: '2019-01-24' },
-        { no: 4, journey: 'Madrid', date: '2019-01-24' },
-        { no: 5, journey: 'Madrid', date: '2019-01-24' },
-        { no: 1, journey: 'Madrid', date: '2019-01-24' },
-        { no: 2, journey: 'Madrid', date: '2019-01-24' },
-        { no: 3, journey: 'Madrid', date: '2019-01-24' },
-        { no: 4, journey: 'Madrid', date: '2019-01-24' },
-        { no: 5, journey: 'Madrid', date: '2019-01-24' },
-        { no: 1, journey: 'Madrid', date: '2019-01-24' },
-        { no: 2, journey: 'Madrid', date: '2019-01-24' },
-        { no: 3, journey: 'Madrid', date: '2019-01-24' },
-        { no: 4, journey: 'Madrid', date: '2019-01-24' },
-        { no: 5, journey: 'Madrid', date: '2019-01-24' },
+        { no: 6, journey: 'Madrid', date: '2019-01-24' },
+        { no: 7, journey: 'Madrid', date: '2019-01-24' },
+        { no: 8, journey: 'Madrid', date: '2019-01-24' },
+        { no: 9, journey: 'Madrid', date: '2019-01-24' },
+        { no: 10, journey: 'Madrid', date: '2019-01-24' },
+        { no: 11, journey: 'Madrid', date: '2019-01-24' },
+        { no: 12, journey: 'Madrid', date: '2019-01-24' },
+        { no: 13, journey: 'Madrid', date: '2019-01-24' },
+        { no: 14, journey: 'Madrid', date: '2019-01-24' },
+        { no: 15, journey: 'Madrid', date: '2019-01-24' },
+        { no: 16, journey: 'Madrid', date: '2019-01-24' },
+        { no: 17, journey: 'Madrid', date: '2019-01-24' },
+        { no: 18, journey: 'Madrid', date: '2019-01-24' },
+        { no: 19, journey: 'Madrid', date: '2019-01-24' },
+        { no: 20, journey: 'Madrid', date: '2019-01-24' },
       ],
     }
   },
@@ -109,24 +109,28 @@ ul {
   list-style: none;
   padding-left: 0;
 }
+.mycustom-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+}
 
 .custom-declaration-wrap {
+  height: auto;
+  width: 80%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-.mycustom-container {
-  display: flex;
-  flex-direction: row;
-}
-.mycustom-subindex-item h3 {
-  text-align: center;
+.mycustom-subindex-item h4 {
+  text-align: right;
   margin-bottom: 20px;
 }
 
 .mycustom-subindex-bluebox {
-  width: 800px;
+  width: 900px;
   padding: 20px 50px;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
@@ -136,6 +140,9 @@ ul {
 }
 
 .overflow-auto {
+  width: auto;
+  height: auto;
+  margin: 10px;
   text-align: center;
 }
 
