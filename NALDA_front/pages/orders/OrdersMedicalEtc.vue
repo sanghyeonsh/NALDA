@@ -29,7 +29,7 @@ import HeaderComponent from '../../components/HeaderComponent.vue'
 import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
-  name: 'EtcPage',
+  name: 'OrdersMedicalEtc',
   components: {
     HeaderComponent,
     SimpleKeyboard,

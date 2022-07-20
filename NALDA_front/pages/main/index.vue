@@ -1,14 +1,18 @@
 <template>
   <div>
     <div class="container1">
-      <div class="container-box">
+      <div class="main-container-box" @click="moveOrders">
         <div>
-          <img class="image" src="../../static/main/service.png" alt="service" />
+          <img
+            class="image"
+            src="../../static/main/service.png"
+            alt="service"
+          />
           <h3>service</h3>
         </div>
       </div>
-      <div class="container-box">
-        <nuxt-link to="/user/login" style="text-decoration: none;">
+      <div class="main-container-box">
+        <nuxt-link to="/user/login" style="text-decoration: none">
           <div>
             <img
               class="image"
@@ -19,9 +23,13 @@
           </div>
         </nuxt-link>
       </div>
-      <div class="container-box">
+      <div class="main-container-box">
         <div>
-          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+          <img
+            class="image"
+            src="../../static/main/airport_info.png"
+            alt="airport_info"
+          />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -38,11 +46,14 @@ export default {
     moveLogin() {
       this.$router.push('/user/login')
     },
+    moveOrders() {
+      this.$router.push({ name: 'orders' })
+    },
   },
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -54,11 +65,11 @@ export default {
 .container1 {
   margin: auto;
   display: flex;
-  height: 92vh;
+  height: 70vh;
   justify-content: space-around;
 }
 
-.container-box {
+.main-container-box {
   text-align: center;
   width: 33%;
   display: flex;
@@ -67,23 +78,20 @@ export default {
   cursor: pointer;
 }
 
-.container-box h3 {
+.main-container-box h3 {
   margin-top: 40px;
 }
 
-.container-box img {
+.main-container-box img {
   width: 70%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
 
-.container-box {
+.main-container-box {
   display: flex;
 }
-.container-box div {
+.main-container-box div {
   padding: 30px;
-}
-.content {
-  width: 33%;
 }
 </style>

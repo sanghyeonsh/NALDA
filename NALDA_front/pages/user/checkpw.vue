@@ -17,8 +17,8 @@
           <h2>My Page</h2>
           <div class>
             <p class="chk-msg">
-              개인 정보 조회를 위해서는 인증이 필요합니다.
-              비밀번호 입력 후 확인 버튼을 클릭해 주세요.
+              개인 정보 조회를 위해서는 인증이 필요합니다. 비밀번호 입력 후 확인
+              버튼을 클릭해 주세요.
             </p>
             <div class="user-input-wrap">
               <input placeholder="Username" type="text" disabled />
@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;

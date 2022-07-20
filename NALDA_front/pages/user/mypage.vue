@@ -28,7 +28,7 @@
                 </div>
               </li>
               <li>
-                <div class="myaccount" style="width: 651px;">
+                <div class="myaccount" style="width: 651px">
                   <div class="myname">
                     <div class="name-text">익명규</div>
                     <div class="myId">anonymous-ku</div>
@@ -123,7 +123,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')

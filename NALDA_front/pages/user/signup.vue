@@ -89,14 +89,23 @@
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="signup-input-email">
-                <input id="signup-email-id" type="text" placeholder="이메일아이디" />
+                <input
+                  id="signup-email-id"
+                  type="text"
+                  placeholder="이메일아이디"
+                />
               </div>
               <h5>@</h5>
               <div class="signup-input-email">
                 <input id="signup-email" type="text" placeholder="이메일주소" />
               </div>
-              <div class="signup-input-email" style="margin-left: 10px;">
-                <select id="signup-email-select" class="selectbox" name="email" onchange>
+              <div class="signup-input-email" style="margin-left: 10px">
+                <select
+                  id="signup-email-select"
+                  class="selectbox"
+                  name="email"
+                  onchange
+                >
                   <option value="self">직접입력</option>
                   <option value="naver">naver.com</option>
                   <option value="gmail">gmail.com</option>
@@ -127,13 +136,22 @@
             <div class="address-wrap">
               <div class="postal-wrap">
                 <input id="postal-code" placeholder="postal code" type="text" />
-                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+                <input
+                  id="postal-check-btn"
+                  type="button"
+                  value="주소검색"
+                  @click="find_Postcode()"
+                />
               </div>
               <div class="signup-input-wrap">
                 <input id="address" placeholder="address" type="text" />
               </div>
-              <div class="signup-input-wrap" style="margin-top: 3px;">
-                <input id="address-detail" placeholder="address detail" type="text" />
+              <div class="signup-input-wrap" style="margin-top: 3px">
+                <input
+                  id="address-detail"
+                  placeholder="address detail"
+                  type="text"
+                />
               </div>
             </div>
           </div>
@@ -146,7 +164,12 @@
           <div>
             <h6>직업</h6>
             <div class="signup-input-wrap job-wrap">
-              <select id="signup-job-select" class="selectbox" name="job" onchange>
+              <select
+                id="signup-job-select"
+                class="selectbox"
+                name="job"
+                onchange
+              >
                 <option value="student">학생</option>
                 <option value="housewife">주부</option>
                 <option value="soldier">군인</option>
@@ -253,7 +276,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
