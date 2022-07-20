@@ -4,7 +4,7 @@
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>{{ snack }}</h4>
+          <h4>Service</h4>
         </div>
       </div>
       <div class="container-box">
@@ -24,15 +24,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'MainIndex',
   components: {},
-  computed: {
-    ...mapState('todo', ['todolist']),
-    ...mapState('snack', ['snack']),
-  },
+  computed: {},
   methods: {
     moveLogin() {
       this.$router.push({ name: 'user-login' })

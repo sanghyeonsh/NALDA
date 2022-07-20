@@ -1,13 +1,12 @@
 <template>
   <div>
-    <nuxt-child></nuxt-child>
+    <h1>not adult</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OrdersPage',
-  components: {},
+  name: 'OrdersNotAdult',
 }
 </script>
 

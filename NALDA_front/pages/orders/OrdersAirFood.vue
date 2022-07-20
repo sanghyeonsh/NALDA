@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h1>AirFood</h1>
-  </div>
+  <div>food</div>
 </template>
 
 <script>

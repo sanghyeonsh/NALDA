@@ -1,13 +1,12 @@
 <template>
   <div>
-    <nuxt-child></nuxt-child>
+    <h1>기다려주세요</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OrdersPage',
-  components: {},
+  name: 'OrdersWaiting',
 }
 </script>
 
