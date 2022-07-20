@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="main-container">
-      <div class="main-wrap">
+    <div class="modify-container">
+      <div class="modify-wrap">
         <header>
           <div class="sel-lang-wrap">
             <select class="lang-select">
@@ -10,73 +10,44 @@
             </select>
           </div>
         </header>
-        <section class="signup-input-section-wrap">
-          <h2>Sign up</h2>
+        <section class="modify-input-section-wrap">
+          <h2>modify</h2>
           <div>
             <h6>아이디</h6>
-            <div class="signup-input-id-wrap">
+            <div class="modify-input-id-wrap">
               <input id="input-id" placeholder="Username" type="text" />
               <input id="id-check-btn" type="button" value="아이디 중복 검사" />
             </div>
           </div>
           <div>
             <h6>비밀번호</h6>
-            <div class="signup-input-wrap password-wrap">
+            <div class="modify-input-wrap password-wrap">
               <input placeholder="Password" type="password" />
             </div>
           </div>
           <div>
             <h6>비밀번호 확인</h6>
-            <div class="signup-input-wrap password-confirm-wrap">
+            <div class="modify-input-wrap password-confirm-wrap">
               <input placeholder="Password" type="password" />
             </div>
           </div>
           <div>
             <h6>이름</h6>
-            <div class="signup-input-wrap name-wrap">
+            <div class="modify-input-wrap name-wrap">
               <input placeholder="name" type="text" />
             </div>
           </div>
           <div>
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
-              <div class="signup-input-birth">
+              <div class="modify-input-birth">
                 <input type="date" />
               </div>
-              <!-- <div class="signup-input-birth">
-                <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
-              </div>
-              <div class="signup-input-birth" style="margin-left: 10px;">
-                <select id="signup-birth-mm" class="selectbox" name="month" onchange>
-                  <option value="month">월</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-              </div>
-              <div class="signup-input-birth" style="margin-left: 10px;">
-                <input id="signup-birth-dd" type="text" placeholder="일" />
-              </div>-->
             </div>
           </div>
           <div>
             <h6>성별</h6>
             <div class="gender-wrap">
-              <!-- <select id="signup-gender" class="selectbox" name="gender" onchange="">
-                        <option value="gender">성별</option>
-                        <option value="man">남자</option>
-                        <option value="woman">여자</option>
-                        <option value="no">선택 안함</option>
-              </select>-->
               <div>
                 <button id="gender-btn">남자</button>
               </div>
@@ -88,15 +59,15 @@
           <div>
             <h6>이메일</h6>
             <div class="email-wrap">
-              <div class="signup-input-email">
-                <input id="signup-email-id" type="text" placeholder="이메일아이디" />
+              <div class="modify-input-email">
+                <input id="modify-email-id" type="text" placeholder="이메일아이디" />
               </div>
               <h5>@</h5>
-              <div class="signup-input-email">
-                <input id="signup-email" type="text" placeholder="이메일주소" />
+              <div class="modify-input-email">
+                <input id="modify-email" type="text" placeholder="이메일주소" />
               </div>
-              <div class="signup-input-email" style="margin-left: 10px;">
-                <select id="signup-email-select" class="selectbox" name="email" onchange>
+              <div class="modify-input-email" style="margin-left: 10px;">
+                <select id="modify-email-select" class="selectbox" name="email" onchange>
                   <option value="self">직접입력</option>
                   <option value="naver">naver.com</option>
                   <option value="gmail">gmail.com</option>
@@ -109,15 +80,15 @@
           <div>
             <h6>전화번호</h6>
             <div class="mobile-num-wrap">
-              <div class="signup-mobile-num">
+              <div class="modify-mobile-num">
                 <input id="mobile-num" type="text" placeholder="000" />
               </div>
               <h5>-</h5>
-              <div class="signup-mobile-num">
+              <div class="modify-mobile-num">
                 <input id="mobile-num" type="text" placeholder="0000" />
               </div>
               <h5>-</h5>
-              <div class="signup-mobile-num">
+              <div class="modify-mobile-num">
                 <input id="mobile-num" type="text" placeholder="0000" />
               </div>
             </div>
@@ -129,24 +100,24 @@
                 <input id="postal-code" placeholder="postal code" type="text" />
                 <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
               </div>
-              <div class="signup-input-wrap">
+              <div class="modify-input-wrap">
                 <input id="address" placeholder="address" type="text" />
               </div>
-              <div class="signup-input-wrap" style="margin-top: 3px;">
+              <div class="modify-input-wrap" style="margin-top: 3px;">
                 <input id="address-detail" placeholder="address detail" type="text" />
               </div>
             </div>
           </div>
           <div>
             <h6>여권번호</h6>
-            <div class="signup-input-wrap passport-num-wrap">
+            <div class="modify-input-wrap passport-num-wrap">
               <input placeholder="passportnumber" type="text" />
             </div>
           </div>
           <div>
             <h6>직업</h6>
-            <div class="signup-input-wrap job-wrap">
-              <select id="signup-job-select" class="selectbox" name="job" onchange>
+            <div class="modify-input-wrap job-wrap">
+              <select id="modify-job-select" class="selectbox" name="job" onchange>
                 <option value="student">학생</option>
                 <option value="housewife">주부</option>
                 <option value="soldier">군인</option>
@@ -160,12 +131,12 @@
             </div>
           </div>
 
-          <div class="signup-button-wrap">
-            <button @click="moveMain">Sign up</button>
+          <div class="modify-button-wrap">
+            <button>modify</button>
           </div>
-          <!-- <div class="signup-stay-sign-in">
+          <!-- <div class="modify-stay-sign-in">
                     <i class="far fa-check-circle"></i>
-                    <span>Sign up</span>
+                    <span>modify</span>
           </div>-->
         </section>
       </div>
@@ -175,7 +146,8 @@
 
 <script>
 export default {
-  name: 'SignUp',
+  name: 'ModifyUser',
+  components: {},
   data() {
     return {
       // 주소 변수
@@ -185,10 +157,6 @@ export default {
     }
   },
   methods: {
-    moveMain() {
-      this.$router.push('/main')
-    },
-
     /*
     KAKAO API 사용한부분
     https://postcode.map.daum.net/guide#sample 이거에서 
@@ -253,6 +221,7 @@ export default {
   },
 }
 </script>
+
 <style>
 @font-face {
   font-family: 'twayfly';
@@ -280,7 +249,7 @@ body {
   background: var(--body-background-color);
 }
 
-.main-container {
+.modify-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -288,32 +257,32 @@ body {
   margin-top: 21px;
 }
 
-.main-container .main-wrap {
+.modify-container .modify-wrap {
   width: 768px;
 }
 
-.main-container .main-wrap .sel-lang-wrap .lang-select {
+.modify-container .modify-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
 }
 
-.main-container .main-wrap .logo-wrap {
+.modify-container .modify-wrap .logo-wrap {
   padding-top: 55px;
 }
 
-.main-container .main-wrap .logo-wrap img {
+.modify-container .modify-wrap .logo-wrap img {
   width: 100px;
   height: 100px;
 }
 
-.main-container .main-wrap header .sel-lang-wrap {
+.modify-container .modify-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.main-container .main-wrap header .logo-wrap {
+.modify-container .modify-wrap header .logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -321,7 +290,7 @@ body {
 
 /* 회원가입 input 대분류 CSS */
 
-.signup-input-section-wrap {
+.modify-input-section-wrap {
   padding-top: 60px;
   padding-bottom: 60px;
   display: flex;
@@ -330,18 +299,18 @@ body {
   background-color: var(--body-background-color);
 }
 
-.signup-input-section-wrap h2 {
+.modify-input-section-wrap h2 {
   margin-bottom: 60px;
 }
 
-.signup-input-section-wrap h6 {
+.modify-input-section-wrap h6 {
   margin-bottom: 3px;
   margin-top: 10px;
   text-align: left;
   font-size: small;
 }
 
-.signup-input-wrap {
+.modify-input-wrap {
   width: 465px;
   height: 48px;
   background: white;
@@ -353,7 +322,7 @@ body {
   margin-top: 13px;
 } */
 
-.signup-input-wrap input {
+.modify-input-wrap input {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
@@ -366,7 +335,7 @@ body {
 }
 
 /* 아이디 CSS */
-.signup-input-id-wrap {
+.modify-input-id-wrap {
   width: 465px;
   height: 48px;
   border-radius: 10px;
@@ -374,7 +343,7 @@ body {
   justify-content: space-between;
 }
 
-.signup-input-id-wrap input {
+.modify-input-id-wrap input {
   border: none;
   /* margin-top: 10px; */
   font-size: 14px;
@@ -405,13 +374,13 @@ body {
   width: 465px;
 }
 
-.signup-input-birth {
+.modify-input-birth {
   width: 145px;
   height: 48px;
   border: none;
   border-radius: 10px;
 }
-.signup-input-birth input {
+.modify-input-birth input {
   border: none;
   width: 145px;
   padding: 10px;
@@ -419,7 +388,7 @@ body {
   border-radius: 10px;
 }
 
-/* .signup-input-birth {
+/* .modify-input-birth {
   display: block;
   position: relative;
   width: 100%;
@@ -429,9 +398,9 @@ body {
   border-radius: 10px;
 }
 
-#signup-birth-yy,
-#signup-birth-mm,
-#signup-birth-dd {
+#modify-birth-yy,
+#modify-birth-mm,
+#modify-birth-dd {
   width: 148px;
   height: 48px;
   border: none;
@@ -439,7 +408,7 @@ body {
   border: solid 1px var(--border-gray-color);
   border-radius: 10px;
 }
-#signup-birth-mm {
+#modify-birth-mm {
   outline: none;
   border: solid 1px var(--border-gray-color);
 } */
@@ -449,7 +418,7 @@ body {
   display: flex;
   width: 465px;
 }
-.signup-input-email {
+.modify-input-email {
   display: block;
   position: relative;
   width: 100%;
@@ -459,8 +428,8 @@ body {
   border-radius: 10px;
 }
 
-#signup-email-id,
-#signup-email {
+#modify-email-id,
+#modify-email {
   width: 145px;
   height: 48px;
   border: none;
@@ -468,7 +437,7 @@ body {
   border: solid 1px var(--border-gray-color);
   border-radius: 10px;
 }
-#signup-email-select {
+#modify-email-select {
   width: 145px;
   height: 48px;
   border: none;
@@ -494,7 +463,7 @@ body {
   border-radius: 10px;
 }
 
-/* #signup-gender {
+/* #modify-gender {
   border: none;
   width: 430px;
 } */
@@ -505,7 +474,7 @@ body {
   display: flex;
 }
 
-.signup-mobile-num {
+.modify-mobile-num {
   display: block;
   position: relative;
   width: 100%;
@@ -556,7 +525,7 @@ body {
 
 /* 직업 CSS */
 
-#signup-job-select {
+#modify-job-select {
   width: 465px;
   height: 48px;
   border: none;
@@ -567,11 +536,11 @@ body {
 
 /* 회원가입 버튼 CSS */
 
-.signup-button-wrap {
+.modify-button-wrap {
   padding-top: 50px;
 }
 
-.signup-button-wrap button {
+.modify-button-wrap button {
   width: 465px;
   height: 48px;
   font-size: 18px;

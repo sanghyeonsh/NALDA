@@ -9,9 +9,6 @@
               <option>English</option>
             </select>
           </div>
-          <div class="logo-wrap">
-            <img src="../../static/logo.png" />
-          </div>
         </header>
         <section class="login-input-section-wrap">
           <h2>Member</h2>
@@ -25,8 +22,10 @@
             <button>Sign in</button>
           </div>
           <div class="login-stay-sign-in">
-            <i class="far fa-check-circle"></i>
-            <span @click="moveSignup">Sign up</span>
+            <nuxt-link to="/user/termsuse" style="text-decoration:none;">
+              <i class="far fa-check-circle"></i>
+              <span>Sign up</span>
+            </nuxt-link>
           </div>
         </section>
         <!-- <section class="non-member-wrap">
@@ -65,15 +64,11 @@
 <script>
 export default {
   name: 'LoginUser',
-  methods: {
-    moveSignup() {
-      this.$router.push({ name: 'user-signup' })
-    },
-  },
+  methods: {},
 }
 </script>
 
-<style>
+<style >
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
