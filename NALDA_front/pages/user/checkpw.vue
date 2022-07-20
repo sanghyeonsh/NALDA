@@ -15,19 +15,23 @@
         </header>
         <section class="user-input-section-wrap">
           <h2>My Page</h2>
-          <p class="chk-msg">
-            개인 정보 조회를 위해서는 인증이 필요합니다.
-            비밀번호 입력 후 확인 버튼을 클릭해 주세요.
-          </p>
-          <div class="user-input-wrap">
-            <input placeholder="Username" type="text" disabled />
-          </div>
-          <div class="user-input-wrap password-wrap">
-            <input placeholder="Password" type="password" />
-          </div>
-          <h6 class="wrong-pw">비밀 번호를 다시 입력해 주세요.</h6>
-          <div class="user-button-wrap">
-            <button>확인</button>
+          <div class>
+            <p class="chk-msg">
+              개인 정보 조회를 위해서는 인증이 필요합니다.
+              비밀번호 입력 후 확인 버튼을 클릭해 주세요.
+            </p>
+            <div class="user-input-wrap">
+              <input placeholder="Username" type="text" disabled />
+            </div>
+            <div class="user-input-wrap password-wrap">
+              <input placeholder="Password" type="password" />
+            </div>
+            <div>
+              <h6 class="wrong-pw">비밀 번호를 다시 입력해 주세요.</h6>
+            </div>
+            <div class="user-button-wrap">
+              <button>확인</button>
+            </div>
           </div>
         </section>
 

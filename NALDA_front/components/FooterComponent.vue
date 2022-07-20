@@ -70,6 +70,13 @@ button {
   border: none;
 }
 
+button:hover {
+  background-color: #88c0c5;
+  box-shadow: 5px 5px 10px rgba(46, 205, 229, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
 .toilet-wrap,
 .service-wrap {
   display: flex;

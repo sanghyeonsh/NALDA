@@ -25,8 +25,8 @@
             <button>Sign in</button>
           </div>
           <div class="login-stay-sign-in">
-            <i class="far fa-check-circle"></i>
-            <nuxt-link to="/user/termsuse">
+            <nuxt-link to="/user/termsuse" style="text-decoration:none;">
+              <i class="far fa-check-circle"></i>
               <span>Sign up</span>
             </nuxt-link>
           </div>

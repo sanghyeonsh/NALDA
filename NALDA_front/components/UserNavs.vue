@@ -33,7 +33,7 @@
 
         <li class="item mouse-effect stagger-item">
           <div class="left">
-            <img src="img/icon/account.svg" />
+            <i class="fa-solid fa-user"></i>
             <div class="name">Account Info</div>
           </div>
           <div class="right">
@@ -43,7 +43,7 @@
 
         <li class="item mouse-effect stagger-item">
           <div class="left">
-            <img src="img/icon/business.svg" />
+            <i class="fa-solid fa-suitcase-rolling"></i>
             <div class="name">Past Journey</div>
           </div>
           <div class="right">
@@ -80,7 +80,9 @@ export default {
 .usernav-container {
   background-color: var(--nalda-blue-color);
   color: #ffe6cf;
-  height: 700px;
+  height: auto;
+  width: 400px;
+  margin-left: 0;
 }
 .profile-wrap {
   padding: 80px 40px;

@@ -15,7 +15,7 @@
         </header>
         <section class="terms-section-wrap">
           <div class="all-terms-wrap">
-            <div class="terms-title">
+            <div class="terms-title" :class="{active : !isActive}" @click="agreeAll">
               <!-- <span class="input-chk">
                             <i class="far fa-check-circle"></i>
                             <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
@@ -24,7 +24,7 @@
               <div>
                 <i class="far fa-check-circle"></i>
               </div>
-              <div>날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</div>
+              <div>&nbsp;날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</div>
             </div>
           </div>
           <div class="necessary-terms-wrap">
@@ -32,11 +32,11 @@
                         <i class="far fa-check-circle"></i>
                         <label for="terms-service">날다 이용약관 동의 (필수)</label>
             </span> ---->
-            <div class="terms-title">
+            <div class="terms-title" :class="{active : !isActive}">
               <div>
                 <i class="far fa-check-circle"></i>
               </div>
-              <div>날다 이용약관 동의 (필수)</div>
+              <div>&nbsp;날다 이용약관 동의 (필수)</div>
             </div>
             <div class="terms-box">
               <div class="article">
@@ -486,11 +486,11 @@
             </div>
           </div>
           <div class="necessary-terms-wrap">
-            <div class="terms-title">
+            <div class="terms-title" :class="{active : !isActive}">
               <div>
                 <i class="far fa-check-circle"></i>
               </div>
-              <div>개인정보 수집 및 이용 동의 (필수)</div>
+              <div>&nbsp;개인정보 수집 및 이용 동의 (필수)</div>
             </div>
             <div class="terms-box">
               <div class="policy-summary">
@@ -675,11 +675,11 @@
             </div>
           </div>
           <div class="unnecessary-terms-wrap">
-            <div class="terms-title">
+            <div class="terms-title" :class="{active : !isActive}">
               <div>
                 <i class="far fa-check-circle"></i>
               </div>
-              <div>위치기반서비스 이용약관 동의 (선택)</div>
+              <div>&nbsp;위치기반서비스 이용약관 동의 (선택)</div>
             </div>
             <div class="terms-box">
               <div class="policy-summary">
@@ -935,11 +935,11 @@
             </div>
           </div>
           <div class="unnecessary-terms-wrap">
-            <div class="terms-title">
+            <div class="terms-title" :class="{active : !isActive}">
               <div>
                 <i class="far fa-check-circle"></i>
               </div>
-              <div>프로모션 정보 수신 동의 (선택)</div>
+              <div>&nbsp;프로모션 정보 수신 동의 (선택)</div>
             </div>
             <div class="event-terms">
               날다에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(날다앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나
@@ -971,7 +971,15 @@
 <script>
 export default {
   name: 'TermsUse',
+  data() {
+    return {
+      isActive: true,
+    }
+  },
   methods: {
+    agreeAll() {
+      this.isActive = !this.isActive
+    },
     moveSignup() {
       this.$router.push('/user/signup')
     },
@@ -1079,6 +1087,21 @@ export default {
   cursor: pointer;
   /* flex-direction: column; */
   /* justify-content: space-; */
+}
+
+.active {
+  text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
+  color: rgba(224, 145, 26, 0.943);
+}
+
+.terms-title:hover {
+  /* background-color: #88c0c5; */
+  /* text-shadow: 5px 5px 10px rgba(46, 205, 229, 0.4);
+  color: var(--nalda-blue-color);
+  transform: translateY(-7px); */
+  text-shadow: 5px 5px 10px rgba(234, 163, 42, 0.61);
+  color: rgba(224, 145, 26, 0.943);
+  transform: translateY(-7px);
 }
 
 /* 약관들 중 overflow지정한 부분들 중간 3개 */

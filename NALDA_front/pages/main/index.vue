@@ -8,10 +8,12 @@
         </div>
       </div>
       <div class="container-box">
-        <div @click="moveLogin">
-          <img class="image" src="../../static/custom_declaration.png" alt="custom_declaration" />
-          <h3>Custom Declaration</h3>
-        </div>
+        <nuxt-link to="/user/login" style="text-decoration: none;">
+          <div>
+            <img class="image" src="../../static/custom_declaration.png" alt="custom_declaration" />
+            <h3>Custom Declaration</h3>
+          </div>
+        </nuxt-link>
       </div>
       <div class="container-box">
         <div>
@@ -26,9 +28,10 @@
 <script>
 export default {
   name: 'MainIndex',
+  components: {},
   methods: {
     moveLogin() {
-      this.$router.push({ name: 'user-login' })
+      this.$router.push('/user/login')
     },
   },
 }
@@ -42,6 +45,7 @@ export default {
   --nalda-blue-color: #206e95;
   --nalda-blue-border-color: #88c0c5;
 }
+
 .container1 {
   margin: auto;
   display: flex;
