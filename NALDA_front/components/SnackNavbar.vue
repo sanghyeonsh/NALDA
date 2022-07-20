@@ -1,40 +1,21 @@
 <template>
   <div>
-    <div class="usernav-container">
-      <header class="profile-wrap">
-        <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../static/main/user_profile_w.png" />
-          <!-- <div class="badge">7</div> -->
-        </div>
-
-        <div class="text-area">
-          <h2 class="greeting stagger-item">Hi, Anonymous-Ku</h2>
-          <div class="desc stagger-item">
-            Fly with nalda
-            <br />Nearest Airser-Line Service during in Airbus
-          </div>
-        </div>
-
-        <div class="modify mouse-effect stagger-item" @click="moveModify">
-          <div>modify</div>
-        </div>
-      </header>
-
-      <ul class="list">
-        <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
+    <div class="snacknav-container">
+      <ul class="snack-list">
+        <li class="item mouse-effect stagger-item">
           <div class="left">
             <i class="fa-solid fa-user"></i>
-            <div class="name">Account Info</div>
+            <div class="name">snacks</div>
           </div>
           <div class="right">
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
 
-        <li class="item mouse-effect stagger-item" @click="movecustomList">
+        <li class="item mouse-effect stagger-item">
           <div class="left">
             <i class="fa-solid fa-suitcase-rolling"></i>
-            <div class="name">Past Journey</div>
+            <div class="name">no-alcohols</div>
           </div>
           <div class="right">
             <i class="fa-solid fa-chevron-right"></i>
@@ -43,7 +24,7 @@
         <li class="item mouse-effect stagger-item">
           <div class="left">
             <i class="fa-solid fa-bookmark"></i>
-            <div class="name">Bookmark</div>
+            <div class="name">alcohols</div>
           </div>
           <div class="right">
             <i class="fa-solid fa-chevron-right"></i>
@@ -56,23 +37,11 @@
 
 <script>
 export default {
-  name: 'UserNavs',
-  components: {},
-  methods: {
-    moveModify() {
-      this.$router.push({ name: 'user-modify' })
-    },
-    moveAccountInfo() {
-      this.$router.push('/user/mypage')
-    },
-    movecustomList() {
-      this.$router.push('/user/custom')
-    },
-  },
+  name: 'SnackNavbar',
 }
 </script>
 
-<style scoped>
+<style>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -82,29 +51,16 @@ export default {
   --nalda-background-blue-color: #45a9c8;
 }
 
-.usernav-container {
+.snacknav-container {
   background-color: var(--nalda-blue-color);
   color: #ffe6cf;
   height: auto;
   width: auto;
   margin-left: 0;
 }
-.profile-wrap {
+.sncaks-wrap {
   padding: 80px 40px;
 }
-
-/* body {
-  margin: 0;
-  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  background-color: var(--nalda-blue-color);
-  color: #ffe6cf;
-  font-size: 11px;
-  line-height: 1.4;
-  font-weight: 500;
-  overflow-x: hidden;
-  margin-bottom: 72px;
-} */
 
 h2 {
   margin: 0;
@@ -173,26 +129,6 @@ header .thumb-wrapper {
   margin-bottom: 36px;
 }
 
-/* msg 기능이 생긴다면 */
-/* header .badge {
-  width: 28px;
-  height: 28px;
-  font-size: 12px;
-  position: absolute;
-  background-color: #ff5500;
-  border-radius: 50%;
-  top: 0;
-  right: -8px;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-/* animation */
-/* animation: scaleUp 0.5s;
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-fill-mode: both;
-  animation-delay: 0.5s;
-} */
-
 header .greeting {
   margin-bottom: 10px;
 }
@@ -208,12 +144,12 @@ header .modify {
 }
 
 /* 리스트 */
-.list {
+.snack-list {
   margin-top: 48px;
   padding-bottom: 30px;
 }
 
-.list .item {
+.snack-list .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,25 +158,25 @@ header .modify {
   cursor: pointer;
 }
 
-.list .item .left {
+.snack-list .item .left {
   display: flex;
   align-items: center;
 }
 
-.list .item .left .name {
+.snack-list .item .left .name {
   margin-left: 6px;
 }
 
-.list .item .right {
+.snack-list .item .right {
   opacity: 0.5;
 }
 
 /* 이부분 수정 필요 */
-.list .item i {
+.snack-list .item i {
   padding: 20px 22px;
 }
 
-.list .item .right img {
+.snack-list .item .right img {
   padding-right: 14px;
 }
 </style>
