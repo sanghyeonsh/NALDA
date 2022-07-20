@@ -1,6 +1,6 @@
 package com.a204.nalda_api.config.auth;
 
-import com.a204.nalda_api.domain.User;
+import com.a204.nalda_api.domain.entity.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
