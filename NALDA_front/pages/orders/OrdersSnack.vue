@@ -2,7 +2,7 @@
   <div>
     <b-card no-body>
       <b-tabs card>
-        <b-tab active>
+        <b-tab no-body active>
           <template #title>
             <div class="movehome" @click="movehome">
               <h2>날다</h2>
@@ -13,10 +13,7 @@
 
         <b-tab active>
           <template #title>
-            <b-img
-              class="menu-image"
-              src="../../static/orders/dessert.png"
-            ></b-img>
+            <b-img class="menu-image" src="../../static/orders/dessert.png"></b-img>
             <div>간식</div>
           </template>
           <p class="p-3">Tab contents 1</p>
@@ -24,10 +21,7 @@
 
         <b-tab active>
           <template #title>
-            <b-img
-              class="menu-image"
-              src="../../static/orders/drink.png"
-            ></b-img>
+            <b-img class="menu-image" src="../../static/orders/drink.png"></b-img>
             <div>주류</div>
           </template>
           <p class="p-3">Tab contents 2</p>
@@ -35,10 +29,7 @@
 
         <b-tab active>
           <template #title>
-            <b-img
-              class="menu-image"
-              src="../../static/orders/coffee_cup.png"
-            ></b-img>
+            <b-img class="menu-image" src="../../static/orders/coffee_cup.png"></b-img>
             <div>비주류</div>
           </template>
           <p class="p-3">Tab contents 3</p>
@@ -57,8 +48,10 @@
   </div>
 </template>
 
+
 <script>
 import { mapState } from 'vuex'
+
 // import axios from 'axios'
 
 export default {
@@ -94,31 +87,20 @@ export default {
 }
 </script>
 
-<style>
-.card-img-top {
-  height: 15rem;
-  object-fit: cover;
+
+<style scoped>
+@import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+@import '../../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
+.card-header {
+  background-color: rgb(69, 169, 200);
 }
 .menu-image {
   width: 80px;
   height: 80px;
 }
-.card-header {
-  background-color: rgb(69, 169, 200);
-}
 .movehome {
-  color: white;
+  color: black;
   text-align: center;
-}
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-  background-color: rgb(69, 169, 200);
-  border: 0;
-  color: black;
-  border-bottom: 0.4rem ridge black;
-}
-a {
-  color: black;
 }
 .snack-flex-container {
   display: flex;

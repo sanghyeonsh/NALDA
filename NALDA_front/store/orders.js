@@ -1,3 +1,3 @@
-export const state = {
-  ordergoods: [],
-}
+// export const state = {
+//   ordergoods: [],
+// }

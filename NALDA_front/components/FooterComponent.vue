@@ -16,9 +16,7 @@
           <!-- <div><img src="logo.png"></div> -->
           <div>
             <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
-          </div>
-          <div>
-            <span>Copyright © NALDA Corp. All Rights Reserved.</span>
+            <div>Copyright © NALDA Corp. All Rights Reserved.</div>
           </div>
         </div>
       </footer>
@@ -49,9 +47,15 @@ export default {
   padding: 0;
 }
 
+/* html,
 body {
   background: var(--body-background-color);
-}
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  text-align: center;
+} */
 
 .service-btn-wrap {
   display: flex;
@@ -108,14 +112,16 @@ button:hover {
 
 .footer-container {
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   background-color: rgba(239, 239, 239, 0.511);
 }
+
 .footer-container footer {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   text-align: center;
   font-size: smaller;
 }

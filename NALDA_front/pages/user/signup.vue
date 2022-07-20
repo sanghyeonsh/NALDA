@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="main-container">
-      <div class="main-wrap">
+    <div class="singup-main-container">
+      <div class="singup-main-wrap">
         <header>
           <div class="sel-lang-wrap">
             <select class="lang-select">
@@ -253,7 +253,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
@@ -280,7 +280,7 @@ body {
   background: var(--body-background-color);
 }
 
-.main-container {
+.singup-main-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -288,32 +288,32 @@ body {
   margin-top: 21px;
 }
 
-.main-container .main-wrap {
+.singup-main-container .singup-main-wrap {
   width: 768px;
 }
 
-.main-container .main-wrap .sel-lang-wrap .lang-select {
+.singup-main-container .singup-main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
 }
 
-.main-container .main-wrap .logo-wrap {
+.singup-main-container .singup-main-wrap .logo-wrap {
   padding-top: 55px;
 }
 
-.main-container .main-wrap .logo-wrap img {
+.singup-main-container .singup-main-wrap .logo-wrap img {
   width: 100px;
   height: 100px;
 }
 
-.main-container .main-wrap header .sel-lang-wrap {
+.singup-main-container .singup-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.main-container .main-wrap header .logo-wrap {
+.singup-main-container .singup-main-wrap header .logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -328,6 +328,8 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--body-background-color);
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .signup-input-section-wrap h2 {
