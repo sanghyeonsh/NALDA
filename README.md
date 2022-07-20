@@ -10,26 +10,16 @@
 
 ### 프로젝트 진행 상태
 
-| 파트     | 날짜       | 진행상태             | 진행내용                                                   | 비고        |
-| -------- | ---------- | -------------------- | ---------------------------------------------------------- | ----------- |
-| Sub-PJT1 | 2022/07/11 | :white_check_mark:   | [wireframe](/wireframe.md)                                 |             |
-|          |            | :white_check_mark:   | [기능 상세](/%EA%B8%B0%EB%8A%A5%EC%83%81%EC%84%B8.md)      | 승객/승무원 |
-|          |            | :white_check_mark:   | [Logo](/logo.md)                                           |             |
-|          |            | :white_check_mark:   | [기기 구매 목록](/%EA%B5%AC%EB%A7%A4%EB%AA%A9%EB%A1%9D.md) |             |
-|          | 2022/07/12 | :white_check_mark:   | 기능 상세 추가                                             |             |
-|          |            | :white_check_mark:   | 모니터 1280x800 구매 완료                                  |             |
-|          |            | :white_large_square: | git branch 각자 생성하기                                   |             |
-<<<<<<< README.md
-|          |            | :white_large_square: | jira 업로드하기                                            |             |
-=======
-|          |            | :white_check_mark:   | jira 업로드하기                                            |             |
-|          | 2022/07/13 | :white_check_mark:   | 오전 Vue component 구성 + main page 작성                   |             |
-|          |            | :white_check_mark:   | naming convention 정하기                                   |             |
-|          | 2022/07/14 | :white_check_mark:   | jira 작성                                                  |             |
-|          |            | :white_check_mark:   | user 화면 - 로그인 페이지                                  |             |
-|          | 2022/07/15 | :white_check_mark:   | 와이어프레임 재설계                                        |             |
-|          |            | :white_large_square: | DB 모델링                                                  |             |
->>>>>>> README.md
+| 파트 | 날짜 | 진행상태 | 진행내용 | 비고 |
+| --- | --- | --- | --- | --- |
+| Sub-PJT1 | 2022/07/11 |:white_check_mark: | [wireframe](/wireframe.md) |  |
+|  |  | :white_check_mark: | [기능 상세](/%EA%B8%B0%EB%8A%A5%EC%83%81%EC%84%B8.md) | 승객/승무원 |
+|  |  | :white_check_mark: | [Logo](/logo.md) |  |
+|  |  | :white_check_mark: | [기기 구매 목록](/%EA%B5%AC%EB%A7%A4%EB%AA%A9%EB%A1%9D.md) |  |
+|  | 2022/07/12 |:white_check_mark: | 기능 상세 추가 |  |
+|  |  | :white_check_mark: | 모니터 1280x800 구매 완료 |  |
+|  |  | :white_check_mark: | git branch 각자 생성하기 |  |
+|  |  | :white_check_mark: | jira 업로드하기 |  |
 
 ### 부품 구매
 
