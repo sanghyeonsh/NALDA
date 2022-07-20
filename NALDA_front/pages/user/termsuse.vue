@@ -21,8 +21,11 @@
                             <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
                                 동의합니다.</label>
               </span> ---->
-              <div>
-                <i class="far fa-check-circle"></i>
+              <!-- <div> 원래거
+                <i class="far fa-check-circle"></i> 
+              </div>-->
+              <div class="check-icon-wrap">
+                <img class="check-all-icon" src="../../static/icon/check_mark.png" alt="check-icon" />
               </div>
               <div>&nbsp;날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.</div>
             </div>
@@ -33,8 +36,12 @@
                         <label for="terms-service">날다 이용약관 동의 (필수)</label>
             </span> ---->
             <div class="terms-title" :class="{active : !isActive}">
-              <div>
-                <i class="far fa-check-circle"></i>
+              <div class="check-icon-wrap">
+                <img
+                  class="check-mark-icon"
+                  src="../../static/icon/check_mark.png"
+                  alt="check-icon"
+                />
               </div>
               <div>&nbsp;날다 이용약관 동의 (필수)</div>
             </div>
@@ -487,8 +494,12 @@
           </div>
           <div class="necessary-terms-wrap">
             <div class="terms-title" :class="{active : !isActive}">
-              <div>
-                <i class="far fa-check-circle"></i>
+              <div class="check-icon-wrap">
+                <img
+                  class="check-mark-icon"
+                  src="../../static/icon/check_mark.png"
+                  alt="check-icon"
+                />
               </div>
               <div>&nbsp;개인정보 수집 및 이용 동의 (필수)</div>
             </div>
@@ -676,8 +687,12 @@
           </div>
           <div class="unnecessary-terms-wrap">
             <div class="terms-title" :class="{active : !isActive}">
-              <div>
-                <i class="far fa-check-circle"></i>
+              <div class="check-icon-wrap">
+                <img
+                  class="check-mark-icon"
+                  src="../../static/icon/check_mark.png"
+                  alt="check-icon"
+                />
               </div>
               <div>&nbsp;위치기반서비스 이용약관 동의 (선택)</div>
             </div>
@@ -936,8 +951,12 @@
           </div>
           <div class="unnecessary-terms-wrap">
             <div class="terms-title" :class="{active : !isActive}">
-              <div>
-                <i class="far fa-check-circle"></i>
+              <div class="check-icon-wrap">
+                <img
+                  class="check-mark-icon"
+                  src="../../static/icon/check_mark.png"
+                  alt="check-icon"
+                />
               </div>
               <div>&nbsp;프로모션 정보 수신 동의 (선택)</div>
             </div>
@@ -1088,6 +1107,7 @@ export default {
   cursor: pointer;
   /* flex-direction: column; */
   /* justify-content: space-; */
+  align-items: center;
 }
 
 .active {
@@ -1225,5 +1245,15 @@ footer .copyright-wrap div img {
 footer .copyright-wrap span {
   font-size: 13px;
   line-height: 15px;
+}
+
+.check-mark-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.check-all-icon {
+  width: 30px;
+  height: 30px;
 }
 </style>

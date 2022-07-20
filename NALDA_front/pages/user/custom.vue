@@ -146,9 +146,6 @@ ul {
   text-align: center;
 }
 
-tr {
-  cursor: pointer;
-}
 .page-item .page-link {
   color: #0f374b;
 }
@@ -159,5 +156,6 @@ tr {
 
 #my-table {
   color: #0f374b;
+  cursor: pointer;
 }
 </style>
