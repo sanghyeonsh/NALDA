@@ -13,5 +13,7 @@
  - 07.18
   ERD-diagram 제작 및 키트 종류 확인, Rasberry pi 연결 완료 및 아두이노 esp-8266모듈 연결 작업 중 
  - 07.19
-  esp-8266 와이파이 연결 성공 및 IOT DB 공부  
+  esp-8266 와이파이 연결 성공 및 IOT DB 공부 
+ - 07.20
+  Mqtt 학습 및 IOT aws 서버 학습  
   <br>
