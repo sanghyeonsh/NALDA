@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import HeaderComponent from '../../components/HeaderComponent.vue'
 
 export default {
@@ -71,11 +71,18 @@ export default {
     HeaderComponent,
   },
   computed: {
-    ...mapState('orders', ['ordergoods']),
+    ...mapState('goods', ['goods', 'selected_goods']),
+  },
+  created() {
+    this.CLEAR_CHOICE_GOODS()
   },
   methods: {
+    ...mapMutations('goods', ['SET_CHOICE_GOODS', 'CLEAR_CHOICE_GOODS']),
     movewaiting() {
-      this.$router.push({ name: 'orders-OrdersWaiting' })
+      this.SET_CHOICE_GOODS()
+      if (this.selected_goods.length) {
+        this.$router.push({ name: 'orders-OrdersWaiting' })
+      }
     },
     checkblanket() {
       const checkBox = document.getElementById('blanket')
