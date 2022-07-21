@@ -115,6 +115,12 @@
             </div>
           </div>
           <div>
+            <h6>국적</h6>
+            <div class="modify-input-wrap nationality-wrap">
+              <input placeholder="nationality" type="text" />
+            </div>
+          </div>
+          <div>
             <h6>직업</h6>
             <div class="modify-input-wrap job-wrap">
               <select id="modify-job-select" class="selectbox" name="job" onchange>
@@ -417,7 +423,9 @@ body {
 .email-wrap {
   display: flex;
   width: 465px;
+  align-items: center;
 }
+
 .modify-input-email {
   display: block;
   position: relative;
@@ -472,6 +480,7 @@ body {
 .mobile-num-wrap {
   width: 465px;
   display: flex;
+  align-items: center;
 }
 
 .modify-mobile-num {
