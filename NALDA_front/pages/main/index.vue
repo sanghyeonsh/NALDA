@@ -4,7 +4,7 @@
       <div class="container-box">
         <div>
           <img class="image" src="../../static/service.png" alt="service" />
-          <h4>{{ snack }}</h4>
+          <h4>{{ meal }}</h4>
         </div>
       </div>
       <div class="container-box">
@@ -26,12 +26,13 @@
 <script>
 import { mapState } from 'vuex'
 
+const meal = 'meal'
+
 export default {
   name: 'MainIndex',
   components: {},
   computed: {
-    ...mapState('todo', ['todolist']),
-    ...mapState('snack', ['snack']),
+    ...mapState(meal, ['meal']),
   },
   methods: {
     moveLogin() {
