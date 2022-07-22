@@ -93,7 +93,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //인증 성공 메세지를 클라이언트로보낸다..
         Map<String,Object> body = new LinkedHashMap<>();
         body.put("msg", "로그인 성공");
-
         body.put("userInfo", userService.loginUser(principalDetails.getUser().getUsername()));
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
