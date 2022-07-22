@@ -1,11 +1,13 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.airplane;
 
+import com.a204.nalda.domain.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 import static javax.persistence.FetchType.LAZY;
 
@@ -14,30 +16,26 @@ import static javax.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @Builder
 @Getter
-public class SeatMeal {
+public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_meal_id")
+    @Column(name = "flight_id")
     private Long id;
-
-    @Column(name = "meal_classification")
-    private String mealClassification;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "flight_id")
-    private Flight flight;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "meal_id")
-    private Meal meal;
+    @JoinColumn(name = "airplane_id")
+    private Airplane airplane;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "seat_id")
     private Seat seat;
+
+    @Column(name = "flight_date")
+    private LocalDateTime flightDate;
 
 }

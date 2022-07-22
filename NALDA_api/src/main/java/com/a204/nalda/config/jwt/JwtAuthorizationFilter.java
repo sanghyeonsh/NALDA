@@ -1,7 +1,7 @@
 package com.a204.nalda.config.jwt;
 
 import com.a204.nalda.config.auth.PrincipalDetails;
-import com.a204.nalda.domain.entity.User;
+import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.repository.UserRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -34,7 +34,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         System.out.println("인증이나 권한이 필요한 요청이 전달됨.");
 
-        String jwtHeader = request.getHeader("Ahtorization");
+        String jwtHeader = request.getHeader("Authorization");
         System.out.println("jwtHeader : " + jwtHeader);
         //header가 있는지 확인
         if(jwtHeader == null || !jwtHeader.startsWith("Bearer")) {

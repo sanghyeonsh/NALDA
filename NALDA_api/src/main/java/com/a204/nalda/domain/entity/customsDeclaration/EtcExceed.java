@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.customsDeclaration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

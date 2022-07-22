@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.user;
 
 import com.a204.nalda.domain.enumtype.Permission;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,8 @@ public class Terms {
     @Column(name = "promotional_info")
     private Permission promotionalInfo;
 
-
+    @OneToOne(mappedBy = "terms")
+    private User user;
 
 
 

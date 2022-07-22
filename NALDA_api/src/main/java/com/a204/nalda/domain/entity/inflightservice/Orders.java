@@ -1,5 +1,8 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.inflightservice;
 
+import com.a204.nalda.domain.entity.airplane.Flight;
+import com.a204.nalda.domain.entity.airplane.Seat;
+import com.a204.nalda.domain.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

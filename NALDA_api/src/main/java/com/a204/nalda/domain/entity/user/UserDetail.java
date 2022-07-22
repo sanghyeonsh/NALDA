@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.user;
 
 import com.a204.nalda.domain.embedded.Address;
 import com.a204.nalda.domain.enumtype.Gender;
@@ -30,6 +30,9 @@ public class UserDetail {
     private Address address;
     private String tel;
     private String email;
+
+    @OneToOne(mappedBy = "userDetail")
+    private User user;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
