@@ -3,21 +3,12 @@
     <div class="main-container1">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-<<<<<<< HEAD
           <img
             class="image"
             src="../../static/main/service.png"
             alt="service"
           />
-=======
-<<<<<<< HEAD
-          <img class="image" src="../../static/service.png" alt="service" />
-          <h4>{{ meal }}</h4>
-=======
-          <img class="image" src="../../static/main/service.png" alt="service" />
->>>>>>> a9028e23820f5498da421956bd515c5ffda7ce80
           <h3>service</h3>
->>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
         </div>
       </div>
       <div class="main-container-box">
@@ -47,23 +38,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import { mapState } from 'vuex'
-
-const meal = 'meal'
-
-export default {
-  name: 'MainIndex',
-  components: {},
-  computed: {
-    ...mapState(meal, ['meal']),
-  },
-=======
 export default {
   name: 'MainIndex',
   components: {},
   computed: {},
->>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
   methods: {
     moveLogin() {
       this.$router.push('/user/login')
