@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.user;
 
 import com.a204.nalda.domain.embedded.FullName;
 import lombok.AllArgsConstructor;
@@ -46,5 +46,14 @@ public class User {
             return Arrays.asList(this.userRole.split(","));
         }
         return new ArrayList<>();
+    }
+
+    public void modifyUserDetail(UserDetail userDetail) {
+        this.userDetail = userDetail;
+    }
+
+    public void modifyUserInfo(FullName fullName, String password) {
+        this.fullName = fullName;
+        this.password = password;
     }
 }

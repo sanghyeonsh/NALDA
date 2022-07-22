@@ -1,4 +1,4 @@
-package com.a204.nalda.dto;
+package com.a204.nalda.dto.user;
 
 import com.a204.nalda.domain.embedded.FullName;
 import lombok.Builder;

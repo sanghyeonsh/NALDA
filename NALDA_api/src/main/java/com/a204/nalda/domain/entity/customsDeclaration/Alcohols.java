@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.customsDeclaration;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,17 +12,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Getter
-public class OrdersCodes {
-
+public class Alcohols {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orders_codes_id")
+    @Column(name = "alcohols_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orders_id")
-    private Orders orders;
+    private int num;
+    private float liter;
+    private float dollar;
 
-    @Column(name = "order_code")
-    private String orderCode;
+    @OneToOne(mappedBy = "alcohols")
+    private CustomsDeclaration customsDeclaration;
 }

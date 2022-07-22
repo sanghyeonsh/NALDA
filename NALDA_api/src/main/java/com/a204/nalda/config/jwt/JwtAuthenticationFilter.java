@@ -1,13 +1,12 @@
 package com.a204.nalda.config.jwt;
 
 import com.a204.nalda.config.auth.PrincipalDetails;
-import com.a204.nalda.domain.entity.User;
+import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.service.UserService;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
