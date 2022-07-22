@@ -1,6 +1,5 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.inflightservice;
 
-import com.a204.nalda.domain.enumtype.SeatClass;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,20 +12,17 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Seat {
+public class OrdersCodes {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seat_id")
+    @Column(name = "orders_codes_id")
     private Long id;
 
-    @Column(name = "seat_num")
-    private String seatNum;
-
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "airplane_id")
-    private Airplane airplane;
+    @JoinColumn(name = "orders_id")
+    private Orders orders;
 
-    @Enumerated(EnumType.STRING)
-    private SeatClass seatClass;
-
+    @Column(name = "order_code")
+    private String orderCode;
 }

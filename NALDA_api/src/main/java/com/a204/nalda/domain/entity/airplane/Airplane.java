@@ -1,5 +1,6 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.airplane;
 
+import com.a204.nalda.domain.entity.inflightservice.Toilet;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.inflightservice;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,26 +7,27 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
-public class Allergy {
-
+public class MealDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "allergy_id")
+    @Column(name = "meal_detail_id")
     private Long id;
 
-    @Column(name = "allergy_type")
-    private String allergyType;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "meal_id")
     private Meal meal;
 
-    public void changeMeal( Meal meal) {
+    @Column(name = "meal_name")
+    private String mealName;
+
+    public void changeMeal(Meal meal) {
         this.meal = meal;
     }
 }

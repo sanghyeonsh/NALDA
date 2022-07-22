@@ -1,6 +1,7 @@
-package com.a204.nalda.domain.entity;
+package com.a204.nalda.domain.entity.customsDeclaration;
 
 import com.a204.nalda.domain.embedded.TravelPeriod;
+import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.domain.enumtype.Permission;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,10 @@ public class CustomsDeclaration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customs_declaration_id")
     private Long id;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Embedded
     private TravelPeriod travelPeriod;
@@ -62,9 +67,11 @@ public class CustomsDeclaration {
     private Alcohols alcohols;
 
     @OneToMany(mappedBy = "customsDeclaration", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<EtcExceed> etcExceeds = new ArrayList<>();
 
     @OneToMany(mappedBy = "customsDeclaration", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
     private List<VisitedCountry> visitedCountries = new ArrayList<>();
 
     public void addEtcExceed(EtcExceed etcExceed) {
