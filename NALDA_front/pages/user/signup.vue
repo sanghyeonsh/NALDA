@@ -1,16 +1,13 @@
 <template>
   <div>
-    <div class="main-container">
-      <div class="main-wrap">
+    <div class="singup-main-container">
+      <div class="singup-main-wrap">
         <header>
           <div class="sel-lang-wrap">
             <select class="lang-select">
               <option>Korean</option>
               <option>English</option>
             </select>
-          </div>
-          <div class="logo-wrap">
-            <img src="../../static/logo.png" />
           </div>
         </header>
         <section class="signup-input-section-wrap">
@@ -44,6 +41,9 @@
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
               <div class="signup-input-birth">
+                <input type="date" />
+              </div>
+              <!-- <div class="signup-input-birth">
                 <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
@@ -65,7 +65,7 @@
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
                 <input id="signup-birth-dd" type="text" placeholder="일" />
-              </div>
+              </div>-->
             </div>
           </div>
           <div>
@@ -161,24 +161,13 @@
           </div>
 
           <div class="signup-button-wrap">
-            <button>Sign up</button>
+            <button @click="moveMain">Sign up</button>
           </div>
           <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
                     <span>Sign up</span>
           </div>-->
         </section>
-        <footer>
-          <div class="copyright-wrap">
-            <!-- <div><img src="logo.png"></div> -->
-            <div>
-              <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
-            </div>
-            <div>
-              <span>Copyright © NALDA Corp. All Rights Reserved.</span>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   </div>
@@ -196,6 +185,10 @@ export default {
     }
   },
   methods: {
+    moveMain() {
+      this.$router.push('/main')
+    },
+
     /*
     KAKAO API 사용한부분
     https://postcode.map.daum.net/guide#sample 이거에서 
@@ -260,7 +253,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
@@ -287,7 +280,7 @@ body {
   background: var(--body-background-color);
 }
 
-.main-container {
+.singup-main-container {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -295,32 +288,32 @@ body {
   margin-top: 21px;
 }
 
-.main-container .main-wrap {
+.singup-main-container .singup-main-wrap {
   width: 768px;
 }
 
-.main-container .main-wrap .sel-lang-wrap .lang-select {
+.singup-main-container .singup-main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
 }
 
-.main-container .main-wrap .logo-wrap {
+.singup-main-container .singup-main-wrap .logo-wrap {
   padding-top: 55px;
 }
 
-.main-container .main-wrap .logo-wrap img {
+.singup-main-container .singup-main-wrap .logo-wrap img {
   width: 100px;
   height: 100px;
 }
 
-.main-container .main-wrap header .sel-lang-wrap {
+.singup-main-container .singup-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
 }
 
-.main-container .main-wrap header .logo-wrap {
+.singup-main-container .singup-main-wrap header .logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -335,6 +328,8 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--body-background-color);
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .signup-input-section-wrap h2 {
@@ -413,6 +408,20 @@ body {
 }
 
 .signup-input-birth {
+  width: 145px;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+}
+.signup-input-birth input {
+  border: none;
+  width: 145px;
+  padding: 10px;
+  border: solid 1px var(--border-gray-color);
+  border-radius: 10px;
+}
+
+/* .signup-input-birth {
   display: block;
   position: relative;
   width: 100%;
@@ -433,10 +442,9 @@ body {
   border-radius: 10px;
 }
 #signup-birth-mm {
-  /* border: none; */
   outline: none;
   border: solid 1px var(--border-gray-color);
-}
+} */
 
 /* 이메일 CSS */
 .email-wrap {
@@ -573,33 +581,5 @@ body {
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
   border-radius: 10px;
-}
-
-footer {
-  padding-top: 95px;
-  padding-bottom: 15px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 768px;
-}
-
-.copyright-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 15px;
-}
-
-footer .copyright-wrap div img {
-  width: 50px;
-
-  height: 50px;
-}
-
-footer .copyright-wrap span {
-  font-size: 13px;
-  line-height: 15px;
 }
 </style>

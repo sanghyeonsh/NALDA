@@ -7,6 +7,7 @@ import com.a204.nalda.repository.UserRepository;
 import com.a204.nalda.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), userService))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(),userRepository))
                 .authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS,"/**/*").permitAll()
                 .antMatchers("/user/userDetail/**")
                 .access("hasRole('ROLE_USER') or hasRole('ROLE_STEWARDESS')")
                 .anyRequest().permitAll();

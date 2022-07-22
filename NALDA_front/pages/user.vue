@@ -1,25 +1,26 @@
 <template>
   <div class="user-page">
-    <div>
-      <img class="user-logo" src="../static/logo.png" />
-    </div>
+    <header-component></header-component>
     <nuxt-child></nuxt-child>
+    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
+import FooterComponent from '../components/FooterComponent.vue'
+import HeaderComponent from '../components/HeaderComponent.vue'
 export default {
   name: 'UserPage',
-  components: {
-  },
+  components: { FooterComponent, HeaderComponent },
 }
 </script>
 
-<style> 
+<style scoped>
 .user-logo {
   width: 8%;
 }
-.user-page {
+
+.logo-wrap {
   text-align: center;
 }
 </style>
