@@ -15,8 +15,7 @@
           <div>
             <h6>아이디</h6>
             <div class="modify-input-id-wrap">
-              <input id="input-id" placeholder="Username" type="text" />
-              <input id="id-check-btn" type="button" value="아이디 중복 검사" />
+              <input placeholder="Username" type="text" disabled />
             </div>
           </div>
           <div>
@@ -350,22 +349,23 @@ body {
 }
 
 .modify-input-id-wrap input {
+  width: 100%;
   border: none;
   /* margin-top: 10px; */
   font-size: 14px;
   /* margin-left: 10px; */
   padding: 10px;
-  height: 48px;
+  /* height: 48px; */
   border: solid 1px var(--border-gray-color);
   background: white;
   border-radius: 10px;
 }
 
-#input-id {
+/* #input-id {
   width: 300px;
-}
+} */
 
-#id-check-btn {
+/* #id-check-btn {
   width: 160px;
   height: 48px;
   font-size: 18px;
@@ -373,7 +373,8 @@ body {
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
   border-radius: 10px;
-}
+} */
+
 /* 생년월일 CSS */
 .birthdate-wrap {
   display: flex;

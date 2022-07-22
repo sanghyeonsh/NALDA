@@ -7,13 +7,6 @@
       <div class="customform-main-container">
         <div class="customform-container">
           <div class="customform-title">여행자 휴대품 신고서</div>
-          <div class="warn-wrap">
-            <ul>
-              <li>모든 입국자는 관세법에 따라 신고서를 작성, 제출하여야 하며, 세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.</li>
-              <li>가족여행인 경우에는 1명이 대표로 신고할 수 있습니다.</li>
-              <li>신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.</li>
-            </ul>
-          </div>
           <div class="custom-info-wrap">
             <table class="custom-info-table">
               <tr>
@@ -49,21 +42,23 @@
               <tr>
                 <td id="col-name">여행목적</td>
                 <td colspan="3">
-                  <label>
-                    <input type="checkbox" value="travel" checked />여행
-                  </label>
-                  <label>
-                    <input type="checkbox" value="business" />사업
-                  </label>
-                  <label>
-                    <input type="checkbox" value="visitfamily" />친지방문
-                  </label>
-                  <label>
-                    <input type="checkbox" value="public" />공무
-                  </label>
-                  <label>
-                    <input type="checkbox" value="etc" />기타
-                  </label>
+                  <div class="chkboxes-wrap">
+                    <input id="chkbox1" type="checkbox" value="travel" checked />
+                    <label for="chkbox1"></label>
+                    여행
+                    <input id="chkbox2" type="checkbox" value="business" />
+                    <label for="chkbox2"></label>
+                    사업
+                    <input id="chkbox3" type="checkbox" value="visitfamily" />
+                    <label for="chkbox3"></label>
+                    친지방문
+                    <input id="chkbox4" type="checkbox" value="public" />
+                    <label for="chkbox4"></label>
+                    공무
+                    <input id="chkbox5" type="checkbox" value="etc" />
+                    <label for="chkbox5"></label>
+                    기타
+                  </div>
                 </td>
               </tr>
               <tr>
@@ -88,26 +83,30 @@
                   <div class="visited-countries">
                     <div>
                       1.
-                      <input class="visited-country-name" type="text" />
+                      <input class="visited-country-name" type="text" placeholder="국가명" />
                     </div>
                     <div>
                       3.
-                      <input class="visited-country-name" type="text" />
+                      <input class="visited-country-name" type="text" placeholder="국가명" />
                     </div>
                     <div>
                       2.
-                      <input class="visited-country-name" type="text" />
+                      <input class="visited-country-name" type="text" placeholder="국가명" />
                     </div>
                   </div>
                 </td>
               </tr>
               <tr>
                 <td id="col-name">국내주소</td>
-                <td colspan="3">asdf</td>
+                <td colspan="3">
+                  <input type="text" placeholder="주소를 입력해주세요." />
+                </td>
               </tr>
               <tr>
                 <td id="col-name">전화번호</td>
-                <td colspan="3">☎ asdf</td>
+                <td colspan="3">
+                  <input type="text" placeholder="☎전화번호를 입력해세요." />
+                </td>
               </tr>
             </table>
           </div>
@@ -119,8 +118,9 @@
 
 <script>
 import CustomNavs from '../../components/CustomNavs.vue'
+
 export default {
-  name: 'CustomsForm',
+  name: 'CustomsBasic',
   components: { CustomNavs },
 }
 </script>
@@ -188,22 +188,11 @@ export default {
   color: #004568;
   margin-bottom: 3%;
 }
-/* 세관신고서 최상단 경고 wrap CSS*/
-
-.warn-wrap {
-  width: 100%;
-  height: 40%;
-  padding: 2%;
-  margin-bottom: 1%;
-  background-color: #ffeab2;
-  box-shadow: 10px 10px 15px rgba(234, 142, 71, 0.1);
-  transition: all 0.3s ease 0s;
-  border-radius: 4px;
-  align-content: center;
-}
 
 .custom-info-wrap {
   padding: 3%;
+  width: 100%;
+  height: 75%;
   background-color: #dadada;
   border-radius: 4px;
 }
@@ -216,12 +205,13 @@ export default {
 
 table tr,
 td {
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #104b69;
 }
 
 .custom-info-table {
   width: 100%;
+  height: 80%;
   border: 1px solid#104b69;
   border-style: hidden;
 }
@@ -266,5 +256,44 @@ td {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.chkboxes-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.chkboxes-wrap input,
+label {
+  margin: 0.3%;
+}
+
+/* check box design CSS */
+input[id='chkbox1'] + label,
+input[id='chkbox2'] + label,
+input[id='chkbox3'] + label,
+input[id='chkbox4'] + label,
+input[id='chkbox5'] + label {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #bcbcbc;
+  cursor: pointer;
+}
+input[id='chkbox1']:checked + label,
+input[id='chkbox2']:checked + label,
+input[id='chkbox3']:checked + label,
+input[id='chkbox4']:checked + label,
+input[id='chkbox5']:checked + label {
+  background-color: var(--nalda-blue-color);
+}
+
+input[id='chkbox1'],
+input[id='chkbox2'],
+input[id='chkbox3'],
+input[id='chkbox4'],
+input[id='chkbox5'] {
+  display: none;
 }
 </style>

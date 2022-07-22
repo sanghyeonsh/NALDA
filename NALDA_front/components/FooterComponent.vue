@@ -32,6 +32,14 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -45,6 +53,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
+  font-family: 'twayfly';
 }
 
 /* html,
