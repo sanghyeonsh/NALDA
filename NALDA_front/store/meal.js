@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+export const state = () => ({
+  meal: [],
+})
+
+export const mutations = {
+  SET_MEAL(state, meal) {
+    state.meal = meal
+  },
+  CLEAR_MEAL(state) {
+    state.meal = []
+  },
+  ADD(state, text) {
+    state.meal.push({
+      text,
+    })
+  },
+=======
 import {
   listMeal,
   inputMeal,
@@ -54,10 +72,14 @@ export const mutations = {
   CLEAR_ALLERGY_MEAL(state, allergies) {
     state.allergies = []
   },
+>>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
 }
 
 export const getters = {}
 
+<<<<<<< HEAD
+export const actions = {}
+=======
 // console.log eslint rule수정 충돌방지
 export const actions = {
   getMeal({ commit }) {
@@ -123,3 +145,4 @@ export const actions = {
     )
   },
 }
+>>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
