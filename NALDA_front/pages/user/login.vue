@@ -13,13 +13,13 @@
         <section class="login-input-section-wrap">
           <h2>Member</h2>
           <div class="login-input-wrap">
-            <input placeholder="Username" type="text" />
+            <input v-model="id" placeholder="Username" type="text" />
           </div>
           <div class="login-input-wrap password-wrap">
-            <input placeholder="Password" type="password" />
+            <input v-model="password" placeholder="Password" type="password" />
           </div>
           <div class="login-button-wrap">
-            <button>Sign in</button>
+            <button @click="inputLogin">Sign in</button>
           </div>
           <div class="login-stay-sign-in">
             <nuxt-link to="/user/termsuse" style="text-decoration: none">
@@ -54,9 +54,44 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+import { login } from '@/api/user'
 export default {
   name: 'LoginUser',
-  methods: {},
+
+  data() {
+    return {
+      id: null,
+      password: null,
+    }
+  },
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
+  methods: {
+    ...mapActions('user', ['setLoginMember']),
+    inputLogin() {
+      console.log(this.id + ' ' + this.password)
+      login(
+        {
+          username: this.id,
+          password: this.password,
+        },
+        ({ data }) => {
+          if (data.msg === '로그인 성공') {
+            this.setLoginMember(this.id)
+            // 세관신고서로 넘어가야함(임시)
+            this.$router.push('/user/mypage')
+          } else {
+            alert('실패')
+          }
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    },
+  },
 }
 </script>
 
@@ -148,7 +183,12 @@ body {
   background: white;
   border-radius: 10px;
 }
-
+input[type='password'] {
+  font-family: '맑은고딕', '돋움';
+}
+input[type='password']::placeholder {
+  font-family: 'twayfly';
+}
 .password-wrap {
   margin-top: 13px;
 }
