@@ -5,51 +5,66 @@
     <div class="box">
       <div class="title">주 메뉴 선택</div>
       <div class="wrapper">
-        <div class="wrapper-choice">
+        <div
+          v-for="(flightMeal, i) in flightMeals"
+          :key="i"
+          class="wrapper-choice"
+        >
           <img src="../../static/meal/chicken-steak.jpg" alt="치킨 스테이크" />
           <div class="form-check form-check-inline">
             <input
-              id="inlineRadio1"
+              :id="'mealRadio' + i"
+              v-model="choicedMeal"
               class="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
-              value="option1"
+              name="mealOptions"
+              :value="flightMeal.menu"
             />
-            <label class="form-check-label" for="inlineRadio1"
-              >치킨스테이크</label
-            >
-          </div>
-        </div>
-        <div class="wrapper-choice">
-          <img src="../../static/meal/nakji-deopbap.png" alt="낙지 덮밥" />
-
-          <div class="form-check form-check-inline">
-            <input
-              id="inlineRadio2"
-              class="form-check-input"
-              type="radio"
-              name="inlineRadioOptions"
-              value="option2"
-            />
-            <label class="form-check-label" for="inlineRadio2">낙지 덮밥</label>
+            <label class="form-check-label" :for="'mealRadio' + i">{{
+              flightMeals[i].menu
+            }}</label>
           </div>
         </div>
       </div>
-      <button>선택</button>
+      <button @click="selectMenu">선택</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex'
 import HeaderComponent from '../../components/HeaderComponent.vue'
+
 export default {
   components: {
     HeaderComponent,
   },
+  data() {
+    return {
+      choicedMeal: '',
+    }
+  },
+  computed: {
+    // 수정
+    ...mapState('meal', ['flightMeals', 'selectedMeal']),
+  },
+  // created() {
+  //   this.getFlightMeal()
+  // },
+
+  methods: {
+    ...mapActions('meal', ['getFlightMeal']),
+    ...mapMutations('meal', ['SET_SELECTED_MEAL']),
+    selectMenu() {
+      this.SET_SELECTED_MEAL(this.choicedMeal)
+      console.log(this.selectedMeal)
+      this.$router.push('/meal/detail')
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   width: 800px;
   margin: auto;

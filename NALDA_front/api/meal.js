@@ -18,6 +18,9 @@ async function detailMeal(mealNum, success, fail) {
   await api.get(`/meal/detail/${mealNum}`).then(success).catch(fail)
 }
 
+async function allergyMeal(mealNum, success, fail) {
+  await api.get(`/meal/allergy/${mealNum}`).then(success).catch(fail)
+}
 // user정보와 meal정보가 param에 담겨있음
 async function choiceMeal(param, success, fail) {
   await api
@@ -26,4 +29,4 @@ async function choiceMeal(param, success, fail) {
     .catch(fail)
 }
 
-export { listMeal, inputMeal, listInput, detailMeal, choiceMeal }
+export { listMeal, inputMeal, listInput, detailMeal, allergyMeal, choiceMeal }

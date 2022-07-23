@@ -15,33 +15,62 @@
           <div>
             <h6>아이디</h6>
             <div class="signup-input-id-wrap">
-              <input id="input-id" placeholder="Username" type="text" />
+              <input
+                id="input-id"
+                v-model="username"
+                placeholder="Username"
+                type="text"
+              />
               <input id="id-check-btn" type="button" value="아이디 중복 검사" />
             </div>
           </div>
           <div>
             <h6>비밀번호</h6>
             <div class="signup-input-wrap password-wrap">
-              <input placeholder="Password" type="password" />
+              <input
+                v-model="password"
+                placeholder="Password"
+                type="password"
+              />
             </div>
           </div>
           <div>
             <h6>비밀번호 확인</h6>
             <div class="signup-input-wrap password-confirm-wrap">
-              <input placeholder="Password" type="password" />
+              <input
+                v-model="passconfirm"
+                placeholder="Password"
+                type="password"
+              />
             </div>
           </div>
-          <div>
-            <h6>이름</h6>
+          <div class="name-form-tag">
+            <h6>FirstName</h6>
+            <h6>MiddleName</h6>
+            <h6>LastName</h6>
+          </div>
+
+          <div class="name-form-input">
             <div class="signup-input-wrap name-wrap">
-              <input placeholder="name" type="text" />
+              <input v-model="firstName" placeholder="firstname" type="text" />
+            </div>
+            <div class="signup-input-wrap name-wrap">
+              <input
+                v-model="middleName"
+                placeholder="middlename"
+                type="text"
+              />
+            </div>
+
+            <div class="signup-input-wrap name-wrap">
+              <input v-model="lastName" placeholder="lastname" type="text" />
             </div>
           </div>
           <div>
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
               <div class="signup-input-birth">
-                <input type="date" />
+                <input v-model="birthday" type="date" />
               </div>
               <!-- <div class="signup-input-birth">
                 <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
@@ -71,17 +100,15 @@
           <div>
             <h6>성별</h6>
             <div class="gender-wrap">
-              <!-- <select id="signup-gender" class="selectbox" name="gender" onchange="">
-                        <option value="gender">성별</option>
-                        <option value="man">남자</option>
-                        <option value="woman">여자</option>
-                        <option value="no">선택 안함</option>
-              </select>-->
               <div>
-                <button id="gender-btn">남자</button>
+                <button class="gender-btn" value="MALE" @click="maleClick">
+                  남자
+                </button>
               </div>
               <div>
-                <button id="gender-btn">여자</button>
+                <button class="gender-btn" value="FEMALE" @click="femaleClick">
+                  여자
+                </button>
               </div>
             </div>
           </div>
@@ -89,14 +116,29 @@
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="signup-input-email">
-                <input id="signup-email-id" type="text" placeholder="이메일아이디" />
+                <input
+                  id="signup-email-id"
+                  v-model="emailId"
+                  type="text"
+                  placeholder="이메일아이디"
+                />
               </div>
               <h5>@</h5>
               <div class="signup-input-email">
-                <input id="signup-email" type="text" placeholder="이메일주소" />
+                <input
+                  id="signup-email"
+                  v-model="emailDomain"
+                  type="text"
+                  placeholder="이메일주소"
+                />
               </div>
-              <div class="signup-input-email" style="margin-left: 10px;">
-                <select id="signup-email-select" class="selectbox" name="email" onchange>
+              <div class="signup-input-email" style="margin-left: 10px">
+                <select
+                  id="signup-email-select"
+                  class="selectbox"
+                  name="email"
+                  onchange
+                >
                   <option value="self">직접입력</option>
                   <option value="naver">naver.com</option>
                   <option value="gmail">gmail.com</option>
@@ -110,15 +152,30 @@
             <h6>전화번호</h6>
             <div class="mobile-num-wrap">
               <div class="signup-mobile-num">
-                <input id="mobile-num" type="text" placeholder="000" />
+                <input
+                  id="mobile-num"
+                  v-model="firstNum"
+                  type="text"
+                  placeholder="000"
+                />
               </div>
               <h5>-</h5>
               <div class="signup-mobile-num">
-                <input id="mobile-num" type="text" placeholder="0000" />
+                <input
+                  id="mobile-num"
+                  v-model="secondNum"
+                  type="text"
+                  placeholder="0000"
+                />
               </div>
               <h5>-</h5>
               <div class="signup-mobile-num">
-                <input id="mobile-num" type="text" placeholder="0000" />
+                <input
+                  id="mobile-num"
+                  v-model="thirdNum"
+                  type="text"
+                  placeholder="0000"
+                />
               </div>
             </div>
           </div>
@@ -127,20 +184,49 @@
             <div class="address-wrap">
               <div class="postal-wrap">
                 <input id="postal-code" placeholder="postal code" type="text" />
-                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+                <input
+                  id="postal-check-btn"
+                  type="button"
+                  value="주소검색"
+                  @click="find_Postcode()"
+                />
               </div>
               <div class="signup-input-wrap">
-                <input id="address" placeholder="address" type="text" />
+                <input
+                  id="address"
+                  v-model="mainAddress"
+                  placeholder="address"
+                  type="text"
+                />
               </div>
-              <div class="signup-input-wrap" style="margin-top: 3px;">
-                <input id="address-detail" placeholder="address detail" type="text" />
+              <div class="signup-input-wrap" style="margin-top: 3px">
+                <input
+                  id="address-detail"
+                  v-model="detailAddress"
+                  placeholder="address detail"
+                  type="text"
+                />
               </div>
             </div>
           </div>
           <div>
             <h6>여권번호</h6>
             <div class="signup-input-wrap passport-num-wrap">
-              <input placeholder="passportnumber" type="text" />
+              <input
+                v-model="passportNum"
+                placeholder="passportnumber"
+                type="text"
+              />
+            </div>
+          </div>
+          <div>
+            <h6>국적</h6>
+            <div class="signup-input-wrap nationality-wrap">
+              <input
+                v-model="nationality"
+                placeholder="nationality"
+                type="text"
+              />
             </div>
           </div>
           <div>
@@ -152,7 +238,12 @@
           <div>
             <h6>직업</h6>
             <div class="signup-input-wrap job-wrap">
-              <select id="signup-job-select" class="selectbox" name="job" onchange>
+              <select
+                id="signup-job-select"
+                class="selectbox"
+                name="job"
+                onchange
+              >
                 <option value="student">학생</option>
                 <option value="housewife">주부</option>
                 <option value="soldier">군인</option>
@@ -167,7 +258,7 @@
           </div>
 
           <div class="signup-button-wrap">
-            <button @click="moveMain">Sign up</button>
+            <button @click="registMember">Sign up</button>
           </div>
           <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -180,24 +271,104 @@
 </template>
 
 <script>
+import { signup } from '@/api/user'
+
 export default {
   name: 'SignUp',
   data() {
     return {
-      // 주소 변수
-      addr: '',
-      // 참고항목 변수
-      extraAddr: '',
+      passconfirm: null,
+      emailId: null,
+      emailDomain: null,
+      firstNum: null,
+      secondNum: null,
+      thirdNum: null,
+
+      username: null,
+      password: null,
+      firstName: null,
+      middleName: null,
+      lastName: null,
+      birthday: null,
+      job: null,
+      passportNum: null,
+      zipcode: null,
+      mainAddress: '',
+      detailAddress: '',
+      gender: null,
+      email: null,
+      tel: null,
+      nationality: null,
     }
   },
   methods: {
-    moveMain() {
-      this.$router.push('/main')
-    },
+    registMember() {
+      const emailSelect = document.getElementById('signup-email-select')
 
+      if (emailSelect.options[emailSelect.selectedIndex].value === 'self') {
+        this.email = this.emailId + '@' + this.emailDomain
+      } else {
+        this.email =
+          this.emailId +
+          '@' +
+          emailSelect.options[emailSelect.selectedIndex].value
+      }
+      this.tel = this.firstNum + '-' + this.secondNum + '-' + this.thirdNum
+
+      this.zipcode = document.getElementById('postal-code').value
+
+      const jobSelect = document.getElementById('signup-job-select')
+      this.job = jobSelect.options[jobSelect.selectedIndex].value
+      console.log(this.job)
+      signup(
+        {
+          username: this.username,
+          password: this.password,
+          firstName: this.firstName,
+          middleName: this.middleName,
+          lastName: this.lastName,
+          birthday: this.birthday,
+          job: this.job,
+          passportNum: this.passportNum,
+          zipcode: this.zipcode,
+          mainAddress: this.mainAddress,
+          detailAddress: this.detailAddress,
+          gender: this.gender,
+          email: this.emailId,
+          tel: this.tel,
+          nationality: this.nationality,
+          // 넘겨주기
+          termService: 'Y',
+          privacyPolicy: 'Y',
+          locationBased: 'Y',
+          promotionalInfo: 'Y',
+        },
+        ({ data }) => {
+          this.$router.push('/main')
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+      // this.$router.push('/main')
+    },
+    maleClick() {
+      this.gender = 'MALE'
+      document.getElementsByClassName('gender-btn')[0].style.backgroundColor =
+        '#10384b'
+      document.getElementsByClassName('gender-btn')[1].style.backgroundColor =
+        '#206E95'
+    },
+    femaleClick() {
+      this.gender = 'FEMALE'
+      document.getElementsByClassName('gender-btn')[0].style.backgroundColor =
+        '#206E95'
+      document.getElementsByClassName('gender-btn')[1].style.backgroundColor =
+        '#10384b'
+    },
     /*
     KAKAO API 사용한부분
-    https://postcode.map.daum.net/guide#sample 이거에서 
+    https://postcode.map.daum.net/guide#sample 이거에서
     사용자가 선택한 값 이용하기 부분 소스코드 가져옴
     Key 발급 필요 없고, 사용량 제한 없음
     기업용/상업용 무료 사용 가능
@@ -218,10 +389,10 @@ export default {
 
           if (data.userSelectedType === 'R') {
             // 사용자가 도로명 주소를 선택했을 경우
-            this.addr = data.roadAddress
+            this.mainAddress = data.roadAddress
           } else {
             // 사용자가 지번 주소를 선택했을 경우(J)
-            this.addr = data.jibunAddress
+            this.mainAddress = data.jibunAddress
           }
 
           // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
@@ -229,18 +400,18 @@ export default {
             // 법정동명이 있을 경우 추가한다. (법정리는 제외)
             // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
             if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-              this.extraAddr += data.bname
+              this.detailAddress += data.bname
             }
             // 건물명이 있고, 공동주택일 경우 추가한다.
             if (data.buildingName !== '' && data.apartment === 'Y') {
-              this.extraAddr +=
-                this.extraAddr !== ''
+              this.detailAddress +=
+                this.detailAddress !== ''
                   ? ', ' + data.buildingName
                   : data.buildingName
             }
             // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if (this.extraAddr !== '') {
-              this.extraAddr = ' (' + this.extraAddr + ')'
+            if (this.detailAddress !== '') {
+              this.detailAddress = ' (' + this.detailAddress + ')'
             }
             // 조합된 참고항목을 해당 필드에 넣는다.
             document.getElementById('address-detail').value = this.extraAddr
@@ -407,6 +578,25 @@ body {
   border: solid 1px var(--nalda-blue-border-color);
   border-radius: 10px;
 }
+/* 이름 CSS */
+.name-form-tag {
+  width: 465px;
+  display: flex;
+}
+.name-form-tag > h6 {
+  margin-right: 90px;
+}
+
+.name-form-input {
+  display: flex;
+}
+.name-form-input > div {
+  width: 155px;
+}
+.name-form-input > div > input {
+  width: 155px;
+}
+
 /* 생년월일 CSS */
 .birthdate-wrap {
   display: flex;
@@ -493,7 +683,7 @@ body {
   justify-content: space-between;
 }
 
-#gender-btn {
+.gender-btn {
   width: 230px;
   height: 48px;
   font-size: 18px;

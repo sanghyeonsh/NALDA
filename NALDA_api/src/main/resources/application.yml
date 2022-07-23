@@ -3,11 +3,8 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/nalda?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
-    password: Blueskin741^
+    password: ssafy
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     show-sql: true
-    hibernate:
-      ddl-auto: create
-    generate-ddl: true

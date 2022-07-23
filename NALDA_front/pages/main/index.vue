@@ -3,12 +3,16 @@
     <div class="main-container1">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-          <img class="image" src="../../static/main/service.png" alt="service" />
+          <img
+            class="image"
+            src="../../static/main/service.png"
+            alt="service"
+          />
           <h3>service</h3>
         </div>
       </div>
       <div class="main-container-box">
-        <nuxt-link to="/user/login" style="text-decoration: none;">
+        <nuxt-link to="/user/login" style="text-decoration: none">
           <div>
             <img
               class="image"
@@ -21,7 +25,11 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+          <img
+            class="image"
+            src="../../static/main/airport_info.png"
+            alt="airport_info"
+          />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -57,7 +65,7 @@ export default {
 .main-container1 {
   margin: auto;
   display: flex;
-  height: 92vh;
+  height: 70vh;
   justify-content: space-around;
 }
 

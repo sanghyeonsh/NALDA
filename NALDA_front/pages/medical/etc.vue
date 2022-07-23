@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   background-color: #f5f6f7;
   height: 600px;

@@ -5,7 +5,7 @@
     <div class="box">
       <div class="body-container">
         <div class="wrapper-main">
-          <div>치킨 스테이크</div>
+          <div>{{ selectedMeal }}</div>
           <img src="../../static/meal/chicken-steak.jpg" alt="치킨스테이크" />
         </div>
         <div class="wrapper-detail">
@@ -21,7 +21,9 @@
                   :id="'inlineCheckbox' + i"
                   class="form-check-input"
                   type="checkbox"
-                  value="option1"
+                  :value="detail"
+                  checked
+                  @click="toggle1(detail)"
                 />
                 <label class="form-check-label" :for="'inlineCheckbox' + i">{{
                   detail
@@ -38,13 +40,14 @@
         </div>
       </div>
       <div class="choice-box">
-        <button>선택</button>
+        <button @click="finalChoice">선택</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
   components: {
@@ -52,14 +55,43 @@ export default {
   },
   data() {
     return {
-      allergies: ['땅콩', '계란', '육류'],
-      details: ['치킨 스테이크', '푸딩', '스프'],
+      finalDetail: [],
     }
+  },
+  computed: {
+    ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
+  },
+  created() {
+    // this.getDetail(this.selectedMeal)
+    // this.getAllergy(this.selectedMeal)
+    for (let i = 0; i < this.details.length; i++) {
+      this.finalDetail.push(this.details[i])
+    }
+  },
+  methods: {
+    finalChoice() {
+      console.log(this.finalDetail)
+      this.$router.push('/medical/result')
+    },
+    toggle1(item) {
+      console.log(this.finalDetail.includes(item))
+      if (this.finalDetail.includes(item)) {
+        for (let i = 0; i < this.finalDetail.length; i++) {
+          if (this.finalDetail[i] === item) {
+            this.finalDetail.splice(i, 1)
+          }
+        }
+        return
+      }
+
+      this.finalDetail.push(item)
+    },
+    ...mapActions('meal', ['getDetail', 'getAllergy']),
   },
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   display: flex;
   width: 1000px;
