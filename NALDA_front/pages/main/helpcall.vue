@@ -1,10 +1,9 @@
 <template>
   <div>
-    <header-component></header-component>
     <div class="box">
       <div>
         <div class="text-box">
-          가져다 드리겠습니다.<br />
+          승무원이 요청을 확인 중입니다.<br />
           잠시만 기다려주세요!
         </div>
       </div>
@@ -13,12 +12,9 @@
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
-  name: 'ResultPage',
-  components: {
-    HeaderComponent,
-  },
+  name: 'MainHelpCall',
+  components: {},
 }
 </script>
 

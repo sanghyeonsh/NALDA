@@ -9,7 +9,7 @@
             src="../../static/orders/foods.png"
             alt="service"
           />
-          <h4>간식 및 음료</h4>
+          <h4 class="order">간식 및 음료</h4>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersGoods">
@@ -19,13 +19,13 @@
             src="../../static/orders/blanket.png"
             alt="service"
           />
-          <h4>편의물품</h4>
+          <h4 class="order">편의물품</h4>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersAirFood">
         <div>
           <img class="image" src="../../static/orders/food.png" alt="service" />
-          <h4>기내식 선택</h4>
+          <h4 class="order">기내식 선택</h4>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersMedical">
@@ -35,7 +35,7 @@
             src="../../static/orders/hospital.png"
             alt="service"
           />
-          <h4>의료</h4>
+          <h4 class="order">의료</h4>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .container1 {
   margin: auto;
   display: flex;
@@ -93,5 +93,8 @@ export default {
 }
 .content {
   width: 33%;
+}
+.order {
+  padding: 2rem;
 }
 </style>
