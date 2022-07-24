@@ -15,6 +15,11 @@
             </ul>
           </div>
         </div>
+        <div class="next-btn-wrap">
+          <div>
+            <b-button class="next-page" variant="info">next</b-button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,6 +61,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .customform-main-container {
   width: 100%;
@@ -68,9 +74,10 @@ export default {
 }
 
 .customform-wrap {
-  height: auto;
+  height: 100%;
   width: 80%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -104,5 +111,16 @@ export default {
   align-content: center;
   font-size: larger;
   text-align: center;
+}
+
+.next-page {
+  width: 200%;
+  height: 140%;
+}
+.next-btn-wrap {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
 }
 </style>

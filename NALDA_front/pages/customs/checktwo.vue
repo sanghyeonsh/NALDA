@@ -113,6 +113,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 }
 .customform-main-container {
@@ -126,7 +127,7 @@ export default {
 }
 
 .customform-wrap {
-  height: auto;
+  height: 100%;
   width: 80%;
   display: flex;
   justify-content: center;

@@ -7,14 +7,13 @@
 </template>
 
 <script>
-import HeaderComponent from '../components/HeaderComponent.vue';
-import FooterComponent from '../components/FooterComponent.vue';
+import HeaderComponent from '../components/HeaderComponent.vue'
+import FooterComponent from '../components/FooterComponent.vue'
 export default {
-    name: "CustomsDeclaration",
-    components: { HeaderComponent, FooterComponent }
+  name: 'CustomsDeclaration',
+  components: { HeaderComponent, FooterComponent },
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>

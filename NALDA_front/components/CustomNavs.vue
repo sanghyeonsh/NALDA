@@ -1,23 +1,8 @@
 <template>
   <div>
     <div class="customform-nav-container">
-      <header class="user-profile-wrap">
-        <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../static/main/user_profile_w.png" />
-          <!-- <div class="badge">7</div> -->
-        </div>
-
-        <div class="text-area">
-          <h2 class="greeting-msg stagger-item">Hi, Anonymous-Ku</h2>
-          <div class="desc stagger-item">
-            Fly with nalda
-            <br />Nearest Airser-Line Service during in Airbus
-          </div>
-        </div>
-      </header>
-
       <ul class="step-list">
-        <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
+        <li class="item mouse-effect stagger-item" @click="moveInformStep">
           <div class="left">
             <i class="fa-solid fa-user"></i>
             <div class="name">before start</div>
@@ -27,8 +12,12 @@
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
-        <li class="next-steps">쩜쩜</li>
-        <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
+
+        <div class="right-mid">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <li class="item mouse-effect stagger-item" @click="moveFirstStep">
           <div class="left">
             <i class="fa-solid fa-user"></i>
             <div class="name">First Step</div>
@@ -38,18 +27,48 @@
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
-        <li class="next-steps">쩜쩜</li>
-        <li class="item mouse-effect stagger-item" @click="movecustomList">
+        <div class="right-mid">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <li class="item mouse-effect stagger-item" @click="moveSecondStep1">
           <div class="left">
             <i class="fa-solid fa-suitcase-rolling"></i>
-            <div class="name">Second Step</div>
+            <div class="name">Second Step1</div>
             <div>신고사항을 입력하는 단계입니다.</div>
           </div>
           <div class="right">
             <i class="fa-solid fa-chevron-right"></i>
           </div>
         </li>
-        <li class="next-steps">쩜쩜</li>
+        <div class="right-mid">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <li class="item mouse-effect stagger-item" @click="moveSecondStep2">
+          <div class="left">
+            <i class="fa-solid fa-suitcase-rolling"></i>
+            <div class="name">Second Step2</div>
+            <div>신고사항을 입력하는 단계입니다.</div>
+          </div>
+          <div class="right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </li>
+        <div class="right-mid">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <li class="item mouse-effect stagger-item">
+          <div class="left">
+            <i class="fa-solid fa-bookmark"></i>
+            <div class="name">detail</div>
+            <div>상세신고사항을 작성하는 단계입니다.</div>
+          </div>
+          <div class="right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </li>
+        <div class="right-mid">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
         <li class="item mouse-effect stagger-item">
           <div class="left">
             <i class="fa-solid fa-bookmark"></i>
@@ -68,10 +87,42 @@
 <script>
 export default {
   name: 'CustomNavs',
+  data() {
+    return {}
+  },
+  computed: {},
+  methods: {
+    moveInformStep() {
+      this.$router.push('/customs/inform')
+    },
+    moveFirstStep() {
+      this.$router.push('/customs/basic')
+    },
+    // moveSecondStep1() {
+    //   this.$router.push('/customs/checkone')
+    //   const basicInfo = {
+    //     lastName: this.lastName,
+    //     middleName: this.middleName,
+    //     firstName: this.firstName,
+    //     date: this.data,
+    //     passportNum: this.passportNum,
+    //     job: this.job,
+    //     travelPeriod: this.travelPeriod,
+    //     travelPurpose: this.travelPurpose,
+    //     flightNum: this.flightNum,
+    //     famillyNum: this.famillyNum,
+    //     countryNum: this.countryNum,
+    //   }
+    //   console.log(basicInfo)
+    // },
+    moveSecondStep2() {
+      this.$router.push('/customs/checktwo')
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -87,9 +138,6 @@ export default {
   height: auto;
   width: auto;
   margin-left: 0;
-}
-.user-profile-wrap {
-  padding: 80px 40px;
 }
 
 /* body {
@@ -154,52 +202,13 @@ li {
   transition: 0s;
 }
 
-/* 헤더 */
-header {
-  text-align: center;
-}
-
-header .thumb {
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1), 0 12px 24px 0 rgba(0, 0, 0, 0.24);
-}
-
-header .thumb-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 36px;
-}
-
-/* msg 기능이 생긴다면 */
-/* header .badge {
-  width: 28px;
-  height: 28px;
-  font-size: 12px;
-  position: absolute;
-  background-color: #ff5500;
-  border-radius: 50%;
-  top: 0;
-  right: -8px;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-/* animation */
-/* animation: scaleUp 0.5s;
-  animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation-fill-mode: both;
-  animation-delay: 0.5s;
-} */
-
-header .greeting-msg {
-  margin-bottom: 10px;
-}
-
 /* 리스트 */
 .step-list {
-  margin-top: 48px;
-  padding-bottom: 30px;
+  /* margin-top: 48px; */
+  padding-top: 42%;
+  padding-bottom: 42%;
+  width: 100%;
+  height: 100%;
 }
 
 .step-list .item {
@@ -208,6 +217,7 @@ header .greeting-msg {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 15px;
+  margin: 2%;
   cursor: pointer;
 }
 
@@ -239,5 +249,12 @@ header .greeting-msg {
   align-items: center;
   font-size: 15px;
   cursor: pointer;
+}
+.right-mid i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5f6f7;
+  transform: rotate(90deg);
 }
 </style>
