@@ -5,12 +5,10 @@ import com.a204.nalda.service.DeclarationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,12 +25,27 @@ public class DeclarationController {
             declarationService.saveDeclaration(declarationDTO);
 //            System.out.println("declarationDTO = " + declarationDTO);
             result.put("msg", "세관신고서가 성공적으로 저장되었습니다.");
+            return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             result.put("msg", "세관신고서 저장에 실패했습니다.");
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+//    @GetMapping("/{username}")
+//    public ResponseEntity<?> declarationList(@PathVariable("username") String username) {
+//        Map<String,Object> result = new HashMap<>();
+//        try {
+////            List<DeclarationDTO> declarationDTOS = declarationService.selectDeclarationList(username);
+//            result.put("declarations",declarationDTOS);
+//            return new ResponseEntity<>(result,HttpStatus.OK);
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//            result.put("msg", "세관신고서를 불러오는데 실패하였습니다.");
+//            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
 }

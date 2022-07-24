@@ -5,13 +5,16 @@ import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.dto.customdeclaration.DeclarationDTO;
-import com.a204.nalda.repository.AlcoholsRepository;
 import com.a204.nalda.repository.CustomsDeclarationRepository;
 import com.a204.nalda.repository.UserRepository;
-import com.a204.nalda.repository.VisitedCountryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,9 +22,6 @@ public class DeclarationService {
 
     private final CustomsDeclarationRepository customsDeclarationRepository;
     private final UserRepository userRepository;
-    private final AlcoholsRepository alcoholsRepository;
-    private final VisitedCountryRepository visitedCountryRepository;
-
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
 
@@ -56,6 +56,16 @@ public class DeclarationService {
         }
 
         customsDeclarationRepository.save(declaration);
+    }
+
+    @Transactional
+    public List<DeclarationDTO> selectDeclarationList(String username) {
+        PageRequest pageRequest = PageRequest.of(0,25, Sort.Direction.DESC);
+        Page<CustomsDeclaration> declarationList = customsDeclarationRepository.findByUsername(username,pageRequest);
+
+        int totalPage = declarationList.getTotalPages();
+        declarationList.
+
     }
 
 
