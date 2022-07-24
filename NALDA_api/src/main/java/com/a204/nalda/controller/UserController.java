@@ -35,7 +35,7 @@ public class UserController {
     public ResponseEntity<?> getUserDetail(@PathVariable("username") String username) {
         Map<String, Object> result = new HashMap<>();
         UserDetailDto userDetailDto = userService.findUserDetail(username);
-        result.put("사용자 세부 정보", userDetailDto);
+        result.put("info", userDetailDto);
 
         return new ResponseEntity<>(result,HttpStatus.OK);
     }

@@ -3,17 +3,16 @@
     <div class="main-container1">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-<<<<<<< HEAD
-          <img class="image" src="../../static/service.png" alt="service" />
-          <h4>{{ meal }}</h4>
-=======
-          <img class="image" src="../../static/main/service.png" alt="service" />
+          <img
+            class="image"
+            src="../../static/main/service.png"
+            alt="service"
+          />
           <h3>service</h3>
->>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
         </div>
       </div>
       <div class="main-container-box">
-        <nuxt-link to="/user/login" style="text-decoration: none;">
+        <nuxt-link to="/user/login" style="text-decoration: none">
           <div>
             <img
               class="image"
@@ -26,7 +25,11 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+          <img
+            class="image"
+            src="../../static/main/airport_info.png"
+            alt="airport_info"
+          />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -35,23 +38,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-import { mapState } from 'vuex'
-
-const meal = 'meal'
-
-export default {
-  name: 'MainIndex',
-  components: {},
-  computed: {
-    ...mapState(meal, ['meal']),
-  },
-=======
 export default {
   name: 'MainIndex',
   components: {},
   computed: {},
->>>>>>> e173df38916e4d44554d6b190e6c3134aa5196cd
   methods: {
     moveLogin() {
       this.$router.push('/user/login')
@@ -75,7 +65,7 @@ export default {
 .main-container1 {
   margin: auto;
   display: flex;
-  height: 92vh;
+  height: 70vh;
   justify-content: space-around;
 }
 
