@@ -87,6 +87,9 @@
 <script>
 export default {
   name: 'CustomNavs',
+  props: {
+    basicInfo: {},
+  },
   data() {
     return {}
   },
@@ -97,24 +100,13 @@ export default {
     },
     moveFirstStep() {
       this.$router.push('/customs/basic')
+
+      console.log(1)
     },
-    // moveSecondStep1() {
-    //   this.$router.push('/customs/checkone')
-    //   const basicInfo = {
-    //     lastName: this.lastName,
-    //     middleName: this.middleName,
-    //     firstName: this.firstName,
-    //     date: this.data,
-    //     passportNum: this.passportNum,
-    //     job: this.job,
-    //     travelPeriod: this.travelPeriod,
-    //     travelPurpose: this.travelPurpose,
-    //     flightNum: this.flightNum,
-    //     famillyNum: this.famillyNum,
-    //     countryNum: this.countryNum,
-    //   }
-    //   console.log(basicInfo)
-    // },
+    moveSecondStep1() {
+      this.$router.push('/customs/checkone')
+      console.log(this.basicInfo)
+    },
     moveSecondStep2() {
       this.$router.push('/customs/checktwo')
     },

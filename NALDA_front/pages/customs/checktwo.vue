@@ -26,11 +26,13 @@
                 <td id="yorn">없음</td>
               </tr>
               <tr>
-                <td>
-                  <input type="checkbox" value="bangoodsck" />
+                <td id="ckbox">
+                  <input id="box4-1" type="checkbox" value="bangoodsck" />
+                  <label for="box4-1"></label>
                 </td>
-                <td>
-                  <input type="checkbox" value="bangoodsck" />
+                <td id="ckbox">
+                  <input id="box4-2" type="checkbox" value="bangoodsck" />
+                  <label for="box4-2"></label>
                 </td>
               </tr>
               <tr>
@@ -46,10 +48,12 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input type="checkbox" value="livestockck" />
+                  <input id="box5-1" type="checkbox" value="livestockck" />
+                  <label for="box5-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input type="checkbox" value="livestockck" />
+                  <input id="box5-2" type="checkbox" value="livestockck" />
+                  <label for="box5-2"></label>
                 </td>
               </tr>
               <tr>
@@ -63,10 +67,12 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input type="checkbox" value="salesgoodsck" />
+                  <input id="box6-1" type="checkbox" value="salesgoodsck" />
+                  <label for="box6-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input type="checkbox" value="salesgoodsck" />
+                  <input id="box6-2" type="checkbox" value="salesgoodsck" />
+                  <label for="box6-2"></label>
                 </td>
               </tr>
             </table>
@@ -218,12 +224,12 @@ td {
 }
 
 /* check box design CSS */
-input[id='box1-1'] + label,
-input[id='box1-2'] + label,
-input[id='box2-1'] + label,
-input[id='box2-2'] + label,
-input[id='box3-1'] + label,
-input[id='box3-2'] + label {
+input[id='box4-1'] + label,
+input[id='box4-2'] + label,
+input[id='box5-1'] + label,
+input[id='box5-2'] + label,
+input[id='box6-1'] + label,
+input[id='box6-2'] + label {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -231,21 +237,21 @@ input[id='box3-2'] + label {
   cursor: pointer;
 }
 
-input[id='box1-1']:checked + label,
-input[id='box1-2']:checked + label,
-input[id='box2-1']:checked + label,
-input[id='box2-2']:checked + label,
-input[id='box3-1']:checked + label,
-input[id='box3-2']:checked + label {
+input[id='box4-1']:checked + label,
+input[id='box4-2']:checked + label,
+input[id='box5-1']:checked + label,
+input[id='box5-2']:checked + label,
+input[id='box6-1']:checked + label,
+input[id='box6-2']:checked + label {
   background-color: var(--nalda-blue-color);
 }
 
-input[id='box1-1'],
-input[id='box1-2'],
-input[id='box2-1'],
-input[id='box2-2'],
-input[id='box3-1'],
-input[id='box3-2'] {
+input[id='box4-1'],
+input[id='box4-2'],
+input[id='box5-1'],
+input[id='box5-2'],
+input[id='box6-1'],
+input[id='box6-2'] {
   display: none;
 }
 </style>

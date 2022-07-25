@@ -30,7 +30,7 @@
                 <td id="yorn">없음</td>
               </tr>
               <tr>
-                <td id="ckbox" style="border-bottom-style: dotted;">
+                <td id="ckbox">
                   <input id="box1-1" type="checkbox" value="dutyfreeck" />
                   <label for="box1-1"></label>
                 </td>
