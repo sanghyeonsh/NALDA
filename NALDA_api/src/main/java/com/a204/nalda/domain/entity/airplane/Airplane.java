@@ -27,6 +27,8 @@ public class Airplane {
     @Column(name = "airplane_kind")
     private String airplaneKind;
 
+    private String image;
+
     @OneToMany(mappedBy = "airplane")
     private List<Toilet> toilets = new ArrayList<>();
 

@@ -3,6 +3,7 @@ package com.a204.nalda.domain.entity.inflightservice;
 import com.a204.nalda.domain.entity.airplane.Flight;
 import com.a204.nalda.domain.entity.airplane.Seat;
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,5 +44,7 @@ public class Orders {
     @Column(name = "order_message")
     private String orderMessage;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 }
