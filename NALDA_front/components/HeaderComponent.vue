@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div id="header">
     <div class="tmp"></div>
     <img class="logo" src="../static/logo.png" @click="MoveMain" />
     <!-- <div @click="MoveSignup">
@@ -40,11 +40,11 @@ export default {
   cursor: pointer;
 }
 
-.header {
+#header {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 10%;
+  height: 15vh;
   /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
   justify-content: space-between;

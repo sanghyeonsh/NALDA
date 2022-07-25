@@ -5,7 +5,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_CHOICE_FOODS(state, choice) {
-    if (!state.check_foods.includes(choice) && state.check_foods.length < 5) {
+    if (!state.check_foods.includes(choice)) {
       state.selected_foods.push({ name: choice, num: 1 })
       state.check_foods.push(choice)
     }
