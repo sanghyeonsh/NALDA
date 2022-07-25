@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     moveOrdersSnack() {
-      this.$router.push({ name: 'orders-OrdersSnack' })
+      this.$router.push({ name: 'orders-OrdersDessert' })
     },
     moveOrdersGoods() {
       this.$router.push({ name: 'orders-OrdersGoods' })
