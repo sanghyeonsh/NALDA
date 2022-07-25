@@ -1,7 +1,9 @@
 <template>
   <div class="customs-input-container">
     <div class="customs-nav">
-      <custom-navs :basicInfo="{lastName, middleName, firstName, date, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"></custom-navs>
+      <custom-navs
+        :basicInfo="{lastName, middleName, firstName, date, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
+      ></custom-navs>
     </div>
     <div class="customform-wrap">
       <div class="customform-main-container">
@@ -92,15 +94,30 @@
                   <div class="visited-countries">
                     <div>
                       1.
-                      <input v-model="country1" class="visited-country-name" type="text" placeholder="국가명" />
+                      <input
+                        v-model="country1"
+                        class="visited-country-name"
+                        type="text"
+                        placeholder="국가명"
+                      />
                     </div>
                     <div>
                       2.
-                      <input v-model="country2" class="visited-country-name" type="text" placeholder="국가명" />
+                      <input
+                        v-model="country2"
+                        class="visited-country-name"
+                        type="text"
+                        placeholder="국가명"
+                      />
                     </div>
                     <div>
                       3.
-                      <input v-model="coutry3" class="visited-country-name" type="text" placeholder="국가명" />
+                      <input
+                        v-model="coutry3"
+                        class="visited-country-name"
+                        type="text"
+                        placeholder="국가명"
+                      />
                     </div>
                   </div>
                 </td>
@@ -109,13 +126,20 @@
                 <td id="col-name">국내주소</td>
                 <td colspan="3">
                   <div class="address-wrap">
-                  <input id="postal-code" v-model="zipcode" placeholder="우편번호" type="text" />
-                  <input id="address" v-model="mainAddress" placeholder="주소" type="text" disabled/>
-                  <input id="address-detail"
-                  v-model="detailAddress"
-                  placeholder="상세주소"
-                  type="text"/>
-                  <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+                    <input id="postal-code" v-model="zipcode" placeholder="우편번호" type="text" />
+                    <input id="address" v-model="mainAddress" placeholder="주소" type="text" disabled />
+                    <input
+                      id="address-detail"
+                      v-model="detailAddress"
+                      placeholder="상세주소"
+                      type="text"
+                    />
+                    <input
+                      id="postal-check-btn"
+                      type="button"
+                      value="주소검색"
+                      @click="find_Postcode()"
+                    />
                   </div>
                 </td>
               </tr>
@@ -158,7 +182,6 @@ export default {
       zipcode: '',
       mainAddress: '',
       detailAddress: '',
-
     }
   },
   computed: {},
@@ -166,7 +189,7 @@ export default {
     find_Postcode() {
       this.zipcode = ''
       this.mainAddress = ''
-      this.detailAddress =''
+      this.detailAddress = ''
       new window.daum.Postcode({
         oncomplete: (data) => {
           // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -218,10 +241,8 @@ export default {
           document.getElementById('address-detail').focus()
         },
       }).open()
-    }
-
+    },
   },
-
 }
 </script>
 
