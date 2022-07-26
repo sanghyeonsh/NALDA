@@ -2,7 +2,7 @@
   <div class="customs-input-container">
     <div class="customs-nav">
       <custom-navs
-        :basicInfo="{lastName, middleName, firstName, date, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
+        :basic-info="{lastName, middleName, firstName, birthday, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
       ></custom-navs>
     </div>
     <div class="customform-wrap">
@@ -113,7 +113,7 @@
                     <div>
                       3.
                       <input
-                        v-model="coutry3"
+                        v-model="country3"
                         class="visited-country-name"
                         type="text"
                         placeholder="국가명"
@@ -168,7 +168,7 @@ export default {
       lastName: '',
       middleName: '',
       firstName: '',
-      date: '',
+      birthday: '',
       passportNum: '',
       job: '',
       travelPeriod: '',
