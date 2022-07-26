@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nalda?serverTimezone=UTC&characterEncoding=UTF-8
-    username: audrb96
+    url: jdbc:mysql://nalda-db.c7ku0zhouuvi.us-west-1.rds.amazonaws.com:3306/NALDA_db
+    username: NALDA_admin
     password: Blueskin741^
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
