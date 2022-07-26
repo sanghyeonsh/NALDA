@@ -243,7 +243,7 @@ input[id='box5-1']:checked + label,
 input[id='box5-2']:checked + label,
 input[id='box6-1']:checked + label,
 input[id='box6-2']:checked + label {
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
 }
 
 input[id='box4-1'],

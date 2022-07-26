@@ -1,16 +1,12 @@
 <template>
-  <div id="header">
+  <div class="header">
     <div class="tmp"></div>
     <img class="logo" src="../static/logo.png" @click="MoveMain" />
     <!-- <div @click="MoveSignup">
       signup
     </div>-->
     <div class="userprofile-wrap" @click="MoveMypage">
-      <img
-        class="profile-img"
-        src="../static/main/user_profile_w.png"
-        alt="profile-img"
-      />
+      <img class="profile-img" src="../static/main/user_profile_w.png" alt="profile-img" />
       <h3>user</h3>
     </div>
   </div>
@@ -40,11 +36,11 @@ export default {
   cursor: pointer;
 }
 
-#header {
+.header {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 15vh;
+  height: 100%;
   /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
   justify-content: space-between;

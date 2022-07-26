@@ -62,17 +62,8 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-  --nalda-background-blue-color: #45a9c8;
-}
-
 .customform-nav-container {
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
   color: #ffe6cf;
   height: auto;
   width: auto;
@@ -86,7 +77,7 @@ export default {
   margin: 0;
   font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
   color: #ffe6cf;
   font-size: 11px;
   line-height: 1.4;

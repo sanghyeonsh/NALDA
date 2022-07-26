@@ -125,7 +125,7 @@ export default {
 }
 
 .customform-nav-container {
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
   color: #ffe6cf;
   height: auto;
   width: auto;

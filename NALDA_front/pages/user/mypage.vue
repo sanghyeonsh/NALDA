@@ -83,10 +83,7 @@
               <div class="row-item address">
                 <div>
                   <i class="fa-solid fa-location-dot"></i>
-                  <span
-                    class="item-text"
-                    v-text="member.address.mainAddress"
-                  ></span>
+                  <span class="item-text" v-text="member.address.mainAddress"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -95,10 +92,7 @@
               <div class="row-item address">
                 <div>
                   <i class="fa-solid fa-location-dot"></i>
-                  <span
-                    class="item-text"
-                    v-text="member.address.detailAddress"
-                  ></span>
+                  <span class="item-text" v-text="member.address.detailAddress"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -191,15 +185,15 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
   --border-gray-color: #dadada;
+  --nalda-background-blue-color: #45a9c8;
   --nalda-blue-color: #206e95;
   --nalda-blue-border-color: #88c0c5;
+  --nalda-navy-color: #1b2f40;
 }
-
 * {
   margin: 0;
   padding: 0;

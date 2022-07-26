@@ -53,13 +53,6 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
 
 * {
   margin: 0;
@@ -68,7 +61,7 @@ export default {
 }
 
 body {
-  background: var(--body-background-color);
+  background: #f5f6f7;
 }
 
 .main-container {
@@ -87,8 +80,8 @@ body {
 .main-container .main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
-  color: var(--font-color);
-  border: solid 1px var(--border-gray-color);
+  color: #4e4e4e;
+  border: solid 1px #dadada;
 }
 
 .main-container .main-wrap header .sel-lang-wrap {
@@ -126,7 +119,7 @@ body {
 .user-input-wrap {
   width: 465px;
   height: 48px;
-  border: solid 1px var(--border-gray-color);
+  border: solid 1px #dadada;
   border-radius: 10px;
   /* padding: 10px; */
 }
@@ -142,7 +135,7 @@ body {
   font-size: 14px;
   /* margin-left: 10px; */
   padding: 10px;
-  border: solid 1px var(--border-gray-color);
+  border: solid 1px #dadada;
   height: 48px;
   border-radius: 10px;
 }
@@ -163,9 +156,9 @@ body {
   width: 465px;
   height: 48px;
   font-size: 18px;
-  background: var(--nalda-blue-color);
+  background: #206e95;
   color: white;
-  border: solid 1px var(--nalda-blue-border-color);
+  border: solid 1px #88c0c5;
   border-radius: 10px;
 }
 </style>

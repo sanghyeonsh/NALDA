@@ -4,21 +4,13 @@
     <div class="orders-container">
       <div class="container-box" @click="moveOrdersSnack">
         <div>
-          <img
-            class="image"
-            src="../../static/orders/foods.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/orders/foods.png" alt="service" />
           <h3>간식 및 음료</h3>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersGoods">
         <div>
-          <img
-            class="image"
-            src="../../static/orders/blanket.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/orders/blanket.png" alt="service" />
           <h3>편의물품</h3>
         </div>
       </div>
@@ -30,11 +22,7 @@
       </div>
       <div class="container-box" @click="moveOrdersMedical">
         <div>
-          <img
-            class="image"
-            src="../../static/orders/hospital.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/orders/hospital.png" alt="service" />
           <h3>의료</h3>
         </div>
       </div>
@@ -66,11 +54,15 @@ export default {
 
 <style scoped>
 #orders-main {
-  height: 100vh;
+  height: 100%;
 }
 .orders-container {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
   display: flex;
-  height: 70vh;
+  height: 100%;
 }
 .container-box {
   text-align: center;

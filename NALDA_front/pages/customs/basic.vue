@@ -254,15 +254,6 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -408,7 +399,7 @@ input[id='chkbox2']:checked + label,
 input[id='chkbox3']:checked + label,
 input[id='chkbox4']:checked + label,
 input[id='chkbox5']:checked + label {
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
 }
 
 input[id='chkbox1'],

@@ -4,11 +4,7 @@
     <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-          <img
-            class="image"
-            src="../../static/main/service.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/main/service.png" alt="service" />
           <h3>service</h3>
         </div>
       </div>
@@ -26,11 +22,7 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img
-            class="image"
-            src="../../static/main/airport_info.png"
-            alt="airport_info"
-          />
+          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -69,11 +61,11 @@ export default {
 #maintest {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 .main-container {
   display: flex;
-  height: 70vh;
+  height: 100%;
 }
 .main-container-box {
   text-align: center;
@@ -94,13 +86,5 @@ export default {
 
 .main-container-box div {
   padding: 30px;
-}
-
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
 }
 </style>
