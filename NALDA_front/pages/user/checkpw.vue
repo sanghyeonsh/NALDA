@@ -34,14 +34,6 @@
             </div>
           </div>
         </section>
-
-        <!-- <footer>
-          <div class="copyright-wrap">
-            <div>
-              <span>Copyright © NALDA Corp. All Rights Reserved.</span>
-            </div>
-          </div>
-        </footer>-->
       </div>
     </div>
   </div>
@@ -61,13 +53,6 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
 
 * {
   margin: 0;
@@ -76,11 +61,12 @@ export default {
 }
 
 body {
-  background: var(--body-background-color);
+  background: #f5f6f7;
 }
 
 .main-container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,34 +74,19 @@ body {
 }
 
 .main-container .main-wrap {
-  width: 768px;
+  width: 100%;
 }
 
 .main-container .main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
-  color: var(--font-color);
-  border: solid 1px var(--border-gray-color);
-}
-
-.main-container .main-wrap .logo-wrap {
-  padding-top: 55px;
-}
-
-.main-container .main-wrap .logo-wrap img {
-  width: 100px;
-  height: 100px;
+  color: #4e4e4e;
+  border: solid 1px #dadada;
 }
 
 .main-container .main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
-}
-
-.main-container .main-wrap header .logo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* user input 대분류 CSS */
@@ -126,6 +97,15 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+/* input type password 깨짐 현상 해결 */
+.password-wrap .input[type='password'] {
+  font-family: sans-serif;
+}
+
+/* .password-wrap .input[type='password']::placeholder {
+  font-family: 'twayfly';
+} */
 
 /* check msg */
 .chk-msg {
@@ -139,8 +119,7 @@ body {
 .user-input-wrap {
   width: 465px;
   height: 48px;
-  border: solid 1px var(--border-gray-color);
-  background: white;
+  border: solid 1px #dadada;
   border-radius: 10px;
   /* padding: 10px; */
 }
@@ -156,7 +135,7 @@ body {
   font-size: 14px;
   /* margin-left: 10px; */
   padding: 10px;
-  border: solid 1px var(--border-gray-color);
+  border: solid 1px #dadada;
   height: 48px;
   border-radius: 10px;
 }
@@ -177,37 +156,9 @@ body {
   width: 465px;
   height: 48px;
   font-size: 18px;
-  background: var(--nalda-blue-color);
+  background: #206e95;
   color: white;
-  border: solid 1px var(--nalda-blue-border-color);
+  border: solid 1px #88c0c5;
   border-radius: 10px;
-}
-
-footer {
-  padding-top: 95px;
-  padding-bottom: 15px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 768px;
-}
-
-.copyright-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 15px;
-}
-
-footer .copyright-wrap div img {
-  width: 50px;
-
-  height: 50px;
-}
-
-footer .copyright-wrap span {
-  font-size: 13px;
-  line-height: 15px;
 }
 </style>

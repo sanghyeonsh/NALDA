@@ -20,11 +20,7 @@
     </div>
     <div class="main-container-box">
       <div>
-        <img
-          class="image"
-          src="../../static/main/airport_info.png"
-          alt="airport_info"
-        />
+        <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
         <h3>Airport Info</h3>
       </div>
     </div>
@@ -48,14 +44,6 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
-
 .main-container1 {
   margin: auto;
   display: flex;

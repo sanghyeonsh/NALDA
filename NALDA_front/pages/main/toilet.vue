@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../../static/nacho.jpg" alt="" />
+    <img src="../../static/nacho.jpg" alt />
   </div>
 </template>
 
@@ -10,4 +10,4 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped></style>

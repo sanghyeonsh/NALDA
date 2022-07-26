@@ -15,38 +15,20 @@
           <div>
             <h6>아이디</h6>
             <div class="signup-input-id-wrap">
-              <input
-                id="input-id"
-                v-model="username"
-                placeholder="Username"
-                type="text"
-              />
-              <input
-                id="id-check-btn"
-                type="button"
-                value="아이디 중복 검사"
-                @click="checkId"
-              />
+              <input id="input-id" v-model="username" placeholder="Username" type="text" />
+              <input id="id-check-btn" type="button" value="아이디 중복 검사" @click="checkId" />
             </div>
           </div>
           <div>
             <h6>비밀번호</h6>
             <div class="signup-input-wrap password-wrap">
-              <input
-                v-model="password"
-                placeholder="Password"
-                type="password"
-              />
+              <input v-model="password" placeholder="Password" type="password" />
             </div>
           </div>
           <div>
             <h6>비밀번호 확인</h6>
             <div class="signup-input-wrap password-confirm-wrap">
-              <input
-                v-model="passconfirm"
-                placeholder="Password"
-                type="password"
-              />
+              <input v-model="passconfirm" placeholder="Password" type="password" />
             </div>
           </div>
           <div class="name-form-tag">
@@ -60,11 +42,7 @@
               <input v-model="firstName" placeholder="firstname" type="text" />
             </div>
             <div class="signup-input-wrap name-wrap">
-              <input
-                v-model="middleName"
-                placeholder="middlename"
-                type="text"
-              />
+              <input v-model="middleName" placeholder="middlename" type="text" />
             </div>
 
             <div class="signup-input-wrap name-wrap">
@@ -106,14 +84,10 @@
             <h6>성별</h6>
             <div class="gender-wrap">
               <div>
-                <button class="gender-btn" value="MALE" @click="maleClick">
-                  남자
-                </button>
+                <button class="gender-btn" value="MALE" @click="maleClick">남자</button>
               </div>
               <div>
-                <button class="gender-btn" value="FEMALE" @click="femaleClick">
-                  여자
-                </button>
+                <button class="gender-btn" value="FEMALE" @click="femaleClick">여자</button>
               </div>
             </div>
           </div>
@@ -121,29 +95,14 @@
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="signup-input-email">
-                <input
-                  id="signup-email-id"
-                  v-model="emailId"
-                  type="text"
-                  placeholder="이메일아이디"
-                />
+                <input id="signup-email-id" v-model="emailId" type="text" placeholder="이메일아이디" />
               </div>
               <h5>@</h5>
               <div class="signup-input-email">
-                <input
-                  id="signup-email"
-                  v-model="emailDomain"
-                  type="text"
-                  placeholder="이메일주소"
-                />
+                <input id="signup-email" v-model="emailDomain" type="text" placeholder="이메일주소" />
               </div>
               <div class="signup-input-email" style="margin-left: 10px">
-                <select
-                  id="signup-email-select"
-                  class="selectbox"
-                  name="email"
-                  onchange
-                >
+                <select id="signup-email-select" class="selectbox" name="email" onchange>
                   <option value="self">직접입력</option>
                   <option value="naver">naver.com</option>
                   <option value="gmail">gmail.com</option>
@@ -157,30 +116,15 @@
             <h6>전화번호</h6>
             <div class="mobile-num-wrap">
               <div class="signup-mobile-num">
-                <input
-                  id="mobile-num"
-                  v-model="firstNum"
-                  type="text"
-                  placeholder="000"
-                />
+                <input id="mobile-num" v-model="firstNum" type="text" placeholder="000" />
               </div>
               <h5>-</h5>
               <div class="signup-mobile-num">
-                <input
-                  id="mobile-num"
-                  v-model="secondNum"
-                  type="text"
-                  placeholder="0000"
-                />
+                <input id="mobile-num" v-model="secondNum" type="text" placeholder="0000" />
               </div>
               <h5>-</h5>
               <div class="signup-mobile-num">
-                <input
-                  id="mobile-num"
-                  v-model="thirdNum"
-                  type="text"
-                  placeholder="0000"
-                />
+                <input id="mobile-num" v-model="thirdNum" type="text" placeholder="0000" />
               </div>
             </div>
           </div>
@@ -189,20 +133,10 @@
             <div class="address-wrap">
               <div class="postal-wrap">
                 <input id="postal-code" placeholder="postal code" type="text" />
-                <input
-                  id="postal-check-btn"
-                  type="button"
-                  value="주소검색"
-                  @click="find_Postcode()"
-                />
+                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
               </div>
               <div class="signup-input-wrap">
-                <input
-                  id="address"
-                  v-model="mainAddress"
-                  placeholder="address"
-                  type="text"
-                />
+                <input id="address" v-model="mainAddress" placeholder="address" type="text" />
               </div>
               <div class="signup-input-wrap" style="margin-top: 3px">
                 <input
@@ -217,32 +151,19 @@
           <div>
             <h6>여권번호</h6>
             <div class="signup-input-wrap passport-num-wrap">
-              <input
-                v-model="passportNum"
-                placeholder="passportnumber"
-                type="text"
-              />
+              <input v-model="passportNum" placeholder="passportnumber" type="text" />
             </div>
           </div>
           <div>
             <h6>국적</h6>
             <div class="signup-input-wrap nationality-wrap">
-              <input
-                v-model="nationality"
-                placeholder="nationality"
-                type="text"
-              />
+              <input v-model="nationality" placeholder="nationality" type="text" />
             </div>
           </div>
           <div>
             <h6>직업</h6>
             <div class="signup-input-wrap job-wrap">
-              <select
-                id="signup-job-select"
-                class="selectbox"
-                name="job"
-                onchange
-              >
+              <select id="signup-job-select" class="selectbox" name="job" onchange>
                 <option value="student">학생</option>
                 <option value="housewife">주부</option>
                 <option value="soldier">군인</option>
@@ -671,6 +592,7 @@ input[type='password']::placeholder {
 .email-wrap {
   display: flex;
   width: 465px;
+  align-items: center;
 }
 .signup-input-email {
   display: block;
@@ -726,6 +648,7 @@ input[type='password']::placeholder {
 .mobile-num-wrap {
   width: 465px;
   display: flex;
+  align-items: center;
 }
 
 .signup-mobile-num {
