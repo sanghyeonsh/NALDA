@@ -1,10 +1,13 @@
 <template>
-  <div id="maintest">
-    <HeaderComponent />
+  <div class="main-inex">
     <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-          <img class="image" src="../../static/main/service.png" alt="service" />
+          <img
+            class="image"
+            src="../../static/main/service.png"
+            alt="service"
+          />
           <h3>service</h3>
         </div>
       </div>
@@ -22,12 +25,15 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+          <img
+            class="image"
+            src="../../static/main/airport_info.png"
+            alt="airport_info"
+          />
           <h3>Airport Info</h3>
         </div>
       </div>
     </div>
-    <FooterComponent />
   </div>
 </template>
 
@@ -51,17 +57,17 @@ export default {
       }
     },
     MoveOrders() {
-      this.$router.push('/orders')
+      this.$router.push('/main/service')
     },
   },
 }
 </script>
 
 <style scoped>
-#maintest {
+.main-inex {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 70vh;
 }
 .main-container {
   display: flex;

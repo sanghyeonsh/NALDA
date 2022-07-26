@@ -1,62 +1,42 @@
 <template>
-  <div id="goods-main">
-    <HeaderComponent />
-    <div class="goods-container">
-      <div class="goods-container-box" @click="checkblanket">
-        <div>
-          <img
-            class="image"
-            src="../../static/orders/blanket.png"
-            alt="service"
-          />
-          <h3>
-            <input id="blanket" type="checkbox" @click="checkblanket" />
-            담요
-          </h3>
-        </div>
+  <div class="goods-container">
+    <div class="goods-container-box" @click="checkblanket">
+      <div>
+        <img src="../../static/orders/blanket.png" alt="service" />
+        <h3>
+          <input id="blanket" type="checkbox" @click="checkblanket" />
+          담요
+        </h3>
       </div>
-      <div class="goods-container-box" @click="checkpillow">
-        <div>
-          <img
-            class="image"
-            src="../../static/orders/pillow.png"
-            alt="service"
-          />
-          <h3>
-            <input id="pillow" type="checkbox" @click="checkpillow" />
-            베개
-          </h3>
-        </div>
-      </div>
-      <div class="goods-container-box" @click="checkearplug">
-        <div>
-          <img
-            class="image"
-            src="../../static/orders/ear-plug.png"
-            alt="service"
-          />
-          <h3>
-            <input id="earplug" type="checkbox" @click="checkearplug" />
-            귀마개
-          </h3>
-        </div>
-      </div>
-      <div class="goods-container-box" @click="checkslipper">
-        <div>
-          <img
-            class="image"
-            src="../../static/orders/slippers.png"
-            alt="service"
-          />
-          <h3>
-            <input id="slipper" type="checkbox" @click="checkslipper" />
-            슬리퍼
-          </h3>
-        </div>
-      </div>
-      <button class="order-button" @click="movewaiting">요청하기</button>
     </div>
-    <FooterComponent />
+    <div class="goods-container-box" @click="checkpillow">
+      <div>
+        <img src="../../static/orders/pillow.png" alt="service" />
+        <h3>
+          <input id="pillow" type="checkbox" @click="checkpillow" />
+          베개
+        </h3>
+      </div>
+    </div>
+    <div class="goods-container-box" @click="checkearplug">
+      <div>
+        <img src="../../static/orders/ear-plug.png" alt="service" />
+        <h3>
+          <input id="earplug" type="checkbox" @click="checkearplug" />
+          귀마개
+        </h3>
+      </div>
+    </div>
+    <div class="goods-container-box" @click="checkslipper">
+      <div>
+        <img src="../../static/orders/slippers.png" alt="service" />
+        <h3>
+          <input id="slipper" type="checkbox" @click="checkslipper" />
+          슬리퍼
+        </h3>
+      </div>
+    </div>
+    <button class="order-button" @click="movewaiting">요청하기</button>
   </div>
 </template>
 
@@ -65,7 +45,6 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'OrdersGoods',
-  components: {},
   computed: {
     ...mapState('goods', ['goods', 'selected_goods']),
   },
@@ -77,7 +56,7 @@ export default {
     movewaiting() {
       this.SET_CHOICE_GOODS()
       if (this.selected_goods.length) {
-        this.$router.push({ name: 'orders-OrdersWaiting' })
+        this.$router.push('/goods/waiting')
       }
     },
     checkblanket() {
@@ -117,9 +96,6 @@ export default {
 </script>
 
 <style scoped>
-#goods-main {
-  height: 100vh;
-}
 .goods-container {
   display: flex;
   height: 70vh;
@@ -140,14 +116,15 @@ export default {
 }
 .order-button {
   width: 10vw;
+  height: 5vh;
   position: fixed;
   margin: 0 auto;
   left: 0;
   right: 0;
   bottom: 20vh;
-  padding: 12px 25px;
   border: none;
   color: white;
+  font-size: 100%;
   background-color: rgb(69, 169, 200);
 }
 </style>

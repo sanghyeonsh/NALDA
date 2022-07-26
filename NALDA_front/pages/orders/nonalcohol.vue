@@ -1,5 +1,5 @@
 <template>
-  <div class="container3">
+  <div class="orders-nonalcohol-container">
     <ServiceNavbar />
     <div class="cards row row-cols-4">
       <div v-for="(item, idx) in testdata" :key="idx" class="col">
@@ -20,7 +20,7 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'OrdersDesset',
+  name: 'OrdersNonAlohol',
   data() {
     return {
       testdata: [],
@@ -61,22 +61,22 @@ export default {
 </script>
 
 <style scoped>
-.container3 {
+.orders-nonalcohol-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
 .cards {
-  height: 70vh;
   overflow: scroll;
   width: 100%;
   padding: 0 10vw;
-}
-.cards::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+  height: 65vh;
 }
 .cards .col {
   padding: 20px;
+}
+.cards::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 .card-img-top {
   overflow: hidden;
@@ -84,9 +84,8 @@ export default {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 200px;
+  height: 20vh;
 }
-
 img + div {
   text-align: center;
   font-size: 1.5rem;

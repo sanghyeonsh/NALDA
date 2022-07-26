@@ -4,15 +4,15 @@
       <li style="width: 7vw; height: 15vh" @click="MoveOrders">
         <span class="order-dessert-span">날다 Home</span>
       </li>
-      <li id="snack" @click="MoveDessert">
+      <li id="snack" @click="MoveSnack">
         <img src="../static/orders/dessert.png" alt="" />
         <span>간식</span>
       </li>
-      <li id="alchoal" @click="MoveAlchoal">
+      <li id="alchoal" @click="MoveAlcohol">
         <img src="../static/orders/drink.png" alt="" />
         <span>주류</span>
       </li>
-      <li id="nonalchoal" @click="MoveNonAlchoal">
+      <li id="nonalchoal" @click="MoveNonAlcohol">
         <img src="../static/orders/coffee_cup.png" alt="" />
         <span>비주류</span>
       </li>
@@ -29,11 +29,11 @@ export default {
     ...mapState('menu', ['selected_foods']),
   },
   mounted() {
-    if (document.location.pathname === '/orders/OrdersDessert') {
+    if (document.location.pathname === '/orders/snack') {
       const target = document.getElementById('snack')
       target.style.borderBottomStyle = 'solid'
       target.style.borderBottomWidth = '0.5vh'
-    } else if (document.location.pathname === '/orders/OrdersAlchoal') {
+    } else if (document.location.pathname === '/orders/alcohol') {
       const target = document.getElementById('alchoal')
       target.style.borderBottomStyle = 'solid'
       target.style.borderBottomWidth = '0.5vh'
@@ -45,17 +45,17 @@ export default {
   },
   methods: {
     MoveOrders() {
-      this.$router.push({ name: 'orders' })
+      this.$router.push('/main/service')
       this.CLEAR_CHOICE_FOODS()
     },
-    MoveDessert() {
-      this.$router.push('OrdersDessert')
+    MoveSnack() {
+      this.$router.push('/orders/snack')
     },
-    MoveAlchoal() {
-      this.$router.push('OrdersAlchoal')
+    MoveAlcohol() {
+      this.$router.push('/orders/alcohol')
     },
-    MoveNonAlchoal() {
-      this.$router.push('OrdertsNonAlchoal')
+    MoveNonAlcohol() {
+      this.$router.push('/orders/nonalcohol')
     },
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
