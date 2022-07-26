@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header-component></header-component>
+  <div id="medical-main">
+    <HeaderComponent />
     <div class="box">
       <div class="wrapper">
         <div @click="moveResult">
@@ -23,6 +23,7 @@
         </div>
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -45,8 +46,11 @@ export default {
 </script>
 
 <style scoped>
+.medical-main {
+  height: 100vh;
+}
 .box {
-  background-color: #f5f6f7;
+  height: 70vh;
 }
 .wrapper {
   display: flex;
