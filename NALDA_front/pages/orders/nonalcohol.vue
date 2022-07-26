@@ -5,21 +5,20 @@
         <div class="flex-container">
           <div class="item-home" @click="MoveOrders">
             날다
-            <br />
-            home
+            <br />home
           </div>
 
           <div class="item1" @click="MoveDessert">
-            <img src="../../static/orders/dessert.png" alt="" />
+            <img src="../../static/orders/dessert.png" alt />
             <div style="text-align: center">간식</div>
           </div>
 
           <div class="item2" @click="MoveAlchoal">
-            <img src="../../static/orders/drink.png" alt="" />
+            <img src="../../static/orders/drink.png" alt />
             <div style="text-align: center">주류</div>
           </div>
           <div class="item3" @click="MoveNonAlchoal">
-            <img src="../../static/orders/coffee_cup.png" alt="" />
+            <img src="../../static/orders/coffee_cup.png" alt />
             <div style="text-align: center">비주류</div>
           </div>
         </div>
@@ -55,12 +54,8 @@
               viewBox="0 0 16 16"
               @click="MINUS_CHOICE_FOODS(item['name'])"
             >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
-              <path
-                d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
-              />
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
             </svg>
             <!-- <button @click="DELETE_CHOICE_FOODS(item['name'])">delete</button> -->
             <span>{{ item['num'] }}</span>
@@ -73,9 +68,7 @@
               viewBox="0 0 16 16"
               @click="PLUS_CHOICE_FOODS(item['name'])"
             >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
               <path
                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
               />
@@ -92,7 +85,7 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'OrdersNonAlchoal',
+  name: 'OrdersNonAlcohol',
   components: {},
   data() {
     return {

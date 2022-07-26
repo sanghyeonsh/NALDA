@@ -3,20 +3,20 @@
     <nav id="nav-items">
       <li style="display: flex; align-items: center" @click="MoveOrders">
         <h2 style="color: white; text-align: center">
-          날다 <br />
-          home
+          날다
+          <br />home
         </h2>
       </li>
       <li @click="MoveDessert">
-        <img src="../../static/orders/dessert.png" alt="" />
+        <img src="../../static/orders/dessert.png" alt />
         <div>간식</div>
       </li>
       <li @click="MoveAlchoal">
-        <img src="../../static/orders/drink.png" alt="" />
+        <img src="../../static/orders/drink.png" alt />
         <div>주류</div>
       </li>
       <li @click="MoveNonAlchoal">
-        <img src="../../static/orders/coffee_cup.png" alt="" />
+        <img src="../../static/orders/coffee_cup.png" alt />
         <div>비주류</div>
       </li>
     </nav>
@@ -38,14 +38,8 @@
         <div class="footer-item">수량</div>
       </div>
       <div class="footer-body">
-        <div
-          v-for="(item, idx) in selected_foods"
-          :key="idx"
-          class="footer-content"
-        >
-          <div style="flex-basis: 17vw">
-            {{ item['name'] }}
-          </div>
+        <div v-for="(item, idx) in selected_foods" :key="idx" class="footer-content">
+          <div style="flex-basis: 17vw">{{ item['name'] }}</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -74,16 +68,10 @@
             style="flex-basis: 5vw"
             @click="MINUS_CHOICE_FOODS(item['name'])"
           >
-            <path
-              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-            />
-            <path
-              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
-            />
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
           </svg>
-          <div style="flex-basis: 5vw text-align:center">
-            {{ item['num'] }}
-          </div>
+          <div style="flex-basis: 5vw text-align:center">{{ item['num'] }}</div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -94,9 +82,7 @@
             style="flex-basis: 5vw"
             @click="PLUS_CHOICE_FOODS(item['name'])"
           >
-            <path
-              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-            />
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
             <path
               d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
             />

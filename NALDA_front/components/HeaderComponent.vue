@@ -39,8 +39,8 @@ export default {
 .header {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 15vh;
   /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
   justify-content: space-between;

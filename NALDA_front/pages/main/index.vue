@@ -1,6 +1,5 @@
 <template>
-  <div id="maintest">
-    <HeaderComponent />
+  <div class="main-index">
     <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
@@ -27,7 +26,6 @@
         </div>
       </div>
     </div>
-    <FooterComponent />
   </div>
 </template>
 
@@ -58,10 +56,10 @@ export default {
 </script>
 
 <style scoped>
-#maintest {
+.main-index {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 70vh;
 }
 .main-container {
   display: flex;
@@ -81,10 +79,10 @@ export default {
   /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
 .main-container-box h3 {
-  margin-top: 40px;
+  margin-top: 5vh;
 }
 
 .main-container-box div {
-  padding: 30px;
+  padding: 7vh;
 }
 </style>
