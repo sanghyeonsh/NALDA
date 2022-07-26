@@ -38,13 +38,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'MainIndex',
   components: {},
-  computed: {},
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
     moveLogin() {
-      this.$router.push('/user/login')
+      console.loh('aaa')
+      console.log(this.loginMember)
+      if (this.loginMember === null) {
+        this.$router.push('/user/login')
+      } else {
+        // 세관신고서 페이지로 바꿔야함
+        this.$router.push('/main')
+      }
     },
     MoveOrders() {
       this.$router.push('/orders')
