@@ -1,12 +1,13 @@
 <template>
-  <div id="container">
-    <h1>hihi</h1>
+  <div>
+    <h1>test2</h1>
+    <div id="hi">hihihiihihih</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TestPage',
+  name: 'TestPage2',
   mounted() {
     window.addEventListener('click', function (e) {
       const d = document.createElement('div')
@@ -14,7 +15,9 @@ export default {
       d.style.top = e.clientY + 'px'
       d.style.left = e.clientX + 'px'
       document.body.appendChild(d)
+      console.log(1)
       d.addEventListener('animationend', function () {
+        console.log(2)
         d.parentElement.removeChild(d)
       })
     })
@@ -23,7 +26,7 @@ export default {
 </script>
 
 <style>
-.clickEffect {
+div.clickEffect {
   position: fixed;
   box-sizing: border-box;
   border-style: solid;
@@ -47,5 +50,11 @@ export default {
     margin: -7.5em;
     border-width: 0.01rem;
   }
+}
+</style>
+
+<style scoped>
+#hi {
+  background-color: black;
 }
 </style>

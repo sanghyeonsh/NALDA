@@ -1,25 +1,19 @@
 <template>
   <div>
-    <header-component></header-component>
+    <HeaderComponent />
     <nuxt-child></nuxt-child>
-    <footer-component></footer-component>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderComponent from '../components/HeaderComponent.vue'
-import FooterComponent from '../components/FooterComponent.vue'
-
 export default {
-  name: 'MainPage',
-  components: {
-    HeaderComponent,
-    FooterComponent,
-  },
+  name: 'MealPage',
+  components: {},
 }
 </script>
 
-<style scoped>
+<style>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
