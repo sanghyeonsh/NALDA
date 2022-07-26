@@ -1,33 +1,31 @@
 <template>
-  <div>
-    <div class="footer-container">
-      <div class="service-btn-wrap">
-        <button class="toilet-wrap" @click="MoveToilet">
-          <img src="../static/main/toilet_navy.png" alt="toilet" />
-          <h3>화장실</h3>
-        </button>
-        <button
-          class="service-wrap"
-          style="background-color: var(--nalda-blue-color)"
-          @click="MoveHelpcall"
-        >
-          <img src="../static/main/flight_attendant_w.png" alt="toilet" />
-          <h3>승무원호출</h3>
-        </button>
-      </div>
-      <footer>
-        <div class="copyright-wrap">
-          <!-- <div><img src="logo.png"></div> -->
-          <div>
-            <span
-              >이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
-              고객센터</span
-            >
-            <div>Copyright © NALDA Corp. All Rights Reserved.</div>
-          </div>
-        </div>
-      </footer>
+  <div id="footer-container">
+    <div class="service-btn-wrap">
+      <button class="toilet-wrap" @click="MoveToilet">
+        <img src="../static/main/toilet_navy.png" alt="toilet" />
+        <h3>화장실</h3>
+      </button>
+      <button
+        class="service-wrap"
+        style="background-color: var(--nalda-blue-color)"
+        @click="MoveHelpcall"
+      >
+        <img src="../static/main/flight_attendant_w.png" alt="toilet" />
+        <h3>승무원호출</h3>
+      </button>
     </div>
+    <footer>
+      <div class="copyright-wrap">
+        <!-- <div><img src="logo.png"></div> -->
+        <div>
+          <span>
+            이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
+            고객센터
+          </span>
+          <div>Copyright © NALDA Corp. All Rights Reserved.</div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -133,9 +131,9 @@ button:hover {
   color: white;
 }
 
-.footer-container {
+#footer-container {
   width: 100%;
-  height: auto;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   /* align-items: center; */
@@ -147,5 +145,10 @@ button:hover {
   margin-bottom: 30px;
   text-align: center;
   font-size: smaller;
+}
+.copyright-wrap {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 </style>
