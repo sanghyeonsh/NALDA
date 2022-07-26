@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -120,9 +121,75 @@ public class DeclarationService {
                     .build();
             list.add(declarationListDTO);
         }
-
         return list;
+    }
 
+    @Transactional
+    public DeclarationListDTO getOneDeclaration(Long id) {
+        Optional<CustomsDeclaration> declaration = customsDeclarationRepository.findById(id);
+
+        if(declaration.isPresent()) {
+            CustomsDeclaration customsDeclaration = declaration.get();
+            System.out.println(customsDeclaration);
+            Alcohols alcohols = customsDeclaration.getAlcohols();
+            List<EtcExceed> etcExceeds = customsDeclaration.getEtcExceeds();
+            List<VisitedCountry> visitedCountries = customsDeclaration.getVisitedCountries();
+            AlcoholsDTO alcoholsDTO = new AlcoholsDTO();
+            List<EtcExceedDTO> etcExceedDTOS = new ArrayList<>();
+            List<VisitedCountryDTO> visitedCountryDTOS = new ArrayList<>();
+
+            for(int i =0;i<etcExceeds.size();i++) {
+                EtcExceed etcExceed = etcExceeds.get(i);
+                EtcExceedDTO etcExceedDTO = EtcExceedDTO.builder()
+                        .name(etcExceed.getName())
+                        .amount(etcExceed.getAmount())
+                        .id(etcExceed.getId())
+                        .num(etcExceed.getNum())
+                        .build();
+                etcExceedDTOS.add(etcExceedDTO);
+            }
+
+            for(int i =0; i<visitedCountries.size();i++) {
+                VisitedCountry visitedCountry = visitedCountries.get(i);
+                VisitedCountryDTO visitedCountryDTO = VisitedCountryDTO.builder()
+                        .id(visitedCountry.getId())
+                        .countryName(visitedCountry.getCountryName())
+                        .build();
+                visitedCountryDTOS.add(visitedCountryDTO);
+            }
+
+            if(alcohols != null) {
+                alcoholsDTO = AlcoholsDTO.builder()
+                        .id(alcohols.getId())
+                        .num(alcohols.getNum())
+                        .liter(alcohols.getLiter())
+                        .dollar(alcohols.getDollar())
+                        .build();
+            }
+
+            DeclarationListDTO result = DeclarationListDTO.builder()
+                    .id(customsDeclaration.getId())
+                    .alcohols(alcoholsDTO)
+                    .etcExceeds(etcExceedDTOS)
+                    .visitedCountries(visitedCountryDTOS)
+                    .accompany(customsDeclaration.getAccompany())
+                    .dutyfreeExceed(customsDeclaration.getDutyfreeExceed())
+                    .flightNum(customsDeclaration.getFlightNum())
+                    .cigarette(customsDeclaration.getCigarettes())
+                    .livestockVisited(customsDeclaration.getLivestockVisited())
+                    .paymentExceed(customsDeclaration.getPaymentExceed())
+                    .perfumes(customsDeclaration.getPerfumes())
+                    .preferentialTariff(customsDeclaration.getPreferentialTariff())
+                    .prohibitGoods(customsDeclaration.getProhibitGoods())
+                    .purposeTravel(customsDeclaration.getPurposeTravel())
+                    .salesGoods(customsDeclaration.getSalesGoods())
+                    .travelPeriod(customsDeclaration.getTravelPeriod())
+                    .build();
+
+            return result;
+        }
+
+        return new DeclarationListDTO();
 
     }
 
