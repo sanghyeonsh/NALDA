@@ -1,30 +1,25 @@
 <template>
-  <div>
-    <div class="nav-snack">
-      <nav>
-        <div class="flex-container">
-          <div class="item-home" @click="MoveOrders">
-            날다
-            <br />
-            home
-          </div>
-
-          <div class="item1" @click="MoveDessert">
-            <img src="../../static/orders/dessert.png" alt="" />
-            <div style="text-align: center">간식</div>
-          </div>
-
-          <div class="item2" @click="MoveAlchoal">
-            <img src="../../static/orders/drink.png" alt="" />
-            <div style="text-align: center">주류</div>
-          </div>
-          <div class="item3" @click="MoveNonAlchoal">
-            <img src="../../static/orders/coffee_cup.png" alt="" />
-            <div style="text-align: center">비주류</div>
-          </div>
-        </div>
-      </nav>
-    </div>
+  <div id="container">
+    <nav id="nav-items">
+      <li style="display: flex; align-items: center" @click="MoveOrders">
+        <h2 style="color: white; text-align: center">
+          날다 <br />
+          home
+        </h2>
+      </li>
+      <li @click="MoveDessert">
+        <img src="../../static/orders/dessert.png" alt="" />
+        <div>간식</div>
+      </li>
+      <li @click="MoveAlchoal">
+        <img src="../../static/orders/drink.png" alt="" />
+        <div>주류</div>
+      </li>
+      <li @click="MoveNonAlchoal">
+        <img src="../../static/orders/coffee_cup.png" alt="" />
+        <div>비주류</div>
+      </li>
+    </nav>
 
     <div class="cards row row-cols-4">
       <div v-for="(item, idx) in testdata" :key="idx" class="col">
@@ -37,50 +32,75 @@
       </div>
     </div>
 
-    <div class="footer">
+    <div id="footer">
       <div class="footer-head">
-        <div class="footer-item">메뉴(최대 5개)</div>
+        <div class="footer-item">메뉴</div>
         <div class="footer-item">수량</div>
       </div>
       <div class="footer-body">
-        <div v-for="(item, idx) in selected_foods.slice(0, 5)" :key="idx">
-          <div>
+        <div
+          v-for="(item, idx) in selected_foods"
+          :key="idx"
+          class="footer-content"
+        >
+          <div style="flex-basis: 17vw">
             {{ item['name'] }}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-dash-circle"
-              viewBox="0 0 16 16"
-              @click="MINUS_CHOICE_FOODS(item['name'])"
-            >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
-              <path
-                d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
-              />
-            </svg>
-            <!-- <button @click="DELETE_CHOICE_FOODS(item['name'])">delete</button> -->
-            <span>{{ item['num'] }}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-plus-circle"
-              viewBox="0 0 16 16"
-              @click="PLUS_CHOICE_FOODS(item['name'])"
-            >
-              <path
-                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-              />
-              <path
-                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-              />
-            </svg>
           </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trash"
+            viewBox="0 0 16 16"
+            style="flex-basis: 5vw"
+            @click="DELETE_CHOICE_FOODS(item['name'])"
+          >
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-dash-circle"
+            viewBox="0 0 16 16"
+            style="flex-basis: 5vw"
+            @click="MINUS_CHOICE_FOODS(item['name'])"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+            <path
+              d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"
+            />
+          </svg>
+          <div style="flex-basis: 5vw text-align:center">
+            {{ item['num'] }}
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-plus-circle"
+            viewBox="0 0 16 16"
+            style="flex-basis: 5vw"
+            @click="PLUS_CHOICE_FOODS(item['name'])"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+            <path
+              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -92,7 +112,7 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'OrdersAlchoal',
+  name: 'OrdersDesset',
   components: {},
   data() {
     return {
@@ -136,62 +156,45 @@ export default {
     },
     ChoiceMenu(data) {
       this.SET_CHOICE_FOODS(data)
+      setTimeout(() => {
+        const menu = document.querySelector('.footer-body')
+        menu.scrollTop = menu.scrollHeight
+      }, 0)
     },
   },
 }
 </script>
 
-<style scoped>
-.cards {
-  padding: 170px 30px 180px 30px;
+<style>
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-
-.col {
-  padding: 20px;
-}
-.snack-footer {
-  z-index: 1;
-}
-.nav-snack {
-  position: fixed;
-  z-index: 1;
+#nav-items {
+  display: flex;
+  height: 15vh;
+  /* padding: 0px; */
+  /* gap: 30px; */
+  background-color: rgb(69, 169, 200);
   width: 100%;
 }
-.flex-container {
-  display: flex;
-  align-items: center;
-  background-color: rgb(69, 169, 200);
-  height: 110px;
+nav li {
+  list-style: none;
+  margin: 0 20px;
 }
-.item-home {
-  color: white;
-  text-align: center;
-  font-size: 30px;
+nav li:hover {
+  cursor: pointer;
 }
-.item1 {
-  margin: 1.5rem;
+nav img {
+  width: 7vw;
+  height: 10vh;
 }
-.item2 {
-  margin: 1.5rem;
-  border-bottom: solid;
-}
-.item3 {
-  margin: 1.5rem;
-}
-.item1 > img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-.item2 > img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-}
-.item3 > img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
+.cards {
+  height: 80vh;
+  overflow: scroll;
+  margin: 20px 0;
+  padding: 0 150px;
 }
 .card-img-top {
   overflow: hidden;
@@ -201,20 +204,29 @@ export default {
   width: 100%;
   height: 200px;
 }
-.footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0px;
+.col {
+  padding: 15px;
+}
+img + div {
+  text-align: center;
+  font-size: 1.5rem;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
 }
 .footer-head {
-  background-color: rgb(69, 169, 200);
   display: flex;
+  background-color: rgb(69, 169, 200);
   color: white;
+  gap: 300px;
 }
 .footer-body {
-  background-color: white;
+  overflow: scroll;
 }
-.footer-item {
-  padding: 0 50px 0 50px;
+.footer-content {
+  display: flex;
+  align-items: center;
 }
 </style>

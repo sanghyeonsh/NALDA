@@ -26,4 +26,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+body {
+  cursor: none;
+}
 </style>

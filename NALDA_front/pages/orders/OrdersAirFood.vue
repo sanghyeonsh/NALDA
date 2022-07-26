@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <header-component></header-component>
-    <div class="box">
-      <div class="title">주 메뉴 선택</div>
+  <div id="orders-airfood">
+    <HeaderComponent />
+    <div class="airfood-container">
+      <h1>주 메뉴 선택</h1>
       <div class="wrapper">
         <div class="wrapper-choice">
           <img src="../../static/meal/chicken-steak.jpg" alt="치킨 스테이크" />
@@ -34,41 +34,41 @@
           </div>
         </div>
       </div>
-      <button>선택</button>
+      <button class="choice-button">선택</button>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
   name: 'OrdersAirFood',
-  components: {
-    HeaderComponent,
-  },
+  components: {},
 }
 </script>
 
 <style scoped>
-.box {
-  width: 800px;
-  margin: auto;
+#orders-airfood {
+  height: 100vh;
+}
+.airfood-container {
+  height: 70vh;
+}
+.airfood-container > h1 {
   text-align: center;
-}
-.title {
-  font-size: 25px;
-  text-align: left;
-}
-.box > div {
-  margin: 20px 0;
+  vertical-align: middle;
+  line-height: 10vh;
+  height: 10vh;
 }
 .wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 20vw;
 }
-.wrapper > div > img {
-  width: 350px;
-  height: 350px;
+.wrapper img {
+  width: 400px;
+  height: 300px;
 }
 .wrapper-choice {
   display: flex;
@@ -78,10 +78,15 @@ export default {
 .wrapper-choice > div {
   margin-top: 30px;
 }
-button {
+.choice-button {
   padding: 12px 25px;
   border: none;
   color: white;
   background-color: rgb(69, 169, 200);
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 25vh;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <header-component></header-component>
-    <div class="container1">
+  <div id="orders-main">
+    <HeaderComponent />
+    <div class="orders-container">
       <div class="container-box" @click="moveOrdersSnack">
         <div>
           <img
@@ -9,7 +9,7 @@
             src="../../static/orders/foods.png"
             alt="service"
           />
-          <h4 class="order">간식 및 음료</h4>
+          <h3>간식 및 음료</h3>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersGoods">
@@ -19,13 +19,13 @@
             src="../../static/orders/blanket.png"
             alt="service"
           />
-          <h4 class="order">편의물품</h4>
+          <h3>편의물품</h3>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersAirFood">
         <div>
           <img class="image" src="../../static/orders/food.png" alt="service" />
-          <h4 class="order">기내식 선택</h4>
+          <h3>기내식 선택</h3>
         </div>
       </div>
       <div class="container-box" @click="moveOrdersMedical">
@@ -35,21 +35,18 @@
             src="../../static/orders/hospital.png"
             alt="service"
           />
-          <h4 class="order">의료</h4>
+          <h3>의료</h3>
         </div>
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
-
 export default {
   name: 'OrdersIndex',
-  components: {
-    HeaderComponent,
-  },
+  components: {},
   methods: {
     moveOrdersSnack() {
       this.$router.push({ name: 'orders-OrdersDessert' })
@@ -68,33 +65,25 @@ export default {
 </script>
 
 <style scoped>
-.container1 {
-  margin: auto;
-  display: flex;
-  height: 60vh;
-  justify-content: space-around;
+#orders-main {
+  height: 100vh;
 }
-
+.orders-container {
+  display: flex;
+  height: 70vh;
+}
 .container-box {
   text-align: center;
-  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-
-.image {
+.container-box img {
   width: 70%;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
-
-.container-box {
-  display: flex;
-}
-.content {
-  width: 33%;
-}
-.order {
-  padding: 2rem;
+.container-box h3 {
+  margin-top: 40px;
 }
 </style>
