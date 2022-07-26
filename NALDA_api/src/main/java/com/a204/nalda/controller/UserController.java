@@ -53,4 +53,16 @@ public class UserController {
 
     }
 
+    @GetMapping("/idCheck/{username}")
+    public ResponseEntity<?> idCheck(@PathVariable("username") String username) {
+        Map<String,Object> result = new HashMap<>();
+
+        if(userService.idUsed(username)) {
+            result.put("msg", "사용중인 아이디입니다.");
+        } else {
+            result.put("msg", "사용 가능한 아이디입니다.");
+        }
+        return new ResponseEntity<>(result,HttpStatus.OK);
+    }
+
 }
