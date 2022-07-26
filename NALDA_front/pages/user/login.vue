@@ -77,7 +77,10 @@ export default {
           username: this.id,
           password: this.password,
         },
-        ({ data }) => {
+        ({ headers, data }) => {
+          // const jwtToken = headers.get('Authorization')
+          // console.log(jwtToken)
+          sessionStorage.setItem('Authorization', headers.authorization)
           if (data.msg === '로그인 성공') {
             this.setLoginMember(this.id)
             // 세관신고서로 넘어가야함(임시)
