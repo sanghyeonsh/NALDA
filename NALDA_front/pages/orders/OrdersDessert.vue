@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div class="container3">
     <ServiceNavbar />
     <div class="cards row row-cols-4">
       <div v-for="(item, idx) in testdata" :key="idx" class="col">
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style scoped>
-#container {
+.container3 {
   display: flex;
   flex-direction: column;
   height: 100vh;

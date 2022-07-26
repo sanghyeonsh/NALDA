@@ -4,11 +4,7 @@
     <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-          <img
-            class="image"
-            src="../../static/main/service.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/main/service.png" alt="service" />
           <h3>service</h3>
         </div>
       </div>
@@ -26,11 +22,7 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img
-            class="image"
-            src="../../static/main/airport_info.png"
-            alt="airport_info"
-          />
+          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -40,13 +32,23 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'MainIndex',
   components: {},
-  computed: {},
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
     moveLogin() {
-      this.$router.push('/user/login')
+      console.loh('aaa')
+      console.log(this.loginMember)
+      if (this.loginMember === null) {
+        this.$router.push('/user/login')
+      } else {
+        // 세관신고서 페이지로 바꿔야함
+        this.$router.push('/main')
+      }
     },
     MoveOrders() {
       this.$router.push('/orders')
@@ -59,11 +61,11 @@ export default {
 #maintest {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 .main-container {
   display: flex;
-  height: 70vh;
+  height: 100%;
 }
 .main-container-box {
   text-align: center;
@@ -84,13 +86,5 @@ export default {
 
 .main-container-box div {
   padding: 30px;
-}
-
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
 }
 </style>

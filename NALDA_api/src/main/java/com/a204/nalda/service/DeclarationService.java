@@ -1,17 +1,20 @@
 package com.a204.nalda.service;
 
+import com.a204.nalda.domain.entity.customsDeclaration.Alcohols;
 import com.a204.nalda.domain.entity.customsDeclaration.CustomsDeclaration;
 import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.entity.user.User;
-import com.a204.nalda.dto.customdeclaration.DeclarationDTO;
-import com.a204.nalda.repository.AlcoholsRepository;
+import com.a204.nalda.dto.customdeclaration.*;
 import com.a204.nalda.repository.CustomsDeclarationRepository;
 import com.a204.nalda.repository.UserRepository;
-import com.a204.nalda.repository.VisitedCountryRepository;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,9 +22,7 @@ public class DeclarationService {
 
     private final CustomsDeclarationRepository customsDeclarationRepository;
     private final UserRepository userRepository;
-    private final AlcoholsRepository alcoholsRepository;
-    private final VisitedCountryRepository visitedCountryRepository;
-
+    private final ModelMapper modelMapper;
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
 
@@ -56,6 +57,73 @@ public class DeclarationService {
         }
 
         customsDeclarationRepository.save(declaration);
+    }
+
+    @Transactional
+    public List<DeclarationListDTO> selectDeclarationList(String username) {
+        List<CustomsDeclaration> customsDeclarations = customsDeclarationRepository.findByUsername(username);
+        List<DeclarationListDTO> list = new ArrayList<>();
+
+        for (CustomsDeclaration customDeclaration : customsDeclarations) {
+            Alcohols alcohols = customDeclaration.getAlcohols();
+            List<EtcExceedDTO> etcExceedList = new ArrayList<>();
+            List<VisitedCountryDTO> visitedCountryList = new ArrayList<>();
+            AlcoholsDTO alcoholsDTO = new AlcoholsDTO();
+
+            if(alcohols != null) {
+                alcoholsDTO = AlcoholsDTO
+                        .builder()
+                        .dollar(alcohols.getDollar())
+                        .liter(alcohols.getLiter())
+                        .num(alcohols.getNum())
+                        .id(alcohols.getId()).build();
+            }
+
+            for(EtcExceed etcExceed: customDeclaration.getEtcExceeds()) {
+                EtcExceedDTO etcExceedDTO = EtcExceedDTO.builder()
+                        .amount(etcExceed.getAmount())
+                        .name(etcExceed.getName())
+                        .num(etcExceed.getNum())
+                        .id(etcExceed.getId())
+                        .build();
+
+                etcExceedList.add(etcExceedDTO);
+            }
+
+
+            for(VisitedCountry visitedCountry : customDeclaration.getVisitedCountries()) {
+                VisitedCountryDTO visitedCountryDTO = VisitedCountryDTO.builder()
+                        .countryName(visitedCountry.getCountryName())
+                        .id(visitedCountry.getId()).build();
+                visitedCountryList.add(visitedCountryDTO);
+            }
+
+
+
+            DeclarationListDTO declarationListDTO = DeclarationListDTO.builder()
+                    .accompany(customDeclaration.getAccompany())
+                    .cigarette(customDeclaration.getCigarettes())
+                    .dutyfreeExceed(customDeclaration.getDutyfreeExceed())
+                    .flightNum(customDeclaration.getFlightNum())
+                    .livestockVisited(customDeclaration.getLivestockVisited())
+                    .paymentExceed(customDeclaration.getPaymentExceed())
+                    .perfumes(customDeclaration.getPerfumes())
+                    .preferentialTariff(customDeclaration.getPreferentialTariff())
+                    .prohibitGoods(customDeclaration.getProhibitGoods())
+                    .purposeTravel(customDeclaration.getPurposeTravel())
+                    .salesGoods(customDeclaration.getSalesGoods())
+                    .travelPeriod(customDeclaration.getTravelPeriod())
+                    .id(customDeclaration.getId())
+                    .alcohols(alcoholsDTO)
+                    .etcExceeds(etcExceedList)
+                    .visitedCountries(visitedCountryList)
+                    .build();
+            list.add(declarationListDTO);
+        }
+
+        return list;
+
+
     }
 
 

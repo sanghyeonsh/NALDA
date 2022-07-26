@@ -1,21 +1,17 @@
 <template>
   <div>
-    <!-- <header-component></header-component> -->
+    <header-component></header-component>
     <nuxt-child></nuxt-child>
-    <!-- <footer-component></footer-component> -->
+    <footer-component></footer-component>
   </div>
 </template>
 
 <script>
-// import HeaderComponent from '../components/HeaderComponent.vue'
-// import FooterComponent from '../components/FooterComponent.vue'
-
+import HeaderComponent from '../components/HeaderComponent.vue'
+import FooterComponent from '../components/FooterComponent.vue'
 export default {
-  name: 'MainPage',
-  components: {
-    // HeaderComponent,
-    // FooterComponent,
-  },
+  name: 'CustomsDeclaration',
+  components: { HeaderComponent, FooterComponent },
 }
 </script>
 
