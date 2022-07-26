@@ -33,17 +33,17 @@
 
 ### 색상
 #### 기본 팔레트
-- <span style="background-color:#45a9c8;color:white">nalda-background-blue</span>
-- <span style="background-color:#88c0c5;color:white">nalda-blue</span>
-- <span style="background-color:#206e95;color:white">nalda-navy</span>
-- <span style="background-color:#f5f6f7">nalda-background-white</span>
+- <span style="background-color:#45a9c8;color:white">nalda-background-blue: #45a9c8</span>
+- <span style="background-color:#88c0c5;color:white">nalda-blue: #88c0c5</span>
+- <span style="background-color:#206e95;color:white">nalda-navy: #206e95</span>
+- <span style="background-color:#f5f6f7">nalda-background-white: #f5f6f7</span>
 #### 보조 팔레트
-- <span style="background-color:#dadada">nalda-grey</span>
-- <span style="background-color:#4e4e4e;color:white">icon-grey</span>
+- <span style="background-color:#dadada">nalda-grey: #dadada</span>
+- <span style="background-color:#4e4e4e;color:white">icon-grey: #4e4e4e</span>
 #### 알림 팔레트
-- <span style="background-color:#85d3c4;color:white">lavatory-can-use</span>
-- <span style="background-color:#f8a392;color:white">lavatory-cannot-use</span>
-- <span style="background-color:#FAC710;color:white">navs-on-click</span>
+- <span style="background-color:#85d3c4;color:white">lavatory-can-use: #85d3c4</span>
+- <span style="background-color:#f8a392;color:white">lavatory-cannot-use: #f8a392</span>
+- <span style="background-color:#FAC710;color:white">navs-on-click: #FAC710</span>
 
 ### 폰트
 #### TwayFly
