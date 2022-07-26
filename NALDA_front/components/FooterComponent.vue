@@ -43,6 +43,7 @@ export default {
 }
 </script>
 
+<<<<<<< HEAD
 <style scoped>
 @font-face {
   font-family: 'twayfly';
@@ -52,7 +53,9 @@ export default {
   font-style: normal;
 }
 
-:root {
+=======
+<style>
+>>>>>>>3eabe9731f9fabd6df793c1ab9ed26502b09e653 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
   --border-gray-color: #dadada;

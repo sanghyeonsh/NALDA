@@ -38,4 +38,6 @@ public class Flight {
     @Column(name = "flight_date")
     private LocalDateTime flightDate;
 
+    @Column(name = "flight_num")
+    private String flightNum;
 }

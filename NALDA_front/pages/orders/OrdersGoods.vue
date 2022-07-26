@@ -1,75 +1,71 @@
 <template>
-  <div>
-    <header-component></header-component>
-    <div class="container1">
-      <div class="container-box" @click="checkblanket">
+  <div id="goods-main">
+    <HeaderComponent />
+    <div class="goods-container">
+      <div class="goods-container-box" @click="checkblanket">
         <div>
           <img
             class="image"
             src="../../static/orders/blanket.png"
             alt="service"
           />
-          <h4 class="ordermenu">
+          <h3>
             <input id="blanket" type="checkbox" @click="checkblanket" />
             담요
-          </h4>
+          </h3>
         </div>
       </div>
-      <div class="container-box" @click="checkpillow">
+      <div class="goods-container-box" @click="checkpillow">
         <div>
           <img
             class="image"
             src="../../static/orders/pillow.png"
             alt="service"
           />
-          <h4 class="ordermenu">
+          <h3>
             <input id="pillow" type="checkbox" @click="checkpillow" />
             베개
-          </h4>
+          </h3>
         </div>
       </div>
-      <div class="container-box" @click="checkearplug">
+      <div class="goods-container-box" @click="checkearplug">
         <div>
           <img
             class="image"
             src="../../static/orders/ear-plug.png"
             alt="service"
           />
-          <h4 class="ordermenu">
+          <h3>
             <input id="earplug" type="checkbox" @click="checkearplug" />
             귀마개
-          </h4>
+          </h3>
         </div>
       </div>
-      <div class="container-box" @click="checkslipper">
+      <div class="goods-container-box" @click="checkslipper">
         <div>
           <img
             class="image"
             src="../../static/orders/slippers.png"
             alt="service"
           />
-          <h4 class="ordermenu">
+          <h3>
             <input id="slipper" type="checkbox" @click="checkslipper" />
             슬리퍼
-          </h4>
+          </h3>
         </div>
       </div>
-    </div>
-    <div style="text-align: center">
       <button class="order-button" @click="movewaiting">요청하기</button>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import HeaderComponent from '../../components/HeaderComponent.vue'
 
 export default {
   name: 'OrdersGoods',
-  components: {
-    HeaderComponent,
-  },
+  components: {},
   computed: {
     ...mapState('goods', ['goods', 'selected_goods']),
   },
@@ -121,43 +117,32 @@ export default {
 </script>
 
 <style scoped>
-.container1 {
-  margin: auto;
-  display: flex;
-  height: 60vh;
-  justify-content: space-around;
+#goods-main {
+  height: 100vh;
 }
-
-.container-box {
+.goods-container {
+  display: flex;
+  height: 70vh;
+}
+.goods-container-box {
   text-align: center;
-  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-
-.image {
+.goods-container-box img {
   width: 70%;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
-
-.container-box {
-  display: flex;
-}
-input {
-  width: 20px;
-  height: 20px;
-  border: 3px solid #707070;
-  position: relative;
+.goods-container-box h3 {
+  margin-top: 40px;
 }
 .order-button {
-  border-radius: 8px;
-  background-color: rgb(69, 169, 200);
-  color: white;
-  border: none;
-  padding: 1rem;
-}
-.ordermenu {
-  padding: 2rem;
+  position: fixed;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 20vh;
 }
 </style>

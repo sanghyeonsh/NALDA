@@ -16,7 +16,7 @@
             <h6>아이디</h6>
             <div class="signup-input-id-wrap">
               <input id="input-id" v-model="username" placeholder="Username" type="text" />
-              <input id="id-check-btn" type="button" value="아이디 중복 검사" />
+              <input id="id-check-btn" type="button" value="아이디 중복 검사" @click="checkId" />
             </div>
           </div>
           <div>
@@ -191,7 +191,7 @@
 </template>
 
 <script>
-import { signup } from '@/api/user'
+import { signup, idCheck } from '@/api/user'
 
 export default {
   name: 'SignUp',
@@ -240,36 +240,41 @@ export default {
       const jobSelect = document.getElementById('signup-job-select')
       this.job = jobSelect.options[jobSelect.selectedIndex].value
       console.log(this.job)
-      signup(
-        {
-          username: this.username,
-          password: this.password,
-          firstName: this.firstName,
-          middleName: this.middleName,
-          lastName: this.lastName,
-          birthday: this.birthday,
-          job: this.job,
-          passportNum: this.passportNum,
-          zipcode: this.zipcode,
-          mainAddress: this.mainAddress,
-          detailAddress: this.detailAddress,
-          gender: this.gender,
-          email: this.emailId,
-          tel: this.tel,
-          nationality: this.nationality,
-          // 넘겨주기
-          termService: 'Y',
-          privacyPolicy: 'Y',
-          locationBased: 'Y',
-          promotionalInfo: 'Y',
-        },
-        ({ data }) => {
-          this.$router.push('/main')
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+      if (this.password === this.passconfirm) {
+        signup(
+          {
+            username: this.username,
+            password: this.password,
+            firstName: this.firstName,
+            middleName: this.middleName,
+            lastName: this.lastName,
+            birthday: this.birthday,
+            job: this.job,
+            passportNum: this.passportNum,
+            zipcode: this.zipcode,
+            mainAddress: this.mainAddress,
+            detailAddress: this.detailAddress,
+            gender: this.gender,
+            email: this.email,
+            tel: this.tel,
+            nationality: this.nationality,
+            // 넘겨주기
+            termService: 'Y',
+            privacyPolicy: 'Y',
+            locationBased: 'Y',
+            promotionalInfo: 'Y',
+          },
+          ({ data }) => {
+            this.$router.push('/user/login')
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+      } else {
+        alert('비밀번호를 다시 확인하세요.')
+      }
+
       // this.$router.push('/main')
     },
     maleClick() {
@@ -285,6 +290,18 @@ export default {
         '#206E95'
       document.getElementsByClassName('gender-btn')[1].style.backgroundColor =
         '#10384b'
+    },
+    checkId() {
+      idCheck(
+        this.username,
+        ({ data }) => {
+          console.log(data.msg)
+          alert(data.msg)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
     },
     /*
     KAKAO API 사용한부분
@@ -307,6 +324,8 @@ export default {
 
           // //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 
+          this.mainAddress = ''
+          this.detailAddress = ''
           if (data.userSelectedType === 'R') {
             // 사용자가 도로명 주소를 선택했을 경우
             this.mainAddress = data.roadAddress
@@ -498,6 +517,13 @@ body {
   border: solid 1px var(--nalda-blue-border-color);
   border-radius: 10px;
 }
+input[type='password'] {
+  font-family: '맑은고딕', '돋움';
+}
+input[type='password']::placeholder {
+  font-family: 'twayfly';
+}
+
 /* 이름 CSS */
 .name-form-tag {
   width: 465px;

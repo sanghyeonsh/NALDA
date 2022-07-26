@@ -5,12 +5,16 @@ import com.a204.nalda.domain.entity.customsDeclaration.Alcohols;
 import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.enumtype.Permission;
-import lombok.Data;
+import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class DeclarationDTO {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class DeclarationDTO  implements Serializable {
 
     private Long id;
     private String username;
@@ -32,5 +36,4 @@ public class DeclarationDTO {
     private Alcohols alcohols;
     private List<EtcExceed> etcExceeds;
     private List<VisitedCountry> visitedCountries;
-
 }

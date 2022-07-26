@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <div class="main-container1">
+  <div id="maintest">
+    <HeaderComponent />
+    <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
           <img
@@ -34,17 +35,28 @@
         </div>
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'MainIndex',
   components: {},
-  computed: {},
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
     moveLogin() {
-      this.$router.push('/user/login')
+      console.loh('aaa')
+      console.log(this.loginMember)
+      if (this.loginMember === null) {
+        this.$router.push('/user/login')
+      } else {
+        // 세관신고서 페이지로 바꿔야함
+        this.$router.push('/main')
+      }
     },
     MoveOrders() {
       this.$router.push('/orders')
@@ -54,21 +66,15 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
+#maintest {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-
-.main-container1 {
-  margin: auto;
+.main-container {
   display: flex;
   height: 70vh;
-  justify-content: space-around;
 }
-
 .main-container-box {
   text-align: center;
   width: 33%;
@@ -77,21 +83,24 @@ export default {
   align-items: center;
   cursor: pointer;
 }
-
-.main-container-box h3 {
-  margin-top: 40px;
-}
-
 .main-container-box img {
   width: 70%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
-
-.main-container-box {
-  display: flex;
+.main-container-box h3 {
+  margin-top: 40px;
 }
+
 .main-container-box div {
   padding: 30px;
+}
+
+:root {
+  --body-background-color: #f5f6f7;
+  --font-color: #4e4e4e;
+  --border-gray-color: #dadada;
+  --nalda-blue-color: #206e95;
+  --nalda-blue-border-color: #88c0c5;
 }
 </style>
