@@ -79,6 +79,7 @@ export default {
   margin-top: 30px;
 }
 .choice-button {
+  width: 10vw;
   padding: 12px 25px;
   border: none;
   color: white;

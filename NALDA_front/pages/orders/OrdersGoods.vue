@@ -139,10 +139,15 @@ export default {
   margin-top: 40px;
 }
 .order-button {
+  width: 10vw;
   position: fixed;
   margin: 0 auto;
   left: 0;
   right: 0;
   bottom: 20vh;
+  padding: 12px 25px;
+  border: none;
+  color: white;
+  background-color: rgb(69, 169, 200);
 }
 </style>

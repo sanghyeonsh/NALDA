@@ -15,8 +15,8 @@
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="20"
+          height="20"
           fill="currentColor"
           class="bi bi-trash"
           viewBox="0 0 16 16"
@@ -33,12 +33,12 @@
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="20"
+          height="20"
           fill="currentColor"
           class="bi bi-dash-circle"
           viewBox="0 0 16 16"
-          style="flex-basis: 5vw"
+          style="flex-basis: 5vw; margin-left: 3vw"
           @click="MINUS_CHOICE_FOODS(item['name'])"
         >
           <path
@@ -51,8 +51,8 @@
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
+          width="20"
+          height="20"
           fill="currentColor"
           class="bi bi-plus-circle"
           viewBox="0 0 16 16"
@@ -102,12 +102,14 @@ export default {
   display: flex;
   background-color: rgb(69, 169, 200);
   color: white;
-  font-size: 3vh;
-  height: 5vh;
+  height: 4vh;
   gap: 20vw;
+  font-size: 3vh;
 }
 .footer-item {
+  display: flex;
   margin-left: 3vw;
+  align-items: center;
 }
 .footer-body {
   overflow: scroll;
@@ -117,7 +119,10 @@ export default {
   display: none; /* Chrome, Safari, Opera*/
 }
 .footer-content {
+  margin: 0.2vh 1.5vw;
   display: flex;
   align-items: center;
+  height: 3vh;
+  font-size: 2vh;
 }
 </style>
