@@ -124,7 +124,7 @@ body {
 }
 
 .login-main-container {
-  width: 100vw;
+  width: 100%;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -132,7 +132,7 @@ body {
 }
 
 .login-main-container .login-main-wrap {
-  width: 768px;
+  width: 465px;
   height: 100%;
 }
 
@@ -141,15 +141,6 @@ body {
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
-}
-
-.login-main-container .login-main-wrap .logo-wrap {
-  padding-top: 55px;
-}
-
-.login-main-container .login-main-wrap .logo-wrap img {
-  width: 300px;
-  height: 300px;
 }
 
 .login-main-container .login-main-wrap header .sel-lang-wrap {
@@ -165,20 +156,20 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 60px;
+  padding-top: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .login-input-section-wrap h2 {
-  margin-bottom: 60px;
+  margin-bottom: 20%;
 }
 
 .guest-input-wrap,
 .login-input-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border: solid 1px var(--border-gray-color);
   background: white;
   border-radius: 10px;
@@ -197,9 +188,9 @@ input[type='password']::placeholder {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
-  font-size: 14px;
+  font-size: 20px;
   /* margin-left: 10px; */
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -212,8 +203,8 @@ input[type='password']::placeholder {
 .guest-button-wrap button,
 .login-button-wrap button {
   width: 465px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);

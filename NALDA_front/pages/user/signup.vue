@@ -378,14 +378,6 @@ export default {
   font-style: normal;
 }
 
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -401,7 +393,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 21px;
 }
 
 .singup-main-container .singup-main-wrap {
