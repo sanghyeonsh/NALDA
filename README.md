@@ -47,11 +47,11 @@
 
 ### 폰트
 #### TwayFly
-![twayfly](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ff1bc795-4c5c-4b53-8451-b2ca15a6e1d1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T020125Z&X-Amz-Expires=86400&X-Amz-Signature=3f94db7232eb7f1dc32fe2bfc9ffb94c1ea6f3923a6af587932565d654b2c650&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![twayfly](https://noonnucc-production.sfo2.cdn.digitaloceanspaces.com/noonnu7109c68d82ab78bdaf7b37b3fb82c3e41641514318)
 
 ### 아이콘
 #### Material Design Icon
-![Material Design Icon](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/955a0d81-c567-4a6e-850e-36ecbbd02262/google-material-icons.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T020400Z&X-Amz-Expires=86400&X-Amz-Signature=02daccfde9af06c4963df7329abc732cfc39205b56fae49228d32ff2fe538c49&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22google-material-icons.png%22&x-id=GetObject)
+![Material Design Icon](https://lh3.googleusercontent.com/64GWPJbpSJKB2hejLK02GLHjflv2B8cCr7SJUQI7cHXO0Qakc28U-ZRw7IRL3WadD8Stugb1HB4GgpqEkRydsEaR9AC4SqrTeRlCDlo=w1064-v0)
 
 ## 4. Our Convention
 ### 1. Commit Convention
@@ -85,11 +85,3 @@
 - Vuex Store:
     - Store file: camelCase
     - store 구조
-
-        ![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/107f0c4b-d465-46d9-a8aa-afbc99635c6a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220726%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220726T020731Z&X-Amz-Expires=86400&X-Amz-Signature=8ad76db16031b54a11a7a6b9c0eb95048e3803e6571956e5b1524eb8c2f24e6f&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
-        
-    - mutation: LIKE_THIS
-        - LIKE_THIS_BABE
-    - state / getter / mutation 각 1씩 만들어
-        - getter: 원하는 모양 가공시 사용
-    - store 폴더에 하위 단위로 묶어서 분리
