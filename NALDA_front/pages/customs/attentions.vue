@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-tabs pills>
+    <b-tabs class="info" pills>
       <b-tab title="1page" active>
         <div class="custom-allowance-container1">
           <div class="dutyfree-allowance-wrap">
