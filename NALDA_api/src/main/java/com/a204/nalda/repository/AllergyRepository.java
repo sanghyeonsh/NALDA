@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface AllergyRepository extends JpaRepository<Allergy, Long> {
 
-    @Query("select a from Allergy a inner join fetch Meal m on m.id = :mealId")
+    @Query("select a from Allergy a inner join fetch Meal m on m.id = a.meal.id where m.id = :mealId")
     List<Allergy> findByMeal(@Param("mealId") Long mealId);
 
 
