@@ -203,7 +203,7 @@ export default {
   height: 70vh;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   background-color: orange;
 }
 
@@ -225,8 +225,8 @@ ul {
 }
 
 .user-page-wrap button {
-  width: 12%;
-  height: 30px;
+  width: 10%;
+  height: 100%;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
@@ -249,6 +249,7 @@ ul {
 }
 
 .subindex-item {
+  height: 75%;
   width: 80%;
 }
 .subindex-item h4 {
@@ -259,12 +260,15 @@ ul {
 .subindex-bluebox {
   /* width: 80%; */
   height: 100%;
-  padding: 3% 6% 3% 6%;
+  padding: 2% 6% 2% 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
   background-color: #fff;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .myprofile-wrap {
@@ -275,8 +279,8 @@ ul {
 .info-title {
   display: flex;
   flex-direction: column;
-  /* margin-top: 2%;
-  margin-bottom: 2%; */
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .info-wrap {
@@ -289,6 +293,7 @@ i {
 }
 
 .myinfo-area {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -302,9 +307,10 @@ i {
 }
 
 .myaccount {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  /* margin-left: 6%; */
+  margin-left: 3%;
   align-items: center;
 }
 
@@ -324,7 +330,7 @@ i {
 }
 
 .subindex-row .row-item {
-  /* margin-bottom: 1%; */
+  /* margin-bottom: 0.5%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -25,21 +25,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 div.clickEffect {
   position: fixed;
   box-sizing: border-box;
   border-style: solid;
-  border-color: #828282;
+  border-color: #206e95;
   border-radius: 50%;
-  animation: clickEffect 0.8s ease-out;
+  -webkit-animation: clickEffect 0.8s ease-out;
   z-index: 5;
 }
 @keyframes clickEffect {
   0% {
     opacity: 1;
-    width: 0.5em;
-    height: 0.5em;
+    width: 1em;
+    height: 1em;
     margin: -0.25em;
     border-width: 0.3rem;
   }

@@ -7,7 +7,7 @@
       </div>
 
       <div class="text-area">
-        <h2 class="greeting stagger-item">Hi, Anonymous-Ku</h2>
+        <h3 class="greeting stagger-item">Hi, Anonymous-Ku</h3>
         <div class="desc stagger-item">
           Fly with nalda
           <br />Nearest Airser-Line Service during in Airbus
@@ -80,11 +80,12 @@ export default {
 }
 
 .usernav-container {
+  /* position: fixed; */
   /* background-color: var(--nalda-blue-color); */
   background-color: red;
   color: #ffe6cf;
   height: 70vh;
-  width: 40%;
+  width: 30%;
   margin-left: 0;
 }
 .profile-wrap {
@@ -126,7 +127,7 @@ li {
   border: none;
   outline: none;
   color: #ffe6cf;
-  font-size: 15px;
+  font-size: 15em;
 }
 
 .mouse-effect {
@@ -195,15 +196,21 @@ header .thumb-wrapper {
 
 header .greeting {
   /* margin-bottom: 5%; */
+  margin-top: 5%;
+  font-size: 1.3em;
+}
+
+header .desc {
+  font-size: 1em;
 }
 
 header .modify {
-  padding: 3% 3% 3% 3%;
+  /* padding: 1% 2% 1% 2%; */
   background-color: rgba(0, 0, 0, 0.05);
   display: inline-block;
   border-radius: 20px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-  /* margin-top: 5%; */
+  margin-top: 5%;
   cursor: pointer;
 }
 
@@ -218,7 +225,7 @@ header .modify {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 15px;
+  font-size: 1em;
   cursor: pointer;
 }
 
@@ -241,6 +248,6 @@ header .modify {
 }
 
 .list .item .right img {
-  padding-right: 14px;
+  padding-right: 1%;
 }
 </style>
