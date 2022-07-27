@@ -7,7 +7,7 @@
       </div>
 
       <div class="text-area">
-        <h2 class="greeting stagger-item">Hi, Anonymous-Ku</h2>
+        <h3 class="greeting stagger-item">Hi, Anonymous-Ku</h3>
         <div class="desc stagger-item">
           Fly with nalda
           <br />Nearest Airser-Line Service during in Airbus
@@ -18,7 +18,6 @@
         <div>modify</div>
       </div>
     </header>
-
     <ul class="list">
       <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
         <div class="left">
@@ -81,14 +80,16 @@ export default {
 }
 
 .usernav-container {
-  background-color: var(--nalda-blue-color);
+  /* position: fixed; */
+  /* background-color: var(--nalda-blue-color); */
+  background-color: red;
   color: #ffe6cf;
   height: 70vh;
-  width: auto;
+  width: 30%;
   margin-left: 0;
 }
 .profile-wrap {
-  padding: 80px 40px;
+  padding: 14% 12%;
 }
 
 /* body {
@@ -126,10 +127,12 @@ li {
   border: none;
   outline: none;
   color: #ffe6cf;
-  font-size: 15px;
+  font-size: 15em;
 }
 
 .mouse-effect {
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -159,8 +162,8 @@ header {
 }
 
 header .thumb {
-  width: 92px;
-  height: 92px;
+  width: 30%;
+  height: 30%;
   border-radius: 50%;
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.1), 0 12px 24px 0 rgba(0, 0, 0, 0.24);
 }
@@ -168,7 +171,7 @@ header .thumb {
 header .thumb-wrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 36px;
+  /* margin-bottom: 3%; */
 }
 
 /* msg 기능이 생긴다면 */
@@ -192,23 +195,29 @@ header .thumb-wrapper {
 } */
 
 header .greeting {
-  margin-bottom: 10px;
+  /* margin-bottom: 5%; */
+  margin-top: 5%;
+  font-size: 1.3em;
+}
+
+header .desc {
+  font-size: 1em;
 }
 
 header .modify {
-  padding: 8px 22px 10px 22px;
+  /* padding: 1% 2% 1% 2%; */
   background-color: rgba(0, 0, 0, 0.05);
   display: inline-block;
   border-radius: 20px;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-  margin-top: 18px;
+  margin-top: 5%;
   cursor: pointer;
 }
 
 /* 리스트 */
 .list {
-  margin-top: 48px;
-  padding-bottom: 30px;
+  /* margin-top: 8%; */
+  padding-bottom: auto;
 }
 
 .list .item {
@@ -216,7 +225,7 @@ header .modify {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 15px;
+  font-size: 1em;
   cursor: pointer;
 }
 
@@ -226,7 +235,7 @@ header .modify {
 }
 
 .list .item .left .name {
-  margin-left: 6px;
+  /* margin-left: 6px; */
 }
 
 .list .item .right {
@@ -239,6 +248,6 @@ header .modify {
 }
 
 .list .item .right img {
-  padding-right: 14px;
+  padding-right: 1%;
 }
 </style>

@@ -1,29 +1,27 @@
 <template>
-  <div class="main-index">
-    <div class="main-container">
-      <div class="main-container-box" @click="MoveOrders">
-        <div>
-          <img class="image" src="../../static/main/service.png" alt="service" />
-          <h3>service</h3>
-        </div>
+  <div class="main-container">
+    <div class="main-container-box" @click="MoveOrders">
+      <div>
+        <img class="image" src="../../static/main/service.png" alt="service" />
+        <h3>service</h3>
       </div>
-      <div class="main-container-box">
-        <nuxt-link to="/user/login" style="text-decoration: none">
-          <div>
-            <img
-              class="image"
-              src="../../static/main/custom_declaration.png"
-              alt="custom_declaration"
-            />
-            <h3>Custom Declaration</h3>
-          </div>
-        </nuxt-link>
-      </div>
-      <div class="main-container-box">
+    </div>
+    <div class="main-container-box">
+      <nuxt-link to="/user/login" style="text-decoration: none">
         <div>
-          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
-          <h3>Airport Info</h3>
+          <img
+            class="image"
+            src="../../static/main/custom_declaration.png"
+            alt="custom_declaration"
+          />
+          <h3>Custom Declaration</h3>
         </div>
+      </nuxt-link>
+    </div>
+    <div class="main-container-box">
+      <div>
+        <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+        <h3>Airport Info</h3>
       </div>
     </div>
   </div>
@@ -56,11 +54,11 @@ export default {
 </script>
 
 <style scoped>
-.main-index {
+/* .main-index {
   display: flex;
   flex-direction: column;
   height: 70vh;
-}
+} */
 .main-container {
   display: flex;
   height: 70vh;

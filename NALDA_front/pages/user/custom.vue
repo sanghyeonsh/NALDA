@@ -1,31 +1,29 @@
 <template>
   <div class="mycustom-container">
-    <div class="user-nav">
-      <user-navs></user-navs>
-    </div>
+    <user-navs></user-navs>
     <div class="custom-declaration-wrap">
       <div class="mycustom-subindex-item">
         <h4>세관신고서 목록</h4>
         <div class="mycustom-subindex-bluebox">
-          <div class="overflow-auto">
-            <p class="mt-3">현재 페이지: {{ currentPage }}</p>
-            <b-table
-              id="my-table"
-              :items="items"
-              :per-page="perPage"
-              :current-page="currentPage"
-              small
-              @click="customDetail(item)"
-            ></b-table>
-            <b-pagination
-              v-model="currentPage"
-              :total-rows="rows"
-              :per-page="perPage"
-              pills
-              variant="info"
-              size="sm"
-            ></b-pagination>
-          </div>
+          <!-- <div class="overflow-auto"> -->
+          <p class="mt-3">현재 페이지: {{ currentPage }}</p>
+          <b-table
+            id="my-table"
+            :items="items"
+            :per-page="perPage"
+            :current-page="currentPage"
+            small
+            @click="customDetail(item)"
+          ></b-table>
+          <b-pagination
+            v-model="currentPage"
+            :total-rows="rows"
+            :per-page="perPage"
+            pills
+            variant="info"
+            size="sm"
+          ></b-pagination>
+          <!-- </div> -->
         </div>
       </div>
     </div>
@@ -40,7 +38,7 @@ export default {
   data() {
     return {
       // rows: '',
-      perPage: 10,
+      perPage: 8,
       currentPage: 1,
       items: [
         { no: 1, journey: 'Madrid', date: '2019-01-24' },
@@ -95,46 +93,66 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+.mycustom-container {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: orange;
+}
 
 ol,
 ul {
   list-style: none;
   padding-left: 0;
 }
-.mycustom-container {
+
+.pagination {
+  justify-content: center;
+}
+.custom-declaration-wrap {
+  height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: row;
-  /* justify-content: space-between; */
-}
-
-.custom-declaration-wrap {
-  height: auto;
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
 }
+
+.mycustom-subindex-item {
+  height: 75%;
+  width: 80%;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
 .mycustom-subindex-item h4 {
   text-align: right;
-  margin-bottom: 20px;
 }
 
 .mycustom-subindex-bluebox {
-  width: 900px;
-  padding: 20px 50px;
+  /* width: 80%; */
+  width: 100%;
+  height: 100%;
+  padding: 2% 6% 2% 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .overflow-auto {
-  width: auto;
-  height: auto;
-  margin: 10px;
+  width: 100%;
+  height: 100%;
+  /* margin: 2%; */
   text-align: center;
 }
 

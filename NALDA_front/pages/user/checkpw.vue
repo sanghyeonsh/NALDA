@@ -63,7 +63,7 @@ body {
 }
 
 .main-container {
-  width: 100vw;
+  width: 100%;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -71,7 +71,8 @@ body {
 }
 
 .main-container .main-wrap {
-  width: 100%;
+  width: 465px;
+  height: 100%;
 }
 
 .main-container .main-wrap .sel-lang-wrap .lang-select {
@@ -84,6 +85,7 @@ body {
 .main-container .main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
+  margin-top: 2%;
 }
 
 /* user input 대분류 CSS */
@@ -107,6 +109,7 @@ body {
 /* check msg */
 .chk-msg {
   width: 465px;
+  margin-bottom: 2%;
 }
 
 .user-input-section-wrap h2 {
@@ -115,7 +118,7 @@ body {
 
 .user-input-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border: solid 1px #dadada;
   border-radius: 10px;
   /* padding: 10px; */
@@ -129,11 +132,11 @@ body {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
-  font-size: 14px;
+  font-size: 20px;
   /* margin-left: 10px; */
   padding: 10px;
   border: solid 1px #dadada;
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
 }
 
@@ -152,7 +155,7 @@ body {
 .user-button-wrap button {
   width: 465px;
   height: 48px;
-  font-size: 18px;
+  font-size: 20px;
   background: #206e95;
   color: white;
   border: solid 1px #88c0c5;

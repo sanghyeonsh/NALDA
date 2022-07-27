@@ -1,8 +1,6 @@
 <template>
   <div class="mypage-container">
-    <div class="user-nav">
-      <user-navs></user-navs>
-    </div>
+    <user-navs></user-navs>
     <div class="user-page-wrap">
       <div class="subindex-item">
         <h4>내 정보</h4>
@@ -201,15 +199,17 @@ export default {
 }
 
 .mypage-container {
-  width: 100%;
+  width: 100vw;
+  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: orange;
 }
 
 .user-page-wrap {
   height: auto;
-  width: 80%;
+  width: 100%;
   color: #1e3c4b;
   display: flex;
   justify-content: center;
@@ -225,8 +225,8 @@ ul {
 }
 
 .user-page-wrap button {
-  width: 12%;
-  height: 30px;
+  width: 10%;
+  height: 100%;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
@@ -248,19 +248,27 @@ ul {
   transform: translateY(-7px);
 }
 
+.subindex-item {
+  height: 75%;
+  width: 80%;
+}
 .subindex-item h4 {
   text-align: right;
-  margin-bottom: 20px;
+  /* margin-bottom: 1%; */
 }
 
 .subindex-bluebox {
-  width: 100%;
-  padding: 20px 50px;
+  /* width: 80%; */
+  height: 100%;
+  padding: 2% 6% 2% 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
   background-color: #fff;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .myprofile-wrap {
@@ -271,8 +279,8 @@ ul {
 .info-title {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .info-wrap {
@@ -285,6 +293,7 @@ i {
 }
 
 .myinfo-area {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -298,9 +307,10 @@ i {
 }
 
 .myaccount {
+  width: 100%;
   display: flex;
   flex-direction: row;
-  margin-left: 40px;
+  margin-left: 3%;
   align-items: center;
 }
 
@@ -315,12 +325,12 @@ i {
 }
 
 .subindex-row {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  /* margin-top: 1%;
+  margin-bottom: 1%; */
 }
 
 .subindex-row .row-item {
-  margin-bottom: 10px;
+  /* margin-bottom: 0.5%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;

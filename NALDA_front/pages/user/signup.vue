@@ -1,61 +1,60 @@
 <template>
-  <div>
-    <div class="singup-main-container">
-      <div class="singup-main-wrap">
-        <header>
-          <div class="sel-lang-wrap">
-            <select class="lang-select">
-              <option>Korean</option>
-              <option>English</option>
-            </select>
+  <div class="singup-main-container">
+    <div class="singup-main-wrap">
+      <header>
+        <div class="sel-lang-wrap">
+          <select class="lang-select">
+            <option>Korean</option>
+            <option>English</option>
+          </select>
+        </div>
+      </header>
+      <section class="signup-input-section-wrap">
+        <h2>Sign up</h2>
+        <div>
+          <h6>아이디</h6>
+          <div class="signup-input-id-wrap">
+            <input id="input-id" v-model="username" placeholder="Username" type="text" />
+            <input id="id-check-btn" type="button" value="아이디 중복 검사" @click="checkId" />
           </div>
-        </header>
-        <section class="signup-input-section-wrap">
-          <h2>Sign up</h2>
-          <div>
-            <h6>아이디</h6>
-            <div class="signup-input-id-wrap">
-              <input id="input-id" v-model="username" placeholder="Username" type="text" />
-              <input id="id-check-btn" type="button" value="아이디 중복 검사" @click="checkId" />
-            </div>
+        </div>
+        <div>
+          <h6>비밀번호</h6>
+          <div class="signup-input-wrap password-wrap">
+            <input v-model="password" placeholder="Password" type="password" />
           </div>
-          <div>
-            <h6>비밀번호</h6>
-            <div class="signup-input-wrap password-wrap">
-              <input v-model="password" placeholder="Password" type="password" />
-            </div>
+        </div>
+        <div>
+          <h6>비밀번호 확인</h6>
+          <div class="signup-input-wrap password-confirm-wrap">
+            <input v-model="passconfirm" placeholder="Password" type="password" />
           </div>
-          <div>
-            <h6>비밀번호 확인</h6>
-            <div class="signup-input-wrap password-confirm-wrap">
-              <input v-model="passconfirm" placeholder="Password" type="password" />
-            </div>
+        </div>
+        <div class="name-form-tag">
+          <h6>FirstName</h6>
+          <h6>MiddleName</h6>
+          <h6>LastName</h6>
+        </div>
+
+        <div class="name-form-input">
+          <div class="signup-input-wrap name-wrap">
+            <input v-model="firstName" placeholder="firstname" type="text" />
           </div>
-          <div class="name-form-tag">
-            <h6>FirstName</h6>
-            <h6>MiddleName</h6>
-            <h6>LastName</h6>
+          <div class="signup-input-wrap name-wrap">
+            <input v-model="middleName" placeholder="middlename" type="text" />
           </div>
 
-          <div class="name-form-input">
-            <div class="signup-input-wrap name-wrap">
-              <input v-model="firstName" placeholder="firstname" type="text" />
-            </div>
-            <div class="signup-input-wrap name-wrap">
-              <input v-model="middleName" placeholder="middlename" type="text" />
-            </div>
-
-            <div class="signup-input-wrap name-wrap">
-              <input v-model="lastName" placeholder="lastname" type="text" />
-            </div>
+          <div class="signup-input-wrap name-wrap">
+            <input v-model="lastName" placeholder="lastname" type="text" />
           </div>
-          <div>
-            <h6>생년월일</h6>
-            <div class="birthdate-wrap">
-              <div class="signup-input-birth">
-                <input v-model="birthday" type="date" />
-              </div>
-              <!-- <div class="signup-input-birth">
+        </div>
+        <div>
+          <h6>생년월일</h6>
+          <div class="birthdate-wrap">
+            <div class="signup-input-birth">
+              <input v-model="birthday" type="date" />
+            </div>
+            <!-- <div class="signup-input-birth">
                 <input id="signup-birth-yy" type="text" placeholder="년(yyyy)" />
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
@@ -77,115 +76,114 @@
               </div>
               <div class="signup-input-birth" style="margin-left: 10px;">
                 <input id="signup-birth-dd" type="text" placeholder="일" />
-              </div>-->
+            </div>-->
+          </div>
+        </div>
+        <div>
+          <h6>성별</h6>
+          <div class="gender-wrap">
+            <div>
+              <button class="gender-btn" value="MALE" @click="maleClick">남자</button>
+            </div>
+            <div>
+              <button class="gender-btn" value="FEMALE" @click="femaleClick">여자</button>
             </div>
           </div>
-          <div>
-            <h6>성별</h6>
-            <div class="gender-wrap">
-              <div>
-                <button class="gender-btn" value="MALE" @click="maleClick">남자</button>
-              </div>
-              <div>
-                <button class="gender-btn" value="FEMALE" @click="femaleClick">여자</button>
-              </div>
+        </div>
+        <div>
+          <h6>이메일</h6>
+          <div class="email-wrap">
+            <div class="signup-input-email">
+              <input id="signup-email-id" v-model="emailId" type="text" placeholder="이메일아이디" />
             </div>
-          </div>
-          <div>
-            <h6>이메일</h6>
-            <div class="email-wrap">
-              <div class="signup-input-email">
-                <input id="signup-email-id" v-model="emailId" type="text" placeholder="이메일아이디" />
-              </div>
-              <h5>@</h5>
-              <div class="signup-input-email">
-                <input id="signup-email" v-model="emailDomain" type="text" placeholder="이메일주소" />
-              </div>
-              <div class="signup-input-email" style="margin-left: 10px">
-                <select id="signup-email-select" class="selectbox" name="email" onchange>
-                  <option value="self">직접입력</option>
-                  <option value="naver">naver.com</option>
-                  <option value="gmail">gmail.com</option>
-                  <option value="daum">daum.com</option>
-                  <option value="hotmail">hotmail.com</option>
-                </select>
-              </div>
+            <h5>@</h5>
+            <div class="signup-input-email">
+              <input id="signup-email" v-model="emailDomain" type="text" placeholder="이메일주소" />
             </div>
-          </div>
-          <div>
-            <h6>전화번호</h6>
-            <div class="mobile-num-wrap">
-              <div class="signup-mobile-num">
-                <input id="mobile-num" v-model="firstNum" type="text" placeholder="000" />
-              </div>
-              <h5>-</h5>
-              <div class="signup-mobile-num">
-                <input id="mobile-num" v-model="secondNum" type="text" placeholder="0000" />
-              </div>
-              <h5>-</h5>
-              <div class="signup-mobile-num">
-                <input id="mobile-num" v-model="thirdNum" type="text" placeholder="0000" />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h6>주소</h6>
-            <div class="address-wrap">
-              <div class="postal-wrap">
-                <input id="postal-code" placeholder="postal code" type="text" />
-                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
-              </div>
-              <div class="signup-input-wrap">
-                <input id="address" v-model="mainAddress" placeholder="address" type="text" />
-              </div>
-              <div class="signup-input-wrap" style="margin-top: 3px">
-                <input
-                  id="address-detail"
-                  v-model="detailAddress"
-                  placeholder="address detail"
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h6>여권번호</h6>
-            <div class="signup-input-wrap passport-num-wrap">
-              <input v-model="passportNum" placeholder="passportnumber" type="text" />
-            </div>
-          </div>
-          <div>
-            <h6>국적</h6>
-            <div class="signup-input-wrap nationality-wrap">
-              <input v-model="nationality" placeholder="nationality" type="text" />
-            </div>
-          </div>
-          <div>
-            <h6>직업</h6>
-            <div class="signup-input-wrap job-wrap">
-              <select id="signup-job-select" class="selectbox" name="job" onchange>
-                <option value="student">학생</option>
-                <option value="housewife">주부</option>
-                <option value="soldier">군인</option>
-                <option value="financial business">금융업</option>
-                <option value="teacher ">교육계</option>
-                <option value="IT">IT, 정보통신</option>
-                <option value="commercial">광고</option>
-                <option value="agriculture">농부</option>
-                <option value="etc">기타</option>
+            <div class="signup-input-email" style="margin-left: 10px">
+              <select id="signup-email-select" class="selectbox" name="email" onchange>
+                <option value="self">직접입력</option>
+                <option value="naver">naver.com</option>
+                <option value="gmail">gmail.com</option>
+                <option value="daum">daum.com</option>
+                <option value="hotmail">hotmail.com</option>
               </select>
             </div>
           </div>
-
-          <div class="signup-button-wrap">
-            <button @click="registMember">Sign up</button>
+        </div>
+        <div>
+          <h6>전화번호</h6>
+          <div class="mobile-num-wrap">
+            <div class="signup-mobile-num">
+              <input id="mobile-num" v-model="firstNum" type="text" placeholder="000" />
+            </div>
+            <h5>-</h5>
+            <div class="signup-mobile-num">
+              <input id="mobile-num" v-model="secondNum" type="text" placeholder="0000" />
+            </div>
+            <h5>-</h5>
+            <div class="signup-mobile-num">
+              <input id="mobile-num" v-model="thirdNum" type="text" placeholder="0000" />
+            </div>
           </div>
-          <!-- <div class="signup-stay-sign-in">
+        </div>
+        <div>
+          <h6>주소</h6>
+          <div class="address-wrap">
+            <div class="postal-wrap">
+              <input id="postal-code" placeholder="postal code" type="text" />
+              <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+            </div>
+            <div class="signup-input-wrap">
+              <input id="address" v-model="mainAddress" placeholder="address" type="text" />
+            </div>
+            <div class="signup-input-wrap" style="margin-top: 3px">
+              <input
+                id="address-detail"
+                v-model="detailAddress"
+                placeholder="address detail"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+          <h6>여권번호</h6>
+          <div class="signup-input-wrap passport-num-wrap">
+            <input v-model="passportNum" placeholder="passportnumber" type="text" />
+          </div>
+        </div>
+        <div>
+          <h6>국적</h6>
+          <div class="signup-input-wrap nationality-wrap">
+            <input v-model="nationality" placeholder="nationality" type="text" />
+          </div>
+        </div>
+        <div>
+          <h6>직업</h6>
+          <div class="signup-input-wrap job-wrap">
+            <select id="signup-job-select" class="selectbox" name="job" onchange>
+              <option value="student">학생</option>
+              <option value="housewife">주부</option>
+              <option value="soldier">군인</option>
+              <option value="financial business">금융업</option>
+              <option value="teacher ">교육계</option>
+              <option value="IT">IT, 정보통신</option>
+              <option value="commercial">광고</option>
+              <option value="agriculture">농부</option>
+              <option value="etc">기타</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="signup-button-wrap">
+          <button @click="registMember">Sign up</button>
+        </div>
+        <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
                     <span>Sign up</span>
-          </div>-->
-        </section>
-      </div>
+        </div>-->
+      </section>
     </div>
   </div>
 </template>
@@ -390,9 +388,15 @@ body {
 
 .singup-main-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
+}
+
+.singup-main-container::-webkit-scrollbar {
+  display: none;
 }
 
 .singup-main-container .singup-main-wrap {
@@ -406,24 +410,10 @@ body {
   border: solid 1px var(--border-gray-color);
 }
 
-.singup-main-container .singup-main-wrap .logo-wrap {
-  padding-top: 55px;
-}
-
-.singup-main-container .singup-main-wrap .logo-wrap img {
-  width: 100px;
-  height: 100px;
-}
-
 .singup-main-container .singup-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
-}
-
-.singup-main-container .singup-main-wrap header .logo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 2%;
 }
 
 /* 회원가입 input 대분류 CSS */
@@ -436,7 +426,7 @@ body {
   align-items: center;
   background-color: var(--body-background-color);
   margin-top: 1%;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 
 .signup-input-section-wrap h2 {
@@ -452,7 +442,7 @@ body {
 
 .signup-input-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   background: white;
   border-radius: 10px;
 }
@@ -466,9 +456,9 @@ body {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
-  font-size: 14px;
+  font-size: 20px;
   /* margin-left: 10px; */
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -477,7 +467,7 @@ body {
 /* 아이디 CSS */
 .signup-input-id-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -486,10 +476,10 @@ body {
 .signup-input-id-wrap input {
   border: none;
   /* margin-top: 10px; */
-  font-size: 14px;
+  font-size: 20px;
   /* margin-left: 10px; */
   padding: 10px;
-  height: 48px;
+  height: 55px;
   border: solid 1px var(--border-gray-color);
   background: white;
   border-radius: 10px;
@@ -501,8 +491,8 @@ body {
 
 #id-check-btn {
   width: 160px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
@@ -527,6 +517,10 @@ input[type='password']::placeholder {
 .name-form-input {
   display: flex;
 }
+/* 
+.signup-input-wrap {
+  justify-content: space-around;
+} */
 .name-form-input > div {
   width: 155px;
 }
@@ -542,7 +536,7 @@ input[type='password']::placeholder {
 
 .signup-input-birth {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   border-radius: 10px;
 }
@@ -589,7 +583,7 @@ input[type='password']::placeholder {
   display: block;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 55px;
   background: white;
   box-sizing: border-box;
   border-radius: 10px;
@@ -598,7 +592,7 @@ input[type='password']::placeholder {
 #signup-email-id,
 #signup-email {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -606,7 +600,7 @@ input[type='password']::placeholder {
 }
 #signup-email-select {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -646,7 +640,7 @@ input[type='password']::placeholder {
   display: block;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 55px;
   background: white;
   box-sizing: border-box;
   border-radius: 10px;
@@ -655,7 +649,7 @@ input[type='password']::placeholder {
 #mobile-num {
   width: 149.48px;
   border: none;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -667,7 +661,7 @@ input[type='password']::placeholder {
 .postal-wrap {
   width: 465px;
   display: flex;
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   margin-bottom: 5px;
 }
@@ -682,7 +676,7 @@ input[type='password']::placeholder {
 
 #postal-check-btn {
   width: 100px;
-  height: 48px;
+  height: 55px;
   font-size: 18px;
   margin-left: 10px;
   background: var(--nalda-blue-color);
@@ -695,7 +689,7 @@ input[type='password']::placeholder {
 
 #signup-job-select {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -710,7 +704,7 @@ input[type='password']::placeholder {
 
 .signup-button-wrap button {
   width: 465px;
-  height: 48px;
+  height: 55px;
   font-size: 18px;
   background: var(--nalda-blue-color);
   color: white;
