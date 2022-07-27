@@ -14,8 +14,8 @@ export default {
   components: { HeaderComponent, FooterComponent },
 }
 </script>
-
-<style>
+b
+<style scoped>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;

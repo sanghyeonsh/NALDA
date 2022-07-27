@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
