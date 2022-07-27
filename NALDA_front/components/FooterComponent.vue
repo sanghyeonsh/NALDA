@@ -1,33 +1,24 @@
 <template>
-  <div>
-    <div class="footer-container">
-      <div class="service-btn-wrap">
-        <button class="toilet-wrap" @click="MoveToilet">
-          <img src="../static/main/toilet_navy.png" alt="toilet" />
-          <h3>화장실</h3>
-        </button>
-        <button
-          class="service-wrap"
-          style="background-color: var(--nalda-blue-color)"
-          @click="MoveHelpcall"
-        >
-          <img src="../static/main/flight_attendant_w.png" alt="toilet" />
-          <h3>승무원호출</h3>
-        </button>
-      </div>
-      <footer>
-        <div class="copyright-wrap">
-          <!-- <div><img src="logo.png"></div> -->
-          <div>
-            <span
-              >이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
-              고객센터</span
-            >
-            <div>Copyright © NALDA Corp. All Rights Reserved.</div>
-          </div>
-        </div>
-      </footer>
+  <div class="footer-container">
+    <div class="service-btn-wrap">
+      <button class="toilet-wrap" @click="MoveToilet">
+        <img src="../static/main/toilet_navy.png" alt="toilet" />
+        <h3>화장실</h3>
+      </button>
+      <button class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
+        <img src="../static/main/flight_attendant_w.png" alt="toilet" />
+        <h3>승무원호출</h3>
+      </button>
     </div>
+    <footer>
+      <div class="copyright-wrap">
+        <!-- <div><img src="logo.png"></div> -->
+        <div>
+          <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
+          <div>Copyright © NALDA Corp. All Rights Reserved.</div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -46,31 +37,19 @@ export default {
 </script>
 
 <style scoped>
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-background-blue-color: #45a9c8;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-  --nalda-navy-color: #1b2f40;
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 * {
   margin: 0;
   padding: 0;
+  font-family: 'twayfly';
 }
-
-/* html,
-body {
-  background: var(--body-background-color);
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-  margin: 0;
-  text-align: center;
-} */
-
 .service-btn-wrap {
   display: flex;
   flex-direction: row;
@@ -125,17 +104,15 @@ button:hover {
 }
 
 .footer-container {
-  width: 100%;
-  height: auto;
+  width: 100vw;
+  height: 15vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   background-color: rgba(239, 239, 239, 0.511);
 }
 
 .footer-container footer {
   width: 100%;
-  margin-bottom: 30px;
   text-align: center;
   font-size: smaller;
 }

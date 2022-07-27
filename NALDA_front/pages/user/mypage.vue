@@ -30,8 +30,8 @@
               <li>
                 <div class="myaccount" style="width: 651px">
                   <div class="myname">
-                    <div class="name-text">익명규</div>
-                    <div class="myId">anonymous-ku</div>
+                    <!-- <div class="name-text">익명규</div> -->
+                    <div class="myId" v-text="loginMember"></div>
                   </div>
                   <button type="button" class="btn-edit">
                     <span class="text">수정</span>
@@ -46,7 +46,7 @@
               <div class="row-item phone">
                 <div>
                   <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text">+82 10-3***-7***</span>
+                  <span class="item-text" v-text="member.tel"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -55,7 +55,7 @@
               <div class="row-item mail">
                 <div>
                   <i class="fa-solid fa-envelope"></i>
-                  <span class="item-text">jk******@n*******.com</span>
+                  <span class="item-text" v-text="member.email"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -74,7 +74,7 @@
               <div class="row-item gender">
                 <div>
                   <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text">+82 10-3***-7***</span>
+                  <span class="item-text" v-text="member.gender"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -83,16 +83,26 @@
               <div class="row-item address">
                 <div>
                   <i class="fa-solid fa-location-dot"></i>
-                  <span class="item-text">서울시 동대문구</span>
+                  <span class="item-text" v-text="member.address.mainAddress"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
                 </button>
               </div>
+              <div class="row-item address">
+                <div>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <span class="item-text" v-text="member.address.detailAddress"></span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+
               <div class="row-item passportnumber">
                 <div>
                   <i class="fa-solid fa-passport"></i>
-                  <span class="item-text">M77139987</span>
+                  <span class="item-text" v-text="member.passportNum"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -101,7 +111,16 @@
               <div class="row-item job">
                 <div>
                   <i class="fa-solid fa-briefcase"></i>
-                  <span class="item-text">SW engineer</span>
+                  <span class="item-text" v-text="member.job"></span>
+                </div>
+                <button type="button" class="btn-edit">
+                  <span class="text">수정</span>
+                </button>
+              </div>
+              <div class="row-item nationality">
+                <div>
+                  <i class="fa-solid fa-briefcase"></i>
+                  <span class="item-text" v-text="member.nationality"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -116,10 +135,45 @@
 </template>
 
 <script scoped>
+import { mapState } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
+import { mypage } from '@/api/user'
 export default {
   name: 'MyPage',
   components: { UserNavs },
+  data() {
+    return {
+      member: {
+        address: {
+          mainAddress: '',
+          detailAddress: '',
+          zipcode: null,
+        },
+        job: null,
+        tel: null,
+        email: null,
+        gender: null,
+        nationality: null,
+        passportNum: null,
+      },
+    }
+  },
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
+
+  created() {
+    mypage(
+      this.loginMember,
+      ({ data }) => {
+        console.log(data.info)
+        this.member = data.info
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
 }
 </script>
 
@@ -131,15 +185,15 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
   --border-gray-color: #dadada;
+  --nalda-background-blue-color: #45a9c8;
   --nalda-blue-color: #206e95;
   --nalda-blue-border-color: #88c0c5;
+  --nalda-navy-color: #1b2f40;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -171,7 +225,7 @@ ul {
 }
 
 .user-page-wrap button {
-  width: 80px;
+  width: 12%;
   height: 30px;
   font-size: 11px;
   text-transform: uppercase;
@@ -200,7 +254,7 @@ ul {
 }
 
 .subindex-bluebox {
-  width: 800px;
+  width: 100%;
   padding: 20px 50px;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);

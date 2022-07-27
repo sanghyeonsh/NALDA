@@ -1,58 +1,52 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div>
-    <header-component></header-component>
-    <div class="box">
-      <div class="body-container">
-        <div class="wrapper-main">
-          <div>{{ selectedMeal }}</div>
-          <img src="../../static/meal/chicken-steak.jpg" alt="치킨스테이크" />
-        </div>
-        <div class="wrapper-detail">
-          <div>
-            <div class="detail-title">세부 목록</div>
-            <div class="detail-content">
-              <div
-                v-for="(detail, i) in details"
-                :key="i"
-                class="form-check form-check-inline"
-              >
-                <input
-                  :id="'inlineCheckbox' + i"
-                  class="form-check-input"
-                  type="checkbox"
-                  :value="detail"
-                  checked
-                  @click="toggle1(detail)"
-                />
-                <label class="form-check-label" :for="'inlineCheckbox' + i">{{
-                  detail
-                }}</label>
-              </div>
+  <div class="meal-container">
+    <div class="body-container">
+      <div class="wrapper-main">
+        <div>{{ selectedMeal }}</div>
+        <img src="../../static/meal/chicken-steak.jpg" alt="치킨스테이크" />
+      </div>
+      <div class="wrapper-detail">
+        <div>
+          <div class="detail-title">세부 목록</div>
+          <div class="detail-content">
+            <div
+              v-for="(detail, i) in details"
+              :key="i"
+              class="form-check form-check-inline"
+            >
+              <input
+                :id="'inlineCheckbox' + i"
+                class="form-check-input"
+                type="checkbox"
+                :value="detail"
+                checked
+                @click="toggle1(detail)"
+              />
+              <label class="form-check-label" :for="'inlineCheckbox' + i">{{
+                detail
+              }}</label>
             </div>
           </div>
-          <div>
-            <div class="detail-title">알레르기 목록</div>
-            <ul>
-              <li v-for="(allergy, i) in allergies" :key="i">{{ allergy }}</li>
-            </ul>
-          </div>
+        </div>
+        <div>
+          <div class="detail-title">알레르기 목록</div>
+          <ul>
+            <li v-for="(allergy, i) in allergies" :key="i">{{ allergy }}</li>
+          </ul>
         </div>
       </div>
-      <div class="choice-box">
-        <button @click="finalChoice">선택</button>
-      </div>
+    </div>
+    <div class="choice-box">
+      <button @click="finalChoice">선택</button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
-  components: {
-    HeaderComponent,
-  },
+  name: 'MealDetail',
+  components: {},
   data() {
     return {
       finalDetail: [],
@@ -92,10 +86,11 @@ export default {
 </script>
 
 <style scoped>
-.box {
+.meal-container {
   display: flex;
-  width: 1000px;
-  margin: auto;
+  height: 70vh;
+  width: 100vw;
+  padding: 5vh 10vw;
   flex-direction: column;
 }
 .body-container {
