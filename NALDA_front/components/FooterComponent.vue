@@ -58,8 +58,8 @@ export default {
   height: 15vh;
   display: flex;
   flex-direction: column;
-  /* background-color: rgba(239, 239, 239, 0.511); */
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(239, 239, 239, 0.511);
+  /* background-color: rgba(0, 0, 0, 0); */
 }
 .footer-container footer {
   width: 100%;

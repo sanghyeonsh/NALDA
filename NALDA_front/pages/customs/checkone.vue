@@ -1,8 +1,6 @@
 <template>
   <div class="customs-input-container">
-    <div class="customs-nav">
-      <custom-navs></custom-navs>
-    </div>
+    <custom-navs></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
@@ -24,7 +22,7 @@
                   [총금액: 약
                   <input type="text" /> ]
                   <br />
-                  <b style="color: red;">*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도 초과)가 감면됩니다.</b>
+                  <b id="exceed-warning">*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도 초과)가 감면됩니다.</b>
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
@@ -112,14 +110,15 @@ export default {
 
 .customs-input-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 .customform-main-container {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   padding: 3%;
   display: flex;
   flex-direction: column;
@@ -128,9 +127,10 @@ export default {
 }
 
 .customform-wrap {
-  height: 100%;
-  width: 80%;
+  height: auto;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -151,7 +151,6 @@ export default {
   color: #004568;
   margin-bottom: 3%;
 }
-
 .custom-info-wrap {
   padding: 3%;
   width: 100%;
@@ -201,6 +200,10 @@ td {
 
 .details {
   width: 70%;
+}
+#exceed-warning {
+  color: red;
+  font-size: smaller;
 }
 .check-exceed-table input {
   background-color: #c7eafb;

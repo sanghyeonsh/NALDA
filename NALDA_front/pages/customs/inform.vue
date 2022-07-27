@@ -1,8 +1,6 @@
 <template>
   <div class="customs-input-container">
-    <div class="customs-nav">
-      <custom-navs></custom-navs>
-    </div>
+    <custom-navs></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
@@ -50,14 +48,15 @@ export default {
 
 .customs-input-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 .customform-main-container {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   padding: 3%;
   display: flex;
   flex-direction: column;
@@ -66,8 +65,8 @@ export default {
 }
 
 .customform-wrap {
-  height: 100%;
-  width: 80%;
+  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

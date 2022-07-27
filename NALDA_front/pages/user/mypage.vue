@@ -204,7 +204,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 .user-page-wrap {
@@ -226,7 +226,7 @@ ul {
 
 .user-page-wrap button {
   width: 10%;
-  height: 100%;
+  height: 30px;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;

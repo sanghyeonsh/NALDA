@@ -15,7 +15,7 @@
       </div>
 
       <div class="modify mouse-effect stagger-item" @click="moveModify">
-        <div>modify</div>
+        <button>modify</button>
       </div>
     </header>
     <ul class="list">
@@ -81,8 +81,8 @@ export default {
 
 .usernav-container {
   /* position: fixed; */
-  /* background-color: var(--nalda-blue-color); */
-  background-color: red;
+  background-color: var(--nalda-blue-color);
+  /* background-color: red; */
   color: #ffe6cf;
   height: 70vh;
   width: 30%;
@@ -127,7 +127,7 @@ li {
   border: none;
   outline: none;
   color: #ffe6cf;
-  font-size: 15em;
+  font-size: 1em;
 }
 
 .mouse-effect {
