@@ -1,13 +1,9 @@
 <template>
-  <div class="main-inex">
+  <div class="main-index">
     <div class="main-container">
       <div class="main-container-box" @click="MoveOrders">
         <div>
-          <img
-            class="image"
-            src="../../static/main/service.png"
-            alt="service"
-          />
+          <img class="image" src="../../static/main/service.png" alt="service" />
           <h3>service</h3>
         </div>
       </div>
@@ -25,11 +21,7 @@
       </div>
       <div class="main-container-box">
         <div>
-          <img
-            class="image"
-            src="../../static/main/airport_info.png"
-            alt="airport_info"
-          />
+          <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
           <h3>Airport Info</h3>
         </div>
       </div>
@@ -64,14 +56,14 @@ export default {
 </script>
 
 <style scoped>
-.main-inex {
+.main-index {
   display: flex;
   flex-direction: column;
   height: 70vh;
 }
 .main-container {
   display: flex;
-  height: 100%;
+  height: 70vh;
 }
 .main-container-box {
   text-align: center;
@@ -87,10 +79,10 @@ export default {
   /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
 .main-container-box h3 {
-  margin-top: 40px;
+  margin-top: 5vh;
 }
 
 .main-container-box div {
-  padding: 30px;
+  padding: 7vh;
 }
 </style>

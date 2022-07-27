@@ -6,11 +6,7 @@
       signup
     </div>-->
     <div class="userprofile-wrap" @click="MoveMypage">
-      <img
-        class="profile-img"
-        src="../static/main/user_profile_w.png"
-        alt="profile-img"
-      />
+      <img class="profile-img" src="../static/main/user_profile_w.png" alt="profile-img" />
       <h3>user</h3>
     </div>
   </div>
@@ -43,8 +39,9 @@ export default {
 .header-container {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 100vw;
   height: 15vh;
+  /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
   justify-content: space-between;
   align-items: center;

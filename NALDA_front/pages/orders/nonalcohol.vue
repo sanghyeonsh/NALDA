@@ -20,7 +20,8 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'OrdersNonAlohol',
+  name: 'OrdersNonAlcohol',
+  components: {},
   data() {
     return {
       testdata: [],
