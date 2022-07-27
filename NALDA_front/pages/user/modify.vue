@@ -30,10 +30,21 @@
               <input placeholder="Password" type="password" />
             </div>
           </div>
-          <div>
-            <h6>이름</h6>
+          <div class="modify-name-form-tag">
+            <h6>FirstName</h6>
+            <h6>MiddleName</h6>
+            <h6>LastName</h6>
+          </div>
+          <div class="modify-name-form-input">
             <div class="modify-input-wrap name-wrap">
-              <input placeholder="name" type="text" />
+              <input v-model="firstName" placeholder="firstname" type="text" />
+            </div>
+            <div class="modify-input-wrap name-wrap">
+              <input v-model="middleName" placeholder="middlename" type="text" />
+            </div>
+
+            <div class="modify-input-wrap name-wrap">
+              <input v-model="lastName" placeholder="lastname" type="text" />
             </div>
           </div>
           <div>
@@ -59,23 +70,14 @@
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="modify-input-email">
-                <input
-                  id="modify-email-id"
-                  type="text"
-                  placeholder="이메일아이디"
-                />
+                <input id="modify-email-id" type="text" placeholder="이메일아이디" />
               </div>
               <h5>@</h5>
               <div class="modify-input-email">
                 <input id="modify-email" type="text" placeholder="이메일주소" />
               </div>
               <div class="modify-input-email" style="margin-left: 10px">
-                <select
-                  id="modify-email-select"
-                  class="selectbox"
-                  name="email"
-                  onchange
-                >
+                <select id="modify-email-select" class="selectbox" name="email" onchange>
                   <option value="self">직접입력</option>
                   <option value="naver">naver.com</option>
                   <option value="gmail">gmail.com</option>
@@ -106,22 +108,13 @@
             <div class="address-wrap">
               <div class="postal-wrap">
                 <input id="postal-code" placeholder="postal code" type="text" />
-                <input
-                  id="postal-check-btn"
-                  type="button"
-                  value="주소검색"
-                  @click="find_Postcode()"
-                />
+                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
               </div>
               <div class="modify-input-wrap">
                 <input id="address" placeholder="address" type="text" />
               </div>
               <div class="modify-input-wrap" style="margin-top: 3px">
-                <input
-                  id="address-detail"
-                  placeholder="address detail"
-                  type="text"
-                />
+                <input id="address-detail" placeholder="address detail" type="text" />
               </div>
             </div>
           </div>
@@ -140,12 +133,7 @@
           <div>
             <h6>직업</h6>
             <div class="modify-input-wrap job-wrap">
-              <select
-                id="modify-job-select"
-                class="selectbox"
-                name="job"
-                onchange
-              >
+              <select id="modify-job-select" class="selectbox" name="job" onchange>
                 <option value="student">학생</option>
                 <option value="housewife">주부</option>
                 <option value="soldier">군인</option>
@@ -279,10 +267,15 @@ body {
 
 .modify-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 21px;
+  overflow: scroll;
+}
+
+.modify-container::-webkit-scrollbar {
+  display: none;
 }
 
 .modify-container .modify-wrap {
@@ -296,24 +289,10 @@ body {
   border: solid 1px var(--border-gray-color);
 }
 
-.modify-container .modify-wrap .logo-wrap {
-  padding-top: 55px;
-}
-
-.modify-container .modify-wrap .logo-wrap img {
-  width: 100px;
-  height: 100px;
-}
-
 .modify-container .modify-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
-}
-
-.modify-container .modify-wrap header .logo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 2%;
 }
 
 /* 회원가입 input 대분류 CSS */
@@ -325,6 +304,8 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--body-background-color);
+  margin-top: 1%;
+  margin-bottom: 2%;
 }
 
 .modify-input-section-wrap h2 {
@@ -340,7 +321,7 @@ body {
 
 .modify-input-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   background: white;
   border-radius: 10px;
 }
@@ -356,7 +337,7 @@ body {
   /* margin-top: 10px; */
   font-size: 14px;
   /* margin-left: 10px; */
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -365,7 +346,7 @@ body {
 /* 아이디 CSS */
 .modify-input-id-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -378,10 +359,35 @@ body {
   font-size: 14px;
   /* margin-left: 10px; */
   padding: 10px;
-  /* height: 48px; */
+  /* height: 55px; */
   border: solid 1px var(--border-gray-color);
   background: white;
   border-radius: 10px;
+}
+
+/* 이름 CSS */
+
+.modify-name-form-tag {
+  width: 465px;
+  display: flex;
+}
+
+.modify-name-form-tag > h6 {
+  margin-right: 90px;
+}
+
+.modify-name-form-input {
+  display: flex;
+}
+/* 
+.signup-input-wrap {
+  justify-content: space-around;
+} */
+.modify-name-form-input > div {
+  width: 155px;
+}
+.modify-name-form-input > div > input {
+  width: 155px;
 }
 
 /* #input-id {
@@ -390,8 +396,8 @@ body {
 
 /* #id-check-btn {
   width: 160px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
@@ -406,7 +412,7 @@ body {
 
 .modify-input-birth {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   border-radius: 10px;
 }
@@ -422,7 +428,7 @@ body {
   display: block;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 55px;
   background: white;
   box-sizing: border-box;
   border-radius: 10px;
@@ -432,7 +438,7 @@ body {
 #modify-birth-mm,
 #modify-birth-dd {
   width: 148px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -454,7 +460,7 @@ body {
   display: block;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 55px;
   background: white;
   box-sizing: border-box;
   border-radius: 10px;
@@ -463,7 +469,7 @@ body {
 #modify-email-id,
 #modify-email {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -471,7 +477,7 @@ body {
 }
 #modify-email-select {
   width: 145px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -487,8 +493,8 @@ body {
 
 #gender-btn {
   width: 230px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
@@ -511,7 +517,7 @@ body {
   display: block;
   position: relative;
   width: 100%;
-  height: 48px;
+  height: 55px;
   background: white;
   box-sizing: border-box;
   border-radius: 10px;
@@ -520,7 +526,7 @@ body {
 #mobile-num {
   width: 149.48px;
   border: none;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -532,7 +538,7 @@ body {
 .postal-wrap {
   width: 465px;
   display: flex;
-  height: 48px;
+  height: 55px;
   border-radius: 10px;
   margin-bottom: 5px;
 }
@@ -547,8 +553,8 @@ body {
 
 #postal-check-btn {
   width: 100px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   margin-left: 10px;
   background: var(--nalda-blue-color);
   color: white;
@@ -560,7 +566,7 @@ body {
 
 #modify-job-select {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border: none;
   padding: 10px;
   border: solid 1px var(--border-gray-color);
@@ -575,8 +581,8 @@ body {
 
 .modify-button-wrap button {
   width: 465px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);

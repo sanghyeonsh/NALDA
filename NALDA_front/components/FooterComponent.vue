@@ -1,24 +1,26 @@
 <template>
   <div class="footer-container">
-    <div class="service-btn-wrap">
-      <button class="toilet-wrap" @click="MoveToilet">
-        <img src="../static/main/toilet_navy.png" alt="toilet" />
-        <h3>화장실</h3>
-      </button>
-      <button class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
-        <img src="../static/main/flight_attendant_w.png" alt="toilet" />
-        <h3>승무원호출</h3>
-      </button>
-    </div>
-    <footer>
-      <div class="copyright-wrap">
-        <!-- <div><img src="logo.png"></div> -->
-        <div>
-          <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
-          <div>Copyright © NALDA Corp. All Rights Reserved.</div>
-        </div>
+    <div class="footer-wrap">
+      <div class="service-btn-wrap">
+        <button class="toilet-wrap" @click="MoveToilet">
+          <img src="../static/main/toilet_navy.png" alt="toilet" />
+          <h3>화장실</h3>
+        </button>
+        <button class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
+          <img src="../static/main/flight_attendant_w.png" alt="toilet" />
+          <h3>승무원호출</h3>
+        </button>
       </div>
-    </footer>
+      <footer>
+        <div class="copyright-wrap">
+          <!-- <div><img src="logo.png"></div> -->
+          <div>
+            <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
+            <div>Copyright © NALDA Corp. All Rights Reserved.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -46,15 +48,35 @@ export default {
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   font-family: 'twayfly';
+}
+
+.footer-container {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgba(239, 239, 239, 0.511); */
+  background-color: rgba(0, 0, 0, 0);
+}
+.footer-container footer {
+  width: 100%;
+  text-align: center;
+  font-size: smaller;
+}
+
+.footer-wrap {
+  /* padding: 1%; */
 }
 .service-btn-wrap {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin: 20px;
+  /* padding: 1%; */
+  margin-top: 1%;
+  margin-right: 1%;
 }
 .service-btn-wrap h3 {
   font-size: medium;
@@ -98,22 +120,8 @@ button:hover {
 }
 
 .service-wrap {
-  margin-left: 10px;
+  margin-left: 1%;
   background-color: var(--nalda-blue-color);
   color: white;
-}
-
-.footer-container {
-  width: 100vw;
-  height: 15vh;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.511);
-}
-
-.footer-container footer {
-  width: 100%;
-  text-align: center;
-  font-size: smaller;
 }
 </style>

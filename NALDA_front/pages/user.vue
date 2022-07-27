@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -25,11 +25,11 @@ export default {
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
 }
-.user-logo {
+/* .user-logo {
   width: 8%;
 }
 
 .logo-wrap {
   text-align: center;
-}
+} */
 </style>
