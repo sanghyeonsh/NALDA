@@ -254,6 +254,7 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+
 * {
   margin: 0;
   padding: 0;
