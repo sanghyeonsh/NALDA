@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 div.clickEffect {
   position: fixed;
   box-sizing: border-box;
