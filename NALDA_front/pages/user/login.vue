@@ -105,14 +105,6 @@ export default {
   font-style: normal;
 }
 
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -146,6 +138,7 @@ body {
 .login-main-container .login-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
+  margin-top: 2%;
 }
 
 .login-main-container .login-main-wrap header .logo-wrap {
@@ -156,7 +149,7 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 30%;
+  padding-top: 16%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -186,11 +179,11 @@ input[type='password']::placeholder {
 .guest-input-wrap input,
 .login-input-wrap input {
   border: none;
-  width: 465px;
+  width: 462px;
   /* margin-top: 10px; */
   font-size: 20px;
   /* margin-left: 10px; */
-  height: 55px;
+  height: 53px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -214,9 +207,8 @@ input[type='password']::placeholder {
 .login-stay-sign-in {
   width: 465px;
   height: 52px;
-
   display: flex;
-  font-size: 15px;
+  font-size: 25px;
   color: #4e4e4e;
   align-items: center;
   justify-content: flex-start;
