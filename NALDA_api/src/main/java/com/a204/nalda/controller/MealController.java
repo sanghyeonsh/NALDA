@@ -7,6 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,9 +25,24 @@ public class MealController {
     @GetMapping
     public ResponseEntity<?> listMeals(){
         Map<String, Object> result = new HashMap<>();
+        List<byte[]> images = new ArrayList<>();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
         try{
-            List<MealDto> mealDto = mealService.listMeal();
-            result.put("mealList", mealDto);
+            List<MealDto> mealDTOS = mealService.listMeal();
+            String fileName;
+            String filePath;
+            for (MealDto mealDTO : mealDTOS) {
+                fileName = mealDTO.getImageName();
+                filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
+                InputStream imageStream = new FileInputStream(filePath+fileName);
+                imageStream.transferTo(bos);
+                byte[] bytesData = bos.toByteArray();
+                images.add(bytesData);
+                break;
+            }
+            result.put("mealList", mealDTOS);
+            result.put("images", images);
             return new ResponseEntity<>(result,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
@@ -44,7 +63,7 @@ public class MealController {
             e.printStackTrace();
             result.put("msg", e.getMessage());
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
-    }
+        }
     }
 
     @GetMapping("/input/{flightId}")
