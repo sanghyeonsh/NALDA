@@ -300,7 +300,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
 }
 .custom-info-wrap {
   padding: 3%;

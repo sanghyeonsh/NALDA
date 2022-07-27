@@ -4,8 +4,8 @@
       <li class="item mouse-effect stagger-item" @click="moveInformStep">
         <div class="left">
           <i class="fa-solid fa-user"></i>
-          <div class="name">before start</div>
-          <div>유의사항</div>
+          <div class="name">유의사항</div>
+          <!-- <div>유의사항</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -19,8 +19,8 @@
       <li class="item mouse-effect stagger-item" @click="moveFirstStep">
         <div class="left">
           <i class="fa-solid fa-user"></i>
-          <div class="name">First Step</div>
-          <div>기본정보를 입력하는 단계입니다.</div>
+          <div class="name">기본정보</div>
+          <!-- <div>기본정보를 입력하는 단계입니다.</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -32,8 +32,8 @@
       <li class="item mouse-effect stagger-item" @click="moveSecondStep1">
         <div class="left">
           <i class="fa-solid fa-suitcase-rolling"></i>
-          <div class="name">Second Step1</div>
-          <div>신고사항을 입력하는 단계입니다.</div>
+          <div class="name">신고사항체크</div>
+          <!-- <div>신고사항을 입력하는 단계입니다.</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -45,8 +45,8 @@
       <li class="item mouse-effect stagger-item" @click="moveSecondStep2">
         <div class="left">
           <i class="fa-solid fa-suitcase-rolling"></i>
-          <div class="name">Second Step2</div>
-          <div>신고사항을 입력하는 단계입니다.</div>
+          <div class="name">신고사항체크</div>
+          <!-- <div>신고사항을 입력하는 단계입니다.</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -58,8 +58,8 @@
       <li class="item mouse-effect stagger-item" @click="moveThirdStep">
         <div class="left">
           <i class="fa-solid fa-bookmark"></i>
-          <div class="name">detail</div>
-          <div>상세신고사항을 작성하는 단계입니다.</div>
+          <div class="name">상세신고사항</div>
+          <!-- <div>상세신고사항을 작성하는 단계입니다.</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -71,8 +71,8 @@
       <li class="item mouse-effect stagger-item" @click="moveComplete">
         <div class="left">
           <i class="fa-solid fa-bookmark"></i>
-          <div class="name">complete</div>
-          <div>서명 하는 단계입니다.</div>
+          <div class="name">서명 및 날인</div>
+          <!-- <div>서명 하는 단계입니다.</div> -->
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -133,7 +133,12 @@ export default {
   color: #ffe6cf;
   height: 70vh;
   width: 30%;
-  margin-left: 0;
+  /* padding-left: 1em;
+  padding-right: 1em; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 /* body {
@@ -202,7 +207,12 @@ li {
 
 /* 리스트 */
 .step-list {
-  /* margin-top: 48px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 20%;
+  margin-bottom: 20%; */
   /* padding-top: 42%;
   padding-bottom: 42%; */
   /* width: 100%;
@@ -215,7 +225,7 @@ li {
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 1em;
-  /* margin: 2%; */
+  padding: 4%;
   cursor: pointer;
 }
 
@@ -225,7 +235,7 @@ li {
 }
 
 .step-list .item .left .name {
-  /* margin-left: 6px; */
+  margin-left: 1em;
 }
 
 .step-list .item .right {
@@ -238,7 +248,7 @@ li {
 }
 
 .list .item .right img {
-  padding-right: 1%;
+  /* margin-right: 1em; */
 }
 
 .step-list .next-steps {

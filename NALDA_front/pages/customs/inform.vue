@@ -101,7 +101,6 @@ export default {
   border-radius: 4px;
   align-content: center;
   font-size: larger;
-  text-align: center;
 }
 
 .next-page {

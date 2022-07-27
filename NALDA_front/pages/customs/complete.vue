@@ -139,6 +139,7 @@ export default {
 }
 
 .sign-date {
+  margin-top: 8%;
   width: 40%;
   text-align: center;
 }

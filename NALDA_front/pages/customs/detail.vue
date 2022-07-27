@@ -7,10 +7,10 @@
           <div class="customform-title">여행자 휴대품 신고서</div>
           <div class="declaration-detail-wrap">
             <div class="alcohols-perfume-cigarette">
-              <h4>
+              <h5>
                 ▶주류ㆍ향수ㆍ담배
                 <small>(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small>
-              </h4>
+              </h5>
               <table class="apc-table-wrap">
                 <tr id="alcohols">
                   <td>주류</td>
@@ -33,7 +33,7 @@
               </table>
             </div>
             <div class="etc-exceed-wrap">
-              <h4>▶그 밖의 면세범위 (US $600) 초과 물품</h4>
+              <h5>▶그 밖의 면세범위 (US $600) 초과 물품</h5>
               <table class="etc-exceed-table">
                 <thead>
                   <td>품명</td>
@@ -162,7 +162,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
 }
 /* declaration-detail-wrap CSS */
 
@@ -173,7 +173,7 @@ table {
 
 table tr,
 td {
-  padding: 10px;
+  padding: 2px;
   border: 1px solid #444444;
 }
 
@@ -186,7 +186,7 @@ td {
 
 /* apc table wrap CSS */
 
-.alcohols-perfume-cigarette h4 {
+.alcohols-perfume-cigarette h5 {
   margin-bottom: 1.5%;
 }
 .apc-table-wrap {
@@ -216,8 +216,8 @@ td {
 }
 
 /* etc exceed wrap CSS */
-.etc-exceed-wrap h4 {
-  margin-top: 2%;
+.etc-exceed-wrap h5 {
+  margin-top: 1.5%;
   margin-bottom: 1.5%;
 }
 
