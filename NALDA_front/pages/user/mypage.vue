@@ -1,8 +1,6 @@
 <template>
   <div class="mypage-container">
-    <div class="user-nav">
-      <user-navs></user-navs>
-    </div>
+    <user-navs></user-navs>
     <div class="user-page-wrap">
       <div class="subindex-item">
         <h4>내 정보</h4>
@@ -201,15 +199,17 @@ export default {
 }
 
 .mypage-container {
-  width: 100%;
+  width: 100vw;
+  height: 70vh;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  background-color: orange;
 }
 
 .user-page-wrap {
   height: auto;
-  width: 80%;
+  width: 100%;
   color: #1e3c4b;
   display: flex;
   justify-content: center;
@@ -248,14 +248,18 @@ ul {
   transform: translateY(-7px);
 }
 
+.subindex-item {
+  width: 80%;
+}
 .subindex-item h4 {
   text-align: right;
-  margin-bottom: 20px;
+  /* margin-bottom: 1%; */
 }
 
 .subindex-bluebox {
-  width: 100%;
-  padding: 20px 50px;
+  /* width: 80%; */
+  height: 100%;
+  padding: 3% 6% 3% 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
@@ -271,8 +275,8 @@ ul {
 .info-title {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  /* margin-top: 2%;
+  margin-bottom: 2%; */
 }
 
 .info-wrap {
@@ -300,7 +304,7 @@ i {
 .myaccount {
   display: flex;
   flex-direction: row;
-  margin-left: 40px;
+  /* margin-left: 6%; */
   align-items: center;
 }
 
@@ -315,12 +319,12 @@ i {
 }
 
 .subindex-row {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  /* margin-top: 1%;
+  margin-bottom: 1%; */
 }
 
 .subindex-row .row-item {
-  margin-bottom: 10px;
+  /* margin-bottom: 1%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;

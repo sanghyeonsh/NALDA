@@ -25,11 +25,11 @@ export default {
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
 }
-.user-logo {
+/* .user-logo {
   width: 8%;
 }
 
 .logo-wrap {
   text-align: center;
-}
+} */
 </style>

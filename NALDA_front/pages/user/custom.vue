@@ -103,27 +103,34 @@ ul {
 }
 .mycustom-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
   /* justify-content: space-between; */
 }
 
 .custom-declaration-wrap {
-  height: auto;
-  width: 80%;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.mycustom-subindex-item {
+  height: 100%;
+  width: 100%;
+}
 .mycustom-subindex-item h4 {
   text-align: right;
-  margin-bottom: 20px;
+  margin-bottom: 1%;
 }
 
 .mycustom-subindex-bluebox {
-  width: 900px;
-  padding: 20px 50px;
+  width: 80%;
+  height: 80%;
+  padding: 3% 6% 0 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
@@ -134,7 +141,7 @@ ul {
 .overflow-auto {
   width: auto;
   height: auto;
-  margin: 10px;
+  /* margin: 2%; */
   text-align: center;
 }
 

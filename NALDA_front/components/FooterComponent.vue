@@ -50,11 +50,25 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+
+.footer-container {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgba(239, 239, 239, 0.511); */
+  background-color: rgba(0, 0, 0, 0);
+}
+.footer-container footer {
+  width: 100%;
+  text-align: center;
+  font-size: smaller;
+}
 .service-btn-wrap {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin: 20px;
+  padding: 1%;
 }
 .service-btn-wrap h3 {
   font-size: medium;
@@ -98,22 +112,8 @@ button:hover {
 }
 
 .service-wrap {
-  margin-left: 10px;
+  margin-left: 1%;
   background-color: var(--nalda-blue-color);
   color: white;
-}
-
-.footer-container {
-  width: 100vw;
-  height: 15vh;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.511);
-}
-
-.footer-container footer {
-  width: 100%;
-  text-align: center;
-  font-size: smaller;
 }
 </style>
