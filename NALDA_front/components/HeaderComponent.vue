@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header-container">
     <div class="tmp"></div>
     <img class="logo" src="../static/logo.png" @click="MoveMain" />
     <!-- <div @click="MoveSignup">
@@ -36,7 +36,7 @@ export default {
   cursor: pointer;
 }
 
-.header {
+.header-container {
   display: flex;
   flex-direction: row;
   width: 100vw;

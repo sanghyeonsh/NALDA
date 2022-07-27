@@ -49,7 +49,7 @@ export default {
       }
     },
     MoveOrders() {
-      this.$router.push('/orders')
+      this.$router.push('/main/service')
     },
   },
 }

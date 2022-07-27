@@ -1,5 +1,5 @@
 <template>
-  <div class="orders-nonalcohol-container">
+  <div class="orders-snack-container">
     <ServiceNavbar />
     <div class="cards row row-cols-4">
       <div v-for="(item, idx) in testdata" :key="idx" class="col">
@@ -20,8 +20,7 @@ import axios from 'axios'
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'OrdersNonAlcohol',
-  components: {},
+  name: 'OrdersSnack',
   data() {
     return {
       testdata: [],
@@ -62,7 +61,7 @@ export default {
 </script>
 
 <style scoped>
-.orders-nonalcohol-container {
+.orders-snack-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
