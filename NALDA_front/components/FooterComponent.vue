@@ -128,7 +128,6 @@ button:hover {
 
 .footer-container footer {
   width: 100%;
-  margin-bottom: 30px;
   text-align: center;
   font-size: smaller;
 }

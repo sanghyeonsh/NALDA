@@ -63,7 +63,7 @@ export default {
 }
 .main-container {
   display: flex;
-  height: 100%;
+  height: 70vh;
 }
 .main-container-box {
   text-align: center;

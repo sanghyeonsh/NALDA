@@ -1,41 +1,40 @@
 <template>
-  <div>
-    <div class="login-main-container">
-      <div class="login-main-wrap">
-        <header>
-          <div class="sel-lang-wrap">
-            <select class="lang-select">
-              <option>Korean</option>
-              <option>English</option>
-            </select>
-          </div>
-        </header>
-        <section class="login-input-section-wrap">
-          <h2>Member</h2>
-          <div class="login-input-wrap">
-            <input v-model="id" placeholder="Username" type="text" />
-          </div>
-          <div class="login-input-wrap password-wrap">
-            <input v-model="password" placeholder="Password" type="password" />
-          </div>
-          <div class="login-button-wrap">
-            <button @click="inputLogin">Sign in</button>
-          </div>
-          <div class="login-stay-sign-in">
-            <nuxt-link to="/user/termsuse" style="text-decoration: none">
-              <i class="far fa-check-circle"></i>
-              <span>Sign up</span>
-            </nuxt-link>
-          </div>
-        </section>
-        <!-- <section class="non-member-wrap">
-        <h2>Guest</h2>-->
-        <!-- <div class="guest-input-list">
+  <div class="login-main-container">
+    <div class="login-main-wrap">
+      <header>
+        <div class="sel-lang-wrap">
+          <select class="lang-select">
+            <option>Korean</option>
+            <option>English</option>
+          </select>
+        </div>
+      </header>
+      <section class="login-input-section-wrap">
+        <h2>Member</h2>
+        <div class="login-input-wrap">
+          <input v-model="id" placeholder="Username" type="text" />
+        </div>
+        <div class="login-input-wrap password-wrap">
+          <input v-model="password" placeholder="Password" type="password" />
+        </div>
+        <div class="login-button-wrap">
+          <button @click="inputLogin">Sign in</button>
+        </div>
+        <div class="login-stay-sign-in">
+          <nuxt-link to="/user/termsuse" style="text-decoration: none">
+            <i class="far fa-check-circle"></i>
+            <span>Sign up</span>
+          </nuxt-link>
+        </div>
+      </section>
+      <!-- <section class="non-member-wrap">
+      <h2>Guest</h2>-->
+      <!-- <div class="guest-input-list">
                     <li><button><i class="fas fa-qrcode"></i><span>Sign in with QR code</span></button></li>
                     <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
                     <li><button><i class="fab fa-line"></i><span>line</span></button></li>
-        </div>-->
-        <!-- <section class="guest-input-section-wrap">
+      </div>-->
+      <!-- <section class="guest-input-section-wrap">
             <div class="guest-input-wrap">
               <input placeholder="Username" type="text" />
             </div>
@@ -47,8 +46,7 @@
             </div>
           </section>
           <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-        </section>-->
-      </div>
+      </section>-->
     </div>
   </div>
 </template>
@@ -126,12 +124,11 @@ body {
 }
 
 .login-main-container {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 21px;
 }
 
 .login-main-container .login-main-wrap {

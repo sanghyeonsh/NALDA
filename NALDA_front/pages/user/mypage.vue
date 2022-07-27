@@ -225,7 +225,7 @@ ul {
 }
 
 .user-page-wrap button {
-  width: 80px;
+  width: 12%;
   height: 30px;
   font-size: 11px;
   text-transform: uppercase;
@@ -254,7 +254,7 @@ ul {
 }
 
 .subindex-bluebox {
-  width: 800px;
+  width: 100%;
   padding: 20px 50px;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);

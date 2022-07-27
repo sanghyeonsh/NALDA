@@ -1,56 +1,54 @@
 <template>
-  <div>
-    <div class="usernav-container">
-      <header class="profile-wrap">
-        <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../static/main/user_profile_w.png" />
-          <!-- <div class="badge">7</div> -->
+  <div class="usernav-container">
+    <header class="profile-wrap">
+      <div class="thumb-wrapper stagger-item">
+        <img class="thumb" src="../static/main/user_profile_w.png" />
+        <!-- <div class="badge">7</div> -->
+      </div>
+
+      <div class="text-area">
+        <h2 class="greeting stagger-item">Hi, Anonymous-Ku</h2>
+        <div class="desc stagger-item">
+          Fly with nalda
+          <br />Nearest Airser-Line Service during in Airbus
         </div>
+      </div>
 
-        <div class="text-area">
-          <h2 class="greeting stagger-item">Hi, Anonymous-Ku</h2>
-          <div class="desc stagger-item">
-            Fly with nalda
-            <br />Nearest Airser-Line Service during in Airbus
-          </div>
+      <div class="modify mouse-effect stagger-item" @click="moveModify">
+        <div>modify</div>
+      </div>
+    </header>
+
+    <ul class="list">
+      <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
+        <div class="left">
+          <i class="fa-solid fa-user"></i>
+          <div class="name">Account Info</div>
         </div>
-
-        <div class="modify mouse-effect stagger-item" @click="moveModify">
-          <div>modify</div>
+        <div class="right">
+          <i class="fa-solid fa-chevron-right"></i>
         </div>
-      </header>
+      </li>
 
-      <ul class="list">
-        <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
-          <div class="left">
-            <i class="fa-solid fa-user"></i>
-            <div class="name">Account Info</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-
-        <li class="item mouse-effect stagger-item" @click="movecustomList">
-          <div class="left">
-            <i class="fa-solid fa-suitcase-rolling"></i>
-            <div class="name">Past Journey</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-        <li class="item mouse-effect stagger-item">
-          <div class="left">
-            <i class="fa-solid fa-bookmark"></i>
-            <div class="name">Bookmark</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-      </ul>
-    </div>
+      <li class="item mouse-effect stagger-item" @click="movecustomList">
+        <div class="left">
+          <i class="fa-solid fa-suitcase-rolling"></i>
+          <div class="name">Past Journey</div>
+        </div>
+        <div class="right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </li>
+      <li class="item mouse-effect stagger-item">
+        <div class="left">
+          <i class="fa-solid fa-bookmark"></i>
+          <div class="name">Bookmark</div>
+        </div>
+        <div class="right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -85,7 +83,7 @@ export default {
 .usernav-container {
   background-color: var(--nalda-blue-color);
   color: #ffe6cf;
-  height: auto;
+  height: 70vh;
   width: auto;
   margin-left: 0;
 }
