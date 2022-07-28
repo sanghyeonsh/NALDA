@@ -25,3 +25,4 @@
 
 부품 구매 완료
 [구매링크](https://eduino.kr/product/detail.html?product_no=1498&gclid=Cj0KCQjwlK-WBhDjARIsAO2sErTVKwdZeUwV51LiLANYUSgYUev3jP6TdAjH_hNdCOZQtRS23jfBNjMaAgeZEALw_wcB#none)
+

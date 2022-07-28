@@ -7,7 +7,11 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content:
+          'width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1',
+      },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
     ],
@@ -15,7 +19,10 @@ export default {
     script: [
       // 다음 주소 검색 API
       { src: '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js' },
+      // font awesome favicon
+      { src: 'https://kit.fontawesome.com/454a2244bd.js' },
     ],
+    css: [],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -39,6 +46,7 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    'nuxt-vuex-localstorage',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

@@ -19,6 +19,7 @@
     "core-js": "^3.19.3",
     "hangul-virtual-keyboard": "^1.0.2",
     "nuxt": "^2.15.8",
+    "nuxt-vuex-localstorage": "^1.3.0",
     "simple-keyboard": "^3.4.126",
     "simple-keyboard-layouts": "^3.1.149",
     "vue": "^2.6.14",
@@ -34,6 +35,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
     "eslint-plugin-vue": "^8.2.0",
+    "nuxt-gsap-module": "^1.7.1",
     "prettier": "^2.5.1"
   }
 }
