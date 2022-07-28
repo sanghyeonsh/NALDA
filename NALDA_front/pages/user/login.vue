@@ -1,42 +1,40 @@
 <template>
-  <div>
-    <div class="main-container">
-      <div class="main-wrap">
-        <header>
-          <div class="sel-lang-wrap">
-            <select class="lang-select">
-              <option>Korean</option>
-              <option>English</option>
-            </select>
-          </div>
-          <div class="logo-wrap">
-            <img src="../../static/logo.png" />
-          </div>
-        </header>
-        <section class="login-input-section-wrap">
-          <h2>Member</h2>
-          <div class="login-input-wrap">
-            <input placeholder="Username" type="text" />
-          </div>
-          <div class="login-input-wrap password-wrap">
-            <input placeholder="Password" type="password" />
-          </div>
-          <div class="login-button-wrap">
-            <button>Sign in</button>
-          </div>
-          <div class="login-stay-sign-in">
+  <div class="login-main-container">
+    <div class="login-main-wrap">
+      <header>
+        <div class="sel-lang-wrap">
+          <select class="lang-select">
+            <option>Korean</option>
+            <option>English</option>
+          </select>
+        </div>
+      </header>
+      <section class="login-input-section-wrap">
+        <h2>Member</h2>
+        <div class="login-input-wrap">
+          <input v-model="id" placeholder="Username" type="text" />
+        </div>
+        <div class="login-input-wrap password-wrap">
+          <input v-model="password" placeholder="Password" type="password" />
+        </div>
+        <div class="login-button-wrap">
+          <button @click="inputLogin">Sign in</button>
+        </div>
+        <div class="login-stay-sign-in">
+          <nuxt-link to="/user/termsuse" style="text-decoration: none">
             <i class="far fa-check-circle"></i>
-            <span @click="moveSignup">Sign up</span>
-          </div>
-        </section>
-        <!-- <section class="non-member-wrap">
-        <h2>Guest</h2>-->
-        <!-- <div class="guest-input-list">
+            <span>Sign up</span>
+          </nuxt-link>
+        </div>
+      </section>
+      <!-- <section class="non-member-wrap">
+      <h2>Guest</h2>-->
+      <!-- <div class="guest-input-list">
                     <li><button><i class="fas fa-qrcode"></i><span>Sign in with QR code</span></button></li>
                     <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
                     <li><button><i class="fab fa-line"></i><span>line</span></button></li>
-        </div>-->
-        <!-- <section class="guest-input-section-wrap">
+      </div>-->
+      <!-- <section class="guest-input-section-wrap">
             <div class="guest-input-wrap">
               <input placeholder="Username" type="text" />
             </div>
@@ -48,32 +46,57 @@
             </div>
           </section>
           <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-        </section>-->
-        <footer>
-          <div class="copyright-wrap">
-            <!-- <div><img src="../static/logo.png"></div> -->
-            <div>
-              <span>Copyright © NALDA Corp. All Rights Reserved.</span>
-            </div>
-          </div>
-        </footer>
-      </div>
+      </section>-->
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+import { login } from '@/api/user'
 export default {
   name: 'LoginUser',
+
+  data() {
+    return {
+      id: null,
+      password: null,
+    }
+  },
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
-    moveSignup() {
-      this.$router.push({ name: 'user-signup' })
+    ...mapActions('user', ['setLoginMember']),
+    inputLogin() {
+      console.log(this.id + ' ' + this.password)
+      login(
+        {
+          username: this.id,
+          password: this.password,
+        },
+        ({ headers, data }) => {
+          // const jwtToken = headers.get('Authorization')
+          // console.log(jwtToken)
+          sessionStorage.setItem('Authorization', headers.authorization)
+          if (data.msg === '로그인 성공') {
+            this.setLoginMember(this.id)
+            // 세관신고서로 넘어가야함(임시)
+            this.$router.push('/user/mypage')
+          } else {
+            alert('실패')
+          }
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
     },
   },
 }
 </script>
 
-<style>
+<style scoped>
 @font-face {
   font-family: 'twayfly';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
@@ -82,58 +105,43 @@ export default {
   font-style: normal;
 }
 
-:root {
-  --body-background-color: #f5f6f7;
-  --font-color: #4e4e4e;
-  --border-gray-color: #dadada;
-  --nalda-blue-color: #206e95;
-  --nalda-blue-border-color: #88c0c5;
-}
-
 * {
   margin: 0;
   padding: 0;
-  font-family: 'twayfly';
+  /* font-family: 'twayfly'; */
 }
 
 body {
   background: var(--body-background-color);
 }
 
-.main-container {
+.login-main-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 21px;
 }
 
-.main-container .main-wrap {
-  width: 768px;
+.login-main-container .login-main-wrap {
+  width: 465px;
+  height: 100%;
 }
 
-.main-container .main-wrap .sel-lang-wrap .lang-select {
+.login-main-container .login-main-wrap .sel-lang-wrap .lang-select {
   width: 96px;
   height: 30px;
   color: var(--font-color);
   border: solid 1px var(--border-gray-color);
 }
 
-.main-container .main-wrap .logo-wrap {
-  padding-top: 55px;
-}
-
-.main-container .main-wrap .logo-wrap img {
-  width: 300px;
-  height: 300px;
-}
-
-.main-container .main-wrap header .sel-lang-wrap {
+.login-main-container .login-main-wrap header .sel-lang-wrap {
   display: flex;
   justify-content: flex-end;
+  margin-top: 2%;
 }
 
-.main-container .main-wrap header .logo-wrap {
+.login-main-container .login-main-wrap header .logo-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,36 +149,41 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 60px;
+  padding-top: 16%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .login-input-section-wrap h2 {
-  margin-bottom: 60px;
+  margin-bottom: 20%;
 }
 
 .guest-input-wrap,
 .login-input-wrap {
   width: 465px;
-  height: 48px;
+  height: 55px;
   border: solid 1px var(--border-gray-color);
   background: white;
   border-radius: 10px;
 }
-
+input[type='password'] {
+  font-family: '맑은고딕', '돋움';
+}
+input[type='password']::placeholder {
+  font-family: 'twayfly';
+}
 .password-wrap {
   margin-top: 13px;
 }
 .guest-input-wrap input,
 .login-input-wrap input {
   border: none;
-  width: 465px;
+  width: 462px;
   /* margin-top: 10px; */
-  font-size: 14px;
+  font-size: 20px;
   /* margin-left: 10px; */
-  height: 48px;
+  height: 53px;
   border-radius: 10px;
   padding: 10px;
 }
@@ -183,8 +196,8 @@ body {
 .guest-button-wrap button,
 .login-button-wrap button {
   width: 465px;
-  height: 48px;
-  font-size: 18px;
+  height: 55px;
+  font-size: 20px;
   background: var(--nalda-blue-color);
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
@@ -194,9 +207,8 @@ body {
 .login-stay-sign-in {
   width: 465px;
   height: 52px;
-
   display: flex;
-  font-size: 15px;
+  font-size: 25px;
   color: #4e4e4e;
   align-items: center;
   justify-content: flex-start;
@@ -224,33 +236,5 @@ body {
   color: var(--font-color);
   font-size: 14px;
   padding-top: 10px;
-}
-
-footer {
-  padding-top: 95px;
-  padding-bottom: 15px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 768px;
-}
-
-.copyright-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 15px;
-}
-
-footer .copyright-wrap div img {
-  width: 50px;
-
-  height: 50px;
-}
-
-footer .copyright-wrap span {
-  font-size: 13px;
-  line-height: 15px;
 }
 </style>

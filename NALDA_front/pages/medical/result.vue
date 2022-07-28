@@ -1,31 +1,25 @@
 <template>
-  <div>
-    <header-component></header-component>
-    <div class="box">
-      <div>
-        <div class="text-box">
-          가져다 드리겠습니다.<br />
-          잠시만 기다려주세요!
-        </div>
+  <div class="box">
+    <div>
+      <div class="text-box">
+        가져다 드리겠습니다.<br />
+        잠시만 기다려주세요!
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
-  name: 'ResultPage',
-  components: {
-    HeaderComponent,
-  },
+  name: 'OrdersMedicalResult',
+  components: {},
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   background-color: #f5f6f7;
-  height: 600px;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;

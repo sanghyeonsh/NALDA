@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header-component></header-component>
     <div class="box">
       <div class="form-box">
         <div class="title">증상 및 요청사항을 입력해주세요.</div>
@@ -25,13 +24,11 @@
 </template>
 
 <script>
-import HeaderComponent from '../../components/HeaderComponent.vue'
 import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
-  name: 'EtcPage',
+  name: 'OrdersMedicalEtc',
   components: {
-    HeaderComponent,
     SimpleKeyboard,
   },
   data() {
@@ -53,7 +50,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .box {
   background-color: #f5f6f7;
   height: 600px;

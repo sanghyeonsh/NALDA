@@ -78,10 +78,12 @@
     - 소문자&스네이크케이스
 
 #### **FE**
-
 - 파일명: 소문자
 - CSS : **kebab-case**
     - 케밥케이스
 - Vuex Store:
     - Store file: camelCase
     - store 구조
+=======
+부품 구매 완료
+[구매링크](https://eduino.kr/product/detail.html?product_no=1498&gclid=Cj0KCQjwlK-WBhDjARIsAO2sErTVKwdZeUwV51LiLANYUSgYUev3jP6TdAjH_hNdCOZQtRS23jfBNjMaAgeZEALw_wcB#none)
