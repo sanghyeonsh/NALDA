@@ -50,4 +50,19 @@ public class DeclarationController {
         }
     }
 
+    @GetMapping("/getOne/{id}")
+    public ResponseEntity<?> getOneDeclaration(@PathVariable("id") Long id) {
+        Map<String,Object> result = new HashMap<>();
+
+        try {
+            DeclarationListDTO oneDeclaration = declarationService.getOneDeclaration(id);
+            result.put("declaration", oneDeclaration);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("error", "내부 서버 에러");
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
