@@ -1,86 +1,84 @@
 <template>
-  <div>
-    <div class="customform-nav-container">
-      <ul class="step-list">
-        <li class="item mouse-effect stagger-item" @click="moveInformStep">
-          <div class="left">
-            <i class="fa-solid fa-user"></i>
-            <div class="name">before start</div>
-            <div>유의사항</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
+  <div class="customform-nav-container">
+    <ul class="step-list">
+      <li class="item mouse-effect stagger-item" @click="moveInformStep">
+        <div class="left">
+          <i class="fa-solid fa-user"></i>
+          <div class="name">유의사항</div>
+          <!-- <div>유의사항</div> -->
+        </div>
+        <div class="right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </li>
 
-        <div class="right-mid">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
+      <div class="right-mid">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
 
-        <li class="item mouse-effect stagger-item" @click="moveFirstStep">
-          <div class="left">
-            <i class="fa-solid fa-user"></i>
-            <div class="name">First Step</div>
-            <div>기본정보를 입력하는 단계입니다.</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-        <div class="right-mid">
+      <li class="item mouse-effect stagger-item" @click="moveFirstStep">
+        <div class="left">
+          <i class="fa-solid fa-user"></i>
+          <div class="name">기본정보</div>
+          <!-- <div>기본정보를 입력하는 단계입니다.</div> -->
+        </div>
+        <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
-        <li class="item mouse-effect stagger-item" @click="moveSecondStep1">
-          <div class="left">
-            <i class="fa-solid fa-suitcase-rolling"></i>
-            <div class="name">Second Step1</div>
-            <div>신고사항을 입력하는 단계입니다.</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-        <div class="right-mid">
+      </li>
+      <div class="right-mid">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+      <li class="item mouse-effect stagger-item" @click="moveSecondStep1">
+        <div class="left">
+          <i class="fa-solid fa-suitcase-rolling"></i>
+          <div class="name">신고사항체크</div>
+          <!-- <div>신고사항을 입력하는 단계입니다.</div> -->
+        </div>
+        <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
-        <li class="item mouse-effect stagger-item" @click="moveSecondStep2">
-          <div class="left">
-            <i class="fa-solid fa-suitcase-rolling"></i>
-            <div class="name">Second Step2</div>
-            <div>신고사항을 입력하는 단계입니다.</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-        <div class="right-mid">
+      </li>
+      <div class="right-mid">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+      <li class="item mouse-effect stagger-item" @click="moveSecondStep2">
+        <div class="left">
+          <i class="fa-solid fa-suitcase-rolling"></i>
+          <div class="name">신고사항체크</div>
+          <!-- <div>신고사항을 입력하는 단계입니다.</div> -->
+        </div>
+        <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
-        <li class="item mouse-effect stagger-item">
-          <div class="left">
-            <i class="fa-solid fa-bookmark"></i>
-            <div class="name">detail</div>
-            <div>상세신고사항을 작성하는 단계입니다.</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-        <div class="right-mid">
+      </li>
+      <div class="right-mid">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+      <li class="item mouse-effect stagger-item" @click="moveThirdStep">
+        <div class="left">
+          <i class="fa-solid fa-bookmark"></i>
+          <div class="name">상세신고사항</div>
+          <!-- <div>상세신고사항을 작성하는 단계입니다.</div> -->
+        </div>
+        <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
-        <li class="item mouse-effect stagger-item">
-          <div class="left">
-            <i class="fa-solid fa-bookmark"></i>
-            <div class="name">complete</div>
-            <div>서명 하는 단계입니다.</div>
-          </div>
-          <div class="right">
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        </li>
-      </ul>
-    </div>
+      </li>
+      <div class="right-mid">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+      <li class="item mouse-effect stagger-item" @click="moveComplete">
+        <div class="left">
+          <i class="fa-solid fa-bookmark"></i>
+          <div class="name">서명 및 날인</div>
+          <!-- <div>서명 하는 단계입니다.</div> -->
+        </div>
+        <div class="right">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -110,6 +108,12 @@ export default {
     moveSecondStep2() {
       this.$router.push('/customs/checktwo')
     },
+    moveThirdStep() {
+      this.$router.push('/customs/detail')
+    },
+    moveComplete() {
+      this.$router.push('/customs/complete')
+    },
   },
 }
 </script>
@@ -127,9 +131,14 @@ export default {
 .customform-nav-container {
   background-color: #206e95;
   color: #ffe6cf;
-  height: auto;
-  width: auto;
-  margin-left: 0;
+  height: 70vh;
+  width: 30%;
+  /* padding-left: 1em;
+  padding-right: 1em; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 /* body {
@@ -149,7 +158,7 @@ h2 {
   margin: 0;
   font-weight: 400;
   line-height: 1;
-  font-size: 24px;
+  font-size: 1em;
 }
 
 ul,
@@ -167,10 +176,12 @@ li {
   border: none;
   outline: none;
   color: #ffe6cf;
-  font-size: 15px;
+  font-size: 1em;
 }
 
 .mouse-effect {
+  width: 100%;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -196,11 +207,16 @@ li {
 
 /* 리스트 */
 .step-list {
-  /* margin-top: 48px; */
-  padding-top: 42%;
-  padding-bottom: 42%;
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 20%;
+  margin-bottom: 20%; */
+  /* padding-top: 42%;
+  padding-bottom: 42%; */
+  /* width: 100%;
+  height: 100%; */
 }
 
 .step-list .item {
@@ -208,8 +224,8 @@ li {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 15px;
-  margin: 2%;
+  font-size: 1em;
+  padding: 4%;
   cursor: pointer;
 }
 
@@ -219,7 +235,7 @@ li {
 }
 
 .step-list .item .left .name {
-  margin-left: 6px;
+  margin-left: 1em;
 }
 
 .step-list .item .right {
@@ -227,19 +243,19 @@ li {
 }
 
 /* 이부분 수정 필요 */
-.step-list .item i {
+.list .item i {
   padding: 20px 22px;
 }
 
-.step-list .item .right img {
-  padding-right: 14px;
+.list .item .right img {
+  /* margin-right: 1em; */
 }
 
 .step-list .next-steps {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 15px;
+  font-size: 1em;
   cursor: pointer;
 }
 .right-mid i {

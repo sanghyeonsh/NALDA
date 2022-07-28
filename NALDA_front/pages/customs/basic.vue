@@ -1,10 +1,8 @@
 <template>
   <div class="customs-input-container">
-    <div class="customs-nav">
-      <custom-navs
-        :basic-info="{lastName, middleName, firstName, birthday, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
-      ></custom-navs>
-    </div>
+    <custom-navs
+      :basic-info="{lastName, middleName, firstName, birthday, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
+    ></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
@@ -31,6 +29,7 @@
                 </td>
               </tr>
               <!-- 첫번째 줄 끝 -->
+              
               <tr>
                 <!-- 두번째 줄 시작 -->
                 <td id="col-name">직업</td>
@@ -263,14 +262,15 @@ export default {
 
 .customs-input-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 .customform-main-container {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   padding: 3%;
   display: flex;
   flex-direction: column;
@@ -279,9 +279,10 @@ export default {
 }
 
 .customform-wrap {
-  height: 100%;
-  width: 80%;
+  height: auto;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -302,7 +303,6 @@ export default {
   color: #004568;
   margin-bottom: 3%;
 }
-
 .custom-info-wrap {
   padding: 3%;
   width: 100%;

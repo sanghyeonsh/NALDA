@@ -1,18 +1,16 @@
 <template>
   <div class="customs-input-container">
-    <div class="customs-nav">
-      <custom-navs></custom-navs>
-    </div>
+    <custom-navs></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
           <div class="customform-title">여행자 휴대품 신고서</div>
           <div class="declaration-detail-wrap">
             <div class="alcohols-perfume-cigarette">
-              <h4>
+              <h5>
                 ▶주류ㆍ향수ㆍ담배
                 <small>(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small>
-              </h4>
+              </h5>
               <table class="apc-table-wrap">
                 <tr id="alcohols">
                   <td>주류</td>
@@ -35,7 +33,7 @@
               </table>
             </div>
             <div class="etc-exceed-wrap">
-              <h4>▶그 밖의 면세범위 (US $600) 초과 물품</h4>
+              <h5>▶그 밖의 면세범위 (US $600) 초과 물품</h5>
               <table class="etc-exceed-table">
                 <thead>
                   <td>품명</td>
@@ -125,14 +123,15 @@ export default {
 
 .customs-input-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 .customform-main-container {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   padding: 3%;
   display: flex;
   flex-direction: column;
@@ -141,8 +140,8 @@ export default {
 }
 
 .customform-wrap {
-  height: 100%;
-  width: 80%;
+  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -163,14 +162,18 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
 }
-
 /* declaration-detail-wrap CSS */
+
+table {
+  width: 100%;
+  height: 100%;
+}
 
 table tr,
 td {
-  padding: 10px;
+  padding: 2px;
   border: 1px solid #444444;
 }
 
@@ -183,7 +186,7 @@ td {
 
 /* apc table wrap CSS */
 
-.alcohols-perfume-cigarette h4 {
+.alcohols-perfume-cigarette h5 {
   margin-bottom: 1.5%;
 }
 .apc-table-wrap {
@@ -213,8 +216,8 @@ td {
 }
 
 /* etc exceed wrap CSS */
-.etc-exceed-wrap h4 {
-  margin-top: 2%;
+.etc-exceed-wrap h5 {
+  margin-top: 1.5%;
   margin-bottom: 1.5%;
 }
 

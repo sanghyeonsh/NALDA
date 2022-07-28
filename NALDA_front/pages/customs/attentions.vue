@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <b-tabs pills>
+  <div class="customs-attentions-contaner">
+    <b-tabs class="info" pills>
       <b-tab title="1page" active>
         <div class="custom-allowance-container1">
           <div class="dutyfree-allowance-wrap">
@@ -9,20 +9,23 @@
               <h4>▶ 주류ㆍ향수ㆍ담배</h4>
               <table class="apc-allowance-table">
                 <thead>
-                  <td style="border-right: 1px solid #444444;">주류</td>
-                  <td style="border-right: 1px solid #444444;">향수</td>
+                  <td style="border-right: 1px solid #444444">주류</td>
+                  <td style="border-right: 1px solid #444444">향수</td>
                   <td>담배</td>
                 </thead>
                 <tr>
-                  <td style="border-right: 1px solid #444444;">
+                  <td style="border-right: 1px solid #444444">
                     1병
                     <br />(1ℓ 이하로서 US $400 이하)
                   </td>
-                  <td style="border-right: 1px solid #444444;">60㎖</td>
+                  <td style="border-right: 1px solid #444444">60㎖</td>
                   <td>200개비</td>
                 </tr>
                 <tr>
-                  <td colspan="3" style="text-align: left;">* 만 19세 미만인 사람에게는 주류 및 담배를 면세하지 않습니다.</td>
+                  <td colspan="3" style="text-align: left">
+                    * 만 19세 미만인 사람에게는 주류 및 담배를 면세하지
+                    않습니다.
+                  </td>
                 </tr>
               </table>
             </div>
@@ -37,7 +40,11 @@
                         <br />(자가 사용, 선물용, 신변용품 등으로 한정합니다.)
                       </div>
                       <div>
-                        <strong>*다만, 농림축산물, 한약재 등은 10만원 이하로 한정하여, 품목별로 수량 또는 중량에 제한이 있습니다.</strong>
+                        <strong
+                          >*다만, 농림축산물, 한약재 등은 10만원 이하로
+                          한정하여, 품목별로 수량 또는 중량에 제한이
+                          있습니다.</strong
+                        >
                       </div>
                     </div>
                   </td>
@@ -51,11 +58,26 @@
             </div>
             <div class="prohibit-list">
               <ul>
-                <li>- 총포(모의총포)ㆍ도검 등 무기류, 실탄 및 화약류, 방사성물질, 감청설비 등</li>
-                <li>- 메트암페타민ㆍ아편ㆍ헤로인ㆍ대마 등 마약류 및 오ㆍ남용 우려 의약품</li>
-                <li>- 헌법질서ㆍ공공의 안녕질서ㆍ풍속을 해치는 물품 및 정부의 기밀을 누설하거나 첩보활동에 사용되는 물품</li>
-                <li>- 위조(가짜)상품 등 지식재산권 침해물품, 위조지폐 및 위ㆍ변조된 유가증권</li>
-                <li>- 웅담, 사향, 녹용, 악어 가죽, 상아 등 멸종위기에 처한 야생 동식물 및 관련 제품</li>
+                <li>
+                  - 총포(모의총포)ㆍ도검 등 무기류, 실탄 및 화약류, 방사성물질,
+                  감청설비 등
+                </li>
+                <li>
+                  - 메트암페타민ㆍ아편ㆍ헤로인ㆍ대마 등 마약류 및 오ㆍ남용 우려
+                  의약품
+                </li>
+                <li>
+                  - 헌법질서ㆍ공공의 안녕질서ㆍ풍속을 해치는 물품 및 정부의
+                  기밀을 누설하거나 첩보활동에 사용되는 물품
+                </li>
+                <li>
+                  - 위조(가짜)상품 등 지식재산권 침해물품, 위조지폐 및
+                  위ㆍ변조된 유가증권
+                </li>
+                <li>
+                  - 웅담, 사향, 녹용, 악어 가죽, 상아 등 멸종위기에 처한 야생
+                  동식물 및 관련 제품
+                </li>
               </ul>
             </div>
           </div>
@@ -70,8 +92,14 @@
               </div>
               <div class="quarantine-list">
                 <ul>
-                  <li>살아있는 동물(반려견 등) 및 수산동물(물고기) 등, 고기, 육포, 소시지, 햄, 치즈 등 육가공품</li>
-                  <li>흙, 호두, 장뇌삼, 송이, 망고ㆍ오렌지ㆍ체리 등 생과일, 견과류 및 채소류</li>
+                  <li>
+                    살아있는 동물(반려견 등) 및 수산동물(물고기) 등, 고기, 육포,
+                    소시지, 햄, 치즈 등 육가공품
+                  </li>
+                  <li>
+                    흙, 호두, 장뇌삼, 송이, 망고ㆍ오렌지ㆍ체리 등 생과일, 견과류
+                    및 채소류
+                  </li>
                 </ul>
               </div>
             </div>
@@ -84,26 +112,30 @@
               <div class="attention-list">
                 <ul>
                   <li>
-                    <b>성명</b>은 여권의
-                    <b>한글</b> 또는
-                    <b>영문명</b>으로 적으시기 바랍니다.
+                    <b>성명</b>은 여권의 <b>한글</b> 또는 <b>영문명</b>으로
+                    적으시기 바랍니다.
                   </li>
                   <li>
-                    신고 대상 물품을 신고하지 않거나 허위신고 또는 대리반입하는 경우 「관세법」에 따라
-                    <b style="color: red;">
-                      5년 이하의 징역 또는 해당물품
-                      유치, 가산세 부과(납부세역의 40%, 2년이내 2회 초과할 경우에는 60%), 통고처분 및 해당물품 몰수
-                    </b> 등 불이익을 받게 됩니다.
+                    신고 대상 물품을 신고하지 않거나 허위신고 또는 대리반입하는
+                    경우 「관세법」에 따라
+                    <b style="color: red">
+                      5년 이하의 징역 또는 해당물품 유치, 가산세 부과(납부세역의
+                      40%, 2년이내 2회 초과할 경우에는 60%), 통고처분 및
+                      해당물품 몰수
+                    </b>
+                    등 불이익을 받게 됩니다.
                   </li>
                   <li>
                     <b>FTA 협정</b>등에 따라 일정 요건을 갖춘 물품은
                     <b>특혜 관세를 적용</b>받을 수 있으며, 다만
-                    <b>사후에 특혜관세를 신청</b>하려는
-                    경우에는
+                    <b>사후에 특혜관세를 신청</b>하려는 경우에는
                     <b>일반 수입신고가 필요</b>합니다.
                   </li>
                   <br />
-                  <li>그 밖의 궁금하신 사항은 세관공무원 또는 ☏125로 문의하시기 바랍니다.</li>
+                  <li>
+                    그 밖의 궁금하신 사항은 세관공무원 또는 ☏125로 문의하시기
+                    바랍니다.
+                  </li>
                 </ul>
               </div>
             </div>
@@ -137,6 +169,9 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+.customs-attentions-contaner {
+  height: 70vh;
 }
 
 .custom-allowance-container1,

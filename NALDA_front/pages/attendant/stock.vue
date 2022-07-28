@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  name: 'AttendenceMain',
+  name: 'AttendantStock',
 }
 </script>
 
-<style>
+<style scoped>
 </style>

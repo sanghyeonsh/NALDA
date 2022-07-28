@@ -1,8 +1,6 @@
 <template>
   <div class="customs-input-container">
-    <div class="customs-nav">
-      <custom-navs></custom-navs>
-    </div>
+    <custom-navs></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
@@ -142,13 +140,15 @@ export default {
 
 .customs-input-container {
   width: 100%;
+  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .customform-main-container {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: auto;
   padding: 3%;
   display: flex;
   flex-direction: column;
@@ -158,8 +158,9 @@ export default {
 
 .customform-wrap {
   height: auto;
-  width: 80%;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -178,7 +179,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 3%;
+  margin-bottom: 7%;
 }
 /* 세관신고서 최상단 경고 wrap CSS*/
 

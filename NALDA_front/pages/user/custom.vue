@@ -99,7 +99,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: orange;
+  /* background-color: orange; */
 }
 
 ol,
