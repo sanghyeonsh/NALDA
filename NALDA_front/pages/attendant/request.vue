@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .request-container {
   height: 70vh;
   display: flex;

@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .main-container {
   display: flex;
   height: 70vh;
