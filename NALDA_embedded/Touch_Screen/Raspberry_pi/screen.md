@@ -20,7 +20,7 @@
 
 ## 1. 메인보드 정보
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled.png)
 
 - 메인 보드에 2개 LED 존재
 - 스크린 전원이 켜지면 2개 LED 즉각적으로 켜짐
@@ -31,7 +31,7 @@
 
 ## 2. 메인보드 버튼
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%201.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%201.png)
 
 1. Power
 - 기기를 키고 끄는데 사용
@@ -48,61 +48,61 @@
 
 ## 3. 메인보드 핀 정보
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%202.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%202.png)
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%203.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%203.png)
 
 # 4. 설치
 
 ## 1. 메인보드 스크린에 고정하기
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%204.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%204.png)
 
 - 메인 보드를 후면 케이스에 사전 설치된 4 2.5*6 구리 스탠드오프에 놓고 버튼을 케이스 가장자리로 향하게 하고 보드의 구멍과 스탠드오프를 정렬한다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%205.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%205.png)
 
 - 2.5*14.4 스탠드오프를 구멍에 삽입하고 조인다.
 
 ## 2. 라즈베리파이를 스크린에 고정
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%206.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%206.png)
 
 - 화면 뒷면에는 수직 슬롯과 수평 슬롯이 있으므로 작은 렌치로 너트와 2.5 * 6 스탠드 오프를 이동하여 크기가 다른 보드를 수정할 수 있다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%207.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%207.png)
 
 - 라즈베리 파이를 화면과 함께 사용하려면 미리 설정되어 있으므로 스탠드 오프를 조정할 필요가 없다. RPi에 구멍이 있고 스탠드오프가 정렬된 케이스에 보드를 올려놓고 2.5*14.4 스탠드오프를 삽입하고 고정하기만 하면 된다.
 
 ## 3. 화면 균형 유지
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%208.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%208.png)
 
 - 두 개의 2.5*22 스탠드오프를 뒷면의 구멍에 삽입하여 화면의 균형을 유지한다.
 
 ## 4. 배선
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%209.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%209.png)
 
 - 6핀 backlight 컨트롤 케이블을 LED BS 포트에 꽃는다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2010.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2010.png)
 
 - 30핀 LVDS 리본 케이블을 30핀 헤더에 꽃는다. (위의 빨간 선이 button과 가깝게 위치해야 한다.)
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2011.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2011.png)
 
 - power 포트를 USB 포트에 꽃는다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2012.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2012.png)
 
 - HDMI 케이블을 통해 RPi의 HDMI 포트와 화면을 연결한다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2013.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2013.png)
 
 - 라즈베리파이의 USB 포트와 스크린 4핀 USB 케이블을 연결한다.
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2014.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2014.png)
 
 - 공급 장치의 전원 케이블을 연결하여 화면의 메인 보드에 전원을 공급한다.
 
@@ -116,4 +116,4 @@ $sudo apt-get install matchbox-keyboard
 
 ## 2. 설치 완료 화면
 
-![Untitled](/NALDA_embedded/1.%20Touch_Screen/HW_Manual/Manual_img/Untitled%2015.png)
+![Untitled](/NALDA_embedded/Touch_Screen/Raspberry_pi/Manual_img/Untitled%2015.png)
