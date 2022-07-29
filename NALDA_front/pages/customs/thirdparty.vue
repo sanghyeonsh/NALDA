@@ -12,14 +12,6 @@
       <section class="terms-section-wrap">
         <div class="all-terms-wrap">
           <div class="terms-title" :class="{ active: !isActive }" @click="agreeAll">
-            <!-- <span class="input-chk">
-                            <i class="far fa-check-circle"></i>
-                            <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
-                                동의합니다.</label>
-            </span> ---->
-            <!-- <div> 원래거
-                <i class="far fa-check-circle"></i> 
-            </div>-->
             <div class="check-icon-wrap">
               <img class="check-all-icon" src="../../static/icon/check_mark.png" alt="check-icon" />
             </div>
