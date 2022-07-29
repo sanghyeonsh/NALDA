@@ -20,6 +20,50 @@
         :current-page="currentPage"
         small
       ></b-table>
+
+      <b-table
+        hover
+        :items="items"
+        :fields="fields"
+        :per-page="perPage"
+        :current-page="currentPage"
+        small
+        responsive="sm"
+      >
+        <template #cell(show_details)="row">
+          <b-button
+            size="sm"
+            class="mr-2"
+            @click="row.toggleDetails"
+          >{{ row.detailsShowing ? 'Hide' : 'Show'}} Details</b-button>
+
+          <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
+          <b-form-checkbox
+            v-model="row.detailsShowing"
+            @change="row.toggleDetails"
+          >Details via check</b-form-checkbox>
+        </template>
+
+        <template #row-details="row">
+          <b-card>
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right">
+                <b>Age:</b>
+              </b-col>
+              <b-col>{{ row.item.age }}</b-col>
+            </b-row>
+
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-right">
+                <b>Is Active:</b>
+              </b-col>
+              <b-col>{{ row.item.isActive }}</b-col>
+            </b-row>
+
+            <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          </b-card>
+        </template>
+      </b-table>
       <div>
         <h4>request detail</h4>
         <b-table striped hover :details="details"></b-table>
@@ -36,6 +80,28 @@ export default {
   name: 'AttendantRequest',
   data() {
     return {
+      fields: [
+        {
+          key: '좌석',
+          sortable: false,
+        },
+        {
+          key: '분류',
+          sortable: true,
+        },
+        {
+          key: '요청사항',
+          sortable: false,
+        },
+        {
+          key: '요청시각',
+          sortable: true,
+        },
+        {
+          key: '상태',
+          sortable: true,
+        },
+      ],
       perPage: 3,
       currentPage: 1,
       items: [
