@@ -9,13 +9,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ServiceDto {
+public class OrderListDto {
 
-    private String image;
-    private String serviceName;
-    private String serviceCode;
-    private String serviceClass;
-    private byte[] bytesdata;
-
+    private String orderCode;
+    private Long orderId;
 
 }
