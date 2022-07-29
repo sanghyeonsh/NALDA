@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +29,24 @@ public class MealService {
     private final SeatMealRepository seatMealRepository;
 
     @Transactional
-    public List<MealDto> listMeal(){
+    public List<MealDto> listMeal() throws IOException {
         List<Meal> meals = mealRepository.findAll();
         List<MealDto> mealDto = new ArrayList<>();
+        ByteArrayOutputStream bos;
+        String fileName;
+        String filePath;
         for (Meal meal : meals) {
+            bos = new ByteArrayOutputStream();
+            fileName = meal.getImageName();
+            filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
+            InputStream imageStream = new FileInputStream(filePath + fileName);
+            imageStream.transferTo(bos);
+            byte[] bytesData = bos.toByteArray();
+
             mealDto.add(MealDto.builder()
                             .imageName(meal.getImageName())
                             .mealMenu(meal.getMealMenu())
+                            .bytesdata(bytesData)
                             .build());
         }
         return mealDto;
@@ -58,15 +70,23 @@ public class MealService {
     }
 
     @Transactional
-    public List<MealDto> listInputMeal(Long flightId){
+    public List<MealDto> listInputMeal(Long flightId) throws IOException {
         List<Meal> mealList = mealRepository.findByFlightId(flightId);
-
         List<MealDto> mealDTOS = new ArrayList<>();
-
+        ByteArrayOutputStream bos;
+        String fileName;
+        String filePath;
         for (Meal meal : mealList) {
+            bos = new ByteArrayOutputStream();
+            fileName = meal.getImageName();
+            filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
+            InputStream imageStream = new FileInputStream(filePath + fileName);
+            imageStream.transferTo(bos);
+            byte[] bytesData = bos.toByteArray();
             MealDto mealDto = MealDto.builder()
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
+                    .bytesdata(bytesData)
                     .build();
             mealDTOS.add(mealDto);
         }

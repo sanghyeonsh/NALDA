@@ -13,6 +13,7 @@ public class MealDto {
 
     private String imageName;
     private String mealMenu;
+    private byte[] bytesdata;
 
 
 }

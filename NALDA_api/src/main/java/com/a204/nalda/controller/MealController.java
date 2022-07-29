@@ -56,6 +56,7 @@ public class MealController {
     public ResponseEntity<?> selectMeals(@RequestBody MealCntDto mealCntDto){
         Map<String,Object> result = new HashMap<>();
         try {
+            System.out.println(mealCntDto.getMealId());
             mealService.mealCntInput(mealCntDto);
             result.put("info", mealCntDto);
             return new ResponseEntity<>(result, HttpStatus.OK);
