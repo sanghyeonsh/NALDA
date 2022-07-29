@@ -20,7 +20,8 @@
       </div>
 
       <div class="service-modal-footer">
-        <button @click="ChoiceMenu(item.author)">담기</button>
+        <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
+        <button @click="SET_CHOICE_FOODS(item[0])">담기</button>
       </div>
     </div>
   </div>
@@ -54,20 +55,14 @@ export default {
         }
       }
     },
-    ChoiceMenu(data) {
-      console.log(1)
-      this.SET_CHOICE_FOODS(data)
-      setTimeout(() => {
-        const menu = document.querySelector('.footer-body')
-        menu.scrollTop = menu.scrollHeight
-      }, 0)
-    },
+
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
       'DELETE_CHOICE_FOODS',
       'CLEAR_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
+      'SET_CHOICE_FOODS',
     ]),
   },
 }
