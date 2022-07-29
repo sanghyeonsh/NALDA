@@ -6,33 +6,33 @@
       </div>
       <div class="service-modal-body">
         <div class="service-modal-body-image">
-          <img src="../static/water.png" alt="" />
+          <img :src="item[0].download_url" alt="" />
         </div>
 
         <div class="service-modal-body-detail">
-          <div class="service-modal-body-detail-name">메뉴이름</div>
+          <div class="service-modal-body-detail-name">{{ item[0].author }}</div>
           <div class="service-modal-body-detail-button">
-            <button>-</button>
-            <div>4</div>
-            <button>+</button>
+            <button @click="MINUS_CHOICE_FOODS(item[0])">minus button</button>
+            <div class="button-num">{{ item[0].num }}</div>
+            <button @click="PLUS_CHOICE_FOODS(item[0])">plus button</button>
           </div>
         </div>
       </div>
 
       <div class="service-modal-footer">
-        <button>담기</button>
+        <button @click="ChoiceMenu(item.author)">담기</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'ServiceModal',
   computed: {
-    ...mapState('menu', ['selected_foods']),
+    ...mapState('menu', ['item']),
   },
   methods: {
     // modal popup
@@ -54,6 +54,21 @@ export default {
         }
       }
     },
+    ChoiceMenu(data) {
+      console.log(1)
+      this.SET_CHOICE_FOODS(data)
+      setTimeout(() => {
+        const menu = document.querySelector('.footer-body')
+        menu.scrollTop = menu.scrollHeight
+      }, 0)
+    },
+    ...mapMutations('menu', [
+      'SET_CHOICE_FOODS',
+      'DELETE_CHOICE_FOODS',
+      'CLEAR_CHOICE_FOODS',
+      'PLUS_CHOICE_FOODS',
+      'MINUS_CHOICE_FOODS',
+    ]),
   },
 }
 </script>
@@ -163,7 +178,7 @@ export default {
   justify-content: flex-end;
   height: 10%;
   padding: 1%;
-  background-color: brown;
+  /* background-color: brown; */
 }
 .service-modal-footer button {
   width: 30%;

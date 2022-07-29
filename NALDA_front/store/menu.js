@@ -1,12 +1,17 @@
 import axios from 'axios'
 
 export const state = () => ({
+  item: [{ download_url: null, author: null }],
   items: [],
   selected_foods: [],
   check_foods: [],
 })
 
 export const mutations = {
+  SET_ITEM(state, select) {
+    select.num = 1
+    state.item.push(select)
+  },
   SET_MENU_ITEMS(state, snacks) {
     snacks.forEach((snack) => {
       state.items.push(snack)
@@ -27,27 +32,40 @@ export const mutations = {
     }
   },
   PLUS_CHOICE_FOODS(state, choice) {
-    for (let i = 0; i < state.selected_foods.length; i++) {
-      if (state.selected_foods[i].name === choice) {
-        state.selected_foods[i].num += 1
-      }
-    }
+    // state.item[0].num = parseInt(state.item[0].num) + 1
+    state.item[0].num += 1
+    console.log(state.item[0].num)
+
+    // for (let i = 0; i < state.selected_foods.length; i++) {
+    //   if (
+    //     state.selected_foods[i].name === choice &&
+    //     state.selected_foods[i].num > 1
+    //   ) {
+    //     state.selected_foods[i].num += 1
+    //   }
+    // }
   },
   MINUS_CHOICE_FOODS(state, choice) {
-    for (let i = 0; i < state.selected_foods.length; i++) {
-      if (
-        state.selected_foods[i].name === choice &&
-        state.selected_foods[i].num > 1
-      ) {
-        state.selected_foods[i].num -= 1
-      }
-    }
+    state.item[0].num = parseInt(state.item[0].num) - 1
+    console.log(state.item[0].num)
+
+    // for (let i = 0; i < state.selected_foods.length; i++) {
+    //   if (
+    //     state.selected_foods[i].name === choice &&
+    //     state.selected_foods[i].num > 1
+    //   ) {
+    //     state.selected_foods[i].num -= 1
+    //   }
+    // }
   },
-  CLEAR_CHOICE_FOODS(state) {
-    state.selected_foods = []
+  CLEAR_ITEM(state) {
+    state.item = []
   },
   CLEAR_ITEMS(state) {
     state.items = []
+  },
+  CLEAR_CHOICE_FOODS(state) {
+    state.selected_foods = []
   },
 }
 

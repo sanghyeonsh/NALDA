@@ -2,7 +2,7 @@
   <div>
     <div class="cards row row-cols-4">
       <div v-for="(item, idx) in items" :key="idx" class="col">
-        <div class="card" @click="ChoiceMenu(item)">
+        <div class="card" @click="ChoiceMenu(item.author)">
           <!-- 서버에서 받을때 -->
           <!-- <img
           :src="'data:image/jpg;base64,' + item"
@@ -36,18 +36,19 @@ export default {
   },
   methods: {
     ...mapMutations('menu', [
-      'SET_ITEM',
       'SET_CHOICE_FOODS',
       'DELETE_CHOICE_FOODS',
+      'CLEAR_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
-      'CLEAR_ITEM',
-      'CLEAR_CHOICE_FOODS',
     ]),
 
     ChoiceMenu(data) {
-      this.CLEAR_ITEM()
-      this.SET_ITEM(data)
+      this.SET_CHOICE_FOODS(data)
+      setTimeout(() => {
+        const menu = document.querySelector('.footer-body')
+        menu.scrollTop = menu.scrollHeight
+      }, 0)
 
       // Get the modal
       const modal = document.getElementsByClassName('service-modal')[0]
