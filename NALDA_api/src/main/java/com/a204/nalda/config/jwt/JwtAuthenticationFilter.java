@@ -83,7 +83,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         //RSA 방식은 아니고 Hash암호 방식
         String jwtToken = com.auth0.jwt.JWT.create()
                 .withSubject("NALDA토큰")
-                .withExpiresAt(new Date(System.currentTimeMillis() + (60000*10)))
+                .withExpiresAt(new Date(System.currentTimeMillis() + (6000000*10)))
                 .withClaim("id", principalDetails.getUser().getId())
                 .withClaim("username", principalDetails.getUser().getUsername())
                 .sign(Algorithm.HMAC512("NALDA_with"));
