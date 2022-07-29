@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +42,7 @@ public class OrdersService {
         for (ServiceCodes service : services) {
             bos = new ByteArrayOutputStream();
             fileName = service.getImage();
-            filePath = System.getProperty("user.dir")+"/src/main/resources/static/snack/";
+            filePath = System.getProperty("user.dir") + "/src/main/resources/static/snack/";
             InputStream imageStream = new FileInputStream(filePath + fileName);
             imageStream.transferTo(bos);
             byte[] bytesData = bos.toByteArray();
@@ -58,7 +59,7 @@ public class OrdersService {
     }
 
     @Transactional
-    public void orderInput(OrderDto orderdto){
+    public void orderInput(OrderDto orderdto) {
 
         User user = User.builder()
                 .id(orderdto.getUserId())
@@ -81,7 +82,7 @@ public class OrdersService {
                 .ordersCodes(new ArrayList<>())
                 .build();
         System.out.println(orders.getOrderMessage());
-        for(OrderListDto orderList : orderdto.getOrderList()){
+        for (OrderListDto orderList : orderdto.getOrderList()) {
 
             OrdersCodes ordersCodes = OrdersCodes.builder()
                     .orderCode(orderList.getOrderCode())
@@ -92,29 +93,31 @@ public class OrdersService {
 
     }
 
-    public void serviceCntInput(ServiceCntDto serviceCntDto){
+    @Transactional
+    public void serviceCntInput(List<ServiceCntDto> serviceCntDTOS) {
 
-        ServiceCodes serviceCodes = ServiceCodes.builder()
-                .id(serviceCntDto.getServiceCodesId())
-                .build();
-        Flight flight = Flight.builder()
-                .id(serviceCntDto.getFlightId())
-                .build();
-        ServiceStock serviceStock = ServiceStock.builder()
-                .serviceCodes(serviceCodes)
-                .flight(flight)
-                .total(serviceCntDto.getTotal())
-                .build();
-
-        serviceStockRepository.save(serviceStock);
+        for (ServiceCntDto serviceCntDto : serviceCntDTOS) {
+            ServiceCodes serviceCodes = ServiceCodes.builder()
+                    .id(serviceCntDto.getServiceCodesId())
+                    .build();
+            Flight flight = Flight.builder()
+                    .id(serviceCntDto.getFlightId())
+                    .build();
+            ServiceStock serviceStock = ServiceStock.builder()
+                    .serviceCodes(serviceCodes)
+                    .flight(flight)
+                    .total(serviceCntDto.getTotal())
+                    .build();
+            serviceStockRepository.save(serviceStock);
+        }
     }
 
     @Transactional
-    public List<ServiceDto> listService(){
+    public List<ServiceDto> listService() {
 
         List<ServiceCodes> serviceCodes = serviceRepository.findAll();
         List<ServiceDto> serviceDto = new ArrayList<>();
-        for(ServiceCodes serviceCode:serviceCodes){
+        for (ServiceCodes serviceCode : serviceCodes) {
             serviceDto.add(ServiceDto.builder()
                     .image("")
                     .serviceName(serviceCode.getServiceName())
@@ -125,5 +128,32 @@ public class OrdersService {
         return serviceDto;
     }
 
+
+    @Transactional
+    public List<OrderDto> listOrders(Long flightId) {
+        List<Orders> orders = orderRepository.findByFlightId(flightId);
+        List<OrderDto> orderDTOS = new ArrayList<>();
+        for (Orders order : orders) {
+            orderDTOS.add(OrderDto.builder()
+                    .orderMessage(order.getOrderMessage())
+                    .orderTime(order.getOrderTime())
+                    .flightId(flightId)
+                    .seatId(order.getSeat().getId())
+                    .userId(order.getUser().getId())
+                    .status(String.valueOf(order.getStatus()))
+                    .build());
+        }
+        return orderDTOS;
+    }
+
+    @Transactional
+    public void updateStatus(Long ordersId) {
+        Optional<Orders> optional = orderRepository.findById(ordersId);
+        if(optional.get().getStatus().equals(Status.PROGRESS)){
+            optional.get().changStatusInfo(Status.DONE);
+        }else{
+            optional.get().changStatusInfo(Status.PROGRESS);
+        }
+    }
 
 }
