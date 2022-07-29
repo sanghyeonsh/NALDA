@@ -53,7 +53,6 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { login } from '@/api/user'
 export default {
   name: 'LoginUser',
 
@@ -68,30 +67,6 @@ export default {
   },
   methods: {
     ...mapActions('user', ['setLoginMember']),
-    inputLogin() {
-      console.log(this.id + ' ' + this.password)
-      login(
-        {
-          username: this.id,
-          password: this.password,
-        },
-        ({ headers, data }) => {
-          // const jwtToken = headers.get('Authorization')
-          // console.log(jwtToken)
-          sessionStorage.setItem('Authorization', headers.authorization)
-          if (data.msg === '로그인 성공') {
-            this.setLoginMember(this.id)
-            // 세관신고서로 넘어가야함(임시)
-            this.$router.push('/user/mypage')
-          } else {
-            alert('실패')
-          }
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
-    },
   },
 }
 </script>
