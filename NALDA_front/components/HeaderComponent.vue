@@ -6,15 +6,38 @@
       signup
     </div>-->
     <div class="userprofile-wrap" @click="MoveMypage">
-      <img class="profile-img" src="../static/main/user_profile_w.png" alt="profile-img" />
-      <h3>user</h3>
+      <img
+        class="profile-img"
+        src="../static/main/user_profile_w.png"
+        alt="profile-img"
+      />
+      <h3>{{ fullname }}</h3>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'HeaderComponent',
+  computed: {
+    ...mapState('user', ['loginMember']),
+    fullname() {
+      if (this.loginMember == null) return '비회원'
+      let fullname = ''
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (fullname += this.loginMember.fullName.lastName)
+      return fullname
+    },
+  },
+  created() {
+    console.log(this.loginMember)
+  },
   methods: {
     MoveMain() {
       this.$router.push('/main')

@@ -12,13 +12,17 @@
       <section class="login-input-section-wrap">
         <h2>Member</h2>
         <div class="login-input-wrap">
-          <input v-model="id" placeholder="Username" type="text" />
+          <input v-model="userInfo.id" placeholder="Username" type="text" />
         </div>
         <div class="login-input-wrap password-wrap">
-          <input v-model="password" placeholder="Password" type="password" />
+          <input
+            v-model="userInfo.password"
+            placeholder="Password"
+            type="password"
+          />
         </div>
         <div class="login-button-wrap">
-          <button @click="inputLogin">Sign in</button>
+          <button @click="loginClick">Sign in</button>
         </div>
         <div class="login-stay-sign-in">
           <nuxt-link to="/user/termsuse" style="text-decoration: none">
@@ -58,15 +62,20 @@ export default {
 
   data() {
     return {
-      id: null,
-      password: null,
+      userInfo: {
+        id: null,
+        password: null,
+      },
     }
   },
   computed: {
     ...mapState('user', ['loginMember']),
   },
   methods: {
-    ...mapActions('user', ['setLoginMember']),
+    ...mapActions('user', ['inputLogin']),
+    loginClick() {
+      this.inputLogin(this.userInfo)
+    },
   },
 }
 </script>
