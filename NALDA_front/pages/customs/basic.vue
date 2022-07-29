@@ -248,11 +248,11 @@ export default {
   },
   created() {
     const promise = new Promise((resolve, reject) => {
-      this.callMemberDetail(this.loginMember.username)
       resolve()
     })
 
-    promise.then(() => {
+    promise.then(async () => {
+      await this.callMemberDetail(this.loginMember.username)
       this.loginMember.fullName.lastName &&
         (this.lastName = this.loginMember.fullName.lastName)
       this.loginMember.fullName.middleName &&
@@ -265,13 +265,22 @@ export default {
           '-' +
           this.loginMember.birthday[1] +
           '-' +
-          '0' +
-          this.loginMember.birthday[2])
+          (this.loginMember.birthday[2] < 10
+            ? '0' + this.loginMember.birthday[2]
+            : this.loginMember.birthday[2]))
+      this.memberDetail.passportNum &&
+        (this.passportNum = this.memberDetail.passportNum)
+      this.memberDetail.job && (this.job = this.memberDetail.job)
+      this.memberDetail.address.zipcode &&
+        (this.zipcode = this.memberDetail.address.zipcode)
+      this.memberDetail.address.mainAddress &&
+        (this.mainAddress = this.memberDetail.address.mainAddress)
+      this.memberDetail.address.detailAddress &&
+        (this.detailAddress = this.memberDetail.address.detailAddress)
     })
   },
   methods: {
     find_Postcode() {
-      console.log(this.birthday)
       this.zipcode = ''
       this.mainAddress = ''
       this.detailAddress = ''
