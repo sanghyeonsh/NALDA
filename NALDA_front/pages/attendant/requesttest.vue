@@ -19,8 +19,7 @@
                 small
                 :tbody-transition-props="transProps"
                 @row-clicked="showDetail"
-              >
-              </b-table>
+              ></b-table>
               <b-pagination
                 v-model="requestCurrentPage"
                 :total-rows="reqeustrows"
@@ -45,8 +44,7 @@
                   :current-page="completedCurrentPage"
                   small
                   @row-clicked="showDetail"
-                >
-                </b-table>
+                ></b-table>
                 <b-pagination
                   v-model="completedCurrentPage"
                   :total-rows="completedrows"
@@ -79,11 +77,11 @@
             >
               <template #cell(선택)="{ rowSelected }">
                 <template v-if="rowSelected">
-                  <span aria-hidden="true">✔</span>
+                  <span aria-hidden="true">☑</span>
                   <span class="sr-only">Selected</span>
                 </template>
                 <template v-else>
-                  <span aria-hidden="true">&nbsp;</span>
+                  <span aria-hidden="true">⬜️</span>
                   <span class="sr-only">Not selected</span>
                 </template>
               </template>
@@ -96,9 +94,7 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)"
-                  >완료</b-button
-                >
+                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
               </div>
             </div>
             <b-pagination
@@ -170,66 +166,24 @@ export default {
           상태: '미완료',
         },
         {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
+          좌석: 'D07',
+          분류: '편의물품',
+          요청사항: '담요',
           요청시각: '02:40',
           상태: '미완료',
         },
         {
-          좌석: 'A08',
+          좌석: 'C38',
           분류: '간식 및 음료',
-          요청사항: '나쵸',
+          요청사항: '하이네켄',
           요청시각: '01:37',
           상태: '미완료',
         },
         {
-          좌석: 'A08',
+          좌석: 'F63',
           분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '03:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '05:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '05:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '05:37',
+          요청사항: '오렌지주스',
+          요청시각: '19:37',
           상태: '미완료',
         },
       ],
@@ -290,8 +244,8 @@ export default {
     //   }
     // }
     this.rows = this.requestItems.length
-    console.log(this.rows)
-    console.log(this.requestItems)
+    // console.log(this.rows)
+    // console.log(this.requestItems)
     return this.rows
   },
   methods: {
@@ -319,17 +273,30 @@ export default {
       this.$refs.selectableTable.selectAllRows()
     },
     completeRequest(items) {
-      console.log(items[1])
+      // console.log(items[1].분류) 데이터 확인
+      const Today = new Date()
+      const hours = ('0' + Today.getHours()).slice(-2)
+      const minutes = ('0' + Today.getMinutes()).slice(-2)
+      const seconds = ('0' + Today.getSeconds()).slice(-2)
+      const currentTime = hours + ':' + minutes + ':' + seconds
+      // console.log(currentTime)
+      // console.log(this.items[0].좌석)
+
       for (let i = 0; i < items.length; i++) {
+        sessionStorage.setItem('requestDetail', JSON.stringify(items[i]))
+        // sessionStorage.setItem('분류', items[i].분류)
+        // sessionStorage.setItem('요청사항', items[i].요청사항)
+        // sessionStorage.setItem('요청시각', items[i].요청시각)
         const completeItem = {
-          좌석: this.items[i].좌석,
-          분류: this.items[i].분류,
-          요청사항: this.items[i].요청사항,
-          요청시각: this.items[i].요청시각,
-          완료시각: Date.getTime(),
+          좌석: items[i].좌석,
+          분류: items[i].분류,
+          요청사항: items[i].요청사항,
+          요청시각: items[i].요청시각,
+          완료시각: currentTime,
         }
         this.completed.push(completeItem)
       }
+      sessionStorage.setItem('completed', JSON.stringify(this.completed))
     },
     clearSelected() {},
   },
