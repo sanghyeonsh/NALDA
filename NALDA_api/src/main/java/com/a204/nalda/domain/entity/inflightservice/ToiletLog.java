@@ -6,28 +6,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
-public class OrdersCodes {
+public class ToiletLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orders_codes_id")
+    @Column(name = "toilet_log_id")
     private Long id;
+    private LocalDateTime time;
+    private int used;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "orders_id")
-    private Orders orders;
-
-    @Column(name = "order_code")
-    private String orderCode;
-
-    public void changeOrder(Orders orders) {
-        this.orders = orders;
-    }
+    @JoinColumn(name = "toilet_id")
+    private Toilet toilet;
 
 }
