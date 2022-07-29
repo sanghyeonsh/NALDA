@@ -1,7 +1,8 @@
-import { login } from '@/api/user'
+import { login, mypage } from '@/api/user'
 
 export const state = () => ({
   loginMember: null,
+  memberDetail: null,
 })
 
 export const mutations = {
@@ -10,6 +11,12 @@ export const mutations = {
   },
   CLEAR_LOGIN_MEMBER(state) {
     state.loginMember = null
+  },
+  SET_MEMBER_DETAIL(state, memberDetail) {
+    state.memberDetail = memberDetail
+  },
+  CLEAR_MEMBER_DETAIL(state) {
+    state.memberDetail = null
   },
 }
 
@@ -32,6 +39,17 @@ export const actions = {
         } else {
           alert('실패')
         }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  callMemberDetail({ commit }, userid) {
+    mypage(
+      userid,
+      (response) => {
+        console.log(response)
       },
       (error) => {
         console.log(error)
