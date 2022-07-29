@@ -29,8 +29,6 @@ public class Toilet {
     @Column(name = "toilet_code")
     private String toiletCode;
 
-    private LocalDateTime time;
-
     public void changeAirplane(Airplane airplane) {
         this.airplane = airplane;
     }

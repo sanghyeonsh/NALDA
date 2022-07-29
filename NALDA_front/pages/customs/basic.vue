@@ -1,20 +1,53 @@
 <template>
   <div class="customs-input-container">
     <custom-navs
-      :basic-info="{lastName, middleName, firstName, birthday, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
+      :basic-info="{
+        lastName,
+        middleName,
+        firstName,
+        birthday,
+        passportNum,
+        job,
+        travelPeriod,
+        travelPurpose,
+        flightNum,
+        famillyNum,
+        countryNum,
+      }"
     ></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-container">
+            <div class="title-items">
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <nuxt-link to="/customs/checkone">
+                <b-button class="next-page" variant="info"
+                  >다음 페이지</b-button
+                >
+              </nuxt-link>
+            </div>
+          </div>
           <div class="custom-info-wrap">
             <table class="custom-info-table">
               <tr>
                 <td id="col-name">성명</td>
                 <td colspan="3">
-                  <input v-model="lastName" type="text" placeholder="성을 입력해주세요." />
-                  <input v-model="middleName" type="text" placeholder="middle name을 입력해주세요." />
-                  <input v-model="firstName" type="text" placeholder="이름을 입력해주세요." />
+                  <input
+                    v-model="lastName"
+                    type="text"
+                    placeholder="성을 입력해주세요."
+                  />
+                  <input
+                    v-model="middleName"
+                    type="text"
+                    placeholder="middle name을 입력해주세요."
+                  />
+                  <input
+                    v-model="firstName"
+                    type="text"
+                    placeholder="이름을 입력해주세요."
+                  />
                 </td>
               </tr>
               <tr>
@@ -25,20 +58,33 @@
                 </td>
                 <td id="col-name">여권번호</td>
                 <td>
-                  <input v-model="passportNum" type="text" placeholder="여권번호를 입력해주세요." />
+                  <input
+                    v-model="passportNum"
+                    type="text"
+                    placeholder="여권번호를 입력해주세요."
+                  />
                 </td>
               </tr>
               <!-- 첫번째 줄 끝 -->
-              
+
               <tr>
                 <!-- 두번째 줄 시작 -->
                 <td id="col-name">직업</td>
                 <td>
-                  <input v-model="job" type="text" placeholder="직업을 입력해주세요." />
+                  <input
+                    v-model="job"
+                    type="text"
+                    placeholder="직업을 입력해주세요."
+                  />
                 </td>
                 <td id="col-name">여행기간</td>
                 <td>
-                  <input v-model="travelPeriod" type="text" placeholder="여행기간을 입력해주세요." /> (일)
+                  <input
+                    v-model="travelPeriod"
+                    type="text"
+                    placeholder="여행기간을 입력해주세요."
+                  />
+                  (일)
                 </td>
               </tr>
               <!-- 두번째 줄 끝 -->
@@ -73,11 +119,21 @@
               <tr>
                 <td id="col-name">항공편명</td>
                 <td>
-                  <input v-model="flightNum" type="text" placeholder="항공편을 입력해주세요." />
+                  <input
+                    v-model="flightNum"
+                    type="text"
+                    placeholder="항공편을 입력해주세요."
+                  />
                 </td>
                 <td id="col-name">동반가족수</td>
                 <td>
-                  <input v-model="famillyNum" class="family-num" type="text" placeholder="00" /> 명
+                  <input
+                    v-model="famillyNum"
+                    class="family-num"
+                    type="text"
+                    placeholder="00"
+                  />
+                  명
                 </td>
               </tr>
               <tr>
@@ -88,7 +144,8 @@
                     class="visit-country-num"
                     type="text"
                     placeholder="방문했던 국가 총 수"
-                  /> 개국)
+                  />
+                  개국)
                   <br />
                   <div class="visited-countries">
                     <div>
@@ -125,8 +182,19 @@
                 <td id="col-name">국내주소</td>
                 <td colspan="3">
                   <div class="address-wrap">
-                    <input id="postal-code" v-model="zipcode" placeholder="우편번호" type="text" />
-                    <input id="address" v-model="mainAddress" placeholder="주소" type="text" disabled />
+                    <input
+                      id="postal-code"
+                      v-model="zipcode"
+                      placeholder="우편번호"
+                      type="text"
+                    />
+                    <input
+                      id="address"
+                      v-model="mainAddress"
+                      placeholder="주소"
+                      type="text"
+                      disabled
+                    />
                     <input
                       id="address-detail"
                       v-model="detailAddress"
@@ -157,6 +225,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
@@ -183,7 +252,42 @@ export default {
       detailAddress: '',
     }
   },
-  computed: {},
+  computed: {
+    ...mapState('user', ['loginMember', 'memberDetail']),
+  },
+  created() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.callMemberDetail(this.loginMember.username)
+      this.loginMember.fullName.lastName &&
+        (this.lastName = this.loginMember.fullName.lastName)
+      this.loginMember.fullName.middleName &&
+        (this.middleName = this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (this.lastName = this.loginMember.fullName.lastName)
+      this.loginMember.birthday &&
+        (this.birthday =
+          this.loginMember.birthday[0] +
+          '-' +
+          this.loginMember.birthday[1] +
+          '-' +
+          (this.loginMember.birthday[2] < 10
+            ? '0' + this.loginMember.birthday[2]
+            : this.loginMember.birthday[2]))
+      this.memberDetail.passportNum &&
+        (this.passportNum = this.memberDetail.passportNum)
+      this.memberDetail.job && (this.job = this.memberDetail.job)
+      this.memberDetail.address.zipcode &&
+        (this.zipcode = this.memberDetail.address.zipcode)
+      this.memberDetail.address.mainAddress &&
+        (this.mainAddress = this.memberDetail.address.mainAddress)
+      this.memberDetail.address.detailAddress &&
+        (this.detailAddress = this.memberDetail.address.detailAddress)
+    })
+  },
   methods: {
     find_Postcode() {
       this.zipcode = ''
@@ -241,6 +345,7 @@ export default {
         },
       }).open()
     },
+    ...mapActions('user', ['callMemberDetail']),
   },
 }
 </script>
@@ -258,6 +363,21 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+
+.next-page {
+  width: 200%;
+  height: 60%;
+}
+
+.title-items {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+}
+.title-container {
+  display: flex;
+  justify-content: end;
 }
 
 .customs-input-container {
@@ -301,7 +421,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 .custom-info-wrap {
   padding: 3%;

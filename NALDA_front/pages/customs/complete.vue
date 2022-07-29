@@ -28,7 +28,7 @@
         </div>
         <div class="next-btn-wrap">
           <div>
-            <b-button class="next-page" variant="info">next</b-button>
+            <b-button class="next-page" variant="info">제출하기</b-button>
           </div>
         </div>
       </div>
@@ -150,12 +150,13 @@ export default {
 
 .next-page {
   width: 200%;
-  height: 140%;
+  height: 200%;
 }
 .next-btn-wrap {
+  width: 80%;
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  align-content: flex-end;
+  justify-content: end;
 }
 </style>
