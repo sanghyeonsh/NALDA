@@ -18,7 +18,16 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-container">
+            <div class="title-items">
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <nuxt-link to="/customs/checkone">
+                <b-button class="next-page" variant="info"
+                  >다음 페이지</b-button
+                >
+              </nuxt-link>
+            </div>
+          </div>
           <div class="custom-info-wrap">
             <table class="custom-info-table">
               <tr>
@@ -356,6 +365,21 @@ export default {
   font-family: 'twayfly';
 }
 
+.next-page {
+  width: 200%;
+  height: 60%;
+}
+
+.title-items {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+}
+.title-container {
+  display: flex;
+  justify-content: end;
+}
+
 .customs-input-container {
   width: 100%;
   height: 70vh;
@@ -397,7 +421,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 .custom-info-wrap {
   padding: 3%;
