@@ -25,24 +25,9 @@ public class MealController {
     @GetMapping
     public ResponseEntity<?> listMeals(){
         Map<String, Object> result = new HashMap<>();
-        List<byte[]> images = new ArrayList<>();
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
         try{
             List<MealDto> mealDTOS = mealService.listMeal();
-            String fileName;
-            String filePath;
-            for (MealDto mealDTO : mealDTOS) {
-                fileName = mealDTO.getImageName();
-                filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
-                InputStream imageStream = new FileInputStream(filePath+fileName);
-                imageStream.transferTo(bos);
-                byte[] bytesData = bos.toByteArray();
-                images.add(bytesData);
-                break;
-            }
             result.put("mealList", mealDTOS);
-            result.put("images", images);
             return new ResponseEntity<>(result,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
@@ -53,12 +38,11 @@ public class MealController {
 
 
     @PostMapping("/input")
-    public ResponseEntity<?> selectMeals(@RequestBody MealCntDto mealCntDto){
+    public ResponseEntity<?> selectMeals(@RequestBody List<MealCntDto> mealCntDTOS){
         Map<String,Object> result = new HashMap<>();
         try {
-            System.out.println(mealCntDto.getMealId());
-            mealService.mealCntInput(mealCntDto);
-            result.put("info", mealCntDto);
+            mealService.mealCntInput(mealCntDTOS);
+            result.put("info", mealCntDTOS);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e){
             e.printStackTrace();
@@ -122,9 +106,7 @@ public class MealController {
             result.put("msg", e.getMessage());
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
-
 
 
 }
