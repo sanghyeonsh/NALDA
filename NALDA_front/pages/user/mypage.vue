@@ -81,7 +81,10 @@
               <div class="row-item address">
                 <div>
                   <i class="fa-solid fa-location-dot"></i>
-                  <span class="item-text" v-text="member.address.mainAddress"></span>
+                  <span
+                    class="item-text"
+                    v-text="member.address.mainAddress"
+                  ></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -90,7 +93,10 @@
               <div class="row-item address">
                 <div>
                   <i class="fa-solid fa-location-dot"></i>
-                  <span class="item-text" v-text="member.address.detailAddress"></span>
+                  <span
+                    class="item-text"
+                    v-text="member.address.detailAddress"
+                  ></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -164,7 +170,6 @@ export default {
     mypage(
       this.loginMember,
       ({ data }) => {
-        console.log(data.info)
         this.member = data.info
       },
       (error) => {

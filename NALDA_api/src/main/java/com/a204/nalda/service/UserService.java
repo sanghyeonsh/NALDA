@@ -70,7 +70,10 @@ public class UserService {
 
     public LoginDto loginUser(String username) {
         User user = userRepository.findUserByUsername(username);
-        LoginDto loginDto = LoginDto.builder().birthday(user.getBirthday()).fullName(user.getFullName()).username(user.getUsername()).build();
+        LoginDto loginDto = LoginDto.builder()
+                .birthday(user.getBirthday())
+                .fullName(user.getFullName())
+                .username(user.getUsername()).build();
 
         return loginDto;
     }
