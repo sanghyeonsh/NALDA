@@ -65,6 +65,7 @@ export default {
     ...mapState('menu', ['selected_foods']),
   },
   methods: {
+    // modal popup
     ShowPopup() {
       // Get the modal
       const modal = document.getElementById('myModal')

@@ -6,17 +6,25 @@
     </div>
     <div
       class="service-navbar-snack"
-      :class="{ notactive: !isSnack }"
+      :class="{ snackactive: isSnack }"
       @click="MoveSnack"
     >
       <img src="../static/orders/dessert.png" alt="" />
       <span style="color: white">간식</span>
     </div>
-    <div class="service-navbar-alcohol" @click="MoveAlcohol">
+    <div
+      class="service-navbar-alcohol"
+      :class="{ snackactive: isAlcohol }"
+      @click="MoveAlcohol"
+    >
       <img src="../static/orders/drink.png" alt="" />
       <span style="color: white">주류</span>
     </div>
-    <div class="service-navbar-nonalcohol" @click="MoveNonAlcohol">
+    <div
+      class="service-navbar-nonalcohol"
+      :class="{ snackactive: isNonAlcohol }"
+      @click="MoveNonAlcohol"
+    >
       <img src="../static/orders/coffee_cup.png" alt="" />
       <span style="color: white">비주류</span>
     </div>
@@ -39,7 +47,9 @@ export default {
   name: 'ServiceNavbar',
   data() {
     return {
-      isSnack: true,
+      isSnack: false,
+      isAlcohol: false,
+      isNonAlcohol: false,
     }
   },
   computed: {
@@ -47,10 +57,9 @@ export default {
   },
 
   mounted() {
+    this.isSnack = true
+    this.CLEAR_ITEMS()
     this.getsnack()
-    const target = document.getElementsByClassName('service-navbar-snack')[0]
-    target.style.borderBottomStyle = 'solid'
-    target.style.borderBottomWidth = '0.5vh'
   },
   methods: {
     MoveOrders() {
@@ -58,40 +67,25 @@ export default {
       this.CLEAR_CHOICE_FOODS()
     },
     MoveSnack() {
+      this.isSnack = true
+      this.isAlcohol = false
+      this.isNonAlcohol = false
       this.CLEAR_ITEMS()
       this.getsnack()
-      this.isSnack = !this.isSnack
-      let target = document.getElementsByClassName('service-navbar-snack')[0]
-      target.style.borderBottomStyle = 'solid'
-      target.style.borderBottomWidth = '0.5vh'
-      target = document.getElementsByClassName('service-navbar-alcohol')[0]
-      target.style.borderBottomStyle = 'none'
-      target = document.getElementsByClassName('service-navbar-nonalcohol')[0]
-      target.style.borderBottomStyle = 'none'
     },
     MoveAlcohol() {
+      this.isSnack = false
+      this.isAlcohol = true
+      this.isNonAlcohol = false
       this.CLEAR_ITEMS()
       this.getalcohol()
-      let target = document.getElementsByClassName('service-navbar-alcohol')[0]
-      target.style.borderBottomStyle = 'solid'
-      target.style.borderBottomWidth = '0.5vh'
-      target = document.getElementsByClassName('service-navbar-snack')[0]
-      target.style.borderBottomStyle = 'none'
-      target = document.getElementsByClassName('service-navbar-nonalcohol')[0]
-      target.style.borderBottomStyle = 'none'
     },
     MoveNonAlcohol() {
+      this.isSnack = false
+      this.isAlcohol = false
+      this.isNonAlcohol = true
       this.CLEAR_ITEMS()
       this.getnonalcohol()
-      let target = document.getElementsByClassName(
-        'service-navbar-nonalcohol'
-      )[0]
-      target.style.borderBottomStyle = 'solid'
-      target.style.borderBottomWidth = '0.5vh'
-      target = document.getElementsByClassName('service-navbar-snack')[0]
-      target.style.borderBottomStyle = 'none'
-      target = document.getElementsByClassName('service-navbar-alcohol')[0]
-      target.style.borderBottomStyle = 'none'
     },
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
@@ -130,9 +124,8 @@ export default {
   padding: 10px;
   font-size: 20px;
 }
-.notactive {
-  background-color: black;
-  border-bottom: 1rem solid;
+.snackactive {
+  border-bottom: 0.5rem solid;
 }
 .service-navbar-alcohol {
   display: flex;

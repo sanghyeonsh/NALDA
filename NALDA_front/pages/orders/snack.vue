@@ -2,9 +2,9 @@
   <div class="orders-snack-container">
     <ServiceNavbar />
     <ServiceCards />
+    <ServiceFooter />
     <StewardessButton />
     <OrdersButton />
-    <ServiceFooter />
   </div>
 </template>
 

@@ -1,17 +1,23 @@
 <template>
-  <div class="cards row row-cols-4">
-    <div v-for="(item, idx) in items" :key="idx" class="col">
-      <div class="card" @click="ChoiceMenu(item.author)">
-        <img
+  <div>
+    <div class="cards row row-cols-4">
+      <div v-for="(item, idx) in items" :key="idx" class="col">
+        <div class="card" @click="ChoiceMenu(item.author)">
+          <!-- 서버에서 받을때 -->
+          <!-- <img
           :src="'data:image/jpg;base64,' + item"
           class="card-img-top"
           alt="..."
-        />
-        <div class="card-body">
-          <div class="card-title">{{ item.author }}</div>
+        /> -->
+          <!-- 실험할때 -->
+          <img :src="item.download_url" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <div class="card-title">{{ item.author }}</div>
+          </div>
         </div>
       </div>
     </div>
+    <ServiceModal />
   </div>
 </template>
 
@@ -43,12 +49,29 @@ export default {
         const menu = document.querySelector('.footer-body')
         menu.scrollTop = menu.scrollHeight
       }, 0)
+
+      // Get the modal
+      const modal = document.getElementsByClassName('service-modal')[0]
+      // Get the <span> element that closes the modal
+      const span = document.getElementsByClassName('close')[0]
+      // When the user clicks on the button, open the modal
+      modal.style.display = 'block'
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = 'none'
+      }
+      window.onclick = function (event) {
+        if (event.target === modal) {
+          modal.style.display = 'none'
+        }
+      }
     },
   },
 }
 </script>
 
-<style>
+<style scoped>
 .cards {
   overflow: scroll;
   width: 100%;

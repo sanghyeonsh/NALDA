@@ -7,9 +7,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_MENU_ITEMS(state, data) {
-    data.images.forEach((item) => {
-      state.items.push(item)
+  SET_MENU_ITEMS(state, snacks) {
+    snacks.forEach((snack) => {
+      state.items.push(snack)
     })
   },
   SET_CHOICE_FOODS(state, choice) {
@@ -56,7 +56,10 @@ export const getters = {}
 export const actions = {
   getsnack({ commit }) {
     axios
-      .get('http://localhost:8080/orders/SNACK')
+      // 서버켰을때 조정
+      // .get('http://localhost:8080/orders/SNACK')
+      // 실험할때
+      .get('https://picsum.photos/v2/list?page=2&limit=1')
       .then(function (response) {
         commit('SET_MENU_ITEMS', response.data)
       })
@@ -66,9 +69,12 @@ export const actions = {
   },
   getalcohol({ commit }) {
     axios
-      .get('http://localhost:3000/orders/ALCOHOL')
+      // 서버켰을때 조정
+      // .get('http://localhost:3000/orders/ALCOHOL')
+      // 실험할때
+      .get('https://picsum.photos/v2/list?page=2&limit=2')
       .then(function (response) {
-        // commit('SET_MENU_ITEMS', response.data)
+        commit('SET_MENU_ITEMS', response.data)
       })
       .catch(function (error) {
         console.log(error)
@@ -76,9 +82,12 @@ export const actions = {
   },
   getnonalcohol({ commit }) {
     axios
-      .get('http://localhost:3000/orders/nonalcohol')
+      // 서버켰을때 조정
+      // .get('http://localhost:3000/orders/nonalcohol')
+      // 실험할때
+      .get('https://picsum.photos/v2/list?page=2&limit=3')
       .then(function (response) {
-        // commit('SET_MENU_ITEMS', response.data)
+        commit('SET_MENU_ITEMS', response.data)
       })
       .catch(function (error) {
         console.log(error)
