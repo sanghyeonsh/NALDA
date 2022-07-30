@@ -45,11 +45,11 @@ export const actions = {
       }
     )
   },
-  callMemberDetail({ commit }, userid) {
-    mypage(
+  async callMemberDetail({ commit }, userid) {
+    await mypage(
       userid,
-      (response) => {
-        console.log(response)
+      ({ data }) => {
+        commit('SET_MEMBER_DETAIL', data.info)
       },
       (error) => {
         console.log(error)

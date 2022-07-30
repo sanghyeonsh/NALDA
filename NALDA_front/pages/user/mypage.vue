@@ -6,14 +6,6 @@
         <h4>내 정보</h4>
         <div class="subindex-bluebox">
           <div class="myprofile-wrap">
-            <div class="info-title">
-              <div class="info-wrap">
-                <div class="title-text">기본정보</div>
-                <span>
-                  <i class="fa-solid fa-circle-info"></i>
-                </span>
-              </div>
-            </div>
             <ul class="myinfo-area">
               <li>
                 <div class="myphoto">
@@ -29,38 +21,30 @@
                 <div class="myaccount" style="width: 651px">
                   <div class="myname">
                     <!-- <div class="name-text">익명규</div> -->
-                    <div class="myId" v-text="loginMember"></div>
+                    <div class="myId" v-text="'성명 : ' + fullName"></div>
                   </div>
-                  <button type="button" class="btn-edit">
-                    <span class="text">수정</span>
-                  </button>
                 </div>
               </li>
             </ul>
           </div>
 
           <ul class="subindex-row">
-            <li>
-              <div class="row-item phone">
-                <div>
-                  <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text" v-text="member.tel"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <div class="row-item mail">
-                <div>
-                  <i class="fa-solid fa-envelope"></i>
-                  <span class="item-text" v-text="member.email"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <!-- 만일 email 등록이 안되어 있을 경우 뜨게 할 부분 -->
-              <!-- <div class="row-item mail not">
+            <div class="row-item phone">
+              <i class="fa-solid fa-mobile-button"></i>
+              <span
+                class="item-text"
+                v-text="'전화번호 : ' + memberDetail.tel"
+              ></span>
+            </div>
+            <div class="row-item mail">
+              <i class="fa-solid fa-envelope"></i>
+              <span
+                class="item-text"
+                v-text="'이메일 : ' + memberDetail.email"
+              ></span>
+            </div>
+            <!-- 만일 email 등록이 안되어 있을 경우 뜨게 할 부분 -->
+            <!-- <div class="row-item mail not">
                         <div>
                             <i class="fa-solid fa-envelope"></i>
                             <span class="item-text">본인확인 이메일 없음</span>
@@ -69,68 +53,46 @@
                             <span class="text">등록</span>
                         </button>
               </div>-->
-              <div class="row-item gender">
-                <div>
-                  <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text" v-text="member.gender"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <div class="row-item address">
-                <div>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <span
-                    class="item-text"
-                    v-text="member.address.mainAddress"
-                  ></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <div class="row-item address">
-                <div>
-                  <i class="fa-solid fa-location-dot"></i>
-                  <span
-                    class="item-text"
-                    v-text="member.address.detailAddress"
-                  ></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-
-              <div class="row-item passportnumber">
-                <div>
-                  <i class="fa-solid fa-passport"></i>
-                  <span class="item-text" v-text="member.passportNum"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <div class="row-item job">
-                <div>
-                  <i class="fa-solid fa-briefcase"></i>
-                  <span class="item-text" v-text="member.job"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-              <div class="row-item nationality">
-                <div>
-                  <i class="fa-solid fa-briefcase"></i>
-                  <span class="item-text" v-text="member.nationality"></span>
-                </div>
-                <button type="button" class="btn-edit">
-                  <span class="text">수정</span>
-                </button>
-              </div>
-            </li>
+            <div class="row-item gender">
+              <i class="fa-solid fa-mobile-button"></i>
+              <span
+                class="item-text"
+                v-text="'성별 : ' + memberDetail.gender"
+              ></span>
+            </div>
+            <div class="row-item address">
+              <i class="fa-solid fa-location-dot"></i>
+              <span
+                class="item-text"
+                v-text="
+                  '주소 : ' +
+                  memberDetail.address.mainAddress +
+                  ' ' +
+                  memberDetail.address.detailAddress
+                "
+              ></span>
+            </div>
+            <div class="row-item passportnumber">
+              <i class="fa-solid fa-passport"></i>
+              <span
+                class="item-text"
+                v-text="'여권번호 : ' + memberDetail.passportNum"
+              ></span>
+            </div>
+            <div class="row-item job">
+              <i class="fa-solid fa-briefcase"></i>
+              <span
+                class="item-text"
+                v-text="'직업 : ' + memberDetail.job"
+              ></span>
+            </div>
+            <div class="row-item nationality">
+              <i class="fa-solid fa-briefcase"></i>
+              <span
+                class="item-text"
+                v-text="'국적 : ' + memberDetail.nationality"
+              ></span>
+            </div>
           </ul>
         </div>
       </div>
@@ -139,9 +101,8 @@
 </template>
 
 <script scoped>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
-import { mypage } from '@/api/user'
 export default {
   name: 'MyPage',
   components: { UserNavs },
@@ -163,19 +124,25 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'memberDetail']),
+    fullName() {
+      let fullName = ''
+      this.loginMember.fullName.firstName &&
+        (fullName += this.loginMember.fullName.firstName)
+      this.loginMember.fullName.middleName &&
+        (fullName += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (fullName += this.loginMember.fullName.lastName)
+
+      return fullName
+    },
   },
 
   created() {
-    mypage(
-      this.loginMember,
-      ({ data }) => {
-        this.member = data.info
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+    this.callMemberDetail(this.loginMember.username)
+  },
+  methods: {
+    ...mapActions('user', ['callMemberDetail']),
   },
 }
 </script>
@@ -265,7 +232,7 @@ ul {
 .subindex-bluebox {
   /* width: 80%; */
   height: 100%;
-  padding: 2% 6% 2% 6%;
+  padding: 0% 3% 2% 6%;
   border-radius: 12px;
   box-shadow: 17px 17px 29px 0 rgb(0 164 73 / 8%);
   border: solid 1px #24919b;
@@ -273,7 +240,7 @@ ul {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
 }
 
 .myprofile-wrap {
@@ -298,6 +265,8 @@ i {
 }
 
 .myinfo-area {
+  margin-top: 3%;
+  margin-bottom: 3%;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -332,12 +301,15 @@ i {
 .subindex-row {
   /* margin-top: 1%;
   margin-bottom: 1%; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.subindex-row .row-item {
-  /* margin-bottom: 0.5%; */
+/* .subindex-row .row-item {
+  margin-bottom: 0.5%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-}
+} */
 </style>
