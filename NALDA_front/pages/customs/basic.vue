@@ -43,11 +43,13 @@
                     v-model="middleName"
                     type="text"
                     placeholder="middle name을 입력해주세요."
+                    disabled
                   />
                   <input
                     v-model="firstName"
                     type="text"
                     placeholder="이름을 입력해주세요."
+                    disabled
                   />
                 </td>
               </tr>
@@ -281,11 +283,9 @@ export default {
         (this.birthday =
           this.loginMember.birthday[0] +
           '-' +
-          this.loginMember.birthday[1] +
-          '-' +
-          (this.loginMember.birthday[2] < 10
-            ? '0' + this.loginMember.birthday[2]
-            : this.loginMember.birthday[2]))
+          (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
+            '-' +
+            ('00' + this.loginMember.birthday[2].toString()).slice(-2)))
       this.memberDetail.passportNum &&
         (this.passportNum = this.memberDetail.passportNum)
       this.memberDetail.job && (this.job = this.memberDetail.job)
