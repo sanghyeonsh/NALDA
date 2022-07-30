@@ -15,19 +15,33 @@
           <div>
             <h6>아이디</h6>
             <div class="modify-input-id-wrap">
-              <input placeholder="Username" type="text" disabled />
+              <input
+                v-model="username"
+                placeholder="Username"
+                type="text"
+                disabled
+              />
             </div>
           </div>
           <div>
             <h6>비밀번호</h6>
             <div class="modify-input-wrap password-wrap">
-              <input placeholder="Password" type="password" />
+              <input
+                ref="password"
+                v-model="password"
+                placeholder="Password"
+                type="password"
+              />
             </div>
           </div>
           <div>
             <h6>비밀번호 확인</h6>
             <div class="modify-input-wrap password-confirm-wrap">
-              <input placeholder="Password" type="password" />
+              <input
+                v-model="passwordCheck"
+                placeholder="Password"
+                type="password"
+              />
             </div>
           </div>
           <div class="modify-name-form-tag">
@@ -40,7 +54,11 @@
               <input v-model="firstName" placeholder="firstname" type="text" />
             </div>
             <div class="modify-input-wrap name-wrap">
-              <input v-model="middleName" placeholder="middlename" type="text" />
+              <input
+                v-model="middleName"
+                placeholder="middlename"
+                type="text"
+              />
             </div>
 
             <div class="modify-input-wrap name-wrap">
@@ -51,38 +69,59 @@
             <h6>생년월일</h6>
             <div class="birthdate-wrap">
               <div class="modify-input-birth">
-                <input type="date" />
+                <input v-model="birthday" type="date" />
               </div>
             </div>
           </div>
           <div>
             <h6>성별</h6>
             <div class="gender-wrap">
-              <div>
-                <button id="gender-btn">남자</button>
-              </div>
-              <div>
-                <button id="gender-btn">여자</button>
-              </div>
+              <b-form-group v-slot="{ ariaDescribedby }">
+                <b-form-radio-group
+                  id="btn-radios-2"
+                  v-model="gender"
+                  :options="genders"
+                  :aria-describedby="ariaDescribedby"
+                  button-variant="outline-primary"
+                  size="lg"
+                  name="radio-btn-outline"
+                  buttons
+                ></b-form-radio-group>
+              </b-form-group>
             </div>
           </div>
           <div>
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="modify-input-email">
-                <input id="modify-email-id" type="text" placeholder="이메일아이디" />
+                <input
+                  id="modify-email-id"
+                  v-model="email1"
+                  type="text"
+                  placeholder="이메일아이디"
+                />
               </div>
               <h5>@</h5>
               <div class="modify-input-email">
-                <input id="modify-email" type="text" placeholder="이메일주소" />
+                <input
+                  id="modify-email"
+                  v-model="email2"
+                  type="text"
+                  placeholder="이메일주소"
+                />
               </div>
               <div class="modify-input-email" style="margin-left: 10px">
-                <select id="modify-email-select" class="selectbox" name="email" onchange>
-                  <option value="self">직접입력</option>
-                  <option value="naver">naver.com</option>
-                  <option value="gmail">gmail.com</option>
-                  <option value="daum">daum.com</option>
-                  <option value="hotmail">hotmail.com</option>
+                <select
+                  id="modify-email-select"
+                  class="selectbox"
+                  name="email"
+                  @change="changeEmail"
+                >
+                  <option value="">직접입력</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="daum.com">daum.com</option>
+                  <option value="hotmail.com">hotmail.com</option>
                 </select>
               </div>
             </div>
@@ -91,15 +130,30 @@
             <h6>전화번호</h6>
             <div class="mobile-num-wrap">
               <div class="modify-mobile-num">
-                <input id="mobile-num" type="text" placeholder="000" />
+                <input
+                  v-model="tel1"
+                  class="mobile-num"
+                  type="text"
+                  placeholder="000"
+                />
               </div>
               <h5>-</h5>
               <div class="modify-mobile-num">
-                <input id="mobile-num" type="text" placeholder="0000" />
+                <input
+                  v-model="tel2"
+                  class="mobile-num"
+                  type="text"
+                  placeholder="0000"
+                />
               </div>
               <h5>-</h5>
               <div class="modify-mobile-num">
-                <input id="mobile-num" type="text" placeholder="0000" />
+                <input
+                  v-model="tel3"
+                  class="mobile-num"
+                  type="text"
+                  placeholder="0000"
+                />
               </div>
             </div>
           </div>
@@ -107,48 +161,82 @@
             <h6>주소</h6>
             <div class="address-wrap">
               <div class="postal-wrap">
-                <input id="postal-code" placeholder="postal code" type="text" />
-                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+                <input
+                  id="postal-code"
+                  v-model="zipcode"
+                  placeholder="postal code"
+                  type="text"
+                />
+                <input
+                  id="postal-check-btn"
+                  type="button"
+                  value="주소검색"
+                  @click="find_Postcode()"
+                />
               </div>
               <div class="modify-input-wrap">
-                <input id="address" placeholder="address" type="text" />
+                <input
+                  id="address"
+                  v-model="mainAddress"
+                  placeholder="address"
+                  type="text"
+                />
               </div>
               <div class="modify-input-wrap" style="margin-top: 3px">
-                <input id="address-detail" placeholder="address detail" type="text" />
+                <input
+                  id="address-detail"
+                  v-model="detailAddress"
+                  placeholder="address detail"
+                  type="text"
+                />
               </div>
             </div>
           </div>
           <div>
             <h6>여권번호</h6>
             <div class="modify-input-wrap passport-num-wrap">
-              <input placeholder="passportnumber" type="text" />
+              <input
+                v-model="passportNum"
+                placeholder="passportnumber"
+                type="text"
+              />
             </div>
           </div>
           <div>
             <h6>국적</h6>
             <div class="modify-input-wrap nationality-wrap">
-              <input placeholder="nationality" type="text" />
+              <input
+                v-model="nationality"
+                placeholder="nationality"
+                type="text"
+              />
             </div>
           </div>
           <div>
             <h6>직업</h6>
             <div class="modify-input-wrap job-wrap">
-              <select id="modify-job-select" class="selectbox" name="job" onchange>
-                <option value="student">학생</option>
-                <option value="housewife">주부</option>
-                <option value="soldier">군인</option>
-                <option value="financial business">금융업</option>
-                <option value="teacher ">교육계</option>
-                <option value="IT">IT, 정보통신</option>
-                <option value="commercial">광고</option>
-                <option value="agriculture">농부</option>
-                <option value="etc">기타</option>
+              <select
+                id="modify-job-select"
+                v-model="job"
+                class="selectbox"
+                name="job"
+                onchange
+              >
+                <option value="학생">학생</option>
+                <option value="주부">주부</option>
+                <option value="군인">군인</option>
+                <option value="금융업">금융업</option>
+                <option value="교육계">교육계</option>
+                <option value="IT, 정보통신">IT, 정보통신</option>
+                <option value="광고">광고</option>
+                <option value="농부">농부</option>
+                <option value="기타">기타</option>
               </select>
             </div>
           </div>
 
           <div class="modify-button-wrap">
-            <button>modify</button>
+            <button @click="modify">modify</button>
           </div>
           <!-- <div class="modify-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -161,21 +249,120 @@
 </template>
 
 <script scoped>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'ModifyUser',
   components: {},
   data() {
     return {
+      genders: [
+        { text: '남성', value: 'MALE' },
+        { text: '여성', value: 'FEMALE' },
+      ],
       // 주소 변수
       addr: '',
       // 참고항목 변수
       extraAddr: '',
+      password: '',
+      passwordCheck: '',
+      birthday: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      gender: '',
+      email1: '',
+      email2: '',
+      tel1: '',
+      tel2: '',
+      tel3: '',
+      zipcode: '',
+      mainAddress: '',
+      detailAddress: '',
+      passportNum: '',
+      nationality: '',
+      job: '',
+      username: '',
     }
   },
+  computed: {
+    ...mapState('user', ['loginMember', 'memberDetail']),
+    tel() {
+      return this.tel1 + '-' + this.tel2 + '-' + this.tel3
+    },
+    email() {
+      return this.email1 + '@' + this.email2
+    },
+  },
+  created() {
+    this.birthday =
+      this.loginMember.birthday[0] +
+      '-' +
+      (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
+        '-' +
+        ('00' + this.loginMember.birthday[2].toString()).slice(-2))
+    console.log(this.birthday)
+    this.username = this.loginMember.username
+    this.loginMember.fullName.firstName &&
+      (this.firstName = this.loginMember.fullName.firstName)
+    this.loginMember.fullName.middleName &&
+      (this.middleName = this.loginMember.fullName.middleName)
+    this.loginMember.fullName.lastName &&
+      (this.lastName = this.loginMember.fullName.lastName)
+    this.gender = this.memberDetail.gender
+    this.email1 = this.memberDetail.email.split('@')[0]
+    this.email2 = this.memberDetail.email.split('@')[1]
+    this.tel1 = this.memberDetail.tel.split('-')[0]
+    this.tel2 = this.memberDetail.tel.split('-')[1]
+    this.tel3 = this.memberDetail.tel.split('-')[2]
+    this.zipcode = this.memberDetail.address.zipcode
+    this.mainAddress = this.memberDetail.address.mainAddress
+    this.detailAddress = this.memberDetail.address.detailAddress
+    this.passportNum = this.memberDetail.passportNum
+    this.nationality = this.memberDetail.nationality
+    this.job = this.memberDetail.job
+  },
   methods: {
+    ...mapActions('user', ['modifyMember']),
+    modify() {
+      if (this.password === this.passwordCheck) {
+        const sendObject = {
+          username: this.username,
+          password: this.password,
+          birthday: this.birthday,
+          fullName: {
+            firstName: this.firstName,
+            middleName: this.middleName,
+            lastName: this.lastName,
+          },
+          job: this.job,
+          passportNum: this.passportNum,
+          address: {
+            zipcode: this.zipcode,
+            mainAddress: this.mainAddress,
+            detailAddress: this.detailAddress,
+          },
+          tel: this.tel,
+          email: this.email,
+          gender: this.gender,
+          nationality: this.nationality,
+        }
+        this.modifyMember(sendObject)
+        this.$router.push('/user/mypage')
+      } else {
+        alert('비밀번호를 확인 해주세요')
+        this.password = ''
+        this.passwordCheck = ''
+        this.$refs.password.focus()
+      }
+    },
+    changeEmail(e) {
+      this.email2 = e.target.value
+    },
+
     /*
     KAKAO API 사용한부분
-    https://postcode.map.daum.net/guide#sample 이거에서 
+    https://postcode.map.daum.net/guide#sample 이거에서
     사용자가 선택한 값 이용하기 부분 소스코드 가져옴
     Key 발급 필요 없고, 사용량 제한 없음
     기업용/상업용 무료 사용 가능
@@ -221,14 +408,14 @@ export default {
               this.extraAddr = ' (' + this.extraAddr + ')'
             }
             // 조합된 참고항목을 해당 필드에 넣는다.
-            document.getElementById('address-detail').value = this.extraAddr
+            this.detailAddress = this.extraAddr
           } else {
-            document.getElementById('address-detail').value = ''
+            this.detailAddress = ''
           }
 
           // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById('postal-code').value = data.zonecode
-          document.getElementById('address').value = this.addr
+          this.zipcode = data.zonecode
+          this.mainAddress = this.addr
           // 커서를 상세주소 필드로 이동한다.
           document.getElementById('address-detail').focus()
         },
@@ -245,6 +432,12 @@ export default {
     format('woff');
   font-weight: normal;
   font-style: normal;
+}
+input[type='password'] {
+  font-family: 'Malgun gothic', dotum, sans-serif;
+}
+::placeholder {
+  font-family: 'twayfly';
 }
 
 :root {
@@ -523,7 +716,7 @@ body {
   border-radius: 10px;
 }
 
-#mobile-num {
+.mobile-num {
   width: 149.48px;
   border: none;
   height: 55px;

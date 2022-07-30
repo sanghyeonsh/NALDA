@@ -35,9 +35,6 @@ export default {
       return fullname
     },
   },
-  created() {
-    console.log(this.loginMember)
-  },
   methods: {
     MoveMain() {
       this.$router.push('/main')
@@ -46,7 +43,8 @@ export default {
       this.$router.push('user/signup')
     },
     MoveMypage() {
-      this.$router.push('/user/mypage')
+      this.loginMember && this.$router.push('/user/mypage')
+      this.$router.push('/user/login')
     },
   },
 }

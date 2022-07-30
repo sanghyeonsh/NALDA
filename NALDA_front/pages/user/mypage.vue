@@ -31,17 +31,11 @@
           <ul class="subindex-row">
             <div class="row-item phone">
               <i class="fa-solid fa-mobile-button"></i>
-              <span
-                class="item-text"
-                v-text="'전화번호 : ' + memberDetail.tel"
-              ></span>
+              <span class="item-text" v-text="'전화번호 : ' + tel"></span>
             </div>
             <div class="row-item mail">
               <i class="fa-solid fa-envelope"></i>
-              <span
-                class="item-text"
-                v-text="'이메일 : ' + memberDetail.email"
-              ></span>
+              <span class="item-text" v-text="'이메일 : ' + email"></span>
             </div>
             <!-- 만일 email 등록이 안되어 있을 경우 뜨게 할 부분 -->
             <!-- <div class="row-item mail not">
@@ -55,43 +49,29 @@
               </div>-->
             <div class="row-item gender">
               <i class="fa-solid fa-mobile-button"></i>
-              <span
-                class="item-text"
-                v-text="'성별 : ' + memberDetail.gender"
-              ></span>
+              <span class="item-text" v-text="'성별 : ' + gender"></span>
             </div>
             <div class="row-item address">
               <i class="fa-solid fa-location-dot"></i>
               <span
                 class="item-text"
-                v-text="
-                  '주소 : ' +
-                  memberDetail.address.mainAddress +
-                  ' ' +
-                  memberDetail.address.detailAddress
-                "
+                v-text="'주소 : ' + mainAddress + ' ' + detailAddress"
               ></span>
             </div>
             <div class="row-item passportnumber">
               <i class="fa-solid fa-passport"></i>
               <span
                 class="item-text"
-                v-text="'여권번호 : ' + memberDetail.passportNum"
+                v-text="'여권번호 : ' + passportNum"
               ></span>
             </div>
             <div class="row-item job">
               <i class="fa-solid fa-briefcase"></i>
-              <span
-                class="item-text"
-                v-text="'직업 : ' + memberDetail.job"
-              ></span>
+              <span class="item-text" v-text="'직업 : ' + job"></span>
             </div>
             <div class="row-item nationality">
               <i class="fa-solid fa-briefcase"></i>
-              <span
-                class="item-text"
-                v-text="'국적 : ' + memberDetail.nationality"
-              ></span>
+              <span class="item-text" v-text="'국적 : ' + nationality"></span>
             </div>
           </ul>
         </div>
@@ -108,19 +88,14 @@ export default {
   components: { UserNavs },
   data() {
     return {
-      member: {
-        address: {
-          mainAddress: '',
-          detailAddress: '',
-          zipcode: null,
-        },
-        job: null,
-        tel: null,
-        email: null,
-        gender: null,
-        nationality: null,
-        passportNum: null,
-      },
+      tel: '',
+      email: '',
+      gender: '',
+      mainAddress: '',
+      detailAddress: '',
+      passportNum: '',
+      job: '',
+      nationality: '',
     }
   },
   computed: {
@@ -139,7 +114,20 @@ export default {
   },
 
   created() {
-    this.callMemberDetail(this.loginMember.username)
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.callMemberDetail(this.loginMember.username)
+      this.tel = this.memberDetail.tel
+      this.email = this.memberDetail.email
+      this.gender = this.memberDetail.gender
+      this.mainAddress = this.memberDetail.address.mainAddress
+      this.detailAddress = this.memberDetail.address.detailAddress
+      this.passportNum = this.memberDetail.passportNum
+      this.job = this.memberDetail.job
+      this.nationality = this.memberDetail.nationality
+    })
   },
   methods: {
     ...mapActions('user', ['callMemberDetail']),
