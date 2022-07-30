@@ -1,5 +1,5 @@
 export const state = () => ({
-  declaration: [],
+  declaration: {},
 })
 
 export const mutations = {

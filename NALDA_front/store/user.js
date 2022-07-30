@@ -49,7 +49,6 @@ export const actions = {
     await mypage(
       userid,
       ({ data }) => {
-        console.log(data.info)
         commit('SET_MEMBER_DETAIL', data.info)
       },
       (error) => {
