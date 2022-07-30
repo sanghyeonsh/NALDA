@@ -37,6 +37,7 @@
                     v-model="lastName"
                     type="text"
                     placeholder="성을 입력해주세요."
+                    disabled
                   />
                   <input
                     v-model="middleName"
@@ -225,7 +226,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
@@ -254,6 +255,14 @@ export default {
   },
   computed: {
     ...mapState('user', ['loginMember', 'memberDetail']),
+    ...mapMutations('customdeclaration', [
+      'MODIFY_USERNAME',
+      'MODIFY_TRAVELPERIOD',
+      'MODIFY_PURPOSETRAVEL',
+      'MODIFY_FLIGHTNUM',
+      'MODIFY_ACCOMPANY',
+      'MODIFY_VISITEDCOUNTRIES',
+    ]),
   },
   created() {
     const promise = new Promise((resolve, reject) => {
@@ -287,6 +296,9 @@ export default {
       this.memberDetail.address.detailAddress &&
         (this.detailAddress = this.memberDetail.address.detailAddress)
     })
+  },
+  beforeDestroy() {
+    console.log('dddddddd')
   },
   methods: {
     find_Postcode() {

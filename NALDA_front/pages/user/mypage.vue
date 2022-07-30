@@ -29,7 +29,17 @@
                 <div class="myaccount" style="width: 651px">
                   <div class="myname">
                     <!-- <div class="name-text">익명규</div> -->
-                    <div class="myId" v-text="loginMember"></div>
+                    <div
+                      class="myId"
+                      v-text="
+                        (loginMember.fullName.firstName &&
+                          loginMember.fullName.firstName) +
+                        (loginMember.fullName.middleName &&
+                          loginMember.fullName.middleName) +
+                        (loginMember.fullName.lastName &&
+                          loginMember.fullName.lastName)
+                      "
+                    ></div>
                   </div>
                   <button type="button" class="btn-edit">
                     <span class="text">수정</span>
@@ -44,7 +54,7 @@
               <div class="row-item phone">
                 <div>
                   <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text" v-text="member.tel"></span>
+                  <span class="item-text" v-text="memberDetail.tel"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -53,7 +63,7 @@
               <div class="row-item mail">
                 <div>
                   <i class="fa-solid fa-envelope"></i>
-                  <span class="item-text" v-text="member.email"></span>
+                  <span class="item-text" v-text="memberDetail.email"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -72,7 +82,7 @@
               <div class="row-item gender">
                 <div>
                   <i class="fa-solid fa-mobile-button"></i>
-                  <span class="item-text" v-text="member.gender"></span>
+                  <span class="item-text" v-text="memberDetail.gender"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -83,7 +93,7 @@
                   <i class="fa-solid fa-location-dot"></i>
                   <span
                     class="item-text"
-                    v-text="member.address.mainAddress"
+                    v-text="memberDetail.address.mainAddress"
                   ></span>
                 </div>
                 <button type="button" class="btn-edit">
@@ -95,7 +105,7 @@
                   <i class="fa-solid fa-location-dot"></i>
                   <span
                     class="item-text"
-                    v-text="member.address.detailAddress"
+                    v-text="memberDetail.address.detailAddress"
                   ></span>
                 </div>
                 <button type="button" class="btn-edit">
@@ -106,7 +116,10 @@
               <div class="row-item passportnumber">
                 <div>
                   <i class="fa-solid fa-passport"></i>
-                  <span class="item-text" v-text="member.passportNum"></span>
+                  <span
+                    class="item-text"
+                    v-text="memberDetail.passportNum"
+                  ></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -115,7 +128,7 @@
               <div class="row-item job">
                 <div>
                   <i class="fa-solid fa-briefcase"></i>
-                  <span class="item-text" v-text="member.job"></span>
+                  <span class="item-text" v-text="memberDetail.job"></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -124,7 +137,10 @@
               <div class="row-item nationality">
                 <div>
                   <i class="fa-solid fa-briefcase"></i>
-                  <span class="item-text" v-text="member.nationality"></span>
+                  <span
+                    class="item-text"
+                    v-text="memberDetail.nationality"
+                  ></span>
                 </div>
                 <button type="button" class="btn-edit">
                   <span class="text">수정</span>
@@ -139,9 +155,8 @@
 </template>
 
 <script scoped>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
-import { mypage } from '@/api/user'
 export default {
   name: 'MyPage',
   components: { UserNavs },
@@ -163,19 +178,14 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'memberDetail']),
   },
 
   created() {
-    mypage(
-      this.loginMember,
-      ({ data }) => {
-        this.member = data.info
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+    this.callMemberDetail(this.loginMember.username)
+  },
+  methods: {
+    ...mapActions('user', ['callMemberDetail']),
   },
 }
 </script>
