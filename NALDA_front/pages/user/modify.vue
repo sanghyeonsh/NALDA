@@ -242,6 +242,15 @@
                     <i class="far fa-check-circle"></i>
                     <span>modify</span>
           </div>-->
+          <b-modal id="check-modal" hide-footer>
+            <template #modal-title> 알림 </template>
+            <div class="d-block text-center">
+              <h3>정보를 모두 채워주세요!</h3>
+            </div>
+            <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
+              >Close Me</b-button
+            >
+          </b-modal>
         </section>
       </div>
     </div>
@@ -301,7 +310,6 @@ export default {
       (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
         '-' +
         ('00' + this.loginMember.birthday[2].toString()).slice(-2))
-    console.log(this.birthday)
     this.username = this.loginMember.username
     this.loginMember.fullName.firstName &&
       (this.firstName = this.loginMember.fullName.firstName)
@@ -325,6 +333,30 @@ export default {
   methods: {
     ...mapActions('user', ['modifyMember']),
     modify() {
+      if (
+        this.gender === '' ||
+        this.password === '' ||
+        this.passwordCheck === '' ||
+        this.birthday === '' ||
+        this.firstName === '' ||
+        this.middleName === '' ||
+        this.lastName === '' ||
+        this.email1 === '' ||
+        this.email2 === '' ||
+        this.tel1 === '' ||
+        this.tel2 === '' ||
+        this.tel3 === '' ||
+        this.zipcode === '' ||
+        this.mainAddress === '' ||
+        this.detailAddress === '' ||
+        this.passportNum === '' ||
+        this.nationality === '' ||
+        this.job === ''
+      ) {
+        this.$bvModal.show('check-modal')
+        return
+      }
+
       if (this.password === this.passwordCheck) {
         const sendObject = {
           username: this.username,

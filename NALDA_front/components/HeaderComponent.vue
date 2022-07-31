@@ -43,8 +43,11 @@ export default {
       this.$router.push('user/signup')
     },
     MoveMypage() {
-      this.loginMember && this.$router.push('/user/mypage')
-      this.$router.push('/user/login')
+      if (this.loginMember != null) {
+        this.$router.push('/user/mypage')
+      } else {
+        this.$router.push('/user/login')
+      }
     },
   },
 }
