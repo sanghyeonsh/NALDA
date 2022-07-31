@@ -1,27 +1,37 @@
 <template>
-  <div class="service-modal">
-    <div class="service-modal-box">
-      <div class="service-modal-head">
-        <button class="service-modal-head-close">close</button>
+  <div class="check-modal">
+    <div class="check-modal-box">
+      <div class="check-modal-head">
+        <div>주문확인</div>
+        <button>close</button>
       </div>
-      <div class="service-modal-body">
-        <div class="service-modal-body-image">
-          <img :src="item[0].download_url" alt="" />
+      <div class="check-modal-body">
+        <div class="check-modal-body-head">
+          <div class="body-head-menu">메뉴</div>
+          <div class="body-head-count">수량</div>
         </div>
 
-        <div class="service-modal-body-detail">
-          <div class="service-modal-body-detail-name">{{ item[0].author }}</div>
-          <div class="service-modal-body-detail-button">
-            <button @click="MINUS_CHOICE_FOODS(item[0])">minus button</button>
-            <div class="button-num">{{ item[0].num }}</div>
-            <button @click="PLUS_CHOICE_FOODS(item[0])">plus button</button>
+        <!-- for문 사용해서 div태그가 반복 -->
+        <div class="check-modal-body-body">
+          <!-- 줄v-for사용 -->
+          <div
+            v-for="(item, idx) in test"
+            :key="idx"
+            class="modal-body-body-item"
+          >
+            <div class="modal-body-body-menu">{{ item.name }}</div>
+            <div class="modal-body-body-count">
+              <button>-</button>
+              <div>{{ item.num }}</div>
+              <button>+</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="service-modal-footer">
+      <div class="check-modal-footer">
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
-        <button @click="SET_CHOICE_FOODS(item)">담기</button>
+        <button>주문하기</button>
       </div>
     </div>
   </div>
@@ -31,7 +41,16 @@
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'ServiceModal',
+  name: 'CheckModal',
+  data() {
+    return {
+      test: [
+        { name: '나쵸', num: 6 },
+        { name: '콜라', num: 2 },
+        { name: '맥주', num: 4 },
+      ],
+    }
+  },
   computed: {
     ...mapState('menu', ['item']),
   },
@@ -39,7 +58,7 @@ export default {
     // modal popup
     ShowPopup() {
       // Get the modal
-      const modal = document.getElementsByClassName('service-modal')[0]
+      const modal = document.getElementsByClassName('check-modal')[0]
       // Get the <span> element that closes the modal
       const span = document.getElementsByClassName('close')[0]
       // When the user clicks on the button, open the modal
@@ -69,10 +88,9 @@ export default {
 </script>
 
 <style scoped>
-/* The Modal (background) */
-.service-modal {
+.check-modal {
   /* Hidden by default */
-  display: none;
+  /* display: none; */
   /* Stay in place */
   position: fixed;
   z-index: 1; /* Sit on top */
@@ -89,7 +107,7 @@ export default {
 }
 
 /* Modal Content/Box */
-.service-modal-box {
+.check-modal-box {
   display: flex;
   flex-direction: column;
   background-color: rgb(69, 169, 200);
@@ -105,77 +123,81 @@ export default {
   border-radius: 20px;
 }
 
-.service-modal-head {
+.check-modal-head {
   width: 100%;
   height: 10%;
   display: flex;
-  justify-content: flex-end;
 }
-.service-modal-head-close {
-  background-color: red;
+.check-modal-head div {
+  background-color: salmon;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.check-modal-head button {
+  background-color: rebeccapurple;
   width: 10%;
-  height: 100;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.service-modal-body {
+.check-modal-body {
   width: 100%;
   height: 80%;
-}
-.service-modal-body-image {
-  width: 100%;
-  height: 85%;
-  background-color: blue;
-}
-.service-modal-body-image img {
-  width: 70%;
-  height: 100%;
-}
-.service-modal-body-detail {
-  background-color: red;
   display: flex;
-  width: 100%;
-  height: 15%;
-}
-.service-modal-body-detail-name {
-  background-color: orange;
-  width: 70%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.service-modal-body-detail-button {
-  background-color: yellow;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.service-modal-body-detail-button button {
-  background-color: red;
-  width: 30%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.service-modal-body-detail-button div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: red;
+  flex-direction: column;
 }
 
-.service-modal-footer {
+.check-modal-body-head {
+  display: flex;
+  width: 100%;
+  height: 20%;
+}
+.body-head-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  background-color: brown;
+}
+.body-head-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  background-color: black;
+}
+.check-modal-body-body {
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+  height: 80%;
+  width: 100%;
+}
+.modal-body-body-item {
+  display: flex;
+}
+.modal-body-body-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+.modal-body-body-count {
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.check-modal-footer {
   display: flex;
   justify-content: flex-end;
   height: 10%;
-  padding: 1%;
-  /* background-color: brown; */
 }
-.service-modal-footer button {
+.check-modal-footer button {
   width: 30%;
   height: 100%;
   display: flex;

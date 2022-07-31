@@ -18,20 +18,21 @@ export const mutations = {
     })
   },
   SET_CHOICE_FOODS(state, choice) {
-    if (!state.check_foods.includes(choice.author)) {
-      state.selected_foods.push({ name: choice.author, num: choice.num })
-      state.check_foods.push(choice.author)
+    if (!state.check_foods.includes(choice[0].author)) {
+      state.selected_foods.push(choice[0])
+      state.check_foods.push(choice[0].author)
     }
     const modal = document.getElementsByClassName('service-modal')[0]
     modal.style.display = 'none'
   },
   DELETE_CHOICE_FOODS(state, choice) {
     for (let i = 0; i < state.selected_foods.length; i++) {
-      if (state.selected_foods[i].name === choice) {
+      if (state.selected_foods[i].author === choice.author) {
         state.selected_foods.splice(i, 1)
         state.check_foods.splice(i, 1)
       }
     }
+    choice.num = '1'
   },
   PLUS_CHOICE_FOODS(state, choice) {
     console.log(choice)

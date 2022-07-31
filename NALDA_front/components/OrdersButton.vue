@@ -14,9 +14,10 @@ export default {
   },
   methods: {
     MoveCheck() {
-      if (this.selected_foods.length) {
-        this.$router.push('/orders/check')
-      }
+      // if (this.selected_foods.length) {
+      //   const modal = document.getElementsByClassName('check-modal')[0]
+      //   modal.style.display = 'block'
+      // }
     },
   },
 }

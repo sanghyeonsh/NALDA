@@ -10,14 +10,12 @@
         :key="idx"
         class="footer-content"
       >
-        <div style="flex-basis: 17vw">
-          {{ item['name'] }}
+        <div>
+          {{ item.author }}
         </div>
-        <button @click="DELETE_CHOICE_FOODS(item['name'])">
-          delete button
-        </button>
+        <button @click="DELETE_CHOICE_FOODS(item)">delete button</button>
         <button @click="MINUS_CHOICE_FOODS(item)">minus button</button>
-        <div>{{ item['num'] }}</div>
+        <div>{{ item.num }}</div>
         <button @click="PLUS_CHOICE_FOODS(item)">plus button</button>
       </div>
     </div>

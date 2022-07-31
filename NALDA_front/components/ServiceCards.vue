@@ -46,13 +46,16 @@ export default {
     ]),
 
     ChoiceMenu(data) {
+      console.log(1)
       this.CLEAR_ITEM()
       this.SET_ITEM(data)
 
       // Get the modal
       const modal = document.getElementsByClassName('service-modal')[0]
       // Get the <span> element that closes the modal
-      const span = document.getElementsByClassName('close')[0]
+      const span = document.getElementsByClassName(
+        'service-modal-head-close'
+      )[0]
       // When the user clicks on the button, open the modal
       modal.style.display = 'block'
 
