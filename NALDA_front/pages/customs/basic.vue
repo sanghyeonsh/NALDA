@@ -37,16 +37,19 @@
                     v-model="lastName"
                     type="text"
                     placeholder="성을 입력해주세요."
+                    disabled
                   />
                   <input
                     v-model="middleName"
                     type="text"
                     placeholder="middle name을 입력해주세요."
+                    disabled
                   />
                   <input
                     v-model="firstName"
                     type="text"
                     placeholder="이름을 입력해주세요."
+                    disabled
                   />
                 </td>
               </tr>
@@ -225,7 +228,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
@@ -254,6 +257,14 @@ export default {
   },
   computed: {
     ...mapState('user', ['loginMember', 'memberDetail']),
+    ...mapMutations('customdeclaration', [
+      'MODIFY_USERNAME',
+      'MODIFY_TRAVELPERIOD',
+      'MODIFY_PURPOSETRAVEL',
+      'MODIFY_FLIGHTNUM',
+      'MODIFY_ACCOMPANY',
+      'MODIFY_VISITEDCOUNTRIES',
+    ]),
   },
   created() {
     const promise = new Promise((resolve, reject) => {
@@ -272,11 +283,9 @@ export default {
         (this.birthday =
           this.loginMember.birthday[0] +
           '-' +
-          this.loginMember.birthday[1] +
-          '-' +
-          (this.loginMember.birthday[2] < 10
-            ? '0' + this.loginMember.birthday[2]
-            : this.loginMember.birthday[2]))
+          (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
+            '-' +
+            ('00' + this.loginMember.birthday[2].toString()).slice(-2)))
       this.memberDetail.passportNum &&
         (this.passportNum = this.memberDetail.passportNum)
       this.memberDetail.job && (this.job = this.memberDetail.job)
@@ -287,6 +296,9 @@ export default {
       this.memberDetail.address.detailAddress &&
         (this.detailAddress = this.memberDetail.address.detailAddress)
     })
+  },
+  beforeDestroy() {
+    console.log('dddddddd')
   },
   methods: {
     find_Postcode() {
