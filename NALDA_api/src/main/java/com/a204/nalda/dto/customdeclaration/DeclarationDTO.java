@@ -30,6 +30,9 @@ public class DeclarationDTO  implements Serializable {
     private Permission livestockVisited;
     private Permission salesGoods;
 
+    private int dutyfreeExceedValue;
+    private int paymentExceedValue;
+
     private int cigarette;
     private int perfumes;
 

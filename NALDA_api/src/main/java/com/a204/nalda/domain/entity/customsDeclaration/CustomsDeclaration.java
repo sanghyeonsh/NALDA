@@ -49,17 +49,23 @@ public class CustomsDeclaration implements Serializable {
     @Column(name = "payment_exceed")
     private Permission paymentExceed;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "prohibit_goods")
     private Permission prohibitGoods;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "livestock_visited")
     private Permission livestockVisited;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @Column(name = "sales_goods")
     private Permission salesGoods;
+
+    @Column(name = "dutyfree_exceed_value")
+    private int dutyfreeExceedValue;
+
+    @Column(name = "payment_exceed_value")
+    private int paymentExceedValue;
 
     private int cigarettes;
     private int perfumes;
