@@ -7,7 +7,7 @@
         small
         caption-top
         responsive
-        :items="items"
+        :items="serviceList"
         :per-page="perPage"
         :current-page="currentPage"
       >
@@ -23,10 +23,10 @@
           <col />
           <col />
         </colgroup>
-        <!-- <colgroup>
+        <colgroup>
           <col />
           <col />
-        </colgroup>-->
+        </colgroup>
         <b-thead head-variant="dark">
           <b-tr>
             <b-th colspan="3">Stocks</b-th>
@@ -34,27 +34,22 @@
           </b-tr>
           <b-tr>
             <b-th>Service Title</b-th>
-            <b-th>Classification</b-th>
-            <b-th>Service Code</b-th>
             <b-th>Name</b-th>
+            <b-th>Service Code</b-th>
+            <b-th>Quantity</b-th>
           </b-tr>
         </b-thead>
         <b-tbody>
           <b-tr>
-            <b-th rowspan="3">Snacks</b-th>
-            <b-th class="text-right">나쵸</b-th>
-            <b-th>A001</b-th>
-            <b-td>56</b-td>
+            <b-th :rowspan="snackList.length+1">Snacks</b-th>
+            <b-th class="text-right"></b-th>
+            <b-th></b-th>
+            <b-td></b-td>
           </b-tr>
-          <b-tr>
-            <b-th class="text-right">믹스넛</b-th>
-            <b-th>A002</b-th>
+          <b-tr v-for="(snack,index) in snackList" :key="index">
+            <b-th class="text-right" @click="test">{{snack.serviceName}}</b-th>
+            <b-th>{{snack.serviceCode}}</b-th>
             <b-td>46</b-td>
-          </b-tr>
-          <b-tr>
-            <b-th class="text-right">포스틱</b-th>
-            <b-th>A003</b-th>
-            <b-td>51</b-td>
           </b-tr>
           <b-tr>
             <b-th rowspan="2">Alcohols</b-th>
@@ -109,21 +104,37 @@ export default {
     return {
       perPage: 10,
       currentPage: 1,
-      items: [],
     }
   },
   computed: {
     rows() {
-      return this.items.length
+      return this.serviceList.length
     },
-    ...mapState('attendant', ['serviceItems']),
+    ...mapState('attendant', [
+      'serviceList',
+      'snackList',
+      'alcoholsList',
+      'nonalcoholosList',
+      'amenityList',
+    ]),
   },
   created() {
-    // console.log(this.serviceItems)
-    this.$store.dispatch('getServiceList')
+    this.getServiceList()
+    // const promise = new Promise((resolve, reject) => {
+    //   resolve()
+    // })
+    // promise.then(async () => {
+    //   await this.getServiceList()
+
+    //   console.log(this.serviceList)
+    // })
   },
   methods: {
-    ...mapActions('attendant', ['setStockAmount', 'getServiceList']),
+    // ...mapMutations('attendant', ['GET_SERVICE_LIST', 'SET_STOCK_AMOUNT']),
+    ...mapActions('attendant', ['getServiceList']),
+    test() {
+      console.log(this.amenityList)
+    },
   },
 }
 </script>

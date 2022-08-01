@@ -5,12 +5,33 @@ import {
 } from '@/api/attendant'
 
 export const state = () => ({
-  serviceItems: [],
+  serviceList: [],
+  snackList: [],
+  alcoholsList: [],
+  nonalcoholosList: [],
+  amenityList: [],
 })
 
 export const mutations = {
-  GET_SERVICE_LIST(state, data) {
-    state.serviceItems = data
+  SET_SERVICE_LIST(state, data) {
+    console.log(data)
+    state.serviceList = data
+    state.snackList = []
+    state.alcoholsList = []
+    state.nonalcoholosList = []
+    state.amenityList = []
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].serviceClass === 'SNACK') {
+        state.snackList.push(data[i])
+      } else if (data[i].serviceClass === 'ALCOHOLS') {
+        state.alcoholsList.push(data[i])
+      } else if (data[i].serviceClass === 'NON-ALCOHOLS') {
+        state.nonalcoholosList.push(data[i])
+      } else if (data[i].serviceClass === 'AMENITY') {
+        state.amenityList.push(data[i])
+      }
+    }
   },
 
   SET_STOCK_AMOUNT(state, data) {},
@@ -23,7 +44,9 @@ export const actions = {
   getServiceList({ commit }) {
     listServices(
       ({ data }) => {
-        commit('GET_SERVICE_LIST', data)
+        commit('SET_SERVICE_LIST', data.serviceList)
+        // console.log(data)
+        // console.log(data.serviceList)
       },
       (error) => {
         console.log(error)
