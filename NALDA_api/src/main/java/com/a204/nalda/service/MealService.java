@@ -86,6 +86,7 @@ public class MealService {
             imageStream.transferTo(bos);
             byte[] bytesData = bos.toByteArray();
             MealDto mealDto = MealDto.builder()
+                    .mealId(meal.getId())
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
                     .bytesdata(bytesData)

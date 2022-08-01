@@ -84,7 +84,7 @@ public class MealController {
         Map<String,Object> result = new HashMap<>();
         try {
             List<AllergyDto> allergyDTOS = mealService.listAllergy(mealId);
-            result.put("mealDetail", allergyDTOS);
+            result.put("mealAllergy", allergyDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

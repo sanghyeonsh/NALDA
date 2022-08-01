@@ -36,7 +36,7 @@ export default {
     },
   },
   created() {
-    console.log(this.loginMember)
+    // console.log(this.loginMember)
   },
   methods: {
     MoveMain() {
