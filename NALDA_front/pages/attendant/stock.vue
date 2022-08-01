@@ -58,7 +58,6 @@
           </b-tr>
           <b-tr>
             <b-th rowspan="2">Alcohols</b-th>
-
             <b-th class="text-right">발렌타인 17년</b-th>
             <b-th>A101</b-th>
             <b-td variant="success">89</b-td>
@@ -70,7 +69,6 @@
           </b-tr>
           <b-tr>
             <b-th rowspan="2">Non-Alcohols</b-th>
-
             <b-th class="text-right">코카콜라</b-th>
             <b-th>A201</b-th>
             <b-td variant="success">89</b-td>
@@ -120,8 +118,12 @@ export default {
     },
     ...mapState('attendant', ['serviceItems']),
   },
+  created() {
+    // console.log(this.serviceItems)
+    this.$store.dispatch('getServiceList')
+  },
   methods: {
-    ...mapActions('attendant', ['setStockAmount']),
+    ...mapActions('attendant', ['setStockAmount', 'getServiceList']),
   },
 }
 </script>

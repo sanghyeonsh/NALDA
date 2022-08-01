@@ -9,7 +9,9 @@ export const state = () => ({
 })
 
 export const mutations = {
-  GET_SERVICE_LIST(state, data) {},
+  GET_SERVICE_LIST(state, data) {
+    state.serviceItems = data
+  },
 
   SET_STOCK_AMOUNT(state, data) {},
 }
@@ -32,6 +34,7 @@ export const actions = {
     selectServices(
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
+        console.log(data)
       },
       (error) => {
         console.log(error)
