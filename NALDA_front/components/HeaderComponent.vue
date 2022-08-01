@@ -68,6 +68,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .header-container-image img {
   width: 13%;

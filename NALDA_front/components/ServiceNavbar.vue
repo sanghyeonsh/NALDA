@@ -37,8 +37,8 @@
       </div>
       <div class="profile-image">
         <img src="../static/main/user_profile_w.png" alt="" />
+        <div class="profile-name">김익명</div>
       </div>
-      <div class="profile-name">김익명</div>
     </div>
   </div>
 </template>
@@ -132,24 +132,28 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .service-navbar-snack {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .service-navbar-alcohol {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .service-navbar-nonalcohol {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .snackactive {
   border-bottom: 0.5rem solid;
@@ -170,29 +174,33 @@ export default {
   display: flex;
   width: 30%;
   height: 50%;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
   cursor: pointer;
 }
 .profile-back img {
-  width: 60%;
-  height: 60%;
+  width: 70%;
+  height: 70%;
 }
 
 .profile-image {
   display: flex;
-  width: 30%;
-  height: 60%;
-  justify-content: flex-end;
+  width: 70%;
+  height: 100%;
   align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 .profile-image img {
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .profile-name {
-  width: 40%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;

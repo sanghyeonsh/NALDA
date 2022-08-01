@@ -85,6 +85,9 @@ export default {
 .cards::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
+.card {
+  cursor: pointer;
+}
 .card-img-top {
   overflow: hidden;
   display: flex;
@@ -96,7 +99,7 @@ export default {
 .card-body {
   padding: 15px;
   height: 60px;
-  border-top: solid;
+  border-top: 2px solid;
 }
 .card-title {
   text-align: center;
