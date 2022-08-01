@@ -11,6 +11,8 @@ export const state = () => ({
     flightNum: '',
     accompany: 0,
     dutyfreeExceed: '',
+    dutyfreeExceedValue: 0,
+    paymentExceedValue: 0,
     preferentialTariff: '',
     paymentExceed: '',
     prohibitGoods: '',
@@ -31,6 +33,12 @@ export const state = () => ({
 export const mutations = {
   SAVE_DECLARATION(state, declaration) {
     state.declaration = declaration
+  },
+  MODIFY_DUTYFREEEXCEEDVALUE(state, value) {
+    state.declaration.dutyfreeExceedValue = value
+  },
+  MODIFY_PAYMENTEXCEEDVALUE(state, value) {
+    state.declaration.paymentExceedValue = value
   },
   MODIFY_USERNAME(state, username) {
     state.declaration.username = username
