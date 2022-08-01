@@ -2,7 +2,9 @@
   <div class="service-modal">
     <div class="service-modal-box">
       <div class="service-modal-head">
-        <button class="service-modal-head-close">close</button>
+        <div class="service-modal-head-close">
+          <img src="../static/orders/icons8-x-100.png" alt="" />
+        </div>
       </div>
       <div class="service-modal-body">
         <div class="service-modal-body-image">
@@ -13,21 +15,23 @@
           <div class="service-modal-body-detail-name">
             {{ item[0].serviceName }}
           </div>
-          <div class="service-modal-body-detail-button">
-            <button @click="MINUS_CHOICE_FOODS(item[0])">
-              <img src="../static/orders/minus.png" alt="" />
-            </button>
-            <div class="button-num">{{ item[0].num }}</div>
-            <button @click="PLUS_CHOICE_FOODS(item[0])">
-              <img src="../static/orders/plus.png" alt="" />
-            </button>
-          </div>
         </div>
       </div>
 
       <div class="service-modal-footer">
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
-        <button @click="SET_CHOICE_FOODS(item)">담기</button>
+        <div class="service-modal-body-detail-button">
+          <button @click="MINUS_CHOICE_FOODS(item[0])">
+            <img src="../static/orders/minus.png" alt="" />
+          </button>
+          <div class="button-num">{{ item[0].num }}</div>
+          <button @click="PLUS_CHOICE_FOODS(item[0])">
+            <img src="../static/orders/plus.png" alt="" />
+          </button>
+        </div>
+        <div class="detail-button">
+          <button @click="SET_CHOICE_FOODS(item)">담기</button>
+        </div>
       </div>
     </div>
   </div>
@@ -98,17 +102,16 @@ export default {
 .service-modal-box {
   display: flex;
   flex-direction: column;
-  background-color: rgb(69, 169, 200);
   /* color: white; */
   /* 15% from the top and centered */
   /* margin: 15% auto;
   padding: 15px; */
   /* width: 35%; Could be more or less, depending on screen size */
   /* height: 30%; */
-  width: 80vw;
+  width: 50vw;
   height: 80vh;
   margin: 10vh auto;
-  border-radius: 20px;
+  border: solid;
 }
 
 .service-modal-head {
@@ -116,31 +119,41 @@ export default {
   height: 10%;
   display: flex;
   justify-content: flex-end;
+  background-color: rgb(69, 169, 200);
 }
 .service-modal-head-close {
-  background-color: red;
   width: 10%;
-  height: 100;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.service-modal-head-close img {
+  width: 50%;
+  height: 50%;
 }
 
 .service-modal-body {
   width: 100%;
   height: 80%;
+  border-bottom: solid;
 }
 .service-modal-body-image {
   width: 100%;
   height: 85%;
+  padding: 10%;
+  background-color: white;
 }
 .service-modal-body-image img {
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 .service-modal-body-detail {
-  background-color: white;
+  background-color: rgb(69, 169, 200);
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 15%;
 }
@@ -151,15 +164,20 @@ export default {
   justify-content: center;
 }
 
-.service-modal-body-detail-button {
-  width: 30%;
+.service-modal-footer {
   display: flex;
+  height: 10%;
+  background-color: white;
+}
+.service-modal-body-detail-button {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
 }
 .service-modal-body-detail-button img {
   width: 50%;
-  height: 50%;
+  height: 80%;
 }
 .service-modal-body-detail-button button {
   background-color: white;
@@ -175,19 +193,18 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
-.service-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  height: 10%;
-  padding: 1%;
-  /* background-color: brown; */
-}
-.service-modal-footer button {
-  width: 30%;
+.detail-button {
+  width: 50%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.detail-button button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: white;
+  border-left: solid;
 }
 </style>

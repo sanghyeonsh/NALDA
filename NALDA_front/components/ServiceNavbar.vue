@@ -1,39 +1,44 @@
 <template>
   <div class="service-navbar">
-    <div class="service-navbar-home" @click="MoveOrders">
-      <div>날다</div>
-      <div>Home</div>
+    <div class="service-navbar-menu">
+      <div class="service-navbar-home" @click="MoveOrders">
+        <div>날다</div>
+        <div>Home</div>
+      </div>
+      <div
+        class="service-navbar-snack"
+        :class="{ snackactive: isSnack }"
+        @click="MoveSnack"
+      >
+        <img src="../static/orders/dessert.png" alt="" />
+        <span>간식</span>
+      </div>
+      <div
+        class="service-navbar-alcohol"
+        :class="{ snackactive: isAlcohol }"
+        @click="MoveAlcohol"
+      >
+        <img src="../static/orders/drink.png" alt="" />
+        <span>주류</span>
+      </div>
+      <div
+        class="service-navbar-nonalcohol"
+        :class="{ snackactive: isNonAlcohol }"
+        @click="MoveNonAlcohol"
+      >
+        <img src="../static/orders/coffee_cup.png" alt="" />
+        <span>비주류</span>
+      </div>
     </div>
-    <div
-      class="service-navbar-snack"
-      :class="{ snackactive: isSnack }"
-      @click="MoveSnack"
-    >
-      <img src="../static/orders/dessert.png" alt="" />
-      <span>간식</span>
-    </div>
-    <div
-      class="service-navbar-alcohol"
-      :class="{ snackactive: isAlcohol }"
-      @click="MoveAlcohol"
-    >
-      <img src="../static/orders/drink.png" alt="" />
-      <span>주류</span>
-    </div>
-    <div
-      class="service-navbar-nonalcohol"
-      :class="{ snackactive: isNonAlcohol }"
-      @click="MoveNonAlcohol"
-    >
-      <img src="../static/orders/coffee_cup.png" alt="" />
-      <span>비주류</span>
-    </div>
+
     <div class="service-navbar-profile">
-      <button>
-        <img src="../static/orders/back-button.png" alt="" />
-      </button>
-      <img src="../static/main/user_profile_w.png" alt="" />
-      <div>김익명</div>
+      <div class="profile-back">
+        <img src="../static/orders/left-round-128.png" alt="" />
+      </div>
+      <div class="profile-image">
+        <img src="../static/main/user_profile_w.png" alt="" />
+      </div>
+      <div class="profile-name">김익명</div>
     </div>
   </div>
 </template>
@@ -117,6 +122,11 @@ export default {
   background-color: rgb(69, 169, 200);
   color: white;
 }
+.service-navbar-menu {
+  display: flex;
+  width: 85%;
+  height: 100%;
+}
 .service-navbar-home {
   display: flex;
   flex-direction: column;
@@ -145,22 +155,47 @@ export default {
   border-bottom: 0.5rem solid;
   color: black;
 }
-.service-navbar-profile {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  /* 아래 크기 조정해서 오른쪽 여백주기 */
-  margin-right: 50px;
-  /* 아래 box사이즈 조정해서 크기조절하기 */
-  flex-basis: 250px;
-}
 .service-navbar img {
   width: 50%;
   height: 80%;
 }
-.service-navbar-profile img {
+
+.service-navbar-profile {
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.profile-back {
+  display: flex;
   width: 30%;
   height: 50%;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  cursor: pointer;
+}
+.profile-back img {
+  width: 60%;
+  height: 60%;
+}
+
+.profile-image {
+  display: flex;
+  width: 30%;
+  height: 60%;
+  justify-content: flex-end;
+  align-items: center;
+}
+.profile-image img {
+  width: 50%;
+  height: 50%;
+}
+.profile-name {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 }
 </style>

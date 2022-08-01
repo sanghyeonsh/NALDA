@@ -2,10 +2,10 @@
   <div class="check-modal">
     <div class="check-modal-box">
       <div class="check-modal-head">
-        <div>주문확인</div>
-        <button class="check-modal-head-close" @click="CloseCheck">
-          close
-        </button>
+        <div class="check-modal-head-check">주문확인</div>
+        <div class="check-modal-head-close" @click="CloseCheck">
+          <img src="../static/orders/icons8-x-100.png" alt="" />
+        </div>
       </div>
       <div class="check-modal-body">
         <div class="check-modal-body-head">
@@ -34,7 +34,6 @@
           </div>
         </div>
       </div>
-
       <div class="check-modal-footer">
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
         <button @click="Waiting">주문완료</button>
@@ -110,30 +109,35 @@ export default {
   padding: 15px; */
   /* width: 35%; Could be more or less, depending on screen size */
   /* height: 30%; */
-  width: 80vw;
+  width: 60vw;
   height: 80vh;
   margin: 10vh auto;
-  border-radius: 20px;
+  border: solid;
 }
 
 .check-modal-head {
   width: 100%;
   height: 10%;
   display: flex;
+  background-color: rgb(69, 169, 200);
 }
-.check-modal-head div {
-  background-color: salmon;
+.check-modal-head-check {
   width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.check-modal-head button {
-  background-color: rebeccapurple;
+.check-modal-head-close {
   width: 10%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.check-modal-head-close img {
+  width: 50%;
+  height: 50%;
 }
 
 .check-modal-body {
@@ -141,36 +145,39 @@ export default {
   height: 80%;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
 .check-modal-body-head {
   display: flex;
   width: 100%;
-  height: 20%;
+  height: 10%;
+  border-top: solid;
+  border-bottom: solid;
+  background-color: #dadada;
 }
 .body-head-menu {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 80%;
-  background-color: brown;
 }
 .body-head-count {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 20%;
-  background-color: black;
 }
 .check-modal-body-body {
   display: flex;
   flex-direction: column;
-  background-color: bisque;
   height: 80%;
   width: 100%;
 }
 .modal-body-body-item {
   display: flex;
+  border-bottom: solid;
+  background-color: #f5f6f7;
 }
 .modal-body-body-menu {
   display: flex;
@@ -193,7 +200,7 @@ export default {
 .modal-body-body-count button {
   width: 30%;
   border: none;
-  background-color: white;
+  background-color: #f5f6f7;
 }
 .modal-body-body-count img {
   width: 50%;
@@ -201,15 +208,19 @@ export default {
 }
 
 .check-modal-footer {
+  background-color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   height: 10%;
 }
 .check-modal-footer button {
   width: 30%;
-  height: 100%;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #dadada;
+  border: solid;
 }
 </style>
