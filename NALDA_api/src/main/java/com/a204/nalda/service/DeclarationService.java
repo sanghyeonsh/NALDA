@@ -24,7 +24,7 @@ public class DeclarationService {
     private final CustomsDeclarationRepository customsDeclarationRepository;
     private final UserRepository userRepository;
 
-    
+
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
 
