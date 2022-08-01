@@ -6,11 +6,13 @@
       </div>
       <div class="service-modal-body">
         <div class="service-modal-body-image">
-          <img :src="item[0].download_url" alt="" />
+          <img :src="'data:image/jpg;base64,' + item[0].bytesdata" alt="" />
         </div>
 
         <div class="service-modal-body-detail">
-          <div class="service-modal-body-detail-name">{{ item[0].author }}</div>
+          <div class="service-modal-body-detail-name">
+            {{ item[0].serviceName }}
+          </div>
           <div class="service-modal-body-detail-button">
             <button @click="MINUS_CHOICE_FOODS(item[0])">minus button</button>
             <div class="button-num">{{ item[0].num }}</div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="medical-box">
     <div class="wrapper">
       <div @click="moveResult">
         <img src="../../static/medical/headache.png" />
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.box {
+.medical-box {
   height: 70vh;
 }
 .wrapper {

@@ -4,15 +4,15 @@
       <div v-for="(item, idx) in items" :key="idx" class="col">
         <div class="card" @click="ChoiceMenu(item)">
           <!-- 서버에서 받을때 -->
-          <!-- <img
-          :src="'data:image/jpg;base64,' + item"
-          class="card-img-top"
-          alt="..."
-        /> -->
+          <img
+            :src="'data:image/jpg;base64,' + item.bytesdata"
+            class="card-img-top"
+            alt="..."
+          />
           <!-- 실험할때 -->
-          <img :src="item.download_url" class="card-img-top" alt="..." />
+          <!-- <img :src="item.download_url" class="card-img-top" alt="..." /> -->
           <div class="card-body">
-            <div class="card-title">{{ item.author }}</div>
+            <div class="card-title">{{ item.serviceName }}</div>
           </div>
         </div>
       </div>
@@ -46,7 +46,6 @@ export default {
     ]),
 
     ChoiceMenu(data) {
-      console.log(1)
       this.CLEAR_ITEM()
       this.SET_ITEM(data)
 

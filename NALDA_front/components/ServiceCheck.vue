@@ -3,7 +3,9 @@
     <div class="check-modal-box">
       <div class="check-modal-head">
         <div>주문확인</div>
-        <button>close</button>
+        <button class="check-modal-head-close" @click="CloseCheck">
+          close
+        </button>
       </div>
       <div class="check-modal-body">
         <div class="check-modal-body-head">
@@ -15,15 +17,15 @@
         <div class="check-modal-body-body">
           <!-- 줄v-for사용 -->
           <div
-            v-for="(item, idx) in test"
+            v-for="(item, idx) in selected_foods"
             :key="idx"
             class="modal-body-body-item"
           >
-            <div class="modal-body-body-menu">{{ item.name }}</div>
+            <div class="modal-body-body-menu">{{ item.serviceName }}</div>
             <div class="modal-body-body-count">
-              <button>-</button>
+              <button @click="MINUS_CHOICE_FOODS(item)">-</button>
               <div>{{ item.num }}</div>
-              <button>+</button>
+              <button @click="PLUS_CHOICE_FOODS(item)">+</button>
             </div>
           </div>
         </div>
@@ -31,7 +33,7 @@
 
       <div class="check-modal-footer">
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
-        <button>주문하기</button>
+        <button @click="Waiting">주문하기</button>
       </div>
     </div>
   </div>
@@ -42,29 +44,13 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'CheckModal',
-  data() {
-    return {
-      test: [
-        { name: '나쵸', num: 6 },
-        { name: '콜라', num: 2 },
-        { name: '맥주', num: 4 },
-      ],
-    }
-  },
   computed: {
-    ...mapState('menu', ['item']),
+    ...mapState('menu', ['selected_foods']),
   },
   methods: {
-    // modal popup
-    ShowPopup() {
-      // Get the modal
+    CloseCheck() {
       const modal = document.getElementsByClassName('check-modal')[0]
-      // Get the <span> element that closes the modal
-      const span = document.getElementsByClassName('close')[0]
-      // When the user clicks on the button, open the modal
-      modal.style.display = 'block'
-
-      // When the user clicks on <span> (x), close the modal
+      const span = document.getElementsByClassName('check-modal-head-close')[0]
       span.onclick = function () {
         modal.style.display = 'none'
       }
@@ -73,6 +59,9 @@ export default {
           modal.style.display = 'none'
         }
       }
+    },
+    Waiting() {
+      this.$router.push('/waiting')
     },
 
     ...mapMutations('menu', [
@@ -90,7 +79,7 @@ export default {
 <style scoped>
 .check-modal {
   /* Hidden by default */
-  /* display: none; */
+  display: none;
   /* Stay in place */
   position: fixed;
   z-index: 1; /* Sit on top */

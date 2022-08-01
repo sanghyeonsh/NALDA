@@ -11,7 +11,7 @@
         class="footer-content"
       >
         <div>
-          {{ item.author }}
+          {{ item.serviceName }}
         </div>
         <button @click="DELETE_CHOICE_FOODS(item)">delete button</button>
         <button @click="MINUS_CHOICE_FOODS(item)">minus button</button>
@@ -19,6 +19,8 @@
         <button @click="PLUS_CHOICE_FOODS(item)">plus button</button>
       </div>
     </div>
+    <ServiceCheck />
+    <button class="order-button" @click="MoveCheck">주문하기</button>
   </div>
 </template>
 
@@ -38,6 +40,12 @@ export default {
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
     ]),
+    MoveCheck() {
+      if (this.selected_foods.length) {
+        const modal = document.getElementsByClassName('check-modal')[0]
+        modal.style.display = 'block'
+      }
+    },
   },
 }
 </script>
@@ -74,5 +82,20 @@ export default {
   align-items: center;
   padding: 5px;
   font-size: 20px;
+}
+.order-button {
+  position: fixed;
+  bottom: 7%;
+  right: 2%;
+  background-color: rgb(69, 169, 200);
+  color: white;
+  width: 150px;
+  height: 60px;
+  border-radius: 60px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 }
 </style>
