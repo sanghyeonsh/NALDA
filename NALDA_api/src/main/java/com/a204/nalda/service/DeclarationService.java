@@ -23,7 +23,8 @@ public class DeclarationService {
 
     private final CustomsDeclarationRepository customsDeclarationRepository;
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
+
+    
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
 
@@ -44,8 +45,9 @@ public class DeclarationService {
                 .purposeTravel(declarationDTO.getPurposeTravel())
                 .travelPeriod(declarationDTO.getTravelPeriod())
                 .salesGoods(declarationDTO.getSalesGoods())
+                .dutyfreeExceedValue(declarationDTO.getDutyfreeExceedValue())
+                .paymentExceedValue(declarationDTO.getPaymentExceedValue())
                 .build();
-        System.out.println(declaration.getVisitedCountries());
         if(declaration.getVisitedCountries().size() > 0) {
             for( VisitedCountry visitedcountry : declarationDTO.getVisitedCountries()) {
                 declaration.addVisitedCountry(visitedcountry);
@@ -118,6 +120,8 @@ public class DeclarationService {
                     .alcohols(alcoholsDTO)
                     .etcExceeds(etcExceedList)
                     .visitedCountries(visitedCountryList)
+                    .dutyfreeExceedValue(customDeclaration.getDutyfreeExceedValue())
+                    .paymentExceedValue(customDeclaration.getPaymentExceedValue())
                     .build();
             list.add(declarationListDTO);
         }
@@ -184,6 +188,8 @@ public class DeclarationService {
                     .purposeTravel(customsDeclaration.getPurposeTravel())
                     .salesGoods(customsDeclaration.getSalesGoods())
                     .travelPeriod(customsDeclaration.getTravelPeriod())
+                    .dutyfreeExceedValue(customsDeclaration.getDutyfreeExceedValue())
+                    .paymentExceedValue(customsDeclaration.getPaymentExceedValue())
                     .build();
 
             return result;

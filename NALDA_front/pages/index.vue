@@ -5,9 +5,15 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'MainPage',
+  created() {
+    this.CLEAR_LOGIN_MEMBER()
+    this.CLEAR_MEMBER_DETAIL()
+  },
   methods: {
+    ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     moveMain() {
       this.$router.push('/main')
     },
