@@ -1,44 +1,81 @@
 <template>
   <div class="customs-input-container">
-    <custom-navs
-      :basic-info="{lastName, middleName, firstName, birthday, passportNum, job, travelPeriod, travelPurpose, flightNum, famillyNum, countryNum}"
-    ></custom-navs>
+    <custom-navs></custom-navs>
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-container">
+            <div class="title-items">
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <nuxt-link to="/customs/checkone">
+                <b-button class="next-page" variant="info"
+                  >다음 페이지</b-button
+                >
+              </nuxt-link>
+            </div>
+          </div>
           <div class="custom-info-wrap">
             <table class="custom-info-table">
               <tr>
                 <td id="col-name">성명</td>
                 <td colspan="3">
-                  <input v-model="lastName" type="text" placeholder="성을 입력해주세요." />
-                  <input v-model="middleName" type="text" placeholder="middle name을 입력해주세요." />
-                  <input v-model="firstName" type="text" placeholder="이름을 입력해주세요." />
+                  <input
+                    v-model="lastName"
+                    type="text"
+                    placeholder="성을 입력해주세요."
+                    disabled
+                  />
+                  <input
+                    v-model="middleName"
+                    type="text"
+                    placeholder="middle name을 입력해주세요."
+                    disabled
+                  />
+                  <input
+                    v-model="firstName"
+                    type="text"
+                    placeholder="이름을 입력해주세요."
+                    disabled
+                  />
                 </td>
               </tr>
               <tr>
                 <!-- 첫번째 줄 시작 -->
                 <td id="col-name">생년월일</td>
                 <td>
-                  <input v-model="birthday" type="date" />
+                  <input v-model="birthday" type="date" disabled />
                 </td>
                 <td id="col-name">여권번호</td>
                 <td>
-                  <input v-model="passportNum" type="text" placeholder="여권번호를 입력해주세요." />
+                  <input
+                    v-model="passportNum"
+                    type="text"
+                    placeholder="여권번호를 입력해주세요."
+                    disabled
+                  />
                 </td>
               </tr>
               <!-- 첫번째 줄 끝 -->
-              
+
               <tr>
                 <!-- 두번째 줄 시작 -->
                 <td id="col-name">직업</td>
                 <td>
-                  <input v-model="job" type="text" placeholder="직업을 입력해주세요." />
+                  <input
+                    v-model="job"
+                    type="text"
+                    placeholder="직업을 입력해주세요."
+                    disabled
+                  />
                 </td>
                 <td id="col-name">여행기간</td>
                 <td>
-                  <input v-model="travelPeriod" type="text" placeholder="여행기간을 입력해주세요." /> (일)
+                  <input
+                    v-model="travelPeriod"
+                    type="text"
+                    placeholder="여행기간을 입력해주세요."
+                  />
+                  (일)
                 </td>
               </tr>
               <!-- 두번째 줄 끝 -->
@@ -73,22 +110,26 @@
               <tr>
                 <td id="col-name">항공편명</td>
                 <td>
-                  <input v-model="flightNum" type="text" placeholder="항공편을 입력해주세요." />
+                  <input
+                    v-model="flightNum"
+                    type="text"
+                    placeholder="항공편을 입력해주세요."
+                  />
                 </td>
                 <td id="col-name">동반가족수</td>
                 <td>
-                  <input v-model="famillyNum" class="family-num" type="text" placeholder="00" /> 명
+                  <input
+                    v-model="famillyNum"
+                    class="family-num"
+                    type="text"
+                    placeholder="00"
+                  />
+                  명
                 </td>
               </tr>
               <tr>
                 <td colspan="4">
-                  대한민국에 입국하기전 방문했던 국가 (총
-                  <input
-                    v-model="countryNum"
-                    class="visit-country-num"
-                    type="text"
-                    placeholder="방문했던 국가 총 수"
-                  /> 개국)
+                  대한민국에 입국하기전 방문했던 국가
                   <br />
                   <div class="visited-countries">
                     <div>
@@ -125,19 +166,26 @@
                 <td id="col-name">국내주소</td>
                 <td colspan="3">
                   <div class="address-wrap">
-                    <input id="postal-code" v-model="zipcode" placeholder="우편번호" type="text" />
-                    <input id="address" v-model="mainAddress" placeholder="주소" type="text" disabled />
+                    <input
+                      id="postal-code"
+                      v-model="zipcode"
+                      placeholder="우편번호"
+                      type="text"
+                      disabled
+                    />
+                    <input
+                      id="address"
+                      v-model="mainAddress"
+                      placeholder="주소"
+                      type="text"
+                      disabled
+                    />
                     <input
                       id="address-detail"
                       v-model="detailAddress"
                       placeholder="상세주소"
                       type="text"
-                    />
-                    <input
-                      id="postal-check-btn"
-                      type="button"
-                      value="주소검색"
-                      @click="find_Postcode()"
+                      disabled
                     />
                   </div>
                 </td>
@@ -145,7 +193,12 @@
               <tr>
                 <td id="col-name">전화번호</td>
                 <td colspan="3">
-                  <input type="text" placeholder="☎전화번호를 입력해세요." />
+                  <input
+                    v-model="tel"
+                    type="text"
+                    placeholder="☎전화번호를 입력해세요."
+                    disabled
+                  />
                 </td>
               </tr>
             </table>
@@ -157,11 +210,26 @@
 </template>
 
 <script>
+import { mapActions, mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
   name: 'CustomsBasic',
   components: { CustomNavs },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_USERNAME(this.loginMember.username)
+    this.MODIFY_TRAVELPERIOD(this.travelPeriod)
+    this.MODIFY_PURPOSETRAVEL(this.travelPurpose)
+    this.MODIFY_FLIGHTNUM(this.flightNum)
+    this.MODIFY_ACCOMPANY(this.famillyNum)
+    const visitedCountries = []
+    if (this.country1 !== '') visitedCountries.push(this.country1)
+    if (this.country2 !== '') visitedCountries.push(this.country2)
+    if (this.country3 !== '') visitedCountries.push(this.country3)
+    this.MODIFY_VISITEDCOUNTRIES(visitedCountries)
+    console.log(this.declaration)
+    next()
+  },
   data() {
     return {
       lastName: '',
@@ -181,10 +249,75 @@ export default {
       zipcode: '',
       mainAddress: '',
       detailAddress: '',
+      tel: '',
     }
   },
-  computed: {},
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+    ...mapState('user', ['loginMember', 'memberDetail']),
+  },
+  created() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.callMemberDetail(this.loginMember.username)
+      this.loginMember.fullName.firstName &&
+        (this.firstName = this.loginMember.fullName.firstName)
+      this.loginMember.fullName.middleName &&
+        (this.middleName = this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (this.lastName = this.loginMember.fullName.lastName)
+      this.loginMember.birthday &&
+        (this.birthday =
+          this.loginMember.birthday[0] +
+          '-' +
+          (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
+            '-' +
+            ('00' + this.loginMember.birthday[2].toString()).slice(-2)))
+      this.memberDetail.passportNum &&
+        (this.passportNum = this.memberDetail.passportNum)
+      this.memberDetail.job && (this.job = this.memberDetail.job)
+      this.memberDetail.address.zipcode &&
+        (this.zipcode = this.memberDetail.address.zipcode)
+      this.memberDetail.address.mainAddress &&
+        (this.mainAddress = this.memberDetail.address.mainAddress)
+      this.memberDetail.address.detailAddress &&
+        (this.detailAddress = this.memberDetail.address.detailAddress)
+      this.memberDetail.tel && (this.tel = this.memberDetail.tel)
+    })
+
+    if (this.declaration.username !== '') {
+      this.declaration.travelPeriod !== ''
+        ? (this.travelPeriod = this.declaration.travelPeriod)
+        : (this.travelPeriod = '')
+      this.declaration.purposeTravel !== ''
+        ? (this.travelPurpose = this.declaration.purposeTravel)
+        : (this.travelPurpose = '')
+      this.declaration.accompany !== ''
+        ? (this.famillyNum = this.declaration.accompany)
+        : (this.famillyNum = '')
+      this.declaration.flightNum !== ''
+        ? (this.flightNum = this.declaration.flightNum)
+        : (this.flightNum = '')
+      this.declaration.visitedCountries[0] &&
+        (this.country1 = this.declaration.visitedCountries[0])
+      this.declaration.visitedCountries[1] &&
+        (this.country2 = this.declaration.visitedCountries[1])
+      this.declaration.visitedCountries[2] &&
+        (this.country3 = this.declaration.visitedCountries[2])
+    }
+  },
   methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_USERNAME',
+      'MODIFY_TRAVELPERIOD',
+      'MODIFY_PURPOSETRAVEL',
+      'MODIFY_FLIGHTNUM',
+      'MODIFY_ACCOMPANY',
+      'MODIFY_VISITEDCOUNTRIES',
+    ]),
     find_Postcode() {
       this.zipcode = ''
       this.mainAddress = ''
@@ -241,6 +374,7 @@ export default {
         },
       }).open()
     },
+    ...mapActions('user', ['callMemberDetail']),
   },
 }
 </script>
@@ -258,6 +392,21 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+
+.next-page {
+  width: 200%;
+  height: 60%;
+}
+
+.title-items {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+}
+.title-container {
+  display: flex;
+  justify-content: end;
 }
 
 .customs-input-container {
@@ -301,7 +450,7 @@ export default {
   font-weight: bolder;
   text-align: center;
   color: #004568;
-  margin-bottom: 3%;
+  margin-bottom: 2%;
 }
 .custom-info-wrap {
   padding: 3%;

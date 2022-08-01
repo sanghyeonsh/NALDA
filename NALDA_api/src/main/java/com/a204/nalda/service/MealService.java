@@ -52,21 +52,23 @@ public class MealService {
         return mealDto;
     }
 
-    public void mealCntInput(MealCntDto mealCntDto){
+    @Transactional
+    public void mealCntInput(List<MealCntDto> mealCntDTOS){
 
-        Meal meal = Meal.builder()
-                .id(mealCntDto.getMealId())
-                .build();
-        Flight flight = Flight.builder()
-                .id(mealCntDto.getFlightId())
-                .build();
-        MealStock mealStock = MealStock.builder()
-                .meal(meal)
-                .flight(flight)
-                .total(mealCntDto.getTotal())
-                .build();
-
-        mealStockRepository.save(mealStock);
+        for (MealCntDto mealCntDto : mealCntDTOS) {
+            Meal meal = Meal.builder()
+                    .id(mealCntDto.getMealId())
+                    .build();
+            Flight flight = Flight.builder()
+                    .id(mealCntDto.getFlightId())
+                    .build();
+            MealStock mealStock = MealStock.builder()
+                    .meal(meal)
+                    .flight(flight)
+                    .total(mealCntDto.getTotal())
+                    .build();
+            mealStockRepository.save(mealStock);
+        }
     }
 
     @Transactional

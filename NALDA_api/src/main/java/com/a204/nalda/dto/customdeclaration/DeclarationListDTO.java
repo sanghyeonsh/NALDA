@@ -33,6 +33,9 @@ public class DeclarationListDTO {
     private int cigarette;
     private int perfumes;
 
+    private int dutyfreeExceedValue;
+    private int paymentExceedValue;
+
     private AlcoholsDTO alcohols;
     private List<EtcExceedDTO> etcExceeds;
     private List<VisitedCountryDTO> visitedCountries;

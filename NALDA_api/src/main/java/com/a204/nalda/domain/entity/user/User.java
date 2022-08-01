@@ -56,4 +56,7 @@ public class User {
         this.fullName = fullName;
         this.password = password;
     }
+    public void modifyBirthday(LocalDate birthday) {
+        this.birthday =birthday;
+    }
 }
