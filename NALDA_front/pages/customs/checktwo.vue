@@ -34,11 +34,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box4-1" type="checkbox" value="bangoodsck" />
+                  <input id="box4-1" name="bangoodsck" type="radio" value="Y" />
                   <label for="box4-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box4-2" type="checkbox" value="bangoodsck" />
+                  <input id="box4-2" name="bangoodsck" type="radio" value="N" />
                   <label for="box4-2"></label>
                 </td>
               </tr>
@@ -55,11 +55,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box5-1" type="checkbox" value="livestockck" />
+                  <input id="box5-1" name="livestockck" type="radio" value="Y" />
                   <label for="box5-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box5-2" type="checkbox" value="livestockck" />
+                  <input id="box5-2" name="livestockck" type="radio" value="N" />
                   <label for="box5-2"></label>
                 </td>
               </tr>
@@ -74,11 +74,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box6-1" type="checkbox" value="salesgoodsck" />
+                  <input id="box6-1" name="salesgoodsck" type="radio" value="Y" />
                   <label for="box6-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box6-2" type="checkbox" value="salesgoodsck" />
+                  <input id="box6-2" name="salesgoodsck" type="radio" value="N" />
                   <label for="box6-2"></label>
                 </td>
               </tr>
