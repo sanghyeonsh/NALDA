@@ -23,9 +23,13 @@
           >
             <div class="modal-body-body-menu">{{ item.serviceName }}</div>
             <div class="modal-body-body-count">
-              <button @click="MINUS_CHOICE_FOODS(item)">-</button>
+              <button @click="MINUS_CHOICE_FOODS(item)">
+                <img src="../static/orders/minus.png" alt="" />
+              </button>
               <div>{{ item.num }}</div>
-              <button @click="PLUS_CHOICE_FOODS(item)">+</button>
+              <button @click="PLUS_CHOICE_FOODS(item)">
+                <img src="../static/orders/plus.png" alt="" />
+              </button>
             </div>
           </div>
         </div>
@@ -33,7 +37,7 @@
 
       <div class="check-modal-footer">
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
-        <button @click="Waiting">주문하기</button>
+        <button @click="Waiting">주문완료</button>
       </div>
     </div>
   </div>
@@ -179,6 +183,21 @@ export default {
   width: 20%;
   justify-content: space-around;
   align-items: center;
+}
+.modal-body-body-count div {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-body-body-count button {
+  width: 30%;
+  border: none;
+  background-color: white;
+}
+.modal-body-body-count img {
+  width: 50%;
+  height: 100%;
 }
 
 .check-modal-footer {

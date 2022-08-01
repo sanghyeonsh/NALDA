@@ -10,7 +10,7 @@
       @click="MoveSnack"
     >
       <img src="../static/orders/dessert.png" alt="" />
-      <span style="color: white">간식</span>
+      <span>간식</span>
     </div>
     <div
       class="service-navbar-alcohol"
@@ -18,7 +18,7 @@
       @click="MoveAlcohol"
     >
       <img src="../static/orders/drink.png" alt="" />
-      <span style="color: white">주류</span>
+      <span>주류</span>
     </div>
     <div
       class="service-navbar-nonalcohol"
@@ -26,16 +26,14 @@
       @click="MoveNonAlcohol"
     >
       <img src="../static/orders/coffee_cup.png" alt="" />
-      <span style="color: white">비주류</span>
+      <span>비주류</span>
     </div>
     <div class="service-navbar-profile">
-      <button>뒤로</button>
-      <img
-        src="../static/main/user_profile_w.png"
-        style="width: 15%; height: 60%; margin: 7px"
-        alt=""
-      />
-      <div style="color: white; font-size: 35px">김익명</div>
+      <button>
+        <img src="../static/orders/back-button.png" alt="" />
+      </button>
+      <img src="../static/main/user_profile_w.png" alt="" />
+      <div>김익명</div>
     </div>
   </div>
 </template>
@@ -101,47 +99,51 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'twayfly';
+}
+
 .service-navbar {
   display: flex;
   width: 100%;
   height: 15vh;
   background-color: rgb(69, 169, 200);
+  color: white;
 }
 .service-navbar-home {
   display: flex;
   flex-direction: column;
-  color: white;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  font-size: 30px;
 }
 .service-navbar-snack {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  font-size: 20px;
-}
-.snackactive {
-  border-bottom: 0.5rem solid;
 }
 .service-navbar-alcohol {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  font-size: 20px;
 }
 .service-navbar-nonalcohol {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  font-size: 20px;
+}
+.snackactive {
+  border-bottom: 0.5rem solid;
+  color: black;
 }
 .service-navbar-profile {
   margin-left: auto;
@@ -156,5 +158,9 @@ export default {
 .service-navbar img {
   width: 50%;
   height: 80%;
+}
+.service-navbar-profile img {
+  width: 30%;
+  height: 50%;
 }
 </style>

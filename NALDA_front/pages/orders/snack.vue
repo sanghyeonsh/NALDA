@@ -4,7 +4,6 @@
     <ServiceCards />
     <ServiceFooter />
     <StewardessButton />
-    <OrdersButton />
   </div>
 </template>
 

@@ -1,22 +1,31 @@
 <template>
-  <div id="footer">
-    <div class="footer-head">
-      <div class="footer-item">메뉴</div>
-      <div class="footer-item">수량</div>
+  <div class="Service-footer">
+    <div class="Service-footer-head">
+      <div class="Service-footer-item-menu">메뉴</div>
+      <div class="Service-footer-item-num">수량</div>
     </div>
-    <div class="footer-body">
+    <div class="Service-footer-body">
       <div
         v-for="(item, idx) in selected_foods"
         :key="idx"
-        class="footer-content"
+        class="Service-footer-content"
       >
-        <div>
+        <div class="Service-footer-content-name">
           {{ item.serviceName }}
         </div>
-        <button @click="DELETE_CHOICE_FOODS(item)">delete button</button>
-        <button @click="MINUS_CHOICE_FOODS(item)">minus button</button>
-        <div>{{ item.num }}</div>
-        <button @click="PLUS_CHOICE_FOODS(item)">plus button</button>
+        <div class="Service-footer-content-num">
+          <!-- <button @click="DELETE_CHOICE_FOODS(item)">
+            delete
+            <img src="../static/orders/slippers.png" alt="" />
+          </button> -->
+          <button @click="MINUS_CHOICE_FOODS(item)">
+            <img src="../static/orders/minus.png" alt="" />
+          </button>
+          <div class="Service-footer-content-number">{{ item.num }}</div>
+          <button @click="PLUS_CHOICE_FOODS(item)">
+            <img src="../static/orders/plus.png" alt="" />
+          </button>
+        </div>
       </div>
     </div>
     <ServiceCheck />
@@ -51,37 +60,72 @@ export default {
 </script>
 
 <style scoped>
-#footer {
+.Service-footer {
   display: flex;
   flex-direction: column;
   height: 20vh;
   width: 100%;
 }
-.footer-head {
+.Service-footer-head {
   display: flex;
   background-color: rgb(69, 169, 200);
   color: white;
-  height: 4vh;
-  gap: 20vw;
-  font-size: 3vh;
-}
-.footer-item {
-  display: flex;
-  margin-left: 3vw;
+  height: 20%;
   align-items: center;
+  font-size: 25px;
 }
-.footer-body {
+.Service-footer-item-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+.Service-footer-item-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+}
+.Service-footer-body {
   overflow: scroll;
 }
 /* 스크롤 없애기 */
-.footer-body::-webkit-scrollbar {
+.Service-footer-body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
-.footer-content {
+.Service-footer-content {
   display: flex;
   align-items: center;
   padding: 5px;
-  font-size: 20px;
+  font-size: 25px;
+}
+.Service-footer-content-name {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Service-footer-content-num {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Service-footer-content button {
+  width: 10%;
+  border: 0;
+  background-color: white;
+}
+.Service-footer-content-number {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Service-footer-content img {
+  width: 100%;
+  height: 100%;
 }
 .order-button {
   position: fixed;

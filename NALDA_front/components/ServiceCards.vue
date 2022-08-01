@@ -28,12 +28,12 @@ export default {
   computed: {
     ...mapState('menu', ['items']),
   },
-  mounted() {
-    setTimeout(() => {
-      const menu = document.querySelector('.footer-body')
-      menu.scrollTop = menu.scrollHeight
-    }, 0)
-  },
+  // mounted() {
+  //   setTimeout(() => {
+  //     const menu = document.querySelector('.footer-body')
+  //     menu.scrollTop = menu.scrollHeight
+  //   }, 0)
+  // },
   methods: {
     ...mapMutations('menu', [
       'SET_ITEM',
@@ -95,7 +95,8 @@ export default {
 }
 .card-body {
   padding: 15px;
-  height: 100px;
+  height: 60px;
+  border-top: solid;
 }
 .card-title {
   text-align: center;

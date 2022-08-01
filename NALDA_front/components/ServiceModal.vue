@@ -14,9 +14,13 @@
             {{ item[0].serviceName }}
           </div>
           <div class="service-modal-body-detail-button">
-            <button @click="MINUS_CHOICE_FOODS(item[0])">minus button</button>
+            <button @click="MINUS_CHOICE_FOODS(item[0])">
+              <img src="../static/orders/minus.png" alt="" />
+            </button>
             <div class="button-num">{{ item[0].num }}</div>
-            <button @click="PLUS_CHOICE_FOODS(item[0])">plus button</button>
+            <button @click="PLUS_CHOICE_FOODS(item[0])">
+              <img src="../static/orders/plus.png" alt="" />
+            </button>
           </div>
         </div>
       </div>
@@ -129,34 +133,37 @@ export default {
 .service-modal-body-image {
   width: 100%;
   height: 85%;
-  background-color: blue;
 }
 .service-modal-body-image img {
   width: 70%;
   height: 100%;
 }
 .service-modal-body-detail {
-  background-color: red;
+  background-color: white;
   display: flex;
   width: 100%;
   height: 15%;
 }
 .service-modal-body-detail-name {
-  background-color: orange;
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .service-modal-body-detail-button {
-  background-color: yellow;
   width: 30%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+.service-modal-body-detail-button img {
+  width: 50%;
+  height: 50%;
+}
 .service-modal-body-detail-button button {
-  background-color: red;
+  background-color: white;
+  border: none;
   width: 30%;
   height: 100%;
   display: flex;
@@ -167,7 +174,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
 }
 
 .service-modal-footer {
