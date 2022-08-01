@@ -14,7 +14,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_SERVICE_LIST(state, data) {
-    console.log(data)
+    // console.log(data)
     state.serviceList = data
     state.snackList = []
     state.alcoholsList = []
@@ -22,14 +22,20 @@ export const mutations = {
     state.amenityList = []
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].serviceClass === 'SNACK') {
-        state.snackList.push(data[i])
-      } else if (data[i].serviceClass === 'ALCOHOLS') {
-        state.alcoholsList.push(data[i])
-      } else if (data[i].serviceClass === 'NON-ALCOHOLS') {
-        state.nonalcoholosList.push(data[i])
-      } else if (data[i].serviceClass === 'AMENITY') {
-        state.amenityList.push(data[i])
+      const value = {
+        serviceClass: data[i].serviceClass,
+        serviceCode: data[i].serviceCode,
+        serviceName: data[i].serviceName,
+        serviceQuantity: 0,
+      }
+      if (value.serviceClass === 'SNACK') {
+        state.snackList.push(value)
+      } else if (value.serviceClass === 'ALCOHOLS') {
+        state.alcoholsList.push(value)
+      } else if (value.serviceClass === 'NON-ALCOHOLS') {
+        state.nonalcoholosList.push(value)
+      } else if (value.serviceClass === 'AMENITY') {
+        state.amenityList.push(value)
       }
     }
   },
