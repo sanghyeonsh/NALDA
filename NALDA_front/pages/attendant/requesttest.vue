@@ -86,25 +86,25 @@
                 </template>
               </template>
             </b-table>
+            <div class="checked-num">
+              선택된 요청사항:
+              {{ selecteditems.length }}
+            </div>
             <div class="request-check-wrap">
-              <div class="checked-list">
-                체크된 요청사항:
-                {{ selecteditems.length }}
-              </div>
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
                 <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
               </div>
             </div>
-            <b-pagination
+            <!-- <b-pagination
               v-model="detailCurrentPage"
               :total-rows="detailsrows"
               :per-page="perPagedetails"
               first-number
               last-number
               size="sm"
-            ></b-pagination>
+            ></b-pagination>-->
           </div>
         </div>
       </div>
@@ -283,10 +283,6 @@ export default {
       // console.log(this.items[0].좌석)
 
       for (let i = 0; i < items.length; i++) {
-        sessionStorage.setItem('requestDetail', JSON.stringify(items[i]))
-        // sessionStorage.setItem('분류', items[i].분류)
-        // sessionStorage.setItem('요청사항', items[i].요청사항)
-        // sessionStorage.setItem('요청시각', items[i].요청시각)
         const completeItem = {
           좌석: items[i].좌석,
           분류: items[i].분류,
@@ -296,7 +292,7 @@ export default {
         }
         this.completed.push(completeItem)
       }
-      sessionStorage.setItem('completed', JSON.stringify(this.completed))
+      // sessionStorage.setItem('completed', JSON.stringify(this.completed))
     },
     clearSelected() {},
   },
@@ -355,10 +351,16 @@ table#request-table-transition .flip-list-move {
   transition: transform 1s;
 }
 
+.checked-num {
+  width: 95%;
+  font-size: smaller;
+  display: flex;
+  justify-content: flex-start;
+}
 .request-check-wrap {
   width: 95%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-top: 1%;
   margin-bottom: 1%;
 }
