@@ -18,9 +18,9 @@ public class OrderDto {
 
     private String orderMessage;
     private LocalDateTime orderTime;
-    private Long flightId;
-    private Long seatId;
-    private Long userId;
+    private String flightNum;
+    private String seatNum;
+    private String username;
 
     @Enumerated(EnumType.STRING)
     private String status;
