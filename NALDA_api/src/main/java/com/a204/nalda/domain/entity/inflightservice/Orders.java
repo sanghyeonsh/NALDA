@@ -57,7 +57,7 @@ public class Orders {
         ordersCodes.changeOrder(this);
     }
 
-    public void changStatusInfo(Status status){
+    public void changeStatusInfo(Status status){
         this.status = status;
     }
 
