@@ -4,15 +4,16 @@ import {
   listInput,
   detailMeal,
   allergyMeal,
-  //   choiceMeal,
+  selectMeal,
+  choiceMeal,
 } from '@/api/meal'
 
 export const state = () => ({
   meals: [],
   flightMeals: [],
-  selectedMeal: {},
+  selectedMeal: { bytesdata: null },
   details: [],
-  allergies: ['땅콩', '계란', '육류'],
+  allergies: [],
 })
 
 export const mutations = {
@@ -23,6 +24,7 @@ export const mutations = {
     state.flightMeals.push(flightMeals)
   },
   SET_SELECTED_MEAL(state, selectedMeal) {
+    state.selectedMeal = {}
     state.selectedMeal = selectedMeal
   },
   SET_DETAIL_MEAL(state, details) {
@@ -38,9 +40,7 @@ export const mutations = {
   CLEAR_FLIGHTMEAL_LIST(state) {
     state.flightMeals = []
   },
-  CLEAR_SELECTED_MEAL(state) {
-    state.selectedMeal = null
-  },
+  CLEAR_SELECTED_MEAL(state) {},
   CLEAR_DETAIL_MEAL(state) {
     state.details = []
   },
@@ -84,7 +84,6 @@ export const actions = {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
             commit('SET_FLIGHTMEAL_LIST', {
-              id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
             })
@@ -96,13 +95,27 @@ export const actions = {
       }
     )
   },
-  getDetail({ commit }, mealNum) {
-    detailMeal(
-      mealNum,
+  getSelectedMeal({ commit }, mealMenu) {
+    // commit('CLEAR_SELECTED_MEAL')
+    selectMeal(
+      mealMenu,
       ({ data }) => {
-        console.log(data)
-        if (data.length > 0) {
-          commit('SET_DETAIL_MEAL')
+        console.log(data.mealInfo)
+        commit('SET_SELECTED_MEAL', data.mealInfo)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getDetail({ commit }, mealMenu) {
+    commit('CLEAR_DETAIL_MEAL')
+    detailMeal(
+      mealMenu,
+      ({ data }) => {
+        // console.log(data.mealDetail)
+        if (data.mealDetail.length > 0) {
+          commit('SET_DETAIL_MEAL', data.mealDetail)
         }
       },
       (error) => {
@@ -110,14 +123,27 @@ export const actions = {
       }
     )
   },
-  getAllergy({ commit }, mealNum) {
+  getAllergy({ commit }, mealMenu) {
+    commit('CLEAR_ALLERGY_MEAL')
     allergyMeal(
-      mealNum,
+      mealMenu,
       ({ data }) => {
-        console.log(data)
-        if (data.length > 0) {
-          commit('SET_ALLERGY_MEAL')
+        // console.log(data.mealAllergy)
+        if (data.mealAllergy.length > 0) {
+          commit('SET_ALLERGY_MEAL', data.mealAllergy)
         }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  registSeatMeal(info) {
+    // console.log(info)
+    choiceMeal(
+      info,
+      () => {
+        console.log('입력완료')
       },
       (error) => {
         console.log(error)

@@ -103,6 +103,28 @@ public class MealService {
     }
 
     @Transactional
+    public MealDto mealInfo(String mealMenu) throws IOException {
+//        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
+        Meal mealInfo = mealRepository.findTopByMealMenu(mealMenu);
+        ByteArrayOutputStream bos;
+        String fileName;
+        String filePath;
+        bos = new ByteArrayOutputStream();
+        fileName = mealInfo.getImageName();
+        filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
+        InputStream imageStream = new FileInputStream(filePath + fileName);
+        imageStream.transferTo(bos);
+        byte[] bytesData = bos.toByteArray();
+
+        MealDto mealDto = MealDto.builder()
+                .imageName(mealInfo.getImageName())
+                .mealMenu(mealInfo.getMealMenu())
+                .bytesdata(bytesData)
+                .build();
+
+        return mealDto;
+    }
+    @Transactional
     public List<MealDetailDto> listMealDetail(String mealMenu){
         Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
         List<MealDetail> mealDetailList = mealDetailRepository.findByMeal(mealId);
@@ -136,7 +158,8 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-
+        System.out.println("====================");
+        System.out.println(seatMealDto.toString());
         Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
         Meal meal = Meal.builder()
                 .id(mealId)
