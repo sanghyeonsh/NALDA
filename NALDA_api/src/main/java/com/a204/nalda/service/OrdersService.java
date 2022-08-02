@@ -115,6 +115,19 @@ public class OrdersService {
             serviceStockRepository.save(serviceStock);
         }
     }
+    @Transactional
+    public void updateServiceCnt(List<ServiceCntDto> serviceCntDTOS){
+        for (ServiceCntDto serviceCntDto : serviceCntDTOS) {
+            Long serviceCodeId = serviceRepository.findByServiceCode(serviceCntDto.getServiceCode()).getId();
+            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(serviceCntDto.getFlightNum()).getId();
+            Long serviceStockId = serviceStockRepository.findByFlightAndServiceCode(flightId,serviceCodeId).getId();
+            Optional<ServiceStock> optional = serviceStockRepository.findById(serviceStockId);
+            ServiceStock serviceStock = optional.get();
+            serviceStock.changeTotal(serviceCntDto.getTotal());
+        }
+    }
+
+
 
     @Transactional
     public List<ServiceDto> listService() {
@@ -140,6 +153,7 @@ public class OrdersService {
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {
             orderDTOS.add(OrderDto.builder()
+                    .id(order.getId())
                     .orderMessage(order.getOrderMessage())
                     .orderTime(order.getOrderTime())
                     .flightNum(flightNum)
@@ -155,10 +169,9 @@ public class OrdersService {
     public void updateStatus(Long ordersId) {
         Optional<Orders> optional = orderRepository.findById(ordersId);
         if(optional.get().getStatus().equals(Status.PROGRESS)){
-            optional.get().changStatusInfo(Status.DONE);
+            optional.get().changeStatusInfo(Status.DONE);
         }else{
-            optional.get().changStatusInfo(Status.PROGRESS);
+            optional.get().changeStatusInfo(Status.PROGRESS);
         }
     }
-
 }
