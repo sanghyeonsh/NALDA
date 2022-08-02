@@ -158,8 +158,8 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-        System.out.println("====================");
-        System.out.println(seatMealDto.toString());
+//        System.out.println("====================");
+//        System.out.println(seatMealDto.toString());
         Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
         Meal meal = Meal.builder()
                 .id(mealId)
