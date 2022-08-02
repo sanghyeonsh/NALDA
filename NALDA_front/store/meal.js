@@ -8,26 +8,19 @@ import {
 } from '@/api/meal'
 
 export const state = () => ({
-  meals: [{ menu: null, image: null }],
-  flightMeals: [
-    { menu: '치킨 스테이크', image: null },
-    { menu: '낙지 덮밥', image: null },
-  ],
-  selectedMeal: null,
-  details: ['치킨 스테이크', '푸딩', '스프', '콜라'],
+  meals: [],
+  flightMeals: [],
+  selectedMeal: {},
+  details: [],
   allergies: ['땅콩', '계란', '육류'],
 })
 
 export const mutations = {
   SET_MEAL_LIST(state, meals) {
-    meals.forEach((meal) => {
-      state.meals.push({ menu: meal.menu, image: meal.image })
-    })
+    state.meals.push(meals)
   },
   SET_FLIGHTMEAL_LIST(state, flightMeals) {
-    flightMeals.forEach((flightMeal) => {
-      state.flightMeal.push({ menu: flightMeal.menu, image: flightMeal.image })
-    })
+    state.flightMeals.push(flightMeals)
   },
   SET_SELECTED_MEAL(state, selectedMeal) {
     state.selectedMeal = selectedMeal
@@ -43,19 +36,18 @@ export const mutations = {
     state.meals = [{ menu: null, image: null }]
   },
   CLEAR_FLIGHTMEAL_LIST(state) {
-    state.flightMeals = [{ menu: null, image: null }]
+    state.flightMeals = []
   },
   CLEAR_SELECTED_MEAL(state) {
     state.selectedMeal = null
   },
-  CLEAR_DETAIL_MEAL(state, details) {
+  CLEAR_DETAIL_MEAL(state) {
     state.details = []
   },
-  CLEAR_ALLERGY_MEAL(state, allergies) {
+  CLEAR_ALLERGY_MEAL(state) {
     state.allergies = []
   },
 }
-
 export const getters = {}
 
 // console.log eslint rule수정 충돌방지
@@ -63,6 +55,7 @@ export const actions = {
   getMeal({ commit }) {
     listMeal(
       ({ data }) => {
+        console.log(data)
         commit('SET_MEAL_LIST', data)
       },
       (error) => {
@@ -84,11 +77,18 @@ export const actions = {
     )
   },
   getFlightMeal({ commit }, flightNum) {
+    commit('CLEAR_FLIGHTMEAL_LIST')
     listInput(
       flightNum,
       ({ data }) => {
-        if (data.length > 0) {
-          commit('SET_FLIGHTMEAL_LIST')
+        if (data.meal.length > 0) {
+          data.meal.forEach((meal) => {
+            commit('SET_FLIGHTMEAL_LIST', {
+              id: meal.mealId,
+              menu: meal.mealMenu,
+              image: meal.bytesdata,
+            })
+          })
         }
       },
       (error) => {
@@ -100,8 +100,9 @@ export const actions = {
     detailMeal(
       mealNum,
       ({ data }) => {
+        console.log(data)
         if (data.length > 0) {
-          commit('SET_DETAIL_MEAL', { root: true })
+          commit('SET_DETAIL_MEAL')
         }
       },
       (error) => {
@@ -113,8 +114,9 @@ export const actions = {
     allergyMeal(
       mealNum,
       ({ data }) => {
+        console.log(data)
         if (data.length > 0) {
-          commit('SET_ALLERGY_MEAL', { root: true })
+          commit('SET_ALLERGY_MEAL')
         }
       },
       (error) => {

@@ -2,6 +2,8 @@ import { apiInstance } from '.'
 
 const api = apiInstance()
 
+// 기내식 part
+
 async function listMeal(success, fail) {
   await api.get(`/meal`).then(success).catch(fail)
 }
@@ -29,4 +31,4 @@ async function choiceMeal(param, success, fail) {
     .catch(fail)
 }
 
-export { listMeal, inputMeal, listInput, detailMeal, allergyMeal, choiceMeal }
+export { listInput, detailMeal, allergyMeal, choiceMeal, listMeal, inputMeal }

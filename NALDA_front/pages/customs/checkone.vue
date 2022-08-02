@@ -41,11 +41,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box1-1" type="checkbox" value="dutyfreeck" />
+                  <input id="box1-1" name="dutyfree" type="radio" value="Y" />
                   <label for="box1-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box1-2" type="checkbox" value="dutyfreeck" />
+                  <input id="box1-2" name="dutyfree" type="radio" value="N" />
                   <label for="box1-2"></label>
                 </td>
               </tr>
@@ -60,11 +60,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box2-1" type="checkbox" value="FTAck" />
+                  <input id="box2-1" name="FTAcheck" type="radio" value="Y" />
                   <label for="box2-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box2-2" type="checkbox" value="FTAck" />
+                  <input id="box2-2" name="FTAcheck" type="radio" value="N" />
                   <label for="box2-2"></label>
                 </td>
               </tr>
@@ -80,11 +80,11 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box3-1" type="checkbox" value="paymentck" />
+                  <input id="box3-1" name="paymentck" type="radio" value="Y" />
                   <label for="box3-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box3-2" type="checkbox" value="paymentck" />
+                  <input id="box3-2" name="paymentck" type="radio" value="N" />
                   <label for="box3-2"></label>
                 </td>
               </tr>
@@ -102,8 +102,14 @@ import CustomNavs from '../../components/CustomNavs.vue'
 export default {
   name: 'CustomsCheckone',
   components: { CustomNavs },
+  data() {
+    return {}
+  },
+  mounted() {},
+  methods: {},
 }
 </script>
+
 
 <style scoped>
 @font-face {
