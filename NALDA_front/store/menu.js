@@ -1,8 +1,8 @@
-import axios from 'axios'
+import { listSnack, listAlcohols, listNonAlcohols } from '@/api/menu'
 
 export const state = () => ({
   // item: 물품 하나 선택하면 모달창에 띄우는 아이템
-  item: [{ download_url: null, author: null, num: null }],
+  item: [{ bytesdata: null, image: null, num: null }],
   // items: 전체 메뉴 가져옴.
   items: [],
   // selected_foods 장바구니에 담기.
@@ -39,27 +39,11 @@ export const mutations = {
   },
   PLUS_CHOICE_FOODS(state, choice) {
     choice.num = parseInt(choice.num) + 1
-    // for (let i = 0; i < state.selected_foods.length; i++) {
-    //   if (
-    //     state.selected_foods[i].name === choice &&
-    //     state.selected_foods[i].num > 1
-    //   ) {
-    //     state.selected_foods[i].num += 1
-    //   }
-    // }
   },
   MINUS_CHOICE_FOODS(state, choice) {
     if (choice.num > 1) {
       choice.num = parseInt(choice.num) - 1
     }
-    // for (let i = 0; i < state.selected_foods.length; i++) {
-    //   if (
-    //     state.selected_foods[i].name === choice &&
-    //     state.selected_foods[i].num > 1
-    //   ) {
-    //     state.selected_foods[i].num -= 1
-    //   }
-    // }
   },
   CLEAR_ITEM(state) {
     state.item = []
@@ -75,43 +59,37 @@ export const mutations = {
 export const getters = {}
 
 export const actions = {
-  getsnack({ commit }) {
-    axios
-      // 서버켰을때 조정
-      .get('http://localhost:8080/orders/SNACK')
-      // 실험할때
-      // .get('https://picsum.photos/v2/list?page=2&limit=6')
-      .then(function (response) {
-        commit('SET_MENU_ITEMS', response.data)
-      })
-      .catch(function (error) {
+  getSnack({ commit }) {
+    listSnack(
+      ({ data }) => {
+        console.log(data)
+        commit('SET_MENU_ITEMS', data)
+      },
+      (error) => {
         console.log(error)
-      })
+      }
+    )
   },
-  getalcohol({ commit }) {
-    axios
-      // 서버켰을때 조정
-      .get('http://localhost:8080/orders/ALCOHOLS')
-      // 실험할때
-      // .get('https://picsum.photos/v2/list?page=2&limit=2')
-      .then(function (response) {
-        commit('SET_MENU_ITEMS', response.data)
-      })
-      .catch(function (error) {
+  getAlcohols({ commit }) {
+    listAlcohols(
+      ({ data }) => {
+        console.log(data)
+        commit('SET_MENU_ITEMS', data)
+      },
+      (error) => {
         console.log(error)
-      })
+      }
+    )
   },
-  getnonalcohol({ commit }) {
-    axios
-      // 서버켰을때 조정
-      .get('http://localhost:8080/orders/NON-ALCOHOLS')
-      // 실험할때
-      // .get('https://picsum.photos/v2/list?page=2&limit=3')
-      .then(function (response) {
-        commit('SET_MENU_ITEMS', response.data)
-      })
-      .catch(function (error) {
+  getNonAlcohols({ commit }) {
+    listNonAlcohols(
+      ({ data }) => {
+        console.log(data)
+        commit('SET_MENU_ITEMS', data)
+      },
+      (error) => {
         console.log(error)
-      })
+      }
+    )
   },
 }
