@@ -73,10 +73,10 @@ public class OrdersController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("/input/{flightId}")
-    public ResponseEntity<?> listOrders(@PathVariable("flightId") Long flightId){
+    @GetMapping("/input/{flightNum}")
+    public ResponseEntity<?> listOrders(@PathVariable("flightNum") String flightNum){
         Map<String,Object> result = new HashMap<>();
-        List<OrderDto> orderDTOS = ordersService.listOrders(flightId);
+        List<OrderDto> orderDTOS = ordersService.listOrders(flightNum);
         result.put("serviceList",orderDTOS);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

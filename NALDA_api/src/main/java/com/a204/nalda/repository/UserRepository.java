@@ -10,6 +10,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User,Long> {
     User findUserByUsername(String username);
 
-    @Query("select new com.a204.nalda.dto.user.LoginDto(u.username,u.fullName,u.birthday) from User u where u.username = :username")
-    List<LoginDto> findByUsername(String username);
+    User findTopByUsername(String username);
 }
