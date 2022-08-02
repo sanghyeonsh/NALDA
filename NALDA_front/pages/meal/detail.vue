@@ -51,6 +51,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { choiceMeal } from '@/api/meal'
 export default {
   name: 'MealDetail',
   components: {},
@@ -72,10 +73,6 @@ export default {
     ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
   },
   created() {
-    console.log(11111111111)
-    console.log(this.selectedMeal)
-    console.log(1111111111)
-
     // this.select = this.selectedMeal
     // this.detailOfMeal = this.details
     // this.allergiesOfMeal = this.allergies
@@ -90,8 +87,15 @@ export default {
       this.info.username = 'audrb96'
       this.info.seatNum = 'A29'
       this.info.mealMenu = this.selectedMeal.mealMenu
-      this.registSeatMeal(this.info)
-      this.$router.push('/medical/result')
+      choiceMeal(
+        this.info,
+        () => {
+          this.$router.push('/medical/result')
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
     },
     ...mapActions('meal', ['getDetail', 'getAllergy', 'registSeatMeal']),
   },

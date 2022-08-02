@@ -65,9 +65,6 @@ export default {
         resolve()
       })
       promise.then(() => {
-        console.log(this.selectedMeal)
-        console.log(this.details)
-        console.log(this.allergies)
         this.$router.push('/meal/detail')
       })
     },
