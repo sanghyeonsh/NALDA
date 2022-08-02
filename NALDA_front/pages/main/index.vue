@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="main-container-box">
-      <nuxt-link to="/user/login" style="text-decoration: none">
+      <nuxt-link :to="isLogin" style="text-decoration: none">
         <div>
           <img
             class="image"
@@ -20,7 +20,11 @@
     </div>
     <div class="main-container-box">
       <div>
-        <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+        <img
+          class="image"
+          src="../../static/main/airport_info.png"
+          alt="airport_info"
+        />
         <h3>Airport Info</h3>
       </div>
     </div>
@@ -34,10 +38,13 @@ export default {
   components: {},
   computed: {
     ...mapState('user', ['loginMember']),
+    isLogin() {
+      if (this.loginMember === null) return '/user/login'
+      return '/customs/thirdparty'
+    },
   },
   methods: {
     moveLogin() {
-      console.loh('aaa')
       console.log(this.loginMember)
       if (this.loginMember === null) {
         this.$router.push('/user/login')

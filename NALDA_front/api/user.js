@@ -19,4 +19,14 @@ async function mypage(userid, success, fail) {
   await api.get(`/user/userDetail/${userid}`).then(success).catch(fail)
 }
 
-export { login, signup, idCheck, mypage }
+async function modifyMember(userObject, success, fail) {
+  // eslint-disable-next-line dot-notation
+  api.defaults.headers['Authorization'] =
+    sessionStorage.getItem('Authorization')
+  await api
+    .put('/user/userDetail', JSON.stringify(userObject))
+    .then(success)
+    .catch(fail)
+}
+
+export { login, signup, idCheck, mypage, modifyMember }

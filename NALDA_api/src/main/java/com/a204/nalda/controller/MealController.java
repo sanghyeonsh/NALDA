@@ -25,24 +25,9 @@ public class MealController {
     @GetMapping
     public ResponseEntity<?> listMeals(){
         Map<String, Object> result = new HashMap<>();
-        List<byte[]> images = new ArrayList<>();
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
         try{
             List<MealDto> mealDTOS = mealService.listMeal();
-            String fileName;
-            String filePath;
-            for (MealDto mealDTO : mealDTOS) {
-                fileName = mealDTO.getImageName();
-                filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
-                InputStream imageStream = new FileInputStream(filePath+fileName);
-                imageStream.transferTo(bos);
-                byte[] bytesData = bos.toByteArray();
-                images.add(bytesData);
-                break;
-            }
             result.put("mealList", mealDTOS);
-            result.put("images", images);
             return new ResponseEntity<>(result,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
@@ -53,12 +38,11 @@ public class MealController {
 
 
     @PostMapping("/input")
-    public ResponseEntity<?> selectMeals(@RequestBody MealCntDto mealCntDto){
+    public ResponseEntity<?> selectMeals(@RequestBody List<MealCntDto> mealCntDTOS){
         Map<String,Object> result = new HashMap<>();
         try {
-            System.out.println(mealCntDto.getMealId());
-            mealService.mealCntInput(mealCntDto);
-            result.put("info", mealCntDto);
+            mealService.mealCntInput(mealCntDTOS);
+            result.put("info", mealCntDTOS);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e){
             e.printStackTrace();
@@ -67,11 +51,11 @@ public class MealController {
         }
     }
 
-    @GetMapping("/input/{flightId}")
-    public ResponseEntity<?> mealsByFlight(@PathVariable("flightId") Long flightId) {
+    @GetMapping("/input/{flightNum}")
+    public ResponseEntity<?> mealsByFlight(@PathVariable("flightNum") String flightNum) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDto> mealDTOS = mealService.listInputMeal(flightId);
+            List<MealDto> mealDTOS = mealService.listInputMeal(flightNum);
             result.put("meal", mealDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -81,11 +65,11 @@ public class MealController {
         }
     }
 
-    @GetMapping("/detail/{mealId}")
-    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/detail/{mealMenu}")
+    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealId);
+            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealMenu);
             result.put("mealDetail", mealDetailDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -95,12 +79,12 @@ public class MealController {
         }
 
     }
-    @GetMapping("/allergy/{mealId}")
-    public ResponseEntity<?> allergyByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/allergy/{mealMenu}")
+    public ResponseEntity<?> allergyByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealId);
-            result.put("mealDetail", allergyDTOS);
+            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealMenu);
+            result.put("mealAllergy", allergyDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,9 +106,7 @@ public class MealController {
             result.put("msg", e.getMessage());
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
-
 
 
 }

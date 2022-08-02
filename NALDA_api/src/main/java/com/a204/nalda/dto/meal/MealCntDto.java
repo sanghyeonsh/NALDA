@@ -13,8 +13,8 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class MealCntDto {
 
-    private Long flightId;
-    private Long mealId;
+    private String flightNum;
+    private String mealMenu;
     private int total;
 
 }
