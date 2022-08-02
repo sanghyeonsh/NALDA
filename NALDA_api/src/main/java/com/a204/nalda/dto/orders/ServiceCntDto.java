@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ServiceCntDto {
 
-    private Long flightId;
-    private Long serviceCodesId;
+    private String flightNum;
+    private String serviceCode;
     private int total;
 
 

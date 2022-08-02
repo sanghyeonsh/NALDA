@@ -7,10 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,11 +47,11 @@ public class MealController {
         }
     }
 
-    @GetMapping("/input/{flightId}")
-    public ResponseEntity<?> mealsByFlight(@PathVariable("flightId") Long flightId) {
+    @GetMapping("/input/{flightNum}")
+    public ResponseEntity<?> mealsByFlight(@PathVariable("flightNum") String flightNum) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDto> mealDTOS = mealService.listInputMeal(flightId);
+            List<MealDto> mealDTOS = mealService.listInputMeal(flightNum);
             result.put("meal", mealDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -64,12 +60,27 @@ public class MealController {
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @GetMapping("/detail/{mealId}")
-    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/select/{mealMenu}")
+    public ResponseEntity<?> mealInfoByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealId);
+            MealDto mealDto = mealService.mealInfo(mealMenu);
+            result.put("mealInfo", mealDto);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+
+    @GetMapping("/detail/{mealMenu}")
+    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealMenu") String mealMenu) {
+        Map<String,Object> result = new HashMap<>();
+        try {
+            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealMenu);
             result.put("mealDetail", mealDetailDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -79,12 +90,12 @@ public class MealController {
         }
 
     }
-    @GetMapping("/allergy/{mealId}")
-    public ResponseEntity<?> allergyByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/allergy/{mealMenu}")
+    public ResponseEntity<?> allergyByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealId);
-            result.put("mealDetail", allergyDTOS);
+            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealMenu);
+            result.put("mealAllergy", allergyDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();

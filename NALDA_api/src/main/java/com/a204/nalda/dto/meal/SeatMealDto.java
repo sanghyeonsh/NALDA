@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SeatMealDto {
 
-    private Long flightId;
-    private Long mealId;
-    private Long seatId;
-    private Long userId;
+    private String flightNum;
+    private String mealMenu;
+    private String seatNum;
+    private String username;
 
 
 }

@@ -1,17 +1,17 @@
 <template>
   <div class="header-container">
-    <div class="tmp"></div>
-    <img class="logo" src="../static/logo.png" @click="MoveMain" />
+    <div class="header-container-blank"></div>
+    <div class="header-container-image">
+      <img src="../static/logo.png" @click="MoveMain" />
+    </div>
     <!-- <div @click="MoveSignup">
       signup
     </div>-->
-    <div class="userprofile-wrap" @click="MoveMypage">
-      <img
-        class="profile-img"
-        src="../static/main/user_profile_w.png"
-        alt="profile-img"
-      />
-      <h3>{{ fullname }}</h3>
+    <div class="header-container-userprofile" @click="MoveMypage">
+      <div class="profile-img">
+        <img src="../static/main/user_profile_w.png" alt="profile-img" />
+      </div>
+      <div class="profile-name">{{ fullname }}</div>
     </div>
   </div>
 </template>
@@ -54,36 +54,50 @@ export default {
 </script>
 
 <style scoped>
-.logo {
-  width: 8%;
-  justify-content: center;
-  cursor: pointer;
-}
-
 .header-container {
   display: flex;
-  flex-direction: row;
   width: 100vw;
   height: 15vh;
-  /* background-color: rgb(136, 192, 197); */
   background-color: rgb(69, 169, 200);
-  justify-content: space-between;
+}
+.header-container-blank {
+  width: 20%;
+}
+.header-container-image {
+  width: 80%;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+.header-container-image img {
+  width: 13%;
+  height: 100%;
 }
 
-.userprofile-wrap {
-  width: 8%;
+.header-container-userprofile {
+  width: 20%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   color: azure;
   cursor: pointer;
 }
-.tmp {
-  width: 8%;
-}
 .profile-img {
-  width: 30%;
-  height: 30%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.profile-img img {
+  width: 50%;
+  height: 50%;
+}
+.profile-name {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30px;
 }
 </style>

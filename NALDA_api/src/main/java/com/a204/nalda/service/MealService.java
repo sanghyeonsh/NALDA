@@ -26,6 +26,9 @@ public class MealService {
     private final MealStockRepository mealStockRepository;
     private final MealDetailRepository mealDetailRepository;
     private final AllergyRepository allergyRepository;
+    private final FlightRepository flightRepository;
+    private final UserRepository userRepository;
+    private final SeatRepository seatRepository;
     private final SeatMealRepository seatMealRepository;
 
     @Transactional
@@ -56,11 +59,13 @@ public class MealService {
     public void mealCntInput(List<MealCntDto> mealCntDTOS){
 
         for (MealCntDto mealCntDto : mealCntDTOS) {
+            Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
             Meal meal = Meal.builder()
-                    .id(mealCntDto.getMealId())
+                    .id(mealId)
                     .build();
+            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(mealCntDto.getFlightNum()).getId();
             Flight flight = Flight.builder()
-                    .id(mealCntDto.getFlightId())
+                    .id(flightId)
                     .build();
             MealStock mealStock = MealStock.builder()
                     .meal(meal)
@@ -72,13 +77,15 @@ public class MealService {
     }
 
     @Transactional
-    public List<MealDto> listInputMeal(Long flightId) throws IOException {
+    public List<MealDto> listInputMeal(String flightNum) throws IOException {
+        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
         List<Meal> mealList = mealRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
         String fileName;
         String filePath;
         for (Meal meal : mealList) {
+            System.out.println(meal.getMealMenu());
             bos = new ByteArrayOutputStream();
             fileName = meal.getImageName();
             filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
@@ -96,7 +103,30 @@ public class MealService {
     }
 
     @Transactional
-    public List<MealDetailDto> listMealDetail(Long mealId){
+    public MealDto mealInfo(String mealMenu) throws IOException {
+//        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
+        Meal mealInfo = mealRepository.findTopByMealMenu(mealMenu);
+        ByteArrayOutputStream bos;
+        String fileName;
+        String filePath;
+        bos = new ByteArrayOutputStream();
+        fileName = mealInfo.getImageName();
+        filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
+        InputStream imageStream = new FileInputStream(filePath + fileName);
+        imageStream.transferTo(bos);
+        byte[] bytesData = bos.toByteArray();
+
+        MealDto mealDto = MealDto.builder()
+                .imageName(mealInfo.getImageName())
+                .mealMenu(mealInfo.getMealMenu())
+                .bytesdata(bytesData)
+                .build();
+
+        return mealDto;
+    }
+    @Transactional
+    public List<MealDetailDto> listMealDetail(String mealMenu){
+        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
         List<MealDetail> mealDetailList = mealDetailRepository.findByMeal(mealId);
 
         List<MealDetailDto> mealDetailDTOS = new ArrayList<>();
@@ -111,7 +141,8 @@ public class MealService {
     }
 
     @Transactional
-    public List<AllergyDto> listAllergy(Long mealId){
+    public List<AllergyDto> listAllergy(String mealMenu){
+        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
         List<Allergy> allergyList = allergyRepository.findByMeal(mealId);
 
         List<AllergyDto> allergyDTOS = new ArrayList<>();
@@ -127,18 +158,23 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-
+        System.out.println("====================");
+        System.out.println(seatMealDto.toString());
+        Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
         Meal meal = Meal.builder()
-                .id(seatMealDto.getMealId())
+                .id(mealId)
                 .build();
+        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(seatMealDto.getFlightNum()).getId();
         Flight flight = Flight.builder()
-                .id(seatMealDto.getFlightId())
+                .id(flightId)
                 .build();
+        Long userId = userRepository.findTopByUsername(seatMealDto.getUsername()).getId();
         User user = User.builder()
-                .id(seatMealDto.getUserId())
+                .id(userId)
                 .build();
+        Long seatId = seatRepository.findTopBySeatNum(seatMealDto.getSeatNum()).getId();
         Seat seat = Seat.builder()
-                .id(seatMealDto.getSeatId())
+                .id(seatId)
                 .build();
         SeatMeal seatMeal = SeatMeal.builder()
                 .meal(meal)

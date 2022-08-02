@@ -16,19 +16,29 @@ async function listInput(flightNum, success, fail) {
   await api.get(`/meal/input/${flightNum}`).then(success).catch(fail)
 }
 
-async function detailMeal(mealNum, success, fail) {
-  await api.get(`/meal/detail/${mealNum}`).then(success).catch(fail)
+async function selectMeal(mealMenu, success, fail) {
+  await api.get(`/meal/select/${mealMenu}`).then(success).catch(fail)
 }
 
-async function allergyMeal(mealNum, success, fail) {
-  await api.get(`/meal/allergy/${mealNum}`).then(success).catch(fail)
+async function detailMeal(mealMenu, success, fail) {
+  await api.get(`/meal/detail/${mealMenu}`).then(success).catch(fail)
+}
+
+async function allergyMeal(mealMenu, success, fail) {
+  await api.get(`/meal/allergy/${mealMenu}`).then(success).catch(fail)
 }
 // user정보와 meal정보가 param에 담겨있음
-async function choiceMeal(param, success, fail) {
-  await api
-    .post(`/meal/choice`, JSON.stringify(param))
-    .then(success)
-    .catch(fail)
+async function choiceMeal(info, success, fail) {
+  console.log(info)
+  await api.post(`/meal/choice`, JSON.stringify(info)).then(success).catch(fail)
 }
 
-export { listInput, detailMeal, allergyMeal, choiceMeal, listMeal, inputMeal }
+export {
+  listInput,
+  detailMeal,
+  allergyMeal,
+  choiceMeal,
+  listMeal,
+  inputMeal,
+  selectMeal,
+}
