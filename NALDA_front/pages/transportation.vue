@@ -6,14 +6,35 @@
           <div>날다</div>
           <div>Home</div>
         </div>
-        <div class="transport-header-bus">공항리무진</div>
-        <div class="transport-header-taxi">택시승강장</div>
-        <div class="transport-header-subway">공항철도</div>
+        <div
+          class="transport-header-bus"
+          :class="{ transportactive: isBus }"
+          @click="MoveBus"
+        >
+          공항리무진
+        </div>
+        <div
+          class="transport-header-taxi"
+          :class="{ transportactive: isTaxi }"
+          @click="MoveTaxi"
+        >
+          택시승강장
+        </div>
+        <div
+          class="transport-header-subway"
+          :class="{ transportactive: isSubway }"
+          @click="MoveSubway"
+        >
+          공항철도
+        </div>
       </div>
 
       <div class="transport-header-right">
         <div class="transport-header-profile">
-          <div class="profile-back">back버튼</div>
+          <div class="profile-back">
+            <img src="../static/orders/left-round-128.png" alt="" />
+          </div>
+
           <div class="profile-image">
             <img src="../static/main/user_profile_w.png" alt="" />
           </div>
@@ -22,13 +43,52 @@
       </div>
     </div>
 
-    <div class="transport-body">이미지파일들 보여주기</div>
+    <div class="transport-body">
+      <img :src="'/' + test" alt="" />
+    </div>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   name: 'TransportPage',
+  data() {
+    return {
+      isBus: false,
+      isTaxi: false,
+      isSubway: false,
+      // test: {
+      //   test1: 'nacho.jpg',
+      //   test2: 'water.png',
+      //   test3: 'logo.png',
+      // },
+    }
+  },
+  mounted() {
+    this.isBus = true
+    // 버스정보가져옴
+    this.test = 'nacho.jpg'
+  },
+  methods: {
+    MoveBus() {
+      this.isBus = true
+      this.isTaxi = false
+      this.isSubway = false
+      this.test = 'nacho.jpg'
+    },
+    MoveTaxi() {
+      this.isBus = false
+      this.isTaxi = true
+      this.isSubway = false
+      this.test = 'water.png'
+    },
+    MoveSubway() {
+      this.isBus = false
+      this.isTaxi = false
+      this.isSubway = true
+      this.test = 'logo.png'
+    },
+  },
 }
 </script>
 
@@ -50,25 +110,33 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .transport-header-bus {
   width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .transport-header-taxi {
   width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .transport-header-subway {
   width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
+.transportactive {
+  color: blue;
+}
+
 .transport-header-right {
   width: 20%;
   display: flex;
@@ -78,5 +146,49 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.profile-back {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.profile-back img {
+  width: 50%;
+  height: 40%;
+}
+.profile-image {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.profile-image img {
+  width: 50%;
+  height: 40%;
+}
+.profile-name {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transport-body {
+  height: 85vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+.transport-body img {
+  width: 100%;
+  height: 100%;
 }
 </style>
