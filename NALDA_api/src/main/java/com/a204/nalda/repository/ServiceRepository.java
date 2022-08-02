@@ -12,4 +12,8 @@ public interface ServiceRepository extends JpaRepository<ServiceCodes, Long> {
     @Query("select s from ServiceCodes s where s.serviceClass = :serviceClass")
     List<ServiceCodes> findByServiceClass(@Param("serviceClass") String serviceClass);
 
+    @Query("select s from ServiceCodes s where s.code=:serviceCode")
+    ServiceCodes findByServiceCode(@Param("serviceCode") String serviceCode);
+
+
 }

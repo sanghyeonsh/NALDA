@@ -51,11 +51,11 @@ public class MealController {
         }
     }
 
-    @GetMapping("/input/{flightId}")
-    public ResponseEntity<?> mealsByFlight(@PathVariable("flightId") Long flightId) {
+    @GetMapping("/input/{flightNum}")
+    public ResponseEntity<?> mealsByFlight(@PathVariable("flightNum") String flightNum) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDto> mealDTOS = mealService.listInputMeal(flightId);
+            List<MealDto> mealDTOS = mealService.listInputMeal(flightNum);
             result.put("meal", mealDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -65,11 +65,11 @@ public class MealController {
         }
     }
 
-    @GetMapping("/detail/{mealId}")
-    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/detail/{mealMenu}")
+    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealId);
+            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealMenu);
             result.put("mealDetail", mealDetailDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -79,11 +79,11 @@ public class MealController {
         }
 
     }
-    @GetMapping("/allergy/{mealId}")
-    public ResponseEntity<?> allergyByMeal(@PathVariable("mealId") Long mealId) {
+    @GetMapping("/allergy/{mealMenu}")
+    public ResponseEntity<?> allergyByMeal(@PathVariable("mealMenu") String mealMenu) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealId);
+            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealMenu);
             result.put("mealAllergy", allergyDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
