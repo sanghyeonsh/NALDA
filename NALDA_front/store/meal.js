@@ -4,7 +4,7 @@ import {
   listInput,
   detailMeal,
   allergyMeal,
-  selectMeal,
+  //   choiceMeal,
 } from '@/api/meal'
 
 export const state = () => ({
@@ -12,7 +12,7 @@ export const state = () => ({
   flightMeals: [],
   selectedMeal: {},
   details: [],
-  allergies: [],
+  allergies: ['땅콩', '계란', '육류'],
 })
 
 export const mutations = {
@@ -39,7 +39,7 @@ export const mutations = {
     state.flightMeals = []
   },
   CLEAR_SELECTED_MEAL(state) {
-    state.selectedMeal = {}
+    state.selectedMeal = null
   },
   CLEAR_DETAIL_MEAL(state) {
     state.details = []
@@ -84,6 +84,7 @@ export const actions = {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
             commit('SET_FLIGHTMEAL_LIST', {
+              id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
             })
@@ -95,27 +96,13 @@ export const actions = {
       }
     )
   },
-  getSelectedMeal({ commit }, mealMenu) {
-    // commit('CLEAR_SELECTED_MEAL')
-    selectMeal(
-      mealMenu,
-      ({ data }) => {
-        console.log(data.mealInfo)
-        commit('SET_SELECTED_MEAL', data.mealInfo)
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  },
-  getDetail({ commit }, mealMenu) {
-    commit('CLEAR_DETAIL_MEAL')
+  getDetail({ commit }, mealNum) {
     detailMeal(
-      mealMenu,
+      mealNum,
       ({ data }) => {
-        // console.log(data.mealDetail)
-        if (data.mealDetail.length > 0) {
-          commit('SET_DETAIL_MEAL', data.mealDetail)
+        console.log(data)
+        if (data.length > 0) {
+          commit('SET_DETAIL_MEAL')
         }
       },
       (error) => {
@@ -123,14 +110,13 @@ export const actions = {
       }
     )
   },
-  getAllergy({ commit }, mealMenu) {
-    commit('CLEAR_ALLERGY_MEAL')
+  getAllergy({ commit }, mealNum) {
     allergyMeal(
-      mealMenu,
+      mealNum,
       ({ data }) => {
-        // console.log(data.mealAllergy)
-        if (data.mealAllergy.length > 0) {
-          commit('SET_ALLERGY_MEAL', data.mealAllergy)
+        console.log(data)
+        if (data.length > 0) {
+          commit('SET_ALLERGY_MEAL')
         }
       },
       (error) => {

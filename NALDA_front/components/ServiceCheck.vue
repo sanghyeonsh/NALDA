@@ -44,11 +44,23 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { inputOrders } from '@/api/menu'
 
 export default {
   name: 'CheckModal',
   computed: {
     ...mapState('menu', ['selected_foods']),
+    // orders() {
+    //   let order = {}
+    //   order.orderMessage = ""
+    //   order.orderTime = ""
+    //   order.flightNum = ""
+    //   order.seatNum = ""
+    //   order.username = ""
+    //   order.status = ""
+    //   order.orderList = []
+    //   order.orderList.push("")
+    // }
   },
   methods: {
     CloseCheck() {
@@ -64,7 +76,7 @@ export default {
       }
     },
     Waiting() {
-      this.SET_ORDERS_LIST()
+      inputOrders(this.selected_foods)
       // this.CLEAR_ITEMS()
       // this.CLEAR_CHOICE_FOODS()
       // this.CLEAR_CHECK_FOODS()
@@ -74,7 +86,6 @@ export default {
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
       'SET_CHOICE_FOODS',
-      'SET_ORDERS_LIST',
       'DELETE_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',

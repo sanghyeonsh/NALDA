@@ -1,9 +1,4 @@
-import {
-  listSnack,
-  listAlcohols,
-  listNonAlcohols,
-  inputOrders,
-} from '@/api/menu'
+import { listSnack, listAlcohols, listNonAlcohols } from '@/api/menu'
 
 export const state = () => ({
   // item: 물품 하나 선택하면 모달창에 띄우는 아이템
@@ -33,11 +28,6 @@ export const mutations = {
     }
     const modal = document.getElementsByClassName('service-modal')[0]
     modal.style.display = 'none'
-  },
-  SET_ORDERS_LIST(state, orders) {
-    console.log(orders)
-    console.log(state.selected_foods.num)
-    console.log(state.selected_foods.serviceCode)
   },
 
   DELETE_CHOICE_FOODS(state, choice) {
@@ -104,19 +94,6 @@ export const actions = {
       ({ data }) => {
         console.log(data)
         commit('SET_MENU_ITEMS', data)
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  },
-  registOrdres({ commit }, info) {
-    inputOrders(
-      info,
-      ({ data }) => {
-        if (data.length > 0) {
-          commit('SET_ORDERS_LIST', data)
-        }
       },
       (error) => {
         console.log(error)
