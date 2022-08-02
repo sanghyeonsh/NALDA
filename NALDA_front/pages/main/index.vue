@@ -18,7 +18,7 @@
         </div>
       </nuxt-link>
     </div>
-    <div class="main-container-box">
+    <div class="main-container-box" @click="MoveTransportation">
       <div>
         <img
           class="image"
@@ -55,6 +55,9 @@ export default {
     },
     MoveOrders() {
       this.$router.push('/main/service')
+    },
+    MoveTransportation() {
+      this.$router.push('/transportation')
     },
   },
 }

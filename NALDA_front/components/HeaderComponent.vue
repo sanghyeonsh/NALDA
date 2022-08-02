@@ -68,11 +68,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
 .header-container-image img {
   width: 13%;
   height: 100%;
+  cursor: pointer;
 }
 
 .header-container-userprofile {

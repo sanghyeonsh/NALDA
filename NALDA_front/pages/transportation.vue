@@ -2,7 +2,7 @@
   <div>
     <div class="transport-header">
       <div class="transport-header-left">
-        <div class="transport-header-home">
+        <div class="transport-header-home" @click="MoveHome">
           <div>날다</div>
           <div>Home</div>
         </div>
@@ -31,7 +31,7 @@
 
       <div class="transport-header-right">
         <div class="transport-header-profile">
-          <div class="profile-back">
+          <div class="profile-back" @click="MoveHome">
             <img src="../static/orders/left-round-128.png" alt="" />
           </div>
 
@@ -57,11 +57,7 @@ export default {
       isBus: false,
       isTaxi: false,
       isSubway: false,
-      // test: {
-      //   test1: 'nacho.jpg',
-      //   test2: 'water.png',
-      //   test3: 'logo.png',
-      // },
+      test: 'nacho.jpg',
     }
   },
   mounted() {
@@ -70,6 +66,9 @@ export default {
     this.test = 'nacho.jpg'
   },
   methods: {
+    MoveHome() {
+      this.$router.push('/main')
+    },
     MoveBus() {
       this.isBus = true
       this.isTaxi = false
