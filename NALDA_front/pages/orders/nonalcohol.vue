@@ -11,6 +11,8 @@
         </div>
       </div>
     </div>
+    <StewardessButton />
+    <OrdersButton />
     <ServiceFooter />
   </div>
 </template>
@@ -40,6 +42,12 @@ export default {
       .catch(function (error) {
         console.log(error)
       })
+  },
+  mounted() {
+    setTimeout(() => {
+      const menu = document.querySelector('.footer-body')
+      menu.scrollTop = menu.scrollHeight
+    }, 0)
   },
   methods: {
     ...mapMutations('menu', [
