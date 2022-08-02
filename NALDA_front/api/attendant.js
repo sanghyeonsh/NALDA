@@ -14,4 +14,9 @@ async function selectServices(stocks, success, fail) {
     .catch(fail)
 }
 
-export { listServices, selectServices }
+async function listOrders(flightNum, success, fail) {
+  flightNum = 1
+  await api.get(`orders/input/${flightNum}`).then(success).catch(fail)
+}
+
+export { listServices, selectServices, listOrders }

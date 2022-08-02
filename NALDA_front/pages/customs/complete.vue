@@ -157,6 +157,6 @@ export default {
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 </style>

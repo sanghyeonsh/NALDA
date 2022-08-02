@@ -8,9 +8,7 @@
             <div class="title-items">
               <div class="customform-title">여행자 휴대품 신고서</div>
               <nuxt-link to="/customs/checkone">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
-                >
+                <b-button class="next-page" variant="info">다음 페이지</b-button>
               </nuxt-link>
             </div>
           </div>
@@ -19,24 +17,14 @@
               <tr>
                 <td id="col-name">성명</td>
                 <td colspan="3">
-                  <input
-                    v-model="lastName"
-                    type="text"
-                    placeholder="성을 입력해주세요."
-                    disabled
-                  />
+                  <input v-model="lastName" type="text" placeholder="성을 입력해주세요." disabled />
                   <input
                     v-model="middleName"
                     type="text"
                     placeholder="middle name을 입력해주세요."
                     disabled
                   />
-                  <input
-                    v-model="firstName"
-                    type="text"
-                    placeholder="이름을 입력해주세요."
-                    disabled
-                  />
+                  <input v-model="firstName" type="text" placeholder="이름을 입력해주세요." disabled />
                 </td>
               </tr>
               <tr>
@@ -47,12 +35,7 @@
                 </td>
                 <td id="col-name">여권번호</td>
                 <td>
-                  <input
-                    v-model="passportNum"
-                    type="text"
-                    placeholder="여권번호를 입력해주세요."
-                    disabled
-                  />
+                  <input v-model="passportNum" type="text" placeholder="여권번호를 입력해주세요." disabled />
                 </td>
               </tr>
               <!-- 첫번째 줄 끝 -->
@@ -61,20 +44,11 @@
                 <!-- 두번째 줄 시작 -->
                 <td id="col-name">직업</td>
                 <td>
-                  <input
-                    v-model="job"
-                    type="text"
-                    placeholder="직업을 입력해주세요."
-                    disabled
-                  />
+                  <input v-model="job" type="text" placeholder="직업을 입력해주세요." disabled />
                 </td>
                 <td id="col-name">여행기간</td>
                 <td>
-                  <input
-                    v-model="travelPeriod"
-                    type="text"
-                    placeholder="여행기간을 입력해주세요."
-                  />
+                  <input v-model="travelPeriod" type="text" placeholder="여행기간을 입력해주세요." />
                   (일)
                 </td>
               </tr>
@@ -110,20 +84,11 @@
               <tr>
                 <td id="col-name">항공편명</td>
                 <td>
-                  <input
-                    v-model="flightNum"
-                    type="text"
-                    placeholder="항공편을 입력해주세요."
-                  />
+                  <input v-model="flightNum" type="text" placeholder="항공편을 입력해주세요." />
                 </td>
                 <td id="col-name">동반가족수</td>
                 <td>
-                  <input
-                    v-model="famillyNum"
-                    class="family-num"
-                    type="text"
-                    placeholder="00"
-                  />
+                  <input v-model="famillyNum" class="family-num" type="text" placeholder="00" />
                   명
                 </td>
               </tr>
@@ -173,13 +138,7 @@
                       type="text"
                       disabled
                     />
-                    <input
-                      id="address"
-                      v-model="mainAddress"
-                      placeholder="주소"
-                      type="text"
-                      disabled
-                    />
+                    <input id="address" v-model="mainAddress" placeholder="주소" type="text" disabled />
                     <input
                       id="address-detail"
                       v-model="detailAddress"
@@ -193,12 +152,7 @@
               <tr>
                 <td id="col-name">전화번호</td>
                 <td colspan="3">
-                  <input
-                    v-model="tel"
-                    type="text"
-                    placeholder="☎전화번호를 입력해세요."
-                    disabled
-                  />
+                  <input v-model="tel" type="text" placeholder="☎전화번호를 입력해세요." disabled />
                 </td>
               </tr>
             </table>
@@ -406,7 +360,7 @@ export default {
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .customs-input-container {

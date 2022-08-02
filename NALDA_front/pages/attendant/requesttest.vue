@@ -12,7 +12,7 @@
                 id="request-table-transition"
                 class="request-items-wrap"
                 hover
-                :items="requestItems"
+                :items="request"
                 :per-page="perPage"
                 :current-page="requestCurrentPage"
                 :fields="fields"
@@ -113,6 +113,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'AttendantRequestTest',
   data() {
@@ -127,7 +128,7 @@ export default {
       requestCurrentPage: 1,
       completedCurrentPage: 1,
       detailCurrentPage: 1,
-      items: this.requestItems,
+      items: this.request,
       fields: [
         {
           key: '좌석',
@@ -150,43 +151,7 @@ export default {
           sortable: true,
         },
       ],
-      requestItems: [
-        {
-          좌석: 'B37',
-          분류: '의료',
-          요청사항: '두통',
-          요청시각: '01:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:35',
-          상태: '미완료',
-        },
-        {
-          좌석: 'D07',
-          분류: '편의물품',
-          요청사항: '담요',
-          요청시각: '02:40',
-          상태: '미완료',
-        },
-        {
-          좌석: 'C38',
-          분류: '간식 및 음료',
-          요청사항: '하이네켄',
-          요청시각: '01:37',
-          상태: '미완료',
-        },
-        {
-          좌석: 'F63',
-          분류: '간식 및 음료',
-          요청사항: '오렌지주스',
-          요청시각: '19:37',
-          상태: '미완료',
-        },
-      ],
+      request: [],
       completed: [
         {
           좌석: 'D29',
@@ -194,13 +159,6 @@ export default {
           요청사항: '나쵸',
           요청시각: '01:37',
           완료시각: '03:44',
-        },
-        {
-          좌석: 'C03',
-          분류: '의료',
-          요청사항: '두통',
-          요청시각: '01:37',
-          완료시각: '01:36',
         },
       ],
       details: [
@@ -218,7 +176,7 @@ export default {
   },
   computed: {
     reqeustrows() {
-      return this.rows
+      return this.request.length
     },
     completedrows() {
       return this.completed.length
@@ -226,15 +184,16 @@ export default {
     detailsrows() {
       return this.details.length
     },
+    ...mapState('attendant', ['ordersList']),
   },
   created() {
-    console.log(this.requestItems.length % 4)
-    console.log(3 - (this.requestItems.length % 4))
-    // if (this.requestItems.length % 4 !== 0) {
-    //   // this.rows = Math.floor(this.requestItems.length/4)*4 + (4-(this.requestItems.length%4))
-    //   for (let i = 0; i < 4 - (this.requestItems.length % 4); i++) {
+    // console.log(this.request.length % 4)
+    // console.log(3 - (this.request.length % 4))
+    // if (this.request.length % 4 !== 0) {
+    //   // this.rows = Math.floor(this.request.length/4)*4 + (4-(this.request.length%4))
+    //   for (let i = 0; i < 4 - (this.request.length % 4); i++) {
     //     console.log('푸쉬')
-    //     this.requestItems.push({
+    //     this.request.push({
     //       좌석: '좌석',
     //       분류: '분류',
     //       요청사항: '요청',
@@ -243,21 +202,22 @@ export default {
     //     })
     //   }
     // }
-    this.rows = this.requestItems.length
-    // console.log(this.rows)
-    // console.log(this.requestItems)
-    return this.rows
+    this.getListOrders()
+    console.log(this.ordersList)
+    for (let i = 0; i < this.ordersList.length; i++) {
+      const order = {
+        좌석: this.ordersList[i].seatNum,
+        분류: '',
+        요청사항: '',
+        요청시각: this.ordersList[i].orderTime.split('T')[1],
+        상태: this.ordersList[i].status,
+      }
+      this.request.push(order)
+    }
+    console.log(this.request)
   },
   methods: {
-    // setRows() {
-    //   if(this.requestItems.length%3 !== 0) {
-    //       this.requestItems.length = Math.floor(this.requestItems.length/3)*3 + (4-(this.requestItems.length%3))
-    //       for(let i = 0; i < (3-(this.requestItems.length%3)); i++) {
-    //       this.requestItems.push({좌석: "좌석", 분류: "분류", 요청사항: "요청", 요청시각: "시각", 상태: "상태"})
-    //       }
-    //   }
-    //   return this.requestItems.length
-    // }
+    ...mapActions('attendant', ['getListOrders', 'setStockAmount']),
     showDetail(item) {
       // this.details = []
       if (item.상태 !== null && item.상태 === '미완료') {

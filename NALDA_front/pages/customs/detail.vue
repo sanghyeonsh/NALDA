@@ -8,9 +8,7 @@
             <div class="title-items">
               <div class="customform-title">여행자 휴대품 신고서</div>
               <nuxt-link to="/customs/complete">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
-                >
+                <b-button class="next-page" variant="info">다음 페이지</b-button>
               </nuxt-link>
             </div>
           </div>
@@ -18,9 +16,7 @@
             <div class="alcohols-perfume-cigarette">
               <h5>
                 ▶주류ㆍ향수ㆍ담배
-                <small
-                  >(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small
-                >
+                <small>(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small>
               </h5>
               <table class="apc-table-wrap">
                 <tr id="alcohols">
@@ -34,14 +30,12 @@
                 <tr id="perfume-cigarette">
                   <td>담배</td>
                   <td>
-                    <input
-                      id="cigarette"
-                      type="text"
-                      name="cigarette"
-                    />갑(20개비 기준)
+                    <input id="cigarette" type="text" name="cigarette" />갑(20개비 기준)
                   </td>
                   <td>향수</td>
-                  <td><input id="perfume" type="text" name="perfume" />㎖</td>
+                  <td>
+                    <input id="perfume" type="text" name="perfume" />㎖
+                  </td>
                 </tr>
               </table>
             </div>
@@ -139,7 +133,7 @@ export default {
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .customs-input-container {
   width: 100%;

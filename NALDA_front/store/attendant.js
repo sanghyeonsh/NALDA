@@ -1,6 +1,7 @@
 import {
   listServices,
   selectServices,
+  listOrders,
   //   choiceMeal,
 } from '@/api/attendant'
 
@@ -10,11 +11,11 @@ export const state = () => ({
   alcoholsList: [],
   nonalcoholosList: [],
   amenityList: [],
+  ordersList: [],
 })
 
 export const mutations = {
   SET_SERVICE_LIST(state, data) {
-    // console.log(data)
     state.serviceList = data
     state.snackList = []
     state.alcoholsList = []
@@ -40,7 +41,15 @@ export const mutations = {
     }
   },
 
-  SET_STOCK_AMOUNT(state, data) {},
+  SET_STOCK_AMOUNT(state, data) {
+    console.log(state)
+    console.log(data)
+  },
+
+  SET_ORDERS_LIST(state, data) {
+    state.ordersList = data
+    // console.log(state.ordersList)
+  },
 }
 
 export const getters = {}
@@ -59,11 +68,28 @@ export const actions = {
       }
     )
   },
-  setStockAmount({ commit }) {
+  setStockAmount({ commit }, data) {
+    console.log('나 일단 여기 왔쩌염')
+    // const stockList = []
+    // if(data) {
+    //   stockList.push(data)
+    // }
     selectServices(
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
-        console.log(data)
+        console.log('성공')
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getListOrders({ commit }, flightNum) {
+    listOrders(
+      flightNum,
+      ({ data }) => {
+        commit('SET_ORDERS_LIST', data.serviceList)
+        console.log('성공')
       },
       (error) => {
         console.log(error)
