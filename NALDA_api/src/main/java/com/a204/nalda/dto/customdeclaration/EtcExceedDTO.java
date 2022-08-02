@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class EtcExceedDTO {
     private Long id;
     private String name;
-    private int num;
+    private Integer num;
     private float amount;
 }

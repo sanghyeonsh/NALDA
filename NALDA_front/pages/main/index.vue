@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'MainIndex',
   components: {},
@@ -43,7 +43,11 @@ export default {
       return '/customs/thirdparty'
     },
   },
+  created() {
+    this.CLEAR_DECLARATION()
+  },
   methods: {
+    ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
     moveLogin() {
       console.log(this.loginMember)
       if (this.loginMember === null) {

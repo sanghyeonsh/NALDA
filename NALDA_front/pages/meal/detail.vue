@@ -2,36 +2,43 @@
   <div class="meal-container">
     <div class="body-container">
       <div class="wrapper-main">
-        <div>{{ selectedMeal }}</div>
-        <img src="../../static/meal/chicken-steak.jpg" alt="치킨스테이크" />
+        <div>{{ selectedMeal.mealMenu }}</div>
+        <img
+          :src="'data:image/jpg;base64,' + selectedMeal.bytesdata"
+          :alt="selectedMeal.mealMenu"
+        />
       </div>
       <div class="wrapper-detail">
         <div>
           <div class="detail-title">세부 목록</div>
-          <div class="detail-content">
+          <!-- <div class="detail-content">
             <div
               v-for="(detail, i) in details"
               :key="i"
               class="form-check form-check-inline"
-            >
-              <input
+            > -->
+          <!-- <input
                 :id="'inlineCheckbox' + i"
                 class="form-check-input"
                 type="checkbox"
                 :value="detail"
                 checked
                 @click="toggle1(detail)"
-              />
-              <label class="form-check-label" :for="'inlineCheckbox' + i">{{
-                detail
-              }}</label>
-            </div>
-          </div>
+              /> -->
+          <ul>
+            <li v-for="(detail, i) in details" :key="i">
+              {{ detail.mealName }}
+            </li>
+          </ul>
+          <!-- </div> -->
+          <!-- </div> -->
         </div>
         <div>
           <div class="detail-title">알레르기 목록</div>
           <ul>
-            <li v-for="(allergy, i) in allergies" :key="i">{{ allergy }}</li>
+            <li v-for="(allergy, i) in allergies" :key="i">
+              {{ allergy.allergyType }}
+            </li>
           </ul>
         </div>
       </div>
@@ -44,43 +51,53 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { choiceMeal } from '@/api/meal'
 export default {
   name: 'MealDetail',
   components: {},
   data() {
     return {
       finalDetail: [],
+      info: {
+        flightNum: null,
+        mealMenu: null,
+        username: null,
+        seatNum: null,
+      },
+      select: {},
+      detailOfMeal: [],
+      allergiesOfMeal: [],
     }
   },
   computed: {
     ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
   },
   created() {
-    // this.getDetail(this.selectedMeal)
-    // this.getAllergy(this.selectedMeal)
-    for (let i = 0; i < this.details.length; i++) {
-      this.finalDetail.push(this.details[i])
-    }
+    // this.select = this.selectedMeal
+    // this.detailOfMeal = this.details
+    // this.allergiesOfMeal = this.allergies
+    // console.log(this.select)
+    // console.log(this.detailOfMeal)
+    // console.log(this.allergiesOfMeal)
   },
   methods: {
     finalChoice() {
-      console.log(this.finalDetail)
-      this.$router.push('/medical/result')
-    },
-    toggle1(item) {
-      console.log(this.finalDetail.includes(item))
-      if (this.finalDetail.includes(item)) {
-        for (let i = 0; i < this.finalDetail.length; i++) {
-          if (this.finalDetail[i] === item) {
-            this.finalDetail.splice(i, 1)
-          }
+      // 다 State로 넘겨줄거임
+      this.info.flightNum = '1'
+      this.info.username = 'audrb96'
+      this.info.seatNum = 'A29'
+      this.info.mealMenu = this.selectedMeal.mealMenu
+      choiceMeal(
+        this.info,
+        () => {
+          this.$router.push('/medical/result')
+        },
+        (error) => {
+          console.log(error)
         }
-        return
-      }
-
-      this.finalDetail.push(item)
+      )
     },
-    ...mapActions('meal', ['getDetail', 'getAllergy']),
+    ...mapActions('meal', ['getDetail', 'getAllergy', 'registSeatMeal']),
   },
 }
 </script>

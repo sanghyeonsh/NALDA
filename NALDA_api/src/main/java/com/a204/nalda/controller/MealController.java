@@ -7,10 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +60,21 @@ public class MealController {
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/select/{mealMenu}")
+    public ResponseEntity<?> mealInfoByMeal(@PathVariable("mealMenu") String mealMenu) {
+        Map<String,Object> result = new HashMap<>();
+        try {
+            MealDto mealDto = mealService.mealInfo(mealMenu);
+            result.put("mealInfo", mealDto);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 
     @GetMapping("/detail/{mealMenu}")
     public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealMenu") String mealMenu) {
@@ -96,6 +107,7 @@ public class MealController {
 
     @PostMapping("/choice")
     public ResponseEntity<?> choiceMeal(@RequestBody SeatMealDto seatMealDto){
+        System.out.println(seatMealDto.toString());
         Map<String,Object> result = new HashMap<>();
         try{
             mealService.seatMealInput(seatMealDto);
