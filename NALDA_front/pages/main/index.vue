@@ -6,17 +6,17 @@
         <h3>service</h3>
       </div>
     </div>
-    <div class="main-container-box">
-      <nuxt-link :to="isLogin" style="text-decoration: none">
-        <div>
-          <img
-            class="image"
-            src="../../static/main/custom_declaration.png"
-            alt="custom_declaration"
-          />
-          <h3>Custom Declaration</h3>
-        </div>
-      </nuxt-link>
+    <div class="main-container-box" @click="moveLogin">
+      <!-- <nuxt-link :to="isLogin" style="text-decoration: none"> -->
+      <div>
+        <img
+          class="image"
+          src="../../static/main/custom_declaration.png"
+          alt="custom_declaration"
+        />
+        <h3>Custom Declaration</h3>
+      </div>
+      <!-- </nuxt-link> -->
     </div>
     <div class="main-container-box" @click="MoveTransportation">
       <div>
@@ -49,12 +49,11 @@ export default {
   methods: {
     ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
     moveLogin() {
-      console.log(this.loginMember)
       if (this.loginMember === null) {
         this.$router.push('/user/login')
       } else {
         // 세관신고서 페이지로 바꿔야함
-        this.$router.push('/main')
+        this.$router.push('/customs/thirdparty')
       }
     },
     MoveOrders() {
@@ -79,7 +78,6 @@ export default {
 }
 .main-container-box {
   text-align: center;
-  width: 33%;
   display: flex;
   justify-content: center;
   align-items: center;
