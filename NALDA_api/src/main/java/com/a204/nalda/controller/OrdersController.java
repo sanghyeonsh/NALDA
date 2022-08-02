@@ -31,7 +31,6 @@ public class OrdersController {
     public ResponseEntity<?> listServices(@PathVariable("serviceClass") String serviceClass) {
         Map<String, Object> result = new HashMap<>();
 
-
         try {
             List<ServiceDto> serviceDTOS = ordersService.servicesByClass(serviceClass);
 
@@ -57,8 +56,6 @@ public class OrdersController {
             result.put("msg",e.getMessage());
             return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-
     }
 
     @PostMapping("/input")

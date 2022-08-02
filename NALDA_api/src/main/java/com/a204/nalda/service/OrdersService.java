@@ -28,7 +28,6 @@ public class OrdersService {
     private final ServiceRepository serviceRepository;
     private final OrderRepository orderRepository;
     private final OrderListRepository orderListRepository;
-
     private final ServiceStockRepository serviceStockRepository;
 
     @Transactional
