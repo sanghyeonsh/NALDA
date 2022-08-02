@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -17,11 +19,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeclarationListDTO {
+
     private Long id;
-    private TravelPeriod travelPeriod;
+    private Integer travelPeriod;
     private String purposeTravel;
     private String flightNum;
-    private int accompany;
+    private Integer accompany;
 
     private Permission dutyfreeExceed;
     private Permission preferentialTariff;
@@ -30,11 +33,13 @@ public class DeclarationListDTO {
     private Permission livestockVisited;
     private Permission salesGoods;
 
-    private int cigarette;
-    private int perfumes;
+    private Integer cigarette;
+    private Integer perfumes;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
 
-    private int dutyfreeExceedValue;
-    private int paymentExceedValue;
+    private Integer dutyfreeExceedValue;
+    private Integer paymentExceedValue;
 
     private AlcoholsDTO alcohols;
     private List<EtcExceedDTO> etcExceeds;
