@@ -29,24 +29,24 @@ public class DeclarationService {
     public void saveDeclaration(DeclarationDTO declarationDTO) {
 
         User user = userRepository.findUserByUsername(declarationDTO.getUsername());
-
         CustomsDeclaration declaration = CustomsDeclaration.builder()
                 .user(user)
-                .accompany(declarationDTO.getAccompany())
+                .accompany(Optional.ofNullable(declarationDTO.getAccompany()).orElse(0))
                 .alcohols(declarationDTO.getAlcohols())
-                .cigarettes(declarationDTO.getCigarette())
+                .cigarettes(Optional.ofNullable(declarationDTO.getCigarette()).orElse(0))
                 .dutyfreeExceed(declarationDTO.getDutyfreeExceed())
                 .flightNum(declarationDTO.getFlightNum())
                 .livestockVisited(declarationDTO.getLivestockVisited())
                 .paymentExceed(declarationDTO.getPaymentExceed())
-                .perfumes(declarationDTO.getPerfumes())
+                .perfumes(Optional.ofNullable(declarationDTO.getPerfumes()).orElse(0))
                 .preferentialTariff(declarationDTO.getPreferentialTariff())
                 .prohibitGoods(declarationDTO.getProhibitGoods())
                 .purposeTravel(declarationDTO.getPurposeTravel())
-                .travelPeriod(declarationDTO.getTravelPeriod())
+                .travelPeriod(Optional.ofNullable(declarationDTO.getTravelPeriod()).orElse(0))
                 .salesGoods(declarationDTO.getSalesGoods())
-                .dutyfreeExceedValue(declarationDTO.getDutyfreeExceedValue())
-                .paymentExceedValue(declarationDTO.getPaymentExceedValue())
+                .dutyfreeExceedValue(Optional.ofNullable(declarationDTO.getDutyfreeExceedValue()).orElse(0))
+                .paymentExceedValue(Optional.ofNullable(declarationDTO.getPaymentExceedValue()).orElse(0))
+                .date(declarationDTO.getDate())
                 .build();
         if(declaration.getVisitedCountries().size() > 0) {
             for( VisitedCountry visitedcountry : declarationDTO.getVisitedCountries()) {
@@ -122,6 +122,7 @@ public class DeclarationService {
                     .visitedCountries(visitedCountryList)
                     .dutyfreeExceedValue(customDeclaration.getDutyfreeExceedValue())
                     .paymentExceedValue(customDeclaration.getPaymentExceedValue())
+                    .date(customDeclaration.getDate())
                     .build();
             list.add(declarationListDTO);
         }
@@ -190,6 +191,7 @@ public class DeclarationService {
                     .travelPeriod(customsDeclaration.getTravelPeriod())
                     .dutyfreeExceedValue(customsDeclaration.getDutyfreeExceedValue())
                     .paymentExceedValue(customsDeclaration.getPaymentExceedValue())
+                    .date(customsDeclaration.getDate())
                     .build();
 
             return result;

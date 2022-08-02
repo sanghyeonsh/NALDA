@@ -86,22 +86,47 @@
                     <input
                       id="chkbox1"
                       v-model="travelPurpose"
-                      type="checkbox"
+                      type="radio"
+                      name="travelPurpose"
                       value="travel"
                       checked
                     />
                     <label for="chkbox1"></label>
                     여행
-                    <input id="chkbox2" type="checkbox" value="business" />
+                    <input
+                      id="chkbox2"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="business"
+                    />
                     <label for="chkbox2"></label>
                     사업
-                    <input id="chkbox3" type="checkbox" value="visitfamily" />
+                    <input
+                      id="chkbox3"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="visitfamily"
+                    />
                     <label for="chkbox3"></label>
                     친지방문
-                    <input id="chkbox4" type="checkbox" value="public" />
+                    <input
+                      id="chkbox4"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="public"
+                    />
                     <label for="chkbox4"></label>
                     공무
-                    <input id="chkbox5" type="checkbox" value="etc" />
+                    <input
+                      id="chkbox5"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="etc"
+                    />
                     <label for="chkbox5"></label>
                     기타
                   </div>
@@ -223,9 +248,12 @@ export default {
     this.MODIFY_FLIGHTNUM(this.flightNum)
     this.MODIFY_ACCOMPANY(this.famillyNum)
     const visitedCountries = []
-    if (this.country1 !== '') visitedCountries.push(this.country1)
-    if (this.country2 !== '') visitedCountries.push(this.country2)
-    if (this.country3 !== '') visitedCountries.push(this.country3)
+    if (this.country1 !== '')
+      visitedCountries.push({ countryName: this.country1 })
+    if (this.country2 !== '')
+      visitedCountries.push({ countryName: this.country1 })
+    if (this.country3 !== '')
+      visitedCountries.push({ countryName: this.country1 })
     this.MODIFY_VISITEDCOUNTRIES(visitedCountries)
     console.log(this.declaration)
     next()
@@ -302,11 +330,11 @@ export default {
         ? (this.flightNum = this.declaration.flightNum)
         : (this.flightNum = '')
       this.declaration.visitedCountries[0] &&
-        (this.country1 = this.declaration.visitedCountries[0])
+        (this.country1 = this.declaration.visitedCountries[0].countryName)
       this.declaration.visitedCountries[1] &&
-        (this.country2 = this.declaration.visitedCountries[1])
+        (this.country2 = this.declaration.visitedCountries[1].countryName)
       this.declaration.visitedCountries[2] &&
-        (this.country3 = this.declaration.visitedCountries[2])
+        (this.country3 = this.declaration.visitedCountries[2].countryName)
     }
   },
   methods: {
