@@ -64,21 +64,24 @@ export default {
       }
     },
     Waiting() {
-      this.$router.push('/waiting')
-      this.CLEAR_ITEM()
-      this.CLEAR_ITEMS()
-      this.CLEAR_CHOICE_FOODS()
+      this.SET_ORDERS_LIST()
+      // this.CLEAR_ITEMS()
+      // this.CLEAR_CHOICE_FOODS()
+      // this.CLEAR_CHECK_FOODS()
+      // this.$router.push('/waiting')
     },
 
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
       'SET_CHOICE_FOODS',
+      'SET_ORDERS_LIST',
       'DELETE_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
       'CLEAR_ITEM',
       'CLEAR_ITEMS',
       'CLEAR_CHOICE_FOODS',
+      'CLEAR_CHECK_FOODS',
     ]),
   },
 }

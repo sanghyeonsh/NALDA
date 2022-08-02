@@ -1,4 +1,9 @@
-import { listSnack, listAlcohols, listNonAlcohols } from '@/api/menu'
+import {
+  listSnack,
+  listAlcohols,
+  listNonAlcohols,
+  inputOrders,
+} from '@/api/menu'
 
 export const state = () => ({
   // item: 물품 하나 선택하면 모달창에 띄우는 아이템
@@ -7,6 +12,7 @@ export const state = () => ({
   items: [],
   // selected_foods 장바구니에 담기.
   selected_foods: [],
+  // 골랏는지 확인하는 것
   check_foods: [],
 })
 
@@ -28,15 +34,23 @@ export const mutations = {
     const modal = document.getElementsByClassName('service-modal')[0]
     modal.style.display = 'none'
   },
+  SET_ORDERS_LIST(state, orders) {
+    console.log(orders)
+    console.log(state.selected_foods.num)
+    console.log(state.selected_foods.serviceCode)
+  },
+
   DELETE_CHOICE_FOODS(state, choice) {
+    console.log(choice)
     for (let i = 0; i < state.selected_foods.length; i++) {
-      if (state.selected_foods[i].author === choice.author) {
+      if (state.selected_foods[i].serviceName === choice.serviceName) {
         state.selected_foods.splice(i, 1)
         state.check_foods.splice(i, 1)
       }
     }
     choice.num = '1'
   },
+
   PLUS_CHOICE_FOODS(state, choice) {
     choice.num = parseInt(choice.num) + 1
   },
@@ -45,6 +59,7 @@ export const mutations = {
       choice.num = parseInt(choice.num) - 1
     }
   },
+
   CLEAR_ITEM(state) {
     state.item = []
   },
@@ -53,6 +68,9 @@ export const mutations = {
   },
   CLEAR_CHOICE_FOODS(state) {
     state.selected_foods = []
+  },
+  CLEAR_CHECK_FOODS(state) {
+    state.check_foods = []
   },
 }
 
@@ -86,6 +104,19 @@ export const actions = {
       ({ data }) => {
         console.log(data)
         commit('SET_MENU_ITEMS', data)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  registOrdres({ commit }, info) {
+    inputOrders(
+      info,
+      ({ data }) => {
+        if (data.length > 0) {
+          commit('SET_ORDERS_LIST', data)
+        }
       },
       (error) => {
         console.log(error)

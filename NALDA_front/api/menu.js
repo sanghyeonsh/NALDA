@@ -13,5 +13,11 @@ async function listAlcohols(success, fail) {
 async function listNonAlcohols(success, fail) {
   await api.get(`/orders/NON-ALCOHOLS`).then(success).catch(fail)
 }
+async function inputOrders(orders, success, fail) {
+  await api
+    .post(`/orders/submit`, JSON.stringify(orders))
+    .then(success)
+    .catch(fail)
+}
 
-export { listSnack, listAlcohols, listNonAlcohols }
+export { listSnack, listAlcohols, listNonAlcohols, inputOrders }

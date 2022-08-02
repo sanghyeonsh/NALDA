@@ -69,9 +69,7 @@ export default {
 
     promise.then(async () => {
       await this.getSnack()
-      console.log(this.items.length)
     })
-    // this.getsnack()
   },
   methods: {
     MoveOrders() {
