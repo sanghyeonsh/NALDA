@@ -25,4 +25,9 @@ public class OrdersCodes {
 
     @Column(name = "order_code")
     private String orderCode;
+
+    public void changeOrder(Orders orders) {
+        this.orders = orders;
+    }
+
 }

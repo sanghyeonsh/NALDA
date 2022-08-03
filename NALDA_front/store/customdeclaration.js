@@ -11,26 +11,60 @@ export const state = () => ({
     flightNum: '',
     accompany: 0,
     dutyfreeExceed: '',
+    dutyfreeExceedValue: 0,
+    paymentExceedValue: 0,
     preferentialTariff: '',
+    date: '',
     paymentExceed: '',
     prohibitGoods: '',
     livestockVisited: '',
     salesGoods: '',
     cigarette: '',
     perfumes: '',
-    alcohols: {
-      num: 0,
-      liter: 0,
-      daller: 0,
-    },
+    alcohols: null,
     etcExceeds: [],
     visitedCountries: [],
   },
 })
 
 export const mutations = {
+  CLEAR_DECLARATION(state) {
+    state.declaration = {
+      username: '',
+      travelPeriod: {
+        startDate: '',
+        endDate: '',
+      },
+      purposeTravel: '',
+      flightNum: '',
+      accompany: 0,
+      dutyfreeExceed: '',
+      dutyfreeExceedValue: 0,
+      paymentExceedValue: 0,
+      preferentialTariff: '',
+      date: '',
+      paymentExceed: '',
+      prohibitGoods: '',
+      livestockVisited: '',
+      salesGoods: '',
+      cigarette: '',
+      perfumes: '',
+      alcohols: null,
+      etcExceeds: [],
+      visitedCountries: [],
+    }
+  },
   SAVE_DECLARATION(state, declaration) {
     state.declaration = declaration
+  },
+  MODIFY_ALCOHOLS(state, alcohols) {
+    state.declaration.alcohols = alcohols
+  },
+  MODIFY_DUTYFREEEXCEEDVALUE(state, value) {
+    state.declaration.dutyfreeExceedValue = value
+  },
+  MODIFY_PAYMENTEXCEEDVALUE(state, value) {
+    state.declaration.paymentExceedValue = value
   },
   MODIFY_USERNAME(state, username) {
     state.declaration.username = username
@@ -77,15 +111,19 @@ export const mutations = {
   MODIFY_VISITEDCOUNTRIES(state, visitedCountries) {
     state.declaration.visitedCountries = visitedCountries
   },
+  MODIFY_DATE(state, date) {
+    state.declaration.date = date
+  },
 }
 
 export const getters = {}
 
 export const actions = {
-  saveDeclaration({ commit }, declaration) {
+  saveDeclaration({ commit, state }) {
     saveDeclaration(
-      declaration,
+      state.declaration,
       (response) => {
+        this.$router.push('/main')
         console.log(response)
       },
       (error) => {

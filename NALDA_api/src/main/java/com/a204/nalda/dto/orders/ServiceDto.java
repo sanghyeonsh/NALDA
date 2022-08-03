@@ -13,6 +13,9 @@ public class ServiceDto {
 
     private String image;
     private String serviceName;
+    private String serviceCode;
     private String serviceClass;
+    private byte[] bytesdata;
+
 
 }
