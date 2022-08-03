@@ -52,9 +52,28 @@ export default {
     ...mapState('menu', ['selected_foods']),
     ...mapState('user', ['loginMember']),
     orders() {
+      const Today = new Date()
+      const year = Today.getFullYear()
+      const month = ('0' + (Today.getMonth() + 1)).slice(-2)
+      const day = ('0' + Today.getDate()).slice(-2)
+      const hours = ('0' + Today.getHours()).slice(-2)
+      const minutes = ('0' + Today.getMinutes()).slice(-2)
+      const seconds = ('0' + Today.getSeconds()).slice(-2)
+      const currentTime =
+        year +
+        '-' +
+        month +
+        '-' +
+        day +
+        'T' +
+        hours +
+        ':' +
+        minutes +
+        ':' +
+        seconds
       const order = {
         orderMessage: 'test',
-        orderTime: '2022-07-28T10:07:11',
+        orderTime: currentTime,
         flightNum: '1',
         seatNum: 'A36',
         username: this.loginMember.username,
@@ -64,7 +83,7 @@ export default {
       for (let i = 0; i < this.selected_foods.length; i++) {
         const code = this.selected_foods[i].serviceCode
         const num = this.selected_foods[i].num
-        order.orderList.push({ ordersCode: code, cnt: num })
+        order.orderList.push({ orderCode: code, cnt: num })
       }
       return order
     },
@@ -84,10 +103,10 @@ export default {
     },
     Waiting() {
       this.postOrders(this.orders)
-      // this.CLEAR_ITEMS()
-      // this.CLEAR_CHOICE_FOODS()
-      // this.CLEAR_CHECK_FOODS()
-      // this.$router.push('/waiting')
+      this.CLEAR_ITEMS()
+      this.CLEAR_CHOICE_FOODS()
+      this.CLEAR_CHECK_FOODS()
+      this.$router.push('/waiting')
     },
 
     ...mapMutations('menu', [
