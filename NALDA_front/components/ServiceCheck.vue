@@ -4,7 +4,7 @@
       <div class="check-modal-head">
         <div class="check-modal-head-check">주문확인</div>
         <div class="check-modal-head-close" @click="CloseCheck">
-          <img src="../static/orders/icons8-x-100.png" alt="" />
+          <img src="/orders/icons8-x-100.png" alt="" />
         </div>
       </div>
       <div class="check-modal-body">
@@ -24,11 +24,11 @@
             <div class="modal-body-body-menu">{{ item.serviceName }}</div>
             <div class="modal-body-body-count">
               <button @click="MINUS_CHOICE_FOODS(item)">
-                <img src="../static/orders/minus.png" alt="" />
+                <img src="/orders/minus.png" alt="" />
               </button>
               <div>{{ item.num }}</div>
               <button @click="PLUS_CHOICE_FOODS(item)">
-                <img src="../static/orders/plus.png" alt="" />
+                <img src="/orders/plus.png" alt="" />
               </button>
             </div>
           </div>

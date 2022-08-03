@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="cards row row-cols-4">
+    <div class="cards">
       <div v-for="(item, idx) in items" :key="idx" class="col">
         <div class="card" @click="ChoiceMenu(item)">
           <!-- 서버에서 받을때 -->

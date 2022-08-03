@@ -15,7 +15,7 @@
         <div class="transport-header-profile">
           <div class="profile-back">back버튼</div>
           <div class="profile-image">
-            <img src="../static/main/user_profile_w.png" alt="" />
+            <img src="/main/user_profile_w.png" alt="" />
           </div>
           <div class="profile-name">김익명</div>
         </div>

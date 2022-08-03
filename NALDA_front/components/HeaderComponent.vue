@@ -2,14 +2,20 @@
   <div class="header-container">
     <div class="header-container-blank"></div>
     <div class="header-container-image">
-      <img src="../static/logo.png" @click="MoveMain" />
+      <img src="/logo.png" @click="MoveMain" />
     </div>
     <!-- <div @click="MoveSignup">
       signup
     </div>-->
+    <img
+      class="previous-icon"
+      src="/main/previous.png"
+      alt=""
+      @click="Movefrom"
+    />
     <div class="header-container-userprofile" @click="MoveMypage">
       <div class="profile-img">
-        <img src="../static/main/user_profile_w.png" alt="profile-img" />
+        <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
       <div class="profile-name">{{ fullname }}</div>
     </div>
@@ -49,13 +55,35 @@ export default {
         this.$router.push('/user/login')
       }
     },
+    Movefrom() {
+      this.$router.push(this.$nuxt.context.from.path)
+    },
   },
 }
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
+.previous-icon {
+  max-width: 60%;
+  max-height: 60%;
+}
 .header-container {
   display: flex;
+  align-items: center;
   width: 100vw;
   height: 15vh;
   background-color: rgb(69, 169, 200);
@@ -83,7 +111,7 @@ export default {
   cursor: pointer;
 }
 .profile-img {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
   justify-content: flex-end;

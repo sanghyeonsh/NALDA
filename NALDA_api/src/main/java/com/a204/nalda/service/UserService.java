@@ -71,6 +71,7 @@ public class UserService {
     public LoginDto loginUser(String username) {
         User user = userRepository.findUserByUsername(username);
         LoginDto loginDto = LoginDto.builder()
+                .userRole(user.getUserRole())
                 .birthday(user.getBirthday())
                 .fullName(user.getFullName())
                 .username(user.getUsername()).build();

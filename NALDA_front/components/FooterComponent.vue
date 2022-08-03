@@ -3,7 +3,7 @@
     <div class="footer-wrap">
       <div class="service-btn-wrap">
         <button class="toilet-wrap" @click="MoveToilet">
-          <img src="../static/main/toilet_navy.png" alt="toilet" />
+          <img src="/main/toilet_navy.png" alt="toilet" />
           <h3>화장실</h3>
         </button>
         <button
@@ -11,7 +11,7 @@
           style="background-color: #206e95"
           @click="MoveHelpcall"
         >
-          <img src="../static/main/flight_attendant_w.png" alt="toilet" />
+          <img src="/main/flight_attendant_w.png" alt="toilet" />
           <h3>승무원호출</h3>
         </button>
       </div>

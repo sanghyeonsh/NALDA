@@ -3,7 +3,7 @@
     <div class="service-modal-box">
       <div class="service-modal-head">
         <div class="service-modal-head-close">
-          <img src="../static/orders/icons8-x-100.png" alt="" />
+          <img src="/orders/icons8-x-100.png" alt="" />
         </div>
       </div>
       <div class="service-modal-body">
@@ -22,11 +22,11 @@
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
         <div class="service-modal-body-detail-button">
           <button @click="MINUS_CHOICE_FOODS(item[0])">
-            <img src="../static/orders/minus.png" alt="" />
+            <img src="/orders/minus.png" alt="" />
           </button>
           <div class="button-num">{{ item[0].num }}</div>
           <button @click="PLUS_CHOICE_FOODS(item[0])">
-            <img src="../static/orders/plus.png" alt="" />
+            <img src="/orders/plus.png" alt="" />
           </button>
         </div>
         <div class="detail-button">

@@ -62,6 +62,7 @@ export const actions = {
         sessionStorage.setItem('Authorization', headers.authorization)
         if (data.msg === '로그인 성공') {
           commit('SET_LOGIN_MEMBER', data.userInfo)
+          console.log(data.ip)
           this.$router.push('/customs/thirdparty')
         } else {
           alert('실패')

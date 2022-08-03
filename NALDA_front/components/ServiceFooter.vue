@@ -19,11 +19,11 @@
             <img src="../static/orders/slippers.png" alt="" />
           </button> -->
           <button @click="MINUS_CHOICE_FOODS(item)">
-            <img src="../static/orders/minus.png" alt="" />
+            <img src="/orders/minus.png" alt="" />
           </button>
           <div class="Service-footer-content-number">{{ item.num }}</div>
           <button @click="PLUS_CHOICE_FOODS(item)">
-            <img src="../static/orders/plus.png" alt="" />
+            <img src="/orders/plus.png" alt="" />
           </button>
         </div>
       </div>

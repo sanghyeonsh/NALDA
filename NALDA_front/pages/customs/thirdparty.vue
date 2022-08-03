@@ -27,7 +27,7 @@
             <div class="check-icon-wrap">
               <img
                 class="check-all-icon"
-                src="../../static/icon/check_mark.png"
+                src="/icon/check_mark.png"
                 alt="check-icon"
               />
             </div>
@@ -42,7 +42,7 @@
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
-                src="../../static/icon/check_mark.png"
+                src="/icon/check_mark.png"
                 alt="check-icon"
               />
             </div>
