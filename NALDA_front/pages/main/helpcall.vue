@@ -1,12 +1,8 @@
 <template>
-  <div>
-    <div class="box">
-      <div>
-        <div class="text-box">
-          승무원이 요청을 확인 중입니다.<br />
-          잠시만 기다려주세요!
-        </div>
-      </div>
+  <div class="helpcall-box">
+    <div class="text-box">
+      <div>승무원이 요청을 확인 중입니다.</div>
+      <div>잠시만 기다려주세요!</div>
     </div>
   </div>
 </template>
@@ -19,21 +15,21 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  background-color: #f5f6f7;
-  height: 600px;
+.helpcall-box {
+  height: 70vh;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 .text-box {
-  display: table-cell;
-  width: 800px;
-  height: 400px;
-  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 70%;
+  flex-direction: column;
   border: 2px solid black;
-  text-align: center;
-  vertical-align: middle;
   font-size: 50px;
 }
 </style>

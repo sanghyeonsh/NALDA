@@ -17,7 +17,7 @@ export const mutations = {
   },
   SET_MENU_ITEMS(state, snacks) {
     snacks.service.forEach((snack) => {
-      snack.num = '1'
+      // snack.num = '1'
       state.items.push(snack)
     })
   },
