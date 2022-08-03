@@ -1,7 +1,7 @@
 <template>
   <div class="toilet-box">
     <div class="toilet-box-image">
-      <img src="../../static/water.png" alt="" />
+      <img src="/water.png" alt="" />
     </div>
   </div>
 </template>

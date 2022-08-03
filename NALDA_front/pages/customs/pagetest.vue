@@ -3,7 +3,7 @@
     <div class="customform-nav-container">
       <header class="user-profile-wrap">
         <div class="thumb-wrapper stagger-item">
-          <img class="thumb" src="../../static/main/user_profile_w.png" />
+          <img class="thumb" src="/main/user_profile_w.png" />
           <!-- <div class="badge">7</div> -->
         </div>
 

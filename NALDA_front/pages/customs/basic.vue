@@ -251,9 +251,9 @@ export default {
     if (this.country1 !== '')
       visitedCountries.push({ countryName: this.country1 })
     if (this.country2 !== '')
-      visitedCountries.push({ countryName: this.country1 })
+      visitedCountries.push({ countryName: this.country2 })
     if (this.country3 !== '')
-      visitedCountries.push({ countryName: this.country1 })
+      visitedCountries.push({ countryName: this.country3 })
     this.MODIFY_VISITEDCOUNTRIES(visitedCountries)
     console.log(this.declaration)
     next()
@@ -440,7 +440,7 @@ export default {
 
 table tr,
 td {
-  padding: 5px;
+  padding: 0.5%;
   border: 1px solid #104b69;
 }
 
@@ -511,8 +511,8 @@ input[id='chkbox3'] + label,
 input[id='chkbox4'] + label,
 input[id='chkbox5'] + label {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
   border: 2px solid #bcbcbc;
   cursor: pointer;
 }
