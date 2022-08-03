@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -68,7 +68,16 @@ export default {
         }
       }
     },
+    ...mapMutations('menu', [
+      'SET_CHOICE_FOODS',
+      'DELETE_CHOICE_FOODS',
+      'CLEAR_CHOICE_FOODS',
+      'PLUS_CHOICE_FOODS',
+      'MINUS_CHOICE_FOODS',
+      'CLEAR_ITEMS',
+    ]),
   },
+  ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
 }
 </script>
 

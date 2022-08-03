@@ -12,12 +12,9 @@
       >
         <div class="Service-footer-content-name">
           {{ item.serviceName }}
+          <button @click="DELETE_CHOICE_FOODS(item)">삭제</button>
         </div>
         <div class="Service-footer-content-num">
-          <!-- <button @click="DELETE_CHOICE_FOODS(item)">
-            delete
-            <img src="../static/orders/slippers.png" alt="" />
-          </button> -->
           <button @click="MINUS_CHOICE_FOODS(item)">
             <img src="../static/orders/minus.png" alt="" />
           </button>
