@@ -50,34 +50,24 @@ export default {
   name: 'CheckModal',
   computed: {
     ...mapState('menu', ['selected_foods']),
+    ...mapState('user', ['loginMember']),
     orders() {
       const order = {
-        orderMessage: '',
-        // flightNum: '',
-        // seatNum: '',
-        // status: 'PROGRESS',
-        // orderList: [{ count: this.selected_foods[0].num }],
-        // orderList: [{}, {}, {}, {}, {}],
+        orderMessage: 'test',
+        orderTime: '2022-07-28T10:07:11',
+        flightNum: '1',
+        seatNum: 'A36',
+        username: this.loginMember.username,
+        status: 'PROGRESS',
         orderList: [],
       }
       for (let i = 0; i < this.selected_foods.length; i++) {
-        order.orderList.ordersCode = this.selected_foods.num
-        order.orderList.cnt = this.selected_foods.num
-        order.orderList.cnt = this.selected_foods
+        const code = this.selected_foods[i].serviceCode
+        const num = this.selected_foods[i].num
+        order.orderList.push({ ordersCode: code, cnt: num })
       }
       return order
     },
-    // orders() {
-    // const order = {}
-    // order.orderMessage = '123',
-    // order.orderTime : '',
-    // order.flightNum : '',
-    // order.seatNum : '',
-    // order.username : '',
-    // order.status = ''
-    // order.orderList = []
-    // order.orderList.push('')
-    // },
   },
   methods: {
     CloseCheck() {
