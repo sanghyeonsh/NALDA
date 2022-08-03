@@ -50,17 +50,58 @@
         <div>1315</div>
       </div>
       <div class="bus-detail-image">
-        <img src="/water.png" alt="" />
+        <img src="/logo.png" alt="" />
       </div>
     </div>
     <!-- 버튼은 fixed로 고정 -->
-    <button class="bus-button1">제1여객터미널</button>
-    <button class="bus-button2">제2여객터미널</button>
+    <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
+    <button class="bus-button2" @click="ShowImage2">제2여객터미널</button>
+    <div class="button1-image">
+      <div class="button1-image-box">
+        <img src="/water.png" alt="" />
+      </div>
+    </div>
+    <div class="button2-image">
+      <div class="button2-image-box">
+        <img src="/nacho.jpg" alt="" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    ShowImage1() {
+      const image1 = document.getElementsByClassName('button1-image')[0]
+      const image2 = document.getElementsByClassName('button2-image')[0]
+      image1.style.display = 'block'
+      image2.style.display = 'none'
+      window.onclick = function (event) {
+        if (
+          event.target ===
+          document.getElementsByClassName('button1-image-box')[0]
+        ) {
+          image1.style.display = 'none'
+        }
+      }
+    },
+    ShowImage2() {
+      const image1 = document.getElementsByClassName('button1-image')[0]
+      const image2 = document.getElementsByClassName('button2-image')[0]
+      image1.style.display = 'none'
+      image2.style.display = 'block'
+      window.onclick = function (event) {
+        if (
+          event.target ===
+          document.getElementsByClassName('button2-image-box')[0]
+        ) {
+          image2.style.display = 'none'
+        }
+      }
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -140,20 +181,20 @@ export default {}
   align-items: center;
 }
 .bus-detail-time {
-  display: inline-block;
+  display: flex;
   width: 100%;
   height: 15%;
-  overflow: auto;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   font-size: 20px;
 }
 .bus-detail-time div {
-  width: 10%;
+  width: 20%;
   height: 100%;
-  display: inline-block;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  text-decoration: none;
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .bus-detail-image {
   width: 100%;
@@ -185,5 +226,55 @@ export default {}
   color: white;
   width: 9%;
   height: 4%;
+}
+
+.button1-image {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 30px;
+}
+.button1-image-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button1-image-box img {
+  width: 50%;
+  height: 50%;
+}
+
+.button2-image {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  font-size: 30px;
+}
+.button2-image-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button2-image-box img {
+  width: 50%;
+  height: 50%;
 }
 </style>
