@@ -84,6 +84,7 @@ export const actions = {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
             commit('SET_FLIGHTMEAL_LIST', {
+              id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
             })
@@ -95,10 +96,10 @@ export const actions = {
       }
     )
   },
-  getSelectedMeal({ commit }, mealMenu) {
+  getSelectedMeal({ commit }, mealId) {
     // commit('CLEAR_SELECTED_MEAL')
     selectMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
         console.log(data.mealInfo)
         commit('SET_SELECTED_MEAL', data.mealInfo)
@@ -108,10 +109,10 @@ export const actions = {
       }
     )
   },
-  getDetail({ commit }, mealMenu) {
+  getDetail({ commit }, mealId) {
     commit('CLEAR_DETAIL_MEAL')
     detailMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
         // console.log(data.mealDetail)
         if (data.mealDetail.length > 0) {
@@ -123,10 +124,10 @@ export const actions = {
       }
     )
   },
-  getAllergy({ commit }, mealMenu) {
+  getAllergy({ commit }, mealId) {
     commit('CLEAR_ALLERGY_MEAL')
     allergyMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
         // console.log(data.mealAllergy)
         if (data.mealAllergy.length > 0) {
