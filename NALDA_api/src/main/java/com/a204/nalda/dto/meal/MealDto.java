@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MealDto {
 
+    private Long mealId;
     private String imageName;
     private String mealMenu;
     private byte[] bytesdata;

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class OrderListDto {
 
     private String orderCode;
-    private Long orderId;
+    private String orderName;
+    private int cnt;
 
 }
