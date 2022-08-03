@@ -12,7 +12,7 @@
                 id="request-table-transition"
                 class="request-items-wrap"
                 hover
-                :items="request"
+                :items="ordersObject"
                 :per-page="perPage"
                 :current-page="requestCurrentPage"
                 :fields="fields"
@@ -39,8 +39,9 @@
                 <b-table
                   class="completed-items-wrap"
                   hover
-                  :items="completed"
+                  :items="completeObject"
                   :per-page="perPage"
+                  :fields="completefields"
                   :current-page="completedCurrentPage"
                   small
                   @row-clicked="showDetail"
@@ -113,7 +114,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'AttendantRequestTest',
   data() {
@@ -152,34 +153,41 @@ export default {
         },
       ],
       request: [],
-      completed: [
+      completed: [],
+      details: [],
+      detailsfields: ['선택', '좌석', '분류', '요청사항', '수량', '상태'],
+      completefields: [
         {
-          좌석: 'D29',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-          완료시각: '03:44',
+          key: '좌석',
+          sortable: false,
+        },
+        {
+          key: '분류',
+          sortable: true,
+        },
+        {
+          key: '요청사항',
+          sortable: false,
+        },
+        {
+          key: '완료시각',
+          sortable: true,
+        },
+        {
+          key: '상태',
+          sortable: true,
         },
       ],
-      details: [
-        {
-          선택: '',
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-        },
-      ],
-      detailsfields: ['선택', '좌석', '분류', '요청사항', '요청시각'],
-      selecteditems: 0,
+      selecteditems: [],
     }
   },
   computed: {
+    ...mapGetters('attendant', ['ordersObject', 'completeObject']),
     reqeustrows() {
-      return this.request.length
+      return this.ordersObject.length
     },
     completedrows() {
-      return this.completed.length
+      return this.completeObject.length
     },
     detailsrows() {
       return this.details.length
@@ -187,6 +195,13 @@ export default {
     ...mapState('attendant', ['ordersList']),
   },
   created() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getListOrders()
+    })
+
     // console.log(this.request.length % 4)
     // console.log(3 - (this.request.length % 4))
     // if (this.request.length % 4 !== 0) {
@@ -201,61 +216,103 @@ export default {
     //       상태: '상태',
     //     })
     //   }
-    // }
-    this.getListOrders()
-    this.request = []
-    // console.log('이게이게' + this.ordersList.length)
-    for (let i = 0; i < this.ordersList.length; i++) {
-      const order = {
-        좌석: this.ordersList[i].seatNum,
-        분류: this.ordersList[i].classification,
-        요청사항: '',
-        요청시각: this.ordersList[i].orderTime.split('T')[1],
-        상태: this.ordersList[i].status,
-      }
-      this.request.push(order)
-    }
-    // console.log(this.request)
+    // }여긴 신경 ㄴㄴ
   },
   methods: {
-    ...mapActions('attendant', ['getListOrders', 'setStockAmount']),
+    ...mapActions('attendant', ['getListOrders', 'updateOrderStatus']),
     showDetail(item) {
-      // this.details = []
-      if (item.상태 !== null && item.상태 === '미완료') {
-        this.details.push(item)
+      this.details = []
+      if (item.상태 === 'PROGRESS') {
+        for (let i = 0; i < item.주문상세.length; i++) {
+          // console.log(item.주문상세)
+          const orderDetail = {
+            id: item.id,
+            좌석: item.좌석,
+            분류: item.주문상세[i].orderCode,
+            요청사항: item.주문상세[i].orderName,
+            수량: item.주문상세[i].cnt,
+            상태: 'PROGRESS',
+          }
+          this.details.push(orderDetail)
+        }
       } else {
-        this.details.push(item)
+        for (let i = 0; i < item.주문상세.length; i++) {
+          // console.log(item.주문상세)
+          const orderDetail = {
+            id: item.id,
+            좌석: item.좌석,
+            분류: item.주문상세[i].orderCode,
+            요청사항: item.주문상세[i].orderName,
+            수량: item.주문상세[i].cnt,
+            상태: 'DONE',
+          }
+          this.details.push(orderDetail)
+        }
       }
     },
     onRowSelected(items) {
       this.selecteditems = items
+      console.log(items)
     },
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
-    completeRequest(items) {
-      // console.log(items[1].분류) 데이터 확인
-      const Today = new Date()
-      const hours = ('0' + Today.getHours()).slice(-2)
-      const minutes = ('0' + Today.getMinutes()).slice(-2)
-      const seconds = ('0' + Today.getSeconds()).slice(-2)
-      const currentTime = hours + ':' + minutes + ':' + seconds
-      // console.log(currentTime)
-      // console.log(this.items[0].좌석)
-
-      for (let i = 0; i < items.length; i++) {
-        const completeItem = {
-          좌석: items[i].좌석,
-          분류: items[i].분류,
-          요청사항: items[i].요청사항,
-          요청시각: items[i].요청시각,
-          완료시각: currentTime,
-        }
-        this.completed.push(completeItem)
-      }
-      // sessionStorage.setItem('completed', JSON.stringify(this.completed))
+    clearSelected() {
+      this.$refs.selectableTable.clearSelected()
     },
-    clearSelected() {},
+    completeRequest(items) {
+      // 완료 시각 계산
+      // const Today = new Date()
+      // const hours = ('0' + Today.getHours()).slice(-2)
+      // const minutes = ('0' + Today.getMinutes()).slice(-2)
+      // const seconds = ('0' + Today.getSeconds()).slice(-2)
+      // const currentTime = hours + ':' + minutes + ':' + seconds
+      // console.log(currentTime)
+      // 선택된 아이템의 상태 바꿔주기
+      for (let i = 0; i < items.length; i++) {
+        items[i].상태 = 'DONE'
+      }
+      // 선택된 아이템 상태가 DONE인 갯수 비교
+      let count = 0
+      for (let i = 0; i < this.details.length; i++) {
+        if (this.details[i].상태 === 'DONE') {
+          count++
+        }
+      }
+      console.log(1234567)
+      // 갯수가 세부사항 갯수와 같은경우 실제요청 상태값 바꾸기
+      if (count === this.details.length && count !== 0) {
+        //
+        console.log(this.details[0].id)
+        // this.getListOrders() // 다시 listorder 해주기
+        this.updateOrderStatus(this.details[0].id) // 해당 id값 전달
+        this.getListOrders()
+
+        this.completed = this.completeObject
+        console.log(this.completed)
+        // for (let i = 0; i < this.ordersObject.length; i++) {
+        //   if (this.details.length > 1) {
+        //     this.ordersObject[i].요청사항 =
+        //       this.ordersObject[i].주문상세[0].orderName +
+        //       ' 외 ' +
+        //       (this.details.length - 1)
+        //   } else {
+        //     this.ordersObject[i].요청사항 =
+        //       this.ordersObject[i].주문상세[0].orderName
+        //   }
+        //   if (this.details[0].id === this.ordersObject[i].id) {
+        //     const completeItem = {
+        //       좌석: this.ordersObject[i].좌석,
+        //       분류: this.ordersObject[i].분류,
+        //       요청사항: this.ordersObject[i].요청사항,
+        //       요청시각: this.ordersObject[i].요청시각,
+        //       완료시각: currentTime,
+        //     }
+        //     this.completed.push(completeItem)
+        //   }
+        // }
+      }
+    },
   },
 }
 </script>
