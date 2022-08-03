@@ -11,8 +11,10 @@
         class="Service-footer-content"
       >
         <div class="Service-footer-content-name">
-          {{ item.serviceName }}
-          <button @click="DELETE_CHOICE_FOODS(item)">삭제</button>
+          <div class="name-name">
+            {{ item.serviceName }}
+          </div>
+          <!-- <div class="name-delete" @click="DELETE_CHOICE_FOODS(item)">삭제</div> -->
         </div>
         <div class="Service-footer-content-num">
           <button @click="MINUS_CHOICE_FOODS(item)">
@@ -102,6 +104,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .Service-footer-content-num {
   width: 30%;
   display: flex;
