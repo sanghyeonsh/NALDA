@@ -43,24 +43,41 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
-import { inputOrders } from '@/api/menu'
+import { mapState, mapMutations, mapActions } from 'vuex'
+// import { inputOrders } from '@/api/menu'
 
 export default {
   name: 'CheckModal',
   computed: {
     ...mapState('menu', ['selected_foods']),
+    orders() {
+      const order = {
+        orderMessage: '',
+        // flightNum: '',
+        // seatNum: '',
+        // status: 'PROGRESS',
+        // orderList: [{ count: this.selected_foods[0].num }],
+        // orderList: [{}, {}, {}, {}, {}],
+        orderList: [],
+      }
+      for (let i = 0; i < this.selected_foods.length; i++) {
+        order.orderList.ordersCode = this.selected_foods.num
+        order.orderList.cnt = this.selected_foods.num
+        order.orderList.cnt = this.selected_foods
+      }
+      return order
+    },
     // orders() {
-    //   let order = {}
-    //   order.orderMessage = ""
-    //   order.orderTime = ""
-    //   order.flightNum = ""
-    //   order.seatNum = ""
-    //   order.username = ""
-    //   order.status = ""
-    //   order.orderList = []
-    //   order.orderList.push("")
-    // }
+    // const order = {}
+    // order.orderMessage = '123',
+    // order.orderTime : '',
+    // order.flightNum : '',
+    // order.seatNum : '',
+    // order.username : '',
+    // order.status = ''
+    // order.orderList = []
+    // order.orderList.push('')
+    // },
   },
   methods: {
     CloseCheck() {
@@ -76,7 +93,7 @@ export default {
       }
     },
     Waiting() {
-      inputOrders(this.selected_foods)
+      this.postOrders(this.orders)
       // this.CLEAR_ITEMS()
       // this.CLEAR_CHOICE_FOODS()
       // this.CLEAR_CHECK_FOODS()
@@ -94,6 +111,7 @@ export default {
       'CLEAR_CHOICE_FOODS',
       'CLEAR_CHECK_FOODS',
     ]),
+    ...mapActions('menu', ['postOrders']),
   },
 }
 </script>

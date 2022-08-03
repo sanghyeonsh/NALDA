@@ -1,4 +1,9 @@
-import { listSnack, listAlcohols, listNonAlcohols } from '@/api/menu'
+import {
+  listSnack,
+  listAlcohols,
+  listNonAlcohols,
+  inputOrders,
+} from '@/api/menu'
 
 export const state = () => ({
   // item: 물품 하나 선택하면 모달창에 띄우는 아이템
@@ -17,7 +22,7 @@ export const mutations = {
   },
   SET_MENU_ITEMS(state, snacks) {
     snacks.service.forEach((snack) => {
-      // snack.num = '1'
+      snack.num = '1'
       state.items.push(snack)
     })
   },
@@ -94,6 +99,18 @@ export const actions = {
       ({ data }) => {
         console.log(data)
         commit('SET_MENU_ITEMS', data)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  postOrders({ commit }, orders) {
+    inputOrders(
+      orders,
+      ({ data }) => {
+        console.log(data)
+        commit('POST_ORDERS_ITEMS', data)
       },
       (error) => {
         console.log(error)
