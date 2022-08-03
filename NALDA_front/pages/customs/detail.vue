@@ -22,19 +22,29 @@
                 <tr id="alcohols">
                   <td>주류</td>
                   <td colspan="3">
-                    <input id="alcohols" type="text" name="cnt" />병,
-                    <input id="alcohols" type="text" name="alcohols" />ℓ,
-                    <input id="alcohols" type="text" name="alcohols" />$
+                    <input v-model="alcoholsInfo.num" class="alcohols" type="text" name="cnt" />병,
+                    <input
+                      v-model="alcoholsInfo.liter"
+                      class="alcohols"
+                      type="text"
+                      name="alcohols"
+                    />ℓ,
+                    <input
+                      v-model="alcoholsInfo.dollar"
+                      class="alcohols"
+                      type="text"
+                      name="alcohols"
+                    />$
                   </td>
                 </tr>
                 <tr id="perfume-cigarette">
                   <td>담배</td>
                   <td>
-                    <input id="cigarette" type="text" name="cigarette" />갑(20개비 기준)
+                    <input v-model="cigarette" class="cigarette" type="text" name="cigarette" />갑(20개비 기준)
                   </td>
                   <td>향수</td>
                   <td>
-                    <input id="perfume" type="text" name="perfume" />㎖
+                    <input v-model="perfumes" class="perfume" type="text" name="perfume" />㎖
                   </td>
                 </tr>
               </table>
@@ -49,46 +59,46 @@
                 </thead>
                 <tr>
                   <td>
-                    <input id="goods-name" type="text" />
+                    <input v-model="etcExceed1.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input id="goods-cnt" type="text" />
+                    <input v-model="etcExceed1.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input id="goods-price" type="text" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input id="goods-name" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-cnt" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-price" type="text" />
+                    <input v-model="etcExceed1.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input id="goods-name" type="text" />
+                    <input v-model="etcExceed2.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input id="goods-cnt" type="text" />
+                    <input v-model="etcExceed2.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input id="goods-price" type="text" />
+                    <input v-model="etcExceed2.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input id="goods-name" type="text" />
+                    <input v-model="etcExceed3.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input id="goods-cnt" type="text" />
+                    <input v-model="etcExceed3.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input id="goods-price" type="text" />
+                    <input v-model="etcExceed3.amount" class="goods-price" type="text" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input v-model="etcExceed4.name" class="goods-name" type="text" />
+                  </td>
+                  <td>
+                    <input v-model="etcExceed4.num" class="goods-cnt" type="text" />
+                  </td>
+                  <td>
+                    <input v-model="etcExceed4.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
               </table>
@@ -101,10 +111,113 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 export default {
   name: 'CustomsDetail',
   components: { CustomNavs },
+  beforeRouteLeave(to, from, next) {
+    console.log(this.alcoholsInfo)
+    this.MODIFY_ALCOHOLS(this.alcoholsInfo)
+    this.MODIFY_CIGARETTE(this.cigarette)
+    this.MODIFY_PERFUMES(this.perfumes)
+    const etcExceed = []
+    if (
+      this.etcExceed1.name !== '' &&
+      this.etcExceed1.num !== '' &&
+      this.etcExceed1.amount !== ''
+    )
+      etcExceed.push(this.etcExceed1)
+    if (
+      this.etcExceed2.name !== '' &&
+      this.etcExceed2.num !== '' &&
+      this.etcExceed2.amount !== ''
+    )
+      etcExceed.push(this.etcExceed2)
+    if (
+      this.etcExceed3.name !== '' &&
+      this.etcExceed3.num !== '' &&
+      this.etcExceed3.amount !== ''
+    )
+      etcExceed.push(this.etcExceed3)
+    if (
+      this.etcExceed4.name !== '' &&
+      this.etcExceed4.num !== '' &&
+      this.etcExceed4.amount !== ''
+    )
+      etcExceed.push(this.etcExceed4)
+    this.MODIFY_ETCEXCEEDS(etcExceed)
+
+    next()
+  },
+  data() {
+    return {
+      alcoholsInfo: {
+        num: '',
+        liter: '',
+        dollar: '',
+      },
+      cigarette: '',
+      perfumes: '',
+      etcExceed1: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed2: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed3: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed4: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    this.declaration.alcohols &&
+      (this.alcoholsInfo = JSON.parse(
+        JSON.stringify(this.declaration.alcohols)
+      ))
+    if (this.declaration.cigarette !== '')
+      this.cigarette = this.declaration.cigarette
+    if (this.declaration.perfumes !== '')
+      this.perfumes = this.declaration.perfumes
+    this.declaration.etcExceeds[0] &&
+      (this.etcExceed1 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[0])
+      ))
+    this.declaration.etcExceeds[1] &&
+      (this.etcExceed2 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[1])
+      ))
+    this.declaration.etcExceeds[2] &&
+      (this.etcExceed3 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[2])
+      ))
+    this.declaration.etcExceeds[3] &&
+      (this.etcExceed4 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[3])
+      ))
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_ALCOHOLS',
+      'MODIFY_CIGARETTE',
+      'MODIFY_PERFUMES',
+      'MODIFY_ETCEXCEEDS',
+    ]),
+  },
 }
 </script>
 

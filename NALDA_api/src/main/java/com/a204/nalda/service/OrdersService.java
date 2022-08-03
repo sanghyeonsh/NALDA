@@ -90,6 +90,7 @@ public class OrdersService {
 
             OrdersCodes ordersCodes = OrdersCodes.builder()
                     .orderCode(orderList.getOrderCode())
+                    .cnt(orderList.getCnt())
                     .build();
             orders.addOrdersCode(ordersCodes);
         }
@@ -117,6 +118,19 @@ public class OrdersService {
             serviceStockRepository.save(serviceStock);
         }
     }
+    @Transactional
+    public void updateServiceCnt(List<ServiceCntDto> serviceCntDTOS){
+        for (ServiceCntDto serviceCntDto : serviceCntDTOS) {
+            Long serviceCodeId = serviceRepository.findByServiceCode(serviceCntDto.getServiceCode()).getId();
+            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(serviceCntDto.getFlightNum()).getId();
+            Long serviceStockId = serviceStockRepository.findByFlightAndServiceCode(flightId,serviceCodeId).getId();
+            Optional<ServiceStock> optional = serviceStockRepository.findById(serviceStockId);
+            ServiceStock serviceStock = optional.get();
+            serviceStock.changeTotal(serviceCntDto.getTotal());
+        }
+    }
+
+
 
     @Transactional
     public List<ServiceDto> listService() {
@@ -141,13 +155,31 @@ public class OrdersService {
         List<Orders> orders = orderRepository.findByFlightId(flightId);
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {
+            List<OrdersCodes> ordersCodes = orderListRepository.findByOrdersId(order.getId());
+            List<OrderListDto> orderLists = new ArrayList<>();
+            for(OrdersCodes ordersCode: ordersCodes){
+                orderLists.add(OrderListDto.builder()
+                        .orderCode(ordersCode.getOrderCode())
+                        .orderName(serviceRepository.findByServiceCode(ordersCode.getOrderCode()).getServiceName())
+                        .cnt(ordersCode.getCnt())
+                        .build());
+            }
+            String serviceClass;
+            if(orderLists.get(0).getOrderCode().charAt(0)=='A'){
+                serviceClass = "SNACK&DRINK";
+            }else{
+                serviceClass = serviceRepository.findByServiceCode(orderLists.get(0).getOrderCode()).getServiceClass();
+            }
             orderDTOS.add(OrderDto.builder()
+                    .id(order.getId())
+                    .classification(serviceClass)
                     .orderMessage(order.getOrderMessage())
                     .orderTime(order.getOrderTime())
                     .flightNum(flightNum)
                     .seatNum(order.getSeat().getSeatNum())
                     .username(order.getUser().getUsername())
                     .status(String.valueOf(order.getStatus()))
+                    .orderList(orderLists)
                     .build());
         }
         return orderDTOS;
@@ -157,10 +189,9 @@ public class OrdersService {
     public void updateStatus(Long ordersId) {
         Optional<Orders> optional = orderRepository.findById(ordersId);
         if(optional.get().getStatus().equals(Status.PROGRESS)){
-            optional.get().changStatusInfo(Status.DONE);
+            optional.get().changeStatusInfo(Status.DONE);
         }else{
-            optional.get().changStatusInfo(Status.PROGRESS);
+            optional.get().changeStatusInfo(Status.PROGRESS);
         }
     }
-
 }

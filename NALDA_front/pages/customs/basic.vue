@@ -60,22 +60,47 @@
                     <input
                       id="chkbox1"
                       v-model="travelPurpose"
-                      type="checkbox"
+                      type="radio"
+                      name="travelPurpose"
                       value="travel"
                       checked
                     />
                     <label for="chkbox1"></label>
                     여행
-                    <input id="chkbox2" type="checkbox" value="business" />
+                    <input
+                      id="chkbox2"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="business"
+                    />
                     <label for="chkbox2"></label>
                     사업
-                    <input id="chkbox3" type="checkbox" value="visitfamily" />
+                    <input
+                      id="chkbox3"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="visitfamily"
+                    />
                     <label for="chkbox3"></label>
                     친지방문
-                    <input id="chkbox4" type="checkbox" value="public" />
+                    <input
+                      id="chkbox4"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="public"
+                    />
                     <label for="chkbox4"></label>
                     공무
-                    <input id="chkbox5" type="checkbox" value="etc" />
+                    <input
+                      id="chkbox5"
+                      v-model="travelPurpose"
+                      type="radio"
+                      name="travelPurpose"
+                      value="etc"
+                    />
                     <label for="chkbox5"></label>
                     기타
                   </div>
@@ -177,9 +202,12 @@ export default {
     this.MODIFY_FLIGHTNUM(this.flightNum)
     this.MODIFY_ACCOMPANY(this.famillyNum)
     const visitedCountries = []
-    if (this.country1 !== '') visitedCountries.push(this.country1)
-    if (this.country2 !== '') visitedCountries.push(this.country2)
-    if (this.country3 !== '') visitedCountries.push(this.country3)
+    if (this.country1 !== '')
+      visitedCountries.push({ countryName: this.country1 })
+    if (this.country2 !== '')
+      visitedCountries.push({ countryName: this.country1 })
+    if (this.country3 !== '')
+      visitedCountries.push({ countryName: this.country1 })
     this.MODIFY_VISITEDCOUNTRIES(visitedCountries)
     console.log(this.declaration)
     next()
@@ -256,11 +284,11 @@ export default {
         ? (this.flightNum = this.declaration.flightNum)
         : (this.flightNum = '')
       this.declaration.visitedCountries[0] &&
-        (this.country1 = this.declaration.visitedCountries[0])
+        (this.country1 = this.declaration.visitedCountries[0].countryName)
       this.declaration.visitedCountries[1] &&
-        (this.country2 = this.declaration.visitedCountries[1])
+        (this.country2 = this.declaration.visitedCountries[1].countryName)
       this.declaration.visitedCountries[2] &&
-        (this.country3 = this.declaration.visitedCountries[2])
+        (this.country3 = this.declaration.visitedCountries[2].countryName)
     }
   },
   methods: {
@@ -272,62 +300,6 @@ export default {
       'MODIFY_ACCOMPANY',
       'MODIFY_VISITEDCOUNTRIES',
     ]),
-    find_Postcode() {
-      this.zipcode = ''
-      this.mainAddress = ''
-      this.detailAddress = ''
-      new window.daum.Postcode({
-        oncomplete: (data) => {
-          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-          // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-          // let addr = '' // 주소 변수
-          // let extraAddr = '' // 참고항목 변수
-          // vue라서 위 data에 변수로 추가해줬음.
-
-          // //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-
-          if (data.userSelectedType === 'R') {
-            // 사용자가 도로명 주소를 선택했을 경우
-            this.mainAddress = data.roadAddress
-          } else {
-            // 사용자가 지번 주소를 선택했을 경우(J)
-            this.mainAddress = data.jibunAddress
-          }
-
-          // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-          if (data.userSelectedType === 'R') {
-            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-            if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-              this.detailAddress += data.bname
-            }
-            // 건물명이 있고, 공동주택일 경우 추가한다.
-            if (data.buildingName !== '' && data.apartment === 'Y') {
-              this.detailAddress +=
-                this.detailAddress !== ''
-                  ? ', ' + data.buildingName
-                  : data.buildingName
-            }
-            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            if (this.detailAddress !== '') {
-              this.detailAddress = ' (' + this.detailAddress + ')'
-            }
-            // 조합된 참고항목을 해당 필드에 넣는다.
-            document.getElementById('address-detail').value = this.extraAddr
-          } else {
-            document.getElementById('address-detail').value = ''
-          }
-
-          // 우편번호와 주소 정보를 해당 필드에 넣는다.
-          document.getElementById('postal-code').value = data.zonecode
-          document.getElementById('address').value = this.addr
-          // 커서를 상세주소 필드로 이동한다.
-          document.getElementById('address-detail').focus()
-        },
-      }).open()
-    },
     ...mapActions('user', ['callMemberDetail']),
   },
 }

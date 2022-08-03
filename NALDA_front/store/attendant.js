@@ -47,8 +47,9 @@ export const mutations = {
   },
 
   SET_ORDERS_LIST(state, data) {
+    console.log('데이터' + data)
     state.ordersList = data
-    // console.log(state.ordersList)
+    console.log('데이터터' + state.ordersList)
   },
 }
 
@@ -88,6 +89,7 @@ export const actions = {
     listOrders(
       flightNum,
       ({ data }) => {
+        console.log('나야나' + data.serviceList)
         commit('SET_ORDERS_LIST', data.serviceList)
         console.log('성공')
       },

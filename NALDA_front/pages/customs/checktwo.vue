@@ -32,11 +32,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box4-1" name="bangoodsck" type="radio" value="Y" />
+                  <input
+                    id="box4-1"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box4-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box4-2" name="bangoodsck" type="radio" value="N" />
+                  <input
+                    id="box4-2"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box4-2"></label>
                 </td>
               </tr>
@@ -54,11 +66,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box5-1" name="livestockck" type="radio" value="Y" />
+                  <input
+                    id="box5-1"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box5-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box5-2" name="livestockck" type="radio" value="N" />
+                  <input
+                    id="box5-2"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box5-2"></label>
                 </td>
               </tr>
@@ -73,11 +97,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box6-1" name="salesgoodsck" type="radio" value="Y" />
+                  <input
+                    id="box6-1"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box6-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box6-2" name="salesgoodsck" type="radio" value="N" />
+                  <input
+                    id="box6-2"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box6-2"></label>
                 </td>
               </tr>
@@ -90,11 +126,43 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
   name: 'CustomsChecktwo',
   components: { CustomNavs },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_PROHIBITGOODS(this.prohibitGoods)
+    this.MODIFY_LIVESTOCKVISITED(this.livestockVisited)
+    this.MODIFY_SALESGOODS(this.salesGoods)
+    next()
+  },
+  data() {
+    return {
+      prohibitGoods: '',
+      livestockVisited: '',
+      salesGoods: '',
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    if (this.declaration.prohibitGoods !== '')
+      this.prohibitGoods = this.declaration.prohibitGoods
+    if (this.declaration.livestockVisited !== '')
+      this.livestockVisited = this.declaration.livestockVisited
+    if (this.declaration.salesGoods !== '')
+      this.salesGoods = this.declaration.salesGoods
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_PROHIBITGOODS',
+      'MODIFY_LIVESTOCKVISITED',
+      'MODIFY_SALESGOODS',
+    ]),
+  },
 }
 </script>
 

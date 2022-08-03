@@ -203,18 +203,19 @@ export default {
     //   }
     // }
     this.getListOrders()
-    console.log(this.ordersList)
+    this.request = []
+    // console.log('이게이게' + this.ordersList.length)
     for (let i = 0; i < this.ordersList.length; i++) {
       const order = {
         좌석: this.ordersList[i].seatNum,
-        분류: '',
+        분류: this.ordersList[i].classification,
         요청사항: '',
         요청시각: this.ordersList[i].orderTime.split('T')[1],
         상태: this.ordersList[i].status,
       }
       this.request.push(order)
     }
-    console.log(this.request)
+    // console.log(this.request)
   },
   methods: {
     ...mapActions('attendant', ['getListOrders', 'setStockAmount']),

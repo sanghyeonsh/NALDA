@@ -65,6 +65,21 @@ public class OrdersController {
         }
     }
 
+    @PutMapping("/input")
+    public ResponseEntity<?> modifyServices(@RequestBody List<ServiceCntDto> serviceCntDTOS){
+        Map<String,Object> result = new HashMap<>();
+        try {
+            ordersService.updateServiceCnt(serviceCntDTOS);
+            result.put("info", "개수 수정이 완료되었습니다.");
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (Exception e){
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
     @GetMapping("/input")
     public ResponseEntity<?> listServices(){
         Map<String,Object> result = new HashMap<>();
