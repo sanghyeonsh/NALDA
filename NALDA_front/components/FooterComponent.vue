@@ -6,7 +6,11 @@
           <img src="../static/main/toilet_navy.png" alt="toilet" />
           <h3>화장실</h3>
         </button>
-        <button class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
+        <button
+          class="service-wrap"
+          style="background-color: #206e95"
+          @click="MoveHelpcall"
+        >
           <img src="../static/main/flight_attendant_w.png" alt="toilet" />
           <h3>승무원호출</h3>
         </button>
@@ -15,7 +19,10 @@
         <div class="copyright-wrap">
           <!-- <div><img src="logo.png"></div> -->
           <div>
-            <span>이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보 고객센터</span>
+            <span
+              >이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
+              고객센터</span
+            >
             <div>Copyright © NALDA Corp. All Rights Reserved.</div>
           </div>
         </div>

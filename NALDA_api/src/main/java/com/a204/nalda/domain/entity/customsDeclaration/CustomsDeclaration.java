@@ -11,6 +11,7 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,9 +31,8 @@ public class CustomsDeclaration implements Serializable {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @Embedded
-    private TravelPeriod travelPeriod;
+    @Column(name = "travel_period")
+    private int travelPeriod;
     private String purposeTravel;
     private String flightNum;
     private int accompany;
@@ -69,6 +69,7 @@ public class CustomsDeclaration implements Serializable {
 
     private int cigarettes;
     private int perfumes;
+    private LocalDate date;
 
     @OneToOne(fetch = LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "alcohols_id")
