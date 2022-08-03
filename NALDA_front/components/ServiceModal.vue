@@ -79,35 +79,23 @@ export default {
 </script>
 
 <style scoped>
-/* The Modal (background) */
 .service-modal {
-  /* Hidden by default */
   display: none;
-  /* Stay in place */
   position: fixed;
-  z-index: 1; /* Sit on top */
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  /* Fallback color */
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
   background-color: rgb(0, 0, 0);
-  /* Black w/ opacity */
   background-color: rgba(0, 0, 0, 0.4);
   font-size: 30px;
 }
 
-/* Modal Content/Box */
 .service-modal-box {
   display: flex;
   flex-direction: column;
-  /* color: white; */
-  /* 15% from the top and centered */
-  /* margin: 15% auto;
-  padding: 15px; */
-  /* width: 35%; Could be more or less, depending on screen size */
-  /* height: 30%; */
   width: 50vw;
   height: 80vh;
   margin: 10vh auto;

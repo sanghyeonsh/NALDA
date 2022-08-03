@@ -59,10 +59,17 @@ export default {
     ...mapState('menu', ['items', 'selected_foods', 'check_foods']),
   },
 
-  mounted() {
+  created() {
     this.isSnack = true
     this.CLEAR_ITEMS()
-    this.getsnack()
+
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.getSnack()
+    })
   },
   methods: {
     MoveOrders() {
@@ -74,21 +81,21 @@ export default {
       this.isAlcohol = false
       this.isNonAlcohol = false
       this.CLEAR_ITEMS()
-      this.getsnack()
+      this.getSnack()
     },
     MoveAlcohol() {
       this.isSnack = false
       this.isAlcohol = true
       this.isNonAlcohol = false
       this.CLEAR_ITEMS()
-      this.getalcohol()
+      this.getAlcohols()
     },
     MoveNonAlcohol() {
       this.isSnack = false
       this.isAlcohol = false
       this.isNonAlcohol = true
       this.CLEAR_ITEMS()
-      this.getnonalcohol()
+      this.getNonAlcohols()
     },
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
@@ -98,7 +105,7 @@ export default {
       'MINUS_CHOICE_FOODS',
       'CLEAR_ITEMS',
     ]),
-    ...mapActions('menu', ['getsnack', 'getalcohol', 'getnonalcohol']),
+    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
   },
 }
 </script>

@@ -43,12 +43,50 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
+// import { inputOrders } from '@/api/menu'
 
 export default {
   name: 'CheckModal',
   computed: {
     ...mapState('menu', ['selected_foods']),
+    ...mapState('user', ['loginMember']),
+    orders() {
+      const Today = new Date()
+      const year = Today.getFullYear()
+      const month = ('0' + (Today.getMonth() + 1)).slice(-2)
+      const day = ('0' + Today.getDate()).slice(-2)
+      const hours = ('0' + Today.getHours()).slice(-2)
+      const minutes = ('0' + Today.getMinutes()).slice(-2)
+      const seconds = ('0' + Today.getSeconds()).slice(-2)
+      const currentTime =
+        year +
+        '-' +
+        month +
+        '-' +
+        day +
+        'T' +
+        hours +
+        ':' +
+        minutes +
+        ':' +
+        seconds
+      const order = {
+        orderMessage: 'test',
+        orderTime: currentTime,
+        flightNum: '1',
+        seatNum: 'A36',
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [],
+      }
+      for (let i = 0; i < this.selected_foods.length; i++) {
+        const code = this.selected_foods[i].serviceCode
+        const num = this.selected_foods[i].num
+        order.orderList.push({ orderCode: code, cnt: num })
+      }
+      return order
+    },
   },
   methods: {
     CloseCheck() {
@@ -64,17 +102,25 @@ export default {
       }
     },
     Waiting() {
+      this.postOrders(this.orders)
+      this.CLEAR_ITEMS()
+      this.CLEAR_CHOICE_FOODS()
+      this.CLEAR_CHECK_FOODS()
       this.$router.push('/waiting')
     },
 
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
+      'SET_CHOICE_FOODS',
       'DELETE_CHOICE_FOODS',
-      'CLEAR_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
-      'SET_CHOICE_FOODS',
+      'CLEAR_ITEM',
+      'CLEAR_ITEMS',
+      'CLEAR_CHOICE_FOODS',
+      'CLEAR_CHECK_FOODS',
     ]),
+    ...mapActions('menu', ['postOrders']),
   },
 }
 </script>
