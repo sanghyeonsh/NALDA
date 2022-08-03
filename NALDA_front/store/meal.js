@@ -2,6 +2,7 @@ import {
   listMeal,
   inputMeal,
   listInput,
+  selectMeal,
   detailMeal,
   allergyMeal,
   //   choiceMeal,
@@ -96,9 +97,23 @@ export const actions = {
       }
     )
   },
-  getDetail({ commit }, mealNum) {
+  getSelectedMeal({ commit }, mealId) {
+    // commit('CLEAR_SELECTED_MEAL')
+    selectMeal(
+      mealId,
+      ({ data }) => {
+        console.log(data.mealInfo)
+        commit('SET_SELECTED_MEAL', data.mealInfo)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getDetail({ commit }, mealId) {
+    commit('CLEAR_DETAIL_MEAL')
     detailMeal(
-      mealNum,
+      mealId,
       ({ data }) => {
         console.log(data)
         if (data.length > 0) {
@@ -110,9 +125,10 @@ export const actions = {
       }
     )
   },
-  getAllergy({ commit }, mealNum) {
+  getAllergy({ commit }, mealId) {
+    commit('CLEAR_ALLERGY_MEAL')
     allergyMeal(
-      mealNum,
+      mealId,
       ({ data }) => {
         console.log(data)
         if (data.length > 0) {
