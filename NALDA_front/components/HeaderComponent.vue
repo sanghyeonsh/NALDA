@@ -64,7 +64,7 @@ export default {
   width: 20%;
 }
 .header-container-image {
-  width: 80%;
+  width: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,6 +95,7 @@ export default {
 }
 .profile-name {
   width: 50%;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;

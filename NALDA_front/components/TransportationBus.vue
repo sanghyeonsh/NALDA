@@ -214,8 +214,8 @@ export default {
   border: none;
   background-color: dodgerblue;
   color: white;
-  width: 9%;
-  height: 4%;
+  width: 15%;
+  height: 7%;
 }
 .bus-button2 {
   position: fixed;
@@ -224,8 +224,8 @@ export default {
   border: none;
   background-color: dodgerblue;
   color: white;
-  width: 9%;
-  height: 4%;
+  width: 15%;
+  height: 7%;
 }
 
 .button1-image {

@@ -44,6 +44,7 @@ export default {
 .main-service-container {
   display: flex;
   height: 70vh;
+  width: 100vw;
 }
 .service-container-box {
   text-align: center;
