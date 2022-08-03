@@ -24,16 +24,8 @@ public class Flight {
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "airplane_id")
     private Airplane airplane;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
 
     @Column(name = "flight_date")
     private LocalDateTime flightDate;
