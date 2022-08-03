@@ -18,4 +18,5 @@ public class LoginDto {
     private FullName fullName;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
+    private String userRole;
 }

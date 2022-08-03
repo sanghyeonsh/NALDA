@@ -2,7 +2,7 @@
   <div class="goods-container">
     <div class="goods-container-box" @click="checkblanket">
       <div>
-        <img src="../../static/orders/blanket.png" alt="service" />
+        <img src="/orders/blanket.png" alt="service" />
         <h3>
           <input id="blanket" type="checkbox" @click="checkblanket" />
           담요
@@ -11,7 +11,7 @@
     </div>
     <div class="goods-container-box" @click="checkpillow">
       <div>
-        <img src="../../static/orders/pillow.png" alt="service" />
+        <img src="/orders/pillow.png" alt="service" />
         <h3>
           <input id="pillow" type="checkbox" @click="checkpillow" />
           베개
@@ -20,7 +20,7 @@
     </div>
     <div class="goods-container-box" @click="checkearplug">
       <div>
-        <img src="../../static/orders/ear-plug.png" alt="service" />
+        <img src="/orders/ear-plug.png" alt="service" />
         <h3>
           <input id="earplug" type="checkbox" @click="checkearplug" />
           귀마개
@@ -29,7 +29,7 @@
     </div>
     <div class="goods-container-box" @click="checkslipper">
       <div>
-        <img src="../../static/orders/slippers.png" alt="service" />
+        <img src="/orders/slippers.png" alt="service" />
         <h3>
           <input id="slipper" type="checkbox" @click="checkslipper" />
           슬리퍼

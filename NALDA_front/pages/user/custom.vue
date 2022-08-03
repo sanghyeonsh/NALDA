@@ -6,74 +6,104 @@
         <h4>세관신고서 목록</h4>
         <div class="mycustom-subindex-bluebox">
           <!-- <div class="overflow-auto"> -->
-          <p class="mt-3">현재 페이지: {{ currentPage }}</p>
-          <b-table
+          <v-data-table
             id="my-table"
-            :items="items"
-            :per-page="perPage"
-            :current-page="currentPage"
+            :items="listTable"
+            :headers="headers"
+            :loading="loading"
+            loading-text="Loading... Please wait"
+            :items-per-page="perPage"
+            :page="currentPage"
+            hide-default-footer
+            class="elevation-1"
             small
-            @click="customDetail(item)"
-          ></b-table>
-          <b-pagination
+            @click:row="customDetail"
+          ></v-data-table>
+          <v-pagination
             v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            pills
-            variant="info"
-            size="sm"
-          ></b-pagination>
+            :length="pageCount"
+            :total-visivle="totalVisible"
+          >
+          </v-pagination>
           <!-- </div> -->
         </div>
       </div>
     </div>
+
+    <b-modal id="check-modal" size="xl" hide-footer centered>
+      <template #modal-title> 상세 정보 </template>
+      <div class="d-block">편명 : {{ declaration.flightNum }}</div>
+      <div class="d-block">날짜 : {{ declaration.date }}</div>
+      <div class="d-block">목적 : {{ declaration.purposeTravel }}</div>
+
+      <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
 export default {
   name: 'MyCustom',
   components: { UserNavs },
   data() {
     return {
-      // rows: '',
-      perPage: 8,
+      perPage: 6,
       currentPage: 1,
-      items: [
-        { no: 1, journey: 'Madrid', date: '2019-01-24' },
-        { no: 2, journey: 'Madrid', date: '2019-01-24' },
-        { no: 3, journey: 'Madrid', date: '2019-01-24' },
-        { no: 4, journey: 'Madrid', date: '2019-01-24' },
-        { no: 5, journey: 'Madrid', date: '2019-01-24' },
-        { no: 6, journey: 'Madrid', date: '2019-01-24' },
-        { no: 7, journey: 'Madrid', date: '2019-01-24' },
-        { no: 8, journey: 'Madrid', date: '2019-01-24' },
-        { no: 9, journey: 'Madrid', date: '2019-01-24' },
-        { no: 10, journey: 'Madrid', date: '2019-01-24' },
-        { no: 11, journey: 'Madrid', date: '2019-01-24' },
-        { no: 12, journey: 'Madrid', date: '2019-01-24' },
-        { no: 13, journey: 'Madrid', date: '2019-01-24' },
-        { no: 14, journey: 'Madrid', date: '2019-01-24' },
-        { no: 15, journey: 'Madrid', date: '2019-01-24' },
-        { no: 16, journey: 'Madrid', date: '2019-01-24' },
-        { no: 17, journey: 'Madrid', date: '2019-01-24' },
-        { no: 18, journey: 'Madrid', date: '2019-01-24' },
-        { no: 19, journey: 'Madrid', date: '2019-01-24' },
-        { no: 20, journey: 'Madrid', date: '2019-01-24' },
+      loading: true,
+      totalVisible: 10,
+      headers: [
+        { text: 'ID', align: 'center', sortable: false, value: 'ID' },
+        { text: '목적', align: 'center', sortable: false, value: '목적' },
+        { text: '편명', align: 'center', sortable: false, value: '편명' },
+        { text: '날짜', align: 'center', sortable: false, value: '날짜' },
       ],
+      declaration: {},
     }
   },
-  mathods: {
-    customDetail(payload) {
-      console.log(payload.no)
-      console.log(payload.hourney)
-      console.log(payload.date)
+  computed: {
+    ...mapGetters('customdeclaration', ['listTable']),
+    ...mapState('user', ['loginMember']),
+    ...mapState('customdeclaration', [
+      'declarationList',
+      'selectedDeclaration',
+    ]),
+    rows() {
+      return this.listTable.length
+    },
+    pageCount() {
+      return this.listTable.length % this.perPage === 0
+        ? this.listTable.length / this.perPage
+        : this.listTable.length / this.perPage + 1
     },
   },
-  computed: {
-    rows() {
-      return this.items.length
+  created() {
+    axios.get('https://api.ipify.org?format=json').then((response) => {
+      console.log(response)
+    })
+    this.getDeclarationList(this.loginMember.username)
+  },
+  methods: {
+    ...mapActions('customdeclaration', [
+      'getDeclarationList',
+      'getOneDeclaration',
+    ]),
+    getIP(json) {
+      console.log(json)
+    },
+    customDetail(event, { item }) {
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getOneDeclaration(item.ID)
+        this.declaration = this.selectedDeclaration
+        this.$bvModal.show('check-modal')
+      })
     },
   },
 }
@@ -92,6 +122,14 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+
+.d-block {
+  font-size: 30px;
+}
+
+.elevation-1 {
+  width: 100%;
 }
 .mycustom-container {
   width: 100%;

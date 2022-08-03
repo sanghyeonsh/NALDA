@@ -107,6 +107,7 @@ public class MealController {
 
     @PostMapping("/choice")
     public ResponseEntity<?> choiceMeal(@RequestBody SeatMealDto seatMealDto){
+        System.out.println(seatMealDto.toString());
         Map<String,Object> result = new HashMap<>();
         try{
             mealService.seatMealInput(seatMealDto);

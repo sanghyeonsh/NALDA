@@ -2,18 +2,18 @@ import {
   listMeal,
   inputMeal,
   listInput,
+  selectMeal,
   detailMeal,
   allergyMeal,
-  selectMeal,
-  choiceMeal,
+  //   choiceMeal,
 } from '@/api/meal'
 
 export const state = () => ({
   meals: [],
   flightMeals: [],
-  selectedMeal: { bytesdata: null },
+  selectedMeal: {},
   details: [],
-  allergies: [],
+  allergies: ['땅콩', '계란', '육류'],
 })
 
 export const mutations = {
@@ -24,7 +24,6 @@ export const mutations = {
     state.flightMeals.push(flightMeals)
   },
   SET_SELECTED_MEAL(state, selectedMeal) {
-    state.selectedMeal = {}
     state.selectedMeal = selectedMeal
   },
   SET_DETAIL_MEAL(state, details) {
@@ -40,7 +39,9 @@ export const mutations = {
   CLEAR_FLIGHTMEAL_LIST(state) {
     state.flightMeals = []
   },
-  CLEAR_SELECTED_MEAL(state) {},
+  CLEAR_SELECTED_MEAL(state) {
+    state.selectedMeal = null
+  },
   CLEAR_DETAIL_MEAL(state) {
     state.details = []
   },
@@ -84,6 +85,7 @@ export const actions = {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
             commit('SET_FLIGHTMEAL_LIST', {
+              id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
             })
@@ -95,10 +97,10 @@ export const actions = {
       }
     )
   },
-  getSelectedMeal({ commit }, mealMenu) {
+  getSelectedMeal({ commit }, mealId) {
     // commit('CLEAR_SELECTED_MEAL')
     selectMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
         console.log(data.mealInfo)
         commit('SET_SELECTED_MEAL', data.mealInfo)
@@ -108,14 +110,14 @@ export const actions = {
       }
     )
   },
-  getDetail({ commit }, mealMenu) {
+  getDetail({ commit }, mealId) {
     commit('CLEAR_DETAIL_MEAL')
     detailMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
-        // console.log(data.mealDetail)
-        if (data.mealDetail.length > 0) {
-          commit('SET_DETAIL_MEAL', data.mealDetail)
+        console.log(data)
+        if (data.length > 0) {
+          commit('SET_DETAIL_MEAL')
         }
       },
       (error) => {
@@ -123,27 +125,15 @@ export const actions = {
       }
     )
   },
-  getAllergy({ commit }, mealMenu) {
+  getAllergy({ commit }, mealId) {
     commit('CLEAR_ALLERGY_MEAL')
     allergyMeal(
-      mealMenu,
+      mealId,
       ({ data }) => {
-        // console.log(data.mealAllergy)
-        if (data.mealAllergy.length > 0) {
-          commit('SET_ALLERGY_MEAL', data.mealAllergy)
+        console.log(data)
+        if (data.length > 0) {
+          commit('SET_ALLERGY_MEAL')
         }
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  },
-  registSeatMeal(info) {
-    // console.log(info)
-    choiceMeal(
-      info,
-      () => {
-        console.log('입력완료')
       },
       (error) => {
         console.log(error)

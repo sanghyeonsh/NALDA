@@ -10,7 +10,7 @@
         :class="{ snackactive: isSnack }"
         @click="MoveSnack"
       >
-        <img src="../static/orders/dessert.png" alt="" />
+        <img src="/orders/dessert.png" alt="" />
         <span>간식</span>
       </div>
       <div
@@ -18,7 +18,7 @@
         :class="{ snackactive: isAlcohol }"
         @click="MoveAlcohol"
       >
-        <img src="../static/orders/drink.png" alt="" />
+        <img src="/orders/drink.png" alt="" />
         <span>주류</span>
       </div>
       <div
@@ -26,17 +26,17 @@
         :class="{ snackactive: isNonAlcohol }"
         @click="MoveNonAlcohol"
       >
-        <img src="../static/orders/coffee_cup.png" alt="" />
+        <img src="/orders/coffee_cup.png" alt="" />
         <span>비주류</span>
       </div>
     </div>
 
     <div class="service-navbar-profile">
       <div class="profile-back">
-        <img src="../static/orders/left-round-128.png" alt="" />
+        <img src="/orders/left-round-128.png" alt="" />
       </div>
       <div class="profile-image">
-        <img src="../static/main/user_profile_w.png" alt="" />
+        <img src="/main/user_profile_w.png" alt="" />
         <div class="profile-name">김익명</div>
       </div>
     </div>
@@ -59,10 +59,17 @@ export default {
     ...mapState('menu', ['items', 'selected_foods', 'check_foods']),
   },
 
-  mounted() {
+  created() {
     this.isSnack = true
     this.CLEAR_ITEMS()
-    this.getsnack()
+
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.getSnack()
+    })
   },
   methods: {
     MoveOrders() {
@@ -74,21 +81,21 @@ export default {
       this.isAlcohol = false
       this.isNonAlcohol = false
       this.CLEAR_ITEMS()
-      this.getsnack()
+      this.getSnack()
     },
     MoveAlcohol() {
       this.isSnack = false
       this.isAlcohol = true
       this.isNonAlcohol = false
       this.CLEAR_ITEMS()
-      this.getalcohol()
+      this.getAlcohols()
     },
     MoveNonAlcohol() {
       this.isSnack = false
       this.isAlcohol = false
       this.isNonAlcohol = true
       this.CLEAR_ITEMS()
-      this.getnonalcohol()
+      this.getNonAlcohols()
     },
     ...mapMutations('menu', [
       'SET_CHOICE_FOODS',
@@ -98,7 +105,7 @@ export default {
       'MINUS_CHOICE_FOODS',
       'CLEAR_ITEMS',
     ]),
-    ...mapActions('menu', ['getsnack', 'getalcohol', 'getnonalcohol']),
+    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
   },
 }
 </script>

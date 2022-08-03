@@ -9,7 +9,7 @@
         </div>
       </div>
       <button class="waiting-page-body-button">
-        <img src="../static/main/flight_attendant.png" alt="" />
+        <img src="/main/flight_attendant.png" alt="" />
         승무원
       </button>
     </div>
