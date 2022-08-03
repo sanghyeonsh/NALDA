@@ -17,6 +17,7 @@ import java.util.List;
 public class OrderDto {
 
     private Long id;
+    private String classification;
     private String orderMessage;
     private LocalDateTime orderTime;
     private String flightNum;
