@@ -10,7 +10,7 @@
         :class="{ snackactive: isSnack }"
         @click="MoveSnack"
       >
-        <img src="../static/orders/dessert.png" alt="" />
+        <img src="/orders/dessert.png" alt="" />
         <span>간식</span>
       </div>
       <div
@@ -18,7 +18,7 @@
         :class="{ snackactive: isAlcohol }"
         @click="MoveAlcohol"
       >
-        <img src="../static/orders/drink.png" alt="" />
+        <img src="/orders/drink.png" alt="" />
         <span>주류</span>
       </div>
       <div
@@ -26,17 +26,17 @@
         :class="{ snackactive: isNonAlcohol }"
         @click="MoveNonAlcohol"
       >
-        <img src="../static/orders/coffee_cup.png" alt="" />
+        <img src="/orders/coffee_cup.png" alt="" />
         <span>비주류</span>
       </div>
     </div>
 
     <div class="service-navbar-profile">
       <div class="profile-back">
-        <img src="../static/orders/left-round-128.png" alt="" />
+        <img src="/orders/left-round-128.png" alt="" />
       </div>
       <div class="profile-image">
-        <img src="../static/main/user_profile_w.png" alt="" />
+        <img src="/main/user_profile_w.png" alt="" />
         <div class="profile-name">김익명</div>
       </div>
     </div>

@@ -2,21 +2,21 @@
   <div class="medical-box">
     <div class="medical-box-item">
       <div class="item-headache" @click="moveResult">
-        <img src="../../static/medical/headache.png" />
+        <img src="/medical/headache.png" />
         <div>두통</div>
       </div>
       <div class="item-band" @click="moveResult">
-        <img src="../../static/medical/band-aid.png" />
+        <img src="/medical/band-aid.png" />
         <div>외상</div>
       </div>
     </div>
     <div class="medical-box-item">
       <div class="item-stomachache" @click="moveResult">
-        <img src="../../static/medical/stomachache.png" />
+        <img src="/medical/stomachache.png" />
         <div>복통</div>
       </div>
       <div class="item-etc" @click="moveEtc">
-        <img src="../../static/medical/more.png" />
+        <img src="/medical/more.png" />
         <div>기타</div>
       </div>
     </div>

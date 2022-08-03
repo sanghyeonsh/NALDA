@@ -1,6 +1,6 @@
 <template>
   <div class="init-screen" @click="moveMain">
-    <img class="logo" src="../static/logo.png" />
+    <img class="logo" src="/logo.png" />
   </div>
 </template>
 
