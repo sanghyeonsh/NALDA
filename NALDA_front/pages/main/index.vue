@@ -2,30 +2,26 @@
   <div class="main-container">
     <div class="main-container-box" @click="MoveOrders">
       <div>
-        <img class="image" src="../../static/main/service.png" alt="service" />
-        <h3>service</h3>
+        <img class="image" src="/main/service.png" alt="service" />
+        <h3>서비스</h3>
       </div>
     </div>
-    <div class="main-container-box" @click="moveLogin">
-      <!-- <nuxt-link :to="isLogin" style="text-decoration: none"> -->
-      <div>
-        <img
-          class="image"
-          src="../../static/main/custom_declaration.png"
-          alt="custom_declaration"
-        />
-        <h3>Custom Declaration</h3>
-      </div>
-      <!-- </nuxt-link> -->
+    <div class="main-container-box">
+      <nuxt-link :to="isLogin" style="text-decoration: none">
+        <div>
+          <img
+            class="image"
+            src="/main/custom_declaration.png"
+            alt="custom_declaration"
+          />
+          <h3>세관신고서</h3>
+        </div>
+      </nuxt-link>
     </div>
     <div class="main-container-box" @click="MoveTransportation">
       <div>
-        <img
-          class="image"
-          src="../../static/main/airport_info.png"
-          alt="airport_info"
-        />
-        <h3>Airport Info</h3>
+        <img class="image" src="/main/airport_info.png" alt="airport_info" />
+        <h3>공항정보</h3>
       </div>
     </div>
   </div>
@@ -67,6 +63,19 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
 /* .main-index {
   display: flex;
   flex-direction: column;

@@ -36,15 +36,20 @@
           </div>
 
           <div class="profile-image">
-            <img src="../static/main/user_profile_w.png" alt="" />
+            <img src="/main/user_profile_w.png" alt="" />
           </div>
           <div class="profile-name">김익명</div>
         </div>
       </div>
     </div>
-
-    <div class="transport-body">
-      <img :src="'/' + test" alt="" />
+    <div class="transport-body" :class="{ Bus: isBus }">
+      <TransportationBus />
+    </div>
+    <div class="transport-body" :class="{ Taxi: isTaxi }">
+      <h1>Taxi</h1>
+    </div>
+    <div class="transport-body" :class="{ Subway: isSubway }">
+      <h1>Subway</h1>
     </div>
   </div>
 </template>
@@ -57,13 +62,10 @@ export default {
       isBus: false,
       isTaxi: false,
       isSubway: false,
-      test: 'nacho.jpg',
     }
   },
   mounted() {
     this.isBus = true
-    // 버스정보가져옴
-    this.test = 'nacho.jpg'
   },
   methods: {
     MoveHome() {
@@ -91,7 +93,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .transport-header {
   height: 15vh;
   width: 100vw;
@@ -179,15 +181,15 @@ export default {
 }
 
 .transport-body {
-  height: 85vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 100px;
+  display: none;
 }
-.transport-body img {
-  width: 100%;
-  height: 100%;
+.Bus {
+  display: block;
+}
+.Taxi {
+  display: block;
+}
+.Subway {
+  display: block;
 }
 </style>

@@ -3,7 +3,7 @@
     <div class="service-modal-box">
       <div class="service-modal-head">
         <div class="service-modal-head-close">
-          <img src="../static/orders/icons8-x-100.png" alt="" />
+          <img src="/orders/icons8-x-100.png" alt="" />
         </div>
       </div>
       <div class="service-modal-body">
@@ -22,11 +22,11 @@
         <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
         <div class="service-modal-body-detail-button">
           <button @click="MINUS_CHOICE_FOODS(item[0])">
-            <img src="../static/orders/minus.png" alt="" />
+            <img src="/orders/minus.png" alt="" />
           </button>
           <div class="button-num">{{ item[0].num }}</div>
           <button @click="PLUS_CHOICE_FOODS(item[0])">
-            <img src="../static/orders/plus.png" alt="" />
+            <img src="/orders/plus.png" alt="" />
           </button>
         </div>
         <div class="detail-button">
@@ -79,35 +79,23 @@ export default {
 </script>
 
 <style scoped>
-/* The Modal (background) */
 .service-modal {
-  /* Hidden by default */
   display: none;
-  /* Stay in place */
   position: fixed;
-  z-index: 1; /* Sit on top */
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  /* Fallback color */
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
   background-color: rgb(0, 0, 0);
-  /* Black w/ opacity */
   background-color: rgba(0, 0, 0, 0.4);
   font-size: 30px;
 }
 
-/* Modal Content/Box */
 .service-modal-box {
   display: flex;
   flex-direction: column;
-  /* color: white; */
-  /* 15% from the top and centered */
-  /* margin: 15% auto;
-  padding: 15px; */
-  /* width: 35%; Could be more or less, depending on screen size */
-  /* height: 30%; */
   width: 50vw;
   height: 80vh;
   margin: 10vh auto;

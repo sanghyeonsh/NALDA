@@ -88,6 +88,7 @@ public class OrdersService {
 
             OrdersCodes ordersCodes = OrdersCodes.builder()
                     .orderCode(orderList.getOrderCode())
+                    .cnt(orderList.getCnt())
                     .build();
             orders.addOrdersCode(ordersCodes);
         }
@@ -152,14 +153,31 @@ public class OrdersService {
         List<Orders> orders = orderRepository.findByFlightId(flightId);
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {
+            List<OrdersCodes> ordersCodes = orderListRepository.findByOrdersId(order.getId());
+            List<OrderListDto> orderLists = new ArrayList<>();
+            for(OrdersCodes ordersCode: ordersCodes){
+                orderLists.add(OrderListDto.builder()
+                        .orderCode(ordersCode.getOrderCode())
+                        .orderName(serviceRepository.findByServiceCode(ordersCode.getOrderCode()).getServiceName())
+                        .cnt(ordersCode.getCnt())
+                        .build());
+            }
+            String serviceClass;
+            if(orderLists.get(0).getOrderCode().charAt(0)=='A'){
+                serviceClass = "SNACK&DRINK";
+            }else{
+                serviceClass = serviceRepository.findByServiceCode(orderLists.get(0).getOrderCode()).getServiceClass();
+            }
             orderDTOS.add(OrderDto.builder()
                     .id(order.getId())
+                    .classification(serviceClass)
                     .orderMessage(order.getOrderMessage())
                     .orderTime(order.getOrderTime())
                     .flightNum(flightNum)
                     .seatNum(order.getSeat().getSeatNum())
                     .username(order.getUser().getUsername())
                     .status(String.valueOf(order.getStatus()))
+                    .orderList(orderLists)
                     .build());
         }
         return orderDTOS;

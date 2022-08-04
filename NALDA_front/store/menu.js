@@ -110,7 +110,6 @@ export const actions = {
       orders,
       ({ data }) => {
         console.log(data)
-        commit('POST_ORDERS_ITEMS', data)
       },
       (error) => {
         console.log(error)

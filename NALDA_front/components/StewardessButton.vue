@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="stewardess-button">
-      <img src="../static/main/flight_attendant_w.png" alt="toilet" />
+      <img src="/main/flight_attendant_w.png" alt="toilet" />
       <h3>승무원</h3>
     </button>
   </div>

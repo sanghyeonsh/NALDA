@@ -2,7 +2,7 @@
   <div class="main-container1">
     <div class="main-container-box" @click="MoveOrders">
       <div>
-        <img class="image" src="../../static/main/service.png" alt="service" />
+        <img class="image" src="/main/service.png" alt="service" />
         <h3>service</h3>
       </div>
     </div>
@@ -11,7 +11,7 @@
         <div>
           <img
             class="image"
-            src="../../static/main/custom_declaration.png"
+            src="/main/custom_declaration.png"
             alt="custom_declaration"
           />
           <h3>Custom Declaration</h3>
@@ -20,7 +20,7 @@
     </div>
     <div class="main-container-box">
       <div>
-        <img class="image" src="../../static/main/airport_info.png" alt="airport_info" />
+        <img class="image" src="/main/airport_info.png" alt="airport_info" />
         <h3>Airport Info</h3>
       </div>
     </div>

@@ -27,7 +27,7 @@ public class DeclarationService {
 
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
-
+        System.out.println(declarationDTO);
         User user = userRepository.findUserByUsername(declarationDTO.getUsername());
         CustomsDeclaration declaration = CustomsDeclaration.builder()
                 .user(user)
@@ -48,12 +48,13 @@ public class DeclarationService {
                 .paymentExceedValue(Optional.ofNullable(declarationDTO.getPaymentExceedValue()).orElse(0))
                 .date(declarationDTO.getDate())
                 .build();
-        if(declaration.getVisitedCountries().size() > 0) {
+
+        if(declarationDTO.getVisitedCountries().size() > 0) {
             for( VisitedCountry visitedcountry : declarationDTO.getVisitedCountries()) {
                 declaration.addVisitedCountry(visitedcountry);
             }
         }
-        if(declaration.getEtcExceeds().size() >0) {
+        if(declarationDTO.getEtcExceeds().size() >0) {
             for(EtcExceed etcExceed : declarationDTO.getEtcExceeds()) {
                 declaration.addEtcExceed(etcExceed);
             }

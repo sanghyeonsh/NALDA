@@ -1,4 +1,8 @@
-import { saveDeclaration } from '../api/customdeclaration'
+import {
+  saveDeclaration,
+  listDeclaration,
+  getOneDeclaration,
+} from '../api/customdeclaration'
 
 export const state = () => ({
   declaration: {
@@ -25,9 +29,23 @@ export const state = () => ({
     etcExceeds: [],
     visitedCountries: [],
   },
+  declarationList: [],
+  selectedDeclaration: null,
 })
 
 export const mutations = {
+  CLEAR_DECLARATIONLIST(state) {
+    state.declarationList = []
+  },
+  SET_DECLARATIONLIST(state, list) {
+    state.declarationList = list
+  },
+  CLEAR_SELECTEDDECLARATION(state) {
+    state.selectedDeclaration = null
+  },
+  SET_SELECTEDDECLARATION(state, declaration) {
+    state.selectedDeclaration = declaration
+  },
   CLEAR_DECLARATION(state) {
     state.declaration = {
       username: '',
@@ -116,7 +134,21 @@ export const mutations = {
   },
 }
 
-export const getters = {}
+export const getters = {
+  listTable(state) {
+    const items = []
+    for (let i = 0; i < state.declarationList.length; i++) {
+      const item = {
+        ID: state.declarationList[i].id,
+        목적: state.declarationList[i].purposeTravel,
+        편명: state.declarationList[i].flightNum,
+        날짜: state.declarationList[i].date,
+      }
+      items.push(item)
+    }
+    return items
+  },
+}
 
 export const actions = {
   saveDeclaration({ commit, state }) {
@@ -125,6 +157,28 @@ export const actions = {
       (response) => {
         this.$router.push('/main')
         console.log(response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getDeclarationList({ commit }, username) {
+    listDeclaration(
+      username,
+      ({ data }) => {
+        commit('SET_DECLARATIONLIST', data.declarations)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getOneDeclaration({ commit }, id) {
+    await getOneDeclaration(
+      id,
+      ({ data }) => {
+        commit('SET_SELECTEDDECLARATION', data.declaration)
       },
       (error) => {
         console.log(error)
