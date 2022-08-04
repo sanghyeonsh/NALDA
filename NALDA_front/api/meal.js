@@ -16,16 +16,16 @@ async function listInput(flightNum, success, fail) {
   await api.get(`/meal/input/${flightNum}`).then(success).catch(fail)
 }
 
-async function selectMeal(mealMenu, success, fail) {
-  await api.get(`/meal/select/${mealMenu}`).then(success).catch(fail)
+async function selectMeal(mealId, success, fail) {
+  await api.get(`/meal/select/${mealId}`).then(success).catch(fail)
 }
 
-async function detailMeal(mealMenu, success, fail) {
-  await api.get(`/meal/detail/${mealMenu}`).then(success).catch(fail)
+async function detailMeal(mealId, success, fail) {
+  await api.get(`/meal/detail/${mealId}`).then(success).catch(fail)
 }
 
-async function allergyMeal(mealMenu, success, fail) {
-  await api.get(`/meal/allergy/${mealMenu}`).then(success).catch(fail)
+async function allergyMeal(mealId, success, fail) {
+  await api.get(`/meal/allergy/${mealId}`).then(success).catch(fail)
 }
 // user정보와 meal정보가 param에 담겨있음
 async function choiceMeal(info, success, fail) {

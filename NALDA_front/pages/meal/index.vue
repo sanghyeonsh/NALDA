@@ -17,7 +17,7 @@
             class="form-check-input"
             type="radio"
             name="inlineRadioOptions"
-            :value="flightMeal.menu"
+            :value="flightMeal.id"
           />
           <label class="form-check-label" :for="'inlineRadio' + i">{{
             flightMeal.menu
@@ -55,19 +55,17 @@ export default {
     ]),
 
     MoveDetail() {
-      const mealName = document.querySelector(
-        'input[type=radio][name=inlineRadioOptions]:checked'
-      ).value
       const promise = new Promise((resolve, reject) => {
+        const mealName = document.querySelector(
+          'input[type=radio][name=inlineRadioOptions]:checked'
+        ).value
+
         this.getSelectedMeal(mealName)
         this.getDetail(mealName)
         this.getAllergy(mealName)
         resolve()
       })
       promise.then(() => {
-        console.log(this.selectedMeal)
-        console.log(this.details)
-        console.log(this.allergies)
         this.$router.push('/meal/detail')
       })
     },
