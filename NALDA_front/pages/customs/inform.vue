@@ -19,9 +19,12 @@
           </div>
         </div>
         <div class="next-btn-wrap">
-          <nuxt-link to="/customs/basic">
-            <b-button class="next-page" variant="info">확인했습니다.</b-button>
-          </nuxt-link>
+          <b-button
+            class="next-page"
+            variant="info"
+            @click="$router.push('/customs/basic')"
+            >확인했습니다.</b-button
+          >
         </div>
       </div>
     </div>
@@ -109,9 +112,10 @@ export default {
 }
 
 .next-page {
-  width: 200%;
-  height: 140%;
+  width: 30%;
+  height: 5vh;
 }
+
 .next-btn-wrap {
   width: 80%;
   margin-top: 2%;

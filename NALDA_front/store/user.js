@@ -63,7 +63,7 @@ export const actions = {
         if (data.msg === '로그인 성공') {
           commit('SET_LOGIN_MEMBER', data.userInfo)
           console.log(data.ip)
-          this.$router.push('/customs/thirdparty')
+          this.$router.push('/main')
         } else {
           alert('실패')
         }
