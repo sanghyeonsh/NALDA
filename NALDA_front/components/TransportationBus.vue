@@ -1,28 +1,16 @@
 <template>
   <div class="transport-bus">
     <div class="bus-region">
-      <div>지역</div>
-      <div>지역</div>
-      <div>지역</div>
-      <div>지역</div>
-      <div>지역</div>
-      <div>지역</div>
-      <div>지역</div>
+      <div v-for="(region, idx) in region" :key="idx">
+        {{ region }}
+      </div>
     </div>
     <div class="bus-number">
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
-      <div>busnumber</div>
+      <div v-for="(time, idx) in time" :key="idx">
+        {{ time }}
+      </div>
     </div>
     <div class="bus-detail">
-      <!-- flex-column으로 -->
       <div class="bus-detail-terminal">
         <div class="terminal-1">제1터미널</div>
         <div class="terminal-2">제2터미널</div>
@@ -32,28 +20,14 @@
         <div class="detail-wday">주말</div>
       </div>
       <div class="bus-detail-time">
-        <div>0815</div>
-        <div>1115</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
-        <div>1315</div>
+        <div v-for="(table, idx) in time" :key="idx">
+          {{ table }}
+        </div>
       </div>
       <div class="bus-detail-image">
         <img src="/logo.png" alt="" />
       </div>
     </div>
-    <!-- 버튼은 fixed로 고정 -->
     <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
     <button class="bus-button2" @click="ShowImage2">제2여객터미널</button>
     <div class="button1-image">
@@ -71,6 +45,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      region: ['서울', '경기', '경기', '경기', '경기', '경기', '경기'],
+      time: [
+        '08:00',
+        '08:00',
+        '08:00',
+        '08:00',
+        '08:00',
+        '08:00',
+        '08:00',
+        '08:00',
+      ],
+    }
+  },
   methods: {
     ShowImage1() {
       const image1 = document.getElementsByClassName('button1-image')[0]
@@ -113,6 +102,8 @@ export default {
   height: 100%;
   width: 25%;
   font-size: 30px;
+  display: flex;
+  flex-direction: column;
 }
 .bus-region div {
   width: 100%;
@@ -120,6 +111,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .bus-number {
   height: 80%;
@@ -133,6 +125,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .bus-detail {
   height: 60%;
