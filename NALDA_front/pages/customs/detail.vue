@@ -7,11 +7,12 @@
           <div class="title-container">
             <div class="title-items">
               <div class="customform-title">여행자 휴대품 신고서</div>
-              <nuxt-link to="/customs/complete">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
-                >
-              </nuxt-link>
+              <b-button
+                class="next-page"
+                variant="info"
+                @click="$router.push('/customs/complete')"
+                >다음 페이지</b-button
+              >
             </div>
           </div>
           <div class="declaration-detail-wrap">
@@ -303,13 +304,15 @@ export default {
   font-family: 'twayfly';
 }
 .next-page[data-v-27638d97] {
-  width: 200%;
+  width: 20%;
   height: 60%;
+  margin-bottom: 2%;
 }
 .title-items {
   width: 75%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .title-container {
   display: flex;
@@ -427,8 +430,9 @@ td {
 }
 
 .next-page {
-  width: 200%;
-  height: 140%;
+  width: 20%;
+  height: 60%;
+  margin-bottom: 2%;
 }
 .next-btn-wrap {
   margin-top: 2%;
