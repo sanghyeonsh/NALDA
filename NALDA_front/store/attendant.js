@@ -3,6 +3,7 @@ import {
   selectServices,
   listOrders,
   updateStatus,
+  modifyServices,
   //   choiceMeal,
 } from '@/api/attendant'
 
@@ -14,6 +15,7 @@ export const state = () => ({
   amenityList: [],
   ordersList: [],
   completeList: [],
+  setStock: false,
 })
 
 export const mutations = {
@@ -44,7 +46,8 @@ export const mutations = {
   },
 
   SET_STOCK_AMOUNT(state, data) {
-    console.log(state)
+    state.setStock = true
+    // console.log(state.setStock)
     console.log(data)
   },
 
@@ -52,7 +55,7 @@ export const mutations = {
     // console.log('데이터' + data)
     state.orderList = []
     state.completeList = []
-    console.log(data.length)
+    console.log('store입니다 ' + data.length)
     for (let i = 0; i < data.length; i++) {
       if (data[i].classification === 'SNACK&DRINK') {
         data[i].classification = '취식 및 음료'
@@ -67,6 +70,8 @@ export const mutations = {
         state.completeList.push(data[i])
       }
     }
+    console.log('store입니다 ' + state.orderList)
+    console.log('store입니다 ' + state.completeList)
   },
 }
 
@@ -124,21 +129,29 @@ export const actions = {
     listServices(
       ({ data }) => {
         commit('SET_SERVICE_LIST', data.serviceList)
-        // console.log(data)
-        // console.log(data.serviceList)
       },
       (error) => {
         console.log(error)
       }
     )
   },
-  setStockAmount({ commit }, data) {
-    console.log('나 일단 여기 왔쩌염')
-    // const stockList = []
-    // if(data) {
-    //   stockList.push(data)
-    // }
+  setStockAmount({ commit }, totalQuantity) {
+    console.log('나 재고입력 왔쩌염')
     selectServices(
+      totalQuantity,
+      ({ data }) => {
+        commit('SET_STOCK_AMOUNT', data)
+        console.log('성공')
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  modifyStockAmount({ commit }, totalQuantity) {
+    console.log('나 재고수정 왔쩌염')
+    modifyServices(
+      totalQuantity,
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
         console.log('성공')
@@ -152,6 +165,8 @@ export const actions = {
     listOrders(
       flightNum,
       ({ data }) => {
+        console.log('store입니다 ' + JSON.stringify(data))
+        console.log('store입니다 ' + data)
         commit('SET_ORDERS_LIST', data.serviceList)
         console.log('성공')
       },

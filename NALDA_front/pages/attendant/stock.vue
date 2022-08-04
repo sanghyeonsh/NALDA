@@ -157,8 +157,6 @@ export default {
       nonAlcoholQuantity: [],
       amenityQuantity: [],
       TotalServiceQuantity: [],
-      stockList: [],
-      total: 0,
       whole: [],
     }
   },
@@ -172,6 +170,7 @@ export default {
       'alcoholsList',
       'nonalcoholosList',
       'amenityList',
+      'setStock',
     ]),
   },
   created() {
@@ -179,7 +178,11 @@ export default {
     // this.setQuantityList()
   },
   methods: {
-    ...mapActions('attendant', ['getServiceList', 'setStockAmount']),
+    ...mapActions('attendant', [
+      'getServiceList',
+      'setStockAmount',
+      'modifyStockAmount',
+    ]),
     showSnack() {
       this.ListType = 'snacks'
     },
@@ -205,36 +208,35 @@ export default {
       this.whole.push(this.alcoholsList)
       this.whole.push(this.nonalcoholosList)
       this.whole.push(this.amenityList)
-      const length =
-        this.snackList.length +
-        this.alcoholsList.length +
-        this.nonalcoholosList.length +
-        this.amenityList.length
-      // console.log(this.whole)
-      console.log(length)
+
+      // console.log(this.amenityQuantity)
+      // 1. 전체 재고 목록 배열을 하나 생성한다.
       for (let type = 0; type < this.whole.length; type++) {
         for (let i = 0; i < this.whole[type].length; i++) {
           const stock = {
             serviceCode: this.whole[type][i].serviceCode,
             flightNum: this.flightNum,
-            total: '0',
+            total: this.whole[type][i].serviceQuantity,
           }
+          // console.log(stock)
           this.TotalServiceQuantity.push(stock)
         }
       }
-      console.log(this.TotalServiceQuantity)
+
+      // 2. input 값들 해당 자리에 채워주기
+      // snackQuantity, alcoholQuantity, nonAlcoholQuantity, amenityQuantity에 각각의 input 값들이 담겨있음
       for (
         let codenum = 0;
         codenum < this.TotalServiceQuantity.length;
         codenum++
       ) {
         if (codenum < this.snackList.length) {
-          if (this.snackQuantity[codenum] !== 'empty')
+          // console.log('스낵수량입니다 ' + this.snackQuantity[codenum])
+          if (this.snackQuantity[codenum] !== undefined)
             this.TotalServiceQuantity[codenum].total =
               this.snackQuantity[codenum]
-          else this.TotalServiceQuantity[codenum].total = '0'
         } else if (codenum < this.snackList.length + this.alcoholsList.length) {
-          if (this.alcoholQuantity[codenum] !== 'empty')
+          if (this.alcoholQuantity[codenum] !== undefined)
             this.TotalServiceQuantity[codenum].total =
               this.alcoholQuantity[codenum - this.snackList.length]
         } else if (
@@ -243,7 +245,7 @@ export default {
             this.alcoholsList.length +
             this.nonalcoholosList.length
         ) {
-          if (this.nonAlcoholQuantity[codenum] !== 'empty')
+          if (this.nonAlcoholQuantity[codenum] !== undefined)
             this.TotalServiceQuantity[codenum].total =
               this.nonAlcoholQuantity[
                 codenum - (this.snackList.length + this.alcoholsList.length)
@@ -255,7 +257,7 @@ export default {
             this.nonalcoholosList.length +
             this.amenityList.length
         ) {
-          if (this.amenityQuantity[codenum] !== 'empty')
+          if (this.amenityQuantity[codenum] !== undefined)
             this.TotalServiceQuantity[codenum].total =
               this.amenityQuantity[
                 codenum -
@@ -265,13 +267,20 @@ export default {
               ]
         }
       }
-      // console.log(this.TotalServiceQuantity)
-      this.stockList.push(this.TotalServiceQuantity)
-      // console.log(this.stockList)
-      this.$store.dispatch(
-        'attendant/setStockAmount',
-        this.TotalServiceQuantity
-      )
+      console.log(this.TotalServiceQuantity)
+
+      // 재고 입력 or 수정으로 보내기
+      if (this.setStock === false) {
+        this.$store.dispatch(
+          'attendant/setStockAmount',
+          this.TotalServiceQuantity
+        )
+      } else if (this.setStock === true) {
+        this.$store.dispatch(
+          'attendant/modifyStockAmount',
+          this.TotalServiceQuantity
+        )
+      }
     },
   },
 }

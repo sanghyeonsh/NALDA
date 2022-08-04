@@ -195,13 +195,13 @@ export default {
     ...mapState('attendant', ['ordersList']),
   },
   created() {
-    const promise = new Promise((resolve, reject) => {
-      resolve()
-    })
-    promise.then(async () => {
-      await this.getListOrders()
-    })
-
+    // const promise = new Promise((resolve, reject) => {
+    //   resolve()
+    // })
+    // promise.then(async () => {
+    //   await this.getListOrders(1)
+    // })
+    this.getListOrders(1)
     // console.log(this.request.length % 4)
     // console.log(3 - (this.request.length % 4))
     // if (this.request.length % 4 !== 0) {
