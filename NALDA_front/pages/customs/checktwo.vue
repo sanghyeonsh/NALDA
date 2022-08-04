@@ -7,11 +7,12 @@
           <div class="title-container">
             <div class="title-items">
               <div class="customform-title">여행자 휴대품 신고서</div>
-              <nuxt-link to="/customs/detail">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
-                >
-              </nuxt-link>
+              <b-button
+                class="next-page"
+                variant="info"
+                @click="$router.push('/customs/detail')"
+                >다음 페이지</b-button
+              >
             </div>
           </div>
           <div class="to-declaration-wrap">
@@ -191,14 +192,16 @@ export default {
 }
 
 .next-page {
-  width: 200%;
+  width: 20%;
   height: 60%;
+  margin-bottom: 2%;
 }
 
 .title-items {
   width: 75%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .title-container {
   display: flex;
