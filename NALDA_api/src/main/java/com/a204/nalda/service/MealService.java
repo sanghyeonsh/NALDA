@@ -184,6 +184,25 @@ public class MealService {
         seatMealRepository.save(seatMeal);
     }
 
+    public List<SeatMealDto> listSeatMeal(String flightNum){
+        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        List<SeatMeal> seatMeals = seatMealRepository.findByFlightId(flightId);
+        List<SeatMealDto> seatMealDTOS = new ArrayList<>();
+
+        for (SeatMeal seatMeal : seatMeals) {
+            String mealMenu = mealRepository.findById(seatMeal.getMeal().getId()).get().getMealMenu();
+            String seatNum = seatRepository.findById(seatMeal.getSeat().getId()).get().getSeatNum();
+            String username = userRepository.findById(seatMeal.getUser().getId()).get().getUsername();
+            SeatMealDto seatMealDto = SeatMealDto.builder()
+                    .flightNum(flightNum)
+                    .mealMenu(mealMenu)
+                    .seatNum(seatNum)
+                    .username(username)
+                    .build();
+            seatMealDTOS.add(seatMealDto);
+        }
+        return seatMealDTOS;
+    }
 
 
 
