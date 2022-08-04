@@ -60,11 +60,11 @@ public class MealController {
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/select/{mealMenu}")
-    public ResponseEntity<?> mealInfoByMeal(@PathVariable("mealMenu") String mealMenu) {
+    @GetMapping("/select/{mealId}")
+    public ResponseEntity<?> mealInfoByMeal(@PathVariable("mealId") Long mealId) {
         Map<String,Object> result = new HashMap<>();
         try {
-            MealDto mealDto = mealService.mealInfo(mealMenu);
+            MealDto mealDto = mealService.mealInfo(mealId);
             result.put("mealInfo", mealDto);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -76,11 +76,11 @@ public class MealController {
     }
 
 
-    @GetMapping("/detail/{mealMenu}")
-    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealMenu") String mealMenu) {
+    @GetMapping("/detail/{mealId}")
+    public ResponseEntity<?> mealDetailsByMeal(@PathVariable("mealId") Long mealId) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealMenu);
+            List<MealDetailDto> mealDetailDTOS = mealService.listMealDetail(mealId);
             result.put("mealDetail", mealDetailDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -90,11 +90,11 @@ public class MealController {
         }
 
     }
-    @GetMapping("/allergy/{mealMenu}")
-    public ResponseEntity<?> allergyByMeal(@PathVariable("mealMenu") String mealMenu) {
+    @GetMapping("/allergy/{mealId}")
+    public ResponseEntity<?> allergyByMeal(@PathVariable("mealId") Long mealId) {
         Map<String,Object> result = new HashMap<>();
         try {
-            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealMenu);
+            List<AllergyDto> allergyDTOS = mealService.listAllergy(mealId);
             result.put("mealAllergy", allergyDTOS);
             return new ResponseEntity<>(result,HttpStatus.OK);
         } catch (Exception e) {
@@ -107,6 +107,7 @@ public class MealController {
 
     @PostMapping("/choice")
     public ResponseEntity<?> choiceMeal(@RequestBody SeatMealDto seatMealDto){
+        System.out.println(seatMealDto.toString());
         Map<String,Object> result = new HashMap<>();
         try{
             mealService.seatMealInput(seatMealDto);

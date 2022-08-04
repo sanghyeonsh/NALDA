@@ -51,7 +51,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
                 new ObjectMapper().writeValue(response.getOutputStream(),body);
             }
-            System.out.println(user);
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
 
@@ -94,6 +93,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Map<String,Object> body = new LinkedHashMap<>();
         body.put("msg", "로그인 성공");
         body.put("userInfo", userService.loginUser(principalDetails.getUser().getUsername()));
+        body.put("ip",request.getRemoteAddr());
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 

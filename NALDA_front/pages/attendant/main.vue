@@ -2,19 +2,21 @@
   <div class="main-container">
     <div class="main-container-box" @click="moveRequestPage">
       <div>
-        <img class="image" src="../../static/main/call_sevice_icon.png" alt="service" />
+        <img class="image" src="/main/call_sevice_icon.png" alt="service" />
         <h3>Request</h3>
       </div>
     </div>
-    <div class="main-container-box" @click="moveStockPage">
-      <div>
-        <img class="image" src="../../static/main/excel_icon.png" alt="custom_declaration" />
-        <h3>Maninging Stock</h3>
-      </div>
+    <div class="main-container-box">
+      <nuxt-link to="/attendant/request" style="text-decoration: none">
+        <div>
+          <img class="image" src="/main/excel_icon.png" alt="custom_declaration" />
+          <h3>Maninging Stock</h3>
+        </div>
+      </nuxt-link>
     </div>
-    <div class="main-container-box" @click="moveMealPage">
+    <div class="main-container-box">
       <div>
-        <img class="image" src="../../static/orders/food.png" alt="meal_info" />
+        <img class="image" src="/orders/food.png" alt="airport_info" />
         <h3>Meal Service</h3>
       </div>
     </div>

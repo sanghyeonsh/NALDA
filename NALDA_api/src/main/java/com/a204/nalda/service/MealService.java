@@ -93,6 +93,7 @@ public class MealService {
             imageStream.transferTo(bos);
             byte[] bytesData = bos.toByteArray();
             MealDto mealDto = MealDto.builder()
+                    .mealId(meal.getId())
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
                     .bytesdata(bytesData)
@@ -103,9 +104,8 @@ public class MealService {
     }
 
     @Transactional
-    public MealDto mealInfo(String mealMenu) throws IOException {
-//        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
-        Meal mealInfo = mealRepository.findTopByMealMenu(mealMenu);
+    public MealDto mealInfo(Long mealId) throws IOException {
+        Meal mealInfo = mealRepository.findById(mealId).get();
         ByteArrayOutputStream bos;
         String fileName;
         String filePath;
@@ -125,8 +125,7 @@ public class MealService {
         return mealDto;
     }
     @Transactional
-    public List<MealDetailDto> listMealDetail(String mealMenu){
-        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
+    public List<MealDetailDto> listMealDetail(Long mealId){
         List<MealDetail> mealDetailList = mealDetailRepository.findByMeal(mealId);
 
         List<MealDetailDto> mealDetailDTOS = new ArrayList<>();
@@ -141,8 +140,7 @@ public class MealService {
     }
 
     @Transactional
-    public List<AllergyDto> listAllergy(String mealMenu){
-        Long mealId = mealRepository.findTopByMealMenu(mealMenu).getId();
+    public List<AllergyDto> listAllergy(Long mealId){
         List<Allergy> allergyList = allergyRepository.findByMeal(mealId);
 
         List<AllergyDto> allergyDTOS = new ArrayList<>();
@@ -158,8 +156,8 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-        System.out.println("====================");
-        System.out.println(seatMealDto.toString());
+//        System.out.println("====================");
+//        System.out.println(seatMealDto.toString());
         Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
         Meal meal = Meal.builder()
                 .id(mealId)

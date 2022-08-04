@@ -4,7 +4,12 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-items">
+            <div class="customform-title">여행자 휴대품 신고서</div>
+            <nuxt-link to="/customs/checktwo">
+              <b-button class="next-page" variant="info">다음 페이지</b-button>
+            </nuxt-link>
+          </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
@@ -205,6 +210,17 @@ export default {
   justify-content: flex-end;
 }
 
+.next-page {
+  width: 200%;
+  height: 60%;
+}
+
+.title-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
 .customs-input-container {
   width: 100%;
   height: 70vh;
@@ -242,6 +258,7 @@ export default {
   flex-direction: column;
 }
 .customform-title {
+  margin-left: 22%;
   font-size: xx-large;
   font-weight: bolder;
   text-align: center;

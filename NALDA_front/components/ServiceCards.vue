@@ -1,20 +1,16 @@
 <template>
-  <div>
-    <div class="cards row row-cols-4">
-      <div v-for="(item, idx) in items" :key="idx" class="col">
-        <div class="card" @click="ChoiceMenu(item)">
-          <!-- 서버에서 받을때 -->
-          <img
-            :src="'data:image/jpg;base64,' + item.bytesdata"
-            class="card-img-top"
-            alt="..."
-          />
-          <!-- 실험할때 -->
-          <!-- <img :src="item.download_url" class="card-img-top" alt="..." /> -->
-          <div class="card-body">
-            <div class="card-title">{{ item.serviceName }}</div>
-          </div>
-        </div>
+  <div class="snack-box">
+    <div
+      v-for="(item, idx) in items"
+      :key="idx"
+      class="snack-card"
+      @click="ChoiceMenu(item)"
+    >
+      <div class="snack-image">
+        <img :src="'data:image/jpg;base64,' + item.bytesdata" alt="..." />
+      </div>
+      <div class="snack-name">
+        {{ item.serviceName }}
       </div>
     </div>
     <ServiceModal />
@@ -22,7 +18,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -68,41 +64,51 @@ export default {
         }
       }
     },
+    ...mapMutations('menu', [
+      'SET_CHOICE_FOODS',
+      'DELETE_CHOICE_FOODS',
+      'CLEAR_CHOICE_FOODS',
+      'PLUS_CHOICE_FOODS',
+      'MINUS_CHOICE_FOODS',
+      'CLEAR_ITEMS',
+    ]),
   },
+  ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
 }
 </script>
 
 <style scoped>
-.cards {
-  overflow: scroll;
-  width: 100%;
-  padding: 0 10vw;
+.snack-box {
+  width: 100vw;
   height: 65vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10% 0 10%;
 }
-.cards .col {
-  padding: 20px;
-}
-.cards::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
-}
-.card {
+
+.snack-card {
+  flex-basis: 25%;
+  height: 50%;
+  padding: 30px;
   cursor: pointer;
 }
-.card-img-top {
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.snack-image {
   width: 100%;
-  height: 20vh;
+  height: 80%;
+  border: solid;
+  border-bottom: none;
 }
-.card-body {
-  padding: 15px;
-  height: 60px;
-  border-top: 2px solid;
+.snack-image img {
+  width: 100%;
+  height: 100%;
 }
-.card-title {
-  text-align: center;
-  font-size: 20px;
+.snack-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  width: 100%;
+  height: 20%;
 }
 </style>
