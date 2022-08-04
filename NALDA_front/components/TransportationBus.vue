@@ -1,12 +1,22 @@
 <template>
   <div class="transport-bus">
     <div class="bus-region">
-      <div v-for="(area, idx) in areas" :key="idx" @click="checkInfo(idx + 1)">
+      <div
+        v-for="(area, idx) in areas"
+        :key="idx"
+        class="bus-region-click"
+        @click=";[checkInfo(idx + 1), checkRegion(idx)]"
+      >
         {{ area }}
       </div>
     </div>
     <div class="bus-number">
-      <div v-for="(bus, idx) in busNum" :key="idx" @click="showTime(bus)">
+      <div
+        v-for="(bus, idx) in busNum"
+        :key="idx"
+        class="bus-number-click"
+        @click=";[showTime(bus), checkBus(idx)]"
+      >
         {{ bus }}
       </div>
     </div>
@@ -119,6 +129,35 @@ export default {
       })
       this.makeTimeTable()
     },
+    checkRegion(idx) {
+      const len = document.getElementsByClassName('bus-region-click').length
+      const check = document.getElementsByClassName('bus-region-click')[idx]
+
+      for (let i = 0; i < len; i++) {
+        document.getElementsByClassName('bus-region-click')[
+          i
+        ].style.backgroundColor = 'white'
+        document.getElementsByClassName('bus-region-click')[i].style.color =
+          'black'
+      }
+      check.style.backgroundColor = '#206e95'
+      check.style.color = 'white'
+    },
+    checkBus(idx) {
+      const len = document.getElementsByClassName('bus-number-click').length
+      const check = document.getElementsByClassName('bus-number-click')[idx]
+
+      for (let i = 0; i < len; i++) {
+        document.getElementsByClassName('bus-number-click')[
+          i
+        ].style.backgroundColor = 'white'
+        document.getElementsByClassName('bus-number-click')[i].style.color =
+          'black'
+      }
+      check.style.backgroundColor = '#206e95'
+      check.style.color = 'white'
+    },
+
     showTime(bus) {
       const promise = new Promise((resolve, reject) => {
         resolve()
@@ -205,17 +244,18 @@ export default {
   font-size: 30px;
   display: flex;
   flex-direction: column;
+  border-right: solid;
 }
 .bus-region div {
   width: 100%;
-  height: 10%;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 .bus-number {
-  height: 80%;
+  height: 100%;
   width: 25%;
   overflow: auto;
   font-size: 30px;
