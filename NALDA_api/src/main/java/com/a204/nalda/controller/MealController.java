@@ -118,6 +118,19 @@ public class MealController {
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/choice/{flightNum}")
+    public ResponseEntity<?> getSeatMeal(@PathVariable("flightNum") String flightNum) {
+        Map<String,Object> result = new HashMap<>();
+        try {
+            List<SeatMealDto> seatMealDTOS = mealService.listSeatMeal(flightNum);
+            result.put("seatMeal",seatMealDTOS);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
+    }
 
 }
