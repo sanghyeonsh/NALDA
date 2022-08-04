@@ -1,26 +1,26 @@
 <template>
   <div class="transport-bus">
     <div class="bus-region">
-      <div v-for="(region, idx) in region" :key="idx">
-        {{ region }}
+      <div v-for="(area, idx) in areas" :key="idx" @click="checkInfo(idx + 1)">
+        {{ area }}
       </div>
     </div>
     <div class="bus-number">
-      <div v-for="(time, idx) in time" :key="idx">
-        {{ time }}
+      <div v-for="(bus, idx) in busNum" :key="idx" @click="showTime(bus)">
+        {{ bus }}
       </div>
     </div>
     <div class="bus-detail">
       <div class="bus-detail-terminal">
-        <div class="terminal-1">제1터미널</div>
-        <div class="terminal-2">제2터미널</div>
+        <div class="terminal-1" @click="terminal1">제1터미널</div>
+        <div class="terminal-2" @click="terminal2">제2터미널</div>
       </div>
       <div class="bus-detail-day">
-        <div class="detail-day">평일</div>
-        <div class="detail-wday">주말</div>
+        <div class="detail-day" @click="dayType1">평일</div>
+        <div class="detail-wday" @click="dayType2">주말</div>
       </div>
       <div class="bus-detail-time">
-        <div v-for="(table, idx) in time" :key="idx">
+        <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
           {{ table }}
         </div>
       </div>
@@ -30,6 +30,7 @@
     </div>
     <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
     <button class="bus-button2" @click="ShowImage2">제2여객터미널</button>
+
     <div class="button1-image">
       <div class="button1-image-box">
         <img src="/water.png" alt="" />
@@ -44,23 +45,38 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      region: ['서울', '경기', '경기', '경기', '경기', '경기', '경기'],
-      time: [
-        '08:00',
-        '08:00',
-        '08:00',
-        '08:00',
-        '08:00',
-        '08:00',
-        '08:00',
-        '08:00',
-      ],
+      areas: ['서울', '경기', '인천', '강원', '충청', '경상', '전라'],
+      busNum: [],
+      infos: {},
+      terminal: 1,
+      daytype: 1,
+      choiceTime: [],
     }
   },
+  computed: {
+    ...mapState('transportation', ['info', 'time', 'stop']),
+  },
+  created() {
+    // this.getInfo('1')
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getInfo(String(1))
+      await this.getTime(String(6300))
+      for (let i = 0; i < this.info.totalCount; i++) {
+        this.busNum.push(this.info.items[i].busnumber)
+      }
+      this.makeTimeTable()
+    })
+  },
   methods: {
+    ...mapActions('transportation', ['getInfo', 'getTime', 'getStop']),
     ShowImage1() {
       const image1 = document.getElementsByClassName('button1-image')[0]
       const image2 = document.getElementsByClassName('button2-image')[0]
@@ -88,6 +104,91 @@ export default {
           image2.style.display = 'none'
         }
       }
+    },
+    checkInfo(area) {
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getInfo(String(area))
+        this.busNum = []
+        for (let i = 0; i < this.info.totalCount; i++) {
+          this.busNum.push(this.info.items[i].busnumber)
+        }
+        await this.getTime(this.info.items[0].busnumber)
+      })
+      this.makeTimeTable()
+    },
+    showTime(bus) {
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getTime(bus)
+        this.makeTimeTable()
+      })
+    },
+    terminal1() {
+      this.terminal = 1
+      document.getElementsByClassName('terminal-1')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('terminal-1')[0].style.color = 'white'
+      document.getElementsByClassName('terminal-2')[0].style.background =
+        'white'
+      document.getElementsByClassName('terminal-2')[0].style.color = 'black'
+      this.makeTimeTable()
+    },
+    terminal2() {
+      this.terminal = 2
+      document.getElementsByClassName('terminal-2')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('terminal-2')[0].style.color = 'white'
+      document.getElementsByClassName('terminal-1')[0].style.background =
+        'white'
+      document.getElementsByClassName('terminal-1')[0].style.color = 'black'
+      this.makeTimeTable()
+    },
+    dayType1() {
+      this.daytype = 1
+      document.getElementsByClassName('detail-day')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('detail-day')[0].style.color = 'white'
+      document.getElementsByClassName('detail-wday')[0].style.background =
+        'white'
+      document.getElementsByClassName('detail-wday')[0].style.color = 'black'
+      this.makeTimeTable()
+    },
+    dayType2() {
+      this.daytype = 2
+      document.getElementsByClassName('detail-wday')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('detail-wday')[0].style.color = 'white'
+      document.getElementsByClassName('detail-day')[0].style.background =
+        'white'
+      document.getElementsByClassName('detail-day')[0].style.color = 'black'
+      this.makeTimeTable()
+    },
+    makeTimeTable() {
+      let temp = 0
+      let tempTime = ''
+      if (this.terminal === 1 && this.daytype === 1) {
+        temp = 0
+      } else if (this.terminal === 1 && this.daytype === 2) {
+        temp = 1
+      } else if (this.terminal === 2 && this.daytype === 1) {
+        temp = 2
+      } else {
+        temp = 3
+      }
+      tempTime = this.time[temp]
+      console.log(tempTime)
+      // this.choiceTime = []
+      if (tempTime === null) {
+        this.choiceTime = ['배정된 버스가 없습니다.']
+      } else {
+        this.choiceTime = tempTime.split(', ')
+      }
+      console.log(this.choiceTime)
     },
   },
 }
@@ -145,6 +246,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #206e95;
+  color: white;
+  border-bottom: 1px solid white;
 }
 .terminal-2 {
   width: 50%;
@@ -152,6 +256,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid white;
 }
 .bus-detail-day {
   display: flex;
@@ -165,6 +270,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #206e95;
+  color: white;
 }
 .detail-wday {
   width: 50%;
@@ -176,7 +283,7 @@ export default {
 .bus-detail-time {
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 50%;
   flex-wrap: nowrap;
   overflow-x: auto;
   font-size: 20px;
@@ -188,6 +295,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.timeTable {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
 .bus-detail-image {
   width: 100%;
