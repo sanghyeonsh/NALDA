@@ -2,10 +2,9 @@ import {
   listMeal,
   inputMeal,
   listInput,
-  selectMeal,
   detailMeal,
   allergyMeal,
-  //   choiceMeal,
+  selectMeal,
 } from '@/api/meal'
 
 export const state = () => ({
@@ -13,7 +12,7 @@ export const state = () => ({
   flightMeals: [],
   selectedMeal: {},
   details: [],
-  allergies: ['땅콩', '계란', '육류'],
+  allergies: [],
 })
 
 export const mutations = {
@@ -40,7 +39,7 @@ export const mutations = {
     state.flightMeals = []
   },
   CLEAR_SELECTED_MEAL(state) {
-    state.selectedMeal = null
+    state.selectedMeal = {}
   },
   CLEAR_DETAIL_MEAL(state) {
     state.details = []
@@ -115,9 +114,9 @@ export const actions = {
     detailMeal(
       mealId,
       ({ data }) => {
-        console.log(data)
-        if (data.length > 0) {
-          commit('SET_DETAIL_MEAL')
+        // console.log(data.mealDetail)
+        if (data.mealDetail.length > 0) {
+          commit('SET_DETAIL_MEAL', data.mealDetail)
         }
       },
       (error) => {
@@ -130,9 +129,9 @@ export const actions = {
     allergyMeal(
       mealId,
       ({ data }) => {
-        console.log(data)
-        if (data.length > 0) {
-          commit('SET_ALLERGY_MEAL')
+        // console.log(data.mealAllergy)
+        if (data.mealAllergy.length > 0) {
+          commit('SET_ALLERGY_MEAL', data.mealAllergy)
         }
       },
       (error) => {

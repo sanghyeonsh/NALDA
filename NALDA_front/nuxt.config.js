@@ -59,4 +59,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo',
+  //     changeOrigin: true,
+  //     secure: false,
+  //     pathRewrite: {
+  //       '^/api': '',
+  //     },
+  //   },
+  // },
 }
