@@ -34,12 +34,12 @@
           {{ table }}
         </div>
       </div>
-      <div class="bus-detail-image">
-        <img src="/logo.png" alt="" />
+      <div class="bus-detail-map">
+        <TransportationBusMap />
       </div>
     </div>
-    <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
-    <button class="bus-button2" @click="ShowImage2">제2여객터미널</button>
+    <!-- <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
+    <button class="bus-button2" @click="ShowImage2">제2여객터미널</button> -->
 
     <div class="button1-image">
       <div class="button1-image-box">
@@ -269,7 +269,7 @@ export default {
   cursor: pointer;
 }
 .bus-detail {
-  height: 60%;
+  height: 100%;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -277,7 +277,7 @@ export default {
 .bus-detail-terminal {
   display: flex;
   width: 100%;
-  height: 15%;
+  height: 10%;
   font-size: 20px;
 }
 .terminal-1 {
@@ -323,7 +323,7 @@ export default {
 .bus-detail-time {
   display: flex;
   width: 100%;
-  height: 50%;
+  height: 10%;
   flex-wrap: nowrap;
   overflow-x: auto;
   font-size: 20px;
@@ -341,17 +341,14 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.bus-detail-image {
+.bus-detail-map {
   width: 100%;
   height: 65%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.bus-detail-image img {
-  width: 100%;
-  height: 100%;
-}
+
 .bus-button1 {
   position: fixed;
   right: 20%;

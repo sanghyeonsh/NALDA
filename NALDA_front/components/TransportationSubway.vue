@@ -5,7 +5,13 @@
       <div class="terminal-2">제2터미널</div>
     </div>
     <div class="subway-enter-time-box">
-      <div class="subway-enter-time">시간치는곳</div>
+      <div class="subway-enter-time">
+        시간 입력하기
+
+        <v-app id="inspire">
+          <v-time-picker v-model="e7" format="24hr" landscape></v-time-picker>
+        </v-app>
+      </div>
       <div class="subway-show-time">빠른열차보여주는곳</div>
       <div class="previous-next-time-box">
         <div>다음열차</div>
@@ -16,9 +22,20 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      e7: null,
+    }
+  },
+}
+</script>
 
-<style scoped>
+<style>
+.v-picker--landscape .v-picker__title {
+  width: 100px;
+}
 .subway-box {
   width: 100vw;
   height: 85vh;
@@ -52,10 +69,9 @@
 .subway-enter-time {
   width: 100%;
   height: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
 }
+
 .subway-show-time {
   width: 100%;
   height: 30%;

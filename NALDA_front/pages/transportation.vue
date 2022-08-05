@@ -46,7 +46,7 @@
       <TransportationBus />
     </div>
     <div class="transport-body" :class="{ Taxi: isTaxi }">
-      <h1>Taxi</h1>
+      <TransportationTaxi />
     </div>
     <div class="transport-body" :class="{ Subway: isSubway }">
       <TransportationSubway />

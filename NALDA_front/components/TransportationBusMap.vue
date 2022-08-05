@@ -2,14 +2,28 @@
   <div class="bus-map">
     <div class="bus-station">
       <div v-for="(station, idx) in stations" :key="idx" class="bus-box">
-        <div v-if="idx != 7" class="station-name">
-          {{ station }}
+        <!-- 전체 다그려주는 부분 아래 div 그중에서 오른쪽 끝 왼쪽 끝 만들어지는 부분
+        만 안나오게 해줘야함-->
+        <div
+          v-if="station != '' && idx != 19 && idx != 20 && idx != 39"
+          class="station-name"
+        >
+          <div class="station-name-box">{{ station }}</div>
+          <div class="station-name-check"></div>
         </div>
-        <div v-if="idx == 7" class="station-name1">
-          {{ station }}
+        <!-- 오른쪽에 체크해줘야하는 부분 -->
+
+        <div v-if="idx == 19 || idx == 39" class="check-right">
+          <div class="station-name-box">
+            {{ station }}
+          </div>
+          <div class="station-name-check"></div>
         </div>
-        <div v-if="idx != 3" class="station-box"></div>
-        <div v-if="idx == 3" class="station-box1"></div>
+        <!-- 왼쪽에 체크해줘야하는 부분 -->
+        <div v-if="idx == 20" class="check-left">
+          <div class="station-name-box">{{ station }}</div>
+          <div class="station-name-check"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -19,7 +33,48 @@
 export default {
   data() {
     return {
-      stations: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      stations: [
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '',
+        '',
+        '',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+        '서울역',
+      ],
     }
   },
 }
@@ -27,8 +82,8 @@ export default {
 
 <style scoped>
 .bus-map {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   padding: 20px;
 }
 .bus-station {
@@ -39,36 +94,49 @@ export default {
   align-items: flex-start;
 }
 .bus-box {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
+  width: 10%;
   height: 50%;
 }
 .station-name {
   width: 100%;
-  height: 40%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid;
+}
+.check-right {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: solid;
+  border-bottom: solid;
   justify-content: center;
   align-items: center;
 }
 
-.station-name1 {
+.station-name-box {
   width: 100%;
-  height: 40%;
+  height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: solid;
 }
-.station-box {
-  width: 100%;
-  height: 60%;
-  border-top: solid;
+.station-name-check {
+  background-color: black;
+  width: 10%;
+  height: 10%;
 }
-.station-box1 {
+.check-left {
   width: 100%;
-  height: 60%;
-  border-top: solid;
-  border-right: solid;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-left: solid;
+  border-bottom: solid;
+  justify-content: center;
+  align-items: center;
 }
 </style>
