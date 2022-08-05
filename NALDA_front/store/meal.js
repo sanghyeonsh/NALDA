@@ -173,14 +173,16 @@ export const actions = {
   },
   getMealList({ commit }, flightNum) {
     commit('CLEAR_SEATMEAL_LIST')
+    console.log(111111111)
     getSeatMeal(
       flightNum,
       ({ data }) => {
-        console.log(data)
-        if (data.length > 0) {
-          console.log('store입니다 ' + data.length)
-          console.log('store입니다 ' + data)
-          commit('SET_SEATMEAL_LIST', data)
+        console.log(data.seatMeal)
+        // console.log(data.seatMeal.length)
+        if (data.seatMeal.length > 0) {
+          // console.log('store입니다 ' + data.seatMeal.length)
+          // console.log('store입니다 ' + data.seatMeal)
+          commit('SET_SEATMEAL_LIST', data.seatMeal)
         }
       },
       (error) => {

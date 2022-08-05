@@ -53,9 +53,8 @@ export const mutations = {
 
   SET_ORDERS_LIST(state, data) {
     // console.log('데이터' + data)
-    state.orderList = []
-    state.completeList = []
-    console.log('store입니다 ' + data.length)
+    console.log('안나와  SET_ORDERS_LIST')
+    // console.log('store입니다 ' + data.length)
     for (let i = 0; i < data.length; i++) {
       if (data[i].classification === 'SNACK&DRINK') {
         data[i].classification = '취식 및 음료'
@@ -65,20 +64,31 @@ export const mutations = {
         data[i].classification = '편의물품'
       }
       if (data[i].status === 'PROGRESS') {
+        console.log('푸쉬')
         state.ordersList.push(data[i])
       } else if (data[i].status === 'DONE') {
+        console.log('done푸쉬')
         state.completeList.push(data[i])
       }
     }
-    console.log('store입니다 ' + state.orderList)
-    console.log('store입니다 ' + state.completeList)
+    // console.log(999999)
+    // console.log(state.ordersList)
+    // console.log(88888888)
+    // console.log(state.completeList)
+    // console.log('store입니다 ' + state.orderList)
+    // console.log('store입니다 ' + state.completeList)
+  },
+
+  CREAR_ORDERS_LIST(state) {
+    state.ordersList = []
+    state.completeList = []
   },
 }
 
 export const getters = {
   ordersObject(state) {
     const request = []
-    console.log(state.ordersList.length)
+    // console.log(state.ordersList.length)
     if (state.ordersList.length > 0)
       for (let i = 0; i < state.ordersList.length; i++) {
         const order = {
@@ -162,11 +172,14 @@ export const actions = {
     )
   },
   getListOrders({ commit }, flightNum) {
+    commit('CREAR_ORDERS_LIST')
+    // console.log(11111111111)
     listOrders(
       flightNum,
       ({ data }) => {
-        console.log('store입니다 ' + JSON.stringify(data))
-        console.log('store입니다 ' + data)
+        // console.log(222222222)
+        // console.log('store입니다 ' + JSON.stringify(data))
+        // console.log('store입니다 ' + data)
         commit('SET_ORDERS_LIST', data.serviceList)
         console.log('성공')
       },
@@ -175,18 +188,19 @@ export const actions = {
       }
     )
   },
-  updateOrderStatus(orderId) {
-    console.log(11111111111)
-    console.log(orderId)
-    updateStatus(
+  async updateOrderStatus({ commit, dispatch }, orderId) {
+    // console.log(33333333333)
+    await updateStatus(
       orderId,
       ({ data }) => {
+        // console.log(44444444444)
+        // console.log('updateOrderStatus')
         console.log(data)
-        console.log('성공')
       },
       (error) => {
         console.log(error)
       }
     )
+    dispatch('getListOrders', 1)
   },
 }

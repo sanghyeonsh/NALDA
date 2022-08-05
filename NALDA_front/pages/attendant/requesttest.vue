@@ -195,12 +195,6 @@ export default {
     ...mapState('attendant', ['ordersList']),
   },
   created() {
-    // const promise = new Promise((resolve, reject) => {
-    //   resolve()
-    // })
-    // promise.then(async () => {
-    //   await this.getListOrders(1)
-    // })
     this.getListOrders(1)
     // console.log(this.request.length % 4)
     // console.log(3 - (this.request.length % 4))
@@ -284,33 +278,12 @@ export default {
       if (count === this.details.length && count !== 0) {
         //
         console.log(this.details[0].id)
-        // this.getListOrders() // 다시 listorder 해주기
-        this.updateOrderStatus(this.details[0].id) // 해당 id값 전달
-        this.getListOrders()
-
-        this.completed = this.completeObject
-        console.log(this.completed)
-        // for (let i = 0; i < this.ordersObject.length; i++) {
-        //   if (this.details.length > 1) {
-        //     this.ordersObject[i].요청사항 =
-        //       this.ordersObject[i].주문상세[0].orderName +
-        //       ' 외 ' +
-        //       (this.details.length - 1)
-        //   } else {
-        //     this.ordersObject[i].요청사항 =
-        //       this.ordersObject[i].주문상세[0].orderName
-        //   }
-        //   if (this.details[0].id === this.ordersObject[i].id) {
-        //     const completeItem = {
-        //       좌석: this.ordersObject[i].좌석,
-        //       분류: this.ordersObject[i].분류,
-        //       요청사항: this.ordersObject[i].요청사항,
-        //       요청시각: this.ordersObject[i].요청시각,
-        //       완료시각: currentTime,
-        //     }
-        //     this.completed.push(completeItem)
-        //   }
-        // }
+        const promise = new Promise((resolve, reject) => {
+          resolve()
+        })
+        promise.then(async () => {
+          await this.updateOrderStatus(this.details[0].id)
+        })
       }
     },
   },
