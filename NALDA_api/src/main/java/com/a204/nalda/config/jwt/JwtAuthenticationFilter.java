@@ -20,6 +20,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -88,12 +90,36 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .sign(Algorithm.HMAC512("NALDA_with"));
 
         response.addHeader("Authorization", "Bearer " + jwtToken);
+        System.out.println("RemoteHost : " + request.getRemotePort());
+        String ip = request.getHeader("X-Forwarded-For");
+//        System.out.println("X-Forwarded-For : " +ip);
+        if (ip == null) {
+
+            ip = request.getHeader("Proxy-Client-IP");
+//            System.out.println("Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+//            System.out.println("WL-Proxy-Client-IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+//            System.out.println("HTTP_CLIENT_IP : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+//            System.out.println("HTTP_X_FORWARDED_FOR : " + ip);
+        }
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+//            System.out.println("RemoteAddr() : " + ip);
+        }
 
         //인증 성공 메세지를 클라이언트로보낸다..
         Map<String,Object> body = new LinkedHashMap<>();
         body.put("msg", "로그인 성공");
         body.put("userInfo", userService.loginUser(principalDetails.getUser().getUsername()));
-        body.put("ip",request.getRemoteAddr());
+        body.put("ip",ip);
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 

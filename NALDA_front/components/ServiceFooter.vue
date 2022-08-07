@@ -1,32 +1,5 @@
 <template>
   <div class="Service-footer">
-    <div class="Service-footer-head">
-      <div class="Service-footer-item-menu">메뉴</div>
-      <div class="Service-footer-item-num">수량</div>
-    </div>
-    <div class="Service-footer-body">
-      <div
-        v-for="(item, idx) in selected_foods"
-        :key="idx"
-        class="Service-footer-content"
-      >
-        <div class="Service-footer-content-name">
-          <div class="name-name">
-            {{ item.serviceName }}
-          </div>
-          <!-- <div class="name-delete" @click="DELETE_CHOICE_FOODS(item)">삭제</div> -->
-        </div>
-        <div class="Service-footer-content-num">
-          <button @click="MINUS_CHOICE_FOODS(item)">
-            <img src="/orders/minus.png" alt="" />
-          </button>
-          <div class="Service-footer-content-number">{{ item.num }}</div>
-          <button @click="PLUS_CHOICE_FOODS(item)">
-            <img src="/orders/plus.png" alt="" />
-          </button>
-        </div>
-      </div>
-    </div>
     <ServiceCheck />
     <button class="order-button" @click="MoveCheck">주문하기</button>
   </div>
