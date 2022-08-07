@@ -97,6 +97,25 @@ public class OrdersService {
 
     }
 
+    public List<ServiceCntDto> serviceCnt(String flightNum){
+
+        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        List<ServiceStock> serviceStocks = serviceStockRepository.findByFlightId(flightId);
+        List<ServiceCntDto> serviceCntDTOS = new ArrayList<>();
+        for(ServiceStock serviceStock : serviceStocks){
+            Long serviceCodeId = serviceStockRepository.findById(serviceStock.getId()).get().getServiceCodes().getId();
+            String serviceCode = serviceRepository.findById(serviceCodeId).get().getCode();
+            serviceCntDTOS.add(ServiceCntDto.builder()
+                            .flightNum(flightNum)
+                            .serviceCode(serviceCode)
+                            .total(serviceStock.getTotal())
+                            .build());
+        }
+        return serviceCntDTOS;
+
+    }
+
+
     @Transactional
     public void serviceCntInput(List<ServiceCntDto> serviceCntDTOS) {
 
