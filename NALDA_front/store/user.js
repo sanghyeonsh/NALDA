@@ -1,7 +1,7 @@
 import { login, mypage, modifyMember } from '@/api/user'
 
 export const state = () => ({
-  loginMember: null,
+  loginMember: '',
   memberDetail: null,
 })
 
@@ -47,7 +47,11 @@ export const mutations = {
   },
 }
 
-export const getters = {}
+export const getters = {
+  isLogin(state) {
+    return !state.loginMember === null
+  },
+}
 
 export const actions = {
   inputLogin({ commit }, userInfo) {
@@ -62,8 +66,8 @@ export const actions = {
         sessionStorage.setItem('Authorization', headers.authorization)
         if (data.msg === '로그인 성공') {
           commit('SET_LOGIN_MEMBER', data.userInfo)
-          console.log(data.ip)
           this.$router.push('/main')
+          console.log(data.ip)
         } else {
           alert('실패')
         }

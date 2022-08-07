@@ -15,7 +15,7 @@ export default {
   methods: {
     ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     moveMain() {
-      this.$router.push('/main')
+      this.$router.push('/user/login')
     },
   },
 }

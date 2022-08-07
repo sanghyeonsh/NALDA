@@ -26,6 +26,16 @@
 <script>
 export default {
   name: 'WaitingPage',
+  mounted() {
+    this.moveMain()
+  },
+  methods: {
+    moveMain() {
+      window.setTimeout(() => {
+        this.$router.push('/main')
+      }, 3000)
+    },
+  },
 }
 </script>
 
