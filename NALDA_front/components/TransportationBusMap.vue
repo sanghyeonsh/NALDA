@@ -9,7 +9,9 @@
           class="station-name"
         >
           <div class="station-name-box">{{ station }}</div>
-          <div class="station-name-check"></div>
+          <div class="station-name-check">
+            <img src="/transportation/bus-stop-icon.png" alt="" />
+          </div>
         </div>
         <!-- 오른쪽에 체크해줘야하는 부분 -->
 
@@ -33,52 +35,6 @@
 export default {
   // eslint-disable-next-line vue/require-prop-types
   props: ['stations'],
-  // data() {
-  //   return {
-  //     stations: [
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '',
-  //       '',
-  //       '',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //       '서울역',
-  //     ],
-  //   }
-  // },
 }
 </script>
 
@@ -107,6 +63,7 @@ export default {
   justify-content: center;
   align-items: center;
   border-bottom: solid;
+  border-color: cornflowerblue;
 }
 .check-right {
   width: 100%;
@@ -117,6 +74,7 @@ export default {
   border-bottom: solid;
   justify-content: center;
   align-items: center;
+  border-color: cornflowerblue;
 }
 
 .station-name-box {
@@ -125,11 +83,18 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: rotate(-40deg);
 }
 .station-name-check {
-  background-color: black;
-  width: 10%;
-  height: 10%;
+  /* background-color: cornflowerblue; */
+  /* border-color: cornflowerblue; */
+  width: 25%;
+  height: 25%;
+}
+.station-name-check img {
+  width: 100%;
+  height: 100%;
+  filter: opacity(0.5) drop-shadow(0 0 0 cornflowerblue);
 }
 .check-left {
   width: 100%;
@@ -140,5 +105,6 @@ export default {
   border-bottom: solid;
   justify-content: center;
   align-items: center;
+  border-color: cornflowerblue;
 }
 </style>

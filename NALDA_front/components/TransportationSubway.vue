@@ -42,11 +42,8 @@
     <div class="terminal-map">
       <v-app id="inspire">
         <v-carousel hide-delimiters height="auto">
-          <v-carousel-item
-            v-for="(item, i) in items"
-            :key="i"
-            :src="item.src"
-          ></v-carousel-item>
+          <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
+          </v-carousel-item>
         </v-carousel>
       </v-app>
     </div>
