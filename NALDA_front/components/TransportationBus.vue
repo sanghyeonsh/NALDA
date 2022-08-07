@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="bus-detail-map">
-        <TransportationBusMap />
+        <TransportationBusMap :stations="choiceStation" />
       </div>
     </div>
     <!-- <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
@@ -66,6 +66,7 @@ export default {
       terminal: 1,
       daytype: 1,
       choiceTime: [],
+      choiceStation: [],
     }
   },
   computed: {
@@ -125,9 +126,12 @@ export default {
         for (let i = 0; i < this.info.totalCount; i++) {
           this.busNum.push(this.info.items[i].busnumber)
         }
+        console.log(this.info)
         await this.getTime(this.info.items[0].busnumber)
+        await this.getStop(this.info.items[0].busnumber)
+        this.makeTimeTable()
+        this.makeStationTable()
       })
-      this.makeTimeTable()
     },
     checkRegion(idx) {
       const len = document.getElementsByClassName('bus-region-click').length
@@ -142,6 +146,7 @@ export default {
       }
       check.style.backgroundColor = '#206e95'
       check.style.color = 'white'
+      this.checkBus(0)
     },
     checkBus(idx) {
       const len = document.getElementsByClassName('bus-number-click').length
@@ -164,7 +169,9 @@ export default {
       })
       promise.then(async () => {
         await this.getTime(bus)
+        await this.getStop(bus)
         this.makeTimeTable()
+        this.makeStationTable()
       })
     },
     terminal1() {
@@ -229,6 +236,10 @@ export default {
       }
       console.log(this.choiceTime)
     },
+    makeStationTable() {
+      this.choiceStation = this.stop.split(', ')
+      console.log(this.choiceStation)
+    },
   },
 }
 </script>
@@ -254,6 +265,10 @@ export default {
   align-items: center;
   cursor: pointer;
 }
+.bus-region-click:first-child {
+  background-color: #206e95;
+  color: white;
+}
 .bus-number {
   height: 100%;
   width: 25%;
@@ -268,6 +283,11 @@ export default {
   align-items: center;
   cursor: pointer;
 }
+.bus-number-click:first-child {
+  background-color: #206e95;
+  color: white;
+}
+
 .bus-detail {
   height: 100%;
   width: 50%;

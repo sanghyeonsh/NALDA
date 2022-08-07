@@ -1,16 +1,21 @@
 <template>
   <div class="subway-box">
     <div class="select-terminal-nav">
-      <div class="terminal-1">제1터미널</div>
-      <div class="terminal-2">제2터미널</div>
+      <div class="terminal-1" @click="terminal1">제1터미널</div>
+      <div class="terminal-2" @click="terminal2">제2터미널</div>
     </div>
     <div class="subway-enter-time-box">
+      <div class="subway-enter-day">
+        <div @click="dayType1">평일</div>
+        <div @click="dayType2">토요일</div>
+        <div @click="dayType3">일요일/공휴일</div>
+      </div>
       <div class="subway-blank"></div>
       <div class="subway-enter-time">
         <v-app id="inspire">
           <v-row justify="space-around" align="center">
             <v-time-picker
-              v-model="picker"
+              v-model="check"
               :landscape="$vuetify.breakpoint.smAndUp"
               ampm-in-title
             ></v-time-picker>
@@ -20,14 +25,16 @@
 
       <div class="subway-time-check">
         <v-app>
-          <v-btn depressed color="primary"> 시간선택완료 </v-btn>
+          <v-btn depressed color="primary" @click="changeTime">
+            시간선택완료
+          </v-btn>
         </v-app>
       </div>
 
       <div class="subway-show-time">
-        <div>이전열차</div>
-        <div>빠른열차 시간보여주는곳</div>
-        <div>다음열차</div>
+        <div v-if="cnt > 0" @click="dec">이전열차</div>
+        <div>{{ time[cnt] }}</div>
+        <div v-if="cnt < time.length - 1" @click="inc">다음열차</div>
       </div>
       <div class="previous-next-time-box"></div>
     </div>
@@ -47,10 +54,12 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   data() {
     return {
-      picker: null,
+      // picker: null,
       items: [
         {
           src: '/transportation/map_taxi_guide_t1_01.png',
@@ -59,11 +68,80 @@ export default {
           src: '/transportation/map_taxi_guide_t2_01.png',
         },
       ],
+      cnt: 0,
+      min: 0,
+      subwayInfo: [],
+      condition: {
+        terminal: 1,
+        type: 1,
+      },
+      time: [],
+      check: '',
     }
   },
+  computed: {
+    ...mapState('subway', ['subways', 'byCondition']),
+  },
+
+  created() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getSubway()
+      await this.getSubwayByCondition(this.condition)
+    })
+    console.log(this.byCondition)
+  },
+
   methods: {
-    Test() {
-      console.log(this.picker)
+    ...mapActions('subway', ['getSubway', 'getSubwayByCondition']),
+    terminal1() {
+      this.condition.terminal = 1
+      this.getSubwayByCondition(this.condition)
+    },
+    terminal2() {
+      this.condition.terminal = 2
+      this.getSubwayByCondition(this.condition)
+    },
+    dayType1() {
+      this.condition.type = 1
+    },
+    dayType2() {
+      this.condition.type = 2
+    },
+    dayType3() {
+      this.condition.type = 3
+    },
+
+    changeTime() {
+      for (let i = 0; i < this.byCondition.length; i++) {
+        let temp = []
+        temp = this.byCondition[i].time.split(':')
+        this.time.push(temp[0].slice(-2) + ':' + temp[1])
+
+        console.log(this.check)
+        if (this.check !== '') {
+          if (
+            parseInt(this.check.split(':')[0]) <= parseInt(temp[0].slice(-2))
+          ) {
+            if (
+              parseInt(this.check.split(':')[1]) <= parseInt(temp[1]) &&
+              this.min === 0
+            ) {
+              this.cnt = i
+              this.min = 1
+            }
+          }
+        }
+      }
+      this.min = 0
+    },
+    dec() {
+      this.cnt--
+    },
+    inc() {
+      this.cnt++
     },
   },
 }
@@ -93,7 +171,14 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
+.subway-enter-day {
+  display: flex;
+  margin: 10px;
+  justify-content: space-around;
+}
+.subway-enter-day > div {
+  margin: 10px;
+}
 .subway-enter-time-box {
   width: 35%;
   height: 100%;
