@@ -62,48 +62,132 @@
       <h1>{{section}}</h1>
       <div v-bind="businessClass" class="seat-wrap2">
         <div class="seat-row-business">
-          <div class="seat-business">{{businessClass[0].좌석}}</div>
-          <div class="seat-business">{{businessClass[1].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[0].음식=== 'Acourse', Bcourse: businessClass[0].음식==='Bcourse'}"
+          >{{businessClass[0].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[1].음식=== 'Acourse', Bcourse: businessClass[1].음식==='Bcourse'}"
+          >{{businessClass[1].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[2].좌석}}</div>
-          <div class="seat-business">{{businessClass[3].좌석}}</div>
-          <div class="seat-business">{{businessClass[4].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[2].음식=== 'Acourse', Bcourse: businessClass[2].음식==='Bcourse'}"
+          >{{businessClass[2].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[3].음식=== 'Acourse', Bcourse: businessClass[3].음식==='Bcourse'}"
+          >{{businessClass[3].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[4].음식=== 'Acourse', Bcourse: businessClass[4].음식==='Bcourse'}"
+          >{{businessClass[4].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[5].좌석}}</div>
-          <div class="seat-business">{{businessClass[6].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[5].음식=== 'Acourse', Bcourse: businessClass[5].음식==='Bcourse'}"
+          >{{businessClass[5].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[6].음식=== 'Acourse', Bcourse: businessClass[6].음식==='Bcourse'}"
+          >{{businessClass[6].좌석}}</div>
         </div>
         <div class="seat-row-business">
-          <div class="seat-business">{{businessClass[7].좌석}}</div>
-          <div class="seat-business">{{businessClass[8].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[7].음식=== 'Acourse', Bcourse: businessClass[7].음식==='Bcourse'}"
+          >{{businessClass[7].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[8].음식=== 'Acourse', Bcourse: businessClass[8].음식==='Bcourse'}"
+          >{{businessClass[8].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[9].좌석}}</div>
-          <div class="seat-business">{{businessClass[10].좌석}}</div>
-          <div class="seat-business">{{businessClass[11].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[9].음식=== 'Acourse', Bcourse: businessClass[9].음식==='Bcourse'}"
+          >{{businessClass[9].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[10].음식=== 'Acourse', Bcourse: businessClass[10].음식==='Bcourse'}"
+          >{{businessClass[10].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[11].음식=== 'Acourse', Bcourse: businessClass[11].음식==='Bcourse'}"
+          >{{businessClass[11].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[12].좌석}}</div>
-          <div class="seat-business">{{businessClass[13].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[12].음식=== 'Acourse', Bcourse: businessClass[12].음식==='Bcourse'}"
+          >{{businessClass[12].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[13].음식=== 'Acourse', Bcourse: businessClass[13].음식==='Bcourse'}"
+          >{{businessClass[13].좌석}}</div>
         </div>
         <div class="seat-row-business">
-          <div class="seat-business">{{businessClass[14].좌석}}</div>
-          <div class="seat-business">{{businessClass[15].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[14].음식=== 'Acourse', Bcourse: businessClass[14].음식==='Bcourse'}"
+          >{{businessClass[14].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[15].음식=== 'Acourse', Bcourse: businessClass[15].음식==='Bcourse'}"
+          >{{businessClass[15].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[16].좌석}}</div>
-          <div class="seat-business">{{businessClass[17].좌석}}</div>
-          <div class="seat-business">{{businessClass[18].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[16].음식=== 'Acourse', Bcourse: businessClass[16].음식==='Bcourse'}"
+          >{{businessClass[16].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[17].음식=== 'Acourse', Bcourse: businessClass[17].음식==='Bcourse'}"
+          >{{businessClass[17].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[18].음식=== 'Acourse', Bcourse: businessClass[18].음식==='Bcourse'}"
+          >{{businessClass[18].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[19].좌석}}</div>
-          <div class="seat-business">{{businessClass[20].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[19].음식=== 'Acourse', Bcourse: businessClass[19].음식==='Bcourse'}"
+          >{{businessClass[19].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[20].음식=== 'Acourse', Bcourse: businessClass[20].음식==='Bcourse'}"
+          >{{businessClass[20].좌석}}</div>
         </div>
         <div class="seat-row-business">
-          <div class="seat-business">{{businessClass[21].좌석}}</div>
-          <div class="seat-business">{{businessClass[22].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[21].음식=== 'Acourse', Bcourse: businessClass[21].음식==='Bcourse'}"
+          >{{businessClass[21].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[22].음식=== 'Acourse', Bcourse: businessClass[22].음식==='Bcourse'}"
+          >{{businessClass[22].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[23].좌석}}</div>
-          <div class="seat-business">{{businessClass[24].좌석}}</div>
-          <div class="seat-business">{{businessClass[25].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[23].음식=== 'Acourse', Bcourse: businessClass[23].음식==='Bcourse'}"
+          >{{businessClass[23].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[24].음식=== 'Acourse', Bcourse: businessClass[24].음식==='Bcourse'}"
+          >{{businessClass[24].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[25].음식=== 'Acourse', Bcourse: businessClass[25].음식==='Bcourse'}"
+          >{{businessClass[25].좌석}}</div>
           <div class="seat-space"></div>
-          <div class="seat-business">{{businessClass[26].좌석}}</div>
-          <div class="seat-business">{{businessClass[27].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[26].음식=== 'Acourse', Bcourse: businessClass[26].음식==='Bcourse'}"
+          >{{businessClass[26].좌석}}</div>
+          <div
+            class="seat-business"
+            :class="{Acourse: businessClass[27].음식=== 'Acourse', Bcourse: businessClass[27].음식==='Bcourse'}"
+          >{{businessClass[27].좌석}}</div>
         </div>
       </div>
     </div>
@@ -521,11 +605,11 @@ export default {
       firstClass: [
         {
           좌석: 'A01',
-          음식: 'Acourse',
+          음식: '',
         },
         {
           좌석: 'D01',
-          음식: 'Bcourse',
+          음식: '',
         },
         {
           좌석: 'E01',
@@ -1612,25 +1696,30 @@ export default {
       console.log(this.seatMealList)
 
       this.attachA = !this.attachA
-      for (let i = 0; i < this.seatMealList.length; i++) {
-        console.log(1)
-        for (let idx = 0; idx < this.firstClass.length; idx) {
-          if (this.seatMealList[i].seatNum === this.firstClass[idx].좌석) {
-            this.firstClass[idx].음식 = this.seatMealList[i].mealMenu
-          }
-        }
-        for (let idx = 0; idx < this.businessClass.length; idx) {
-          if (this.seatMealList[i].seatNum === this.businessClass[idx].좌석) {
-            this.businessClass[idx].음식 = this.seatMealList[i].mealMenu
-          }
-        }
-        for (let idx = 0; idx < this.economyClass.length; idx) {
-          if (this.seatMealList[i].seatNum === this.economyClass[idx].좌석) {
-            console.log(1)
-            this.economyClass[idx].음식 = this.seatMealList[i].mealMenu
-          }
-        }
-      }
+      this.firstClass[0].음식 = 'Acourse'
+      this.firstClass[1].음식 = 'Bcourse'
+      this.firstClass[2].음식 = 'Acourse'
+      this.businessClass[0].음식 = 'Acourse'
+      this.businessClass[1].음식 = 'Bcourse'
+      // for (let i = 0; i < this.seatMealList.length; i++) {
+      //   console.log(1)
+      //   for (let idx = 0; idx < this.firstClass.length; idx) {
+      //     if (this.seatMealList[i].seatNum === this.firstClass[idx].좌석) {
+      //       this.firstClass[idx].음식 = this.seatMealList[i].mealMenu
+      //     }
+      //   }
+      //   for (let idx = 0; idx < this.businessClass.length; idx) {
+      //     if (this.seatMealList[i].seatNum === this.businessClass[idx].좌석) {
+      //       this.businessClass[idx].음식 = this.seatMealList[i].mealMenu
+      //     }
+      //   }
+      //   for (let idx = 0; idx < this.economyClass.length; idx) {
+      //     if (this.seatMealList[i].seatNum === this.economyClass[idx].좌석) {
+      //       console.log(1)
+      //       this.economyClass[idx].음식 = this.seatMealList[i].mealMenu
+      //     }
+      //   }
+      // }
       console.log('저요' + this.economyClass[29].음식)
     },
   },
@@ -1715,22 +1804,6 @@ export default {
 }
 .seat-first {
   background-color: #31acd5;
-  height: 100%;
-  width: 10%;
-  padding: 2%;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-}
-.Acourse {
-  background-color: #f0a523;
-  height: 100%;
-  width: 10%;
-  padding: 2%;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
-}
-.Bcourse {
-  background-color: #7029f4;
   height: 100%;
   width: 10%;
   padding: 2%;
@@ -1839,5 +1912,22 @@ export default {
   font-size: small;
   height: 100%;
   width: 9%;
+}
+
+.Acourse {
+  background-color: #f0a523;
+  /* height: 100%;
+  width: 10%;
+  padding: 2%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px; */
+}
+.Bcourse {
+  background-color: #7029f4;
+  /* height: 100%;
+  width: 10%;
+  padding: 2%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px; */
 }
 </style>
