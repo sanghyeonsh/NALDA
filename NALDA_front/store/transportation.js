@@ -39,6 +39,7 @@ export const actions = {
     url += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1')
     url += '&' + encodeURIComponent('area') + '=' + encodeURIComponent(area)
     url += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('json')
+    console.log(url)
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
