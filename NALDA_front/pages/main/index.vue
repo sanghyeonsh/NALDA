@@ -1,28 +1,22 @@
 <template>
   <div class="main-container">
     <div class="main-container-box" @click="MoveOrders">
-      <div>
-        <img class="image" src="/main/service.png" alt="service" />
-        <h3>서비스</h3>
+      <div class="main-container-box-image">
+        <img src="/main/service.png" alt="service" />
       </div>
+      <div class="box-image-name">서비스</div>
     </div>
-    <div class="main-container-box">
-      <nuxt-link :to="isLogin" style="text-decoration: none">
-        <div>
-          <img
-            class="image"
-            src="/main/custom_declaration.png"
-            alt="custom_declaration"
-          />
-          <h3>세관신고서</h3>
-        </div>
-      </nuxt-link>
+    <div class="main-container-box" @click="MoveLogin">
+      <div class="main-container-box-image">
+        <img src="/main/custom_declaration.png" alt="custom_declaration" />
+      </div>
+      <div class="box-image-name">세관신고서</div>
     </div>
     <div class="main-container-box" @click="MoveTransportation">
-      <div>
-        <img class="image" src="/main/airport_info.png" alt="airport_info" />
-        <h3>공항정보</h3>
+      <div class="main-container-box-image">
+        <img src="/main/airport_info.png" alt="airport_info" />
       </div>
+      <div class="box-image-name">공항정보</div>
     </div>
   </div>
 </template>
@@ -31,7 +25,7 @@
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'MainIndex',
+  name: 'TestPage',
   components: {},
   computed: {
     ...mapState('user', ['loginMember']),
@@ -46,7 +40,7 @@ export default {
   },
   methods: {
     ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
-    moveLogin() {
+    MoveLogin() {
       if (this.loginMember === null) {
         this.$router.push('/user/login')
       } else {
@@ -81,38 +75,41 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
-
 * {
-  margin: 0;
-  padding: 0;
   font-family: 'twayfly';
 }
-/* .main-index {
-  display: flex;
-  flex-direction: column;
-  height: 70vh;
-} */
 .main-container {
   display: flex;
   height: 70vh;
+  width: 100vw;
 }
 .main-container-box {
-  text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  height: 100%;
+  width: 100%;
+  padding: 70px;
 }
-.main-container-box img {
+.main-container-box-image {
+  height: 45%;
   width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-container-box-image img {
+  width: 100%;
+  height: 100%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-  /* filter: opacity(0.5) drop-shadow(#206e95); */
 }
-.main-container-box h3 {
-  margin-top: 5vh;
-}
-
-.main-container-box div {
-  padding: 7vh;
+.box-image-name {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 30px;
 }
 </style>
