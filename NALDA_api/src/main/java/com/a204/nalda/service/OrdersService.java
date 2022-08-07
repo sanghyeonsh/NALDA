@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +77,7 @@ public class OrdersService {
 
         Orders orders = Orders.builder()
                 .orderMessage(orderdto.getOrderMessage())
-                .orderTime(orderdto.getOrderTime())
+                .orderTime(Optional.ofNullable(orderdto.getOrderTime()).orElse(LocalDateTime.now()))
                 .flight(flight)
                 .seat(seat)
                 .user(user)

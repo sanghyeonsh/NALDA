@@ -29,6 +29,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+
 export default {
   name: 'MainIndex',
   components: {},
@@ -41,6 +42,7 @@ export default {
   },
   created() {
     this.CLEAR_DECLARATION()
+    this.getIP()
   },
   methods: {
     ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
@@ -53,10 +55,19 @@ export default {
       }
     },
     MoveOrders() {
-      this.$router.push('/main/service')
+      if (this.loginMember === null) {
+        this.$router.push('/user/login')
+      } else {
+        this.$router.push('/main/service')
+      }
     },
     MoveTransportation() {
       this.$router.push('/transportation')
+    },
+    getIP() {
+      const localIpAddress = require('local-ip-address')
+
+      console.log(localIpAddress())
     },
   },
 }

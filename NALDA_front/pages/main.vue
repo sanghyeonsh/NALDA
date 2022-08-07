@@ -16,6 +16,18 @@ export default {
     HeaderComponent,
     FooterComponent,
   },
+  beforeRouteEnter(to, from, next) {
+    let isLogin = null
+
+    next((vm) => {
+      isLogin = vm.$store.getters['user/isLogin']
+    })
+    if (isLogin) {
+      next()
+    } else {
+      next(false)
+    }
+  },
 }
 </script>
 
