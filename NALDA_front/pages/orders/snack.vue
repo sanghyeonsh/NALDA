@@ -1,15 +1,18 @@
 <template>
   <div class="orders-snack-container">
+    <header-component />
     <ServiceNavbar />
-    <ServiceCards />
-    <ServiceFooter />
-    <StewardessButton />
+    <!-- <ServiceCards /> -->
+    <!-- <ServiceFooter /> -->
+    <!-- <StewardessButton /> -->
   </div>
 </template>
 
 <script>
+import HeaderComponent from '../../components/HeaderComponent.vue'
 export default {
   name: 'OrdersSnack',
+  components: { HeaderComponent },
 }
 </script>
 

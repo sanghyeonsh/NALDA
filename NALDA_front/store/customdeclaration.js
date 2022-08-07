@@ -30,7 +30,7 @@ export const state = () => ({
     visitedCountries: [],
   },
   declarationList: [],
-  selectedDeclaration: null,
+  selectedDeclaration: {},
 })
 
 export const mutations = {

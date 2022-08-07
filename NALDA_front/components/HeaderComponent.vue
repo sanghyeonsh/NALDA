@@ -7,13 +7,16 @@
     <!-- <div @click="MoveSignup">
       signup
     </div>-->
-    <img
-      class="previous-icon"
-      src="/main/previous.png"
-      alt=""
-      @click="Movefrom"
-    />
+
     <div class="header-container-userprofile" @click="MoveMypage">
+      <div class="profile-back">
+        <img
+          class="previous-icon"
+          src="/main/previous.png"
+          alt=""
+          @click="Movefrom"
+        />
+      </div>
       <div class="profile-img">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
@@ -72,14 +75,7 @@ export default {
 }
 
 * {
-  margin: 0;
-  padding: 0;
   font-family: 'twayfly';
-}
-
-.previous-icon {
-  max-width: 60%;
-  max-height: 60%;
 }
 .header-container {
   display: flex;
@@ -92,13 +88,14 @@ export default {
   width: 20%;
 }
 .header-container-image {
-  width: 80%;
+  width: 60%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header-container-image img {
-  width: 13%;
+  width: 20%;
   height: 100%;
   cursor: pointer;
 }
@@ -110,8 +107,18 @@ export default {
   color: azure;
   cursor: pointer;
 }
+
+.profile-back {
+  height: 100%;
+  width: 20%;
+}
+.previous-icon {
+  width: 100%;
+  height: 100%;
+}
+
 .profile-img {
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
@@ -121,8 +128,10 @@ export default {
   width: 50%;
   height: 50%;
 }
+
 .profile-name {
   width: 50%;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
