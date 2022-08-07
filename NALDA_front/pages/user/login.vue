@@ -59,7 +59,18 @@
 import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'LoginUser',
+  // beforeRouteEnter(to, from, next) {
+  //   let isLogin = false
+  //   next((vm) => {
+  //     isLogin = vm.$store.getters['user/isLogin']
+  //   })
 
+  //   if (isLogin) {
+  //     next()
+  //   } else {
+  //     next(false)
+  //   }
+  // },
   data() {
     return {
       userInfo: {

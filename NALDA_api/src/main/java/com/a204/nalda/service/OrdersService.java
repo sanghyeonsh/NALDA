@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -76,7 +77,7 @@ public class OrdersService {
 
         Orders orders = Orders.builder()
                 .orderMessage(orderdto.getOrderMessage())
-                .orderTime(orderdto.getOrderTime())
+                .orderTime(Optional.ofNullable(orderdto.getOrderTime()).orElse(LocalDateTime.now()))
                 .flight(flight)
                 .seat(seat)
                 .user(user)
@@ -95,6 +96,25 @@ public class OrdersService {
         orderRepository.save(orders);
 
     }
+
+    public List<ServiceCntDto> serviceCnt(String flightNum){
+
+        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        List<ServiceStock> serviceStocks = serviceStockRepository.findByFlightId(flightId);
+        List<ServiceCntDto> serviceCntDTOS = new ArrayList<>();
+        for(ServiceStock serviceStock : serviceStocks){
+            Long serviceCodeId = serviceStockRepository.findById(serviceStock.getId()).get().getServiceCodes().getId();
+            String serviceCode = serviceRepository.findById(serviceCodeId).get().getCode();
+            serviceCntDTOS.add(ServiceCntDto.builder()
+                            .flightNum(flightNum)
+                            .serviceCode(serviceCode)
+                            .total(serviceStock.getTotal())
+                            .build());
+        }
+        return serviceCntDTOS;
+
+    }
+
 
     @Transactional
     public void serviceCntInput(List<ServiceCntDto> serviceCntDTOS) {

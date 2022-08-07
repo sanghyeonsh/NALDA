@@ -15,4 +15,5 @@ public interface MealRepository extends JpaRepository<Meal,Long> {
 
     Meal findTopByMealMenu(String mealMenu);
 
+
 }

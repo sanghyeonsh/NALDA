@@ -1,40 +1,49 @@
 <template>
-  <div class="service-modal">
-    <div class="service-modal-box">
-      <div class="service-modal-head">
-        <div class="service-modal-head-close">
-          <img src="/orders/icons8-x-100.png" alt="" />
-        </div>
-      </div>
-      <div class="service-modal-body">
-        <div class="service-modal-body-image">
-          <img :src="'data:image/jpg;base64,' + item[0].bytesdata" alt="" />
-        </div>
-
-        <div class="service-modal-body-detail">
-          <div class="service-modal-body-detail-name">
-            {{ item[0].serviceName }}
+  <v-app id="item-modal">
+    <v-dialog
+      v-model="dialog"
+      hide-overlay
+      transition="dialog-bottom-transition"
+      width="60%"
+    >
+      <v-card tile>
+        <v-toolbar flat dark color="rgb(69, 169, 200)">
+          <v-btn icon dark @click="toggle">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <v-toolbar-title>선택 제품</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              large
+              color="pink"
+              @click="addSelectedItem"
+            >
+              <v-icon dark> mdi-cart-heart </v-icon>
+            </v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <v-card-text class="d-flex align-center">
+          <img
+            class="item-img mt-5"
+            :src="'data:image/jpg;base64,' + item.bytesdata"
+          />
+          <div style="font-size: xx-large; margin-left: 20%">
+            <v-btn class="mx-2" fab dark large color="cyan" @click="minusNum">
+              <v-icon dark> mdi-minus </v-icon>
+            </v-btn>
+            {{ num }}
+            <v-btn class="mx-2" fab dark large color="cyan" @click="addNum">
+              <v-icon dark> mdi-plus </v-icon>
+            </v-btn>
           </div>
-        </div>
-      </div>
-
-      <div class="service-modal-footer">
-        <!-- <button @click="ChoiceMenu(item[0])">담기</button> -->
-        <div class="service-modal-body-detail-button">
-          <button @click="MINUS_CHOICE_FOODS(item[0])">
-            <img src="/orders/minus.png" alt="" />
-          </button>
-          <div class="button-num">{{ item[0].num }}</div>
-          <button @click="PLUS_CHOICE_FOODS(item[0])">
-            <img src="/orders/plus.png" alt="" />
-          </button>
-        </div>
-        <div class="detail-button">
-          <button @click="SET_CHOICE_FOODS(item)">담기</button>
-        </div>
-      </div>
-    </div>
-  </div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-app>
 </template>
 
 <script>
@@ -42,43 +51,48 @@ import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'ServiceModal',
+  data() {
+    return {
+      num: 0,
+      dialog: false,
+    }
+  },
   computed: {
     ...mapState('menu', ['item']),
   },
   methods: {
-    // modal popup
-    ShowPopup() {
-      // Get the modal
-      const modal = document.getElementsByClassName('service-modal')[0]
-      // Get the <span> element that closes the modal
-      const span = document.getElementsByClassName('close')[0]
-      // When the user clicks on the button, open the modal
-      modal.style.display = 'block'
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        modal.style.display = 'none'
-      }
-      window.onclick = function (event) {
-        if (event.target === modal) {
-          modal.style.display = 'none'
-        }
-      }
+    addSelectedItem() {
+      this.$emit('shoppingAlert', '')
+      this.ADD_SELECTED_FOODS(this.item)
+      this.toggle()
+    },
+    toggle() {
+      this.dialog = !this.dialog
+      this.num = 1
+    },
+    addNum() {
+      this.PLUS_CHOICE_FOODS()
+      this.num = this.item.num
+    },
+    minusNum() {
+      this.MINUS_CHOICE_FOODS()
+      this.num = this.item.num
     },
 
     ...mapMutations('menu', [
-      'SET_CHOICE_FOODS',
-      'DELETE_CHOICE_FOODS',
-      'CLEAR_CHOICE_FOODS',
       'PLUS_CHOICE_FOODS',
       'MINUS_CHOICE_FOODS',
-      'SET_CHOICE_FOODS',
+      'ADD_SELECTED_FOODS',
     ]),
   },
 }
 </script>
 
 <style scoped>
+.item-img {
+  height: 40%;
+  width: 40%;
+}
 .service-modal {
   display: none;
   position: fixed;
@@ -127,12 +141,7 @@ export default {
   height: 80%;
   border-bottom: solid;
 }
-.service-modal-body-image {
-  width: 100%;
-  height: 85%;
-  padding: 10%;
-  background-color: white;
-}
+
 .service-modal-body-image img {
   width: 100%;
   height: 100%;
