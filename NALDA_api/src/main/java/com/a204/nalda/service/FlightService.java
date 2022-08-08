@@ -3,6 +3,7 @@ package com.a204.nalda.service;
 import com.a204.nalda.domain.entity.airplane.Airplane;
 import com.a204.nalda.domain.entity.airplane.Flight;
 import com.a204.nalda.dto.flight.FlightDto;
+import com.a204.nalda.dto.flight.FlightInfoDto;
 import com.a204.nalda.repository.AirplaneRepository;
 import com.a204.nalda.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,15 @@ public class FlightService {
                 .airplane(airplane)
                 .build();
         flightRepository.save(flight);
+    }
+
+    public FlightInfoDto getFlightInfo(String flightNum){
+        Long airplaneId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getAirplane().getId();
+        Airplane airplane = airplaneRepository.findById(airplaneId).get();
+        FlightInfoDto flightInfoDto = FlightInfoDto.builder()
+                .flightNum(flightNum)
+                .airplaneKind(airplane.getAirplaneKind())
+                .build();
+        return flightInfoDto;
     }
 }
