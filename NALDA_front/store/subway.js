@@ -71,20 +71,24 @@ export const actions = {
       }
     )
   },
-  getSubway({ state, commit }) {
-    getSubway(
+  async getSubway({ state, commit }) {
+    console.log(1111111111)
+    await getSubway(
       ({ data }) => {
         commit('SET_SUBWAYS_LIST', data)
         console.log(state.subways)
+        console.log(222222222)
       },
       (error) => {
         console.log(error)
       }
     )
+    // dispatch('getSubwayByCondition', condition)
   },
   getSubwayByCondition({ state, commit }, condition) {
     commit('CLEAR_BYCONDITION_LIST')
-    // console.log(condition.min)
+
+    console.log(state.subways.subwayList.length)
     for (let i = 0; i < state.subways.subwayList.length; i++) {
       if (condition.terminal === 1 && condition.type === 1) {
         if (

@@ -69,6 +69,6 @@ export const actions = {
         commit('SET_STOP_LIST', state.info.items[i].routeinfo)
       }
     }
-    // console.log(state.stop)
+    console.log(state.stop)
   },
 }
