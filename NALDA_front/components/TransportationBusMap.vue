@@ -14,17 +14,20 @@
           </div>
         </div>
         <!-- 오른쪽에 체크해줘야하는 부분 -->
-
         <div v-if="idx == 19 || idx == 39" class="check-right">
           <div class="station-name-box">
             {{ station }}
           </div>
-          <div class="station-name-check"></div>
+          <div class="station-name-check">
+            <img src="/transportation/bus-stop-icon.png" alt="" />
+          </div>
         </div>
         <!-- 왼쪽에 체크해줘야하는 부분 -->
         <div v-if="idx == 20" class="check-left">
           <div class="station-name-box">{{ station }}</div>
-          <div class="station-name-check"></div>
+          <div class="station-name-check">
+            <img src="/transportation/bus-stop-icon.png" alt="" />
+          </div>
         </div>
       </div>
     </div>

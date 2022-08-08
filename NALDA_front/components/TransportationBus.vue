@@ -20,12 +20,18 @@
         {{ bus }}
       </div>
     </div>
+    <div class="bus-time">
+      <div class="bus-time-button" @click="ChangeDayType">주중 / 주말</div>
+      <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
+        {{ table }}
+      </div>
+    </div>
     <div class="bus-detail">
       <div class="bus-detail-terminal">
         <div class="terminal-1" @click="terminal1">제1터미널</div>
         <div class="terminal-2" @click="terminal2">제2터미널</div>
       </div>
-      <div class="bus-detail-day">
+      <!-- <div class="bus-detail-day">
         <div class="detail-day" @click="dayType1">평일</div>
         <div class="detail-wday" @click="dayType2">주말</div>
       </div>
@@ -33,7 +39,7 @@
         <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
           {{ table }}
         </div>
-      </div>
+      </div> -->
       <div class="bus-detail-map">
         <TransportationBusMap :stations="choiceStation" />
       </div>
@@ -179,6 +185,7 @@ export default {
       document.getElementsByClassName('terminal-1')[0].style.background =
         '#206e95'
       document.getElementsByClassName('terminal-1')[0].style.color = 'white'
+      // document.getElementsByClassName('terminal-1')[0].style.fontWeight = 'bold'
       document.getElementsByClassName('terminal-2')[0].style.background =
         'white'
       document.getElementsByClassName('terminal-2')[0].style.color = 'black'
@@ -194,26 +201,40 @@ export default {
       document.getElementsByClassName('terminal-1')[0].style.color = 'black'
       this.makeTimeTable()
     },
-    dayType1() {
-      this.daytype = 1
-      document.getElementsByClassName('detail-day')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('detail-day')[0].style.color = 'white'
-      document.getElementsByClassName('detail-wday')[0].style.background =
-        'white'
-      document.getElementsByClassName('detail-wday')[0].style.color = 'black'
-      this.makeTimeTable()
+
+    ChangeDayType() {
+      if (this.daytype === 1) {
+        this.daytype = 2
+        document.getElementsByClassName('bus-time-button')[0].style.background =
+          'white'
+        this.makeTimeTable()
+      } else {
+        this.daytype = 1
+        document.getElementsByClassName('bus-time-button')[0].style.background =
+          '#206e95'
+        this.makeTimeTable()
+      }
     },
-    dayType2() {
-      this.daytype = 2
-      document.getElementsByClassName('detail-wday')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('detail-wday')[0].style.color = 'white'
-      document.getElementsByClassName('detail-day')[0].style.background =
-        'white'
-      document.getElementsByClassName('detail-day')[0].style.color = 'black'
-      this.makeTimeTable()
-    },
+    // dayType1() {
+    //   this.daytype = 1
+    //   document.getElementsByClassName('detail-day')[0].style.background =
+    //     '#206e95'
+    //   document.getElementsByClassName('detail-day')[0].style.color = 'white'
+    //   document.getElementsByClassName('detail-wday')[0].style.background =
+    //     'white'
+    //   document.getElementsByClassName('detail-wday')[0].style.color = 'black'
+    //   this.makeTimeTable()
+    // },
+    // dayType2() {
+    //   this.daytype = 2
+    //   document.getElementsByClassName('detail-wday')[0].style.background =
+    //     '#206e95'
+    //   document.getElementsByClassName('detail-wday')[0].style.color = 'white'
+    //   document.getElementsByClassName('detail-day')[0].style.background =
+    //     'white'
+    //   document.getElementsByClassName('detail-day')[0].style.color = 'black'
+    //   this.makeTimeTable()
+    // },
     makeTimeTable() {
       let temp = 0
       let tempTime = ''
@@ -251,14 +272,15 @@ export default {
 }
 .bus-region {
   height: 100%;
-  width: 25%;
-  font-size: 30px;
+  width: 15%;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   border-right: solid;
 }
 .bus-region div {
   width: 100%;
+  height: 10%;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -271,13 +293,13 @@ export default {
 }
 .bus-number {
   height: 100%;
-  width: 25%;
+  width: 15%;
   overflow: auto;
-  font-size: 30px;
+  font-size: 15px;
 }
 .bus-number div {
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,10 +309,22 @@ export default {
   background-color: #206e95;
   color: white;
 }
+.bus-time {
+  width: 15%;
+  height: 100%;
+  overflow: auto;
+}
+.bus-time-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  background-color: #206e95;
+}
 
 .bus-detail {
   height: 100%;
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
@@ -359,7 +393,9 @@ export default {
 .timeTable {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  height: 7%;
+  justify-content: center;
+  align-items: center;
 }
 .bus-detail-map {
   width: 100%;
