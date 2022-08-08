@@ -12,9 +12,7 @@
                 세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.
               </li>
               <li>가족여행인 경우에는 1명이 대표로 신고할 수 있습니다.</li>
-              <li>
-                신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.
-              </li>
+              <li>신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.</li>
             </ul>
           </div>
         </div>
@@ -121,6 +119,6 @@ export default {
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 </style>
