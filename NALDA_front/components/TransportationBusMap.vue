@@ -5,7 +5,15 @@
         <!-- 전체 다그려주는 부분 아래 div 그중에서 오른쪽 끝 왼쪽 끝 만들어지는 부분
         만 안나오게 해줘야함-->
         <div
-          v-if="station != '' && idx != 19 && idx != 20 && idx != 39"
+          v-if="
+            station != ' ' &&
+            idx != 19 &&
+            idx != 20 &&
+            idx != 39 &&
+            idx != 40 &&
+            idx != 59 &&
+            idx != 60
+          "
           class="station-name"
         >
           <div class="station-name-box">{{ station }}</div>
@@ -14,7 +22,12 @@
           </div>
         </div>
         <!-- 오른쪽에 체크해줘야하는 부분 -->
+<<<<<<< HEAD
         <div v-if="idx == 19 || idx == 39" class="check-right">
+=======
+
+        <div v-if="idx == 19 || idx == 39 || idx == 59" class="check-right">
+>>>>>>> 9d882e1480fa8e9fac4eb9eb953a4c27a8d38f24
           <div class="station-name-box">
             {{ station }}
           </div>
@@ -23,7 +36,7 @@
           </div>
         </div>
         <!-- 왼쪽에 체크해줘야하는 부분 -->
-        <div v-if="idx == 20" class="check-left">
+        <div v-if="idx == 20 || idx == 40 || idx == 60" class="check-left">
           <div class="station-name-box">{{ station }}</div>
           <div class="station-name-check">
             <img src="/transportation/bus-stop-icon.png" alt="" />

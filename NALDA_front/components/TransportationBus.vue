@@ -86,10 +86,13 @@ export default {
     promise.then(async () => {
       await this.getInfo(String(1))
       await this.getTime(String(6300))
+      await this.getStop(String(6300))
+
       for (let i = 0; i < this.info.totalCount; i++) {
         this.busNum.push(this.info.items[i].busnumber)
       }
       this.makeTimeTable()
+      this.makeStationTable()
     })
   },
   methods: {
@@ -258,8 +261,54 @@ export default {
       console.log(this.choiceTime)
     },
     makeStationTable() {
-      this.choiceStation = this.stop.split(', ')
-      console.log(this.choiceStation)
+      // const len = { stationCnt: 0 }
+      // len.stationCnt = this.choiceStation.length
+      let test = []
+      if (this.stop === null) {
+        this.choiceStation = ['버스 노선도가 없습니다.']
+      } else {
+        this.choiceStation = this.stop.split(', ')
+        // test = Object.assign([], this.choiceStation)
+        // if(this.choiceStation[test.])
+        test = [...this.choiceStation]
+        console.log('aaaaaaa')
+        console.log(this.choiceStation[test.length - 1])
+        if (this.choiceStation[test.length - 1] === '') {
+          this.choiceStation.splice(test.length - 1, 1)
+        }
+        test = [...this.choiceStation]
+
+        if (test.length > 10) {
+          for (
+            let i = test.length;
+            i < (Math.floor((test.length - 1) / 10) + 1) * 10;
+            i++
+          ) {
+            this.choiceStation.push(' ')
+          }
+          let temp = ''
+          for (let i = 10; i < 15; i++) {
+            temp = this.choiceStation[i]
+            this.choiceStation[i] = this.choiceStation[29 - i]
+            this.choiceStation[29 - i] = temp
+          }
+          if (test.length > 30) {
+            for (let i = 30; i < 35; i++) {
+              temp = this.choiceStation[i]
+              this.choiceStation[i] = this.choiceStation[69 - i]
+              this.choiceStation[69 - i] = temp
+            }
+          }
+          if (test.length > 50) {
+            for (let i = 50; i < 55; i++) {
+              temp = this.choiceStation[i]
+              this.choiceStation[i] = this.choiceStation[109 - i]
+              this.choiceStation[109 - i] = temp
+            }
+          }
+        }
+      }
+      console.log(test)
     },
   },
 }
@@ -273,7 +322,7 @@ export default {
 .bus-region {
   height: 100%;
   width: 15%;
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   border-right: solid;
@@ -295,7 +344,7 @@ export default {
   height: 100%;
   width: 15%;
   overflow: auto;
-  font-size: 15px;
+  font-size: 20px;
 }
 .bus-number div {
   width: 100%;

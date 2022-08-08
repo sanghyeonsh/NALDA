@@ -19,10 +19,10 @@
         <div class="copyright-wrap">
           <!-- <div><img src="logo.png"></div> -->
           <div>
-            <span
-              >이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
-              고객센터</span
-            >
+            <span>
+              이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
+              고객센터
+            </span>
             <div>Copyright © NALDA Corp. All Rights Reserved.</div>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default {
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {
-      this.$router.push({ name: 'main-toilet' })
+      this.$router.push('/attendant/toilet')
     },
   },
 }
@@ -117,8 +117,8 @@ button:hover {
 }
 
 .toilet-wrap {
-  background-color: var(--border-gray-color);
-  color: var(--nalda-navy-color);
+  background-color: #dadada;
+  color: #1b2f40;
 }
 
 .service-wrap img {
@@ -128,7 +128,7 @@ button:hover {
 
 .service-wrap {
   margin-left: 1%;
-  background-color: var(--nalda-blue-color);
+  background-color: #206e95;
   color: white;
 }
 </style>
