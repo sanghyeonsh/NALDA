@@ -21,7 +21,15 @@
       </div>
     </div>
     <div class="bus-time">
-      <div class="bus-time-button" @click="ChangeDayType">주중 / 주말</div>
+      <div class="bus-time-button">
+        <button>
+          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+        </button>
+        <div class="day-wday-change">주중</div>
+        <button>
+          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+        </button>
+      </div>
       <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
         {{ table }}
       </div>
@@ -136,14 +144,10 @@ export default {
       const check = document.getElementsByClassName('bus-region-click')[idx]
 
       for (let i = 0; i < len; i++) {
-        document.getElementsByClassName('bus-region-click')[
-          i
-        ].style.backgroundColor = 'white'
         document.getElementsByClassName('bus-region-click')[i].style.color =
-          'black'
+          'white'
       }
-      check.style.backgroundColor = '#206e95'
-      check.style.color = 'white'
+      check.style.color = 'rgb(228, 197, 111)'
       this.checkBus(0)
     },
     checkBus(idx) {
@@ -154,11 +158,11 @@ export default {
         document.getElementsByClassName('bus-number-click')[
           i
         ].style.backgroundColor = 'white'
-        document.getElementsByClassName('bus-number-click')[i].style.color =
-          'black'
+        // document.getElementsByClassName('bus-number-click')[i].style.color =
+        //   'black'
       }
-      check.style.backgroundColor = '#206e95'
-      check.style.color = 'white'
+      check.style.backgroundColor = 'rgb(228, 197, 111)'
+      check.style.color = 'rgb(69, 169, 200);'
     },
 
     showTime(bus) {
@@ -194,16 +198,14 @@ export default {
       this.makeTimeTable()
     },
 
-    ChangeDayType() {
+    ChangeDayType(event) {
       if (this.daytype === 1) {
         this.daytype = 2
-        document.getElementsByClassName('bus-time-button')[0].style.background =
-          'white'
+        document.getElementsByClassName('day-wday-change')[0].innerText = '주말'
         this.makeTimeTable()
       } else {
         this.daytype = 1
-        document.getElementsByClassName('bus-time-button')[0].style.background =
-          '#206e95'
+        document.getElementsByClassName('day-wday-change')[0].innerText = '주중'
         this.makeTimeTable()
       }
     },
@@ -311,10 +313,11 @@ export default {
 .bus-region {
   height: 100%;
   width: 15%;
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   flex-direction: column;
-  border-right: solid;
+  background-color: rgb(69, 169, 200);
+  color: white;
 }
 .bus-region div {
   width: 100%;
@@ -326,38 +329,51 @@ export default {
   cursor: pointer;
 }
 .bus-region-click:first-child {
-  background-color: #206e95;
-  color: white;
+  color: rgb(228, 197, 111);
 }
 .bus-number {
   height: 100%;
   width: 15%;
   overflow: auto;
   font-size: 20px;
+  color: rgb(69, 169, 200);
 }
+/* .bus-number::-webkit-scrollbar {
+  display: none;
+} */
+
 .bus-number div {
   width: 100%;
-  height: 10%;
+  height: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 .bus-number-click:first-child {
-  background-color: #206e95;
-  color: white;
+  background-color: rgb(228, 197, 111);
 }
 .bus-time {
   width: 15%;
   height: 100%;
-  overflow: auto;
+  background-color: rgb(69, 169, 200);
+  color: white;
+  font-size: 20px;
 }
 .bus-time-button {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 12%;
-  background-color: #206e95;
+}
+.bus-time-button button {
+  width: 20%;
+  height: 50%;
+}
+.bus-time-button img {
+  width: 100%;
+  height: 100%;
 }
 
 .bus-detail {
