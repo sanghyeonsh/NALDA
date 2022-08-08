@@ -5,6 +5,18 @@
       <div class="customform-main-container">
         <div class="customform-container">
           <div class="title-items">
+            <v-app id="info-btn">
+              <v-btn
+                class="mx-2 mb-5"
+                fab
+                dark
+                medium
+                color="#778899"
+                @click="openAttentions"
+              >
+                <v-icon large dark> mdi-information-outline </v-icon>
+              </v-btn>
+            </v-app>
             <div class="customform-title">여행자 휴대품 신고서</div>
             <b-button
               class="next-page"
@@ -130,16 +142,17 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
 import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
-
+import attentions from '../../components/attentions.vue'
 export default {
   name: 'CustomsCheckone',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
   beforeRouteLeave(to, from, next) {
     this.MODIFY_DUTYFREEEXCEED(this.dutyfreeExceed)
     this.MODIFY_PREFERENTIALTARIFF(this.preferentialTariff)
@@ -180,6 +193,9 @@ export default {
       'MODIFY_DUTYFREEEXCEEDVALUE',
       'MODIFY_PAYMENTEXCEEDVALUE',
     ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
   },
 }
 </script>
@@ -222,7 +238,7 @@ export default {
 .title-items {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -263,7 +279,7 @@ export default {
   flex-direction: column;
 }
 .customform-title {
-  margin-left: 22%;
+  /* margin-left: 22%; */
   font-size: xx-large;
   font-weight: bolder;
   text-align: center;
@@ -370,5 +386,8 @@ input[id='box2-2'],
 input[id='box3-1'],
 input[id='box3-2'] {
   display: none;
+}
+:deep .v-application--wrap {
+  min-height: fit-content;
 }
 </style>

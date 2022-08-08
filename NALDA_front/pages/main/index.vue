@@ -94,8 +94,8 @@ export default {
   padding: 70px;
 }
 .main-container-box-image {
-  height: 45%;
-  width: 70%;
+  height: 60%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
