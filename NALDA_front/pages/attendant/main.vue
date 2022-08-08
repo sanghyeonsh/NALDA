@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <div class="main-container-box" @click="MoveRequest">
+    <div class="main-container-box" @click="moveRequestPage">
       <div>
         <img class="image" src="/main/call_sevice_icon.png" alt="service" />
         <h3>Request</h3>
@@ -9,11 +9,7 @@
     <div class="main-container-box">
       <nuxt-link to="/attendant/request" style="text-decoration: none">
         <div>
-          <img
-            class="image"
-            src="/main/excel_icon.png"
-            alt="custom_declaration"
-          />
+          <img class="image" src="/main/excel_icon.png" alt="custom_declaration" />
           <h3>Maninging Stock</h3>
         </div>
       </nuxt-link>
@@ -30,6 +26,17 @@
 <script>
 export default {
   name: 'AttendantMain',
+  methods: {
+    moveRequestPage() {
+      this.$router.push('/attendant/requesttest')
+    },
+    moveStockPage() {
+      this.$router.push('/attendant/stock')
+    },
+    moveMealPage() {
+      this.$router.push('/attendant/mealtest')
+    },
+  },
 }
 </script>
 
