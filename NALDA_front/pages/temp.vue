@@ -1,63 +1,72 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div>
-    <ol class="route-bus-line-list">
-      <li
-        v-for="(area, i) in areas"
-        :key="i"
-        class="route-bus-line-list-article top"
-        @click="checkInfo(i + 1)"
-      >
-        {{ area }}
-      </li>
-    </ol>
-    <button @click="checkConsole">check</button>
+    <button @click="getSubway">지하철 정보 가져오기</button>
+    <button @click="getSubwayByCondition(condition)">
+      제 1터미널 정보만 가져오기
+    </button>
+    <input v-model="check" type="time" @change="aaa" />
+    <div>
+      <button @click="aaa">데이터 22로 바꾸기</button>
+    </div>
+    <div>{{ time[cnt] }}</div>
+    <button v-if="cnt > 0" @click="dec">감소</button>
+    <button v-if="cnt < time.length - 1" @click="inc">증가</button>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-
 export default {
   data() {
     return {
-      areas: ['서울', '경기', '인천', '강원', '충청', '경상', '전라'],
+      cnt: 0,
+      subwayInfo: [],
+      condition: {
+        terminal: 1,
+        type: 1,
+        min: 0,
+      },
+      time: [],
+      check: '',
     }
   },
   computed: {
-    ...mapState('transportation', ['info']),
+    ...mapState('subway', ['subways', 'byCondition']),
   },
-  created() {
-    this.getInfo('1')
-  },
-
   methods: {
-    ...mapActions('transportation', ['getInfo', 'getTime', 'getStop']),
-    checkInfo(area) {
-      this.getInfo(String(area))
+    ...mapActions('subway', ['getSubway', 'getSubwayByCondition']),
+    aaa() {
+      this.condition.terminal = 2
+      this.condition.type = 2
+      for (let i = 0; i < this.byCondition.length; i++) {
+        let temp = []
+        temp = this.byCondition[i].time.split(':')
+        this.time.push(temp[0].slice(-2) + ':' + temp[1])
+        console.log(this.check)
+        if (this.check !== '') {
+          if (
+            parseInt(this.check.split(':')[0]) <= parseInt(temp[0].slice(-2))
+          ) {
+            if (parseInt(this.check.split(':')[1]) <= parseInt(temp[1])) {
+              this.condition.min = i
+              break
+            }
+          }
+        }
+      }
+      console.log(this.condition.min)
     },
-    checkConsole() {
-      // this.getStop(String(6300))
-      this.getTime(String(6300))
+    dec() {
+      this.cnt--
+    },
+    inc() {
+      this.cnt++
+    },
+    test() {
+      console.log(this.check)
     },
   },
-
-  // created() {
-  //   let url = 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo'
-  //   const key =
-  //     '5R6TrpQSR9qAqoXkN7jJvtnhJ3TcQ%2F3Ua3%2FgpSIdBrc2wN%2FDeNYoOyC50DZRlR9cyOLRNV2yximCIyiQZQqM4g%3D%3D'
-  //   url += '?' + encodeURIComponent('serviceKey') + '=' + key
-  //   url +=
-  //     '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('100')
-  //   url += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1')
-  //   url += '&' + encodeURIComponent('area') + '=' + encodeURIComponent('2')
-  //   url += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('json')
-  //   fetch(url)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data.response.body)
-  //     })
-  // },
 }
 </script>
 
