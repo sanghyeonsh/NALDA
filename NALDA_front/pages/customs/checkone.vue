@@ -6,9 +6,12 @@
         <div class="customform-container">
           <div class="title-items">
             <div class="customform-title">여행자 휴대품 신고서</div>
-            <nuxt-link to="/customs/checktwo">
-              <b-button class="next-page" variant="info">다음 페이지</b-button>
-            </nuxt-link>
+            <b-button
+              class="next-page"
+              variant="info"
+              @click="$router.push('/customs/checktwo')"
+              >다음 페이지</b-button
+            >
           </div>
           <div class="to-declaration-wrap">
             <div>
@@ -195,14 +198,16 @@ export default {
 }
 
 .next-page {
-  width: 200%;
-  height: 60%;
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
 }
 
 .title-items {
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 .customs-input-container {

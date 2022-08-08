@@ -1,51 +1,153 @@
 <template>
-  <div class="service-navbar">
-    <div class="service-navbar-menu">
-      <div class="service-navbar-home" @click="MoveOrders">
-        <div>날다</div>
-        <div>Home</div>
-      </div>
-      <div
-        class="service-navbar-snack"
-        :class="{ snackactive: isSnack }"
-        @click="MoveSnack"
-      >
-        <img src="/orders/dessert.png" alt="" />
-        <span>간식</span>
-      </div>
-      <div
-        class="service-navbar-alcohol"
-        :class="{ snackactive: isAlcohol }"
-        @click="MoveAlcohol"
-      >
-        <img src="/orders/drink.png" alt="" />
-        <span>주류</span>
-      </div>
-      <div
-        class="service-navbar-nonalcohol"
-        :class="{ snackactive: isNonAlcohol }"
-        @click="MoveNonAlcohol"
-      >
-        <img src="/orders/coffee_cup.png" alt="" />
-        <span>비주류</span>
-      </div>
-    </div>
+  <div style="overflow: scroll; height: 100vh">
+    <v-app id="inspire">
+      <div style="display: flex">
+        <v-tabs
+          v-model="tab"
+          background-color="rgb(69, 169, 200)"
+          vertical
+          dark
+          fixed-tabs
+          icons-and-text
+          height="85vh"
+          style="width: 10%; position: fixed; z-index: 1"
+        >
+          <v-tabs-slider></v-tabs-slider>
+          <v-tab key="snacks" href="#snacks">
+            간식
+            <v-icon>mdi-food-hot-dog</v-icon>
+          </v-tab>
+          <v-tab key="alcohols" href="#alcohols">
+            주류
+            <v-icon>mdi-glass-mug-variant</v-icon>
+          </v-tab>
+          <v-tab key="nonAlcohols" href="#nonAlcohols">
+            비주류
+            <v-icon>mdi-cup</v-icon>
+          </v-tab>
+        </v-tabs>
+        <div>
+          <v-tabs-items v-model="tab">
+            <v-tab-item key="snacks" value="snacks">
+              <div class="tab-item">
+                <div
+                  v-for="(item, idx) in snacks"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card style="margin-bottom: 30px">
+                    <v-img
+                      :src="'data:image/jpg;base64,' + item.bytesdata"
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="200px"
+                    >
+                      <v-card-title v-text="item.serviceName"></v-card-title>
+                    </v-img>
 
-    <div class="service-navbar-profile">
-      <div class="profile-back">
-        <img src="/orders/left-round-128.png" alt="" />
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon @click="ChoiceMenu(item)">mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </div>
+              </div>
+            </v-tab-item>
+            <v-tab-item key="alcohols" value="alcohols">
+              <div class="tab-item">
+                <div
+                  v-for="(item, idx) in alcohols"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card style="margin-bottom: 30px">
+                    <v-img
+                      :src="'data:image/jpg;base64,' + item.bytesdata"
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="200px"
+                    >
+                      <v-card-title v-text="item.serviceName"></v-card-title>
+                    </v-img>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon @click="ChoiceMenu(item)">mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </div>
+              </div>
+            </v-tab-item>
+            <v-tab-item key="nonAlcohols" value="nonAlcohols">
+              <div class="tab-item">
+                <div
+                  v-for="(item, idx) in nonAlcohols"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card style="margin-bottom: 30px">
+                    <v-img
+                      :src="'data:image/jpg;base64,' + item.bytesdata"
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      width="200px"
+                      height="200px"
+                    >
+                      <v-card-title v-text="item.serviceName"></v-card-title>
+                    </v-img>
+
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon ref="choiseMenu" @click="ChoiceMenu(item)"
+                          >mdi-heart</v-icon
+                        >
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </div>
+              </div>
+            </v-tab-item>
+          </v-tabs-items>
+        </div>
       </div>
-      <div class="profile-image">
-        <img src="/main/user_profile_w.png" alt="" />
-        <div class="profile-name">김익명</div>
-      </div>
-    </div>
+      <v-alert
+        v-model="alert"
+        color="pink"
+        border="left"
+        elevation="2"
+        colored-border
+        icon="mdi-cart-heart"
+        style="z-index: 2; position: fixed; bottom: 0; width: 100%"
+        transition="slide-y-transition"
+      >
+        장바구니에 담았습니다!
+      </v-alert>
+      <v-btn
+        class="mx-2"
+        fab
+        dark
+        x-large
+        color="pink"
+        style="position: fixed; bottom: 10vh; right: 3vh"
+        @click="openSelectedModal"
+      >
+        <v-icon dark> mdi-cart-heart </v-icon>
+      </v-btn>
+    </v-app>
+    <ServiceModal ref="serviceModal" @shoppingAlert="shoppingAlert" />
+    <SelectedItem ref="selectedItem" />
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-
 export default {
   name: 'ServiceNavbar',
   data() {
@@ -53,58 +155,52 @@ export default {
       isSnack: false,
       isAlcohol: false,
       isNonAlcohol: false,
+      tab: null,
+      tabs: ['snacks', 'alcohols', 'nonAlcohols'],
+      snacks: [],
+      alcohols: [],
+      nonAlcohols: [],
+      dialog: false,
+      alert: false,
     }
   },
   computed: {
-    ...mapState('menu', ['items', 'selected_foods', 'check_foods']),
+    ...mapState('menu', ['items']),
   },
 
   created() {
     this.isSnack = true
-    this.CLEAR_ITEMS()
-
     const promise = new Promise((resolve, reject) => {
       resolve()
     })
 
     promise.then(async () => {
       await this.getSnack()
+      await this.getAlcohols()
+      await this.getNonAlcohols()
+
+      this.snacks = this.items.snack
+      this.alcohols = this.items.alcohol
+      this.nonAlcohols = this.items.nonAlcohol
     })
   },
   methods: {
-    MoveOrders() {
-      this.$router.push('/main/service')
-      this.CLEAR_CHOICE_FOODS()
+    openSelectedModal() {
+      this.$refs.selectedItem.toggle()
     },
-    MoveSnack() {
-      this.isSnack = true
-      this.isAlcohol = false
-      this.isNonAlcohol = false
-      this.CLEAR_ITEMS()
-      this.getSnack()
+    shoppingAlert() {
+      window.setTimeout(() => {
+        this.alert = true
+        window.setTimeout(() => {
+          this.alert = false
+        }, 3000)
+      }, 500)
     },
-    MoveAlcohol() {
-      this.isSnack = false
-      this.isAlcohol = true
-      this.isNonAlcohol = false
-      this.CLEAR_ITEMS()
-      this.getAlcohols()
+    ChoiceMenu(data) {
+      this.SET_ITEM(data)
+      this.$refs.serviceModal.toggle()
     },
-    MoveNonAlcohol() {
-      this.isSnack = false
-      this.isAlcohol = false
-      this.isNonAlcohol = true
-      this.CLEAR_ITEMS()
-      this.getNonAlcohols()
-    },
-    ...mapMutations('menu', [
-      'SET_CHOICE_FOODS',
-      'DELETE_CHOICE_FOODS',
-      'CLEAR_CHOICE_FOODS',
-      'PLUS_CHOICE_FOODS',
-      'MINUS_CHOICE_FOODS',
-      'CLEAR_ITEMS',
-    ]),
+    ...mapMutations('menu', ['SET_ITEM']),
     ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
   },
 }
@@ -122,6 +218,17 @@ export default {
   font-family: 'twayfly';
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+.tab-item {
+  margin-top: 2%;
+  margin-left: 8%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 90%;
+}
 .service-navbar {
   display: flex;
   width: 100%;
@@ -190,7 +297,10 @@ export default {
   width: 70%;
   height: 70%;
 }
-
+.snack-image {
+  margin-bottom: 4%;
+  margin-left: 5%;
+}
 .profile-image {
   display: flex;
   width: 70%;
@@ -212,5 +322,13 @@ export default {
   justify-content: center;
   align-items: center;
   font-size: 25px;
+}
+
+#item-modal {
+  display: none;
+}
+
+#selected-modal {
+  display: none;
 }
 </style>
