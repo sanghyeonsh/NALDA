@@ -6,7 +6,11 @@
           <img src="/main/toilet_navy.png" alt="toilet" />
           <h3>화장실</h3>
         </button>
-        <button class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
+        <button
+          class="service-wrap"
+          style="background-color: #206e95"
+          @click="MoveHelpcall"
+        >
           <img src="/main/flight_attendant_w.png" alt="toilet" />
           <h3>승무원호출</h3>
         </button>
@@ -35,7 +39,7 @@ export default {
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {
-      this.$router.push({ name: 'main-toilet' })
+      this.$router.push('/attendant/toilet')
     },
   },
 }
