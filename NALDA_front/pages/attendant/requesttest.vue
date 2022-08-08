@@ -12,7 +12,7 @@
                 id="request-table-transition"
                 class="request-items-wrap"
                 hover
-                :items="requestItems"
+                :items="ordersObject"
                 :per-page="perPage"
                 :current-page="requestCurrentPage"
                 :fields="fields"
@@ -39,8 +39,9 @@
                 <b-table
                   class="completed-items-wrap"
                   hover
-                  :items="completed"
+                  :items="completeObject"
                   :per-page="perPage"
+                  :fields="completefields"
                   :current-page="completedCurrentPage"
                   small
                   @row-clicked="showDetail"
@@ -113,6 +114,7 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'AttendantRequestTest',
   data() {
@@ -127,7 +129,7 @@ export default {
       requestCurrentPage: 1,
       completedCurrentPage: 1,
       detailCurrentPage: 1,
-      items: this.requestItems,
+      items: this.request,
       fields: [
         {
           key: '좌석',
@@ -150,91 +152,57 @@ export default {
           sortable: true,
         },
       ],
-      requestItems: [
+      request: [],
+      completed: [],
+      details: [],
+      detailsfields: ['선택', '좌석', '분류', '요청사항', '수량', '상태'],
+      completefields: [
         {
-          좌석: 'B37',
-          분류: '의료',
-          요청사항: '두통',
-          요청시각: '01:37',
-          상태: '미완료',
+          key: '좌석',
+          sortable: false,
         },
         {
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:35',
-          상태: '미완료',
+          key: '분류',
+          sortable: true,
         },
         {
-          좌석: 'D07',
-          분류: '편의물품',
-          요청사항: '담요',
-          요청시각: '02:40',
-          상태: '미완료',
+          key: '요청사항',
+          sortable: false,
         },
         {
-          좌석: 'C38',
-          분류: '간식 및 음료',
-          요청사항: '하이네켄',
-          요청시각: '01:37',
-          상태: '미완료',
+          key: '완료시각',
+          sortable: true,
         },
         {
-          좌석: 'F63',
-          분류: '간식 및 음료',
-          요청사항: '오렌지주스',
-          요청시각: '19:37',
-          상태: '미완료',
+          key: '상태',
+          sortable: true,
         },
       ],
-      completed: [
-        {
-          좌석: 'D29',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-          완료시각: '03:44',
-        },
-        {
-          좌석: 'C03',
-          분류: '의료',
-          요청사항: '두통',
-          요청시각: '01:37',
-          완료시각: '01:36',
-        },
-      ],
-      details: [
-        {
-          선택: '',
-          좌석: 'A08',
-          분류: '간식 및 음료',
-          요청사항: '나쵸',
-          요청시각: '01:37',
-        },
-      ],
-      detailsfields: ['선택', '좌석', '분류', '요청사항', '요청시각'],
-      selecteditems: 0,
+      selecteditems: [],
     }
   },
   computed: {
+    ...mapGetters('attendant', ['ordersObject', 'completeObject']),
     reqeustrows() {
-      return this.rows
+      return this.ordersObject.length
     },
     completedrows() {
-      return this.completed.length
+      return this.completeObject.length
     },
     detailsrows() {
       return this.details.length
     },
+    ...mapState('attendant', ['ordersList']),
   },
   created() {
-    console.log(this.requestItems.length % 4)
-    console.log(3 - (this.requestItems.length % 4))
-    // if (this.requestItems.length % 4 !== 0) {
-    //   // this.rows = Math.floor(this.requestItems.length/4)*4 + (4-(this.requestItems.length%4))
-    //   for (let i = 0; i < 4 - (this.requestItems.length % 4); i++) {
+    this.getListOrders(1)
+    // console.log(this.request.length % 4)
+    // console.log(3 - (this.request.length % 4))
+    // if (this.request.length % 4 !== 0) {
+    //   // this.rows = Math.floor(this.request.length/4)*4 + (4-(this.request.length%4))
+    //   for (let i = 0; i < 4 - (this.request.length % 4); i++) {
     //     console.log('푸쉬')
-    //     this.requestItems.push({
+    //     this.request.push({
     //       좌석: '좌석',
     //       분류: '분류',
     //       요청사항: '요청',
@@ -242,59 +210,82 @@ export default {
     //       상태: '상태',
     //     })
     //   }
-    // }
-    this.rows = this.requestItems.length
-    // console.log(this.rows)
-    // console.log(this.requestItems)
-    return this.rows
+    // }여긴 신경 ㄴㄴ
   },
   methods: {
-    // setRows() {
-    //   if(this.requestItems.length%3 !== 0) {
-    //       this.requestItems.length = Math.floor(this.requestItems.length/3)*3 + (4-(this.requestItems.length%3))
-    //       for(let i = 0; i < (3-(this.requestItems.length%3)); i++) {
-    //       this.requestItems.push({좌석: "좌석", 분류: "분류", 요청사항: "요청", 요청시각: "시각", 상태: "상태"})
-    //       }
-    //   }
-    //   return this.requestItems.length
-    // }
+    ...mapActions('attendant', ['getListOrders', 'updateOrderStatus']),
     showDetail(item) {
-      // this.details = []
-      if (item.상태 !== null && item.상태 === '미완료') {
-        this.details.push(item)
+      this.details = []
+      if (item.상태 === 'PROGRESS') {
+        for (let i = 0; i < item.주문상세.length; i++) {
+          // console.log(item.주문상세)
+          const orderDetail = {
+            id: item.id,
+            좌석: item.좌석,
+            분류: item.주문상세[i].orderCode,
+            요청사항: item.주문상세[i].orderName,
+            수량: item.주문상세[i].cnt,
+            상태: 'PROGRESS',
+          }
+          this.details.push(orderDetail)
+        }
       } else {
-        this.details.push(item)
+        for (let i = 0; i < item.주문상세.length; i++) {
+          // console.log(item.주문상세)
+          const orderDetail = {
+            id: item.id,
+            좌석: item.좌석,
+            분류: item.주문상세[i].orderCode,
+            요청사항: item.주문상세[i].orderName,
+            수량: item.주문상세[i].cnt,
+            상태: 'DONE',
+          }
+          this.details.push(orderDetail)
+        }
       }
     },
     onRowSelected(items) {
       this.selecteditems = items
+      console.log(items)
     },
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
     },
-    completeRequest(items) {
-      // console.log(items[1].분류) 데이터 확인
-      const Today = new Date()
-      const hours = ('0' + Today.getHours()).slice(-2)
-      const minutes = ('0' + Today.getMinutes()).slice(-2)
-      const seconds = ('0' + Today.getSeconds()).slice(-2)
-      const currentTime = hours + ':' + minutes + ':' + seconds
-      // console.log(currentTime)
-      // console.log(this.items[0].좌석)
-
-      for (let i = 0; i < items.length; i++) {
-        const completeItem = {
-          좌석: items[i].좌석,
-          분류: items[i].분류,
-          요청사항: items[i].요청사항,
-          요청시각: items[i].요청시각,
-          완료시각: currentTime,
-        }
-        this.completed.push(completeItem)
-      }
-      // sessionStorage.setItem('completed', JSON.stringify(this.completed))
+    clearSelected() {
+      this.$refs.selectableTable.clearSelected()
     },
-    clearSelected() {},
+    completeRequest(items) {
+      // 완료 시각 계산
+      // const Today = new Date()
+      // const hours = ('0' + Today.getHours()).slice(-2)
+      // const minutes = ('0' + Today.getMinutes()).slice(-2)
+      // const seconds = ('0' + Today.getSeconds()).slice(-2)
+      // const currentTime = hours + ':' + minutes + ':' + seconds
+      // console.log(currentTime)
+      // 선택된 아이템의 상태 바꿔주기
+      for (let i = 0; i < items.length; i++) {
+        items[i].상태 = 'DONE'
+      }
+      // 선택된 아이템 상태가 DONE인 갯수 비교
+      let count = 0
+      for (let i = 0; i < this.details.length; i++) {
+        if (this.details[i].상태 === 'DONE') {
+          count++
+        }
+      }
+      console.log(1234567)
+      // 갯수가 세부사항 갯수와 같은경우 실제요청 상태값 바꾸기
+      if (count === this.details.length && count !== 0) {
+        //
+        console.log(this.details[0].id)
+        const promise = new Promise((resolve, reject) => {
+          resolve()
+        })
+        promise.then(async () => {
+          await this.updateOrderStatus(this.details[0].id)
+        })
+      }
+    },
   },
 }
 </script>
