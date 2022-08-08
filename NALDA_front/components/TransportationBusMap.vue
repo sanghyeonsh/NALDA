@@ -22,12 +22,8 @@
           </div>
         </div>
         <!-- 오른쪽에 체크해줘야하는 부분 -->
-<<<<<<< HEAD
-        <div v-if="idx == 19 || idx == 39" class="check-right">
-=======
 
         <div v-if="idx == 19 || idx == 39 || idx == 59" class="check-right">
->>>>>>> 9d882e1480fa8e9fac4eb9eb953a4c27a8d38f24
           <div class="station-name-box">
             {{ station }}
           </div>

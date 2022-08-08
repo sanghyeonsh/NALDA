@@ -31,21 +31,10 @@
         <div class="terminal-1" @click="terminal1">제1터미널</div>
         <div class="terminal-2" @click="terminal2">제2터미널</div>
       </div>
-      <!-- <div class="bus-detail-day">
-        <div class="detail-day" @click="dayType1">평일</div>
-        <div class="detail-wday" @click="dayType2">주말</div>
-      </div>
-      <div class="bus-detail-time">
-        <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
-          {{ table }}
-        </div>
-      </div> -->
       <div class="bus-detail-map">
         <TransportationBusMap :stations="choiceStation" />
       </div>
     </div>
-    <!-- <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
-    <button class="bus-button2" @click="ShowImage2">제2여객터미널</button> -->
 
     <div class="button1-image">
       <div class="button1-image-box">
@@ -316,7 +305,7 @@ export default {
 
 <style scoped>
 .transport-bus {
-  height: 85vh;
+  height: 75vh;
   display: flex;
 }
 .bus-region {
