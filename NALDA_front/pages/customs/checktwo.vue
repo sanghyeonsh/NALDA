@@ -4,8 +4,20 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="title-container">
+          <div class="title-coontainer">
             <div class="title-items">
+              <v-app id="info-btn">
+                <v-btn
+                  class="mx-2 mb-5 ml-15"
+                  fab
+                  dark
+                  medium
+                  color="#778899"
+                  @click="openAttentions"
+                >
+                  <v-icon large dark> mdi-information-outline </v-icon>
+                </v-btn>
+              </v-app>
               <div class="customform-title">여행자 휴대품 신고서</div>
               <b-button
                 class="next-page"
@@ -124,16 +136,18 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
+import attentions from '../../components/attentions.vue'
 
 export default {
   name: 'CustomsChecktwo',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
   beforeRouteLeave(to, from, next) {
     this.MODIFY_PROHIBITGOODS(this.prohibitGoods)
     this.MODIFY_LIVESTOCKVISITED(this.livestockVisited)
@@ -164,6 +178,9 @@ export default {
       'MODIFY_LIVESTOCKVISITED',
       'MODIFY_SALESGOODS',
     ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
   },
 }
 </script>
@@ -192,20 +209,20 @@ export default {
 }
 
 .next-page {
-  width: 20%;
-  height: 60%;
+  width: 15%;
+  height: 6vh;
   margin-bottom: 2%;
 }
 
 .title-items {
-  width: 75%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .customs-input-container {
@@ -347,5 +364,8 @@ input[id='box5-2'],
 input[id='box6-1'],
 input[id='box6-2'] {
   display: none;
+}
+:deep .v-application--wrap {
+  min-height: fit-content;
 }
 </style>
