@@ -9,6 +9,7 @@ spring:
     open-in-view: false
     show-sql: true
 #server:
+
 #  tomcat:
 #    remoteip:
 #      host-header: x-forwarded-for
@@ -23,3 +24,5 @@ spring:
 #    key-store-password: ssafy1357
 #  http2:
 #    enabled: true
+
+

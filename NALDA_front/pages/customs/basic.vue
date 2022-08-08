@@ -381,7 +381,7 @@ export default {
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .customs-input-container {
