@@ -85,9 +85,6 @@
 <script>
 export default {
   name: 'CustomNavs',
-  props: {
-    basicInfo: {},
-  },
   data() {
     return {}
   },
@@ -98,12 +95,9 @@ export default {
     },
     moveFirstStep() {
       this.$router.push('/customs/basic')
-
-      console.log(1)
     },
     moveSecondStep1() {
       this.$router.push('/customs/checkone')
-      console.log(this.basicInfo)
     },
     moveSecondStep2() {
       this.$router.push('/customs/checktwo')

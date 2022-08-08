@@ -6,74 +6,272 @@
         <h4>세관신고서 목록</h4>
         <div class="mycustom-subindex-bluebox">
           <!-- <div class="overflow-auto"> -->
-          <p class="mt-3">현재 페이지: {{ currentPage }}</p>
-          <b-table
+          <v-data-table
             id="my-table"
-            :items="items"
-            :per-page="perPage"
-            :current-page="currentPage"
+            :items="listTable"
+            :headers="headers"
+            :loading="loading"
+            loading-text="Loading... Please wait"
+            :items-per-page="perPage"
+            :page="currentPage"
+            hide-default-footer
+            class="elevation-1"
             small
-            @click="customDetail(item)"
-          ></b-table>
-          <b-pagination
+            @click:row="customDetail"
+          ></v-data-table>
+          <v-pagination
             v-model="currentPage"
-            :total-rows="rows"
-            :per-page="perPage"
-            pills
-            variant="info"
-            size="sm"
-          ></b-pagination>
+            :length="pageCount"
+            :total-visivle="totalVisible"
+            circle
+          >
+          </v-pagination>
           <!-- </div> -->
         </div>
       </div>
     </div>
+
+    <b-modal id="check-modal" size="xl" hide-footer centered>
+      <template #modal-title> 상세 정보 </template>
+      <v-expansion-panels inset>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>항공 편명</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">{{ declaration.flightNum }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>날짜</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">{{ declaration.date }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>목적</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">{{ declaration.purposeTravel }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>동반가족수</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">{{ declaration.accompany }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>여행기간</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">{{ declaration.travelPeriod }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>대한민국 이전에 방문한 국가</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div
+              v-for="(item, idx) in declaration.visitedCountries"
+              :key="idx"
+              class="panel-content"
+            >
+              {{ item.countryName }}
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              해외(국내외 면세점 포함)에서
+              <b>취득(구입, 기증, 선물 포함)</b>한 면세범위 초과
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              초과 여부 : {{ declaration.dutyfreeExceed }}
+            </div>
+            <div class="panel-content">
+              총금액 : 약 {{ declaration.dutyfreeExceedValue }} $
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
+              적용받으려는 물품
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              여부 : {{ declaration.preferentialTariff }}
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              미화로 환산하여
+              <b>$10,000을 초과하는 지급수단</b> <br />(원화ㆍ달러화 등
+              법정통화, 자기앞수표, 여행자수표, 및 그 밖의 유가증권)
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              여부 : {{ declaration.paymentExceed }}
+            </div>
+            <div class="panel-content">
+              총금액 : 약 {{ declaration.paymentExceedValue }} $
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              총포류, 도검류, 마약류 및
+              <b>헌법질서ㆍ공공의 안녕질서ㆍ풍속을 해치는 물품</b> 등
+              <b>반입이 금지되거나 제한되는 물품</b>
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              여부 : {{ declaration.prohibitGoods }}
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              동물, 식물, 육가공품 등
+              <b>검역대상물품</b> 또는 가축전염병발생국의
+              <b>축산농가 방문</b>
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              여부 : {{ declaration.livestockVisited }}
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>
+              <b>판매용 물품, 업무용 물품(샘플 등)</b>, 다른 사람의 부탁으로
+              <b>반입한 물품, 예치 또는 일시수출입 물품</b>
+            </div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">여부 : {{ declaration.salesGoods }}</div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel>
+          <v-expansion-panel-header>
+            <div>여행자 휴대품 신고서</div>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <div class="panel-content">
+              주류 : {{ declaration.alcohols.num }}병 &nbsp;
+              {{ declaration.alcohols.liter }}리터 &nbsp;
+              {{ declaration.alcohols.dollar }}$
+            </div>
+            <div class="panel-content">
+              담배 : {{ declaration.cigarette }} 갑
+            </div>
+            <div class="panel-content">
+              향수 : {{ declaration.perfumes }} ㎖
+            </div>
+            <div class="panel-content">
+              ▶그 밖의 면세범위 (US $600) 초과 물품
+            </div>
+            <div v-for="(item, idx) in declaration.etcExceeds" :key="idx">
+              <div class="panel-content">
+                &emsp;&emsp;&emsp;&emsp; 품명 : {{ item.name }} &nbsp; 수(증)량
+                : {{ item.num }} &nbsp; 금액 : {{ item.amount }}$
+              </div>
+            </div>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import { mapState, mapActions, mapGetters } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
 export default {
   name: 'MyCustom',
   components: { UserNavs },
   data() {
     return {
-      // rows: '',
-      perPage: 8,
+      perPage: 5,
       currentPage: 1,
-      items: [
-        { no: 1, journey: 'Madrid', date: '2019-01-24' },
-        { no: 2, journey: 'Madrid', date: '2019-01-24' },
-        { no: 3, journey: 'Madrid', date: '2019-01-24' },
-        { no: 4, journey: 'Madrid', date: '2019-01-24' },
-        { no: 5, journey: 'Madrid', date: '2019-01-24' },
-        { no: 6, journey: 'Madrid', date: '2019-01-24' },
-        { no: 7, journey: 'Madrid', date: '2019-01-24' },
-        { no: 8, journey: 'Madrid', date: '2019-01-24' },
-        { no: 9, journey: 'Madrid', date: '2019-01-24' },
-        { no: 10, journey: 'Madrid', date: '2019-01-24' },
-        { no: 11, journey: 'Madrid', date: '2019-01-24' },
-        { no: 12, journey: 'Madrid', date: '2019-01-24' },
-        { no: 13, journey: 'Madrid', date: '2019-01-24' },
-        { no: 14, journey: 'Madrid', date: '2019-01-24' },
-        { no: 15, journey: 'Madrid', date: '2019-01-24' },
-        { no: 16, journey: 'Madrid', date: '2019-01-24' },
-        { no: 17, journey: 'Madrid', date: '2019-01-24' },
-        { no: 18, journey: 'Madrid', date: '2019-01-24' },
-        { no: 19, journey: 'Madrid', date: '2019-01-24' },
-        { no: 20, journey: 'Madrid', date: '2019-01-24' },
+      loading: true,
+      totalVisible: 10,
+      headers: [
+        { text: 'ID', align: 'center', sortable: false, value: 'ID' },
+        { text: '목적', align: 'center', sortable: false, value: '목적' },
+        { text: '편명', align: 'center', sortable: false, value: '편명' },
+        { text: '날짜', align: 'center', sortable: false, value: '날짜' },
       ],
+      declaration: {
+        alcohols: {},
+      },
     }
   },
-  mathods: {
-    customDetail(payload) {
-      console.log(payload.no)
-      console.log(payload.hourney)
-      console.log(payload.date)
+  computed: {
+    ...mapGetters('customdeclaration', ['listTable']),
+    ...mapState('user', ['loginMember']),
+    ...mapState('customdeclaration', [
+      'declarationList',
+      'selectedDeclaration',
+    ]),
+    rows() {
+      return this.listTable.length
+    },
+    pageCount() {
+      return this.listTable.length % this.perPage === 0
+        ? parseInt(this.listTable.length / this.perPage)
+        : parseInt(this.listTable.length / this.perPage + 1)
     },
   },
-  computed: {
-    rows() {
-      return this.items.length
+  created() {
+    axios.get('https://api.ipify.org?format=json').then((response) => {
+      console.log(response)
+    })
+    this.getDeclarationList(this.loginMember.username)
+  },
+  methods: {
+    ...mapActions('customdeclaration', [
+      'getDeclarationList',
+      'getOneDeclaration',
+    ]),
+    getIP(json) {
+      console.log(json)
+    },
+    customDetail(event, { item }) {
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getOneDeclaration(item.ID)
+        console.log(this.selectedDeclaration)
+        this.declaration = this.selectedDeclaration
+        this.$bvModal.show('check-modal')
+      })
     },
   },
 }
@@ -92,6 +290,20 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+.panel-content {
+  font-size: x-large;
+}
+.countries-card {
+  display: flex;
+}
+
+.d-block {
+  font-size: 30px;
+}
+
+.elevation-1 {
+  width: 100%;
 }
 .mycustom-container {
   width: 100%;

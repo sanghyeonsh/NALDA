@@ -7,16 +7,24 @@
           <div class="customform-title">여행자 휴대품 신고서</div>
           <div class="warn-wrap">
             <ul>
-              <li>모든 입국자는 관세법에 따라 신고서를 작성, 제출하여야 하며, 세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.</li>
+              <li>
+                모든 입국자는 관세법에 따라 신고서를 작성, 제출하여야 하며,
+                세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.
+              </li>
               <li>가족여행인 경우에는 1명이 대표로 신고할 수 있습니다.</li>
-              <li>신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.</li>
+              <li>
+                신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.
+              </li>
             </ul>
           </div>
         </div>
         <div class="next-btn-wrap">
-          <div>
-            <b-button class="next-page" variant="info">next</b-button>
-          </div>
+          <b-button
+            class="next-page"
+            variant="info"
+            @click="$router.push('/customs/basic')"
+            >확인했습니다.</b-button
+          >
         </div>
       </div>
     </div>
@@ -104,13 +112,15 @@ export default {
 }
 
 .next-page {
-  width: 200%;
-  height: 140%;
+  width: 30%;
+  height: 5vh;
 }
+
 .next-btn-wrap {
+  width: 80%;
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  align-content: flex-end;
+  justify-content: end;
 }
 </style>

@@ -29,7 +29,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/persistedState.js' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,6 +38,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -47,6 +48,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     'nuxt-vuex-localstorage',
+    'cookie-universal-nuxt',
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -57,4 +60,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo',
+  //     changeOrigin: true,
+  //     secure: false,
+  //     pathRewrite: {
+  //       '^/api': '',
+  //     },
+  //   },
+  // },
 }

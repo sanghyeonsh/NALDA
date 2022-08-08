@@ -12,13 +12,17 @@
       <section class="login-input-section-wrap">
         <h2>Member</h2>
         <div class="login-input-wrap">
-          <input v-model="id" placeholder="Username" type="text" />
+          <input v-model="userInfo.id" placeholder="Username" type="text" />
         </div>
         <div class="login-input-wrap password-wrap">
-          <input v-model="password" placeholder="Password" type="password" />
+          <input
+            v-model="userInfo.password"
+            placeholder="Password"
+            type="password"
+          />
         </div>
         <div class="login-button-wrap">
-          <button @click="inputLogin">Sign in</button>
+          <button @click="loginClick">Sign in</button>
         </div>
         <div class="login-stay-sign-in">
           <nuxt-link to="/user/termsuse" style="text-decoration: none">
@@ -52,45 +56,41 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { login } from '@/api/user'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'LoginUser',
+  // beforeRouteEnter(to, from, next) {
+  //   let isLogin = false
+  //   next((vm) => {
+  //     isLogin = vm.$store.getters['user/isLogin']
+  //   })
 
+  //   if (isLogin) {
+  //     next()
+  //   } else {
+  //     next(false)
+  //   }
+  // },
   data() {
     return {
-      id: null,
-      password: null,
+      userInfo: {
+        id: null,
+        password: null,
+      },
     }
   },
   computed: {
     ...mapState('user', ['loginMember']),
   },
+  created() {
+    this.CLEAR_LOGIN_MEMBER()
+    this.CLEAR_MEMBER_DETAIL()
+  },
   methods: {
-    ...mapActions('user', ['setLoginMember']),
-    inputLogin() {
-      console.log(this.id + ' ' + this.password)
-      login(
-        {
-          username: this.id,
-          password: this.password,
-        },
-        ({ headers, data }) => {
-          // const jwtToken = headers.get('Authorization')
-          // console.log(jwtToken)
-          sessionStorage.setItem('Authorization', headers.authorization)
-          if (data.msg === '로그인 성공') {
-            this.setLoginMember(this.id)
-            // 세관신고서로 넘어가야함(임시)
-            this.$router.push('/user/mypage')
-          } else {
-            alert('실패')
-          }
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+    ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
+    ...mapActions('user', ['inputLogin']),
+    loginClick() {
+      this.inputLogin(this.userInfo)
     },
   },
 }

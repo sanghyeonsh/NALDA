@@ -4,7 +4,17 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-container">
+            <div class="title-items">
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <b-button
+                class="next-page"
+                variant="info"
+                @click="$router.push('/customs/detail')"
+                >다음 페이지</b-button
+              >
+            </div>
+          </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
@@ -25,11 +35,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box4-1" type="checkbox" value="bangoodsck" />
+                  <input
+                    id="box4-1"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box4-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box4-2" type="checkbox" value="bangoodsck" />
+                  <input
+                    id="box4-2"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box4-2"></label>
                 </td>
               </tr>
@@ -38,19 +60,31 @@
                   5. 동물, 식물, 육가공품 등
                   <b>검역대상물품</b> 또는 가축전염병발생국의
                   <b>축산농가 방문</b>
-                  <br />※축산농가 방문자는
-                  <b>검역본부에</b> 신고하시기 바랍니다.
+                  <br />※축산농가 방문자는 <b>검역본부에</b> 신고하시기
+                  바랍니다.
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box5-1" type="checkbox" value="livestockck" />
+                  <input
+                    id="box5-1"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box5-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box5-2" type="checkbox" value="livestockck" />
+                  <input
+                    id="box5-2"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box5-2"></label>
                 </td>
               </tr>
@@ -65,11 +99,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box6-1" type="checkbox" value="salesgoodsck" />
+                  <input
+                    id="box6-1"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box6-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box6-2" type="checkbox" value="salesgoodsck" />
+                  <input
+                    id="box6-2"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box6-2"></label>
                 </td>
               </tr>
@@ -82,11 +128,43 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
   name: 'CustomsChecktwo',
   components: { CustomNavs },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_PROHIBITGOODS(this.prohibitGoods)
+    this.MODIFY_LIVESTOCKVISITED(this.livestockVisited)
+    this.MODIFY_SALESGOODS(this.salesGoods)
+    next()
+  },
+  data() {
+    return {
+      prohibitGoods: '',
+      livestockVisited: '',
+      salesGoods: '',
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    if (this.declaration.prohibitGoods !== '')
+      this.prohibitGoods = this.declaration.prohibitGoods
+    if (this.declaration.livestockVisited !== '')
+      this.livestockVisited = this.declaration.livestockVisited
+    if (this.declaration.salesGoods !== '')
+      this.salesGoods = this.declaration.salesGoods
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_PROHIBITGOODS',
+      'MODIFY_LIVESTOCKVISITED',
+      'MODIFY_SALESGOODS',
+    ]),
+  },
 }
 </script>
 
@@ -111,6 +189,23 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+
+.next-page {
+  width: 20%;
+  height: 60%;
+  margin-bottom: 2%;
+}
+
+.title-items {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.title-container {
+  display: flex;
+  justify-content: end;
 }
 
 .customs-input-container {

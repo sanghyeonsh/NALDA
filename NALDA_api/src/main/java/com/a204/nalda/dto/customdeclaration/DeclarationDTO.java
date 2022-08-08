@@ -6,8 +6,10 @@ import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.enumtype.Permission;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -16,9 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 public class DeclarationDTO  implements Serializable {
 
-    private Long id;
     private String username;
-    private TravelPeriod travelPeriod;
+
+    private Integer travelPeriod;
+
     private String purposeTravel;
     private String flightNum;
     private int accompany;
@@ -30,9 +33,13 @@ public class DeclarationDTO  implements Serializable {
     private Permission livestockVisited;
     private Permission salesGoods;
 
-    private int cigarette;
-    private int perfumes;
+    private Integer dutyfreeExceedValue;
+    private Integer paymentExceedValue;
 
+    private Integer cigarette;
+    private Integer perfumes;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
     private Alcohols alcohols;
     private List<EtcExceed> etcExceeds;
     private List<VisitedCountry> visitedCountries;

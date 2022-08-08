@@ -1,19 +1,19 @@
 <template>
   <div class="main-service-container">
     <div class="service-container-box" @click="MoveSnack">
-      <img src="../../static/orders/foods.png" alt="snack" />
+      <img src="/orders/foods.png" alt="snack" />
       <h3>간식 및 음료</h3>
     </div>
     <div class="service-container-box" @click="MoveGoods">
-      <img src="../../static/orders/blanket.png" alt="goods" />
+      <img src="/orders/blanket.png" alt="goods" />
       <h3>편의물품</h3>
     </div>
     <div class="service-container-box" @click="MoveMeal">
-      <img src="../../static/orders/food.png" alt="meal" />
+      <img src="/orders/food.png" alt="meal" />
       <h3>기내식 선택</h3>
     </div>
     <div class="service-container-box" @click="MoveMedical">
-      <img src="../../static/orders/hospital.png" alt="medical" />
+      <img src="/orders/hospital.png" alt="medical" />
       <h3>의료</h3>
     </div>
   </div>
@@ -41,9 +41,23 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
 .main-service-container {
   display: flex;
   height: 70vh;
+  width: 100vw;
 }
 .service-container-box {
   text-align: center;

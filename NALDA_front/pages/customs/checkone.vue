@@ -4,7 +4,15 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="customform-title">여행자 휴대품 신고서</div>
+          <div class="title-items">
+            <div class="customform-title">여행자 휴대품 신고서</div>
+            <b-button
+              class="next-page"
+              variant="info"
+              @click="$router.push('/customs/checktwo')"
+              >다음 페이지</b-button
+            >
+          </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
@@ -20,59 +28,98 @@
                   <b>취득(구입, 기증, 선물 포함)</b>한 면세범위 초과
                   <b>물품(뒷면 1참조)</b>
                   [총금액: 약
-                  <input type="text" /> ]
+                  <input v-model="dutyfreeExceedValue" type="text" /> ]
                   <br />
-                  <b id="exceed-warning">*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도 초과)가 감면됩니다.</b>
+                  <b id="exceed-warning"
+                    >*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
+                    초과)가 감면됩니다.</b
+                  >
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box1-1" type="checkbox" value="dutyfreeck" />
+                  <input
+                    id="box1-1"
+                    v-model="dutyfreeExceed"
+                    name="dutyfree"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box1-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box1-2" type="checkbox" value="dutyfreeck" />
+                  <input
+                    id="box1-2"
+                    v-model="dutyfreeExceed"
+                    name="dutyfree"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box1-2"></label>
                 </td>
               </tr>
               <tr>
                 <td class="details" rowspan="2">
                   2.
-                  <b>FTA 협정국가</b>의 원산지 물품으로
-                  <b>특혜관세</b>를 적용받으려는 물품
+                  <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
+                  적용받으려는 물품
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box2-1" type="checkbox" value="FTAck" />
+                  <input
+                    id="box2-1"
+                    v-model="preferentialTariff"
+                    name="FTAcheck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box2-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box2-2" type="checkbox" value="FTAck" />
+                  <input
+                    id="box2-2"
+                    v-model="preferentialTariff"
+                    name="FTAcheck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box2-2"></label>
                 </td>
               </tr>
               <tr>
                 <td class="details" rowspan="2">
                   3. 미화로 환산하여
-                  <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화, 자기앞수표, 여행자수표, 및 그 밖의 유가증권)
-                  <br />[총금액: 약
-                  <input type="text" /> ]
+                  <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화,
+                  자기앞수표, 여행자수표, 및 그 밖의 유가증권) <br />[총금액: 약
+                  <input v-model="paymentExceedValue" type="text" /> ]
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box3-1" type="checkbox" value="paymentck" />
+                  <input
+                    id="box3-1"
+                    v-model="paymentExceed"
+                    name="paymentck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box3-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box3-2" type="checkbox" value="paymentck" />
+                  <input
+                    id="box3-2"
+                    v-model="paymentExceed"
+                    name="paymentck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box3-2"></label>
                 </td>
               </tr>
@@ -85,11 +132,53 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
 
 export default {
   name: 'CustomsCheckone',
   components: { CustomNavs },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_DUTYFREEEXCEED(this.dutyfreeExceed)
+    this.MODIFY_PREFERENTIALTARIFF(this.preferentialTariff)
+    this.MODIFY_PAYMENTEXCEED(this.paymentExceed)
+    this.MODIFY_PAYMENTEXCEEDVALUE(this.paymentExceedValue)
+    this.MODIFY_DUTYFREEEXCEEDVALUE(this.dutyfreeExceedValue)
+    next()
+  },
+  data() {
+    return {
+      dutyfreeExceed: '',
+      preferentialTariff: '',
+      paymentExceed: '',
+      paymentExceedValue: '',
+      dutyfreeExceedValue: '',
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    if (this.declaration.dutyfreeExceed !== '')
+      this.dutyfreeExceed = this.declaration.dutyfreeExceed
+    if (this.declaration.preferentialTariff !== '')
+      this.preferentialTariff = this.declaration.preferentialTariff
+    if (this.declaration.paymentExceed !== '')
+      this.paymentExceed = this.declaration.paymentExceed
+    if (this.declaration.dutyfreeExceedValue !== 0)
+      this.dutyfreeExceedValue = this.declaration.dutyfreeExceedValue
+    if (this.declaration.paymentExceedValue !== 0)
+      this.paymentExceedValue = this.declaration.paymentExceedValue
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_DUTYFREEEXCEED',
+      'MODIFY_PREFERENTIALTARIFF',
+      'MODIFY_PAYMENTEXCEED',
+      'MODIFY_DUTYFREEEXCEEDVALUE',
+      'MODIFY_PAYMENTEXCEEDVALUE',
+    ]),
+  },
 }
 </script>
 
@@ -106,6 +195,19 @@ export default {
   margin: 0;
   padding: 0;
   font-family: 'twayfly';
+}
+
+.next-page {
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
+}
+
+.title-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .customs-input-container {
@@ -145,6 +247,7 @@ export default {
   flex-direction: column;
 }
 .customform-title {
+  margin-left: 22%;
   font-size: xx-large;
   font-weight: bolder;
   text-align: center;

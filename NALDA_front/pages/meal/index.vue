@@ -2,33 +2,26 @@
   <div class="airfood-container">
     <h1>주 메뉴 선택</h1>
     <div class="wrapper">
-      <div class="wrapper-choice">
-        <img src="../../static/meal/chicken-steak.jpg" alt="치킨 스테이크" />
+      <div
+        v-for="(flightMeal, i) in flightMeals"
+        :key="i"
+        class="wrapper-choice"
+      >
+        <img
+          :src="'data:image/jpg;base64,' + flightMeal.image"
+          :alt="flightMeal.menu"
+        />
         <div class="form-check form-check-inline">
           <input
-            id="inlineRadio1"
+            :id="'inlineRadio' + i"
             class="form-check-input"
             type="radio"
             name="inlineRadioOptions"
-            value="option1"
+            :value="flightMeal.id"
           />
-          <label class="form-check-label" for="inlineRadio1"
-            >치킨스테이크</label
-          >
-        </div>
-      </div>
-      <div class="wrapper-choice">
-        <img src="../../static/meal/nakji-deopbap.png" alt="낙지 덮밥" />
-
-        <div class="form-check form-check-inline">
-          <input
-            id="inlineRadio2"
-            class="form-check-input"
-            type="radio"
-            name="inlineRadioOptions"
-            value="option2"
-          />
-          <label class="form-check-label" for="inlineRadio2">낙지 덮밥</label>
+          <label class="form-check-label" :for="'inlineRadio' + i">{{
+            flightMeal.menu
+          }}</label>
         </div>
       </div>
     </div>
@@ -37,12 +30,44 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'OrdersAirFood',
   components: {},
+  computed: {
+    ...mapState('meal', [
+      'selectedMeal',
+      'flightMeals',
+      'details',
+      'allergies',
+    ]),
+  },
+  created() {
+    // flightNum받아와서 넣어야함
+    this.getFlightMeal(1)
+  },
   methods: {
+    ...mapActions('meal', [
+      'getFlightMeal',
+      'getSelectedMeal',
+      'getDetail',
+      'getAllergy',
+    ]),
+
     MoveDetail() {
-      this.$router.push('/meal/detail')
+      const promise = new Promise((resolve, reject) => {
+        const mealName = document.querySelector(
+          'input[type=radio][name=inlineRadioOptions]:checked'
+        ).value
+
+        this.getSelectedMeal(mealName)
+        this.getDetail(mealName)
+        this.getAllergy(mealName)
+        resolve()
+      })
+      promise.then(() => {
+        this.$router.push('/meal/detail')
+      })
     },
   },
 }
@@ -77,13 +102,14 @@ export default {
   margin-top: 30px;
 }
 .choice-button {
+  display: flex;
+  justify-content: center;
   width: 10vw;
   padding: 12px 25px;
   border: none;
   color: white;
   background-color: rgb(69, 169, 200);
-  position: fixed;
-  margin: 0 auto;
+  margin: auto;
   left: 0;
   right: 0;
   bottom: 25vh;
