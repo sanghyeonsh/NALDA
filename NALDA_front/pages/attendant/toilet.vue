@@ -1,26 +1,32 @@
 <template>
   <div class="toilet-container">
     <!-- <div class="toilet-wrap"> -->
-    <img class="b-777-toilet" src="../../static/icon/fl-777-200er-261-seatmap-pc.png" alt />
-    <div class="th-middle"></div>
-    <div class="tbr1-middle"></div>
-    <div class="tbl1-middle"></div>
-    <div class="tbr2-middle"></div>
-    <div class="tbm2-middle"></div>
-    <div class="tbl2-middle"></div>
-    <div class="ttr1-middle"></div>
-    <div class="ttr2-middle"></div>
-    <div class="ttl1-middle"></div>
-    <div class="ttl2-middle"></div>
-    <!-- </div> -->
-    <div class="alert-wrap">
-      <div class="in-use">
-        <div class="word">사용중</div>
-        <div class="square-in-use"></div>
-      </div>
-      <div class="not-use">
-        <div class="word">사용가능</div>
-        <div class="square-not-use"></div>
+    <div class="toilet-wrap">
+      <img
+        class="b-777-toilet"
+        src="../../static/icon/fl-777-200er-261-seatmap-pc.png"
+        alt
+      />
+      <div class="th-middle"></div>
+      <div class="tbr1-middle"></div>
+      <div class="tbl1-middle"></div>
+      <div class="tbr2-middle"></div>
+      <div class="tbm2-middle"></div>
+      <div class="tbl2-middle"></div>
+      <div class="ttr1-middle"></div>
+      <div class="ttr2-middle"></div>
+      <div class="ttl1-middle"></div>
+      <div class="ttl2-middle"></div>
+      <!-- </div> -->
+      <div class="alert-wrap">
+        <div class="in-use">
+          <div class="word">사용중</div>
+          <div class="square-in-use"></div>
+        </div>
+        <div class="not-use">
+          <div class="word">사용가능</div>
+          <div class="square-not-use"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,17 +38,17 @@ export default {
 }
 </script>
 
-// <script>
-// let browserPoint = (event) => {
-//   console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`)
-// }
-// let clientPoint = (event) => {
-//   console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`)
-// }
-// window.addEventListener('click', (e) => {
-//   browserPoint(e)
-//   clientPoint(e)
-// })
+<script>
+let browserPoint = (event) => {
+  console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`)
+}
+let clientPoint = (event) => {
+  console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`)
+}
+window.addEventListener('click', (e) => {
+  browserPoint(e)
+  clientPoint(e)
+})
 //
 </script>
 
@@ -62,6 +68,7 @@ export default {
 }
 .toilet-container {
   height: 70vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,6 +80,20 @@ export default {
   justify-content: center;
   align-items: center;
 } */
+
+.toilet-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.b-777-toilet {
+  width: 21%;
+  transform: rotate(-90deg);
+  filter: grayscale(100%);
+}
 
 .alert-wrap {
   z-index: 500;
@@ -98,11 +119,7 @@ export default {
   background-color: rgb(242, 0, 255);
   filter: opacity(0.6);
 }
-.b-777-toilet {
-  width: 21%;
-  transform: rotate(-90deg);
-  filter: grayscale(100%);
-}
+
 .th-middle {
   width: 2.2%;
   height: 3.5%;
