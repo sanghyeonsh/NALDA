@@ -17,20 +17,14 @@
       <div class="subway-enter-time">
         <v-app id="inspire">
           <v-row justify="space-around" align="center">
-            <v-time-picker
-              v-model="check"
-              :landscape="$vuetify.breakpoint.smAndUp"
-              ampm-in-title
-            ></v-time-picker>
+            <v-time-picker v-model="check" :landscape="$vuetify.breakpoint.smAndUp" ampm-in-title></v-time-picker>
           </v-row>
         </v-app>
       </div>
 
       <div class="subway-time-check">
         <v-app>
-          <v-btn depressed color="primary" @click="changeTime">
-            시간선택완료
-          </v-btn>
+          <v-btn depressed color="primary" @click="changeTime">시간선택완료</v-btn>
         </v-app>
       </div>
 
@@ -45,8 +39,7 @@
     <div class="terminal-map">
       <v-app id="inspire">
         <v-carousel hide-delimiters height="auto">
-          <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src">
-          </v-carousel-item>
+          <v-carousel-item v-for="(item, i) in items" :key="i" :src="item.src"></v-carousel-item>
         </v-carousel>
       </v-app>
     </div>
