@@ -36,12 +36,13 @@
         <div class="left-icon-map">
           인천공항<br />{{ terminal[terminalIdx % 2].substr(2, 4) }}
         </div>
+        <div class="next-subway-time">{{ time[cnt] }}</div>
+
         <div class="left-icon-map">{{ endStation[Math.floor(cnt / 124)] }}</div>
       </div>
       <div class="subway-show-time">
-        <button @click="dec">&lt;이전열차</button>
-        <div>{{ time[cnt] }}</div>
-        <button @click="inc">다음열차&gt;</button>
+        <button @click="dec">&lt; 이전열차</button>
+        <button @click="inc">다음열차 &gt;</button>
       </div>
     </div>
   </div>
@@ -208,8 +209,8 @@ export default {
   display: flex;
   width: 100vw;
   height: 85%;
-  justify-content: center;
-  margin: auto;
+  justify-content: flex-start;
+  margin: 0 0 0 30px;
 }
 .terminal-map-top {
   display: flex;
@@ -289,23 +290,32 @@ export default {
   display: flex;
   justify-content: space-around;
 }
+.time-result-title {
+  font-size: 25px;
+}
 .time-result {
+  width: 77%;
   display: flex;
+  margin: auto;
   justify-content: space-around;
   align-items: center;
 }
+
 .left-icon-map {
   width: 100px;
   height: 100px;
   margin: 15px;
-  padding-top: 30px;
+  padding-top: 32px;
   color: white;
   background-color: rgb(69, 169, 200);
   border-radius: 50%;
   text-align: center;
 }
+.next-subway-time {
+  font-size: 30px;
+}
 .subway-show-time {
-  width: 75%;
+  width: 20%;
   margin: 20px auto;
   display: flex;
   justify-content: space-around;

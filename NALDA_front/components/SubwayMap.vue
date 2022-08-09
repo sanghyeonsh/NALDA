@@ -54,7 +54,7 @@ export default {
 .map-container {
   width: 100vw;
   height: 85%;
-  margin: auto;
+  margin: 0 0 0 30px;
 }
 .map-container > div {
   width: 100%;
@@ -62,7 +62,8 @@ export default {
 }
 .terminal-map-top {
   display: flex;
-  width: 80%;
+  width: 100%;
+  margin: 20px 0;
 }
 .arrow-btn {
   width: 50px;
@@ -73,13 +74,15 @@ export default {
 .terminal-name {
   font-size: 30px;
   color: rgb(69, 169, 200);
+  margin-right: 10px;
 }
 .subway-img-box {
   width: 100%;
   height: 100%;
+  margin-top: 2%;
 }
 .subway-img-box > img {
-  width: 90%;
+  width: 80%;
   height: 90%;
 }
 </style>
