@@ -1,23 +1,70 @@
 # <span style="background-color:#45a9c8;color:#f5f6f7">날다 ✈</span>
 
-## SLOGAN: 당신의 여행에 <span style="color:#45a9c8">날</span>개를 달<span style="color:#45a9c8">다.</span>
+## SLOGAN: 당신의 여행에 $\textcolor{#45a9c8}{\text{날}}$개를 달$\textcolor{#45a9c8}{\text{다}}$
 
 # 1. TEAM NALDA👥
 
 ## FRONT-END🖥️
+### Skills
+<p display="inline-block">
+<img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/Vue.js-4FC08D?style=for-the-badge&logo=Vue.js&logoColor=white">
+<img src="https://img.shields.io/badge/Vuetify-1867C0?style=for-the-badge&logo=Vuetify&logoColor=white">
+<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=Bootstrap&logoColor=white">
+<img src="https://img.shields.io/badge/Nuxt.js-00DC82?style=for-the-badge&logo=Nuxt.js&logoColor=white">
+</p>
+
+### Developer
 
 - 김정아
 - 정형진
 
-## BACK-END💽
 
+## BACK-END💽
+### Skills
+<p display="inline-block">
+<img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring%20boot&logoColor=white">
+<img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring%20Security&logoColor=white">
+<img src="https://img.shields.io/badge/JSON_Web_Tokens-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white">
+<img src="https://img.shields.io/badge/JPA-59666C?style=for-the-badge&logo=hibernate&logoColor=white">
+<img src="https://img.shields.io/badge/MySQL-3479A1?style=for-the-badge&logo=Mysql&logoColor=white">
+</p>
+
+### Developer
 - 김상현
 - 박명규
 
 ## EMBEDDED🤖
+### Skills
+<p>EMBEDDED</p>
 
+<p display="inline-block">
+<img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white">
+<img src="https://img.shields.io/badge/Raspberry_Pi-A22846?style=for-the-badge&logo=raspberry%20pi&logoColor=white">
+<img src="https://img.shields.io/badge/Eclipse_Mosquitto-3776AB?style=for-the-badge&logo=Eclipse%20mosquitto&logoColor=white">
+<img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white">
+<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=C%2B%2B&logoColor=white">
+<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=white">
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
+</p>
+
+### Developer
 - 김혜수
-- 곽영후
+- 곽영후  
+
+## Server📤
+### Skills
+<p display="inline-block">
+<img src="https://img.shields.io/badge/Amazon_EC2-FF9900?style=for-the-badge&logo=amazon%20ec2&logoColor=white">
+<img src="https://img.shields.io/badge/Amazon_RDS-527FFF?style=for-the-badge&logo=amazon%20rds&logoColor=white">
+<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
+</p>
+
+### Developer
+- 박명규
+- 김혜수
 
 # 2. 프로젝트 기획 및 설계📋
 
