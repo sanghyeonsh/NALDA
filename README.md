@@ -1,6 +1,6 @@
 # <span style="background-color:#45a9c8;color:#f5f6f7">날다 ✈</span>
 
-## SLOGAN: 당신의 여행에 $\textcolor{#45a9c8}{\text{날}}$개를 달$\textcolor{#45a9c8}{\text{다}}$
+## SLOGAN: 당신의 여행에 날개를 달다
 
 # 1. TEAM NALDA👥
 
