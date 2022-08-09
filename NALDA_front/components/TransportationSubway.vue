@@ -1,5 +1,4 @@
 <template>
-<<<<<<< NALDA_front/components/TransportationSubway.vue
   <div class="subway-container">
     <div class="left-nav">
       <div>
