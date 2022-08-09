@@ -2,24 +2,20 @@
   <div class="toilet-container">
     <!-- <div class="toilet-wrap"> -->
     <div class="toilet-wrap">
-      <img
-        class="b-777-toilet"
-        src="../../static/icon/fl-777-200er-261-seatmap-pc.png"
-        alt
-      />
-      <div class="th-middle"></div>
-      <div class="tbr1-middle"></div>
-      <div class="tbl1-middle"></div>
-      <div class="tbr2-middle"></div>
-      <div class="tbm2-middle"></div>
-      <div class="tbl2-middle"></div>
-      <div class="ttr1-middle"></div>
-      <div class="ttr2-middle"></div>
-      <div class="ttl1-middle"></div>
-      <div class="ttl2-middle"></div>
+      <img class="b-777-toilet" src="../../static/icon/fl-777-200er-261-seatmap-pc.png" alt />
+      <div class="th-middle" :class="{inuse: th1 === 'default'}"></div>
+      <div class="tbr1-middle" :class="{inuse: tbr1}"></div>
+      <div class="tbl1-middle" :class="{inuse: tbl1}"></div>
+      <div class="tbr2-middle" :class="{inuse: tbr2}"></div>
+      <div class="tbm2-middle" :class="{inuse: tbm2}"></div>
+      <div class="tbl2-middle" :class="{inuse: tbl2}"></div>
+      <div class="ttr1-middle" :class="{inuse: ttr1}"></div>
+      <div class="ttr2-middle" :class="{inuse: ttr2}"></div>
+      <div class="ttl1-middle" :class="{inuse: ttl1}"></div>
+      <div class="ttl2-middle" :class="{inuse: ttl2}"></div>
       <!-- </div> -->
       <div class="alert-wrap">
-        <div class="in-use">
+        <div class="in-use" @click="test">
           <div class="word">사용중</div>
           <div class="square-in-use"></div>
         </div>
@@ -35,21 +31,41 @@
 <script>
 export default {
   name: 'AttendantToilet',
+  data() {
+    return {
+      th1: 'default',
+      tbr1: true,
+      tbl1: true,
+      tbr2: true,
+      tbm2: true,
+      tbl2: true,
+      ttr1: true,
+      ttr2: true,
+      ttl1: true,
+      ttl2: true,
+    }
+  },
+  computed: {},
+  methods: {
+    test() {
+      this.th1 = !this.th1
+      console.log(1)
+    },
+  },
 }
 </script>
 
 <script>
-let browserPoint = (event) => {
-  console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`)
-}
-let clientPoint = (event) => {
-  console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`)
-}
-window.addEventListener('click', (e) => {
-  browserPoint(e)
-  clientPoint(e)
-})
-//
+// let browserPoint = (event) => {
+//   console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`)
+// }
+// let clientPoint = (event) => {
+//   console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`)
+// }
+// window.addEventListener('click', (e) => {
+//   browserPoint(e)
+//   clientPoint(e)
+// })
 </script>
 
 <style scoped>
@@ -109,17 +125,20 @@ window.addEventListener('click', (e) => {
 .word {
   width: 30%;
 }
-.square-in-use {
+.square-not-use {
   width: 30%;
   background-color: aqua;
   filter: opacity(0.6);
 }
-.square-not-use {
+.square-in-use {
   width: 30%;
   background-color: rgb(242, 0, 255);
   filter: opacity(0.6);
 }
 
+.inuse {
+  background-color: rgb(242, 0, 255);
+}
 .th-middle {
   width: 2.2%;
   height: 3.5%;
