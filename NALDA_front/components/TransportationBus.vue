@@ -329,9 +329,17 @@ export default {
       // this.choiceTime = []
       if (tempTime === null) {
         // this.choiceTime = ['배정된 버스가 없습니다.']
-        this.choiceTime = ['배정된', '버스가', '없습니다.']
+        this.choiceTime = ['', '', '', '배정된', '버스가', '없습니다.']
       } else {
         this.choiceTime = tempTime.split(', ')
+        for (let i = 0; i < this.choiceTime.length; i++) {
+          this.choiceTime[i] =
+            this.choiceTime[i].substr(0, 2) +
+            ':' +
+            this.choiceTime[i].substr(2, 2)
+          // console.log(111)
+          // console.log(this.choiceTime[i])
+        }
       }
     },
     makeStationTable() {
@@ -382,7 +390,6 @@ export default {
           }
         }
       }
-      console.log(test)
     },
   },
 }
