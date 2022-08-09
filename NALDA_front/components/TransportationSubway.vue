@@ -4,6 +4,9 @@
       <div class="terminal-1" @click="terminal1">제1터미널</div>
       <div class="terminal-2" @click="terminal2">제2터미널</div>
     </div>
+    <div>
+      <input type="time" />
+    </div>
     <div class="subway-enter-time-box">
       <div class="subway-enter-day">
         <div @click="dayType1">평일</div>
@@ -78,10 +81,9 @@ export default {
       resolve()
     })
     promise.then(async () => {
-      await this.getSubway()
-      await this.getSubwayByCondition(this.condition)
+      await this.getSubway(this.condition)
+      this.getSubwayByCondition(this.condition)
     })
-    console.log(this.byCondition)
   },
 
   methods: {
@@ -181,7 +183,7 @@ export default {
   display: inline-block;
 }
 /* 여기서 뷰티파이 */
-:deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 /* 여기서 뷰티파이 */
