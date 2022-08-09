@@ -1,6 +1,7 @@
 package com.a204.nalda.domain.entity.airplane;
 
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,4 +33,11 @@ public class Flight {
 
     @Column(name = "flight_num")
     private String flightNum;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void changeStatusInfo(Status status){
+        this.status = status;
+    }
 }

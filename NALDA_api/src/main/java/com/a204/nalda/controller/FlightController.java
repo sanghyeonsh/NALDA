@@ -1,6 +1,5 @@
 package com.a204.nalda.controller;
 
-import com.a204.nalda.domain.entity.airplane.Flight;
 import com.a204.nalda.dto.flight.FlightDto;
 import com.a204.nalda.dto.flight.FlightInfoDto;
 import com.a204.nalda.service.FlightService;
@@ -47,5 +46,19 @@ public class FlightController {
         }
     }
 
+    @PutMapping("/{flightNum}")
+    public ResponseEntity<?> finishFlight(@PathVariable("flightNum") String flightNum) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            flightService.modifyStatus(flightNum);
+            result.put("msg","변경 성공");
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
+
+    }
 }
