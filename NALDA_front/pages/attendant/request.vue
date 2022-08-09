@@ -59,6 +59,7 @@
         </div>
       </b-tab>
     </b-tabs>
+    <button @click="check">test</button>
   </div>
 </template>
 
@@ -146,6 +147,11 @@ export default {
         },
       ],
       status: true,
+      testtest: {
+        번호: '',
+        좌석: '',
+      },
+      testarr: [],
     }
   },
   computed: {
@@ -153,7 +159,16 @@ export default {
       return this.items.length
     },
   },
-  methods: {},
+  methods: {
+    check() {
+      for (let i = 0; i < 10; i++) {
+        this.testtest.번호 = i
+        this.testtest.좌석 = 'A' + i
+        if (i === 3) console.log(this.testtest)
+        this.testarr.push(this.testtest)
+      }
+    },
+  },
 }
 </script>
 

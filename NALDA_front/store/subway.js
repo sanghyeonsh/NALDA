@@ -1,15 +1,29 @@
-import { inputData } from '../api/subway'
+import { inputData, getSubway } from '../api/subway'
 
 export const state = () => ({
   info: [],
+  subways: [],
+  byCondition: [],
 })
 
 export const mutations = {
   SET_INFO_LIST(state, info) {
     state.info = info
   },
+  SET_SUBWAYS_LIST(state, subways) {
+    state.subways = subways
+  },
+  SET_BYCONDITION_LIST(state, byCondition) {
+    state.byCondition.push(byCondition)
+  },
   CLEAR_INFO_LIST(state) {
     state.info = []
+  },
+  CLEAR_SUBWAYS_LIST(state) {
+    state.subways = []
+  },
+  CLEAR_BYCONDITION_LIST(state) {
+    state.byCondition = []
   },
 }
 
@@ -56,5 +70,76 @@ export const actions = {
         console.log(error)
       }
     )
+  },
+  async getSubway({ state, commit }) {
+    console.log(1111111111)
+    await getSubway(
+      ({ data }) => {
+        commit('SET_SUBWAYS_LIST', data)
+        console.log(state.subways)
+        console.log(222222222)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+    // dispatch('getSubwayByCondition', condition)
+  },
+  getSubwayByCondition({ state, commit }, condition) {
+    commit('CLEAR_BYCONDITION_LIST')
+
+    console.log(state.subways.subwayList.length)
+    for (let i = 0; i < state.subways.subwayList.length; i++) {
+      if (condition.terminal === 1 && condition.type === 1) {
+        if (
+          state.subways.subwayList[i].dayCode === '01' &&
+          state.subways.subwayList[i].name === '인천공항1터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          console.log(state.subways.subwayList[i].time)
+        }
+      }
+      if (condition.terminal === 1 && condition.type === 2) {
+        if (
+          state.subways.subwayList[i].dayCode === '02' &&
+          state.subways.subwayList[i].name === '인천공항1터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+        }
+      }
+      if (condition.terminal === 1 && condition.type === 3) {
+        if (
+          state.subways.subwayList[i].dayCode === '03' &&
+          state.subways.subwayList[i].name === '인천공항1터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+        }
+      }
+      if (condition.terminal === 2 && condition.type === 1) {
+        if (
+          state.subways.subwayList[i].dayCode === '01' &&
+          state.subways.subwayList[i].name === '인천공항2터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+        }
+      }
+      if (condition.terminal === 2 && condition.type === 2) {
+        if (
+          state.subways.subwayList[i].dayCode === '02' &&
+          state.subways.subwayList[i].name === '인천공항2터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+        }
+      }
+      if (condition.terminal === 2 && condition.type === 3) {
+        if (
+          state.subways.subwayList[i].dayCode === '03' &&
+          state.subways.subwayList[i].name === '인천공항2터미널'
+        ) {
+          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+        }
+      }
+    }
+    console.log(state.byCondition)
   },
 }

@@ -5,6 +5,8 @@ import {
   detailMeal,
   allergyMeal,
   selectMeal,
+  choiceMeal,
+  getSeatMeal,
 } from '@/api/meal'
 
 export const state = () => ({
@@ -13,6 +15,8 @@ export const state = () => ({
   selectedMeal: {},
   details: [],
   allergies: [],
+  choiceMeal: [],
+  seatMealList: [],
 })
 
 export const mutations = {
@@ -31,6 +35,12 @@ export const mutations = {
   SET_ALLERGY_MEAL(state, allergies) {
     state.allergies = allergies
   },
+  SET_CHOICE_MEAL(state, choiceMeal) {
+    state.choiceMeal = choiceMeal
+  },
+  SET_SEATMEAL_LIST(state, seatMealList) {
+    state.seatMealList = seatMealList
+  },
 
   CLEAR_MEAL_LIST(state) {
     state.meals = [{ menu: null, image: null }]
@@ -46,6 +56,12 @@ export const mutations = {
   },
   CLEAR_ALLERGY_MEAL(state) {
     state.allergies = []
+  },
+  CLEAR_CHOICE_MEAL(state) {
+    state.choiceMeal = []
+  },
+  CLEAR_SEATMEAL_LIST(state) {
+    state.seatMealList = []
   },
 }
 export const getters = {}
@@ -132,6 +148,41 @@ export const actions = {
         // console.log(data.mealAllergy)
         if (data.mealAllergy.length > 0) {
           commit('SET_ALLERGY_MEAL', data.mealAllergy)
+        }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getChoiceMeal({ commit }) {
+    commit('CLEAR_CHOICE_MEAL')
+    choiceMeal(
+      ({ data }) => {
+        console.log(data)
+        if (data.length > 0) {
+          console.log('store입니다 ' + data.length)
+          console.log('store입니다 ' + data)
+          commit('SET_CHOICE_MEAL', data)
+        }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  getMealList({ commit }, flightNum) {
+    commit('CLEAR_SEATMEAL_LIST')
+    console.log(111111111)
+    getSeatMeal(
+      flightNum,
+      ({ data }) => {
+        console.log(data.seatMeal)
+        // console.log(data.seatMeal.length)
+        if (data.seatMeal.length > 0) {
+          // console.log('store입니다 ' + data.seatMeal.length)
+          // console.log('store입니다 ' + data.seatMeal)
+          commit('SET_SEATMEAL_LIST', data.seatMeal)
         }
       },
       (error) => {

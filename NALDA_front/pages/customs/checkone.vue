@@ -42,10 +42,10 @@
                   [총금액: 약
                   <input v-model="dutyfreeExceedValue" type="text" /> ]
                   <br />
-                  <b id="exceed-warning"
-                    >*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
-                    초과)가 감면됩니다.</b
-                  >
+                  <b id="exceed-warning">
+                    *면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
+                    초과)가 감면됩니다.
+                  </b>
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
@@ -212,6 +212,20 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+.next-page {
+  width: 200%;
+  height: 60%;
+}
+
+.title-items {
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+}
+.title-container {
+  display: flex;
+  justify-content: flex-end;
+}
 
 .next-page {
   width: 15%;
@@ -228,7 +242,7 @@ export default {
 
 .customs-input-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
