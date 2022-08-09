@@ -63,7 +63,7 @@ public class MealService {
             Meal meal = Meal.builder()
                     .id(mealId)
                     .build();
-            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(mealCntDto.getFlightNum()).getId();
+            Long flightId = flightRepository.findByFlightNumAndStatus(mealCntDto.getFlightNum()).getId();
             Flight flight = Flight.builder()
                     .id(flightId)
                     .build();
@@ -78,7 +78,7 @@ public class MealService {
 
     @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).getId();
         List<Meal> mealList = mealRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
@@ -162,7 +162,7 @@ public class MealService {
         Meal meal = Meal.builder()
                 .id(mealId)
                 .build();
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(seatMealDto.getFlightNum()).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(seatMealDto.getFlightNum()).getId();
         Flight flight = Flight.builder()
                 .id(flightId)
                 .build();
@@ -185,7 +185,7 @@ public class MealService {
     }
 
     public List<SeatMealDto> listSeatMeal(String flightNum){
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).getId();
         List<SeatMeal> seatMeals = seatMealRepository.findByFlightId(flightId);
         List<SeatMealDto> seatMealDTOS = new ArrayList<>();
 
