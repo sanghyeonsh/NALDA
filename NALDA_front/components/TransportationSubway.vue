@@ -16,7 +16,7 @@
       <div class="subway-blank"></div>
       <div class="subway-enter-time">
         <v-app id="inspire">
-          <v-row justify="space-around" align="center">
+          <v-row justify="space-around">
             <v-time-picker
               v-model="check"
               :landscape="$vuetify.breakpoint.smAndUp"
