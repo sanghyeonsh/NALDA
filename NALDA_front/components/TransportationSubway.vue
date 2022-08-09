@@ -190,7 +190,7 @@ export default {
   display: inline-block;
 }
 /* 여기서 뷰티파이 */
-::v-deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 /* 여기서 뷰티파이 */
