@@ -95,7 +95,9 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
+                <b-button variant="info" @click="completeRequest(selecteditems)"
+                  >완료처리</b-button
+                >
               </div>
             </div>
             <!-- <b-pagination
@@ -283,6 +285,8 @@ export default {
         })
         promise.then(async () => {
           await this.updateOrderStatus(this.details[0].id)
+          await this.getListOrders(1)
+          this.details = []
         })
       }
     },

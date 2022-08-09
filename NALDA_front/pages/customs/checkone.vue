@@ -75,8 +75,7 @@
               <tr>
                 <td class="details" rowspan="2">
                   2.
-                  <b>FTA 협정국가</b>의 원산지 물품으로
-                  <b>특혜관세</b>를
+                  <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
                   적용받으려는 물품
                 </td>
                 <td id="yorn">있음</td>
@@ -108,8 +107,7 @@
                 <td class="details" rowspan="2">
                   3. 미화로 환산하여
                   <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화,
-                  자기앞수표, 여행자수표, 및 그 밖의 유가증권)
-                  <br />[총금액: 약
+                  자기앞수표, 여행자수표, 및 그 밖의 유가증권) <br />[총금액: 약
                   <input v-model="paymentExceedValue" type="text" /> ]
                 </td>
                 <td id="yorn">있음</td>
@@ -244,7 +242,7 @@ export default {
 
 .customs-input-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
