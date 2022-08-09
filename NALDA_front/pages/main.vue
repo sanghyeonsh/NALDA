@@ -35,9 +35,7 @@ export default {
       d.style.top = e.clientY + 'px'
       d.style.left = e.clientX + 'px'
       document.body.appendChild(d)
-      console.log(1)
       d.addEventListener('animationend', function () {
-        console.log(2)
         d.parentElement.removeChild(d)
       })
     })
@@ -46,6 +44,17 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'twayfly';
+}
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -61,7 +70,7 @@ div.clickEffect {
   border-style: solid;
   border-color: #206e95;
   border-radius: 50%;
-  -webkit-animation: clickEffect 0.8s ease-out;
+  -webkit-animation: clickEffect 0.5s ease-out;
   z-index: 5;
 }
 @keyframes clickEffect {
