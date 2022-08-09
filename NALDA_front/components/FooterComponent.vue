@@ -15,18 +15,6 @@
           <h3>승무원호출</h3>
         </button>
       </div>
-      <footer>
-        <div class="copyright-wrap">
-          <!-- <div><img src="logo.png"></div> -->
-          <div>
-            <span>
-              이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
-              고객센터
-            </span>
-            <div>Copyright © NALDA Corp. All Rights Reserved.</div>
-          </div>
-        </div>
-      </footer>
     </div>
   </div>
 </template>
@@ -55,14 +43,14 @@ export default {
 }
 
 * {
-  /* margin: 0;
-  padding: 0; */
   font-family: 'twayfly';
 }
 
 .footer-container {
+  position: fixed;
+  bottom: 0;
   width: 100vw;
-  height: 15vh;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   background-color: rgba(239, 239, 239, 0.511);
@@ -82,6 +70,8 @@ export default {
   flex-direction: row;
   justify-content: flex-end;
   /* padding: 1%; */
+  align-items: center;
+  height: 60%;
   margin-top: 1%;
   margin-right: 1%;
 }

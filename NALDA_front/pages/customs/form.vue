@@ -7,9 +7,14 @@
           <div class="customform-title">여행자 휴대품 신고서</div>
           <div class="warn-wrap">
             <ul>
-              <li>모든 입국자는 관세법에 따라 신고서를 작성, 제출하여야 하며, 세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.</li>
+              <li>
+                모든 입국자는 관세법에 따라 신고서를 작성, 제출하여야 하며,
+                세관공무원이 지정하는 경우에는 휴대폰 검사를 받아야 합니다.
+              </li>
               <li>가족여행인 경우에는 1명이 대표로 신고할 수 있습니다.</li>
-              <li>신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.</li>
+              <li>
+                신고서 작성 전에 반드시 뒷면의 유의사항을 읽어보시기 바랍니다.
+              </li>
             </ul>
           </div>
           <div class="custom-info-wrap">
@@ -40,7 +45,8 @@
                 </td>
                 <td id="col-name">여행기간</td>
                 <td>
-                  <input type="text" placeholder="여행기간을 입력해주세요." /> (일)
+                  <input type="text" placeholder="여행기간을 입력해주세요." />
+                  (일)
                 </td>
               </tr>
               <!-- 두번째 줄 끝 -->
@@ -56,12 +62,8 @@
                   <label>
                     <input type="checkbox" value="visitfamily" />친지방문
                   </label>
-                  <label>
-                    <input type="checkbox" value="public" />공무
-                  </label>
-                  <label>
-                    <input type="checkbox" value="etc" />기타
-                  </label>
+                  <label> <input type="checkbox" value="public" />공무 </label>
+                  <label> <input type="checkbox" value="etc" />기타 </label>
                 </td>
               </tr>
               <tr>
@@ -81,7 +83,8 @@
                     class="visit-country-num"
                     type="text"
                     placeholder="방문했던 국가 총 수"
-                  /> 개국)
+                  />
+                  개국)
                   <br />
                   <div class="visited-countries">
                     <div>
@@ -140,7 +143,7 @@ export default {
 
 .customs-input-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

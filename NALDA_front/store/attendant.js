@@ -10,6 +10,7 @@ import {
 export const state = () => ({
   serviceList: [],
   snackList: [],
+  details: [],
   alcoholsList: [],
   nonalcoholosList: [],
   amenityList: [],
@@ -64,19 +65,13 @@ export const mutations = {
         data[i].classification = '편의물품'
       }
       if (data[i].status === 'PROGRESS') {
-        console.log('푸쉬')
+        // console.log('푸쉬')
         state.ordersList.push(data[i])
       } else if (data[i].status === 'DONE') {
-        console.log('done푸쉬')
+        // console.log('done푸쉬')
         state.completeList.push(data[i])
       }
     }
-    // console.log(999999)
-    // console.log(state.ordersList)
-    // console.log(88888888)
-    // console.log(state.completeList)
-    // console.log('store입니다 ' + state.orderList)
-    // console.log('store입니다 ' + state.completeList)
   },
 
   CREAR_ORDERS_LIST(state) {
@@ -201,6 +196,6 @@ export const actions = {
         console.log(error)
       }
     )
-    dispatch('getListOrders', 1)
+    // dispatch('getListOrders', 1)
   },
 }
