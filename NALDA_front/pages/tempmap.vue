@@ -183,7 +183,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .subway-time {
   display: flex;
   width: 100vw;

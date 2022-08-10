@@ -84,7 +84,7 @@ export default {
     movewaiting() {
       const order = {
         orderMessage: '',
-        flightNum: 1,
+        flightNum: 'num1',
         seatNum: 'A36',
         username: this.loginMember.username,
         status: 'PROGRESS',
