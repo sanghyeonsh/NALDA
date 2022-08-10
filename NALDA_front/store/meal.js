@@ -20,6 +20,17 @@ export const state = () => ({
 })
 
 export const mutations = {
+  updateCheck(state, check) {
+    for (let i = 0; i < state.flightMeals.length; i++) {
+      if (state.flightMeals[i].menu === check.menu) {
+        if (check.check === false) {
+          check.check = true
+        } else {
+          check.check = false
+        }
+      }
+    }
+  },
   SET_MEAL_LIST(state, meals) {
     state.meals.push(meals)
   },
@@ -103,6 +114,7 @@ export const actions = {
               id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
+              check: false,
             })
           })
         }
@@ -173,7 +185,6 @@ export const actions = {
   },
   async getMealList({ commit }, flightNum) {
     commit('CLEAR_SEATMEAL_LIST')
-    console.log(111111111)
     await getSeatMeal(
       flightNum,
       ({ data }) => {
