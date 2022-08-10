@@ -33,12 +33,16 @@ public class FlightController {
     }
 
     @GetMapping("/{flightNum}")
-    public ResponseEntity<?> inputFlight(@PathVariable("flightNum") String flightNum) {
+    public ResponseEntity<?> validFlight(@PathVariable("flightNum") String flightNum) {
         Map<String, Object> result = new HashMap<>();
         try{
-            FlightInfoDto flightInfoDto = flightService.getFlightInfo(flightNum);
-            result.put("flightInfo",flightInfoDto);
+            if(flightService.getFlightInfo(flightNum)){
+                result.put("msg","유효한 항공편명입니다.");
+            }else{
+                result.put("msg","유효하지 않습니다. 다시 확인해주세요");
+            }
             return new ResponseEntity<>(result, HttpStatus.OK);
+
         }catch (Exception e){
             e.printStackTrace();
             result.put("msg",e.getMessage());
