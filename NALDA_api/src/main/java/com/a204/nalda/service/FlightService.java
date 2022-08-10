@@ -33,22 +33,22 @@ public class FlightService {
     }
 
     @Transactional
-    public FlightInfoDto getFlightInfo(String flightNum){
-        Long airplaneId = flightRepository.findByFlightNumAndStatus(flightNum).getAirplane().getId();
-        Airplane airplane = airplaneRepository.findById(airplaneId).get();
-        FlightInfoDto flightInfoDto = FlightInfoDto.builder()
-                .flightNum(flightNum)
-                .airplaneKind(airplane.getAirplaneKind())
-                .build();
-        return flightInfoDto;
+    public boolean getFlightInfo(String flightNum){
+        Optional<Flight> optional = flightRepository.findByFlightNumAndStatus(flightNum);
+        if(optional.isPresent()){
+            return true;
+        }else{
+            return false;
+        }
     }
+
 
     @Transactional
     public void modifyStatus(String flightNum){
 
-        Flight flight = flightRepository.findByFlightNumAndStatus(flightNum);
+        Flight flight = flightRepository.findByFlightNumAndStatus(flightNum).get();
         flight.changeStatusInfo(Status.DONE);
-    
+
     }
 
 }
