@@ -3,9 +3,19 @@
   <div class="map-container">
     <div>
       <div class="terminal-map-top">
-        <button class="arrow-btn" @click="changeName">&lt;</button>
+        <img
+          class="arrow-btn"
+          src="/transportation/arrow-left-drop-circle-outline.png"
+          alt=""
+          @click="changeName"
+        />
         <div class="terminal-name">{{ terminal[idx % 2] }}</div>
-        <button class="arrow-btn" @click="changeName">&gt;</button>
+        <img
+          class="arrow-btn"
+          src="/transportation/arrow-right-drop-circle-outline.png"
+          alt=""
+          @click="changeName"
+        />
       </div>
       <div class="subway-img-box">
         <img :src="items[idx % 2].src" alt="터미널 이미지" />
@@ -69,7 +79,8 @@ export default {
   width: 50px;
   height: 50px;
   margin: 0px 10px;
-  background-color: rgb(229, 226, 226);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
+  filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
 }
 .terminal-name {
   font-size: 30px;

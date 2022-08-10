@@ -261,7 +261,7 @@ export default {
 }
 .select-btn-bottom {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .time-result-title {
   display: flex;
