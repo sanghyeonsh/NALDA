@@ -44,7 +44,7 @@ export default {
   },
   created() {
     // flightNum받아와서 넣어야함
-    this.getFlightMeal(1)
+    this.getFlightMeal('num1')
   },
   methods: {
     ...mapActions('meal', [

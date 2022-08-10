@@ -32,8 +32,8 @@ async function allergyMeal(mealId, success, fail) {
 //   console.log(info)
 //   await api.post(`/meal/choice`, JSON.stringify(info)).then(success).catch(fail)
 // }
-async function choiceMeal(success, fail) {
-  await api.post(`/meal/choice`).then(success).catch(fail)
+async function choiceMeal(info, success, fail) {
+  await api.post(`/meal/choice`, JSON.stringify(info)).then(success).catch(fail)
 }
 
 async function getSeatMeal(flightNum, success, fail) {
