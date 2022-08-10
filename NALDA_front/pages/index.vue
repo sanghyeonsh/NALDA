@@ -10,10 +10,15 @@ export default {
   name: 'MainPage',
   created() {
     this.CLEAR_LOGIN_MEMBER()
+    this.CLEAR_SEATINFO()
     this.CLEAR_MEMBER_DETAIL()
   },
   methods: {
-    ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
+    ...mapMutations('user', [
+      'CLEAR_LOGIN_MEMBER',
+      'CLEAR_MEMBER_DETAIL',
+      'CLEAR_SEATINFO',
+    ]),
     moveMain() {
       this.$router.push('/user/login')
     },

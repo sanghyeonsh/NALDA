@@ -12,18 +12,18 @@
           height="85vh"
           style="width: 10%; position: fixed; z-index: 1"
         >
-          <v-tabs-slider></v-tabs-slider>
+          <v-tabs-slider color="rgb(69, 169, 200)"></v-tabs-slider>
           <v-tab key="snacks" href="#snacks">
             간식
-            <v-icon>mdi-food-hot-dog</v-icon>
+            <v-icon x-large>mdi-cookie</v-icon>
           </v-tab>
           <v-tab key="alcohols" href="#alcohols">
             주류
-            <v-icon>mdi-glass-mug-variant</v-icon>
+            <v-icon x-large>mdi-glass-mug-variant</v-icon>
           </v-tab>
           <v-tab key="nonAlcohols" href="#nonAlcohols">
             비주류
-            <v-icon>mdi-cup</v-icon>
+            <v-icon x-large>mdi-cup</v-icon>
           </v-tab>
         </v-tabs>
         <div>
@@ -35,7 +35,7 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px">
+                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -43,13 +43,15 @@
                       height="200px"
                       width="200px"
                     >
-                      <v-card-title v-text="item.serviceName"></v-card-title>
                     </v-img>
 
-                    <v-card-actions>
+                    <v-card-actions class="ml-3">
+                      <div>
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
-                        <v-icon @click="ChoiceMenu(item)">mdi-heart</v-icon>
+                        <v-icon>mdi-heart</v-icon>
                       </v-btn>
                     </v-card-actions>
                   </v-card>
@@ -63,7 +65,7 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px">
+                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -71,13 +73,15 @@
                       height="200px"
                       width="200px"
                     >
-                      <v-card-title v-text="item.serviceName"></v-card-title>
                     </v-img>
 
                     <v-card-actions>
+                      <div class="ml-3">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
-                        <v-icon @click="ChoiceMenu(item)">mdi-heart</v-icon>
+                        <v-icon>mdi-heart</v-icon>
                       </v-btn>
                     </v-card-actions>
                   </v-card>
@@ -91,7 +95,7 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px">
+                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -99,15 +103,15 @@
                       width="200px"
                       height="200px"
                     >
-                      <v-card-title v-text="item.serviceName"></v-card-title>
                     </v-img>
 
                     <v-card-actions>
+                      <div class="ml-3">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
-                        <v-icon ref="choiseMenu" @click="ChoiceMenu(item)"
-                          >mdi-heart</v-icon
-                        >
+                        <v-icon>mdi-heart</v-icon>
                       </v-btn>
                     </v-card-actions>
                   </v-card>
@@ -134,7 +138,7 @@
         fab
         dark
         x-large
-        color="pink"
+        color="#0e0737"
         style="position: fixed; bottom: 10vh; right: 3vh"
         @click="openSelectedModal"
       >

@@ -2,10 +2,24 @@ import { login, mypage, modifyMember } from '@/api/user'
 
 export const state = () => ({
   loginMember: '',
+  flightNum: '',
+  seatInfo: null,
   memberDetail: null,
 })
 
 export const mutations = {
+  SET_FLIGHTNUM(state, flightNum) {
+    state.flightNum = flightNum
+  },
+  CLEAR_FLIGHTNUM(state) {
+    state.flightNum = ''
+  },
+  SET_SEATINFO(state, info) {
+    state.seatInfo = info
+  },
+  CLEAR_SEATINFO(state) {
+    state.seatInfo = null
+  },
   SET_LOGIN_MEMBER(state, member) {
     state.loginMember = member
   },
@@ -66,7 +80,12 @@ export const actions = {
         sessionStorage.setItem('Authorization', headers.authorization)
         if (data.msg === '로그인 성공') {
           commit('SET_LOGIN_MEMBER', data.userInfo)
-          this.$router.push('/main')
+          commit('SET_SEATINFO', data.seatInfo)
+          if (data.userInfo.userRole === 'ROLE_ATTENDANT') {
+            this.$router.push('/attendant/setting')
+          } else {
+            this.$router.push('/main')
+          }
           console.log(data.ip)
         } else {
           alert('실패')

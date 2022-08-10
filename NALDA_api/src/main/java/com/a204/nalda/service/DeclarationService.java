@@ -136,7 +136,6 @@ public class DeclarationService {
 
         if(declaration.isPresent()) {
             CustomsDeclaration customsDeclaration = declaration.get();
-            System.out.println(customsDeclaration);
             Alcohols alcohols = customsDeclaration.getAlcohols();
             List<EtcExceed> etcExceeds = customsDeclaration.getEtcExceeds();
             List<VisitedCountry> visitedCountries = customsDeclaration.getVisitedCountries();
