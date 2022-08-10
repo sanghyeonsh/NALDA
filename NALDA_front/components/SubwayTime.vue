@@ -34,7 +34,9 @@
       </div>
       <div class="time-result">
         <div class="left-icon-map">
-          인천공항<br />{{ terminal[terminalIdx % 2].substr(2, 4) }}
+          인천공항
+          <br />
+          {{ terminal[terminalIdx % 2].substr(2, 4) }}
         </div>
         <div class="next-subway-time">{{ time[cnt] }}</div>
 
