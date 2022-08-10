@@ -3,9 +3,19 @@
   <div class="subway-time">
     <div class="subway-time-content">
       <div class="terminal-map-top">
-        <button class="terminal-arrow-btn" @click="changeName">&lt;</button>
+        <img
+          class="terminal-arrow-btn"
+          src="/transportation/arrow-left-drop-circle-outline.png"
+          alt=""
+          @click="changeName"
+        />
         <div class="terminal-name">{{ terminal[terminalIdx % 2] }}</div>
-        <button class="terminal-arrow-btn" @click="changeName">&gt;</button>
+        <img
+          class="terminal-arrow-btn"
+          src="/transportation/arrow-right-drop-circle-outline.png"
+          alt=""
+          @click="changeName"
+        />
       </div>
 
       <div>
@@ -14,9 +24,19 @@
       <div class="current-time">{{ now }}</div>
       <div class="select-time">
         <button class="select-time-title">내 열차 시각 조회</button>
-        <button class="type-arrow-btn" @click="minusType">&lt;</button>
+        <img
+          class="type-arrow-btn"
+          src="/transportation/arrow-left-drop-circle-outline.png"
+          alt=""
+          @click="minusType"
+        />
         <div class="time-type">{{ dayType[dayTypeIdx % 3] }}</div>
-        <button class="type-arrow-btn" @click="plusType">&gt;</button>
+        <img
+          class="type-arrow-btn"
+          src="/transportation/arrow-right-drop-circle-outline.png"
+          alt=""
+          @click="plusType"
+        />
       </div>
 
       <div class="input-time">
@@ -105,15 +125,6 @@ export default {
       this.condition.terminal = 2
       this.getSubwayByCondition(this.condition)
     },
-    // dayType1() {
-    //   this.condition.type = 1
-    // },
-    // dayType2() {
-    //   this.condition.type = 2
-    // },
-    // dayType3() {
-    //   this.condition.type = 3
-    // },
     plusType() {
       this.dayTypeIdx++
       this.condition.type = (this.dayTypeIdx % 3) + 1
@@ -226,15 +237,12 @@ export default {
   width: 50px;
   height: 50px;
   margin-right: 10px;
-  background-color: rgb(229, 226, 226);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
+  filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
 }
 .subway-time-content {
   width: 80%;
 }
-/* .content-title {
-  margin: 20px 0;
-  font-size: 25px;
-} */
 .select-time {
   display: flex;
   align-items: center;
@@ -263,10 +271,11 @@ export default {
   width: 30px;
   height: 30px;
   margin: 0px 10px;
-  background-color: rgb(229, 226, 226);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
+  filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
 }
 .time-type {
-  margin: 0 40px;
+  margin: 0 20px;
   color: rgb(69, 169, 200);
 }
 .change-time {
@@ -284,7 +293,7 @@ export default {
 }
 .select-btn-bottom {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .time-result-title {
   display: flex;
@@ -322,13 +331,5 @@ export default {
 }
 .subway-show-time > button {
   color: rgb(69, 169, 200);
-  /* background-color: rgb(69, 169, 200); */
 }
-/* .select-btn {
-  width: 100px;
-  height: 30px;
-  background-color: rgb(69, 169, 200);
-  color: white;
-  border-radius: 5px;
-} */
 </style>
