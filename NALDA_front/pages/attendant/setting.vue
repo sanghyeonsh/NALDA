@@ -36,10 +36,10 @@
                     <i class="far fa-check-circle"></i>
                     <span>modify</span>
         </div>-->
-        <b-modal id="check-modal" hide-footer>
+        <b-modal id="flightNum-modal" hide-footer>
           <template #modal-title>알림</template>
           <div class="d-block text-center">
-            <h3>정보를 모두 채워주세요!</h3>
+            <h3>항공편명을 다시 확인해주세요.</h3>
           </div>
           <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
             >Close Me</b-button

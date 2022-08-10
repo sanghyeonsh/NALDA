@@ -68,8 +68,8 @@ export const getters = {
 }
 
 export const actions = {
-  inputLogin({ commit }, userInfo) {
-    login(
+  async inputLogin({ commit }, userInfo) {
+    await login(
       {
         username: userInfo.id,
         password: userInfo.password,
@@ -86,9 +86,6 @@ export const actions = {
           } else {
             this.$router.push('/main')
           }
-          console.log(data.ip)
-        } else {
-          alert('실패')
         }
       },
       (error) => {

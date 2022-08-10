@@ -38,6 +38,24 @@
           </nuxt-link>
         </div>
       </section>
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>항공편명을 다시 확인해주세요.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>아이디 또는 패스워드가 일치하지 않습니다.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
     </div>
   </div>
 </template>
@@ -65,8 +83,11 @@ export default {
   methods: {
     ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     ...mapActions('user', ['inputLogin']),
-    loginClick() {
-      this.inputLogin(this.userInfo)
+    async loginClick() {
+      await this.inputLogin(this.userInfo)
+      if (this.loginMember === null) {
+        this.$bvModal.show('login-modal')
+      }
     },
   },
 }
