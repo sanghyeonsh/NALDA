@@ -71,8 +71,9 @@ export const actions = {
       }
     )
   },
-  getSubway({ state, commit }) {
-    getSubway(
+  async getSubway({ state, commit }) {
+    console.log(1111111111)
+    await getSubway(
       ({ data }) => {
         commit('SET_SUBWAYS_LIST', data)
         console.log(state.subways)
@@ -81,18 +82,18 @@ export const actions = {
         console.log(error)
       }
     )
+    // dispatch('getSubwayByCondition', condition)
   },
-  getSubwayByCondition({ state, commit }, condition) {
+  async getSubwayByCondition({ state, commit }, condition) {
     commit('CLEAR_BYCONDITION_LIST')
-    // console.log(condition.min)
+
     for (let i = 0; i < state.subways.subwayList.length; i++) {
       if (condition.terminal === 1 && condition.type === 1) {
         if (
           state.subways.subwayList[i].dayCode === '01' &&
           state.subways.subwayList[i].name === '인천공항1터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
-          console.log(state.subways.subwayList[i].time)
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
       if (condition.terminal === 1 && condition.type === 2) {
@@ -100,7 +101,7 @@ export const actions = {
           state.subways.subwayList[i].dayCode === '02' &&
           state.subways.subwayList[i].name === '인천공항1터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
       if (condition.terminal === 1 && condition.type === 3) {
@@ -108,7 +109,7 @@ export const actions = {
           state.subways.subwayList[i].dayCode === '03' &&
           state.subways.subwayList[i].name === '인천공항1터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
       if (condition.terminal === 2 && condition.type === 1) {
@@ -116,7 +117,7 @@ export const actions = {
           state.subways.subwayList[i].dayCode === '01' &&
           state.subways.subwayList[i].name === '인천공항2터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
       if (condition.terminal === 2 && condition.type === 2) {
@@ -124,7 +125,7 @@ export const actions = {
           state.subways.subwayList[i].dayCode === '02' &&
           state.subways.subwayList[i].name === '인천공항2터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
       if (condition.terminal === 2 && condition.type === 3) {
@@ -132,7 +133,7 @@ export const actions = {
           state.subways.subwayList[i].dayCode === '03' &&
           state.subways.subwayList[i].name === '인천공항2터미널'
         ) {
-          commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
+          await commit('SET_BYCONDITION_LIST', state.subways.subwayList[i])
         }
       }
     }

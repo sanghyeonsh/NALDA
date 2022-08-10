@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="subway-container">
     <div class="left-nav">
@@ -16,7 +17,7 @@
       <SubwayMap />
     </div>
     <div class="content" :class="{ Time: isTime }">
-      <SubwayTime />
+      <TransportationSubway />
     </div>
   </div>
 </template>
@@ -50,22 +51,11 @@ export default {
 }
 </script>
 <style scoped>
-@font-face {
-  font-family: 'twayfly';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-* {
-  font-family: 'twayfly';
-}
-
 .subway-container {
   display: flex;
   width: 100vh;
   /* header넣으면 줄이기 */
-  height: 85vh;
+  height: 100vh;
 }
 .left-nav {
   display: flex;

@@ -125,8 +125,8 @@ export default {
 .customform-nav-container {
   background-color: #206e95;
   color: #ffe6cf;
-  height: 70vh;
-  width: 30%;
+  height: 75vh;
+  width: 20%;
   /* padding-left: 1em;
   padding-right: 1em; */
   display: flex;
@@ -214,6 +214,7 @@ li {
 }
 
 .step-list .item {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

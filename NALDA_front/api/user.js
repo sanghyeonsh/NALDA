@@ -9,7 +9,7 @@ async function signup(user, success, fail) {
   await api.post(`/user/join`, JSON.stringify(user)).then(success).catch(fail)
 }
 async function idCheck(userid, success, fail) {
-  await api.get(`/user/join/${userid}`).then(success).catch(fail)
+  await api.get(`/user/idCheck/${userid}`).then(success).catch(fail)
 }
 
 async function mypage(userid, success, fail) {

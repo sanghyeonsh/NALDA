@@ -11,7 +11,7 @@
             @input="onInputChange"
           />
 
-          <button>확인</button>
+          <button @click="etcCheck">확인</button>
         </div>
       </div>
       <simple-keyboard :input="input" @onChange="onChange" @onKeyPress="onKeyPress"></simple-keyboard>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
@@ -32,7 +33,28 @@ export default {
       input: '',
     }
   },
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
+    ...mapActions('menu', ['postOrders']),
+    etcCheck() {
+      const order = {
+        orderMessage: this.input,
+        flightNum: 1,
+        seatNum: 'A36',
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'B004',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
+      this.$router.push('/waiting')
+    },
     onChange(input) {
       this.input = input
     },
@@ -47,6 +69,20 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
 .box {
   background-color: #f5f6f7;
   height: 600px;

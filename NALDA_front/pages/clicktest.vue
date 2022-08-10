@@ -15,9 +15,7 @@ export default {
       d.style.top = e.clientY + 'px'
       d.style.left = e.clientX + 'px'
       document.body.appendChild(d)
-      console.log(1)
       d.addEventListener('animationend', function () {
-        console.log(2)
         d.parentElement.removeChild(d)
       })
     })

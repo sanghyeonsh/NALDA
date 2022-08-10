@@ -6,6 +6,18 @@
         <div class="customform-container">
           <div class="title-container">
             <div class="title-items">
+              <v-app id="info-btn">
+                <v-btn
+                  class="mx-2 mb-5"
+                  fab
+                  dark
+                  medium
+                  color="#778899"
+                  @click="openAttentions"
+                >
+                  <v-icon large dark> mdi-information-outline </v-icon>
+                </v-btn>
+              </v-app>
               <div class="customform-title">여행자 휴대품 신고서</div>
               <b-button
                 class="next-page"
@@ -175,15 +187,18 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
 import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
+import attentions from '../../components/attentions.vue'
+
 export default {
   name: 'CustomsDetail',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
   beforeRouteLeave(to, from, next) {
     console.log(this.alcoholsInfo)
     this.MODIFY_ALCOHOLS(this.alcoholsInfo)
@@ -285,6 +300,9 @@ export default {
       'MODIFY_PERFUMES',
       'MODIFY_ETCEXCEEDS',
     ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
   },
 }
 </script>
@@ -304,23 +322,23 @@ export default {
   font-family: 'twayfly';
 }
 .next-page[data-v-27638d97] {
-  width: 20%;
+  width: 15%;
   height: 60%;
   margin-bottom: 2%;
 }
 .title-items {
-  width: 75%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .title-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .customs-input-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -439,5 +457,8 @@ td {
   display: flex;
   flex-direction: row;
   align-content: flex-end;
+}
+:deep .v-application--wrap {
+  min-height: fit-content;
 }
 </style>
