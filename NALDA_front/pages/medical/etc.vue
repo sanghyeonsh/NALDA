@@ -14,11 +14,7 @@
           <button>확인</button>
         </div>
       </div>
-      <simple-keyboard
-        :input="input"
-        @onChange="onChange"
-        @onKeyPress="onKeyPress"
-      ></simple-keyboard>
+      <simple-keyboard :input="input" @onChange="onChange" @onKeyPress="onKeyPress"></simple-keyboard>
     </div>
   </div>
 </template>
