@@ -95,9 +95,7 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)"
-                  >완료처리</b-button
-                >
+                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
               </div>
             </div>
             <!-- <b-pagination
@@ -197,7 +195,7 @@ export default {
     ...mapState('attendant', ['ordersList']),
   },
   created() {
-    this.getListOrders(1)
+    this.getListOrders('num1')
     // console.log(this.request.length % 4)
     // console.log(3 - (this.request.length % 4))
     // if (this.request.length % 4 !== 0) {

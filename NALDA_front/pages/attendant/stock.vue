@@ -137,6 +137,7 @@
         <b-button @click="showNonAlcohol">Non-Alcohols</b-button>
         <b-button @click="showAmenity">Amenity</b-button>
         <b-button variant="warning" @click="setTotal()">save</b-button>
+        <b-button @click="testStockCnt">test</b-button>
       </div>
     </div>
   </div>
@@ -171,6 +172,7 @@ export default {
       'nonalcoholosList',
       'amenityList',
       'setStock',
+      'stockCnt',
     ]),
   },
   created() {
@@ -182,6 +184,7 @@ export default {
       'getServiceList',
       'setStockAmount',
       'modifyStockAmount',
+      'getStockAmount',
     ]),
     showSnack() {
       this.ListType = 'snacks'
@@ -200,6 +203,41 @@ export default {
     },
     setAlcoholQuantity(alcohol, index, value) {
       // console.log(this.alcoholQuantity)
+    },
+    testStockCnt() {
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getStockAmount('num1')
+        console.log(this.stockCnt)
+        // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
+        for (let i = 0; i < this.stockCnt.cntList.length; i++) {
+          // console.log(this.stockCnt.cntList[i].serviceCode.substr(0, 2))
+          // console.log(this.stockCnt.cntList[i].serviceCode.substr(3))
+          const classification = this.stockCnt.cntList[i].serviceCode.substr(
+            0,
+            2
+          )
+          let idx = this.stockCnt.cntList[i].serviceCode.substr(3) - 1
+          if (idx < 0) {
+            idx += 10
+          }
+          if (classification === 'A0') {
+            this.snackQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'A1') {
+            this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'A2') {
+            this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'C0') {
+            this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
+          }
+        }
+        this.$forceUpdate()
+        console.log(this.amenityQuantity)
+        console.log(this.snackQuantity)
+        console.log(this.alcoholQuantity)
+      })
     },
     setTotal() {
       this.TotalServiceQuantity = []

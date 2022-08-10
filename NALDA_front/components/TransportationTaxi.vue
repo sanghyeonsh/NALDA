@@ -1,8 +1,8 @@
 <template>
   <div class="Taxi-box">
     <div class="Taxi-box-left">
-      <img src="/transportation/taxi-timetable.png" alt="" />
-      <!-- <div class="Taxi-class">
+      <!-- <img src="/transportation/taxi-timetable.png" alt="" /> -->
+      <div class="Taxi-class">
         <div class="Taxi-class-1">구분</div>
         <div class="Taxi-class-2">일반택시</div>
         <div class="Taxi-class-3">
@@ -57,10 +57,10 @@
         </div>
         <div class="taxi-etc-3">심야할증 및 시계할증 없음</div>
         <div class="taxi-etc-4">외국어 서비스지원 공식 지정 택시</div>
-      </div> -->
+      </div>
     </div>
     <div class="Taxi-box-right">
-      <img src="/transportation/map_taxi_guide_t1_01.png" alt="" />
+      <img src="/transportation/map_taxi_guide_t1_01.png" alt />
       <!-- <img src="/transportation/map_taxi_guide_t2_01.png" alt="" /> -->
     </div>
   </div>

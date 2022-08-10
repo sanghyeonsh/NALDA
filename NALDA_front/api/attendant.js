@@ -23,6 +23,11 @@ async function modifyServices(stocks, success, fail) {
     .catch(fail)
 }
 
+// 서비스 재고(이미 입력된 경우) 불러오기
+async function getServiceCnt(flightNum, success, fail) {
+  await api.get(`orders/count/${flightNum}`).then(success).catch(fail)
+}
+
 // 전체 승객 요청 목록 조회 (처리 전)
 async function listOrders(flightNum, success, fail) {
   await api.get(`orders/input/${flightNum}`).then(success).catch(fail)
@@ -39,4 +44,5 @@ export {
   listOrders,
   updateStatus,
   modifyServices,
+  getServiceCnt,
 }
