@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
-    Flight findTopByFlightNumOrderByIdDesc(@Param("flightNum") String flightNum);
+//    Flight findTopByFlightNumOrderByIdDesc(@Param("flightNum") String flightNum);
 
+    @Query("select f from Flight f where f.flightNum=:flightNum and f.status='PROGRESS'")
+    Flight findByFlightNumAndStatus(@Param("flightNum") String flightNum);
 }
