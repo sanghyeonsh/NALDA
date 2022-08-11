@@ -1,7 +1,7 @@
 import {
   listMeal,
   inputMeal,
-  // endMeals,
+  endMeals,
   confirmMeal,
   listInput,
   detailMeal,
@@ -153,6 +153,26 @@ export const actions = {
       seatNum,
       ({ data }) => {
         commit('SET_VALID_MSG', data.msg)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  endMeal({ commit }, flightNum) {
+    commit('CLEAR_MEAL_LIST')
+    commit('CLEAR_FLIGHTMEAL_LIST')
+    commit('CLEAR_SELECTED_MEAL')
+    commit('CLEAR_DETAIL_MEAL')
+    commit('CLEAR_ALLERGY_MEAL')
+    commit('CLEAR_CHOICE_MEAL')
+    commit('CLEAR_SEATMEAL_LIST')
+    commit('CLEAR_VALID_MSG')
+
+    endMeals(
+      flightNum,
+      ({ data }) => {
+        console.log(data.msg)
       },
       (error) => {
         console.log(error)
