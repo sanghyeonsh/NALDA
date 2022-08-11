@@ -211,6 +211,7 @@ export default {
       promise.then(async () => {
         await this.getStockAmount('num1')
         console.log(this.stockCnt)
+        console.log(this.setStock)
         // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
         for (let i = 0; i < this.stockCnt.cntList.length; i++) {
           // console.log(this.stockCnt.cntList[i].serviceCode.substr(0, 2))
@@ -224,16 +225,25 @@ export default {
             idx += 10
           }
           if (classification === 'A0') {
-            this.snackQuantity[idx] = this.stockCnt.cntList[i].total
+            this.$set(this.snackQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.snackQuantity[idx] = this.stockCnt.cntList[i].total
           } else if (classification === 'A1') {
-            this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
+            this.$set(this.alcoholQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
           } else if (classification === 'A2') {
-            this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
+            this.$set(
+              this.nonAlcoholQuantity,
+              idx,
+              this.stockCnt.cntList[i].total
+            )
+            // this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
           } else if (classification === 'C0') {
-            this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
+            this.$set(this.amenityQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
           }
         }
-        this.$forceUpdate()
+
+        // this.$forceUpdate()
         console.log(this.amenityQuantity)
         console.log(this.snackQuantity)
         console.log(this.alcoholQuantity)
@@ -247,6 +257,11 @@ export default {
       this.whole.push(this.nonalcoholosList)
       this.whole.push(this.amenityList)
 
+      // this.whole[type][i].serviceQuantity부분 수정 필요함
+      // 0아니고 stock db에 있으면 그 값으로 다 바꿔야함..
+      // store부분에서 수정 필요.. 말고 그냥 여기서 함수 불러서
+      // getStockAmount 해서 그거로 total에 넣어주는거로.
+
       // console.log(this.amenityQuantity)
       // 1. 전체 재고 목록 배열을 하나 생성한다.
       for (let type = 0; type < this.whole.length; type++) {
@@ -256,7 +271,7 @@ export default {
             flightNum: this.flightNum,
             total: this.whole[type][i].serviceQuantity,
           }
-          // console.log(stock)
+          console.log(stock)
           this.TotalServiceQuantity.push(stock)
         }
       }
