@@ -3,12 +3,19 @@
     <div class="left-nav">
       <div>
         <div class="left-icon-map" @click="mapClick">
-          <div>공항철도<br />타는곳</div>
+          <div>
+            공항철도
+            <br />타는곳
+          </div>
         </div>
       </div>
       <div>
         <div class="left-icon-time" @click="timeClick">
-          <div>공항철도<br />시간조회<br /></div>
+          <div>
+            공항철도
+            <br />시간조회
+            <br />
+          </div>
         </div>
       </div>
     </div>

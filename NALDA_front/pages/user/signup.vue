@@ -260,6 +260,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { signup, idCheck } from '@/api/user'
 
 export default {
@@ -289,6 +290,12 @@ export default {
       tel: null,
       nationality: null,
     }
+  },
+  computed: {
+    ...mapState('user', ['terms']),
+  },
+  created() {
+    console.log(this.terms)
   },
   methods: {
     registMember() {
@@ -328,10 +335,10 @@ export default {
             tel: this.tel,
             nationality: this.nationality,
             // 넘겨주기
-            termService: 'Y',
-            privacyPolicy: 'Y',
-            locationBased: 'Y',
-            promotionalInfo: 'Y',
+            termService: this.terms.termService,
+            privacyPolicy: this.terms.privacyPolicy,
+            locationBased: this.terms.locationBased,
+            promotionalInfo: this.terms.promotionalInfo,
           },
           ({ data }) => {
             this.$router.push('/user/login')

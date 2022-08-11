@@ -88,6 +88,7 @@
 
 <script>
 export default {
+  name: 'TaxiTest',
   data() {
     return {
       page: 'table',
