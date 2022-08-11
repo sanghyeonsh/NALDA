@@ -25,20 +25,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
   name: 'FooterComponent',
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'flightNum']),
   },
   methods: {
+    ...mapActions('meal', ['endMeal']),
     MoveHelpcall() {
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {
       this.$router.push('/attendant/toilet')
     },
-    endMeals() {},
+    endMeals() {
+      this.endMeal()
+    },
   },
 }
 </script>
