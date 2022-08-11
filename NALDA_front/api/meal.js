@@ -12,6 +12,14 @@ async function inputMeal(meals, success, fail) {
   await api.post(`/meal/input`, JSON.stringify(meals)).then(success).catch(fail)
 }
 
+async function endMeals(flightNum, success, fail) {
+  await api.put(`/meal/end/${flightNum}`).then(success).catch(fail)
+}
+
+async function confirmMeal(seatNum, success, fail) {
+  await api.get(`/meal/confirm/${seatNum}`).then(success).catch(fail)
+}
+
 async function listInput(flightNum, success, fail) {
   await api.get(`/meal/input/${flightNum}`).then(success).catch(fail)
 }
@@ -27,6 +35,7 @@ async function detailMeal(mealId, success, fail) {
 async function allergyMeal(mealId, success, fail) {
   await api.get(`/meal/allergy/${mealId}`).then(success).catch(fail)
 }
+
 // user정보와 meal정보가 param에 담겨있음
 // async function choiceMeal(info, success, fail) {
 //   console.log(info)
@@ -42,6 +51,8 @@ async function getSeatMeal(flightNum, success, fail) {
 
 export {
   listInput,
+  endMeals,
+  confirmMeal,
   detailMeal,
   allergyMeal,
   choiceMeal,
