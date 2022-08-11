@@ -65,5 +65,8 @@ public class Orders {
         this.status = status;
     }
 
+    public void settingComplete(){
+        this.completeTime = LocalDateTime.now();
+    }
 
 }
