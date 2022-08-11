@@ -20,10 +20,30 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'FooterComponent',
+  computed: {
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
+  },
   methods: {
+    ...mapActions('menu', ['postOrders']),
     MoveHelpcall() {
+      const order = {
+        orderMessage: '',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'A000',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {

@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'LoginUser',
   data() {
@@ -75,6 +75,7 @@ export default {
   },
   computed: {
     ...mapState('user', ['loginMember']),
+    ...mapGetters('user', ['isLogin']),
   },
   created() {
     this.CLEAR_LOGIN_MEMBER()
@@ -96,6 +97,13 @@ export default {
         await this.inputLogin(object)
         if (this.loginMember === null) {
           this.$bvModal.show('login-modal')
+        }
+        if (this.loginMember.userRole === 'ROLE_USER') {
+          console.log(this.isLogin)
+          this.$router.push('/main')
+        }
+        if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
+          this.$router.push('/attendant/main')
         }
       })
     },

@@ -133,13 +133,13 @@
                 id="signup-email-select"
                 class="selectbox"
                 name="email"
-                onchange
+                @change="changeEmail"
               >
-                <option value="self">직접입력</option>
-                <option value="naver">naver.com</option>
-                <option value="gmail">gmail.com</option>
-                <option value="daum">daum.com</option>
-                <option value="hotmail">hotmail.com</option>
+                <option value="">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="daum.com">daum.com</option>
+                <option value="hotmail.com">hotmail.com</option>
               </select>
             </div>
           </div>
@@ -371,6 +371,10 @@ export default {
           console.log(error)
         }
       )
+    },
+
+    changeEmail(e) {
+      this.emailDomain = e.target.value
     },
     /*
     KAKAO API 사용한부분

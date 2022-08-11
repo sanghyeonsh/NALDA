@@ -54,8 +54,8 @@ export default {
     bandage() {
       const order = {
         orderMessage: '',
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [
@@ -72,8 +72,8 @@ export default {
     stomachache() {
       const order = {
         orderMessage: '',
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [

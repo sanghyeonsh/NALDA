@@ -27,6 +27,17 @@ import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'TestPage',
   components: {},
+  beforeRouteLeave: (to, from, next) => {
+    console.log(222222)
+    next((vm) => {
+      const isLogin = vm.$store.getters['user/isLogin']
+      if (isLogin) {
+        next()
+      } else {
+        next(false)
+      }
+    })
+  },
   computed: {
     ...mapState('user', ['loginMember']),
     isLogin() {

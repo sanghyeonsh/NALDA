@@ -27,11 +27,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'HeaderComponent',
   computed: {
+    ...mapGetters('user', ['isLogin']),
     ...mapState('user', ['loginMember']),
     fullname() {
       if (this.loginMember == null) return '비회원'
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     MoveMain() {
-      this.$router.push('/main')
+      if (this.isLogin) this.$router.push('/main')
     },
     MoveSignup() {
       this.$router.push('user/signup')
