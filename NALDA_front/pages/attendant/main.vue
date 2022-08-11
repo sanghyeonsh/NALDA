@@ -6,17 +6,11 @@
         <h3>Request</h3>
       </div>
     </div>
-    <div class="main-container-box">
-      <nuxt-link to="/attendant/request" style="text-decoration: none">
-        <div>
-          <img
-            class="image"
-            src="/main/excel_icon.png"
-            alt="custom_declaration"
-          />
-          <h3>Maninging Stock</h3>
-        </div>
-      </nuxt-link>
+    <div class="main-container-box" @click="moveStockPage">
+      <div>
+        <img class="image" src="/main/excel_icon.png" alt="custom_declaration" />
+        <h3>Maninging Stock</h3>
+      </div>
     </div>
     <div class="main-container-box" @click="moveMealPage">
       <div>
@@ -39,7 +33,7 @@ export default {
   created() {},
   methods: {
     moveRequestPage() {
-      this.$router.push('/attendant/requesttest')
+      this.$router.push('/attendant/request')
     },
     moveStockPage() {
       this.$router.push('/attendant/stock')
