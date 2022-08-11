@@ -97,17 +97,29 @@ public class OrdersController {
     @GetMapping("/input")
     public ResponseEntity<?> listServices(){
         Map<String,Object> result = new HashMap<>();
-        List<ServiceDto> serviceDTOS = ordersService.listService();
-        result.put("serviceList",serviceDTOS);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        try{
+            List<ServiceDto> serviceDTOS = ordersService.listService();
+            result.put("serviceList",serviceDTOS);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/input/{flightNum}")
     public ResponseEntity<?> listOrders(@PathVariable("flightNum") String flightNum){
         Map<String,Object> result = new HashMap<>();
-        List<OrderDto> orderDTOS = ordersService.listOrders(flightNum);
-        result.put("serviceList",orderDTOS);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        try{
+            List<OrderDto> orderDTOS = ordersService.listOrders(flightNum);
+            result.put("serviceList",orderDTOS);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/status/{ordersId}")
