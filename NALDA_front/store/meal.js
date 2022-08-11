@@ -20,6 +20,36 @@ export const state = () => ({
 })
 
 export const mutations = {
+  updateSelected(state, select) {
+    let selectCnt = 0
+    state.flightMeals.forEach((flightMeal) => {
+      flightMeal.choice && selectCnt++
+    })
+    if (selectCnt === 0) {
+      state.flightMeals[select].choice = !state.flightMeals[select].choice
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        'brightness(50%)'
+    } else if (selectCnt === 1 && state.flightMeals[select].choice === true) {
+      state.flightMeals[select].choice = false
+      selectCnt = 0
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        null
+    } else {
+      for (let i = 0; i < state.flightMeals.length; i++) {
+        if (state.flightMeals[i].choice) {
+          state.flightMeals[i].choice = false
+          document.getElementsByClassName('mx-auto my-12')[i].style.filter =
+            null
+        }
+      }
+      state.flightMeals[select].choice = true
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        'brightness(50%)'
+    }
+    console.log(selectCnt)
+    console.log(select)
+    console.log(state.flightMeals[select].choice)
+  },
   updateCheck(state, check) {
     for (let i = 0; i < state.flightMeals.length; i++) {
       if (state.flightMeals[i].menu === check.menu) {
@@ -119,6 +149,7 @@ export const actions = {
       ({ data }) => {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
+            console.log(data)
             commit('SET_FLIGHTMEAL_LIST', {
               id: meal.mealId,
               menu: meal.mealMenu,
@@ -126,6 +157,7 @@ export const actions = {
               check: false,
               details: null,
               allergies: null,
+              choice: false,
             })
           })
         }

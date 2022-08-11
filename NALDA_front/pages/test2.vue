@@ -81,7 +81,7 @@
                     <v-btn
                       text
                       color="teal accent-4"
-                      style="position: relative; top: 195px; right: 10px"
+                      style="position: relative; top: 185px; right: 10px"
                       @click="updateCheck(flightMeal)"
                     >
                       Close
@@ -91,7 +91,7 @@
               </v-expand-transition>
             </v-card>
             <div>
-              <button @click="test(i)">선택</button>
+              <button @click="updateSelected(i)">선택</button>
             </div>
           </div>
         </div>
@@ -140,7 +140,6 @@ export default {
       await this.getFlightMeal('num1')
       this.getDetail(this.flightMeals)
       this.getAllergy(this.flightMeals)
-      console.log(this.flightMeals)
     })
   },
   methods: {
@@ -150,15 +149,11 @@ export default {
       'getDetail',
       'getAllergy',
     ]),
-    test(e) {
-      console.log(this.flightMeals)
-      if (document.getElementsByClassName('mx-auto my-12')[e].style.filter) {
-        document.getElementsByClassName('mx-auto my-12')[e].style.filter = null
-      } else {
-        document.getElementsByClassName('mx-auto my-12')[e].style.filter =
-          'brightness(50%)'
-      }
+
+    updateSelected(e) {
+      this.$store.commit('meal/updateSelected', e)
     },
+
     updateCheck(e) {
       this.$store.commit('meal/updateCheck', e)
     },
