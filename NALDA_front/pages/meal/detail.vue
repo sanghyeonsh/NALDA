@@ -91,7 +91,7 @@ export default {
       choiceMeal(
         this.info,
         () => {
-          this.$router.push('/medical/result')
+          this.$router.push('/meal/result')
         },
         (error) => {
           console.log(error)

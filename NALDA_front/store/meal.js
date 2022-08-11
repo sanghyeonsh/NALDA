@@ -171,10 +171,10 @@ export const actions = {
       }
     )
   },
-  getMealList({ commit }, flightNum) {
+  async getMealList({ commit }, flightNum) {
     commit('CLEAR_SEATMEAL_LIST')
     console.log(111111111)
-    getSeatMeal(
+    await getSeatMeal(
       flightNum,
       ({ data }) => {
         console.log(data.seatMeal)

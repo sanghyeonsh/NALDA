@@ -20,26 +20,118 @@
         {{ bus }}
       </div>
     </div>
-    <div class="bus-detail">
-      <div class="bus-detail-terminal">
-        <div class="terminal-1" @click="terminal1">제1터미널</div>
-        <div class="terminal-2" @click="terminal2">제2터미널</div>
+    <div class="bus-time">
+      <div class="bus-time-button">
+        <button>
+          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+        </button>
+        <div class="day-wday-change">주중</div>
+        <button>
+          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+        </button>
       </div>
-      <div class="bus-detail-day">
-        <div class="detail-day" @click="dayType1">평일</div>
-        <div class="detail-wday" @click="dayType2">주말</div>
-      </div>
-      <div class="bus-detail-time">
+      <div class="bus-timetable">
         <div v-for="(table, idx) in choiceTime" :key="idx" class="timeTable">
           {{ table }}
+        </div>
+      </div>
+    </div>
+    <div class="bus-detail">
+      <div class="bus-detail-terminal">
+        <button>
+          <img
+            src="/orders/arrow-91-128.png"
+            alt=""
+            style="filter: opacity(0.5) drop-shadow(0 0 0 red)"
+            @click="TerminalChange"
+          />
+        </button>
+        <div class="terminal-check">제1터미널</div>
+        <button>
+          <img
+            src="/orders/arrow-91-128.png"
+            alt=""
+            style="filter: opacity(0.5) drop-shadow(0 0 0 red)"
+            @click="TerminalChange"
+          />
+        </button>
+        <div class="terminal-blank"></div>
+
+        <div id="app">
+          <v-app id="inspire" style="width: 100%; height: 1%">
+            <v-dialog transition="dialog-top-transition" max-width="100%">
+              <template #activator="{ on, attrs }">
+                <v-btn
+                  color=""
+                  v-bind="attrs"
+                  style="
+                    width: 105%;
+                    height: 5%;
+                    background-color: rgb(69, 169, 200);
+                    color: white;
+                    margin-top: 7%;
+                  "
+                  class="treminal-map1"
+                  v-on="on"
+                  >지도보기</v-btn
+                >
+              </template>
+              <template #default="dialog">
+                <v-card>
+                  <v-toolbar color="primary" dark>제1터미널</v-toolbar>
+                  <div class="terminal-image-box">
+                    <img
+                      src="/transportation/map_bus_stop_information_t1_01.png"
+                      alt=""
+                    />
+                  </div>
+
+                  <v-card-actions class="justify-end">
+                    <v-btn text @click="dialog.value = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+
+            <v-dialog transition="dialog-top-transition" max-width="100%">
+              <template #activator="{ on, attrs }">
+                <v-btn
+                  color=""
+                  v-bind="attrs"
+                  style="
+                    width: 105%;
+                    height: 5%;
+                    background-color: rgb(69, 169, 200);
+                    color: white;
+                    margin-top: 7%;
+                  "
+                  class="treminal-map2"
+                  v-on="on"
+                  >지도보기</v-btn
+                >
+              </template>
+              <template #default="dialog">
+                <v-card>
+                  <v-toolbar color="primary" dark>제2터미널</v-toolbar>
+                  <div class="terminal-image-box">
+                    <img
+                      src="/transportation/map_bus_stop_information_t2_01.png"
+                      alt=""
+                    />
+                  </div>
+                  <v-card-actions class="justify-end">
+                    <v-btn text @click="dialog.value = false">Close</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+          </v-app>
         </div>
       </div>
       <div class="bus-detail-map">
         <TransportationBusMap :stations="choiceStation" />
       </div>
     </div>
-    <!-- <button class="bus-button1" @click="ShowImage1">제1여객터미널</button>
-    <button class="bus-button2" @click="ShowImage2">제2여객터미널</button> -->
 
     <div class="button1-image">
       <div class="button1-image-box">
@@ -141,14 +233,10 @@ export default {
       const check = document.getElementsByClassName('bus-region-click')[idx]
 
       for (let i = 0; i < len; i++) {
-        document.getElementsByClassName('bus-region-click')[
-          i
-        ].style.backgroundColor = 'white'
         document.getElementsByClassName('bus-region-click')[i].style.color =
-          'black'
+          'white'
       }
-      check.style.backgroundColor = '#206e95'
-      check.style.color = 'white'
+      check.style.color = '#ffe16f'
       this.checkBus(0)
     },
     checkBus(idx) {
@@ -160,9 +248,9 @@ export default {
           i
         ].style.backgroundColor = 'white'
         document.getElementsByClassName('bus-number-click')[i].style.color =
-          'black'
+          'rgb(69, 169, 200)'
       }
-      check.style.backgroundColor = '#206e95'
+      check.style.backgroundColor = '#ffe16f'
       check.style.color = 'white'
     },
 
@@ -177,46 +265,65 @@ export default {
         this.makeStationTable()
       })
     },
-    terminal1() {
-      this.terminal = 1
-      document.getElementsByClassName('terminal-1')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('terminal-1')[0].style.color = 'white'
-      document.getElementsByClassName('terminal-2')[0].style.background =
-        'white'
-      document.getElementsByClassName('terminal-2')[0].style.color = 'black'
-      this.makeTimeTable()
+    TerminalChange() {
+      if (this.terminal === 1) {
+        this.terminal = 2
+        document.getElementsByClassName('terminal-check')[0].innerText =
+          '제2터미널'
+        document.getElementsByClassName('treminal-map2')[0].style.display =
+          'flex'
+        document.getElementsByClassName('treminal-map1')[0].style.display =
+          'none'
+        this.makeTimeTable()
+      } else {
+        this.terminal = 1
+        document.getElementsByClassName('terminal-check')[0].innerText =
+          '제1터미널'
+        document.getElementsByClassName('treminal-map1')[0].style.display =
+          'flex'
+        document.getElementsByClassName('treminal-map2')[0].style.display =
+          'none'
+        this.makeTimeTable()
+      }
     },
-    terminal2() {
-      this.terminal = 2
-      document.getElementsByClassName('terminal-2')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('terminal-2')[0].style.color = 'white'
-      document.getElementsByClassName('terminal-1')[0].style.background =
-        'white'
-      document.getElementsByClassName('terminal-1')[0].style.color = 'black'
-      this.makeTimeTable()
+
+    ChangeDayType() {
+      if (this.daytype === 1) {
+        this.daytype = 2
+        document.getElementsByClassName('day-wday-change')[0].innerText = '주말'
+        this.makeTimeTable()
+      } else {
+        this.daytype = 1
+        document.getElementsByClassName('day-wday-change')[0].innerText = '주중'
+        this.makeTimeTable()
+      }
     },
-    dayType1() {
-      this.daytype = 1
-      document.getElementsByClassName('detail-day')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('detail-day')[0].style.color = 'white'
-      document.getElementsByClassName('detail-wday')[0].style.background =
-        'white'
-      document.getElementsByClassName('detail-wday')[0].style.color = 'black'
-      this.makeTimeTable()
+    PopupMap1() {
+      console.log(1)
     },
-    dayType2() {
-      this.daytype = 2
-      document.getElementsByClassName('detail-wday')[0].style.background =
-        '#206e95'
-      document.getElementsByClassName('detail-wday')[0].style.color = 'white'
-      document.getElementsByClassName('detail-day')[0].style.background =
-        'white'
-      document.getElementsByClassName('detail-day')[0].style.color = 'black'
-      this.makeTimeTable()
+    PopupMap2() {
+      console.log(2)
     },
+    // dayType1() {
+    //   this.daytype = 1
+    //   document.getElementsByClassName('detail-day')[0].style.background =
+    //     '#206e95'
+    //   document.getElementsByClassName('detail-day')[0].style.color = 'white'
+    //   document.getElementsByClassName('detail-wday')[0].style.background =
+    //     'white'
+    //   document.getElementsByClassName('detail-wday')[0].style.color = 'black'
+    //   this.makeTimeTable()
+    // },
+    // dayType2() {
+    //   this.daytype = 2
+    //   document.getElementsByClassName('detail-wday')[0].style.background =
+    //     '#206e95'
+    //   document.getElementsByClassName('detail-wday')[0].style.color = 'white'
+    //   document.getElementsByClassName('detail-day')[0].style.background =
+    //     'white'
+    //   document.getElementsByClassName('detail-day')[0].style.color = 'black'
+    //   this.makeTimeTable()
+    // },
     makeTimeTable() {
       let temp = 0
       let tempTime = ''
@@ -233,11 +340,19 @@ export default {
       console.log(tempTime)
       // this.choiceTime = []
       if (tempTime === null) {
-        this.choiceTime = ['배정된 버스가 없습니다.']
+        // this.choiceTime = ['배정된 버스가 없습니다.']
+        this.choiceTime = ['', '', '', '배정된', '버스가', '없습니다.']
       } else {
         this.choiceTime = tempTime.split(', ')
+        for (let i = 0; i < this.choiceTime.length; i++) {
+          this.choiceTime[i] =
+            this.choiceTime[i].substr(0, 2) +
+            ':' +
+            this.choiceTime[i].substr(2, 2)
+          // console.log(111)
+          // console.log(this.choiceTime[i])
+        }
       }
-      console.log(this.choiceTime)
     },
     makeStationTable() {
       // const len = { stationCnt: 0 }
@@ -287,7 +402,6 @@ export default {
           }
         }
       }
-      console.log(test)
     },
   },
 }
@@ -301,13 +415,17 @@ export default {
 .bus-region {
   height: 100%;
   width: 15%;
-  font-size: 30px;
+  font-size: 35px;
   display: flex;
   flex-direction: column;
-  border-right: solid;
+  background-color: rgb(69, 169, 200);
+  color: white;
+  box-shadow: 5px 5px 5px gray;
+  z-index: 3;
 }
 .bus-region div {
   width: 100%;
+  height: 10%;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -315,31 +433,74 @@ export default {
   cursor: pointer;
 }
 .bus-region-click:first-child {
-  background-color: #206e95;
-  color: white;
+  color: #ffe26f;
 }
 .bus-number {
   height: 100%;
-  width: 15%;
+  width: 13%;
   overflow: auto;
   font-size: 20px;
+  color: rgb(69, 169, 200);
+  box-shadow: 5px 5px 5px gray;
+  z-index: 2;
 }
+/* .bus-number::-webkit-scrollbar {
+  display: none;
+} */
+
 .bus-number div {
   width: 100%;
-  height: 10%;
+  height: 12%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
+
 .bus-number-click:first-child {
-  background-color: #206e95;
+  background-color: #ffe16f;
   color: white;
+}
+.bus-time {
+  width: 15%;
+  height: 100%;
+  background-color: rgb(69, 169, 200);
+  color: white;
+  font-size: 35px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 5px gray;
+  z-index: 1;
+}
+.bus-time-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+}
+.bus-time-button button {
+  width: 25%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bus-time-button button img {
+  width: 70%;
+  height: 100%;
+}
+.day-wday-change {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bus-detail {
   height: 100%;
-  width: 70%;
+  width: 55%;
   display: flex;
   flex-direction: column;
 }
@@ -349,66 +510,53 @@ export default {
   height: 10%;
   font-size: 20px;
 }
-.terminal-1 {
-  width: 50%;
+.bus-detail-terminal button {
+  width: 10%;
   height: 100%;
+}
+.bus-detail-terminal button img {
+  width: 70%;
+  height: 60%;
+}
+.terminal-blank {
+  width: 40%;
+  height: 100%;
+}
+.terminal-check {
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #206e95;
-  color: white;
-  border-bottom: 1px solid white;
+  color: rgb(69, 169, 200);
+  font-size: 35px;
 }
-.terminal-2 {
-  width: 50%;
-  height: 100%;
+.treminal-map1 {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid white;
+  color: rgb(69, 169, 200);
+  font-size: 25px;
 }
-.bus-detail-day {
-  display: flex;
+.treminal-map2 {
+  display: none;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  color: rgb(69, 169, 200);
+  font-size: 25px;
+}
+
+.bus-timetable {
+  height: 90%;
   width: 100%;
-  height: 10%;
-  font-size: 20px;
-}
-.detail-day {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #206e95;
-  color: white;
-}
-.detail-wday {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.bus-detail-time {
-  display: flex;
-  width: 100%;
-  height: 10%;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  font-size: 20px;
-}
-.bus-detail-time div {
-  width: 20%;
-  height: 100%;
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .timeTable {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  height: 10%;
+  justify-content: center;
+  align-items: center;
 }
 .bus-detail-map {
   width: 100%;
@@ -487,5 +635,17 @@ export default {
 .button2-image-box img {
   width: 50%;
   height: 50%;
+}
+.terminal-image-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.terminal-image-box img {
+  width: 75%;
+  height: 100%;
 }
 </style>

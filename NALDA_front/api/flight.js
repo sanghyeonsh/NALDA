@@ -11,5 +11,8 @@ async function inputFlight(flightObject, success, fail) {
     .then(success)
     .then(fail)
 }
+async function endFlight(flightNum, success, fail) {
+  await api.put(`/flight/${flightNum}`).then(success).catch(fail)
+}
 
-export { validFlight, inputFlight }
+export { validFlight, inputFlight, endFlight }
