@@ -7,15 +7,8 @@
           <div class="title-container">
             <div class="title-items">
               <v-app id="info-btn">
-                <v-btn
-                  class="mx-2 mb-5"
-                  fab
-                  dark
-                  medium
-                  color="#778899"
-                  @click="openAttentions"
-                >
-                  <v-icon large dark> mdi-information-outline </v-icon>
+                <v-btn class="mx-2 mb-5" fab dark medium color="#778899" @click="openAttentions">
+                  <v-icon large dark>mdi-information-outline</v-icon>
                 </v-btn>
               </v-app>
               <div class="customform-title">여행자 휴대품 신고서</div>
@@ -23,28 +16,20 @@
                 class="next-page"
                 variant="info"
                 @click="$router.push('/customs/complete')"
-                >다음 페이지</b-button
-              >
+              >다음 페이지</b-button>
             </div>
           </div>
           <div class="declaration-detail-wrap">
             <div class="alcohols-perfume-cigarette">
               <h5>
                 ▶주류ㆍ향수ㆍ담배
-                <small
-                  >(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small
-                >
+                <small>(면세범위가 초과되는 경우에는 전체 반입량을 적습니다.)</small>
               </h5>
               <table class="apc-table-wrap">
                 <tr id="alcohols">
                   <td>주류</td>
                   <td colspan="3">
-                    <input
-                      v-model="alcoholsInfo.num"
-                      class="alcohols"
-                      type="text"
-                      name="cnt"
-                    />병,
+                    <input v-model="alcoholsInfo.num" class="alcohols" type="text" name="cnt" />병,
                     <input
                       v-model="alcoholsInfo.liter"
                       class="alcohols"
@@ -62,21 +47,11 @@
                 <tr id="perfume-cigarette">
                   <td>담배</td>
                   <td>
-                    <input
-                      v-model="cigarette"
-                      class="cigarette"
-                      type="text"
-                      name="cigarette"
-                    />갑(20개비 기준)
+                    <input v-model="cigarette" class="cigarette" type="text" name="cigarette" />갑(20개비 기준)
                   </td>
                   <td>향수</td>
                   <td>
-                    <input
-                      v-model="perfumes"
-                      class="perfume"
-                      type="text"
-                      name="perfume"
-                    />㎖
+                    <input v-model="perfumes" class="perfume" type="text" name="perfume" />㎖
                   </td>
                 </tr>
               </table>
@@ -91,94 +66,46 @@
                 </thead>
                 <tr>
                   <td>
-                    <input
-                      v-model="etcExceed1.name"
-                      class="goods-name"
-                      type="text"
-                    />
+                    <input v-model="etcExceed1.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed1.num"
-                      class="goods-cnt"
-                      type="text"
-                    />
+                    <input v-model="etcExceed1.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed1.amount"
-                      class="goods-price"
-                      type="text"
-                    />
+                    <input v-model="etcExceed1.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input
-                      v-model="etcExceed2.name"
-                      class="goods-name"
-                      type="text"
-                    />
+                    <input v-model="etcExceed2.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed2.num"
-                      class="goods-cnt"
-                      type="text"
-                    />
+                    <input v-model="etcExceed2.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed2.amount"
-                      class="goods-price"
-                      type="text"
-                    />
+                    <input v-model="etcExceed2.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input
-                      v-model="etcExceed3.name"
-                      class="goods-name"
-                      type="text"
-                    />
+                    <input v-model="etcExceed3.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed3.num"
-                      class="goods-cnt"
-                      type="text"
-                    />
+                    <input v-model="etcExceed3.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed3.amount"
-                      class="goods-price"
-                      type="text"
-                    />
+                    <input v-model="etcExceed3.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input
-                      v-model="etcExceed4.name"
-                      class="goods-name"
-                      type="text"
-                    />
+                    <input v-model="etcExceed4.name" class="goods-name" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed4.num"
-                      class="goods-cnt"
-                      type="text"
-                    />
+                    <input v-model="etcExceed4.num" class="goods-cnt" type="text" />
                   </td>
                   <td>
-                    <input
-                      v-model="etcExceed4.amount"
-                      class="goods-price"
-                      type="text"
-                    />
+                    <input v-model="etcExceed4.amount" class="goods-price" type="text" />
                   </td>
                 </tr>
               </table>
@@ -458,7 +385,7 @@ td {
   flex-direction: row;
   align-content: flex-end;
 }
-:deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 </style>

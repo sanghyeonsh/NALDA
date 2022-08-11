@@ -257,12 +257,12 @@ export default {
     },
     completeRequest(items) {
       // 완료 시각 계산
-      // const Today = new Date()
-      // const hours = ('0' + Today.getHours()).slice(-2)
-      // const minutes = ('0' + Today.getMinutes()).slice(-2)
-      // const seconds = ('0' + Today.getSeconds()).slice(-2)
-      // const currentTime = hours + ':' + minutes + ':' + seconds
-      // console.log(currentTime)
+      const Today = new Date()
+      const hours = ('0' + Today.getHours()).slice(-2)
+      const minutes = ('0' + Today.getMinutes()).slice(-2)
+      const seconds = ('0' + Today.getSeconds()).slice(-2)
+      const currentTime = hours + ':' + minutes + ':' + seconds
+      console.log(currentTime)
       // 선택된 아이템의 상태 바꿔주기
       for (let i = 0; i < items.length; i++) {
         items[i].상태 = 'DONE'
@@ -274,7 +274,7 @@ export default {
           count++
         }
       }
-      console.log(1234567)
+      // console.log(1234567)
       // 갯수가 세부사항 갯수와 같은경우 실제요청 상태값 바꾸기
       if (count === this.details.length && count !== 0) {
         //
@@ -284,7 +284,7 @@ export default {
         })
         promise.then(async () => {
           await this.updateOrderStatus(this.details[0].id)
-          await this.getListOrders(1)
+          await this.getListOrders(this.flightNum)
           this.details = []
         })
       }

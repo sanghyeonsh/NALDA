@@ -41,9 +41,9 @@ export default {
   },
   methods: {
     MoveMain() {
-      if (this.loginMember.userRole === 'ROLE_USER') {
+      if (this.loginMember?.userRole === 'ROLE_USER') {
         this.$router.push('/main')
-      } else if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
+      } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
         this.$router.push('/attendant/main')
       }
     },

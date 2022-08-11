@@ -181,7 +181,7 @@ export default {
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
-    this.getServiceList()
+    this.getServiceList(this.flightNum)
     // this.setQuantityList()
     console.log(this.flightNum)
   },
@@ -192,7 +192,6 @@ export default {
       'modifyStockAmount',
       'getStockAmount',
     ]),
-    ...mapActions('user', []),
     showSnack() {
       this.ListType = 'snacks'
     },
