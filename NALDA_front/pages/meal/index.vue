@@ -41,10 +41,11 @@ export default {
       'details',
       'allergies',
     ]),
+    ...mapState('user', ['flightNum']),
   },
   created() {
     // flightNum받아와서 넣어야함
-    this.getFlightMeal('num1')
+    this.getFlightMeal(this.flightNum)
   },
   methods: {
     ...mapActions('meal', [

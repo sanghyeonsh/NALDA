@@ -67,7 +67,7 @@ public class OrdersService {
         User user = User.builder()
                 .id(userId)
                 .build();
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(orderdto.getFlightNum()).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(orderdto.getFlightNum()).get().getId();
         Flight flight = Flight.builder()
                 .id(flightId)
                 .build();
@@ -101,7 +101,7 @@ public class OrdersService {
 
     public List<ServiceCntDto> serviceCnt(String flightNum){
 
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
         List<ServiceStock> serviceStocks = serviceStockRepository.findByFlightId(flightId);
         List<ServiceCntDto> serviceCntDTOS = new ArrayList<>();
         for(ServiceStock serviceStock : serviceStocks){
@@ -126,7 +126,7 @@ public class OrdersService {
             ServiceCodes serviceCodes = ServiceCodes.builder()
                     .id(serviceCodeId)
                     .build();
-            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(serviceCntDto.getFlightNum()).getId();
+            Long flightId = flightRepository.findByFlightNumAndStatus(serviceCntDto.getFlightNum()).get().getId();
             Flight flight = Flight.builder()
                     .id(flightId)
                     .build();
@@ -142,7 +142,7 @@ public class OrdersService {
     public void updateServiceCnt(List<ServiceCntDto> serviceCntDTOS){
         for (ServiceCntDto serviceCntDto : serviceCntDTOS) {
             Long serviceCodeId = serviceRepository.findByServiceCode(serviceCntDto.getServiceCode()).getId();
-            Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(serviceCntDto.getFlightNum()).getId();
+            Long flightId = flightRepository.findByFlightNumAndStatus(serviceCntDto.getFlightNum()).get().getId();
             Long serviceStockId = serviceStockRepository.findByFlightAndServiceCode(flightId,serviceCodeId).getId();
             Optional<ServiceStock> optional = serviceStockRepository.findById(serviceStockId);
             ServiceStock serviceStock = optional.get();
@@ -171,7 +171,7 @@ public class OrdersService {
 
     @Transactional
     public List<OrderDto> listOrders(String flightNum) {
-        Long flightId = flightRepository.findTopByFlightNumOrderByIdDesc(flightNum).getId();
+        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
         List<Orders> orders = orderRepository.findByFlightId(flightId);
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {

@@ -10,47 +10,52 @@
         </div>
       </header>
       <section class="login-input-section-wrap">
-        <h2>Member</h2>
+        <h2>로그인 창</h2>
+        <div class="login-input-wrap mb-3">
+          <input v-model="flightNum" placeholder="항공편명" type="text" />
+        </div>
         <div class="login-input-wrap">
-          <input v-model="userInfo.id" placeholder="Username" type="text" />
+          <input
+            v-model="userInfo.id"
+            placeholder="사용자 아이디"
+            type="text"
+          />
         </div>
         <div class="login-input-wrap password-wrap">
           <input
             v-model="userInfo.password"
-            placeholder="Password"
+            placeholder="패스워드"
             type="password"
           />
         </div>
         <div class="login-button-wrap">
-          <button @click="loginClick">Sign in</button>
+          <button @click="loginClick">로그인</button>
         </div>
         <div class="login-stay-sign-in">
           <nuxt-link to="/user/termsuse" style="text-decoration: none">
             <i class="far fa-check-circle"></i>
-            <span>Sign up</span>
+            <span>회원가입</span>
           </nuxt-link>
         </div>
       </section>
-      <!-- <section class="non-member-wrap">
-      <h2>Guest</h2>-->
-      <!-- <div class="guest-input-list">
-                    <li><button><i class="fas fa-qrcode"></i><span>Sign in with QR code</span></button></li>
-                    <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
-                    <li><button><i class="fab fa-line"></i><span>line</span></button></li>
-      </div>-->
-      <!-- <section class="guest-input-section-wrap">
-            <div class="guest-input-wrap">
-              <input placeholder="Username" type="text" />
-            </div>
-            <div class="guest-input-wrap password-wrap">
-              <input placeholder="Password" type="password" />
-            </div>
-            <div class="guest-button-wrap">
-              <button>Use as guest</button>
-            </div>
-          </section>
-          <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-      </section>-->
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>항공편명을 다시 확인해주세요.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>일치하지 않는 정보가 있습니다.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
     </div>
   </div>
 </template>
@@ -59,24 +64,13 @@
 import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'LoginUser',
-  // beforeRouteEnter(to, from, next) {
-  //   let isLogin = false
-  //   next((vm) => {
-  //     isLogin = vm.$store.getters['user/isLogin']
-  //   })
-
-  //   if (isLogin) {
-  //     next()
-  //   } else {
-  //     next(false)
-  //   }
-  // },
   data() {
     return {
       userInfo: {
         id: null,
         password: null,
       },
+      flightNum: '',
     }
   },
   computed: {
@@ -90,7 +84,20 @@ export default {
     ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     ...mapActions('user', ['inputLogin']),
     loginClick() {
-      this.inputLogin(this.userInfo)
+      const object = {
+        id: this.userInfo.id,
+        password: this.userInfo.password,
+        flightNum: this.flightNum,
+      }
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.inputLogin(object)
+        if (this.loginMember === null) {
+          this.$bvModal.show('login-modal')
+        }
+      })
     },
   },
 }
@@ -108,7 +115,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  /* font-family: 'twayfly'; */
+  font-family: 'twayfly';
 }
 
 body {

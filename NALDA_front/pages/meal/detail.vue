@@ -71,14 +71,22 @@ export default {
   },
   computed: {
     ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
+  },
+  created() {
+    // this.select = this.selectedMeal
+    // this.detailOfMeal = this.details
+    // this.allergiesOfMeal = this.allergies
+    // console.log(this.select)
+    // console.log(this.detailOfMeal)
+    // console.log(this.allergiesOfMeal)
   },
   methods: {
     finalChoice() {
       // 다 State로 넘겨줄거임
-      this.info.flightNum = 'num1'
+      this.info.flightNum = this.flightNum
       this.info.username = this.loginMember.username
-      this.info.seatNum = 'A29'
+      this.info.seatNum = this.seatInfo.seatNum
       this.info.mealMenu = this.selectedMeal.mealMenu
       choiceMeal(
         this.info,

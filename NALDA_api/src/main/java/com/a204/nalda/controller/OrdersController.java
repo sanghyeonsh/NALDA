@@ -120,7 +120,7 @@ public class OrdersController {
         }catch (Exception e){
             e.printStackTrace();
             result.put("msg",e.getMessage());
-            return new ResponseEntity<>(result, HttpStatus.OK);
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

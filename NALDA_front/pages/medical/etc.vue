@@ -38,15 +38,15 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
   },
   methods: {
     ...mapActions('menu', ['postOrders']),
     etcCheck() {
       const order = {
         orderMessage: this.input,
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [
