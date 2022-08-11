@@ -10,11 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MealStockDto {
+public class SeatMealCheckDto {
 
-    private String imageName;
-    private String mealMenu;
-    private int total;
-    private Status status;
-
+    Status status;
 }

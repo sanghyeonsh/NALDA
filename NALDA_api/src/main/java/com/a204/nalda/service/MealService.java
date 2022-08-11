@@ -8,6 +8,7 @@ import com.a204.nalda.domain.entity.inflightservice.Meal;
 import com.a204.nalda.domain.entity.inflightservice.MealDetail;
 import com.a204.nalda.domain.entity.inflightservice.MealStock;
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.domain.enumtype.Status;
 import com.a204.nalda.dto.meal.*;
 import com.a204.nalda.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -71,21 +72,45 @@ public class MealService {
                     .meal(meal)
                     .flight(flight)
                     .total(mealCntDto.getTotal())
+                    .status(Status.PROGRESS)
                     .build();
             mealStockRepository.save(mealStock);
         }
     }
 
     @Transactional
+    public void updateStatus(String flightNum){
+        List<MealStock> mealStocks = mealStockRepository.findByFlightNum(flightNum);
+        for (MealStock mealStock : mealStocks) {
+            mealStock.changeStatusInfo(Status.DONE);
+        }
+        List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
+        for (SeatMeal seatMeal : seatMeals) {
+            seatMeal.changeStatusInfo(Status.DONE);
+        }
+    }
+
+    @Transactional
+    public String getMealBySeat(String seatNum){
+        SeatMeal seatMeal = seatMealRepository.findBySeatNum(seatNum);
+        String check;
+        if(seatMeal != null){
+            check = "1";
+        }else{
+            check = "0";
+        }
+        return check;
+    }
+
+    @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
-        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
-        List<Meal> mealList = mealRepository.findByFlightId(flightId);
+        List<Meal> mealList = mealRepository.findByFlightId(flightNum);
+//        List<Meal> mealList = mealStockRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
         String fileName;
         String filePath;
         for (Meal meal : mealList) {
-            System.out.println(meal.getMealMenu());
             bos = new ByteArrayOutputStream();
             fileName = meal.getImageName();
             filePath = System.getProperty("user.dir")+"/src/main/resources/static/meal/";
@@ -158,8 +183,6 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-//        System.out.println("====================");
-//        System.out.println(seatMealDto.toString());
         Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
         Meal meal = Meal.builder()
                 .id(mealId)
@@ -177,6 +200,7 @@ public class MealService {
                 .id(seatId)
                 .build();
         SeatMeal seatMeal = SeatMeal.builder()
+                .status(Status.PROGRESS)
                 .meal(meal)
                 .flight(flight)
                 .user(user)
@@ -188,7 +212,7 @@ public class MealService {
 
     public List<SeatMealDto> listSeatMeal(String flightNum){
         Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
-        List<SeatMeal> seatMeals = seatMealRepository.findByFlightId(flightId);
+        List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
         List<SeatMealDto> seatMealDTOS = new ArrayList<>();
 
         for (SeatMeal seatMeal : seatMeals) {

@@ -49,6 +49,10 @@ public class Orders {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @Column(name = "complete_time")
+    private LocalDateTime completeTime;
+
+
     @OneToMany(mappedBy = "orderCode",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrdersCodes> ordersCodes = new ArrayList<>();
 

@@ -10,12 +10,11 @@ import java.util.List;
 public interface MealStockRepository extends JpaRepository<MealStock,Long> {
 
 //    승무원에게 보여주는 페이지
-//    @Query("select m.imageName, m.mealMenu, s.total from MealStock s inner join fetch Meal m on s.flight.id = :flightId")
-//    List<MealStock> findByFlight(@Param("flightId") Long flightId);
+//    @Query("select m.imageName, m.mealMenu, s.total, m.content from MealStock s inner join fetch Meal m on s.flight.id = :flightId where s.status='PROGRESS'")
+//    List<MealStock> findByFlightId(@Param("flightId") Long flightId);
 
-//    @Query("select  from MealStock")
-//    MealStock findMealStockByFlightAndMeal(@Param("flightId") Long flightId, @Param("mealId") Long mealId);
-
+    @Query("select s from MealStock s where s.flight.id=(select f.id from Flight f where f.flightNum=:flightNum and f.status='PROGRESS')")
+    List<MealStock> findByFlightNum(@Param("flightNum") String flightNum);
 
 
 }
