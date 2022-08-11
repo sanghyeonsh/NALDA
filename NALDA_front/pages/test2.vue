@@ -95,7 +95,7 @@
             </div>
           </div>
         </div>
-        <div class="meal-order-button" @click="finalChoice">주문하기</div>
+        <div class="meal-order-button">주문하기</div>
       </v-app>
     </div>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
@@ -116,7 +116,6 @@ export default {
         mealMenu: null,
         username: null,
         seatNum: null,
-        status: 'PROGRESS',
       },
       select: {},
       detailOfMeal: [],
@@ -129,9 +128,8 @@ export default {
       'flightMeals',
       'details',
       'allergies',
-      'validMsg',
     ]),
-    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
+    ...mapState('user', ['loginMember']),
   },
   created() {
     // flightNum받아와서 넣어야함
@@ -161,36 +159,22 @@ export default {
     },
 
     finalChoice() {
-      this.info.flightNum = this.flightNum
+      // 다 State로 넘겨줄거임
+      this.info.flightNum = 'num1'
       this.info.username = this.loginMember.username
-      this.info.seatNum = this.seatInfo.seatNum
-      this.info.mealMenu = this.selectedMeal
-      const promise = new Promise((resolve, reject) => {
-        resolve()
-      })
-      promise.then(async () => {
-        await this.validMeal(this.info.seatNum)
-        if (this.validMsg === '가능') {
-          choiceMeal(
-            this.info,
-            () => {
-              this.$router.push('/meal/result')
-            },
-            (error) => {
-              console.log(error)
-            }
-          )
-        } else {
-          alert('이미 주문했습니다.')
+      this.info.seatNum = 'A29'
+      this.info.mealMenu = this.selectedMeal.mealMenu
+      choiceMeal(
+        this.info,
+        () => {
+          this.$router.push('/meal/result')
+        },
+        (error) => {
+          console.log(error)
         }
-      })
+      )
     },
-    ...mapActions('meal', [
-      'getDetail',
-      'getAllergy',
-      'registSeatMeal',
-      'validMeal',
-    ]),
+    ...mapActions('meal', ['getDetail', 'getAllergy', 'registSeatMeal']),
   },
 }
 </script>

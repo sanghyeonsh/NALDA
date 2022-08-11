@@ -23,11 +23,21 @@
     <div class="bus-time">
       <div class="bus-time-button">
         <button>
-          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+          <img
+            src="/transportation/arrow-left-drop-circle-outline.png"
+            alt=""
+            style="filter: brightness(0) invert(1)"
+            @click="ChangeDayType"
+          />
         </button>
         <div class="day-wday-change">주중</div>
         <button>
-          <img src="/orders/arrow-91-128.png" alt="" @click="ChangeDayType" />
+          <img
+            src="/transportation/arrow-right-drop-circle-outline.png"
+            alt=""
+            style="filter: brightness(0) invert(1)"
+            @click="ChangeDayType"
+          />
         </button>
       </div>
       <div class="bus-timetable">
@@ -40,18 +50,18 @@
       <div class="bus-detail-terminal">
         <button>
           <img
-            src="/orders/arrow-91-128.png"
+            src="/transportation/arrow-left-drop-circle-outline.png"
             alt=""
-            style="filter: opacity(0.5) drop-shadow(0 0 0 red)"
+            style="filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200))"
             @click="TerminalChange"
           />
         </button>
         <div class="terminal-check">제1터미널</div>
         <button>
           <img
-            src="/orders/arrow-91-128.png"
+            src="/transportation/arrow-right-drop-circle-outline.png"
             alt=""
-            style="filter: opacity(0.5) drop-shadow(0 0 0 red)"
+            style="filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200))"
             @click="TerminalChange"
           />
         </button>
@@ -298,32 +308,6 @@ export default {
         this.makeTimeTable()
       }
     },
-    PopupMap1() {
-      console.log(1)
-    },
-    PopupMap2() {
-      console.log(2)
-    },
-    // dayType1() {
-    //   this.daytype = 1
-    //   document.getElementsByClassName('detail-day')[0].style.background =
-    //     '#206e95'
-    //   document.getElementsByClassName('detail-day')[0].style.color = 'white'
-    //   document.getElementsByClassName('detail-wday')[0].style.background =
-    //     'white'
-    //   document.getElementsByClassName('detail-wday')[0].style.color = 'black'
-    //   this.makeTimeTable()
-    // },
-    // dayType2() {
-    //   this.daytype = 2
-    //   document.getElementsByClassName('detail-wday')[0].style.background =
-    //     '#206e95'
-    //   document.getElementsByClassName('detail-wday')[0].style.color = 'white'
-    //   document.getElementsByClassName('detail-day')[0].style.background =
-    //     'white'
-    //   document.getElementsByClassName('detail-day')[0].style.color = 'black'
-    //   this.makeTimeTable()
-    // },
     makeTimeTable() {
       let temp = 0
       let tempTime = ''

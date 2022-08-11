@@ -1,6 +1,8 @@
 import {
   listMeal,
   inputMeal,
+  // endMeals,
+  confirmMeal,
   listInput,
   detailMeal,
   allergyMeal,
@@ -12,14 +14,54 @@ import {
 export const state = () => ({
   meals: [],
   flightMeals: [],
-  selectedMeal: {},
+  selectedMeal: null,
   details: [],
   allergies: [],
   choiceMeal: [],
   seatMealList: [],
+  validMsg: null,
 })
 
 export const mutations = {
+  updateSelected(state, select) {
+    let selectCnt = 0
+    state.flightMeals.forEach((flightMeal) => {
+      flightMeal.choice && selectCnt++
+    })
+    if (selectCnt === 0) {
+      state.flightMeals[select].choice = !state.flightMeals[select].choice
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        'brightness(50%)'
+    } else if (selectCnt === 1 && state.flightMeals[select].choice === true) {
+      state.flightMeals[select].choice = false
+      selectCnt = 0
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        null
+    } else {
+      for (let i = 0; i < state.flightMeals.length; i++) {
+        if (state.flightMeals[i].choice) {
+          state.flightMeals[i].choice = false
+          document.getElementsByClassName('mx-auto my-12')[i].style.filter =
+            null
+        }
+      }
+      state.flightMeals[select].choice = true
+      state.selectedMeal = state.flightMeals[select].menu
+      document.getElementsByClassName('mx-auto my-12')[select].style.filter =
+        'brightness(50%)'
+    }
+  },
+  updateCheck(state, check) {
+    for (let i = 0; i < state.flightMeals.length; i++) {
+      if (state.flightMeals[i].menu === check.menu) {
+        if (check.check === false) {
+          check.check = true
+        } else {
+          check.check = false
+        }
+      }
+    }
+  },
   SET_MEAL_LIST(state, meals) {
     state.meals.push(meals)
   },
@@ -29,17 +71,29 @@ export const mutations = {
   SET_SELECTED_MEAL(state, selectedMeal) {
     state.selectedMeal = selectedMeal
   },
-  SET_DETAIL_MEAL(state, details) {
-    state.details = details
+  SET_DETAIL_MEAL(state, data) {
+    for (let i = 0; i < state.flightMeals.length; i++) {
+      if (state.flightMeals[i].id === data[1].id) {
+        state.flightMeals[i].details = data[0]
+      }
+    }
   },
-  SET_ALLERGY_MEAL(state, allergies) {
-    state.allergies = allergies
+  SET_ALLERGY_MEAL(state, data) {
+    // state.allergies = allergies
+    for (let i = 0; i < state.flightMeals.length; i++) {
+      if (state.flightMeals[i].id === data[1].id) {
+        state.flightMeals[i].allergies = data[0]
+      }
+    }
   },
   SET_CHOICE_MEAL(state, choiceMeal) {
     state.choiceMeal = choiceMeal
   },
   SET_SEATMEAL_LIST(state, seatMealList) {
     state.seatMealList = seatMealList
+  },
+  SET_VALID_MSG(state, validMsg) {
+    state.validMsg = validMsg
   },
 
   CLEAR_MEAL_LIST(state) {
@@ -63,6 +117,9 @@ export const mutations = {
   CLEAR_SEATMEAL_LIST(state) {
     state.seatMealList = []
   },
+  CLEAR_VALID_MSG(state) {
+    state.validMeal = null
+  },
 }
 export const getters = {}
 
@@ -71,7 +128,6 @@ export const actions = {
   getMeal({ commit }) {
     listMeal(
       ({ data }) => {
-        console.log(data)
         commit('SET_MEAL_LIST', data)
       },
       (error) => {
@@ -92,9 +148,20 @@ export const actions = {
       }
     )
   },
-  getFlightMeal({ commit }, flightNum) {
+  async validMeal({ commit }, seatNum) {
+    await confirmMeal(
+      seatNum,
+      ({ data }) => {
+        commit('SET_VALID_MSG', data.msg)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getFlightMeal({ commit }, flightNum) {
     commit('CLEAR_FLIGHTMEAL_LIST')
-    listInput(
+    await listInput(
       flightNum,
       ({ data }) => {
         if (data.meal.length > 0) {
@@ -103,6 +170,10 @@ export const actions = {
               id: meal.mealId,
               menu: meal.mealMenu,
               image: meal.bytesdata,
+              check: false,
+              details: null,
+              allergies: null,
+              choice: false,
             })
           })
         }
@@ -117,7 +188,6 @@ export const actions = {
     selectMeal(
       mealId,
       ({ data }) => {
-        console.log(data.mealInfo)
         commit('SET_SELECTED_MEAL', data.mealInfo)
       },
       (error) => {
@@ -125,44 +195,45 @@ export const actions = {
       }
     )
   },
-  getDetail({ commit }, mealId) {
+  getDetail({ commit }, flightMeals) {
     commit('CLEAR_DETAIL_MEAL')
-    detailMeal(
-      mealId,
-      ({ data }) => {
-        // console.log(data.mealDetail)
-        if (data.mealDetail.length > 0) {
-          commit('SET_DETAIL_MEAL', data.mealDetail)
+    for (let i = 0; i < flightMeals.length; i++) {
+      detailMeal(
+        flightMeals[i].id,
+        ({ data }) => {
+          if (data.mealDetail.length > 0) {
+            const datas = [data.mealDetail, flightMeals[i]]
+            commit('SET_DETAIL_MEAL', datas)
+          }
+        },
+        (error) => {
+          console.log(error)
         }
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+      )
+    }
   },
-  getAllergy({ commit }, mealId) {
+  getAllergy({ commit }, flightMeals) {
     commit('CLEAR_ALLERGY_MEAL')
-    allergyMeal(
-      mealId,
-      ({ data }) => {
-        // console.log(data.mealAllergy)
-        if (data.mealAllergy.length > 0) {
-          commit('SET_ALLERGY_MEAL', data.mealAllergy)
+    for (let i = 0; i < flightMeals.length; i++) {
+      allergyMeal(
+        flightMeals[i].id,
+        ({ data }) => {
+          if (data.mealAllergy.length > 0) {
+            const datas = [data.mealAllergy, flightMeals[i]]
+            commit('SET_ALLERGY_MEAL', datas)
+          }
+        },
+        (error) => {
+          console.log(error)
         }
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+      )
+    }
   },
   getChoiceMeal({ commit }) {
     commit('CLEAR_CHOICE_MEAL')
     choiceMeal(
       ({ data }) => {
-        console.log(data)
         if (data.length > 0) {
-          console.log('store입니다 ' + data.length)
-          console.log('store입니다 ' + data)
           commit('SET_CHOICE_MEAL', data)
         }
       },
@@ -173,15 +244,10 @@ export const actions = {
   },
   async getMealList({ commit }, flightNum) {
     commit('CLEAR_SEATMEAL_LIST')
-    console.log(111111111)
     await getSeatMeal(
       flightNum,
       ({ data }) => {
-        console.log(data.seatMeal)
-        // console.log(data.seatMeal.length)
         if (data.seatMeal.length > 0) {
-          // console.log('store입니다 ' + data.seatMeal.length)
-          // console.log('store입니다 ' + data.seatMeal)
           commit('SET_SEATMEAL_LIST', data.seatMeal)
         }
       },
