@@ -71,6 +71,7 @@ export default {
   },
   computed: {
     ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
   created() {
     // this.select = this.selectedMeal
@@ -83,14 +84,14 @@ export default {
   methods: {
     finalChoice() {
       // 다 State로 넘겨줄거임
-      this.info.flightNum = '1'
-      this.info.username = 'audrb96'
-      this.info.seatNum = 'A29'
+      this.info.flightNum = this.flightNum
+      this.info.username = this.loginMember.username
+      this.info.seatNum = this.seatInfo.seatNum
       this.info.mealMenu = this.selectedMeal.mealMenu
       choiceMeal(
         this.info,
         () => {
-          this.$router.push('/medical/result')
+          this.$router.push('/meal/result')
         },
         (error) => {
           console.log(error)

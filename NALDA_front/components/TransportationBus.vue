@@ -55,27 +55,33 @@
             @click="TerminalChange"
           />
         </button>
-        <!-- <div class="treminal-map1" @click="PopupMap1">지도보기</div>
-        <div class="treminal-map2" @click="PopupMap2">지도보기</div> -->
-        <div id="app" style="width: 40%">
+        <div class="terminal-blank"></div>
+
+        <div id="app">
           <v-app id="inspire" style="width: 100%; height: 1%">
             <v-dialog transition="dialog-top-transition" max-width="100%">
               <template #activator="{ on, attrs }">
                 <v-btn
                   color=""
                   v-bind="attrs"
-                  style="width: 100%; height: 10%"
+                  style="
+                    width: 105%;
+                    height: 5%;
+                    background-color: rgb(69, 169, 200);
+                    color: white;
+                    margin-top: 7%;
+                  "
                   class="treminal-map1"
                   v-on="on"
-                  >제1터미널 지도</v-btn
+                  >지도보기</v-btn
                 >
               </template>
               <template #default="dialog">
                 <v-card>
                   <v-toolbar color="primary" dark>제1터미널</v-toolbar>
-                  <div style="width: 100%; height: 100%; padding: 20px">
+                  <div class="terminal-image-box">
                     <img
-                      src="/transportation/map_taxi_guide_t1_01.png"
+                      src="/transportation/map_bus_stop_information_t1_01.png"
                       alt=""
                     />
                   </div>
@@ -90,12 +96,18 @@
             <v-dialog transition="dialog-top-transition" max-width="100%">
               <template #activator="{ on, attrs }">
                 <v-btn
-                  color="primary"
+                  color=""
                   v-bind="attrs"
-                  style="width: 100%; height: 10%"
+                  style="
+                    width: 105%;
+                    height: 5%;
+                    background-color: rgb(69, 169, 200);
+                    color: white;
+                    margin-top: 7%;
+                  "
                   class="treminal-map2"
                   v-on="on"
-                  >제2터미널 지도</v-btn
+                  >지도보기</v-btn
                 >
               </template>
               <template #default="dialog">
@@ -103,7 +115,7 @@
                   <v-toolbar color="primary" dark>제2터미널</v-toolbar>
                   <div class="terminal-image-box">
                     <img
-                      src="/transportation/map_taxi_guide_t2_01.png"
+                      src="/transportation/map_bus_stop_information_t2_01.png"
                       alt=""
                     />
                   </div>
@@ -408,6 +420,8 @@ export default {
   flex-direction: column;
   background-color: rgb(69, 169, 200);
   color: white;
+  box-shadow: 5px 5px 5px gray;
+  z-index: 3;
 }
 .bus-region div {
   width: 100%;
@@ -427,6 +441,8 @@ export default {
   overflow: auto;
   font-size: 20px;
   color: rgb(69, 169, 200);
+  box-shadow: 5px 5px 5px gray;
+  z-index: 2;
 }
 /* .bus-number::-webkit-scrollbar {
   display: none;
@@ -454,6 +470,8 @@ export default {
   overflow: auto;
   display: flex;
   flex-direction: column;
+  box-shadow: 5px 5px 5px gray;
+  z-index: 1;
 }
 .bus-time-button {
   display: flex;
@@ -463,18 +481,18 @@ export default {
   height: 10%;
 }
 .bus-time-button button {
-  width: 20%;
+  width: 25%;
   height: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .bus-time-button button img {
-  width: 100%;
+  width: 70%;
   height: 100%;
 }
 .day-wday-change {
-  width: 60%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -488,7 +506,6 @@ export default {
 }
 .bus-detail-terminal {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: 10%;
   font-size: 20px;
@@ -501,8 +518,12 @@ export default {
   width: 70%;
   height: 60%;
 }
-.terminal-check {
+.terminal-blank {
   width: 40%;
+  height: 100%;
+}
+.terminal-check {
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -515,7 +536,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: rgb(69, 169, 200);
-  font-size: 35px;
+  font-size: 25px;
 }
 .treminal-map2 {
   display: none;
@@ -523,7 +544,7 @@ export default {
   justify-content: center;
   align-items: center;
   color: rgb(69, 169, 200);
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .bus-timetable {

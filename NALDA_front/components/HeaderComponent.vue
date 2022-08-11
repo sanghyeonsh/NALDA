@@ -112,7 +112,7 @@ export default {
   width: 20%;
 }
 .previous-icon {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 

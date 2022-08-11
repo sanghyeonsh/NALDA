@@ -6,14 +6,14 @@
         <img
           class="terminal-arrow-btn"
           src="/transportation/arrow-left-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
         <div class="terminal-name">{{ terminal[terminalIdx % 2] }}</div>
         <img
           class="terminal-arrow-btn"
           src="/transportation/arrow-right-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
       </div>
@@ -27,14 +27,14 @@
         <img
           class="type-arrow-btn"
           src="/transportation/arrow-left-drop-circle-outline.png"
-          alt=""
+          alt
           @click="minusType"
         />
         <div class="time-type">{{ dayType[dayTypeIdx % 3] }}</div>
         <img
           class="type-arrow-btn"
           src="/transportation/arrow-right-drop-circle-outline.png"
-          alt=""
+          alt
           @click="plusType"
         />
       </div>
@@ -50,17 +50,22 @@
       </div>
       <div class="time-result-title">
         <div>출발역</div>
+        <div></div>
         <div>종착역</div>
       </div>
       <div class="time-result">
         <div class="left-icon-map">
-          인천공항
-          <br />
-          {{ terminal[terminalIdx % 2].substr(2, 4) }}
+          <div>
+            인천공항
+            <br />
+            {{ terminal[terminalIdx % 2].substr(2, 4) }}
+          </div>
         </div>
         <div class="next-subway-time">{{ time[cnt] }}</div>
 
-        <div class="left-icon-map">{{ endStation[Math.floor(cnt / 124)] }}</div>
+        <div class="left-icon-map">
+          <div>{{ endStation[Math.floor(cnt / 124)] }}</div>
+        </div>
       </div>
       <div class="subway-show-time">
         <button @click="dec">&lt; 이전열차</button>
@@ -298,14 +303,17 @@ export default {
   justify-content: flex-end;
 }
 .time-result-title {
+  width: 80%;
   display: flex;
+  margin: auto;
   justify-content: space-around;
 }
 .time-result-title {
   font-size: 25px;
 }
 .time-result {
-  width: 77%;
+  width: 80%;
+  height: 20%;
   display: flex;
   margin: auto;
   justify-content: space-around;
@@ -313,10 +321,13 @@ export default {
 }
 
 .left-icon-map {
+  display: flex;
   width: 100px;
   height: 100px;
   margin: 15px;
-  padding-top: 32px;
+  justify-content: center;
+  align-items: center;
+  /* padding-top: 32px; */
   color: white;
   background-color: rgb(69, 169, 200);
   border-radius: 50%;
