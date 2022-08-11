@@ -65,7 +65,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
     orderList() {
       const orderList = []
       if (this.blanket !== '')
@@ -84,8 +84,8 @@ export default {
     movewaiting() {
       const order = {
         orderMessage: '',
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: this.orderList,

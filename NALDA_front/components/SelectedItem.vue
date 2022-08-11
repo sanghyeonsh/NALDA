@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     ...mapState('menu', ['selectedItem']),
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
   },
   created() {
     this.items = [...this.selectedItem]
@@ -130,8 +130,8 @@ export default {
 
       const order = {
         orderMessage: '',
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [...orderList],

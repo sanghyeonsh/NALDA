@@ -50,7 +50,7 @@
       <b-modal id="login-modal" hide-footer>
         <template #modal-title>알림</template>
         <div class="d-block text-center">
-          <h3>아이디 또는 패스워드가 일치하지 않습니다.</h3>
+          <h3>일치하지 않는 정보가 있습니다.</h3>
         </div>
         <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
           >Close Me</b-button
@@ -83,11 +83,21 @@ export default {
   methods: {
     ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     ...mapActions('user', ['inputLogin']),
-    async loginClick() {
-      await this.inputLogin(this.userInfo)
-      if (this.loginMember === null) {
-        this.$bvModal.show('login-modal')
+    loginClick() {
+      const object = {
+        id: this.userInfo.id,
+        password: this.userInfo.password,
+        flightNum: this.flightNum,
       }
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.inputLogin(object)
+        if (this.loginMember === null) {
+          this.$bvModal.show('login-modal')
+        }
+      })
     },
   },
 }

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -25,7 +26,7 @@ public class FlightService {
         Status status = Status.valueOf(flightDto.getStatus());
         Flight flight = Flight.builder()
                 .flightNum(flightDto.getFlightNum())
-                .flightDate(flightDto.getFlightDate())
+                .flightDate(Optional.ofNullable(flightDto.getFlightDate()).orElse(LocalDateTime.now()))
                 .airplane(airplane)
                 .status(status)
                 .build();
