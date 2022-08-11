@@ -96,6 +96,7 @@ public class MealService {
                     .mealId(meal.getId())
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
+                    .content(meal.getContent())
                     .bytesdata(bytesData)
                     .build();
             mealDTOS.add(mealDto);
@@ -119,6 +120,7 @@ public class MealService {
         MealDto mealDto = MealDto.builder()
                 .imageName(mealInfo.getImageName())
                 .mealMenu(mealInfo.getMealMenu())
+                .content(mealInfo.getContent())
                 .bytesdata(bytesData)
                 .build();
 
