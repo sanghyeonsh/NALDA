@@ -153,6 +153,7 @@
         <img src="/nacho.jpg" alt="" />
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -393,7 +394,7 @@ export default {
 
 <style scoped>
 .transport-bus {
-  height: 85vh;
+  height: 75vh;
   display: flex;
 }
 .bus-region {
