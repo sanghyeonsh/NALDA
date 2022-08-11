@@ -45,7 +45,15 @@ export default {
   },
   created() {
     // flightNum받아와서 넣어야함
-    this.getFlightMeal(this.flightNum)
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getFlightMeal('num1')
+      this.getDetail(this.flightMeals)
+      this.getAllergy(this.flightMeals)
+      console.log(this.flightMeals)
+    })
   },
   methods: {
     ...mapActions('meal', [
@@ -60,7 +68,7 @@ export default {
         const mealName = document.querySelector(
           'input[type=radio][name=inlineRadioOptions]:checked'
         ).value
-
+        console.log(mealName)
         this.getSelectedMeal(mealName)
         this.getDetail(mealName)
         this.getAllergy(mealName)

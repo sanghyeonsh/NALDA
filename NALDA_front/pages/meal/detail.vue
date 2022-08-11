@@ -11,20 +11,6 @@
       <div class="wrapper-detail">
         <div>
           <div class="detail-title">세부 목록</div>
-          <!-- <div class="detail-content">
-            <div
-              v-for="(detail, i) in details"
-              :key="i"
-              class="form-check form-check-inline"
-            > -->
-          <!-- <input
-                :id="'inlineCheckbox' + i"
-                class="form-check-input"
-                type="checkbox"
-                :value="detail"
-                checked
-                @click="toggle1(detail)"
-              /> -->
           <ul>
             <li v-for="(detail, i) in details" :key="i">
               {{ detail.mealName }}

@@ -1,195 +1,185 @@
 <template>
-  <div>
-    <div class="transport-header">
-      <div class="transport-header-left">
-        <div class="transport-header-home" @click="MoveHome">
-          <div>날다</div>
-          <div>Home</div>
-        </div>
-        <div
-          class="transport-header-bus"
-          :class="{ transportactive: isBus }"
-          @click="MoveBus"
-        >
-          공항리무진
-        </div>
-        <div
-          class="transport-header-taxi"
-          :class="{ transportactive: isTaxi }"
-          @click="MoveTaxi"
-        >
-          택시승강장
-        </div>
-        <div
-          class="transport-header-subway"
-          :class="{ transportactive: isSubway }"
-          @click="MoveSubway"
-        >
-          공항철도
-        </div>
-      </div>
+  <div id="app">
+    <v-app id="inspire">
+      <div class="food-box">
+        <v-card class="mx-auto my-12" max-width="374">
+          <template slot="progress">
+            <v-progress-linear
+              color=""
+              height="10"
+              indeterminate
+            ></v-progress-linear>
+          </template>
 
-      <div class="transport-header-right">
-        <div class="transport-header-profile">
-          <div class="profile-back" @click="MoveHome">
-            <img src="../static/orders/left-round-128.png" alt="" />
-          </div>
+          <v-img height="250" src="/meal/chicken-steak.jpg"></v-img>
 
-          <div class="profile-image">
-            <img src="/main/user_profile_w.png" alt="" />
-          </div>
-          <div class="profile-name">김익명</div>
-        </div>
+          <v-card-title style="display: flex; justify-content: center"
+            >치킨스테이크</v-card-title
+          >
+
+          <v-card-text>
+            <div>
+              굽기만 해도 맛있는 촉촉한 치킨스테이크 지방과 살의 적당한 비율과
+              촉촉한 육즙으로 많은 이들의 사랑을 받는 부위, 치킨 다리살입니다.
+              스테이크용으로 먹기 좋게 손질해서 시즈닝했으니 간편하게 구워내
+              식사해보세요.
+            </div>
+          </v-card-text>
+
+          <v-divider class="mx-4"></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <div>
+              <v-btn text color="teal accent-4" @click="reveal1 = true">
+                세부사항
+              </v-btn>
+
+              <v-btn @click="test">선택</v-btn>
+            </div>
+          </v-card-actions>
+
+          <v-expand-transition>
+            <v-card
+              v-if="reveal1"
+              class="transition-fast-in-fast-out v-card--reveal"
+              style="height: 100%"
+            >
+              <v-card-text class="pb-0">
+                <div class="text-h4 text--primary">세부목록</div>
+                <div>고기</div>
+                <div>치킨</div>
+                <div>토마토</div>
+                <div>쌈장</div>
+                <hr />
+                <div class="text-h4 text--primary">알레르기</div>
+                <div>알</div>
+                <div>레</div>
+                <div>르</div>
+                <div>기</div>
+
+                <hr />
+              </v-card-text>
+
+              <v-card-actions class="pt-0">
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="teal accent-4"
+                  style="position: relative; top: 130px; right: 10px"
+                  @click="reveal1 = false"
+                >
+                  Close
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-expand-transition>
+        </v-card>
+
+        <!-- <v-card class="mx-auto my-12" max-width="374">
+          <template slot="progress">
+            <v-progress-linear
+              color=""
+              height="10"
+              indeterminate
+            ></v-progress-linear>
+          </template>
+
+          <v-img height="250" src="/meal/nakji-deopbap.png"></v-img>
+
+          <v-card-title style="display: flex; justify-content: center"
+            >낙지덮밥</v-card-title
+          >
+
+          <v-card-text>
+            <div>
+              간편하고 든든한 매콤 낙지 덮밥 집 밥처럼 맛있게 즐기는 매콤
+              낙지덮밥입니다. 큼직한 야채와 낙지 건더기가 들어가 뛰어난 맛과
+              식감을 자랑한답니다. 식사를 챙기기 번거로울 때 간편하게
+              드셔보세요.
+            </div>
+          </v-card-text>
+
+          <v-divider class="mx-4"></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <div>
+              <v-btn text color="teal accent-4" @click="reveal2 = true">
+                세부사항
+              </v-btn>
+            </div>
+          </v-card-actions>
+
+          <v-expand-transition>
+            <v-card
+              v-if="reveal2"
+              class="transition-fast-in-fast-out v-card--reveal"
+              style="height: 100%"
+            >
+              <v-card-text class="pb-0">
+                <div class="text-h4 text--primary">세부목록</div>
+                <div>고기</div>
+                <div>치킨</div>
+                <div>토마토</div>
+                <div>쌈장</div>
+                <hr />
+                <div class="text-h4 text--primary">알레르기</div>
+                <div>알</div>
+                <div>레</div>
+                <div>르</div>
+                <div>기</div>
+
+                <hr />
+              </v-card-text>
+
+              <v-card-actions class="pt-0">
+                <v-spacer></v-spacer>
+                <v-btn
+                  text
+                  color="teal accent-4"
+                  style="position: relative; top: 130px; right: 10px"
+                  @click="reveal2 = false"
+                >
+                  Close
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-expand-transition>
+        </v-card> -->
       </div>
-    </div>
-    <div class="transport-body" :class="{ Bus: isBus }">
-      <TransportationBus />
-    </div>
-    <div class="transport-body" :class="{ Taxi: isTaxi }">
-      <TransportationTaxi />
-    </div>
-    <div class="transport-body" :class="{ Subway: isSubway }">
-      <TransportationSubway />
-    </div>
+    </v-app>
   </div>
 </template>
 
-<script scoped>
+<script>
 export default {
-  name: 'TransportPage',
-  data() {
-    return {
-      isBus: false,
-      isTaxi: false,
-      isSubway: false,
-    }
-  },
-  mounted() {
-    this.isBus = true
-  },
+  name: 'TestPage',
+  data: () => ({
+    reveal1: false,
+    reveal2: false,
+  }),
   methods: {
-    MoveHome() {
-      this.$router.push('/main')
-    },
-    MoveBus() {
-      this.isBus = true
-      this.isTaxi = false
-      this.isSubway = false
-      this.test = 'nacho.jpg'
-    },
-    MoveTaxi() {
-      this.isBus = false
-      this.isTaxi = true
-      this.isSubway = false
-      this.test = 'water.png'
-    },
-    MoveSubway() {
-      this.isBus = false
-      this.isTaxi = false
-      this.isSubway = true
-      this.test = 'logo.png'
+    test() {
+      console.log(document.getElementsByClassName('mx-auto my-12')[0])
+      document.getElementsByClassName('mx-auto my-12')[0].style.filter =
+        'brightness(50%)'
     },
   },
 }
 </script>
 
 <style scoped>
-.transport-header {
-  height: 15vh;
-  width: 100vw;
-  display: flex;
-  background-color: rgb(69, 169, 200);
-  color: white;
-}
-.transport-header-left {
-  width: 80%;
-  display: flex;
-}
-.transport-header-home {
-  width: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transport-header-bus {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transport-header-taxi {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transport-header-subway {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transportactive {
-  color: blue;
-}
-
-.transport-header-right {
-  width: 20%;
-  display: flex;
-}
-.transport-header-profile {
+.v-card--reveal {
+  bottom: 0;
+  opacity: 1 !important;
+  position: absolute;
   width: 100%;
+}
+.food-box {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.profile-back {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.profile-back img {
-  width: 50%;
-  height: 40%;
-}
-.profile-image {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.profile-image img {
-  width: 50%;
-  height: 40%;
-}
-.profile-name {
-  width: 60%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.transport-body {
-  display: none;
-}
-.Bus {
-  display: block;
-}
-.Taxi {
-  display: block;
-}
-.Subway {
-  display: block;
+  justify-content: space-between;
 }
 </style>
