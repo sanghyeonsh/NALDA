@@ -136,9 +136,13 @@ export default {
         status: 'PROGRESS',
         orderList: [...orderList],
       }
-      this.postOrders(order)
-      this.CLEAR_CHOICE_FOODS()
-      this.$router.push('/waiting')
+      if (orderList.length > 0) {
+        this.postOrders(order)
+        this.CLEAR_CHOICE_FOODS()
+        this.$router.push('/waiting')
+      } else {
+        // alert('장바구니에 담으세요')
+      }
     },
   },
 }
