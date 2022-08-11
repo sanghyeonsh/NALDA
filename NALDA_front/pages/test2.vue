@@ -46,8 +46,6 @@
                   >
                     세부사항
                   </v-btn>
-
-                  <v-btn @click="test">선택</v-btn>
                 </div>
               </v-card-actions>
 
@@ -60,16 +58,20 @@
                   <v-card-text class="pb-0">
                     <div class="text-h4 text--primary">세부목록</div>
                     <ul>
-                      <li v-for="(detail, i) in details" :key="i">
-                        {{ detail.mealName }}
+                      <li
+                        v-for="(detail, idx) in flightMeals[i].details"
+                        :key="idx"
+                      >
+                        {{ detail['mealName'] }}
                       </li>
                     </ul>
                     <hr />
                     <div class="text-h4 text--primary">알레르기</div>
-                    <div>알</div>
-                    <div>레</div>
-                    <div>르</div>
-                    <div>기</div>
+                    <ul>
+                      <li>
+                        {{ flightMeals[i].allergies[0]['allergyType'] }}
+                      </li>
+                    </ul>
 
                     <hr />
                   </v-card-text>
@@ -79,7 +81,7 @@
                     <v-btn
                       text
                       color="teal accent-4"
-                      style="position: relative; top: 130px; right: 10px"
+                      style="position: relative; top: 195px; right: 10px"
                       @click="updateCheck(flightMeal)"
                     >
                       Close
@@ -88,8 +90,12 @@
                 </v-card>
               </v-expand-transition>
             </v-card>
+            <div>
+              <button @click="test(i)">선택</button>
+            </div>
           </div>
         </div>
+        <div class="meal-order-button">주문하기</div>
       </v-app>
     </div>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
@@ -127,7 +133,15 @@ export default {
   },
   created() {
     // flightNum받아와서 넣어야함
-    this.getFlightMeal('num1')
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getFlightMeal('num1')
+      this.getDetail(this.flightMeals)
+      this.getAllergy(this.flightMeals)
+      console.log(this.flightMeals)
+    })
   },
   methods: {
     ...mapActions('meal', [
@@ -136,13 +150,16 @@ export default {
       'getDetail',
       'getAllergy',
     ]),
-    test() {
-      console.log(document.getElementsByClassName('mx-auto my-12')[0])
-      document.getElementsByClassName('mx-auto my-12')[0].style.filter =
-        'brightness(50%)'
+    test(e) {
+      console.log(this.flightMeals)
+      if (document.getElementsByClassName('mx-auto my-12')[e].style.filter) {
+        document.getElementsByClassName('mx-auto my-12')[e].style.filter = null
+      } else {
+        document.getElementsByClassName('mx-auto my-12')[e].style.filter =
+          'brightness(50%)'
+      }
     },
     updateCheck(e) {
-      console.log(e)
       this.$store.commit('meal/updateCheck', e)
     },
 
@@ -193,7 +210,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20vw;
 }
 .wrapper img {
   width: 400px;
@@ -227,9 +243,15 @@ export default {
   width: 100%;
 }
 .food-box {
+  width: 35%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10vw;
+  /* gap: 10vw; */
+}
+.meal-order-button {
+  display: flex;
+  justify-content: center;
 }
 </style>
