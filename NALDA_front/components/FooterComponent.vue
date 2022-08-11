@@ -7,7 +7,7 @@
           <h3>화장실</h3>
         </button>
         <button
-          v-if="loginMember.userRole === 'ROLE_ATTENDANT'"
+          v-if="role === 'ROLE_ATTENDANT'"
           class="service-wrap"
           style="background-color: #206e95"
           @click="endMeals"
@@ -28,11 +28,19 @@
 import { mapActions, mapState } from 'vuex'
 export default {
   name: 'FooterComponent',
+  data() {
+    return {
+      role: '',
+    }
+  },
   computed: {
     ...mapState('user', ['loginMember', 'flightNum']),
   },
+  created() {
+    this.role = this.loginMember?.userRole
+  },
   methods: {
-    ...mapActions('meal', ['endMeal']),
+    ...mapActions('meal', ['endMeal', 'getMealList']),
     MoveHelpcall() {
       this.$router.push({ name: 'main-helpcall' })
     },
@@ -40,7 +48,13 @@ export default {
       this.$router.push('/attendant/toilet')
     },
     endMeals() {
-      this.endMeal()
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.endMeal(this.flightNum)
+        this.$emit('endMeal')
+      })
     },
   },
 }

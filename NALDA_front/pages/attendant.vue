@@ -2,7 +2,7 @@
   <div>
     <header-component></header-component>
     <nuxt-child></nuxt-child>
-    <footer-component></footer-component>
+    <footer-component @endMeal="rerendering"></footer-component>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ import FooterComponent from '../components/FooterComponent.vue'
 export default {
   name: 'AttendantPage',
   components: { HeaderComponent, FooterComponent },
+  methods: {
+    rerendering() {
+      this.$forceUpdate()
+    },
+  },
 }
 </script>
 

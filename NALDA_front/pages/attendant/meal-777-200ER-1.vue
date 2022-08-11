@@ -3116,6 +3116,47 @@ export default {
     ...mapState('meal', ['meals', 'flightMeals', 'choiceMeal', 'seatMealList']),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
+  beforeUpdate() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getMealList(this.flightNum)
+      console.log('업데이트' + this.seatMealList.length)
+      this.seatMealList.forEach((seatMeal) => {
+        this.firstClass.forEach((seat) => {
+          if (seatMeal.seatNum === seat.좌석) {
+            seat.음식 = seatMeal.mealMenu
+            if (seat.음식 === '제육덮밥') {
+              seat.음식 = 'Acourse'
+            } else if (seat.음식 === '카레라이스') {
+              seat.음식 = 'Bcourse'
+            }
+          }
+        })
+        this.businessClass.forEach((seat) => {
+          if (seatMeal.seatNum === seat.좌석) {
+            seat.음식 = seatMeal.mealMenu
+            if (seat.음식 === '제육덮밥') {
+              seat.음식 = 'Acourse'
+            } else if (seat.음식 === '카레라이스') {
+              seat.음식 = 'Bcourse'
+            }
+          }
+        })
+        this.economyClass.forEach((seat) => {
+          if (seatMeal.seatNum === seat.좌석) {
+            seat.음식 = seatMeal.mealMenu
+            if (seat.음식 === '제육덮밥') {
+              seat.음식 = 'Acourse'
+            } else if (seat.음식 === '카레라이스') {
+              seat.음식 = 'Bcourse'
+            }
+          }
+        })
+      })
+    })
+  },
   created() {
     const promise = new Promise((resolve, reject) => {
       resolve()
