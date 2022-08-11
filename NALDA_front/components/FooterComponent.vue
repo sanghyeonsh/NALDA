@@ -7,10 +7,15 @@
           <h3>화장실</h3>
         </button>
         <button
+          v-if="loginMember.userRole === 'ROLE_ATTENDANT'"
           class="service-wrap"
           style="background-color: #206e95"
-          @click="MoveHelpcall"
+          @click="endMeals"
         >
+          <img src="/main/flight_attendant_w.png" alt="toilet" />
+          <h3>기내식종료</h3>
+        </button>
+        <button v-else class="service-wrap" style="background-color: #206e95" @click="MoveHelpcall">
           <img src="/main/flight_attendant_w.png" alt="toilet" />
           <h3>승무원호출</h3>
         </button>
@@ -20,8 +25,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'FooterComponent',
+  computed: {
+    ...mapState('user', ['loginMember']),
+  },
   methods: {
     MoveHelpcall() {
       this.$router.push({ name: 'main-helpcall' })
@@ -29,6 +38,7 @@ export default {
     MoveToilet() {
       this.$router.push('/attendant/toilet')
     },
+    endMeals() {},
   },
 }
 </script>
