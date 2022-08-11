@@ -26,10 +26,7 @@
 
               <v-card-text>
                 <div>
-                  굽기만 해도 맛있는 촉촉한 치킨스테이크 지방과 살의 적당한
-                  비율과 촉촉한 육즙으로 많은 이들의 사랑을 받는 부위, 치킨
-                  다리살입니다. 스테이크용으로 먹기 좋게 손질해서 시즈닝했으니
-                  간편하게 구워내 식사해보세요.
+                  {{ flightMeal.content }}
                 </div>
               </v-card-text>
 
@@ -139,7 +136,7 @@ export default {
       resolve()
     })
     promise.then(async () => {
-      await this.getFlightMeal('num1')
+      await this.getFlightMeal(this.flightNum)
       this.getDetail(this.flightMeals)
       this.getAllergy(this.flightMeals)
     })
@@ -165,6 +162,7 @@ export default {
       this.info.username = this.loginMember.username
       this.info.seatNum = this.seatInfo.seatNum
       this.info.mealMenu = this.selectedMeal
+      console.log(this.selectedMeal)
       const promise = new Promise((resolve, reject) => {
         resolve()
       })

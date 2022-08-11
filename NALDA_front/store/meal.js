@@ -46,10 +46,10 @@ export const mutations = {
         }
       }
       state.flightMeals[select].choice = true
-      state.selectedMeal = state.flightMeals[select].menu
       document.getElementsByClassName('mx-auto my-12')[select].style.filter =
         'brightness(50%)'
     }
+    state.selectedMeal = state.flightMeals[select].menu
   },
   updateCheck(state, check) {
     for (let i = 0; i < state.flightMeals.length; i++) {
@@ -169,6 +169,7 @@ export const actions = {
             commit('SET_FLIGHTMEAL_LIST', {
               id: meal.mealId,
               menu: meal.mealMenu,
+              content: meal.content,
               image: meal.bytesdata,
               check: false,
               details: null,
