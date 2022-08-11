@@ -1,17 +1,17 @@
 <template>
   <div class="medical-box">
     <div class="medical-box-item">
-      <div class="item-headache" @click="moveResult">
+      <div class="item-headache" @click="headache">
         <img src="/medical/headache.png" />
         <div>두통</div>
       </div>
-      <div class="item-band" @click="moveResult">
+      <div class="item-band" @click="bandage">
         <img src="/medical/band-aid.png" />
         <div>외상</div>
       </div>
     </div>
     <div class="medical-box-item">
-      <div class="item-stomachache" @click="moveResult">
+      <div class="item-stomachache" @click="stomachache">
         <img src="/medical/stomachache.png" />
         <div>복통</div>
       </div>
@@ -24,12 +24,67 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
   name: 'OrdersMedical',
   components: {},
+  computed: {
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
+  },
   methods: {
-    moveResult() {
-      this.$router.push('/medical/result')
+    ...mapActions('menu', ['postOrders']),
+    headache() {
+      const order = {
+        orderMessage: '',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'B001',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
+      this.$router.push('/waiting')
+    },
+    bandage() {
+      const order = {
+        orderMessage: '',
+        flightNum: 1,
+        seatNum: 'A36',
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'B003',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
+      this.$router.push('/waiting')
+    },
+
+    stomachache() {
+      const order = {
+        orderMessage: '',
+        flightNum: 1,
+        seatNum: 'A36',
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'B002',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
+      this.$router.push('/waiting')
     },
     moveEtc() {
       this.$router.push('/medical/etc')
@@ -39,6 +94,20 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
 .medical-box {
   height: 70vh;
   display: flex;

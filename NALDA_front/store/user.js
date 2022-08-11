@@ -1,11 +1,26 @@
+import { validFlight, inputFlight } from '../api/flight'
 import { login, mypage, modifyMember } from '@/api/user'
 
 export const state = () => ({
   loginMember: '',
+  flightNum: '',
+  seatInfo: null,
   memberDetail: null,
 })
 
 export const mutations = {
+  SET_FLIGHTNUM(state, flightNum) {
+    state.flightNum = flightNum
+  },
+  CLEAR_FLIGHTNUM(state) {
+    state.flightNum = ''
+  },
+  SET_SEATINFO(state, info) {
+    state.seatInfo = info
+  },
+  CLEAR_SEATINFO(state) {
+    state.seatInfo = null
+  },
   SET_LOGIN_MEMBER(state, member) {
     state.loginMember = member
   },
@@ -54,28 +69,66 @@ export const getters = {
 }
 
 export const actions = {
-  inputLogin({ commit }, userInfo) {
-    login(
-      {
-        username: userInfo.id,
-        password: userInfo.password,
-      },
-      ({ headers, data }) => {
-        // const jwtToken = headers.get('Authorization')
-        // console.log(jwtToken)
-        sessionStorage.setItem('Authorization', headers.authorization)
-        if (data.msg === '로그인 성공') {
-          commit('SET_LOGIN_MEMBER', data.userInfo)
-          this.$router.push('/main')
-          console.log(data.ip)
-        } else {
-          alert('실패')
-        }
-      },
-      (error) => {
-        console.log(error)
+  async inputLogin({ commit }, object) {
+    await validFlight(object.flightNum, async ({ data }) => {
+      if (data.msg === '유효한 항공편명입니다.') {
+        commit('SET_FLIGHTNUM', object.flightNum)
+        await login(
+          {
+            username: object.id,
+            password: object.password,
+          },
+          ({ headers, data }) => {
+            // const jwtToken = headers.get('Authorization')
+            // console.log(jwtToken)
+            sessionStorage.setItem('Authorization', headers.authorization)
+            if (data.msg === '로그인 성공') {
+              commit('SET_LOGIN_MEMBER', data.userInfo)
+              if (data.userInfo.userRole === 'ROLE_ATTENDANT') {
+                this.$router.push('/attendant/main')
+              } else {
+                commit('SET_SEATINFO', data.seatInfo)
+                this.$router.push('/main')
+              }
+            }
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+      } else {
+        await login(
+          {
+            username: object.id,
+            password: object.password,
+          },
+          ({ headers, data }) => {
+            if (
+              data.userInfo.userRole === 'ROLE_ATTENDANT' &&
+              data.msg === '로그인 성공'
+            ) {
+              const flightObject = {
+                flightNum: object.flightNum,
+                airplaneKind: data.seatInfo.airplaneKind,
+                status: 'PROGRESS',
+              }
+              inputFlight(
+                flightObject,
+                ({ data }) => {
+                  console.log(data.msg)
+                },
+                (error) => {
+                  console.log(error)
+                }
+              )
+              sessionStorage.setItem('Authorization', headers.authorization)
+              commit('SET_LOGIN_MEMBER', data.userInfo)
+              this.$router.push('/attendant/main')
+            }
+          }
+        )
       }
-    )
+    })
   },
   async callMemberDetail({ commit }, userid) {
     await mypage(

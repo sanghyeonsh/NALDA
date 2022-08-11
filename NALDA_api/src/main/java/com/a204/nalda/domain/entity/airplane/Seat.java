@@ -29,4 +29,5 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     private SeatClass seatClass;
 
+    private String ip;
 }

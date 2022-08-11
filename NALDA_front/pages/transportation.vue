@@ -1,195 +1,175 @@
 <template>
   <div>
-    <div class="transport-header">
-      <div class="transport-header-left">
-        <div class="transport-header-home" @click="MoveHome">
-          <div>날다</div>
-          <div>Home</div>
-        </div>
-        <div
-          class="transport-header-bus"
-          :class="{ transportactive: isBus }"
-          @click="MoveBus"
-        >
-          공항리무진
-        </div>
-        <div
-          class="transport-header-taxi"
-          :class="{ transportactive: isTaxi }"
-          @click="MoveTaxi"
-        >
-          택시승강장
-        </div>
-        <div
-          class="transport-header-subway"
-          :class="{ transportactive: isSubway }"
-          @click="MoveSubway"
-        >
-          공항철도
-        </div>
-      </div>
-
-      <div class="transport-header-right">
-        <div class="transport-header-profile">
-          <div class="profile-back" @click="MoveHome">
-            <img src="../static/orders/left-round-128.png" alt="" />
-          </div>
-
-          <div class="profile-image">
-            <img src="/main/user_profile_w.png" alt="" />
-          </div>
-          <div class="profile-name">김익명</div>
-        </div>
-      </div>
-    </div>
-    <div class="transport-body" :class="{ Bus: isBus }">
-      <TransportationBus />
-    </div>
-    <div class="transport-body" :class="{ Taxi: isTaxi }">
-      <TransportationTaxi />
-    </div>
-    <div class="transport-body" :class="{ Subway: isSubway }">
-      <TransportationSubway />
+    <div id="app">
+      <v-app id="inspire">
+        <v-card style="height: 100%">
+          <v-tabs
+            v-model="tab"
+            background-color="rgb(69, 169, 200)"
+            color="rgb(69, 169, 200)"
+            grow
+            height="15vh"
+          >
+            <div style="color: white; width: 11%; height: 100%">
+              <img
+                src="/logohome.png"
+                alt=""
+                style="width: 100%; height: 100%"
+                @click="MoveHome"
+              />
+            </div>
+            <v-tab
+              v-for="(item, idx) in items"
+              :key="idx"
+              class="white--text"
+              style="font-weight: bold"
+              color="#ffe26f"
+            >
+              {{ item }}
+            </v-tab>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
+            <div class="header-container-userprofile" @click="MoveMypage">
+              <div class="profile-back">
+                <img
+                  class="previous-icon"
+                  src="/main/previous.png"
+                  alt=""
+                  @click="Movefrom"
+                />
+              </div>
+              <div class="profile-img">
+                <img src="/main/user_profile_w.png" alt="profile-img" />
+              </div>
+              <div class="profile-name">{{ fullname }}</div>
+            </div>
+            <v-tab-item>
+              <v-card>
+                <TransportationBus />
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card>
+                <TransportationTaxi />
+              </v-card>
+            </v-tab-item>
+            <v-tab-item>
+              <v-card>
+                <TransportationSubway />
+              </v-card>
+            </v-tab-item>
+          </v-tabs>
+        </v-card>
+      </v-app>
     </div>
   </div>
 </template>
 
-<script scoped>
+<script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'TransportPage',
+  name: 'TestPage',
   data() {
     return {
-      isBus: false,
-      isTaxi: false,
-      isSubway: false,
+      tab: null,
+      items: ['공항리무진', '택시승강장', '공항철도'],
+      tabitem: [
+        'TransportationBus',
+        'TransportationTaxi',
+        'TransportationSubway',
+      ],
     }
   },
+  computed: {
+    ...mapState('user', ['loginMember']),
+    fullname() {
+      if (this.loginMember == null) return '비회원'
+      let fullname = ''
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (fullname += this.loginMember.fullName.lastName)
+      return fullname
+    },
+  },
   mounted() {
-    this.isBus = true
+    this.tab = 0
   },
   methods: {
+    MoveMypage() {
+      if (this.loginMember != null) {
+        this.$router.push('/user/mypage')
+      } else {
+        this.$router.push('/user/login')
+      }
+    },
+    Movefrom() {
+      this.$router.push(this.$nuxt.context.from.path)
+    },
     MoveHome() {
       this.$router.push('/main')
-    },
-    MoveBus() {
-      this.isBus = true
-      this.isTaxi = false
-      this.isSubway = false
-      this.test = 'nacho.jpg'
-    },
-    MoveTaxi() {
-      this.isBus = false
-      this.isTaxi = true
-      this.isSubway = false
-      this.test = 'water.png'
-    },
-    MoveSubway() {
-      this.isBus = false
-      this.isTaxi = false
-      this.isSubway = true
-      this.test = 'logo.png'
     },
   },
 }
 </script>
 
 <style scoped>
-.transport-header {
-  height: 15vh;
-  width: 100vw;
-  display: flex;
-  background-color: rgb(69, 169, 200);
-  color: white;
+.v-tab--active {
+  color: #ffe26f !important;
 }
-.transport-header-left {
-  width: 80%;
-  display: flex;
+.white--text {
+  font-size: 25px;
 }
-.transport-header-home {
-  width: 10%;
+.profile-img img {
+  width: 50%;
+  height: 50%;
+}
+.header-container-userprofile {
+  width: 20%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  color: azure;
   cursor: pointer;
-}
-.transport-header-bus {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transport-header-taxi {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transport-header-subway {
-  width: 15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.transportactive {
-  color: blue;
 }
 
-.transport-header-right {
-  width: 20%;
-  display: flex;
-}
-.transport-header-profile {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .profile-back {
-  width: 20%;
   height: 100%;
+  width: 40%;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  margin-right: 13%;
 }
-.profile-back img {
+.previous-icon {
   width: 50%;
-  height: 40%;
-}
-.profile-image {
-  width: 20%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-.profile-image img {
-  width: 50%;
-  height: 40%;
-}
-.profile-name {
-  width: 60%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 35%;
 }
 
-.transport-body {
-  display: none;
+.profile-img {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.Bus {
-  display: block;
+.profile-img img {
+  width: 70%;
+  height: 25%;
 }
-.Taxi {
-  display: block;
-}
-.Subway {
-  display: block;
+
+.profile-name {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 30px;
+  margin-right: 7%;
 }
 </style>

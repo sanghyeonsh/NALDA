@@ -41,10 +41,11 @@ export default {
       'details',
       'allergies',
     ]),
+    ...mapState('user', ['flightNum']),
   },
   created() {
     // flightNum받아와서 넣어야함
-    this.getFlightMeal(1)
+    this.getFlightMeal(this.flightNum)
   },
   methods: {
     ...mapActions('meal', [
@@ -74,6 +75,20 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
 .airfood-container {
   height: 70vh;
 }

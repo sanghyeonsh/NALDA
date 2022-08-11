@@ -381,12 +381,12 @@ export default {
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .customs-input-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

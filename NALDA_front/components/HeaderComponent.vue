@@ -20,6 +20,7 @@
       <div class="profile-img">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
+      &nbsp;&nbsp;&nbsp;
       <div class="profile-name">{{ fullname }}</div>
     </div>
   </div>
@@ -88,14 +89,14 @@ export default {
   width: 20%;
 }
 .header-container-image {
-  width: 60%;
+  width: 80%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header-container-image img {
-  width: 20%;
+  width: 13%;
   height: 100%;
   cursor: pointer;
 }
@@ -113,7 +114,7 @@ export default {
   width: 20%;
 }
 .previous-icon {
-  width: 100%;
+  width: 80%;
   height: 100%;
 }
 
