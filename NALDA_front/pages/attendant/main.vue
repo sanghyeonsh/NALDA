@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <div class="main-container-box" @click="MoveRequest">
+    <div class="main-container-box" @click="moveRequestPage">
       <div>
         <img class="image" src="/main/call_sevice_icon.png" alt="service" />
         <h3>Request</h3>
@@ -18,7 +18,7 @@
         </div>
       </nuxt-link>
     </div>
-    <div class="main-container-box">
+    <div class="main-container-box" @click="moveMealPage">
       <div>
         <img class="image" src="/orders/food.png" alt="airport_info" />
         <h3>Meal Service</h3>
@@ -30,6 +30,29 @@
 <script>
 export default {
   name: 'AttendantMain',
+  data() {
+    return {
+      flightNum: '',
+      airplaneKind: '',
+    }
+  },
+  created() {},
+  methods: {
+    moveRequestPage() {
+      this.$router.push('/attendant/requesttest')
+    },
+    moveStockPage() {
+      this.$router.push('/attendant/stock')
+    },
+    moveMealPage() {
+      this.airplaneKind = '777-200ER-1'
+      if (this.airplaneKind === '777-200ER-1') {
+        this.$router.push('/attendant/meal-777-200ER-1')
+      } else if (this.airplaneKind === 'A380') {
+        this.$router.push('/attendant/meal-A380')
+      }
+    },
+  },
 }
 </script>
 

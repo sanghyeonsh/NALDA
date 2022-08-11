@@ -71,6 +71,7 @@ export default {
   },
   computed: {
     ...mapState('meal', ['selectedMeal', 'details', 'allergies']),
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
   created() {
     // this.select = this.selectedMeal
@@ -83,14 +84,14 @@ export default {
   methods: {
     finalChoice() {
       // 다 State로 넘겨줄거임
-      this.info.flightNum = '1'
-      this.info.username = 'audrb96'
-      this.info.seatNum = 'A29'
+      this.info.flightNum = this.flightNum
+      this.info.username = this.loginMember.username
+      this.info.seatNum = this.seatInfo.seatNum
       this.info.mealMenu = this.selectedMeal.mealMenu
       choiceMeal(
         this.info,
         () => {
-          this.$router.push('/medical/result')
+          this.$router.push('/meal/result')
         },
         (error) => {
           console.log(error)
@@ -103,6 +104,20 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
 .meal-container {
   display: flex;
   height: 70vh;

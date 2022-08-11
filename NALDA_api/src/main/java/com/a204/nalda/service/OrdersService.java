@@ -27,9 +27,11 @@ public class OrdersService {
     private final ServiceRepository serviceRepository;
     private final OrderRepository orderRepository;
     private final OrderListRepository orderListRepository;
+
     private final UserRepository userRepository;
     private final FlightRepository flightRepository;
     private final SeatRepository seatRepository;
+
     private final ServiceStockRepository serviceStockRepository;
 
     @Transactional

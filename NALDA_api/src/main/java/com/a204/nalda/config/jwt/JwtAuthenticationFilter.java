@@ -1,7 +1,11 @@
 package com.a204.nalda.config.jwt;
 
 import com.a204.nalda.config.auth.PrincipalDetails;
+import com.a204.nalda.domain.entity.airplane.Airplane;
+import com.a204.nalda.domain.entity.airplane.Seat;
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.dto.seatDTO.SeatDTO;
+import com.a204.nalda.repository.SeatRepository;
 import com.a204.nalda.service.UserService;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -25,13 +30,14 @@ import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
-
+    private final SeatRepository seatRepository;
 
 
 
@@ -77,6 +83,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     // attemptAuthentication 실행 후 인증이 정상적으로 되었으면 successfulAuthentication 함수가 실행되요.
     // JWT 토큰을 만들어서 request 요청한 사용자에게 JWT 토큰을 response 해주면 됨
     @Override
+    @Transactional
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         System.out.println("successfulAuthentication 실행됨 : 인증이 완료되었다는 뜻임");
         PrincipalDetails principalDetails = (PrincipalDetails) authResult.getPrincipal();
@@ -115,11 +122,19 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 //            System.out.println("RemoteAddr() : " + ip);
         }
 
+        Optional<Seat> seat = seatRepository.findByIp(ip);
+        SeatDTO seatDTO = SeatDTO.builder()
+                .airplaneKind(seat.orElse(null).getAirplane().getAirplaneKind())
+                .seatNum(seat.orElse(null).getSeatNum())
+                .seatClass(seat.orElse(null).getSeatClass())
+                .build();
+
+
         //인증 성공 메세지를 클라이언트로보낸다..
         Map<String,Object> body = new LinkedHashMap<>();
         body.put("msg", "로그인 성공");
         body.put("userInfo", userService.loginUser(principalDetails.getUser().getUsername()));
-        body.put("ip",ip);
+        body.put("seatInfo", seatDTO);
         response.setStatus(HttpStatus.OK.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
