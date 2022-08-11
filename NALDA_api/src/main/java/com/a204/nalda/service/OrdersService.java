@@ -185,6 +185,7 @@ public class OrdersService {
                         .build());
             }
             String serviceClass;
+            System.out.println(orderLists.get(0));
             if(orderLists.get(0).getOrderCode().charAt(0)=='A'){
                 serviceClass = "SNACK&DRINK";
             }else{
