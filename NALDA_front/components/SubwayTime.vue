@@ -6,14 +6,14 @@
         <img
           class="terminal-arrow-btn"
           src="/transportation/arrow-left-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
         <div class="terminal-name">{{ terminal[terminalIdx % 2] }}</div>
         <img
           class="terminal-arrow-btn"
           src="/transportation/arrow-right-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
       </div>
@@ -27,14 +27,14 @@
         <img
           class="type-arrow-btn"
           src="/transportation/arrow-left-drop-circle-outline.png"
-          alt=""
+          alt
           @click="minusType"
         />
         <div class="time-type">{{ dayType[dayTypeIdx % 3] }}</div>
         <img
           class="type-arrow-btn"
           src="/transportation/arrow-right-drop-circle-outline.png"
-          alt=""
+          alt
           @click="plusType"
         />
       </div>
@@ -55,7 +55,11 @@
       </div>
       <div class="time-result">
         <div class="left-icon-map">
-          <div>인천공항<br />{{ terminal[terminalIdx % 2].substr(2, 4) }}</div>
+          <div>
+            인천공항
+            <br />
+            {{ terminal[terminalIdx % 2].substr(2, 4) }}
+          </div>
         </div>
         <div class="next-subway-time">{{ time[cnt] }}</div>
 

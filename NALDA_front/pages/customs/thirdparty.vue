@@ -11,11 +11,7 @@
       </header>
       <section class="terms-section-wrap">
         <div class="all-terms-wrap">
-          <div
-            class="terms-title"
-            :class="{ active: !isActive }"
-            @click="agreeAll"
-          >
+          <div class="terms-title" :class="{ active: !first && !second }" @click="agreeAll">
             <!-- <span class="input-chk">
                             <i class="far fa-check-circle"></i>
                             <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
@@ -27,6 +23,7 @@
             <div class="check-icon-wrap">
               <img
                 class="check-all-icon"
+                :class="{ active: !first && !second }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -38,10 +35,11 @@
           </div>
         </div>
         <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div class="terms-title" :class="{ active: !second }" @click="agreeOne">
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: !second }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -114,9 +112,11 @@
                   자동화된 방법으로 생성하여 이를 저장(수집)하거나,
                   <br />2) 이용자 기기의 고유한 정보를 원래의 값을 확인하지 못
                   하도록 안전하게 변환하여 수집합니다. 서비스 이용 과정에서
-                  위치정보가 수집될 수 있으며, <br />날다에서 제공하는 위치기반
+                  위치정보가 수집될 수 있으며,
+                  <br />날다에서 제공하는 위치기반
                   서비스에 대해서는 '날다 위치기반서비스 이용약관'에서 자세하게
-                  규정하고 있습니다. <br />이와 같이 수집된 정보는 개인정보와의
+                  규정하고 있습니다.
+                  <br />이와 같이 수집된 정보는 개인정보와의
                   연계 여부 등에 따라 개인정보에 해당할 수 있고, 개인정보에
                   해당하지 않을 수도 있습니다.
                 </p>
@@ -270,8 +270,7 @@
             id="btn-group"
             variant="outline-primary"
             @click="moveDeclaration"
-            >agree and start</b-button
-          >
+          >agree and start</b-button>
         </div>
       </section>
       <!-- <footer>
@@ -293,12 +292,23 @@ export default {
   name: 'CustomsThirdpartyTerms',
   data() {
     return {
-      isActive: true,
+      first: true,
+      second: true,
     }
   },
   methods: {
     agreeAll() {
-      this.isActive = !this.isActive
+      // this.first = true
+      // this.second = true
+      this.first = !this.second
+      this.second = !this.second
+      console.log('전체' + this.first)
+      console.log('전체' + this.second)
+    },
+    agreeOne() {
+      this.first = !this.second
+      this.second = !this.second
+      console.log('부분' + this.second)
     },
     moveDeclaration() {
       this.$router.push('/customs/inform')
@@ -397,7 +407,12 @@ export default {
 .active {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
+
+/* .active > img {
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #faab35);
+} */
 
 .terms-title:hover {
   /* background-color: #88c0c5; */

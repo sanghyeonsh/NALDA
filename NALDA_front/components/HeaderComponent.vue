@@ -10,17 +10,11 @@
 
     <div class="header-container-userprofile" @click="MoveMypage">
       <div class="profile-back">
-        <img
-          class="previous-icon"
-          src="/main/previous.png"
-          alt=""
-          @click="Movefrom"
-        />
+        <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
       </div>
       <div class="profile-img">
         <img src="/main/user_profile_w.png" alt="profile-img" />
-      </div>
-      &nbsp;&nbsp;&nbsp;
+      </div>&nbsp;&nbsp;&nbsp;
       <div class="profile-name">{{ fullname }}</div>
     </div>
   </div>
@@ -47,7 +41,11 @@ export default {
   },
   methods: {
     MoveMain() {
-      this.$router.push('/main')
+      if (this.loginMember.userRole === 'ROLE_USER') {
+        this.$router.push('/main')
+      } else if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
+        this.$router.push('/attendant/main')
+      }
     },
     MoveSignup() {
       this.$router.push('user/signup')

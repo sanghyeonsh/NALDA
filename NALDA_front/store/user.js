@@ -6,9 +6,21 @@ export const state = () => ({
   flightNum: '',
   seatInfo: null,
   memberDetail: null,
+  terms: {
+    termService: 'N',
+    privacyPolicy: 'N',
+    locationBased: 'N',
+    promotionalInfo: 'N',
+  },
 })
 
 export const mutations = {
+  AGREE_TERMS(state, terms) {
+    state.terms.termService = terms.termService ? 'Y' : 'N'
+    state.terms.privacyPolicy = terms.privacyPolicy ? 'Y' : 'N'
+    state.terms.locationBased = terms.locationBased ? 'Y' : 'N'
+    state.terms.promotionalInfo = terms.promotionalInfo ? 'Y' : 'N'
+  },
   SET_FLIGHTNUM(state, flightNum) {
     state.flightNum = flightNum
   },

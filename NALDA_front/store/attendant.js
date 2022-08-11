@@ -4,6 +4,7 @@ import {
   listOrders,
   updateStatus,
   modifyServices,
+  getServiceCnt,
   //   choiceMeal,
 } from '@/api/attendant'
 
@@ -17,6 +18,7 @@ export const state = () => ({
   ordersList: [],
   completeList: [],
   setStock: false,
+  stockCnt: [],
 })
 
 export const mutations = {
@@ -50,6 +52,10 @@ export const mutations = {
     state.setStock = true
     // console.log(state.setStock)
     console.log(data)
+  },
+
+  GET_STOCK_AMOUNT(state, data) {
+    state.stockCnt = data
   },
 
   SET_ORDERS_LIST(state, data) {
@@ -159,6 +165,18 @@ export const actions = {
       totalQuantity,
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
+        console.log('성공')
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getStockAmount({ commit }, flightNum) {
+    await getServiceCnt(
+      flightNum,
+      ({ data }) => {
+        commit('GET_STOCK_AMOUNT', data)
         console.log('성공')
       },
       (error) => {
