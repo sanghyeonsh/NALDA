@@ -193,9 +193,10 @@ export default {
       return this.details.length
     },
     ...mapState('attendant', ['ordersList']),
+    ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
-    this.getListOrders('num1')
+    this.getListOrders(this.flightNum)
     // console.log(this.request.length % 4)
     // console.log(3 - (this.request.length % 4))
     // if (this.request.length % 4 !== 0) {
@@ -246,7 +247,7 @@ export default {
     },
     onRowSelected(items) {
       this.selecteditems = items
-      console.log(items)
+      // console.log(items)
     },
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()

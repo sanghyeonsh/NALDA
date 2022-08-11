@@ -3114,13 +3114,14 @@ export default {
   },
   computed: {
     ...mapState('meal', ['meals', 'flightMeals', 'choiceMeal', 'seatMealList']),
+    ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
     const promise = new Promise((resolve, reject) => {
       resolve()
     })
     promise.then(async () => {
-      await this.getMealList('num1')
+      await this.getMealList(this.flightNum)
       console.log('vue에서' + this.seatMealList.length)
       this.seatMealList.forEach((seatMeal) => {
         this.firstClass.forEach((seat) => {

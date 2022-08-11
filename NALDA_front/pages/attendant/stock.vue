@@ -4,11 +4,16 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div class="caption-wrap">
-              <h3>재고 목록:</h3>
-              <div id="flight-num-input">
-                <b-form-input v-model="flightNum" type="text" />
-              </div>
+            <div v-bind="flightNum" class="caption-wrap">
+              <h3>항공편 {{flightNum}} 재고 목록</h3>
+              <!-- <div id="flight-num-input">
+                <b-form-input
+                  v-model="flightNum"
+                  type="text"
+                  disabled
+                  style="height: 5vh; font-size: x-large;"
+                />
+              </div>-->
             </div>
           </caption>
           <colgroup>
@@ -152,7 +157,6 @@ export default {
       // perPage: 10,
       // currentPage: 1,
       ListType: 'snacks',
-      flightNum: '',
       snackQuantity: [],
       alcoholQuantity: [],
       nonAlcoholQuantity: [],
@@ -174,10 +178,12 @@ export default {
       'setStock',
       'stockCnt',
     ]),
+    ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
     this.getServiceList()
     // this.setQuantityList()
+    console.log(this.flightNum)
   },
   methods: {
     ...mapActions('attendant', [
@@ -186,6 +192,7 @@ export default {
       'modifyStockAmount',
       'getStockAmount',
     ]),
+    ...mapActions('user', []),
     showSnack() {
       this.ListType = 'snacks'
     },
@@ -205,11 +212,12 @@ export default {
       // console.log(this.alcoholQuantity)
     },
     testStockCnt() {
+      console.log(this.flightNum)
       const promise = new Promise((resolve, reject) => {
         resolve()
       })
       promise.then(async () => {
-        await this.getStockAmount('num1')
+        await this.getStockAmount(this.flightNum)
         console.log(this.stockCnt)
         console.log(this.setStock)
         // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
@@ -362,6 +370,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  margin-bottom: 1%;
 }
 #flight-num-input {
   width: 88%;
