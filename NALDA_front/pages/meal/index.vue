@@ -41,6 +41,7 @@ export default {
       'details',
       'allergies',
     ]),
+    ...mapState('user', ['flightNum']),
   },
   created() {
     // flightNum받아와서 넣어야함

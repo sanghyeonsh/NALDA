@@ -7,7 +7,7 @@
       width="60%"
     >
       <v-card tile class="overflow-auto" height="80vh">
-        <v-toolbar flat dark color="pink">
+        <v-toolbar flat dark color="#0e0737">
           <v-btn icon dark @click="toggle">
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -20,11 +20,11 @@
               dark
               large
               width="120%"
-              color="primary"
+              color="pink"
               @click="sendOrder"
             >
-              <v-icon dark> mdi-cart-heart </v-icon>
-              주문하기
+              <v-icon> mdi-cart-heart </v-icon>
+              <div>주문하기</div>
             </v-btn>
           </v-toolbar-items>
         </v-toolbar>
@@ -32,7 +32,7 @@
           <v-card
             v-for="(item, i) in items"
             :key="i"
-            color="#FFE4E1"
+            color="#FFFFFF"
             dark
             height="15vh"
             class="d-flex flex-no-wrap justify-space-between align-center mt-5"
@@ -51,7 +51,7 @@
                 fab
                 dark
                 large
-                color="cyan"
+                color="#0e0737"
                 @click="minusNum(item)"
               >
                 <v-icon dark> mdi-minus </v-icon>
@@ -62,7 +62,7 @@
                 fab
                 dark
                 large
-                color="cyan"
+                color="#0e0737"
                 @click="addNum(item)"
               >
                 <v-icon dark> mdi-plus </v-icon>
@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     ...mapState('menu', ['selectedItem']),
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
   },
   created() {
     this.items = [...this.selectedItem]
@@ -130,15 +130,19 @@ export default {
 
       const order = {
         orderMessage: '',
-        flightNum: 'num1',
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [...orderList],
       }
-      this.postOrders(order)
-      this.CLEAR_CHOICE_FOODS()
-      this.$router.push('/waiting')
+      if (orderList.length > 0) {
+        this.postOrders(order)
+        this.CLEAR_CHOICE_FOODS()
+        this.$router.push('/waiting')
+      } else {
+        // alert('장바구니에 담으세요')
+      }
     },
   },
 }

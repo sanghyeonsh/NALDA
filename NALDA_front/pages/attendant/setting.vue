@@ -29,18 +29,6 @@
             </div>
           </div>
         </div>
-        <div>
-          <h6>FROM</h6>
-          <div class="setting-input-wrap setting-dep-arr-wrap">
-            <input v-model="departureCountry" placeholder="Departure Country" type="text" />
-          </div>
-        </div>
-        <div>
-          <h6>TO</h6>
-          <div class="setting-input-wrap setting-dep-arr-wrap">
-            <input v-model="arrivalCountry" placeholder="Arrival Country" type="text" />
-          </div>
-        </div>
         <div class="setting-button-wrap">
           <button @click="registerFlightinfo()">register</button>
         </div>
@@ -48,13 +36,6 @@
                     <i class="far fa-check-circle"></i>
                     <span>modify</span>
         </div>-->
-        <b-modal id="check-modal" hide-footer>
-          <template #modal-title>알림</template>
-          <div class="d-block text-center">
-            <h3>정보를 모두 채워주세요!</h3>
-          </div>
-          <b-button class="mt-3" block @click="$bvModal.hide('check-modal')">Close Me</b-button>
-        </b-modal>
       </section>
     </div>
   </div>

@@ -30,15 +30,15 @@ export default {
   name: 'OrdersMedical',
   components: {},
   computed: {
-    ...mapState('user', ['loginMember']),
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
   },
   methods: {
     ...mapActions('menu', ['postOrders']),
     headache() {
       const order = {
         orderMessage: '',
-        flightNum: 1,
-        seatNum: 'A36',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
         username: this.loginMember.username,
         status: 'PROGRESS',
         orderList: [
