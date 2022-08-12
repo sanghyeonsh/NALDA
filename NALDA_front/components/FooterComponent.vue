@@ -53,7 +53,6 @@ export default {
       })
       promise.then(async () => {
         await this.endMeal(this.flightNum)
-        this.$emit('endMeal')
       })
     },
   },

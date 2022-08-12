@@ -127,6 +127,7 @@ export default {
   /* width: 100vh; */
   /* header넣으면 줄이기 */
   height: 85vh;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .taxi-btn-wrap {
   display: flex;

@@ -97,12 +97,13 @@ input[type='password'] {
 }
 
 body {
-  background: #f5f6f7;
+  /* background: #f5f6f7; */
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 .setting-main-container {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;

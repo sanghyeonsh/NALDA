@@ -89,6 +89,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
   /* overflow: scroll; */
 }
 /* .toilet-wrap {

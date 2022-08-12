@@ -97,7 +97,7 @@ export const mutations = {
   },
 
   CLEAR_MEAL_LIST(state) {
-    state.meals = [{ menu: null, image: null }]
+    state.meals = []
   },
   CLEAR_FLIGHTMEAL_LIST(state) {
     state.flightMeals = []
@@ -126,9 +126,19 @@ export const getters = {}
 // console.log eslint rule수정 충돌방지
 export const actions = {
   getMeal({ commit }) {
+    commit('CLEAR_MEAL_LIST')
     listMeal(
       ({ data }) => {
-        commit('SET_MEAL_LIST', data)
+        console.log(data)
+        if (data.mealList.length > 0) {
+          data.mealList.forEach((meal) => {
+            commit('SET_MEAL_LIST', {
+              menu: meal.mealMenu,
+              image: meal.bytesdata,
+              imageName: meal.imageName,
+            })
+          })
+        }
       },
       (error) => {
         console.log(error)

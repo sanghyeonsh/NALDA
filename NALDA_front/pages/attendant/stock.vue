@@ -362,7 +362,8 @@ export default {
 }
 
 .stock-input-wrap {
-  height: 70vh;
+  height: 75vh;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 .caption-wrap {

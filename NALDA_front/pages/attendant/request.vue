@@ -304,9 +304,10 @@ export default {
   --nalda-navy-color: #1b2f40;
 }
 .request-container {
-  height: 70vh;
+  height: 75vh;
   display: flex;
   justify-content: space-between;
+  background-color: rgba(239, 239, 239, 0.511);
   padding: 2%;
 }
 

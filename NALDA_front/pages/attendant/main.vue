@@ -52,7 +52,8 @@ export default {
 <style scoped>
 .main-container {
   display: flex;
-  height: 70vh;
+  height: 75vh;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .main-container-box {
   text-align: center;
