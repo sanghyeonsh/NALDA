@@ -4,17 +4,21 @@
       <div>
         <div class="left-icon-table" @click="tableClick">
           <div>
-            이용 요금
-            <br />승차장 번호
-            <br />
+            <div>
+              이용 요금
+              <br />승차장 번호
+              <br />
+            </div>
           </div>
         </div>
       </div>
       <div>
         <div class="left-icon-map" @click="mapClick">
           <div>
-            승강장
-            <br />지도
+            <div>
+              승강장
+              <br />지도
+            </div>
           </div>
         </div>
       </div>
@@ -32,10 +36,10 @@
         <table class="taxi-table-wrap">
           <thead>
             <tr>
-              <th rowspan="2">구분</th>
-              <th rowspan="2">기본요금(원)</th>
+              <th rowspan="2" style="padding-bottom: 35px">구분</th>
+              <th rowspan="2" style="padding-bottom: 35px">기본요금(원)</th>
               <th colspan="2">승차장번호</th>
-              <th rowspan="2">비고</th>
+              <th rowspan="2" style="padding-bottom: 35px">비고</th>
             </tr>
             <tr>
               <th>제 1여객터미널</th>
@@ -78,6 +82,7 @@
         </table>
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -125,24 +130,27 @@ export default {
 .taxi-btn-wrap {
   display: flex;
   flex-direction: column;
-  /* width: 20%; */
-  height: 100%;
+  height: 75vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
 }
 .left-icon-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   margin: 15px;
   color: white;
   background-color: #206e95;
-
   box-shadow: 8px 8px 15px rgba(7, 47, 69, 0.1);
   border-radius: 50%;
   text-align: center;
-  line-height: 50px;
 }
 .left-icon-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   margin: 15px;
@@ -151,7 +159,6 @@ export default {
   box-shadow: 8px 8px 15px rgba(7, 47, 69, 0.1);
   border-radius: 50%;
   text-align: center;
-  line-height: 50px;
 }
 .Taxi-box-right {
   display: none;
@@ -190,6 +197,7 @@ th,
 td {
   border: 2.5px solid #dee2e6;
   text-align: center;
+  vertical-align: middle;
 }
 
 thead {

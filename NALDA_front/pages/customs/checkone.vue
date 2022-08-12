@@ -6,15 +6,8 @@
         <div class="customform-container">
           <div class="title-items">
             <v-app id="info-btn">
-              <v-btn
-                class="mx-2 mb-5"
-                fab
-                dark
-                medium
-                color="#778899"
-                @click="openAttentions"
-              >
-                <v-icon large dark> mdi-information-outline </v-icon>
+              <v-btn class="mx-2 mb-5" fab dark medium color="#778899" @click="openAttentions">
+                <v-icon large dark>mdi-information-outline</v-icon>
               </v-btn>
             </v-app>
             <div class="customform-title">여행자 휴대품 신고서</div>
@@ -22,8 +15,7 @@
               class="next-page"
               variant="info"
               @click="$router.push('/customs/checktwo')"
-              >다음 페이지</b-button
-            >
+            >다음 페이지</b-button>
           </div>
           <div class="to-declaration-wrap">
             <div>
@@ -75,7 +67,8 @@
               <tr>
                 <td class="details" rowspan="2">
                   2.
-                  <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
+                  <b>FTA 협정국가</b>의 원산지 물품으로
+                  <b>특혜관세</b>를
                   적용받으려는 물품
                 </td>
                 <td id="yorn">있음</td>
@@ -107,7 +100,8 @@
                 <td class="details" rowspan="2">
                   3. 미화로 환산하여
                   <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화,
-                  자기앞수표, 여행자수표, 및 그 밖의 유가증권) <br />[총금액: 약
+                  자기앞수표, 여행자수표, 및 그 밖의 유가증권)
+                  <br />[총금액: 약
                   <input v-model="paymentExceedValue" type="text" /> ]
                 </td>
                 <td id="yorn">있음</td>
@@ -387,7 +381,7 @@ input[id='box3-1'],
 input[id='box3-2'] {
   display: none;
 }
-:deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 </style>

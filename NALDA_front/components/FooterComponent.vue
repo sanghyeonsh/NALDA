@@ -9,14 +9,22 @@
           </div>
         </button>
         <button
+          v-if="role === 'ROLE_ATTENDANT'"
+          class="service-wrap"
+          style="background-color: #206e95"
+          @click="endMeals"
+        >
+          <img src="/main/flight_attendant_w.png" alt="toilet" />
+          <h3>기내식종료</h3>
+        </button>
+        <button
+          v-else
           class="service-wrap"
           style="background-color: #206e95"
           @click="MoveHelpcall"
         >
-          <div style="display: flex; align-items: center">
-            <img src="/main/flight_attendant_w.png" alt="toilet" />
-            <div>승무원호출</div>
-          </div>
+          <img src="/main/flight_attendant_w.png" alt="toilet" />
+          <h3>승무원호출</h3>
         </button>
       </div>
     </div>
@@ -28,11 +36,20 @@ import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'FooterComponent',
+  data() {
+    return {
+      role: '',
+    }
+  },
   computed: {
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
+  created() {
+    this.role = this.loginMember?.userRole
+  },
   methods: {
     ...mapActions('menu', ['postOrders']),
+    ...mapActions('meal', ['endMeal', 'getMealList']),
     MoveHelpcall() {
       const order = {
         orderMessage: '',
@@ -52,6 +69,9 @@ export default {
     },
     MoveToilet() {
       this.$router.push('/attendant/toilet')
+    },
+    endMeals() {
+      this.endMeal()
     },
   },
 }

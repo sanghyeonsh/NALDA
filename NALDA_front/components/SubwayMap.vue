@@ -65,7 +65,7 @@ export default {
 
 .map-container {
   width: 100vw;
-  height: 85%;
+  height: 68vh;
   margin: 0 0 0 30px;
   background-color: white;
 }

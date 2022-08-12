@@ -19,9 +19,12 @@
       </div>
 
       <div>
-        <button class="current-time-title">현재 시각</button>
+        <!-- <button class="current-time-title">현재 시각</button> -->
       </div>
-      <div class="current-time">{{ now }}</div>
+      <div class="current-time">
+        <div class="current-time-seoul">서울 시간(GMT+9)</div>
+        <div class="current-time-now">{{ now }}</div>
+      </div>
       <div class="select-time">
         <button class="select-time-title">내 열차 시각 조회</button>
         <img
@@ -226,7 +229,7 @@ export default {
 .subway-time {
   display: flex;
   width: 100vw;
-  height: 85%;
+  height: 68vh;
   justify-content: flex-start;
   margin: 0 0 0 30px;
 }
@@ -250,11 +253,6 @@ export default {
 .subway-time-content {
   width: 80%;
 }
-.select-time {
-  display: flex;
-  align-items: center;
-  margin-bottom: 50px;
-}
 .current-time-title {
   width: 100px;
   height: 30px;
@@ -263,26 +261,43 @@ export default {
   border-radius: 5px;
 }
 .current-time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 30%;
-  font-size: 100px;
   text-align: center;
 }
+.current-time-seoul {
+  font-size: 30px;
+}
+.current-time-now {
+  font-size: 60px;
+}
+.select-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
 .select-time-title {
-  width: 150px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
   background-color: rgb(69, 169, 200);
   color: white;
   border-radius: 5px;
 }
 .type-arrow-btn {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   margin: 0px 10px;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
   filter: opacity(0.5) drop-shadow(0 0 0 rgb(69, 169, 200));
 }
 .time-type {
   margin: 0 20px;
+  font-size: 30px;
+
   color: rgb(69, 169, 200);
 }
 .change-time {
