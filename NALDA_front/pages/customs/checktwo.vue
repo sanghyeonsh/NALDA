@@ -365,7 +365,7 @@ input[id='box6-1'],
 input[id='box6-2'] {
   display: none;
 }
-:deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 </style>

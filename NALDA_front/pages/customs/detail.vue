@@ -458,7 +458,7 @@ td {
   flex-direction: row;
   align-content: flex-end;
 }
-:deep .v-application--wrap {
+:deep(.v-application--wrap) {
   min-height: fit-content;
 }
 </style>

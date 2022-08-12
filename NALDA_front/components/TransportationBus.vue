@@ -88,17 +88,26 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제1터미널</v-toolbar>
+                  <v-toolbar
+                    style="background-color: rgb(69, 169, 200); color: white"
+                  >
+                    <div style="font-size: 30px">제1터미널</div>
+                    <v-spacer></v-spacer>
+                    <div>
+                      <v-btn
+                        text
+                        style="font-size: 40px; color: white"
+                        @click="dialog.value = false"
+                        >X</v-btn
+                      >
+                    </div>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t1_01.png"
                       alt=""
                     />
                   </div>
-
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>
@@ -122,16 +131,26 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제2터미널</v-toolbar>
+                  <v-toolbar
+                    style="background-color: rgb(69, 169, 200); color: white"
+                  >
+                    <div style="font-size: 30px">제2터미널</div>
+                    <v-spacer></v-spacer>
+                    <div>
+                      <v-btn
+                        text
+                        style="font-size: 40px; color: white"
+                        @click="dialog.value = false"
+                        >X</v-btn
+                      >
+                    </div>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t2_01.png"
                       alt=""
                     />
                   </div>
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>

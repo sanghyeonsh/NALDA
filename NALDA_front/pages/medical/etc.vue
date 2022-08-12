@@ -14,7 +14,11 @@
           <button @click="etcCheck">확인</button>
         </div>
       </div>
-      <simple-keyboard :input="input" @onChange="onChange" @onKeyPress="onKeyPress"></simple-keyboard>
+      <simple-keyboard
+        :input="input"
+        @onChange="onChange"
+        @onKeyPress="onKeyPress"
+      ></simple-keyboard>
     </div>
   </div>
 </template>
@@ -58,9 +62,7 @@ export default {
     onChange(input) {
       this.input = input
     },
-    onKeyPress(button) {
-      // console.log('button', button)
-    },
+    onKeyPress(button) {},
     onInputChange(input) {
       this.input = input.target.value
     },
