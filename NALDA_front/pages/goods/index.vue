@@ -1,6 +1,6 @@
 <template>
   <div class="goods-container">
-    <div class="goods-container-box1" @click="checkblanket">
+    <div class="goods-container-box" @click="checkblanket">
       <div style="width: 100%">
         <img src="/orders/blanket.png" alt="service" />
         <div class="check-box-items">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box2" @click="checkpillow">
+    <div class="goods-container-box" @click="checkpillow">
       <div style="width: 100%">
         <img src="/orders/pillow.png" alt="service" />
         <div class="check-box-items">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box3" @click="checkearplug">
+    <div class="goods-container-box" @click="checkearplug">
       <div style="width: 100%">
         <img src="/orders/ear-plug.png" alt="service" />
         <div class="check-box-items">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box4" @click="checkslipper">
+    <div class="goods-container-box" @click="checkslipper">
       <div style="width: 100%">
         <img src="/orders/slippers.png" alt="service" />
         <div class="check-box-items">
@@ -94,56 +94,20 @@ export default {
       this.$router.push('/waiting')
     },
     checkblanket() {
-      if (this.blanket === 'C001') {
-        this.blanket = ''
-        document.getElementsByClassName(
-          'goods-container-box1'
-        )[0].style.background = 'rgba(0, 0, 0, 0)'
-      } else {
-        this.blanket = 'C001'
-        document.getElementsByClassName(
-          'goods-container-box1'
-        )[0].style.background = 'rgba(0, 0, 0, 0.2)'
-      }
+      if (this.blanket === 'C001') this.blanket = ''
+      else this.blanket = 'C001'
     },
     checkpillow() {
-      if (this.pillow === 'C003') {
-        this.pillow = ''
-        document.getElementsByClassName(
-          'goods-container-box2'
-        )[0].style.background = 'rgba(0, 0, 0, 0)'
-      } else {
-        this.pillow = 'C003'
-        document.getElementsByClassName(
-          'goods-container-box2'
-        )[0].style.background = 'rgba(0, 0, 0, 0.2)'
-      }
+      if (this.pillow === 'C003') this.pillow = ''
+      else this.pillow = 'C003'
     },
     checkearplug() {
-      if (this.earplug === 'C002') {
-        this.earplug = ''
-        document.getElementsByClassName(
-          'goods-container-box3'
-        )[0].style.background = 'rgba(0, 0, 0, 0)'
-      } else {
-        this.earplug = 'C002'
-        document.getElementsByClassName(
-          'goods-container-box3'
-        )[0].style.background = 'rgba(0, 0, 0, 0.2)'
-      }
+      if (this.earplug === 'C002') this.earplug = ''
+      else this.earplug = 'C002'
     },
     checkslipper() {
-      if (this.slipper === 'C004') {
-        this.slipper = ''
-        document.getElementsByClassName(
-          'goods-container-box4'
-        )[0].style.background = 'rgba(0, 0, 0, 0)'
-      } else {
-        this.slipper = 'C004'
-        document.getElementsByClassName(
-          'goods-container-box4'
-        )[0].style.background = 'rgba(0, 0, 0, 0.2)'
-      }
+      if (this.slipper === 'C004') this.slipper = ''
+      else this.slipper = 'C004'
     },
   },
 }
@@ -176,69 +140,24 @@ export default {
   display: flex;
   height: 60vh;
 }
-.goods-container-box1 {
+.goods-container-box {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
-.goods-container-box1 img {
+.goods-container-box img {
   width: 70%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
-.goods-container-box1 h3 {
-  margin-top: 40px;
-}
-.goods-container-box2 {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.goods-container-box2 img {
-  width: 70%;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-}
-.goods-container-box2 h3 {
-  margin-top: 40px;
-}
-.goods-container-box3 {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.goods-container-box3 img {
-  width: 70%;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-}
-.goods-container-box3 h3 {
-  margin-top: 40px;
-}
-.goods-container-box4 {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.goods-container-box4 img {
-  width: 70%;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
-}
-.goods-container-box4 h3 {
+.goods-container-box h3 {
   margin-top: 40px;
 }
 .order-button {
-  width: 14vw;
-  height: 8vh;
+  width: 15vw;
+  height: 10vh;
   position: fixed;
   margin: 0 auto;
   left: 0;
@@ -246,7 +165,7 @@ export default {
   bottom: 16vh;
   border: none;
   color: white;
-  font-size: 20px;
+  font-size: 100%;
   background-color: rgb(69, 169, 200);
 }
 </style>
