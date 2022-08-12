@@ -8,24 +8,16 @@
           잠시만 기다려주세요!
         </div>
       </div>
-      <button class="waiting-page-body-button">
-        <img src="/main/flight_attendant.png" alt="" />
-        승무원
-      </button>
-    </div>
-    <div class="waiting-footer">
-      <span
-        >이용약관 | 개인정보처리방침 | 책임의 한계와 고지 | 회원정보
-        고객센터</span
-      >
-      <div>Copyright © NALDA Corp. All Rights Reserved.</div>
+      <FooterComponent></FooterComponent>
     </div>
   </div>
 </template>
 
 <script>
+import FooterComponent from '../components/FooterComponent.vue'
 export default {
   name: 'WaitingPage',
+  components: { FooterComponent },
   mounted() {
     this.moveMain()
   },
@@ -45,14 +37,15 @@ export default {
   width: 100vw;
 }
 .waiting-page-body {
-  background-color: white;
-  height: 70vh;
+  background-color: rgba(239, 239, 239, 0.511);
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .waiting-page-body-text-box {
+  background-color: white;
   display: flex;
   width: 70vw;
   height: 50vh;

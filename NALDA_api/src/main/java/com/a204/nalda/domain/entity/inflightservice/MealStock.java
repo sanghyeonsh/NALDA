@@ -1,6 +1,7 @@
 package com.a204.nalda.domain.entity.inflightservice;
 
 import com.a204.nalda.domain.entity.airplane.Flight;
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,5 +31,12 @@ public class MealStock {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "flight_id")
     private Flight flight;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void changeStatusInfo(Status status){
+        this.status = status;
+    }
 
 }

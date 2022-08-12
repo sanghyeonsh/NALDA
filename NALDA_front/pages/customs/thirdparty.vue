@@ -11,7 +11,11 @@
       </header>
       <section class="terms-section-wrap">
         <div class="all-terms-wrap">
-          <div class="terms-title" :class="{ active: !first && !second }" @click="agreeAll">
+          <div
+            class="terms-title"
+            :class="{ active: !first && !second }"
+            @click="agreeAll"
+          >
             <!-- <span class="input-chk">
                             <i class="far fa-check-circle"></i>
                             <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
@@ -35,7 +39,11 @@
           </div>
         </div>
         <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !second }" @click="agreeOne">
+          <div
+            class="terms-title"
+            :class="{ active: !second }"
+            @click="agreeOne"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
@@ -112,11 +120,9 @@
                   자동화된 방법으로 생성하여 이를 저장(수집)하거나,
                   <br />2) 이용자 기기의 고유한 정보를 원래의 값을 확인하지 못
                   하도록 안전하게 변환하여 수집합니다. 서비스 이용 과정에서
-                  위치정보가 수집될 수 있으며,
-                  <br />날다에서 제공하는 위치기반
+                  위치정보가 수집될 수 있으며, <br />날다에서 제공하는 위치기반
                   서비스에 대해서는 '날다 위치기반서비스 이용약관'에서 자세하게
-                  규정하고 있습니다.
-                  <br />이와 같이 수집된 정보는 개인정보와의
+                  규정하고 있습니다. <br />이와 같이 수집된 정보는 개인정보와의
                   연계 여부 등에 따라 개인정보에 해당할 수 있고, 개인정보에
                   해당하지 않을 수도 있습니다.
                 </p>
@@ -270,7 +276,8 @@
             id="btn-group"
             variant="outline-primary"
             @click="moveDeclaration"
-          >agree and start</b-button>
+            >agree and start</b-button
+          >
         </div>
       </section>
       <!-- <footer>
@@ -337,8 +344,9 @@ export default {
 }
 
 .main-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;

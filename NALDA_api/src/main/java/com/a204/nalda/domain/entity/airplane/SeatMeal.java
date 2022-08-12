@@ -2,6 +2,7 @@ package com.a204.nalda.domain.entity.airplane;
 
 import com.a204.nalda.domain.entity.inflightservice.Meal;
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,8 +24,8 @@ public class SeatMeal {
     @Column(name = "seat_meal_id")
     private Long id;
 
-    @Column(name = "meal_classification")
-    private String mealClassification;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "flight_id")
@@ -41,5 +42,9 @@ public class SeatMeal {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "seat_id")
     private Seat seat;
+
+    public void changeStatusInfo(Status status){
+        this.status = status;
+    }
 
 }

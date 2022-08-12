@@ -14,6 +14,7 @@ public class MealDto {
     private Long mealId;
     private String imageName;
     private String mealMenu;
+    private String content;
     private byte[] bytesdata;
 
 

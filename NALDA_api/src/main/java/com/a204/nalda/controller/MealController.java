@@ -46,6 +46,39 @@ public class MealController {
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PutMapping("/end/{flightNum}")
+    public ResponseEntity<?> endMeals(@PathVariable("flightNum") String flightNum){
+        Map<String,Object> result = new HashMap<>();
+        try{
+            mealService.updateStatus(flightNum);
+            result.put("msg","변경 성공!");
+            return new ResponseEntity<>(result, HttpStatus.OK);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/confirm/{seatNum}")
+    public ResponseEntity<?> confirmMeal(@PathVariable("seatNum") String seatNum) {
+        Map<String,Object> result = new HashMap<>();
+        try{
+            String check = mealService.getMealBySeat(seatNum);
+            if(check.equals("1")){
+                result.put("msg","불가능");
+            }else{
+                result.put("msg","가능");
+            }
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     @GetMapping("/input/{flightNum}")
     public ResponseEntity<?> mealsByFlight(@PathVariable("flightNum") String flightNum) {
@@ -107,7 +140,6 @@ public class MealController {
 
     @PostMapping("/choice")
     public ResponseEntity<?> choiceMeal(@RequestBody SeatMealDto seatMealDto){
-        System.out.println(seatMealDto.toString());
         Map<String,Object> result = new HashMap<>();
         try{
             mealService.seatMealInput(seatMealDto);
@@ -131,7 +163,8 @@ public class MealController {
             result.put("msg", e.getMessage());
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
+
+
 
 }

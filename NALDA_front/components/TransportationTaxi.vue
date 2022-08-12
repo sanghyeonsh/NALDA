@@ -172,6 +172,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 /* taxi-table wrap css */
