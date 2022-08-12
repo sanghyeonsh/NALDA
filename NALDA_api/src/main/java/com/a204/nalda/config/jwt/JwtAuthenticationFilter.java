@@ -121,7 +121,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             ip = request.getRemoteAddr();
 //            System.out.println("RemoteAddr() : " + ip);
         }
-
+        System.out.println(ip);
         Optional<Seat> seat = seatRepository.findByIp(ip);
         SeatDTO seatDTO = SeatDTO.builder()
                 .airplaneKind(seat.orElse(null).getAirplane().getAirplaneKind())

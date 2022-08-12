@@ -4,17 +4,21 @@
       <div>
         <div class="left-icon-map" @click="mapClick">
           <div>
-            공항철도
-            <br />타는곳
+            <div>
+              공항철도
+              <br />타는곳
+            </div>
           </div>
         </div>
       </div>
       <div>
         <div class="left-icon-time" @click="timeClick">
           <div>
-            공항철도
-            <br />시간조회
-            <br />
+            <div>
+              공항철도
+              <br />시간조회
+              <br />
+            </div>
           </div>
         </div>
       </div>
@@ -25,6 +29,7 @@
     <div class="content" :class="{ Time: isTime }">
       <SubwayTime />
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -71,18 +76,20 @@ export default {
 .subway-container {
   display: flex;
   width: 100vh;
-  /* header넣으면 줄이기 */
   height: 85vh;
 }
 .left-nav {
   display: flex;
   flex-direction: column;
   width: 20%;
-  height: 100%;
+  height: 75vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
 }
 .left-icon-map {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   margin: 15px;
@@ -90,9 +97,11 @@ export default {
   background-color: #206e95;
   border-radius: 50%;
   text-align: center;
-  line-height: 50px;
 }
 .left-icon-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   margin: 15px;
@@ -100,7 +109,6 @@ export default {
   background-color: rgb(69, 169, 200);
   border-radius: 50%;
   text-align: center;
-  line-height: 50px;
 }
 .content {
   display: none;

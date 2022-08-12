@@ -13,7 +13,9 @@
         <div class="all-terms-wrap">
           <div
             class="terms-title"
-            :class="{ active: requiredFirst && requiredSecond && first && second }"
+            :class="{
+              active: requiredFirst && requiredSecond && first && second,
+            }"
             @click="agreeAll"
           >
             <!-- <span class="input-chk">
@@ -27,7 +29,9 @@
             <div class="check-icon-wrap">
               <img
                 class="check-all-icon"
-                :class="{ active: requiredFirst && requiredSecond && first && second }"
+                :class="{
+                  active: requiredFirst && requiredSecond && first && second,
+                }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -43,7 +47,11 @@
                         <i class="far fa-check-circle"></i>
                         <label for="terms-service">날다 이용약관 동의 (필수)</label>
           </span> ---->
-          <div class="terms-title" :class="{ active: requiredFirst }" @click="agreeRequiredFirst">
+          <div
+            class="terms-title"
+            :class="{ active: requiredFirst }"
+            @click="agreeRequiredFirst"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
@@ -75,18 +83,20 @@
               <h3 class="article-title">다양한 날다 서비스를 즐겨보세요.</h3>
               <p class="article-text">
                 날다는
-                <a href="https://www.nalda.com/" target="_blank">www.nalda.com</a>을 비롯한 날다 도메인의 웹사이트 및 응용프로그램(어플리케이션,
+                <a href="https://www.nalda.com/" target="_blank"
+                  >www.nalda.com</a
+                >을 비롯한 날다 도메인의 웹사이트 및 응용프로그램(어플리케이션,
                 앱)을 통해 정보 검색, 다른 이용자와의 커뮤니케이션, 콘텐츠 제공,
                 상품 쇼핑 등 여러분의 생활에 편리함을 더할 수 있는 다양한
-                서비스를 제공하고 있습니다.
-                <br />여러분은 PC, 휴대폰 등 인터넷
+                서비스를 제공하고 있습니다. <br />여러분은 PC, 휴대폰 등 인터넷
                 이용이 가능한 각종 단말기를 통해 각양각색의 날다 서비스를
                 자유롭게 이용하실 수 있으며, 개별 서비스들의 구체적인 내용은 각
                 서비스 상의 안내, 공지사항,
                 <a
                   href="https://help.nalda.com/support/home.nhn"
                   target="_blank"
-                >날다 웹고객센터(이하 ‘고객센터’)</a>
+                  >날다 웹고객센터(이하 ‘고객센터’)</a
+                >
                 도움말 등에서 쉽게 확인하실 수 있습니다.
               </p>
               <p class="article-text">
@@ -125,7 +135,8 @@
                 <a
                   href="https://help.nalda.com/support/contents/contents.nhn?serviceNo=532&amp;categoryNo=1441"
                   target="_blank"
-                >날다 회원가입 방법</a>
+                  >날다 회원가입 방법</a
+                >
                 등에서 확인해 주세요.
               </p>
               <p class="article-text">
@@ -151,12 +162,15 @@
                 <a
                   href="https://help.nalda.com/support/contents/contents.nhn?serviceNo=532&amp;categoryNo=16952"
                   target="_blank"
-                >날다 단체회원(단체 아이디) 소개</a>
+                  >날다 단체회원(단체 아이디) 소개</a
+                >
                 등에서 확인해 주시기 바랍니다.
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">여러분이 제공한 콘텐츠를 소중히 다룰 것입니다.</h3>
+              <h3 class="article-title">
+                여러분이 제공한 콘텐츠를 소중히 다룰 것입니다.
+              </h3>
               <p class="article-text">
                 날다는 여러분이 게재한 게시물이 날다 서비스를 통해 다른
                 이용자들에게 전달되어 우리 모두의 삶을 더욱 풍요롭게 해줄 것을
@@ -210,7 +224,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">여러분의 개인정보를 소중히 보호합니다.</h3>
+              <h3 class="article-title">
+                여러분의 개인정보를 소중히 보호합니다.
+              </h3>
               <p class="article-text">
                 날다는 서비스의 원활한 제공을 위하여 회원이 동의한 목적과 범위
                 내에서만 개인정보를 수집∙이용하며, 개인정보 보호 관련 법령에
@@ -220,7 +236,8 @@
                 <a
                   href="http://policy.nalda.com/policy/privacy.html"
                   target="_blank"
-                >개인정보 처리방침</a>에서 확인하실 수 있습니다.
+                  >개인정보 처리방침</a
+                >에서 확인하실 수 있습니다.
               </p>
               <p class="article-text">
                 날다는 여러분이 서비스를 이용하기 위해 일정 기간 동안 로그인
@@ -240,14 +257,14 @@
                 법률’ 및 ‘저작권법’ 등을 근거로 권리침해 주장자의 요청에 따른
                 게시물 게시중단, 원 게시자의 이의신청에 따른 해당 게시물 게시
                 재개 등을 내용으로 하는
-                <a
-                  href="https://inoti.nalda.com/inoti/main.nhn"
-                  target="_blank"
-                >게시중단요청서비스</a>를 운영하고 있습니다. 보다 상세한 내용 및 절차는 고객센터 내
+                <a href="https://inoti.nalda.com/inoti/main.nhn" target="_blank"
+                  >게시중단요청서비스</a
+                >를 운영하고 있습니다. 보다 상세한 내용 및 절차는 고객센터 내
                 <a
                   href="https://help.nalda.com/support/contents/contents.nhn?serviceNo=958&amp;categoryNo=3423"
                   target="_blank"
-                >게시중단요청서비스 소개</a>를 참고해 주세요.
+                  >게시중단요청서비스 소개</a
+                >를 참고해 주세요.
               </p>
               <p class="article-text">
                 한편, 날다 서비스를 통해 타인의 콘텐츠를 이용한다고 하여
@@ -266,11 +283,14 @@
                 <a
                   href="http://policy.nalda.com/policy/disclaimer.html"
                   target="_blank"
-                >법적고지</a>가 적용된다는 점을 유의해 주세요.
+                  >법적고지</a
+                >가 적용된다는 점을 유의해 주세요.
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">날다에서 제공하는 다양한 포인트를 요긴하게 활용해 보세요.</h3>
+              <h3 class="article-title">
+                날다에서 제공하는 다양한 포인트를 요긴하게 활용해 보세요.
+              </h3>
               <p class="article-text">
                 날다는 여러분이 날다 서비스를 효율적으로 이용할 수 있도록
                 포인트를 부여하고 있습니다. 포인트는 여러분의 일정한 날다 서비스
@@ -289,7 +309,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">날다 서비스 이용과 관련하여 몇 가지 주의사항이 있습니다.</h3>
+              <h3 class="article-title">
+                날다 서비스 이용과 관련하여 몇 가지 주의사항이 있습니다.
+              </h3>
               <p class="article-text">
                 날다는 여러분이 날다 서비스를 자유롭고 편리하게 이용할 수 있도록
                 최선을 다하고 있습니다. 다만, 여러분이 날다 서비스를 보다
@@ -323,9 +345,7 @@
                   관련 법령상 금지되거나 형사처벌의 대상이 되는 행위를
                   수행하거나 이를 교사 또는 방조하는 등의 범죄 관련 직접적인
                   위험이 확인된 게시물,
-                  <span
-                    class="article-text"
-                  >
+                  <span class="article-text">
                     관련 법령에서 홍보, 광고, 판매 등을 금지하고 있는 물건 또는
                     서비스를 홍보, 광고, 판매하는 내용의 게시물,
                   </span>
@@ -338,9 +358,7 @@
                   수치심을 유발시키거나 왜곡된 성 의식 등을 야기할 수 있는
                   내용의 게시물, 타인에게 잔혹감 또는 혐오감을 일으킬 수 있는
                   폭력적이고 자극적인 내용의 게시물,
-                  <span
-                    class="article-text"
-                  >
+                  <span class="article-text">
                     본인 이외의 자를 사칭하거나 허위사실을 주장하는 등 타인을
                     기만하는 내용의 게시물,
                   </span>
@@ -370,14 +388,12 @@
                   날다 서비스에 게재된 회원의 아이디(ID), 게시물 등을
                   수집하거나, 날다 검색 서비스에서 특정 질의어로 검색하거나 혹은
                   그 검색결과에서 특정 검색결과를 선택(이른바 ‘클릭’)하는 등
-                  <span
-                    class="article-text"
-                  >
+                  <span class="article-text">
                     이용자(사람)의 실제 이용을 전제로 하는 날다 서비스의 제공
                     취지에 부합하지 않는 방식으로 날다 서비스를 이용하거나 이와
                     같은 날다 서비스에 대한 어뷰징(남용) 행위를 막기 위한 날다의
-                    기술적 조치를 무력화하려는 일체의 행위
-                  </span>(예: IP를 지속적으로 바꿔가며 접속하는 행위, Captcha를 외부
+                    기술적 조치를 무력화하려는 일체의 행위 </span
+                  >(예: IP를 지속적으로 바꿔가며 접속하는 행위, Captcha를 외부
                   솔루션 등을 통해 우회하거나 무력화 하는 행위 등)를 시도해서는
                   안 됩니다.
                 </li>
@@ -386,17 +402,15 @@
                     날다의 동의 없이 자동화된 수단에 의해 날다 서비스 상에
                     광고가 게재되는 영역 또는 그 밖의 영역에 부호, 문자, 음성,
                     음향, 그림, 사진, 동영상, 링크 등으로 구성된 각종 콘텐츠
-                    자체 또는 파일을 삽입
-                  </span>해서는 안 됩니다. 또한, 날다 서비스 또는 이에 포함된
+                    자체 또는 파일을 삽입 </span
+                  >해서는 안 됩니다. 또한, 날다 서비스 또는 이에 포함된
                   소프트웨어를 복사, 수정할 수 없으며, 이를 판매, 양도, 대여
                   또는 담보로 제공하거나 타인에게 그 이용을 허락해서는 안
                   됩니다. 날다 서비스에 포함된 소프트웨어를 역 설계, 소스코드
                   추출 시도, 복제, 분해, 모방, 기타 변형하는 등의 행위도
                   금지됩니다(다만, 오픈소스에 해당되는 경우 그 자체 조건에
                   따릅니다).
-                  <span
-                    class="article-text"
-                  >
+                  <span class="article-text">
                     그 밖에 바이러스나 기타 악성 코드를 업로드하거나 날다
                     서비스의 원활한 운영을 방해할 목적으로 서비스 기능을
                     비정상적으로 이용하는 행위
@@ -415,7 +429,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">부득이 서비스 이용을 제한할 경우 합리적인 절차를 준수합니다.</h3>
+              <h3 class="article-title">
+                부득이 서비스 이용을 제한할 경우 합리적인 절차를 준수합니다.
+              </h3>
               <p class="article-text">
                 날다는 다양한 정보와 의견이 담긴 여러분의 콘텐츠를 소중히 다룰
                 것을 약속 드립니다만, 여러분이 게재한 게시물이 관련 법령, 본
@@ -471,7 +487,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">언제든지 날다 서비스 이용계약을 해지하실 수 있습니다.</h3>
+              <h3 class="article-title">
+                언제든지 날다 서비스 이용계약을 해지하실 수 있습니다.
+              </h3>
               <p class="article-text">
                 날다에게는 참 안타까운 일입니다만, 회원은 언제든지 날다 서비스
                 이용계약 해지를 신청하여 회원에서 탈퇴할 수 있으며, 이 경우
@@ -489,7 +507,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">일부 날다 서비스에는 광고가 포함되어 있습니다.</h3>
+              <h3 class="article-title">
+                일부 날다 서비스에는 광고가 포함되어 있습니다.
+              </h3>
               <p class="article-text">
                 여러분이 다양한 날다 서비스를 이용하다 보면 간혹 일부 개별
                 서비스에 광고가 포함된 경우가 있습니다. 날다 서비스를 이용하면서
@@ -514,7 +534,9 @@
               </p>
             </div>
             <div class="article">
-              <h3 class="article-title">서비스 중단 또는 변경 시 꼭 알려드리겠습니다.</h3>
+              <h3 class="article-title">
+                서비스 중단 또는 변경 시 꼭 알려드리겠습니다.
+              </h3>
               <p class="article-text">
                 날다는 연중 무휴, 1일 24시간 안정적으로 서비스를 제공하기 위해
                 최선을 다하고 있습니다만, 컴퓨터, 서버 등 정보통신설비의
@@ -545,10 +567,8 @@
                 있도록 힘쓰겠습니다. 회원에게 통지를 하는 경우 전자메일, 서비스
                 내 알림 또는 기타 적절한 전자적 수단을 통해 개별적으로 알려 드릴
                 것이며, 다만 회원 전체에 대한 통지가 필요할 경우엔 7일 이상
-                <a
-                  href="https://www.nalda.com"
-                  target="_blank"
-                >www.nalda.com</a>을 비롯한 날다 도메인의 웹사이트 및 응용프로그램(어플리케이션,
+                <a href="https://www.nalda.com" target="_blank">www.nalda.com</a
+                >을 비롯한 날다 도메인의 웹사이트 및 응용프로그램(어플리케이션,
                 앱) 초기 화면 또는 공지사항 등에 관련 내용을 게시하도록
                 하겠습니다.
               </p>
@@ -608,14 +628,19 @@
               </ul>
               <p class="article-text">
                 날다 서비스와 관련하여 궁금하신 사항이 있으시면
-                <a href="https://help.nalda.com/" target="_blank">고객센터</a>(대표번호: 204 – 2040/ 평일 09:00~18:00)로 문의 주시기
+                <a href="https://help.nalda.com/" target="_blank">고객센터</a
+                >(대표번호: 204 – 2040/ 평일 09:00~18:00)로 문의 주시기
                 바랍니다.
               </p>
             </div>
           </div>
         </div>
         <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: requiredSecond }" @click="agreeRequiredSecond">
+          <div
+            class="terms-title"
+            :class="{ active: requiredSecond }"
+            @click="agreeRequiredSecond"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
@@ -692,11 +717,9 @@
                   자동화된 방법으로 생성하여 이를 저장(수집)하거나,
                   <br />2) 이용자 기기의 고유한 정보를 원래의 값을 확인하지 못
                   하도록 안전하게 변환하여 수집합니다. 서비스 이용 과정에서
-                  위치정보가 수집될 수 있으며,
-                  <br />날다에서 제공하는 위치기반
+                  위치정보가 수집될 수 있으며, <br />날다에서 제공하는 위치기반
                   서비스에 대해서는 '날다 위치기반서비스 이용약관'에서 자세하게
-                  규정하고 있습니다.
-                  <br />이와 같이 수집된 정보는 개인정보와의
+                  규정하고 있습니다. <br />이와 같이 수집된 정보는 개인정보와의
                   연계 여부 등에 따라 개인정보에 해당할 수 있고, 개인정보에
                   해당하지 않을 수도 있습니다.
                 </p>
@@ -844,7 +867,11 @@
           </div>
         </div>
         <div class="unnecessary-terms-wrap">
-          <div class="terms-title" :class="{ active: first }" @click="agreeFirst">
+          <div
+            class="terms-title"
+            :class="{ active: first }"
+            @click="agreeFirst"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
@@ -861,8 +888,8 @@
                 위치기반서비스 이용약관에 동의하시면,
                 <strong>
                   위치를 활용한 광고 정보 수신 등을 포함하는 날다 위치기반
-                  서비스
-                </strong>를 이용할 수 있습니다.
+                  서비스 </strong
+                >를 이용할 수 있습니다.
               </p>
             </div>
             <div class="article">
@@ -996,7 +1023,9 @@
               </ol>
             </div>
             <div class="article">
-              <h3 class="article-title">제 6 조 (위치정보 이용·제공사실 확인자료 보유근거 및 보유기간)</h3>
+              <h3 class="article-title">
+                제 6 조 (위치정보 이용·제공사실 확인자료 보유근거 및 보유기간)
+              </h3>
               <ol class="section">
                 <li>
                   회사는 위치정보의 보호 및 이용 등에 관한 법률 제16조 제2항에
@@ -1022,7 +1051,9 @@
             </div>
 
             <div class="article">
-              <h3 class="article-title">제 8 조 (개인위치정보 제3자 제공 시 즉시 통보)</h3>
+              <h3 class="article-title">
+                제 8 조 (개인위치정보 제3자 제공 시 즉시 통보)
+              </h3>
               <ol class="section">
                 <li>
                   ① 회사는 개인위치정보주체의 동의 없이 당해 개인위치정보주체의
@@ -1057,7 +1088,9 @@
               </ol>
             </div>
             <div class="article">
-              <h3 class="article-title">제 9 조 (8세 이하의 아동 등의 보호의무자의 권리)</h3>
+              <h3 class="article-title">
+                제 9 조 (8세 이하의 아동 등의 보호의무자의 권리)
+              </h3>
               <ol class="section">
                 <li>
                   <p>
@@ -1093,7 +1126,9 @@
             </div>
 
             <div class="article">
-              <h3 class="article-title">제 10 조 (개인위치정보의 보유목적 및 이용기간)</h3>
+              <h3 class="article-title">
+                제 10 조 (개인위치정보의 보유목적 및 이용기간)
+              </h3>
               <ol class="section">
                 <li>
                   ① 회사는 위치기반서비스를 제공하기 위해 필요한 최소한의 기간
@@ -1138,7 +1173,9 @@
             </div>
 
             <div class="article">
-              <h3 class="article-title">제 13 조 (사업자 정보 및 위치정보 관리책임자)</h3>
+              <h3 class="article-title">
+                제 13 조 (사업자 정보 및 위치정보 관리책임자)
+              </h3>
               <ol class="section">
                 <li>
                   <p>① 회사의 상호, 주소 및 연락처는 다음과 같습니다.</p>
@@ -1168,7 +1205,8 @@
                       <a
                         href="https://help.nalda.com/support/mail/popup/mailInquiry.help?serviceNo=1074&amp;categoryNo=15743"
                         target="_blank"
-                      >문의하기</a>
+                        >문의하기</a
+                      >
                     </li>
                   </ol>
                 </li>
@@ -1187,7 +1225,11 @@
           </div>
         </div>
         <div class="unnecessary-terms-wrap">
-          <div class="terms-title" :class="{ active: second }" @click="agreeSecond">
+          <div
+            class="terms-title"
+            :class="{ active: second }"
+            @click="agreeSecond"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
@@ -1208,7 +1250,9 @@
         </div>
         <div class="terms-button-wrap">
           <b-button id="btn-group" @click="goBack">back</b-button>
-          <b-button id="btn-group" variant="outline-primary" @click="moveSignup">agree and start</b-button>
+          <b-button id="btn-group" variant="outline-primary" @click="moveSignup"
+            >agree and start</b-button
+          >
         </div>
       </section>
       <!-- <footer>
@@ -1283,7 +1327,7 @@ export default {
       this.AGREE_TERMS(terms)
     },
     goBack() {
-      this.$router.go(-1)
+      this.$router.push(this.$nuxt.context.from.path)
     },
   },
 }
@@ -1315,7 +1359,7 @@ export default {
 
 .main-container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;

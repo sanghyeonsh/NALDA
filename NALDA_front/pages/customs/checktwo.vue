@@ -15,7 +15,7 @@
                   color="#778899"
                   @click="openAttentions"
                 >
-                  <v-icon large dark> mdi-information-outline </v-icon>
+                  <v-icon large dark>mdi-information-outline</v-icon>
                 </v-btn>
               </v-app>
               <div class="customform-title">여행자 휴대품 신고서</div>
@@ -23,8 +23,7 @@
                 class="next-page"
                 variant="info"
                 @click="$router.push('/customs/detail')"
-                >다음 페이지</b-button
-              >
+              >다음 페이지</b-button>
             </div>
           </div>
           <div class="to-declaration-wrap">
@@ -72,7 +71,8 @@
                   5. 동물, 식물, 육가공품 등
                   <b>검역대상물품</b> 또는 가축전염병발생국의
                   <b>축산농가 방문</b>
-                  <br />※축산농가 방문자는 <b>검역본부에</b> 신고하시기
+                  <br />※축산농가 방문자는
+                  <b>검역본부에</b> 신고하시기
                   바랍니다.
                 </td>
                 <td id="yorn">있음</td>
@@ -226,8 +226,9 @@ export default {
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -252,6 +253,7 @@ export default {
   align-items: center;
 }
 .customform-container {
+  background-color: white;
   width: 100%;
   height: 80%;
   padding: 2%;

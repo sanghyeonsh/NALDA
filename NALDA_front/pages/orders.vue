@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="orders-page">
     <nuxt-child></nuxt-child>
   </div>
 </template>
@@ -18,6 +18,10 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+.orders-page {
+  background-color: rgba(239, 239, 239, 0.511);
+}
+
 * {
   font-family: 'twayfly';
 }

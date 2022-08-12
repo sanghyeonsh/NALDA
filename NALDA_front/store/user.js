@@ -2,7 +2,7 @@ import { validFlight, inputFlight } from '../api/flight'
 import { login, mypage, modifyMember } from '@/api/user'
 
 export const state = () => ({
-  loginMember: '',
+  loginMember: null,
   flightNum: '',
   seatInfo: null,
   memberDetail: null,
@@ -76,7 +76,7 @@ export const mutations = {
 
 export const getters = {
   isLogin(state) {
-    return !state.loginMember === null
+    return !(state.loginMember === null)
   },
 }
 
@@ -96,11 +96,8 @@ export const actions = {
             sessionStorage.setItem('Authorization', headers.authorization)
             if (data.msg === '로그인 성공') {
               commit('SET_LOGIN_MEMBER', data.userInfo)
-              if (data.userInfo.userRole === 'ROLE_ATTENDANT') {
-                this.$router.push('/attendant/main')
-              } else {
+              if (data.userInfo.userRole !== 'ROLE_ATTENDANT') {
                 commit('SET_SEATINFO', data.seatInfo)
-                this.$router.push('/main')
               }
             }
           },
@@ -135,7 +132,6 @@ export const actions = {
               )
               sessionStorage.setItem('Authorization', headers.authorization)
               commit('SET_LOGIN_MEMBER', data.userInfo)
-              this.$router.push('/attendant/main')
             }
           }
         )

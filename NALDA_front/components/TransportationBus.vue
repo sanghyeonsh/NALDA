@@ -172,6 +172,7 @@
         <img src="/nacho.jpg" alt="" />
       </div>
     </div>
+    <FooterComponent />
   </div>
 </template>
 
@@ -412,7 +413,7 @@ export default {
 
 <style scoped>
 .transport-bus {
-  height: 85vh;
+  height: 75vh;
   display: flex;
 }
 .bus-region {
@@ -446,6 +447,7 @@ export default {
   color: rgb(69, 169, 200);
   box-shadow: 5px 5px 5px gray;
   z-index: 2;
+  background-color: white;
 }
 /* .bus-number::-webkit-scrollbar {
   display: none;
@@ -506,6 +508,7 @@ export default {
   width: 55%;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 .bus-detail-terminal {
   display: flex;
