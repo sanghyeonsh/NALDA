@@ -5,14 +5,14 @@
       <v-app id="inspire">
         <div class="wrapper">
           <div v-for="(meal, i) in meals" :key="i" class="food-box">
-            <v-card class="mx-auto my-12" max-width="374">
+            <v-card class="mx-auto my-12" max-width="374" @click="setMealSelected(meal)">
               <template slot="progress">
                 <v-progress-linear color height="10" indeterminate></v-progress-linear>
               </template>
 
               <v-img height="250" :src="'data:image/jpg;base64,' + meal.image" :alt="meal.menu"></v-img>
 
-              <v-card-title style="display: flex; justify-content: center">
+              <v-card-title style="font-size: x-large; display: flex; justify-content: flex-start">
                 {{
                 meal.menu
                 }}
@@ -25,8 +25,7 @@
               <v-divider class="mx-4"></v-divider>
 
               <v-card-actions>
-                <v-spacer></v-spacer>
-
+                <!-- <v-spacer></v-spacer> -->
                 <div>
                   <v-btn text color="teal accent-4" @click="updateCheck(meal)">세부사항</v-btn>
                 </div>
@@ -67,9 +66,9 @@
                 </v-card>
               </v-expand-transition>
             </v-card>
-            <div>
+            <!-- <div>
               <button @click="setMealSelected(meal)">선택</button>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="meal-order-button" @click="setMeal">기내식입력</div>
@@ -77,26 +76,43 @@
     </div>
     <v-app id="item-modal">
       <v-dialog v-model="dialog" hide-overlay transition="dialog-bottom-transition" width="60%">
-        <v-card tile>
+        <v-card tile v-bind="selectedMeal">
           <v-toolbar flat dark color="rgb(69, 169, 200)">
             <v-btn icon dark @click="toggle">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>선택 제품</v-toolbar-title>
+            <v-toolbar-title>{{selectedMeal.menu}}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-              <v-btn class="mx-2" fab dark large color="pink" @click="addSelectedItem">
-                <v-icon dark>mdi-cart-heart</v-icon>
+              <v-btn
+                class="mx-2"
+                fab
+                dark
+                large
+                color="pink"
+                style="width:100%;"
+                @click="addSelectedItem"
+              >
+                <div style="font-size:x-large" @click="setMealtotal(selectedMeal)">등록</div>
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
-          <v-card-text v-bind="selectedMeal" class="d-flex align-center">
-            <img class="item-img mt-5" :src="'data:image/jpg;base64,' + selectedMeal.image" />
-            <div style="font-size: xx-large; margin-left: 20%">
+          <v-card-text class="d-flex align-center">
+            <img
+              class="item-img mt-5"
+              :src="'data:image/jpg;base64,' + selectedMeal.image"
+              style="height: 350px; width: 350px;"
+            />
+            <div style="font-size: xx-large; margin-left: 6%; display: flex;">
               <v-btn class="mx-2" fab dark large color="cyan" @click="minusNum">
                 <v-icon dark>mdi-minus</v-icon>
               </v-btn>
-              {{ num }}
+              <v-text-field
+                v-model="total"
+                :counter="3"
+                :rules="totalRules"
+                style="width: 160px; text-align: center;"
+              ></v-text-field>
               <v-btn class="mx-2" fab dark large color="cyan" @click="addNum">
                 <v-icon dark>mdi-plus</v-icon>
               </v-btn>
@@ -115,7 +131,10 @@ export default {
   components: {},
   data() {
     return {
+      valid: true,
       dialog: false,
+      total: 0,
+      totalRules: [(v) => /^[0-9]*$/.test(v) || '숫자만 입력해주세요.'],
       info: {
         flightNum: '',
         mealMenu: '',
@@ -162,16 +181,26 @@ export default {
     },
     setMealSelected(meal) {
       this.dialog = !this.dialog
-      this.select.push(meal)
       this.selectedMeal = meal
       //   console.log(meal)
       //   console.log(this.selectedMeal)
+    },
+    setMealtotal(meal) {
+      if (this.select.length < 3) {
+        this.select.push(meal)
+      }
     },
     toggle() {
       this.dialog = !this.dialog
     },
     setMeal() {
       this.registFlightMeal()
+    },
+    minusNum() {
+      this.total--
+    },
+    addNum() {
+      this.total++
     },
     updateSelected(e) {
       this.$store.commit('meal/updateSelected', e)
@@ -202,7 +231,17 @@ export default {
 * {
   font-family: 'twayfly';
 }
-
+.v-application--wrap {
+  flex: 1 1 auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0vh;
+  max-width: 100%;
+  position: relative;
+  background-color: rgba(239, 239, 239, 0.511);
+}
 .airfood-container {
   height: 75vh;
   background-color: rgba(239, 239, 239, 0.511);
@@ -215,7 +254,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
 }
+
+/* .wrapper {
+  -webkit-overflow-scrolling: touch;
+} */
+
 .wrapper img {
   width: 400px;
   height: 300px;
@@ -241,22 +287,43 @@ export default {
   right: 0;
   bottom: 25vh;
 }
+
 .v-card--reveal {
   bottom: 0;
   opacity: 1 !important;
   position: absolute;
   width: 100%;
 }
+.v-card__actions {
+  align-items: center;
+  display: flex;
+  padding: 8px;
+  justify-content: flex-start;
+}
 .food-box {
-  width: 35%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   /* gap: 10vw; */
+  background-color: rgba(239, 239, 239, 0.511);
+}
+.v-card__title {
+  justify-content: flex-start;
 }
 .meal-order-button {
   display: flex;
   justify-content: center;
+}
+
+.v-text-field input {
+  flex: 1 1 auto;
+  line-height: 20px;
+  padding: 8px 0 8px;
+  max-width: 100%;
+  min-width: 0px;
+  width: 100%;
+  text-align: center;
 }
 </style>
