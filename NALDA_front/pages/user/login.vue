@@ -1,16 +1,15 @@
 <template>
   <div class="login-main-container">
     <div class="login-main-wrap">
-      <header>
+      <!-- <header>
         <div class="sel-lang-wrap">
           <select class="lang-select">
             <option>Korean</option>
             <option>English</option>
           </select>
         </div>
-      </header>
+      </header> -->
       <section class="login-input-section-wrap">
-        <h2>로그인 창</h2>
         <div class="login-input-wrap mb-3">
           <input v-model="flightNum" placeholder="항공편명" type="text" />
         </div>
@@ -61,7 +60,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'LoginUser',
   data() {
@@ -75,6 +74,7 @@ export default {
   },
   computed: {
     ...mapState('user', ['loginMember']),
+    ...mapGetters('user', ['isLogin']),
   },
   created() {
     this.CLEAR_LOGIN_MEMBER()
@@ -96,6 +96,13 @@ export default {
         await this.inputLogin(object)
         if (this.loginMember === null) {
           this.$bvModal.show('login-modal')
+        }
+        if (this.loginMember.userRole === 'ROLE_USER') {
+          console.log(this.isLogin)
+          this.$router.push('/main')
+        }
+        if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
+          this.$router.push('/attendant/main')
         }
       })
     },
@@ -124,7 +131,7 @@ body {
 
 .login-main-container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -156,10 +163,11 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 16%;
+  padding-top: 32%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: ;
 }
 
 .login-input-section-wrap h2 {
@@ -218,7 +226,8 @@ input[type='password']::placeholder {
   font-size: 25px;
   color: #4e4e4e;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  margin-right: 3%;
   border-bottom: solid 1px var(--border-gray-color);
 }
 

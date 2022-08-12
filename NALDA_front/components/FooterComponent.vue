@@ -3,8 +3,10 @@
     <div class="footer-wrap">
       <div class="service-btn-wrap">
         <button class="toilet-wrap" @click="MoveToilet">
-          <img src="/main/toilet_navy.png" alt="toilet" />
-          <h3>화장실</h3>
+          <div style="display: flex; align-items: center">
+            <img src="/main/toilet_navy.png" alt="toilet" class="mr-2" />
+            <div>화장실</div>
+          </div>
         </button>
         <button
           v-if="role === 'ROLE_ATTENDANT'"
@@ -26,6 +28,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'FooterComponent',
   data() {
@@ -34,14 +37,30 @@ export default {
     }
   },
   computed: {
-    ...mapState('user', ['loginMember', 'flightNum']),
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
   created() {
     this.role = this.loginMember?.userRole
   },
+
   methods: {
+    ...mapActions('menu', ['postOrders']),
     ...mapActions('meal', ['endMeal', 'getMealList']),
     MoveHelpcall() {
+      const order = {
+        orderMessage: '',
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'A000',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {
@@ -79,7 +98,6 @@ export default {
   height: 10vh;
   display: flex;
   flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.511);
   /* background-color: rgba(0, 0, 0, 0); */
 }
 .footer-container footer {

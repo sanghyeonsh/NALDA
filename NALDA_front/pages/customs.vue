@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="customs-page">
     <header-component></header-component>
     <nuxt-child></nuxt-child>
     <footer-component></footer-component>
@@ -16,6 +16,10 @@ export default {
 </script>
 b
 <style scoped>
+.costoms-page {
+  background-color: rgba(239, 239, 239, 0.511);
+}
+
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;

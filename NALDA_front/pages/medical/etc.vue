@@ -4,17 +4,33 @@
       <div class="form-box">
         <div class="title">증상 및 요청사항을 입력해주세요.</div>
         <div class="content">
-          <input
+          <!-- <input
             :value="input"
             class="input"
             placeholder="Tap on the virtual keyboard to start"
             @input="onInputChange"
-          />
+          /> -->
+          <form class="add-form" @submit.prevent="doAdd">
+            <input
+              ref="comment"
+              type="text"
+              :value="input"
+              class="input"
+              placeholder="Tap on the virtual keyboard to start"
+              @input="onInputChange"
+            />
 
-          <button @click="etcCheck">확인</button>
+            <button @click="etcCheck">확인</button>
+          </form>
+
+          <!-- <button @click="etcCheck">확인</button> -->
         </div>
       </div>
-      <simple-keyboard :input="input" @onChange="onChange" @onKeyPress="onKeyPress"></simple-keyboard>
+      <simple-keyboard
+        :input="input"
+        @onChange="onChange"
+        @onKeyPress="onKeyPress"
+      ></simple-keyboard>
     </div>
   </div>
 </template>
@@ -39,6 +55,9 @@ export default {
   methods: {
     ...mapActions('menu', ['postOrders']),
     etcCheck() {
+      const comment = this.$refs.comment
+      console.log(111111)
+      console.log(comment)
       const order = {
         orderMessage: this.input,
         flightNum: this.flightNum,
@@ -56,6 +75,8 @@ export default {
       this.$router.push('/waiting')
     },
     onChange(input) {
+      console.log(111)
+      console.log(input)
       this.input = input
     },
     onKeyPress(button) {

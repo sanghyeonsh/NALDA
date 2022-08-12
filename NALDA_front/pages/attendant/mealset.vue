@@ -210,8 +210,6 @@ export default {
 .airfood-container > h1 {
   text-align: center;
   vertical-align: middle;
-  line-height: 10vh;
-  height: 10vh;
 }
 .wrapper {
   display: flex;

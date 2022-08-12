@@ -28,7 +28,11 @@
         </v-tabs>
         <div>
           <v-tabs-items v-model="tab">
-            <v-tab-item key="snacks" value="snacks">
+            <v-tab-item
+              key="snacks"
+              value="snacks"
+              style="background-color: rgba(239, 239, 239, 0.511)"
+            >
               <div class="tab-item">
                 <div
                   v-for="(item, idx) in snacks"
@@ -58,7 +62,11 @@
                 </div>
               </div>
             </v-tab-item>
-            <v-tab-item key="alcohols" value="alcohols">
+            <v-tab-item
+              key="alcohols"
+              value="alcohols"
+              style="background-color: rgba(239, 239, 239, 0.511)"
+            >
               <div class="tab-item">
                 <div
                   v-for="(item, idx) in alcohols"
@@ -88,7 +96,11 @@
                 </div>
               </div>
             </v-tab-item>
-            <v-tab-item key="nonAlcohols" value="nonAlcohols">
+            <v-tab-item
+              key="nonAlcohols"
+              value="nonAlcohols"
+              style="background-color: rgba(239, 239, 239, 0.511)"
+            >
               <div class="tab-item">
                 <div
                   v-for="(item, idx) in nonAlcohols"
