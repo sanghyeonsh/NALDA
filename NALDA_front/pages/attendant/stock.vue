@@ -53,6 +53,7 @@
                   id="snack-input"
                   v-model="snackQuantity[index]"
                   class="snack-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   :name="snack.serviceName"
                   placeholder="수량을 입력해주세요."
@@ -72,6 +73,7 @@
                 <b-form-input
                   v-model="alcoholQuantity[index]"
                   class="alcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                   @change="setAlcoholQuantity(alcohol, alcoholQuantity[index])"
@@ -90,6 +92,7 @@
                 <b-form-input
                   v-model="nonAlcoholQuantity[index]"
                   class="nonalcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -107,6 +110,7 @@
                 <b-form-input
                   v-model="amenityQuantity[index]"
                   class="amenity-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -141,7 +145,8 @@
         <b-button @click="showAlcohol">Alcohol</b-button>
         <b-button @click="showNonAlcohol">Non-Alcohols</b-button>
         <b-button @click="showAmenity">Amenity</b-button>
-        <b-button variant="warning" @click="setTotal()">save</b-button>
+        <b-button v-if="isValid" variant="warning" @click="setTotal()">save</b-button>
+        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()">modify</b-button>
         <b-button @click="testStockCnt">test</b-button>
       </div>
     </div>
@@ -156,6 +161,7 @@ export default {
     return {
       // perPage: 10,
       // currentPage: 1,
+      isValid: true,
       ListType: 'snacks',
       snackQuantity: [],
       alcoholQuantity: [],
@@ -328,7 +334,7 @@ export default {
         }
       }
       console.log(this.TotalServiceQuantity)
-
+      this.isValid = !this.isValid
       // 재고 입력 or 수정으로 보내기
       if (this.setStock === false) {
         this.$store.dispatch(
@@ -341,6 +347,9 @@ export default {
           this.TotalServiceQuantity
         )
       }
+    },
+    unSetTotal() {
+      this.isValid = !this.isValid
     },
   },
 }
@@ -392,6 +401,7 @@ export default {
   width: 8%;
   background-color: #206e95;
   border-color: #206e95;
+  color: white;
 }
 .btn-warning {
   font-size: small;

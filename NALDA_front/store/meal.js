@@ -19,6 +19,8 @@ export const state = () => ({
   allergies: [],
   choiceMeal: [],
   seatMealList: [],
+  validMealList: [],
+  flightMealList: [],
   validMsg: null,
 })
 
@@ -95,6 +97,12 @@ export const mutations = {
   SET_VALID_MSG(state, validMsg) {
     state.validMsg = validMsg
   },
+  SET_VALIDMEAL_LIST(state, selectedMealList) {
+    console.log(state.validMealList)
+  },
+  SET_FLIGHTMEALS_LIST(state, selectedMealList) {
+    state.flightMealList = selectedMealList
+  },
 
   CLEAR_MEAL_LIST(state) {
     state.meals = []
@@ -125,11 +133,11 @@ export const getters = {}
 
 // console.log eslint rule수정 충돌방지
 export const actions = {
-  getMeal({ commit }) {
+  async getMeal({ commit }) {
     commit('CLEAR_MEAL_LIST')
-    listMeal(
+    await listMeal(
       ({ data }) => {
-        console.log(data)
+        // console.log(data)
         if (data.mealList.length > 0) {
           data.mealList.forEach((meal) => {
             commit('SET_MEAL_LIST', {

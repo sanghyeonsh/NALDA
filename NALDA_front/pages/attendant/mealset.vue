@@ -1,10 +1,10 @@
 <template>
   <div class="airfood-container">
-    <h1 @click="test">주 메뉴 선택</h1>
+    <h1 v-bind="flightNum" @click="test">항공편 {{flightNum}} 기내식 선택</h1>
     <div id="app">
       <v-app id="inspire">
         <div class="wrapper">
-          <div v-for="(meal, i) in meals" :key="i" class="food-box">
+          <div v-for="(meal, i) in mealList" :key="i" class="food-box">
             <v-card class="mx-auto my-12" max-width="374" @click="setMealSelected(meal)">
               <template slot="progress">
                 <v-progress-linear color height="10" indeterminate></v-progress-linear>
@@ -26,8 +26,8 @@
 
               <v-card-actions>
                 <!-- <v-spacer></v-spacer> -->
-                <div>
-                  <v-btn text color="teal accent-4" @click="updateCheck(meal)">세부사항</v-btn>
+                <div v-if="meal.total !== null">
+                  <v-btn text color="teal accent-4" @click="updateCheck(meal)">수량: {{meal.total}}</v-btn>
                 </div>
               </v-card-actions>
 
@@ -91,9 +91,9 @@
                 large
                 color="pink"
                 style="width:100%;"
-                @click="addSelectedItem"
+                @click="setMealtotal(selectedMeal)"
               >
-                <div style="font-size:x-large" @click="setMealtotal(selectedMeal)">등록</div>
+                <div style="font-size:x-large">등록</div>
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
@@ -108,7 +108,7 @@
                 <v-icon dark>mdi-minus</v-icon>
               </v-btn>
               <v-text-field
-                v-model="total"
+                v-model="selectedMeal.total"
                 :counter="3"
                 :rules="totalRules"
                 style="width: 160px; text-align: center;"
@@ -133,14 +133,9 @@ export default {
     return {
       valid: true,
       dialog: false,
+      mealList: [],
       total: 0,
       totalRules: [(v) => /^[0-9]*$/.test(v) || '숫자만 입력해주세요.'],
-      info: {
-        flightNum: '',
-        mealMenu: '',
-        total: null,
-        status: 'PROGRESS',
-      },
       select: [],
       selectedMeal: [],
     }
@@ -152,6 +147,7 @@ export default {
       'details',
       'allergies',
       'validMsg',
+      'flightMealList',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -161,9 +157,18 @@ export default {
       resolve()
     })
     promise.then(async () => {
-      await this.getMeal()
-      this.getDetail(this.meals)
-      this.getAllergy(this.meals)
+      await this.flightMealList.forEach((meal) => {
+        const mealInfo = {
+          menu: meal.menu,
+          image: meal.image,
+          imageName: meal.imageName,
+          total: meal.total,
+        }
+        this.mealList.push(mealInfo)
+      })
+      // console.log(this.flightMealList)
+      // this.getDetail(this.meals)
+      // this.getAllergy(this.meals)
     })
   },
   methods: {
@@ -174,16 +179,18 @@ export default {
       'getDetail',
       'getAllergy',
       'registFlightMeal',
+      'registSeatMeal',
+      'validMeal',
     ]),
     test() {
-      this.getMeal()
-      console.log(this.meals)
+      // console.log(this.mealList)
+      console.log(this.flightMealList)
     },
     setMealSelected(meal) {
       this.dialog = !this.dialog
       this.selectedMeal = meal
       //   console.log(meal)
-      //   console.log(this.selectedMeal)
+      console.log(this.selectedMeal)
     },
     setMealtotal(meal) {
       if (this.select.length < 3) {
@@ -209,12 +216,6 @@ export default {
     updateCheck(e) {
       this.$store.commit('meal/updateCheck', e)
     },
-    ...mapActions('meal', [
-      'getDetail',
-      'getAllergy',
-      'registSeatMeal',
-      'validMeal',
-    ]),
   },
 }
 </script>
@@ -249,6 +250,7 @@ export default {
 .airfood-container > h1 {
   text-align: center;
   vertical-align: middle;
+  margin-top: 3%;
 }
 .wrapper {
   display: flex;

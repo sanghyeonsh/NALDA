@@ -26,12 +26,8 @@
     <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
       <SubwayMap />
     </div>
-    <div
-      v-else-if="page === 'table'"
-      class="Taxi-box-right"
-      :class="{ table: isTable }"
-    >
-      <h3>이용 요금 및 승차장 번호</h3>
+    <div v-else-if="page === 'table'" class="Taxi-box-right" :class="{ table: isTable }">
+      <h3 style="margin-bottom: 3%;">이용 요금 및 승차장 번호</h3>
       <div class="taxi-info-wrap">
         <table class="taxi-table-wrap">
           <thead>
@@ -191,6 +187,11 @@ export default {
   /* border: solid 1px black; */
   width: 100%;
   height: 100%;
+  font-size: 1.13em;
+}
+
+.Taxi-box-right[data-v-656bb545] {
+  margin-bottom: 9%;
 }
 
 th,
@@ -201,6 +202,7 @@ td {
 }
 
 thead {
-  background-color: rgb(153, 193, 202);
+  background-color: #323648;
+  color: white;
 }
 </style>
