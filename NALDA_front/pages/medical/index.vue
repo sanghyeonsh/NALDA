@@ -109,11 +109,11 @@ export default {
 }
 
 .medical-box {
-  height: 70vh;
+  background-color: rgba(239, 239, 239, 0.511);
+  height: 85vh;
   display: flex;
   flex-direction: column;
   padding: 50px;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   font-size: 30px;
 }
 .medical-box-item {

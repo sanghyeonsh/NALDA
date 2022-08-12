@@ -19,10 +19,14 @@
         </div>
       </div>
     </div>
-    <div v-if="page === 'map'" class="Taxi-box-right" :class="{map: isMap}">
+    <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
       <SubwayMap />
     </div>
-    <div v-else-if="page === 'table'" class="Taxi-box-right" :class="{table: isTable}">
+    <div
+      v-else-if="page === 'table'"
+      class="Taxi-box-right"
+      :class="{ table: isTable }"
+    >
       <h3>이용 요금 및 승차장 번호</h3>
       <div class="taxi-info-wrap">
         <table class="taxi-table-wrap">
@@ -57,24 +61,15 @@
               <td>24:00 ~ 04:00 심야할증 20% 적용</td>
             </tr>
             <tr>
-              <td>
-                모범택시 /
-                대형택시(9인승)
-              </td>
+              <td>모범택시 / 대형택시(9인승)</td>
               <td>6,500</td>
               <td>7C/8C</td>
               <td>5D</td>
               <td>심야할증 및 시계할증 없음</td>
             </tr>
             <tr>
-              <td>
-                인터내셔널택시
-                스마트 택시
-              </td>
-              <td>
-                서울지역 구간요금제
-                적용
-              </td>
+              <td>인터내셔널택시 스마트 택시</td>
+              <td>서울지역 구간요금제 적용</td>
               <td>4C</td>
               <td>1C</td>
               <td>외국어 서비스지원 공식 지정 택시</td>
@@ -170,6 +165,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 /* taxi-table wrap css */

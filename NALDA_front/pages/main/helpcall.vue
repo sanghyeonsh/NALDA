@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .helpcall-box {
-  height: 70vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;

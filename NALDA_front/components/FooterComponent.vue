@@ -3,16 +3,20 @@
     <div class="footer-wrap">
       <div class="service-btn-wrap">
         <button class="toilet-wrap" @click="MoveToilet">
-          <img src="/main/toilet_navy.png" alt="toilet" />
-          <h3>화장실</h3>
+          <div style="display: flex; align-items: center">
+            <img src="/main/toilet_navy.png" alt="toilet" class="mr-2" />
+            <div>화장실</div>
+          </div>
         </button>
         <button
           class="service-wrap"
           style="background-color: #206e95"
           @click="MoveHelpcall"
         >
-          <img src="/main/flight_attendant_w.png" alt="toilet" />
-          <h3>승무원호출</h3>
+          <div style="display: flex; align-items: center">
+            <img src="/main/flight_attendant_w.png" alt="toilet" />
+            <div>승무원호출</div>
+          </div>
         </button>
       </div>
     </div>
@@ -73,7 +77,6 @@ export default {
   height: 10vh;
   display: flex;
   flex-direction: column;
-  background-color: rgba(239, 239, 239, 0.511);
   /* background-color: rgba(0, 0, 0, 0); */
 }
 .footer-container footer {

@@ -67,6 +67,7 @@ export default {
   width: 100vw;
   height: 85%;
   margin: 0 0 0 30px;
+  background-color: white;
 }
 .map-container > div {
   width: 100%;

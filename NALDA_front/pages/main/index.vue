@@ -2,19 +2,27 @@
   <div class="main-container">
     <div class="main-container-box" @click="MoveOrders">
       <div class="main-container-box-image">
-        <img src="/main/service.png" alt="service" />
+        <img src="/main/service.png" alt="service" style="width: 35vh" />
       </div>
       <div class="box-image-name">서비스</div>
     </div>
     <div class="main-container-box" @click="MoveLogin">
       <div class="main-container-box-image">
-        <img src="/main/custom_declaration.png" alt="custom_declaration" />
+        <img
+          src="/main/custom_declaration.png"
+          alt="custom_declaration"
+          style="width: 35vh"
+        />
       </div>
       <div class="box-image-name">세관신고서</div>
     </div>
     <div class="main-container-box" @click="MoveTransportation">
       <div class="main-container-box-image">
-        <img src="/main/airport_info.png" alt="airport_info" />
+        <img
+          src="/main/airport_info.png"
+          alt="airport_info"
+          style="width: 35vh"
+        />
       </div>
       <div class="box-image-name">공항정보</div>
     </div>
@@ -25,19 +33,8 @@
 import { mapState, mapMutations } from 'vuex'
 
 export default {
-  name: 'TestPage',
+  name: 'MainPage',
   components: {},
-  beforeRouteLeave: (to, from, next) => {
-    console.log(222222)
-    next((vm) => {
-      const isLogin = vm.$store.getters['user/isLogin']
-      if (isLogin) {
-        next()
-      } else {
-        next(false)
-      }
-    })
-  },
   computed: {
     ...mapState('user', ['loginMember']),
     isLogin() {
@@ -91,7 +88,7 @@ export default {
 }
 .main-container {
   display: flex;
-  height: 70vh;
+  height: 85vh;
   width: 100vw;
 }
 .main-container-box {
@@ -117,7 +114,7 @@ export default {
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .box-image-name {
-  height: 20%;
+  height: 15%;
   display: flex;
   justify-content: center;
   align-items: flex-end;

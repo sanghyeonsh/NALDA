@@ -48,7 +48,11 @@ export default {
   },
   methods: {
     MoveMain() {
-      if (this.isLogin) this.$router.push('/main')
+      if (this.loginMember?.userRole === 'ROLE_USER') {
+        this.$router.push('/main')
+      } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
+        this.$router.push('/attendant/main')
+      }
     },
     MoveSignup() {
       this.$router.push('user/signup')

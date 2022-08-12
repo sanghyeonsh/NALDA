@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main-page">
     <header-component></header-component>
     <nuxt-child></nuxt-child>
     <footer-component></footer-component>
@@ -52,6 +52,11 @@ export default {
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
 }
+
+.main-page {
+  background-color: rgba(239, 239, 239, 0.511);
+}
+
 div.clickEffect {
   position: fixed;
   box-sizing: border-box;
