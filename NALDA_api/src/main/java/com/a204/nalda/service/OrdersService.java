@@ -185,7 +185,7 @@ public class OrdersService {
                         .build());
             }
             String serviceClass;
-            if(orderLists.get(0).getOrderCode().charAt(0)=='A'){
+            if(orderLists.get(0).getOrderCode().charAt(0)=='A' && !orderLists.get(0).getOrderCode().equals("A000")){
                 serviceClass = "SNACK&DRINK";
             }else{
                 serviceClass = serviceRepository.findByServiceCode(orderLists.get(0).getOrderCode()).getServiceClass();
@@ -210,6 +210,7 @@ public class OrdersService {
         Optional<Orders> optional = orderRepository.findById(ordersId);
         if(optional.get().getStatus().equals(Status.PROGRESS)){
             optional.get().changeStatusInfo(Status.DONE);
+            optional.get().settingComplete();
         }else{
             optional.get().changeStatusInfo(Status.PROGRESS);
         }
