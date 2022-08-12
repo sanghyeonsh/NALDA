@@ -249,9 +249,6 @@ export default {
     },
   },
   created() {
-    axios.get('https://api.ipify.org?format=json').then((response) => {
-      console.log(response)
-    })
     this.getDeclarationList(this.loginMember.username)
   },
   methods: {
@@ -259,16 +256,12 @@ export default {
       'getDeclarationList',
       'getOneDeclaration',
     ]),
-    getIP(json) {
-      console.log(json)
-    },
     customDetail(event, { item }) {
       const promise = new Promise((resolve, reject) => {
         resolve()
       })
       promise.then(async () => {
         await this.getOneDeclaration(item.ID)
-        console.log(this.selectedDeclaration)
         this.declaration = this.selectedDeclaration
         this.$bvModal.show('check-modal')
       })

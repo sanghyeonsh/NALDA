@@ -256,7 +256,6 @@ export default {
     if (this.country3 !== '')
       visitedCountries.push({ countryName: this.country3 })
     this.MODIFY_VISITEDCOUNTRIES(visitedCountries)
-    console.log(this.declaration)
     next()
   },
   data() {

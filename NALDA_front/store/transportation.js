@@ -39,17 +39,12 @@ export const actions = {
     url += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1')
     url += '&' + encodeURIComponent('area') + '=' + encodeURIComponent(area)
     url += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('json')
-    console.log(url)
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.response.body)
         commit('SET_INFO_LIST', data.response.body)
       })
   },
-  //   test({ state }) {
-  //     console.log(state.info)
-  //   },
   getTime({ state, commit }, busNum) {
     commit('CLEAR_TIME_LIST')
     for (let i = 0; i < state.info.totalCount; i++) {
@@ -60,7 +55,6 @@ export const actions = {
         commit('SET_TIME_LIST', state.info.items[i].t2wt)
       }
     }
-    console.log(state.time)
   },
   getStop({ state, commit }, busNum) {
     commit('CLEAR_STOP_LIST')
@@ -69,6 +63,5 @@ export const actions = {
         commit('SET_STOP_LIST', state.info.items[i].routeinfo)
       }
     }
-    console.log(state.stop)
   },
 }

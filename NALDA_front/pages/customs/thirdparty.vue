@@ -309,13 +309,10 @@ export default {
       // this.second = true
       this.first = !this.second
       this.second = !this.second
-      console.log('전체' + this.first)
-      console.log('전체' + this.second)
     },
     agreeOne() {
       this.first = !this.second
       this.second = !this.second
-      console.log('부분' + this.second)
     },
     moveDeclaration() {
       this.$router.push('/customs/inform')

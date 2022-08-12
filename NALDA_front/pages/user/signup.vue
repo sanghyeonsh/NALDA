@@ -294,9 +294,7 @@ export default {
   computed: {
     ...mapState('user', ['terms']),
   },
-  created() {
-    console.log(this.terms)
-  },
+  created() {},
   methods: {
     registMember() {
       const emailSelect = document.getElementById('signup-email-select')
@@ -315,7 +313,6 @@ export default {
 
       const jobSelect = document.getElementById('signup-job-select')
       this.job = jobSelect.options[jobSelect.selectedIndex].value
-      console.log(this.job)
       if (this.password === this.passconfirm) {
         signup(
           {
@@ -371,7 +368,6 @@ export default {
       idCheck(
         this.username,
         ({ data }) => {
-          console.log(data.msg)
           alert(data.msg)
         },
         (error) => {

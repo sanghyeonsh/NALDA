@@ -55,9 +55,6 @@ export default {
   methods: {
     ...mapActions('menu', ['postOrders']),
     etcCheck() {
-      const comment = this.$refs.comment
-      console.log(111111)
-      console.log(comment)
       const order = {
         orderMessage: this.input,
         flightNum: this.flightNum,
@@ -75,13 +72,9 @@ export default {
       this.$router.push('/waiting')
     },
     onChange(input) {
-      console.log(111)
-      console.log(input)
       this.input = input
     },
-    onKeyPress(button) {
-      // console.log('button', button)
-    },
+    onKeyPress(button) {},
     onInputChange(input) {
       this.input = input.target.value
     },

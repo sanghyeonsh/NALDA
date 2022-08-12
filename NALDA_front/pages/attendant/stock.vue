@@ -5,7 +5,7 @@
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
             <div v-bind="flightNum" class="caption-wrap">
-              <h3>항공편 {{flightNum}} 재고 목록</h3>
+              <h3>항공편 {{ flightNum }} 재고 목록</h3>
               <!-- <div id="flight-num-input">
                 <b-form-input
                   v-model="flightNum"
@@ -41,13 +41,13 @@
               <b-th>Quantity</b-th>
             </b-tr>
           </b-thead>
-          <b-tbody v-if="ListType === 'snacks' ">
+          <b-tbody v-if="ListType === 'snacks'">
             <b-tr>
-              <b-th :rowspan="snackList.length+1">Snacks</b-th>
+              <b-th :rowspan="snackList.length + 1">Snacks</b-th>
             </b-tr>
-            <b-tr v-for="(snack,index) in snackList" :key="index">
-              <b-th class="text-right">{{snack.serviceName}}</b-th>
-              <b-th>{{snack.serviceCode}}</b-th>
+            <b-tr v-for="(snack, index) in snackList" :key="index">
+              <b-th class="text-right">{{ snack.serviceName }}</b-th>
+              <b-th>{{ snack.serviceCode }}</b-th>
               <b-td>
                 <b-form-input
                   id="snack-input"
@@ -61,13 +61,13 @@
               </b-td>
             </b-tr>
           </b-tbody>
-          <b-tbody v-else-if="ListType ==='alcohols'">
+          <b-tbody v-else-if="ListType === 'alcohols'">
             <b-tr>
-              <b-th :rowspan="alcoholsList.length+1">Alcohols</b-th>
+              <b-th :rowspan="alcoholsList.length + 1">Alcohols</b-th>
             </b-tr>
             <b-tr v-for="(alcohol, index) in alcoholsList" :key="index">
-              <b-th class="text-right">{{alcohol.serviceName}}</b-th>
-              <b-th>{{alcohol.serviceCode}}</b-th>
+              <b-th class="text-right">{{ alcohol.serviceName }}</b-th>
+              <b-th>{{ alcohol.serviceCode }}</b-th>
               <b-td>
                 <b-form-input
                   v-model="alcoholQuantity[index]"
@@ -79,13 +79,13 @@
               </b-td>
             </b-tr>
           </b-tbody>
-          <b-tbody v-else-if="ListType ==='nonalcohols'">
+          <b-tbody v-else-if="ListType === 'nonalcohols'">
             <b-tr>
-              <b-th :rowspan="nonalcoholosList.length+1">Non-Alcohols</b-th>
+              <b-th :rowspan="nonalcoholosList.length + 1">Non-Alcohols</b-th>
             </b-tr>
             <b-tr v-for="(nonalcohol, index) in nonalcoholosList" :key="index">
-              <b-th class="text-right">{{nonalcohol.serviceName}}</b-th>
-              <b-th>{{nonalcohol.serviceCode}}</b-th>
+              <b-th class="text-right">{{ nonalcohol.serviceName }}</b-th>
+              <b-th>{{ nonalcohol.serviceCode }}</b-th>
               <b-td>
                 <b-form-input
                   v-model="nonAlcoholQuantity[index]"
@@ -96,13 +96,13 @@
               </b-td>
             </b-tr>
           </b-tbody>
-          <b-tbody v-else-if="ListType ==='amenities'">
+          <b-tbody v-else-if="ListType === 'amenities'">
             <b-tr>
-              <b-th :rowspan="amenityList.length+1">Amenity</b-th>
+              <b-th :rowspan="amenityList.length + 1">Amenity</b-th>
             </b-tr>
             <b-tr v-for="(amenity, index) in amenityList" :key="index">
-              <b-th class="text-right">{{amenity.serviceName}}</b-th>
-              <b-th>{{amenity.serviceCode}}</b-th>
+              <b-th class="text-right">{{ amenity.serviceName }}</b-th>
+              <b-th>{{ amenity.serviceCode }}</b-th>
               <b-td>
                 <b-form-input
                   v-model="amenityQuantity[index]"
@@ -118,10 +118,16 @@
             <b-tr>
               <b-td colspan="7" variant="secondary" class="text-right">
                 Total Rows:
-                <b v-if="ListType === 'snacks'">{{snackList.length}}</b>
-                <b v-else-if="ListType === 'alcohols'">{{alcoholsList.length}}</b>
-                <b v-else-if="ListType === 'nonalcohols'">{{nonalcoholosList.length}}</b>
-                <b v-else-if="ListType === 'amenities'">{{amenityList.length}}</b>
+                <b v-if="ListType === 'snacks'">{{ snackList.length }}</b>
+                <b v-else-if="ListType === 'alcohols'">{{
+                  alcoholsList.length
+                }}</b>
+                <b v-else-if="ListType === 'nonalcohols'">{{
+                  nonalcoholosList.length
+                }}</b>
+                <b v-else-if="ListType === 'amenities'">{{
+                  amenityList.length
+                }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
@@ -182,8 +188,6 @@ export default {
   },
   created() {
     this.getServiceList(this.flightNum)
-    // this.setQuantityList()
-    console.log(this.flightNum)
   },
   methods: {
     ...mapActions('attendant', [

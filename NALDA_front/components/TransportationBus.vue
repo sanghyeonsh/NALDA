@@ -232,7 +232,6 @@ export default {
         for (let i = 0; i < this.info.totalCount; i++) {
           this.busNum.push(this.info.items[i].busnumber)
         }
-        console.log(this.info)
         await this.getTime(this.info.items[0].busnumber)
         await this.getStop(this.info.items[0].busnumber)
         this.makeTimeTable()
@@ -322,10 +321,7 @@ export default {
         temp = 3
       }
       tempTime = this.time[temp]
-      console.log(tempTime)
-      // this.choiceTime = []
       if (tempTime === null) {
-        // this.choiceTime = ['배정된 버스가 없습니다.']
         this.choiceTime = ['', '', '', '배정된', '버스가', '없습니다.']
       } else {
         this.choiceTime = tempTime.split(', ')
@@ -334,8 +330,6 @@ export default {
             this.choiceTime[i].substr(0, 2) +
             ':' +
             this.choiceTime[i].substr(2, 2)
-          // console.log(111)
-          // console.log(this.choiceTime[i])
         }
       }
     },
@@ -351,7 +345,7 @@ export default {
         // if(this.choiceStation[test.])
         test = [...this.choiceStation]
         console.log('aaaaaaa')
-        console.log(this.choiceStation[test.length - 1])
+        transportation.vue(this.choiceStation[test.length - 1])
         if (this.choiceStation[test.length - 1] === '') {
           this.choiceStation.splice(test.length - 1, 1)
         }

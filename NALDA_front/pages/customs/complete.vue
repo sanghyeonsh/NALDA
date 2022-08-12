@@ -96,7 +96,6 @@ export default {
         return
       }
       this.MODIFY_DATE(this.date)
-      console.log(this.declaration)
       this.saveDeclaration()
     },
   },

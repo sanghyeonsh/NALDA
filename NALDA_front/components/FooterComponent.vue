@@ -20,11 +20,11 @@
         <button
           v-else
           class="service-wrap"
-          style="background-color: #206e95"
+          style="background-color: #0e0737"
           @click="MoveHelpcall"
         >
           <img src="/main/flight_attendant_w.png" alt="toilet" />
-          <h3>승무원호출</h3>
+          <div>승무원호출</div>
         </button>
       </div>
     </div>

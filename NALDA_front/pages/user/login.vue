@@ -98,7 +98,6 @@ export default {
           this.$bvModal.show('login-modal')
         }
         if (this.loginMember.userRole === 'ROLE_USER') {
-          console.log(this.isLogin)
           this.$router.push('/main')
         }
         if (this.loginMember.userRole === 'ROLE_ATTENDANT') {

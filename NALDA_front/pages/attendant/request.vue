@@ -95,7 +95,9 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
+                <b-button variant="info" @click="completeRequest(selecteditems)"
+                  >완료처리</b-button
+                >
               </div>
             </div>
             <!-- <b-pagination
@@ -219,7 +221,6 @@ export default {
       this.details = []
       if (item.상태 === 'PROGRESS') {
         for (let i = 0; i < item.주문상세.length; i++) {
-          // console.log(item.주문상세)
           const orderDetail = {
             id: item.id,
             좌석: item.좌석,
@@ -232,7 +233,6 @@ export default {
         }
       } else {
         for (let i = 0; i < item.주문상세.length; i++) {
-          // console.log(item.주문상세)
           const orderDetail = {
             id: item.id,
             좌석: item.좌석,
@@ -247,7 +247,6 @@ export default {
     },
     onRowSelected(items) {
       this.selecteditems = items
-      // console.log(items)
     },
     selectAllRows() {
       this.$refs.selectableTable.selectAllRows()
@@ -256,14 +255,6 @@ export default {
       this.$refs.selectableTable.clearSelected()
     },
     completeRequest(items) {
-      // 완료 시각 계산
-      const Today = new Date()
-      const hours = ('0' + Today.getHours()).slice(-2)
-      const minutes = ('0' + Today.getMinutes()).slice(-2)
-      const seconds = ('0' + Today.getSeconds()).slice(-2)
-      const currentTime = hours + ':' + minutes + ':' + seconds
-      console.log(currentTime)
-      // 선택된 아이템의 상태 바꿔주기
       for (let i = 0; i < items.length; i++) {
         items[i].상태 = 'DONE'
       }
