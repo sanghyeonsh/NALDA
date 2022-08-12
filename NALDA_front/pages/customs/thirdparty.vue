@@ -13,7 +13,7 @@
         <div class="all-terms-wrap">
           <div
             class="terms-title"
-            :class="{ active: !isActive }"
+            :class="{ active: !first && !second }"
             @click="agreeAll"
           >
             <!-- <span class="input-chk">
@@ -27,6 +27,7 @@
             <div class="check-icon-wrap">
               <img
                 class="check-all-icon"
+                :class="{ active: !first && !second }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -38,10 +39,15 @@
           </div>
         </div>
         <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div
+            class="terms-title"
+            :class="{ active: !second }"
+            @click="agreeOne"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: !second }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -293,12 +299,23 @@ export default {
   name: 'CustomsThirdpartyTerms',
   data() {
     return {
-      isActive: true,
+      first: true,
+      second: true,
     }
   },
   methods: {
     agreeAll() {
-      this.isActive = !this.isActive
+      // this.first = true
+      // this.second = true
+      this.first = !this.second
+      this.second = !this.second
+      console.log('전체' + this.first)
+      console.log('전체' + this.second)
+    },
+    agreeOne() {
+      this.first = !this.second
+      this.second = !this.second
+      console.log('부분' + this.second)
     },
     moveDeclaration() {
       this.$router.push('/customs/inform')
@@ -327,8 +344,9 @@ export default {
 }
 
 .main-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -397,7 +415,12 @@ export default {
 .active {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
+
+/* .active > img {
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #faab35);
+} */
 
 .terms-title:hover {
   /* background-color: #88c0c5; */

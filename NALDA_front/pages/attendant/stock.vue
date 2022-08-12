@@ -4,11 +4,16 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div class="caption-wrap">
-              <h3>재고 목록:</h3>
-              <div id="flight-num-input">
-                <b-form-input v-model="flightNum" type="text" />
-              </div>
+            <div v-bind="flightNum" class="caption-wrap">
+              <h3>항공편 {{flightNum}} 재고 목록</h3>
+              <!-- <div id="flight-num-input">
+                <b-form-input
+                  v-model="flightNum"
+                  type="text"
+                  disabled
+                  style="height: 5vh; font-size: x-large;"
+                />
+              </div>-->
             </div>
           </caption>
           <colgroup>
@@ -137,6 +142,7 @@
         <b-button @click="showNonAlcohol">Non-Alcohols</b-button>
         <b-button @click="showAmenity">Amenity</b-button>
         <b-button variant="warning" @click="setTotal()">save</b-button>
+        <b-button @click="testStockCnt">test</b-button>
       </div>
     </div>
   </div>
@@ -151,7 +157,6 @@ export default {
       // perPage: 10,
       // currentPage: 1,
       ListType: 'snacks',
-      flightNum: '',
       snackQuantity: [],
       alcoholQuantity: [],
       nonAlcoholQuantity: [],
@@ -171,17 +176,21 @@ export default {
       'nonalcoholosList',
       'amenityList',
       'setStock',
+      'stockCnt',
     ]),
+    ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
-    this.getServiceList()
+    this.getServiceList(this.flightNum)
     // this.setQuantityList()
+    console.log(this.flightNum)
   },
   methods: {
     ...mapActions('attendant', [
       'getServiceList',
       'setStockAmount',
       'modifyStockAmount',
+      'getStockAmount',
     ]),
     showSnack() {
       this.ListType = 'snacks'
@@ -201,6 +210,52 @@ export default {
     setAlcoholQuantity(alcohol, index, value) {
       // console.log(this.alcoholQuantity)
     },
+    testStockCnt() {
+      console.log(this.flightNum)
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.getStockAmount(this.flightNum)
+        console.log(this.stockCnt)
+        console.log(this.setStock)
+        // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
+        for (let i = 0; i < this.stockCnt.cntList.length; i++) {
+          // console.log(this.stockCnt.cntList[i].serviceCode.substr(0, 2))
+          // console.log(this.stockCnt.cntList[i].serviceCode.substr(3))
+          const classification = this.stockCnt.cntList[i].serviceCode.substr(
+            0,
+            2
+          )
+          let idx = this.stockCnt.cntList[i].serviceCode.substr(3) - 1
+          if (idx < 0) {
+            idx += 10
+          }
+          if (classification === 'A0') {
+            this.$set(this.snackQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.snackQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'A1') {
+            this.$set(this.alcoholQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'A2') {
+            this.$set(
+              this.nonAlcoholQuantity,
+              idx,
+              this.stockCnt.cntList[i].total
+            )
+            // this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
+          } else if (classification === 'C0') {
+            this.$set(this.amenityQuantity, idx, this.stockCnt.cntList[i].total)
+            // this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
+          }
+        }
+
+        // this.$forceUpdate()
+        console.log(this.amenityQuantity)
+        console.log(this.snackQuantity)
+        console.log(this.alcoholQuantity)
+      })
+    },
     setTotal() {
       this.TotalServiceQuantity = []
       this.whole = []
@@ -208,6 +263,11 @@ export default {
       this.whole.push(this.alcoholsList)
       this.whole.push(this.nonalcoholosList)
       this.whole.push(this.amenityList)
+
+      // this.whole[type][i].serviceQuantity부분 수정 필요함
+      // 0아니고 stock db에 있으면 그 값으로 다 바꿔야함..
+      // store부분에서 수정 필요.. 말고 그냥 여기서 함수 불러서
+      // getStockAmount 해서 그거로 total에 넣어주는거로.
 
       // console.log(this.amenityQuantity)
       // 1. 전체 재고 목록 배열을 하나 생성한다.
@@ -218,7 +278,7 @@ export default {
             flightNum: this.flightNum,
             total: this.whole[type][i].serviceQuantity,
           }
-          // console.log(stock)
+          console.log(stock)
           this.TotalServiceQuantity.push(stock)
         }
       }
@@ -309,6 +369,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
+  margin-bottom: 1%;
 }
 #flight-num-input {
   width: 88%;

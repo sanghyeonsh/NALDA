@@ -18,6 +18,7 @@ export default {
 
 <style scoped>
 .orders-snack-container {
+  background-color: rgba(239, 239, 239, 0.511);
   display: flex;
   flex-direction: column;
   height: 100vh;

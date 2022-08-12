@@ -13,7 +13,9 @@
         <div class="all-terms-wrap">
           <div
             class="terms-title"
-            :class="{ active: !isActive }"
+            :class="{
+              active: requiredFirst && requiredSecond && first && second,
+            }"
             @click="agreeAll"
           >
             <!-- <span class="input-chk">
@@ -27,6 +29,9 @@
             <div class="check-icon-wrap">
               <img
                 class="check-all-icon"
+                :class="{
+                  active: requiredFirst && requiredSecond && first && second,
+                }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -42,10 +47,15 @@
                         <i class="far fa-check-circle"></i>
                         <label for="terms-service">날다 이용약관 동의 (필수)</label>
           </span> ---->
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div
+            class="terms-title"
+            :class="{ active: requiredFirst }"
+            @click="agreeRequiredFirst"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: requiredFirst }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -626,10 +636,15 @@
           </div>
         </div>
         <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div
+            class="terms-title"
+            :class="{ active: requiredSecond }"
+            @click="agreeRequiredSecond"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: requiredSecond }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -852,10 +867,15 @@
           </div>
         </div>
         <div class="unnecessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div
+            class="terms-title"
+            :class="{ active: first }"
+            @click="agreeFirst"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: first }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -1205,10 +1225,15 @@
           </div>
         </div>
         <div class="unnecessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
+          <div
+            class="terms-title"
+            :class="{ active: second }"
+            @click="agreeSecond"
+          >
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
+                :class="{ active: second }"
                 src="/icon/check_mark.png"
                 alt="check-icon"
               />
@@ -1245,22 +1270,64 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   name: 'TermsUse',
   data() {
     return {
-      isActive: true,
+      requiredFirst: false,
+      requiredSecond: false,
+      first: false,
+      second: false,
+      terms: [],
     }
   },
   methods: {
+    ...mapMutations('user', ['AGREE_TERMS']),
     agreeAll() {
-      this.isActive = !this.isActive
+      if (
+        this.requiredFirst === true &&
+        this.requiredSecond === true &&
+        this.first === true &&
+        this.second === true
+      ) {
+        this.requiredFirst = !this.requiredFirst
+        this.requiredSecond = !this.requiredSecond
+        this.first = !this.first
+        this.second = !this.second
+      } else {
+        this.requiredFirst = true
+        this.requiredSecond = true
+        this.first = true
+        this.second = true
+      }
+    },
+    agreeRequiredFirst() {
+      this.requiredFirst = !this.requiredFirst
+    },
+    agreeRequiredSecond() {
+      this.requiredSecond = !this.requiredSecond
+    },
+    agreeFirst() {
+      this.first = !this.first
+    },
+    agreeSecond() {
+      this.second = !this.second
     },
     moveSignup() {
       this.$router.push('/user/signup')
+      const terms = {
+        termService: this.requiredFirst,
+        privacyPolicy: this.requiredSecond,
+        locationBased: this.first,
+        promotionalInfo: this.second,
+      }
+      console.log(this.requiredSecond)
+      this.AGREE_TERMS(terms)
     },
     goBack() {
-      this.$router.go(-1)
+      this.$router.push(this.$nuxt.context.from.path)
     },
   },
 }
@@ -1292,7 +1359,7 @@ export default {
 
 .main-container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1361,6 +1428,7 @@ export default {
 .active {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
 
 .terms-title:hover {

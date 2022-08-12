@@ -133,13 +133,13 @@
                 id="signup-email-select"
                 class="selectbox"
                 name="email"
-                onchange
+                @change="changeEmail"
               >
-                <option value="self">직접입력</option>
-                <option value="naver">naver.com</option>
-                <option value="gmail">gmail.com</option>
-                <option value="daum">daum.com</option>
-                <option value="hotmail">hotmail.com</option>
+                <option value="">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="daum.com">daum.com</option>
+                <option value="hotmail.com">hotmail.com</option>
               </select>
             </div>
           </div>
@@ -260,6 +260,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { signup, idCheck } from '@/api/user'
 
 export default {
@@ -289,6 +290,12 @@ export default {
       tel: null,
       nationality: null,
     }
+  },
+  computed: {
+    ...mapState('user', ['terms']),
+  },
+  created() {
+    console.log(this.terms)
   },
   methods: {
     registMember() {
@@ -328,10 +335,10 @@ export default {
             tel: this.tel,
             nationality: this.nationality,
             // 넘겨주기
-            termService: 'Y',
-            privacyPolicy: 'Y',
-            locationBased: 'Y',
-            promotionalInfo: 'Y',
+            termService: this.terms.termService,
+            privacyPolicy: this.terms.privacyPolicy,
+            locationBased: this.terms.locationBased,
+            promotionalInfo: this.terms.promotionalInfo,
           },
           ({ data }) => {
             this.$router.push('/user/login')
@@ -371,6 +378,10 @@ export default {
           console.log(error)
         }
       )
+    },
+
+    changeEmail(e) {
+      this.emailDomain = e.target.value
     },
     /*
     KAKAO API 사용한부분
@@ -459,7 +470,7 @@ body {
 
 .singup-main-container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;

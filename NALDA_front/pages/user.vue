@@ -25,6 +25,9 @@ export default {
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
 }
+.user-page {
+  background-color: rgba(239, 239, 239, 0.511);
+}
 /* .user-logo {
   width: 8%;
 }
