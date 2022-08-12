@@ -59,10 +59,11 @@ export default {
         subway.time = currentTime
         this.list.push(subway)
       }
+    },
+    // subwayInput() {
+    //   this.postInfo(this.list)
+    // },
   },
-  // subwayInput() {
-  //   this.postInfo(this.list)
-  // },
 }
 </script>
 

@@ -344,8 +344,6 @@ export default {
         // test = Object.assign([], this.choiceStation)
         // if(this.choiceStation[test.])
         test = [...this.choiceStation]
-        console.log('aaaaaaa')
-        transportation.vue(this.choiceStation[test.length - 1])
         if (this.choiceStation[test.length - 1] === '') {
           this.choiceStation.splice(test.length - 1, 1)
         }

@@ -209,7 +209,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import UserNavs from '../../components/UserNavs.vue'
 export default {
