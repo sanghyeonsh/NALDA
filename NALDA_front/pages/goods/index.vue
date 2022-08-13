@@ -130,17 +130,19 @@ export default {
 
 .check-box-items {
   display: flex;
-  margin-top: 5px;
+  margin-bottom: 20vh;
   font-size: xx-large;
   width: 100%;
   justify-content: center;
   align-items: center;
 }
 .goods-container {
+  background-color: rgba(239, 239, 239, 0.511);
   display: flex;
-  height: 60vh;
+  height: 85vh;
 }
 .goods-container-box {
+  background-color: rgba(239, 239, 239, 0.511);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -150,6 +152,7 @@ export default {
 .goods-container-box img {
   width: 70%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .goods-container-box h3 {
   margin-top: 40px;

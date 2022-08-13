@@ -119,8 +119,9 @@ export default {
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -145,6 +146,7 @@ export default {
   align-items: center;
 }
 .customform-container {
+  background-color: white;
   width: 100%;
   height: 80%;
   padding: 2%;

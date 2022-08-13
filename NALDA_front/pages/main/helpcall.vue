@@ -10,13 +10,22 @@
 <script>
 export default {
   name: 'MainHelpCall',
-  components: {},
+  mounted() {
+    this.moveMain()
+  },
+  methods: {
+    moveMain() {
+      window.setTimeout(() => {
+        this.$router.push('/main')
+      }, 3000)
+    },
+  },
 }
 </script>
 
 <style scoped>
 .helpcall-box {
-  height: 70vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   justify-content: center;

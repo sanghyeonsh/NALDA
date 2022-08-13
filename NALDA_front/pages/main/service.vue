@@ -56,10 +56,11 @@ export default {
 }
 .main-service-container {
   display: flex;
-  height: 70vh;
+  height: 85vh;
   width: 100vw;
 }
 .service-container-box {
+  margin-bottom: 5vh;
   text-align: center;
   display: flex;
   flex-direction: column;

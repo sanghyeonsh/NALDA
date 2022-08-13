@@ -4,6 +4,7 @@ import {
   listOrders,
   updateStatus,
   modifyServices,
+  getServiceCnt,
   //   choiceMeal,
 } from '@/api/attendant'
 
@@ -17,6 +18,7 @@ export const state = () => ({
   ordersList: [],
   completeList: [],
   setStock: false,
+  stockCnt: [],
 })
 
 export const mutations = {
@@ -50,6 +52,10 @@ export const mutations = {
     state.setStock = true
     // console.log(state.setStock)
     console.log(data)
+  },
+
+  GET_STOCK_AMOUNT(state, data) {
+    state.stockCnt = data
   },
 
   SET_ORDERS_LIST(state, data) {
@@ -166,14 +172,26 @@ export const actions = {
       }
     )
   },
+  async getStockAmount({ commit }, flightNum) {
+    await getServiceCnt(
+      flightNum,
+      ({ data }) => {
+        commit('GET_STOCK_AMOUNT', data)
+        console.log('성공')
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
   getListOrders({ commit }, flightNum) {
     commit('CREAR_ORDERS_LIST')
-    // console.log(11111111111)
+    console.log(11111111111)
     listOrders(
       flightNum,
       ({ data }) => {
         // console.log(222222222)
-        // console.log('store입니다 ' + JSON.stringify(data))
+        console.log('store입니다 ' + JSON.stringify(data))
         // console.log('store입니다 ' + data)
         commit('SET_ORDERS_LIST', data.serviceList)
         console.log('성공')
@@ -183,7 +201,7 @@ export const actions = {
       }
     )
   },
-  async updateOrderStatus({ commit, dispatch }, orderId) {
+  async updateOrderStatus({ commit }, orderId) {
     // console.log(33333333333)
     await updateStatus(
       orderId,
@@ -196,6 +214,5 @@ export const actions = {
         console.log(error)
       }
     )
-    // dispatch('getListOrders', 1)
   },
 }

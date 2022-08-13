@@ -3,25 +3,19 @@
     <div class="main-container-box" @click="moveRequestPage">
       <div>
         <img class="image" src="/main/call_sevice_icon.png" alt="service" />
-        <h3>Request</h3>
+        <h3>고객요청</h3>
       </div>
     </div>
-    <div class="main-container-box">
-      <nuxt-link to="/attendant/request" style="text-decoration: none">
-        <div>
-          <img
-            class="image"
-            src="/main/excel_icon.png"
-            alt="custom_declaration"
-          />
-          <h3>Maninging Stock</h3>
-        </div>
-      </nuxt-link>
+    <div class="main-container-box" @click="moveStockPage">
+      <div>
+        <img class="image" src="/main/excel_icon.png" alt="custom_declaration" />
+        <h3>재고목록</h3>
+      </div>
     </div>
     <div class="main-container-box" @click="moveMealPage">
       <div>
         <img class="image" src="/orders/food.png" alt="airport_info" />
-        <h3>Meal Service</h3>
+        <h3>기내식관리</h3>
       </div>
     </div>
   </div>
@@ -32,14 +26,13 @@ export default {
   name: 'AttendantMain',
   data() {
     return {
-      flightNum: '',
       airplaneKind: '',
     }
   },
   created() {},
   methods: {
     moveRequestPage() {
-      this.$router.push('/attendant/requesttest')
+      this.$router.push('/attendant/request')
     },
     moveStockPage() {
       this.$router.push('/attendant/stock')

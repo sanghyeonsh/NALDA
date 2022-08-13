@@ -55,8 +55,9 @@ export default {
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -89,6 +90,7 @@ export default {
   transition: all 0.3s ease 0s;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 .customform-title {
   font-size: xx-large;

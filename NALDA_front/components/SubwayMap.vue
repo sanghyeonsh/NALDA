@@ -3,17 +3,18 @@
   <div class="map-container">
     <div>
       <div class="terminal-map-top">
+        <i class="fa-solid fa-caret-right"></i>
         <img
           class="arrow-btn"
           src="/transportation/arrow-left-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
         <div class="terminal-name">{{ terminal[idx % 2] }}</div>
         <img
           class="arrow-btn"
           src="/transportation/arrow-right-drop-circle-outline.png"
-          alt=""
+          alt
           @click="changeName"
         />
       </div>
@@ -57,14 +58,16 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+
 * {
   font-family: 'twayfly';
 }
 
 .map-container {
   width: 100vw;
-  height: 85%;
+  height: 68vh;
   margin: 0 0 0 30px;
+  background-color: white;
 }
 .map-container > div {
   width: 100%;
@@ -72,6 +75,7 @@ export default {
 }
 .terminal-map-top {
   display: flex;
+  align-items: center;
   width: 100%;
   margin: 20px 0;
 }
