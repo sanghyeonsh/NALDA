@@ -14,7 +14,8 @@ public interface ServiceStockRepository extends JpaRepository<ServiceStock, Long
     @Query("select s from ServiceStock s where s.flight.id=:flightId and s.serviceCodes.id=:serviceCodeId")
     ServiceStock findByFlightAndServiceCode(Long flightId, Long serviceCodeId);
 
-    List<ServiceStock> findByFlightId(Long flightId);
+    @Query("select s from ServiceStock s where s.flight.id=(select f.id from Flight f where f.flightNum=:flightNum)")
+    List<ServiceStock> findByFlightNum(String flightNum);
 
 
 }
