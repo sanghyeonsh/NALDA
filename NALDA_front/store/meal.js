@@ -101,7 +101,25 @@ export const mutations = {
     console.log(state.validMealList)
   },
   SET_FLIGHTMEALS_LIST(state, selectedMealList) {
-    state.flightMealList = selectedMealList
+    selectedMealList.forEach((selectedMeal) => {
+      const mealInfo = {
+        menu: selectedMeal.menu,
+        image: selectedMeal.image,
+        imageName: selectedMeal.imageName,
+        total: selectedMeal.total,
+        validated: false,
+      }
+      state.flightMealList.push(mealInfo)
+    })
+  },
+  UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
+    // console.log('store')
+    // console.log(validMeal)
+    state.flightMealList.forEach((flightMeal) => {
+      if (flightMeal.menu === validMeal.menu) {
+        flightMeal.validated = validMeal.validated
+      }
+    })
   },
 
   CLEAR_MEAL_LIST(state) {

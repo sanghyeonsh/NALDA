@@ -4,7 +4,7 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div v-bind="flightNum" class="caption-wrap">
+            <div class="caption-wrap">
               <h3>항공편 {{flightNum}} 재고 목록</h3>
               <!-- <div id="flight-num-input">
                 <b-form-input

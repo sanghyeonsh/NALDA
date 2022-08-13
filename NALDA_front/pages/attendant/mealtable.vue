@@ -4,7 +4,7 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div v-bind="flightNum" class="caption-wrap">
+            <div class="caption-wrap">
               <h3>항공편 {{flightNum}} 기내식 목록</h3>
               <!-- <div id="flight-num-input">
                 <b-form-input
@@ -89,7 +89,6 @@ export default {
       dialog: false,
       mealList: [],
       total: 0,
-      totalRules: [(v) => /^[0-9]*$/.test(v) || '숫자만 입력해주세요.'],
       selectedMealList: [],
       selectedMeal: [],
     }
@@ -111,7 +110,7 @@ export default {
     })
     promise.then(async () => {
       await this.getMeal()
-      this.meals.forEach((meal) => {
+      await this.meals.forEach((meal) => {
         const mealInfo = {
           menu: meal.menu,
           image: meal.image,

@@ -1,11 +1,16 @@
 <template>
   <div class="airfood-container">
-    <h1 v-bind="flightNum" @click="test">항공편 {{flightNum}} 기내식 선택</h1>
+    <h1 @click="test">항공편 {{flightNum}} 기내식 선택</h1>
     <div id="app">
       <v-app id="inspire">
         <div class="wrapper">
           <div v-for="(meal, i) in mealList" :key="i" class="food-box">
-            <v-card class="mx-auto my-12" max-width="374" @click="setMealSelected(meal)">
+            <v-card
+              class="mx-auto my-12"
+              :class="{valid: (flightMealList[i].validated === true || meal.validated === true)}"
+              max-width="374"
+              @click="setMealSelected(meal)"
+            >
               <template slot="progress">
                 <v-progress-linear color height="10" indeterminate></v-progress-linear>
               </template>
@@ -81,10 +86,11 @@
             <v-btn icon dark @click="toggle">
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>{{selectedMeal.menu}}</v-toolbar-title>
+            <v-toolbar-title style="font-size: xx-large;">{{selectedMeal.menu}}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <v-btn
+                v-if="selectedMeal.validated === false"
                 class="mx-2"
                 fab
                 dark
@@ -93,29 +99,30 @@
                 style="width:100%;"
                 @click="setMealtotal(selectedMeal)"
               >
-                <div style="font-size:x-large">등록</div>
+                <div style="font-size:x-large">Validate</div>
+              </v-btn>
+              <v-btn
+                v-else-if="selectedMeal.validated === true"
+                class="mx-2"
+                fab
+                dark
+                large
+                color="pink"
+                style="width:100%;"
+                @click="unsetMealtotal(selectedMeal)"
+              >
+                <div style="font-size:x-large">unValidate</div>
               </v-btn>
             </v-toolbar-items>
           </v-toolbar>
-          <v-card-text class="d-flex align-center">
+          <v-card-text class="d-flex align-center justify-content-between">
             <img
               class="item-img mt-5"
               :src="'data:image/jpg;base64,' + selectedMeal.image"
               style="height: 350px; width: 350px;"
             />
-            <div style="font-size: xx-large; margin-left: 6%; display: flex;">
-              <v-btn class="mx-2" fab dark large color="cyan" @click="minusNum">
-                <v-icon dark>mdi-minus</v-icon>
-              </v-btn>
-              <v-text-field
-                v-model="selectedMeal.total"
-                :counter="3"
-                :rules="totalRules"
-                style="width: 160px; text-align: center;"
-              ></v-text-field>
-              <v-btn class="mx-2" fab dark large color="cyan" @click="addNum">
-                <v-icon dark>mdi-plus</v-icon>
-              </v-btn>
+            <div style="margin-right: 17%; display: flex; flex-direction: column;">
+              <div style="font-size: xxx-large;">수량: {{selectedMeal.total}}</div>
             </div>
           </v-card-text>
         </v-card>
@@ -125,7 +132,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'AttendantMealSet',
   components: {},
@@ -163,12 +170,10 @@ export default {
           image: meal.image,
           imageName: meal.imageName,
           total: meal.total,
+          validated: meal.validated,
         }
         this.mealList.push(mealInfo)
       })
-      // console.log(this.flightMealList)
-      // this.getDetail(this.meals)
-      // this.getAllergy(this.meals)
     })
   },
   methods: {
@@ -182,20 +187,40 @@ export default {
       'registSeatMeal',
       'validMeal',
     ]),
+    ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST']),
     test() {
       // console.log(this.mealList)
       console.log(this.flightMealList)
     },
     setMealSelected(meal) {
-      this.dialog = !this.dialog
+      if (meal.validate !== true) {
+        this.dialog = !this.dialog
+      }
       this.selectedMeal = meal
       //   console.log(meal)
-      console.log(this.selectedMeal)
+      // console.log(this.selectedMeal)
     },
     setMealtotal(meal) {
-      if (this.select.length < 3) {
-        this.select.push(meal)
+      meal.validated = true
+      // console.log(meal)
+      // console.log(this.mealList)
+      this.UPDATE_FLIGHTMEALS_LIST(meal)
+      const info = {
+        fligtNum: this.flightNum,
+        mealMenu: meal.menu,
+        total: meal.total,
       }
+      console.log(info)
+      if (this.select.length < 3) {
+        this.select.push(info)
+      }
+      this.dialog = !this.dialog
+    },
+    unsetMealtotal(meal) {
+      meal.validated = false
+      this.UPDATE_FLIGHTMEALS_LIST(meal)
+      this.select.remove(meal)
+      this.dialog = !this.dialog
     },
     toggle() {
       this.dialog = !this.dialog
@@ -301,6 +326,11 @@ export default {
   display: flex;
   padding: 8px;
   justify-content: flex-start;
+}
+
+.valid {
+  filter: brightness(50%);
+  pointer-events: none;
 }
 .food-box {
   width: 20%;
