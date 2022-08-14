@@ -91,8 +91,6 @@ export const actions = {
             password: object.password,
           },
           ({ headers, data }) => {
-            // const jwtToken = headers.get('Authorization')
-            // console.log(jwtToken)
             sessionStorage.setItem('Authorization', headers.authorization)
             if (data.msg === '로그인 성공') {
               commit('SET_LOGIN_MEMBER', data.userInfo)

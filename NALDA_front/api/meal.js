@@ -36,11 +36,6 @@ async function allergyMeal(mealId, success, fail) {
   await api.get(`/meal/allergy/${mealId}`).then(success).catch(fail)
 }
 
-// user정보와 meal정보가 param에 담겨있음
-// async function choiceMeal(info, success, fail) {
-//   console.log(info)
-//   await api.post(`/meal/choice`, JSON.stringify(info)).then(success).catch(fail)
-// }
 async function choiceMeal(info, success, fail) {
   await api.post(`/meal/choice`, JSON.stringify(info)).then(success).catch(fail)
 }

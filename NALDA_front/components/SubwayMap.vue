@@ -44,7 +44,6 @@ export default {
   methods: {
     changeName() {
       this.idx += 1
-      console.log(this.idx)
     },
   },
 }

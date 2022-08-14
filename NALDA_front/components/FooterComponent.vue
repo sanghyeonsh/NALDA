@@ -1,33 +1,29 @@
 <template>
-  <div class="footer-container">
-    <div class="footer-wrap">
-      <div class="service-btn-wrap">
-        <button class="toilet-wrap" @click="MoveToilet">
-          <div style="display: flex; align-items: center">
-            <img src="/main/toilet_navy.png" alt="toilet" class="mr-2" />
-            <div>화장실</div>
-          </div>
-        </button>
-        <button
-          v-if="role === 'ROLE_ATTENDANT'"
-          class="service-wrap"
-          style="background-color: #206e95"
-          @click="endMeals"
-        >
-          <img src="/main/flight_attendant_w.png" alt="toilet" />
-          <h3>기내식종료</h3>
-        </button>
-        <button
-          v-else
-          class="service-wrap"
-          style="background-color: #206e95"
-          @click="MoveHelpcall"
-        >
-          <img src="/main/flight_attendant_w.png" alt="toilet" />
-          <h3>승무원호출</h3>
-        </button>
+  <div class="service-btn-wrap">
+    <button class="toilet-wrap" @click="MoveToilet">
+      <div style="display: flex; align-items: center">
+        <img src="/main/toilet_navy.png" alt="toilet" class="mr-2" />
+        <div>화장실</div>
       </div>
-    </div>
+    </button>
+    <button
+      v-if="role === 'ROLE_ATTENDANT'"
+      class="service-wrap"
+      style="background-color: #206e95"
+      @click="endMeals"
+    >
+      <img src="/main/flight_attendant_w.png" alt="toilet" />
+      <h3>기내식종료</h3>
+    </button>
+    <button
+      v-else
+      class="service-wrap"
+      style="background-color: #0e0737"
+      @click="MoveHelpcall"
+    >
+      <img src="/main/flight_attendant_w.png" alt="toilet" />
+      <div>승무원호출</div>
+    </button>
   </div>
 </template>
 
@@ -90,33 +86,15 @@ export default {
   font-family: 'twayfly';
 }
 
-.footer-container {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  /* background-color: rgba(0, 0, 0, 0); */
-}
-.footer-container footer {
-  width: 100%;
-  text-align: center;
-  font-size: smaller;
-}
-
-.footer-wrap {
-  /* padding: 1%; */
-}
 .service-btn-wrap {
+  position: fixed;
+  bottom: 20px;
+  right: 15px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   /* padding: 1%; */
   align-items: center;
-  height: 60%;
-  margin-top: 1%;
-  margin-right: 1%;
 }
 .service-btn-wrap h3 {
   font-size: medium;
@@ -150,7 +128,8 @@ button:hover {
 }
 
 .toilet-wrap {
-  background-color: #dadada !important;
+  margin-right: 10px;
+  background-color: #dadada;
   color: #1b2f40;
 }
 

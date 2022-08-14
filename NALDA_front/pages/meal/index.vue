@@ -162,7 +162,6 @@ export default {
       this.info.username = this.loginMember.username
       this.info.seatNum = this.seatInfo.seatNum
       this.info.mealMenu = this.selectedMeal
-      console.log(this.selectedMeal)
       const promise = new Promise((resolve, reject) => {
         resolve()
       })

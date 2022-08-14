@@ -34,15 +34,6 @@
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </li>
-      <li class="item mouse-effect stagger-item">
-        <div class="left">
-          <i class="fa-solid fa-bookmark"></i>
-          <div class="name">Bookmark</div>
-        </div>
-        <div class="right">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-      </li>
     </ul>
   </div>
 </template>
@@ -232,6 +223,7 @@ header .modify {
 }
 
 .list .item {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

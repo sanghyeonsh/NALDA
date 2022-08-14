@@ -50,7 +50,7 @@
                     </v-img>
 
                     <v-card-actions class="ml-3">
-                      <div>
+                      <div style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>
@@ -84,7 +84,7 @@
                     </v-img>
 
                     <v-card-actions>
-                      <div class="ml-3">
+                      <div class="ml-3" style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>
@@ -118,7 +118,7 @@
                     </v-img>
 
                     <v-card-actions>
-                      <div class="ml-3">
+                      <div class="ml-3" style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>

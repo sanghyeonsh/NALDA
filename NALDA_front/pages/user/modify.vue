@@ -11,7 +11,7 @@
           </div>
         </header>
         <section class="modify-input-section-wrap">
-          <h2>modify</h2>
+          <h2>회원정보 수정</h2>
           <div>
             <h6>아이디</h6>
             <div class="modify-input-id-wrap">
@@ -236,7 +236,7 @@
           </div>
 
           <div class="modify-button-wrap">
-            <button @click="modify">modify</button>
+            <button @click="modify">수정</button>
           </div>
           <!-- <div class="modify-stay-sign-in">
                     <i class="far fa-check-circle"></i>

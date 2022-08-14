@@ -3,7 +3,7 @@
     <user-navs></user-navs>
     <div class="user-page-wrap">
       <div class="subindex-item">
-        <h4>내 정보</h4>
+        <div class="myInfo">내 정보</div>
         <div class="subindex-bluebox">
           <div class="myprofile-wrap">
             <ul class="myinfo-area">
@@ -157,7 +157,10 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
-
+.myInfo {
+  font-size: xx-large;
+  margin-bottom: 5px;
+}
 .mypage-container {
   width: 100vw;
   height: 70vh;
@@ -174,6 +177,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
 }
 
 /* mypage myprofile info CSS */
@@ -281,6 +285,7 @@ i {
 }
 
 .myname {
+  font-size: large;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -289,6 +294,7 @@ i {
 .subindex-row {
   /* margin-top: 1%;
   margin-bottom: 1%; */
+  font-size: large;
   height: 100%;
   display: flex;
   flex-direction: column;
