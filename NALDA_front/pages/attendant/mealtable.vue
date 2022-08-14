@@ -124,10 +124,11 @@ export default {
     })
   },
   methods: {
-    ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST']),
+    ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
     setTotal() {
       console.log(this.selectedMealList) // 얘를 넘겨줘야함
       //   console.log(this.meals)
+      this.CLEAR_FLIGHTMEALS_LIST()
       this.SET_FLIGHTMEALS_LIST(this.selectedMealList)
       this.$router.push('/attendant/mealset')
     },

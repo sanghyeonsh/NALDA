@@ -4168,7 +4168,16 @@ export default {
     checkChange() {
       return this.seatMealList
     },
-    ...mapState('meal', ['meals', 'flightMeals', 'choiceMeal', 'seatMealList']),
+    ...mapState('meal', [
+      'meals',
+      'flightMeals',
+      'choiceMeal',
+      'seatMealList',
+      'details',
+      'allergies',
+      'validMsg',
+      'flightMealList',
+    ]),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   watch: {

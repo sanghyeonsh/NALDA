@@ -59,7 +59,7 @@
                     <hr />
                   </v-card-text>
 
-                  <v-card-actions class="pt-0">
+                  <!-- <v-card-actions class="pt-0">
                     <v-spacer></v-spacer>
                     <v-btn
                       text
@@ -67,7 +67,7 @@
                       style="position: relative; top: 185px; right: 10px"
                       @click="updateCheck(flightMeal)"
                     >Close</v-btn>
-                  </v-card-actions>
+                  </v-card-actions>-->
                 </v-card>
               </v-expand-transition>
             </v-card>
@@ -76,7 +76,15 @@
             </div>-->
           </div>
         </div>
-        <div class="meal-order-button" @click="setMeal">기내식입력</div>
+        <div class="meal-order-button">
+          <v-btn
+            color="cyan"
+            class="ma-2 white--text"
+            x-large
+            style="width: 20%;"
+            @click="setMeal"
+          >기내식입력</v-btn>
+        </div>
       </v-app>
     </div>
     <v-app id="item-modal">
@@ -164,6 +172,7 @@ export default {
       resolve()
     })
     promise.then(async () => {
+      this.mealList = []
       await this.flightMealList.forEach((meal) => {
         const mealInfo = {
           menu: meal.menu,
@@ -191,6 +200,7 @@ export default {
     test() {
       // console.log(this.mealList)
       console.log(this.flightMealList)
+      console.log(this.select)
     },
     setMealSelected(meal) {
       if (meal.validate !== true) {
@@ -202,44 +212,51 @@ export default {
     },
     setMealtotal(meal) {
       meal.validated = true
-      // console.log(meal)
-      // console.log(this.mealList)
-      this.UPDATE_FLIGHTMEALS_LIST(meal)
       const info = {
         fligtNum: this.flightNum,
         mealMenu: meal.menu,
         total: meal.total,
       }
       console.log(info)
-      if (this.select.length < 3) {
+      if (this.select.length === 0) {
         this.select.push(info)
+      } else if (this.select.length < 2) {
+        let isSame = false
+        this.select.forEach((selectmeal) => {
+          if (selectmeal.menu === info.mealMenu) {
+            isSame = true
+          }
+        })
+        if (isSame === false) {
+          this.select.push(info)
+        }
+      } else {
+        meal.validated = false
       }
+      this.UPDATE_FLIGHTMEALS_LIST(meal)
+      console.log(this.select)
       this.dialog = !this.dialog
     },
     unsetMealtotal(meal) {
       meal.validated = false
       this.UPDATE_FLIGHTMEALS_LIST(meal)
-      this.select.remove(meal)
+      this.select = this.select.filter(
+        (selectmeal) => selectmeal.validated !== false
+      )
+      console.log(this.select)
       this.dialog = !this.dialog
     },
     toggle() {
       this.dialog = !this.dialog
     },
     setMeal() {
-      this.registFlightMeal()
-    },
-    minusNum() {
-      this.total--
-    },
-    addNum() {
-      this.total++
+      this.registFlightMeal(this.select)
+      // this.select = []
+      console.log(this.select)
+      console.log('기내식등록')
     },
     updateSelected(e) {
       this.$store.commit('meal/updateSelected', e)
-    },
-
-    updateCheck(e) {
-      this.$store.commit('meal/updateCheck', e)
     },
   },
 }
@@ -330,7 +347,7 @@ export default {
 
 .valid {
   filter: brightness(50%);
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 .food-box {
   width: 20%;

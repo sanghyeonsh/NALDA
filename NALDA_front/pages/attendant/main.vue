@@ -22,12 +22,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'AttendantMain',
   data() {
     return {
       airplaneKind: '',
     }
+  },
+  computed: {
+    ...mapState('meal', [
+      'meals',
+      'flightMeals',
+      'details',
+      'allergies',
+      'validMsg',
+      'flightMealList',
+    ]),
+    ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
   created() {},
   methods: {
@@ -38,11 +50,19 @@ export default {
       this.$router.push('/attendant/stock')
     },
     moveMealPage() {
-      this.airplaneKind = '777-200ER-1'
-      if (this.airplaneKind === '777-200ER-1') {
-        this.$router.push('/attendant/meal-777-200ER-1')
-      } else if (this.airplaneKind === 'A380') {
-        this.$router.push('/attendant/meal-A380')
+      if (this.flightMeals?.length === 0) {
+        if (this.flightMealList?.length === 0) {
+          this.$router.push('/attendant/mealtable')
+        } else {
+          this.$router.push('/attendant/mealset')
+        }
+      } else if (this.flightMeals?.length > 0) {
+        this.airplaneKind = '777-200ER-1'
+        if (this.airplaneKind === '777-200ER-1') {
+          this.$router.push('/attendant/meal-777-200ER-1')
+        } else if (this.airplaneKind === 'A380') {
+          this.$router.push('/attendant/meal-A380')
+        }
       }
     },
   },

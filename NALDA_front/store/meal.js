@@ -146,6 +146,9 @@ export const mutations = {
   CLEAR_VALID_MSG(state) {
     state.validMeal = null
   },
+  CLEAR_FLIGHTMEALS_LIST(state) {
+    state.flightMealList = []
+  },
 }
 export const getters = {}
 
@@ -172,10 +175,15 @@ export const actions = {
     )
   },
   registFlightMeal({ commit }, info) {
+    console.log('store')
+    console.log(info)
     inputMeal(
       info,
       ({ data }) => {
+        console.log(11111)
+        console.log(data)
         if (data.length > 0) {
+          console.log(2222)
           commit('SET_FLIGHTMEAL_LIST', data)
         }
       },
