@@ -82,7 +82,7 @@
         </table>
       </div>
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
