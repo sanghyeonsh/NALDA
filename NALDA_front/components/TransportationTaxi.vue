@@ -133,6 +133,7 @@ export default {
   height: 75vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .left-icon-map {
   display: flex;
@@ -165,14 +166,16 @@ export default {
 }
 .map {
   display: block;
+  height: 75vh;
 }
 .table {
   /* width: 80%; */
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 /* taxi-table wrap css */
