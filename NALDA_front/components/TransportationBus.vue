@@ -88,17 +88,19 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제1터미널</v-toolbar>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제1터미널</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t1_01.png"
                       alt=""
                     />
                   </div>
-
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>
@@ -122,16 +124,19 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제2터미널</v-toolbar>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제2터미널</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t2_01.png"
                       alt=""
                     />
                   </div>
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>
