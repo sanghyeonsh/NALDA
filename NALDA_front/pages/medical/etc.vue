@@ -79,9 +79,7 @@ export default {
       console.log(input)
       this.input = input
     },
-    onKeyPress(button) {
-      // console.log('button', button)
-    },
+    onKeyPress(button) {},
     onInputChange(input) {
       this.input = input.target.value
     },
