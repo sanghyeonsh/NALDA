@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -104,7 +105,7 @@ public class MealService {
 
     @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
-        List<Meal> mealList = mealRepository.findByFlightId(flightNum);
+        List<Meal> mealList = mealRepository.findByFlightNum(flightNum);
 //        List<Meal> mealList = mealStockRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
@@ -183,22 +184,10 @@ public class MealService {
 
 
     public void seatMealInput(SeatMealDto seatMealDto){
-        Long mealId = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu()).getId();
-        Meal meal = Meal.builder()
-                .id(mealId)
-                .build();
-        Long flightId = flightRepository.findByFlightNumAndStatus(seatMealDto.getFlightNum()).get().getId();
-        Flight flight = Flight.builder()
-                .id(flightId)
-                .build();
-        Long userId = userRepository.findTopByUsername(seatMealDto.getUsername()).getId();
-        User user = User.builder()
-                .id(userId)
-                .build();
-        Long seatId = seatRepository.findTopBySeatNum(seatMealDto.getSeatNum()).getId();
-        Seat seat = Seat.builder()
-                .id(seatId)
-                .build();
+        Meal meal = mealRepository.findTopByMealMenu(seatMealDto.getMealMenu());
+        Flight flight = flightRepository.findByFlightNumAndStatus(seatMealDto.getFlightNum()).get();
+        User user = userRepository.findTopByUsername(seatMealDto.getUsername());
+        Seat seat = seatRepository.findTopBySeatNum(seatMealDto.getSeatNum());
         SeatMeal seatMeal = SeatMeal.builder()
                 .status(Status.PROGRESS)
                 .meal(meal)
@@ -206,12 +195,10 @@ public class MealService {
                 .user(user)
                 .seat(seat)
                 .build();
-
         seatMealRepository.save(seatMeal);
     }
 
     public List<SeatMealDto> listSeatMeal(String flightNum){
-        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
         List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
         List<SeatMealDto> seatMealDTOS = new ArrayList<>();
 
