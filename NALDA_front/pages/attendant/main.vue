@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'AttendantMain',
   data() {
@@ -43,6 +43,7 @@ export default {
   },
   created() {},
   methods: {
+    ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
     moveRequestPage() {
       this.$router.push('/attendant/request')
     },

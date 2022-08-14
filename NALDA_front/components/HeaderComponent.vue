@@ -46,6 +46,8 @@ export default {
         this.$router.push('/main')
       } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
         this.$router.push('/attendant/main')
+      } else {
+        this.$router.push('/user/login')
       }
     },
     MoveSignup() {

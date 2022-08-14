@@ -5,7 +5,7 @@
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
             <div class="caption-wrap">
-              <h3>항공편 {{flightNum}} 기내식 목록</h3>
+              <h3 @click="test">항공편 {{flightNum}} 기내식 목록</h3>
               <!-- <div id="flight-num-input">
                 <b-form-input
                   v-model="flightNum"
@@ -100,6 +100,7 @@ export default {
       'details',
       'allergies',
       'validMsg',
+      'flightMealList',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -109,27 +110,55 @@ export default {
       resolve()
     })
     promise.then(async () => {
-      await this.getMeal()
-      await this.meals.forEach((meal) => {
-        const mealInfo = {
-          menu: meal.menu,
-          image: meal.image,
-          imageName: meal.imageName,
-          total: null,
-        }
-        this.mealList.push(mealInfo)
-      })
+      this.mealList = []
+      if (this.flightMealList?.length === 0) {
+        await this.getMeal()
+        await this.meals.forEach((meal) => {
+          const mealInfo = {
+            menu: meal.menu,
+            image: meal.image,
+            imageName: meal.imageName,
+            total: null,
+          }
+          this.mealList.push(mealInfo)
+        })
+      } else if (this.flightMealList?.length > 0) {
+        // flightMealList가 meals와 다를 수 있기때매.
+        await this.getMeal()
+        await this.meals.forEach((meal) => {
+          const mealInfo = {
+            menu: meal.menu,
+            image: meal.image,
+            imageName: meal.imageName,
+            total: null,
+          }
+          this.flightMealList.forEach((flightMeal) => {
+            if (meal.menu === flightMeal.menu) {
+              mealInfo.total = flightMeal.total
+            }
+          })
+          this.mealList.push(mealInfo)
+        })
+        this.isValid = !this.isValid
+      }
       // this.getDetail(this.meals)
       // this.getAllergy(this.meals)
     })
   },
   methods: {
     ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
+    test() {
+      console.log(this.mealList)
+      console.log(this.flightMealList)
+      console.log(this.selectedMealList)
+    },
     setTotal() {
       console.log(this.selectedMealList) // 얘를 넘겨줘야함
       //   console.log(this.meals)
-      this.CLEAR_FLIGHTMEALS_LIST()
-      this.SET_FLIGHTMEALS_LIST(this.selectedMealList)
+      if (this.selectedMealList.length !== 0) {
+        this.CLEAR_FLIGHTMEALS_LIST()
+        this.SET_FLIGHTMEALS_LIST(this.selectedMealList)
+      }
       this.$router.push('/attendant/mealset')
     },
     fixTotal() {
@@ -139,7 +168,7 @@ export default {
           this.selectedMealList.push(meal)
         }
       })
-      console.log(this.selectedMealList)
+      // console.log(this.selectedMealList)
       this.isValid = !this.isValid
     },
     unFixTotal() {
