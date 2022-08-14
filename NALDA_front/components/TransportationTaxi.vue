@@ -13,7 +13,7 @@
         </div>
       </div>
       <div>
-        <div class="left-icon-map" @click="mapClick">
+        <div class="left-icon-maps" @click="mapClick">
           <div>
             <div>
               승강장
@@ -78,7 +78,7 @@
         </table>
       </div>
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
@@ -96,8 +96,16 @@ export default {
       this.page = 'map'
       this.isMap = true
       this.isTable = false
+      document.getElementsByClassName('left-icon-maps')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('left-icon-table')[0].style.background =
+        'rgb(69, 169, 200)'
     },
     tableClick() {
+      document.getElementsByClassName('left-icon-table')[0].style.background =
+        '#206e95'
+      document.getElementsByClassName('left-icon-maps')[0].style.background =
+        'rgb(69, 169, 200)'
       this.page = 'table'
       this.isTable = true
       this.isMap = false
@@ -126,24 +134,13 @@ export default {
 .taxi-btn-wrap {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 85vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
+  z-index: 999;
 }
-.left-icon-map {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  margin: 15px;
-  color: white;
-  background-color: #206e95;
-  box-shadow: 8px 8px 15px rgba(7, 47, 69, 0.1);
-  border-radius: 50%;
-  text-align: center;
-}
-.left-icon-table {
+.left-icon-maps {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,19 +153,35 @@ export default {
   border-radius: 50%;
   text-align: center;
 }
+.left-icon-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+  color: white;
+  background-color: #206e95;
+  box-shadow: 8px 8px 15px rgba(7, 47, 69, 0.1);
+  border-radius: 50%;
+  text-align: center;
+}
 .Taxi-box-right {
   display: none;
 }
 .map {
   display: block;
+  height: 75vh;
 }
 .table {
   /* width: 80%; */
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  font-size: 18px;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 /* taxi-table wrap css */
@@ -204,5 +217,6 @@ td {
 thead {
   background-color: #323648;
   color: white;
+  /* background-color: rgb(105, 148, 157); */
 }
 </style>

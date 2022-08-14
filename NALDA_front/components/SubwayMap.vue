@@ -44,7 +44,6 @@ export default {
   methods: {
     changeName() {
       this.idx += 1
-      console.log(this.idx)
     },
   },
 }
@@ -67,7 +66,6 @@ export default {
   width: 100vw;
   height: 68vh;
   margin: 0 0 0 30px;
-  background-color: white;
 }
 .map-container > div {
   width: 100%;

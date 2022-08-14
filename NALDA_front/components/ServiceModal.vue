@@ -7,7 +7,7 @@
       width="60%"
     >
       <v-card tile>
-        <v-toolbar flat dark color="rgb(69, 169, 200)">
+        <v-toolbar flat dark color="#0e0737">
           <v-btn icon dark @click="toggle">
             <v-icon>mdi-close</v-icon>
           </v-btn>
@@ -19,10 +19,12 @@
               fab
               dark
               large
+              width="120%"
               color="pink"
               @click="addSelectedItem"
             >
               <v-icon dark> mdi-cart-heart </v-icon>
+              <div>주문하기</div>
             </v-btn>
           </v-toolbar-items>
         </v-toolbar>
@@ -32,11 +34,18 @@
             :src="'data:image/jpg;base64,' + item.bytesdata"
           />
           <div style="font-size: xx-large; margin-left: 20%">
-            <v-btn class="mx-2" fab dark large color="cyan" @click="minusNum">
+            <v-btn
+              class="mx-2"
+              fab
+              dark
+              large
+              color="#0e0737"
+              @click="minusNum"
+            >
               <v-icon dark> mdi-minus </v-icon>
             </v-btn>
             {{ num }}
-            <v-btn class="mx-2" fab dark large color="cyan" @click="addNum">
+            <v-btn class="mx-2" fab dark large color="#0e0737" @click="addNum">
               <v-icon dark> mdi-plus </v-icon>
             </v-btn>
           </div>

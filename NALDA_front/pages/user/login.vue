@@ -11,13 +11,19 @@
       </header> -->
       <section class="login-input-section-wrap">
         <div class="login-input-wrap mb-3">
-          <input v-model="flightNum" placeholder="항공편명" type="text" />
+          <input
+            v-model="flightNum"
+            placeholder="항공편명"
+            type="text"
+            @focus="flightKeyOn"
+          />
         </div>
         <div class="login-input-wrap">
           <input
             v-model="userInfo.id"
             placeholder="사용자 아이디"
             type="text"
+            @focus="usernameKeyOn"
           />
         </div>
         <div class="login-input-wrap password-wrap">
@@ -25,6 +31,7 @@
             v-model="userInfo.password"
             placeholder="패스워드"
             type="password"
+            @focus="pwdKeyOn"
           />
         </div>
         <div class="login-button-wrap">
@@ -56,13 +63,36 @@
         >
       </b-modal>
     </div>
+    <div v-if="flightKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changeFlight"
+      ></VirtualKeyboard>
+    </div>
+    <div v-if="UsernameKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changeUsername"
+      ></VirtualKeyboard>
+    </div>
+    <div v-if="pwdKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changePwd"
+      ></VirtualKeyboard>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+import VirtualKeyboard from '@/components/VirtualKeyboard'
+
 export default {
   name: 'LoginUser',
+  components: {
+    VirtualKeyboard,
+  },
   data() {
     return {
       userInfo: {
@@ -70,6 +100,9 @@ export default {
         password: null,
       },
       flightNum: '',
+      flightKeyboardView: false,
+      UsernameKeyboardView: false,
+      pwdKeyboardView: false,
     }
   },
   computed: {
@@ -98,13 +131,43 @@ export default {
           this.$bvModal.show('login-modal')
         }
         if (this.loginMember.userRole === 'ROLE_USER') {
-          console.log(this.isLogin)
           this.$router.push('/main')
         }
         if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
           this.$router.push('/attendant/main')
         }
       })
+    },
+    changeFlight(flightNum) {
+      this.flightNum = flightNum
+    },
+    changeUsername(username) {
+      this.userInfo.id = username
+    },
+    changePwd(pwd) {
+      this.userInfo.password = pwd
+    },
+    hideKeyboard(e) {
+      if (e.target.localName !== 'input' && e.y < 401) {
+        this.flightKeyboardView = false
+        this.UsernameKeyboardView = false
+        this.pwdKeyboardView = false
+      }
+    },
+    flightKeyOn() {
+      // this.flightKeyboardView = true
+      // this.UsernameKeyboardView = false
+      // this.pwdKeyboardView = false
+    },
+    usernameKeyOn() {
+      // this.flightKeyboardView = false
+      // this.UsernameKeyboardView = true
+      // this.pwdKeyboardView = false
+    },
+    pwdKeyOn() {
+      // this.pwdKeyboardView = true
+      // this.flightKeyboardView = false
+      // this.UsernameKeyboardView = false
     },
   },
 }
@@ -167,7 +230,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ;
+  /* margin-top: ; */
 }
 
 .login-input-section-wrap h2 {

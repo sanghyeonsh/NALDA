@@ -44,7 +44,6 @@ export default {
   },
   created() {
     this.CLEAR_DECLARATION()
-    this.getIP()
   },
   methods: {
     ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
@@ -65,11 +64,6 @@ export default {
     },
     MoveTransportation() {
       this.$router.push('/transportation')
-    },
-    getIP() {
-      const localIpAddress = require('local-ip-address')
-
-      console.log(localIpAddress())
     },
   },
 }

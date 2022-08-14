@@ -54,9 +54,6 @@ export const actions = {
     await fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.response.body)
-        console.log(url)
-        console.log(data)
         commit('SET_INFO_LIST', data.response.body)
       })
   },
@@ -72,11 +69,9 @@ export const actions = {
     )
   },
   async getSubway({ state, commit }) {
-    console.log(1111111111)
     await getSubway(
       ({ data }) => {
         commit('SET_SUBWAYS_LIST', data)
-        console.log(state.subways)
       },
       (error) => {
         console.log(error)
@@ -137,6 +132,5 @@ export const actions = {
         }
       }
     }
-    console.log(state.byCondition)
   },
 }

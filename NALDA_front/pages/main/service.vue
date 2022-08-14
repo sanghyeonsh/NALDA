@@ -5,11 +5,11 @@
       <h3>간식 및 음료</h3>
     </div>
     <div class="service-container-box" @click="MoveGoods">
-      <img src="/orders/blanket.png" alt="goods" />
+      <img src="/orders/blanketbefore.png" alt="goods" />
       <h3>편의물품</h3>
     </div>
     <div class="service-container-box" @click="MoveMeal">
-      <img src="/orders/food.png" alt="meal" />
+      <img src="/orders/lunchbox (1).png" alt="meal" />
       <h3>기내식 선택</h3>
     </div>
     <div class="service-container-box" @click="MoveMedical">

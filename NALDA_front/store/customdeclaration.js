@@ -156,7 +156,6 @@ export const actions = {
       state.declaration,
       (response) => {
         this.$router.push('/main')
-        console.log(response)
       },
       (error) => {
         console.log(error)

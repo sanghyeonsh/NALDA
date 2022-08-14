@@ -88,17 +88,19 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제1터미널</v-toolbar>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제1터미널</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t1_01.png"
                       alt=""
                     />
                   </div>
-
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>
@@ -122,16 +124,19 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar color="primary" dark>제2터미널</v-toolbar>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제2터미널</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </v-toolbar>
                   <div class="terminal-image-box">
                     <img
                       src="/transportation/map_bus_stop_information_t2_01.png"
                       alt=""
                     />
                   </div>
-                  <v-card-actions class="justify-end">
-                    <v-btn text @click="dialog.value = false">Close</v-btn>
-                  </v-card-actions>
                 </v-card>
               </template>
             </v-dialog>
@@ -153,7 +158,7 @@
         <img src="/nacho.jpg" alt="" />
       </div>
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
@@ -232,7 +237,6 @@ export default {
         for (let i = 0; i < this.info.totalCount; i++) {
           this.busNum.push(this.info.items[i].busnumber)
         }
-        console.log(this.info)
         await this.getTime(this.info.items[0].busnumber)
         await this.getStop(this.info.items[0].busnumber)
         this.makeTimeTable()
@@ -322,10 +326,7 @@ export default {
         temp = 3
       }
       tempTime = this.time[temp]
-      console.log(tempTime)
-      // this.choiceTime = []
       if (tempTime === null) {
-        // this.choiceTime = ['배정된 버스가 없습니다.']
         this.choiceTime = ['', '', '', '배정된', '버스가', '없습니다.']
       } else {
         this.choiceTime = tempTime.split(', ')
@@ -334,8 +335,6 @@ export default {
             this.choiceTime[i].substr(0, 2) +
             ':' +
             this.choiceTime[i].substr(2, 2)
-          // console.log(111)
-          // console.log(this.choiceTime[i])
         }
       }
     },
@@ -350,8 +349,6 @@ export default {
         // test = Object.assign([], this.choiceStation)
         // if(this.choiceStation[test.])
         test = [...this.choiceStation]
-        console.log('aaaaaaa')
-        console.log(this.choiceStation[test.length - 1])
         if (this.choiceStation[test.length - 1] === '') {
           this.choiceStation.splice(test.length - 1, 1)
         }
@@ -428,7 +425,7 @@ export default {
   color: rgb(69, 169, 200);
   box-shadow: 5px 5px 5px gray;
   z-index: 2;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 /* .bus-number::-webkit-scrollbar {
   display: none;
@@ -486,10 +483,10 @@ export default {
 
 .bus-detail {
   height: 100%;
-  width: 55%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .bus-detail-terminal {
   display: flex;

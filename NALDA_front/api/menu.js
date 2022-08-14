@@ -14,7 +14,6 @@ async function listNonAlcohols(success, fail) {
   await api.get(`/orders/NON-ALCOHOLS`).then(success).catch(fail)
 }
 async function inputOrders(orders, success, fail) {
-  console.log(orders)
   await api
     .post(`/orders/submit`, JSON.stringify(orders))
     .then(success)

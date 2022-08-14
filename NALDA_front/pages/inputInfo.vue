@@ -25,8 +25,6 @@ export default {
   methods: {
     ...mapActions('subway', ['getInfo', 'postInfo']),
     changeForm() {
-      console.log(this.info.totalCount)
-
       for (let idx = 0; idx < this.info.totalCount; idx++) {
         const subway = {
           name: '',
@@ -60,15 +58,12 @@ export default {
           second
         subway.time = currentTime
         this.list.push(subway)
-        // console.log(this.subway)
       }
-      console.log('for문 끝!!')
-      console.log(this.list)
     },
+    // subwayInput() {
+    //   this.postInfo(this.list)
+    // },
   },
-  // subwayInput() {
-  //   this.postInfo(this.list)
-  // },
 }
 </script>
 
