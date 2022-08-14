@@ -88,19 +88,12 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar
-                    style="background-color: rgb(69, 169, 200); color: white"
-                  >
-                    <div style="font-size: 30px">제1터미널</div>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제1터미널</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <div>
-                      <v-btn
-                        text
-                        style="font-size: 40px; color: white"
-                        @click="dialog.value = false"
-                        >X</v-btn
-                      >
-                    </div>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
                   </v-toolbar>
                   <div class="terminal-image-box">
                     <img
@@ -131,19 +124,12 @@
               </template>
               <template #default="dialog">
                 <v-card>
-                  <v-toolbar
-                    style="background-color: rgb(69, 169, 200); color: white"
-                  >
-                    <div style="font-size: 30px">제2터미널</div>
+                  <v-toolbar flat dark color="rgb(69, 169, 200)">
+                    <v-toolbar-title>제2터미널</v-toolbar-title>
                     <v-spacer></v-spacer>
-                    <div>
-                      <v-btn
-                        text
-                        style="font-size: 40px; color: white"
-                        @click="dialog.value = false"
-                        >X</v-btn
-                      >
-                    </div>
+                    <v-btn icon dark @click="dialog.value = false">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
                   </v-toolbar>
                   <div class="terminal-image-box">
                     <img
@@ -172,7 +158,7 @@
         <img src="/nacho.jpg" alt="" />
       </div>
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
@@ -447,7 +433,7 @@ export default {
   color: rgb(69, 169, 200);
   box-shadow: 5px 5px 5px gray;
   z-index: 2;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 /* .bus-number::-webkit-scrollbar {
   display: none;
@@ -505,10 +491,10 @@ export default {
 
 .bus-detail {
   height: 100%;
-  width: 55%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .bus-detail-terminal {
   display: flex;

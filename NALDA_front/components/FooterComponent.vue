@@ -130,7 +130,7 @@ button {
 }
 
 button:hover {
-  background-color: #88c0c5;
+  background-color: #88c0c5 !important;
   box-shadow: 5px 5px 10px rgba(46, 205, 229, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -150,7 +150,7 @@ button:hover {
 }
 
 .toilet-wrap {
-  background-color: #dadada;
+  background-color: #dadada !important;
   color: #1b2f40;
 }
 
@@ -161,7 +161,7 @@ button:hover {
 
 .service-wrap {
   margin-left: 1%;
-  background-color: #206e95;
+  background-color: #206e95 !important;
   color: white;
 }
 </style>
