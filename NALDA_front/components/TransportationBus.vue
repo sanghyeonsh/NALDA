@@ -428,7 +428,7 @@ export default {
   color: rgb(69, 169, 200);
   box-shadow: 5px 5px 5px gray;
   z-index: 2;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 /* .bus-number::-webkit-scrollbar {
   display: none;
@@ -486,10 +486,10 @@ export default {
 
 .bus-detail {
   height: 100%;
-  width: 55%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .bus-detail-terminal {
   display: flex;

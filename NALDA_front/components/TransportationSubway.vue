@@ -74,6 +74,8 @@ export default {
 }
 
 .subway-container {
+  /* background-color: rgba(239, 239, 239, 0.511); */
+
   display: flex;
   width: 100vh;
   height: 85vh;
@@ -85,6 +87,7 @@ export default {
   height: 75vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .left-icon-map {
   display: flex;
@@ -114,9 +117,13 @@ export default {
   display: none;
 }
 .Map {
+  height: 75vh;
   display: block;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .Time {
+  height: 75vh;
   display: block;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 </style>
