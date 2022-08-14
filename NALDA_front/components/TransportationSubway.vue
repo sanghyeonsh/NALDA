@@ -29,7 +29,7 @@
     <div class="content" :class="{ Time: isTime }">
       <SubwayTime />
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
