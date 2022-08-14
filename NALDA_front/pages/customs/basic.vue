@@ -84,52 +84,62 @@
                 <td id="col-name">여행목적</td>
                 <td colspan="3">
                   <div class="chkboxes-wrap">
-                    <input
-                      id="chkbox1"
-                      v-model="travelPurpose"
-                      type="radio"
-                      name="travelPurpose"
-                      value="travel"
-                      checked
-                    />
-                    <label for="chkbox1"></label>
-                    여행
-                    <input
-                      id="chkbox2"
-                      v-model="travelPurpose"
-                      type="radio"
-                      name="travelPurpose"
-                      value="business"
-                    />
-                    <label for="chkbox2"></label>
-                    사업
-                    <input
-                      id="chkbox3"
-                      v-model="travelPurpose"
-                      type="radio"
-                      name="travelPurpose"
-                      value="visitfamily"
-                    />
-                    <label for="chkbox3"></label>
-                    친지방문
-                    <input
-                      id="chkbox4"
-                      v-model="travelPurpose"
-                      type="radio"
-                      name="travelPurpose"
-                      value="public"
-                    />
-                    <label for="chkbox4"></label>
-                    공무
-                    <input
-                      id="chkbox5"
-                      v-model="travelPurpose"
-                      type="radio"
-                      name="travelPurpose"
-                      value="etc"
-                    />
-                    <label for="chkbox5"></label>
-                    기타
+                    <div class="chkbox-item">
+                      <input
+                        id="chkbox1"
+                        v-model="travelPurpose"
+                        type="radio"
+                        name="travelPurpose"
+                        value="travel"
+                        checked
+                      />
+                      <label for="chkbox1"></label>
+                      여행
+                    </div>
+                    <div class="chkbox-item">
+                      <input
+                        id="chkbox2"
+                        v-model="travelPurpose"
+                        type="radio"
+                        name="travelPurpose"
+                        value="business"
+                      />
+                      <label for="chkbox2"></label>
+                      사업
+                    </div>
+                    <div class="chkbox-item mr-4">
+                      <input
+                        id="chkbox3"
+                        v-model="travelPurpose"
+                        type="radio"
+                        name="travelPurpose"
+                        value="visitfamily"
+                      />
+                      <label for="chkbox3"></label>
+                      친지방문
+                    </div>
+                    <div class="chkbox-item">
+                      <input
+                        id="chkbox4"
+                        v-model="travelPurpose"
+                        type="radio"
+                        name="travelPurpose"
+                        value="public"
+                      />
+                      <label for="chkbox4"></label>
+                      공무
+                    </div>
+                    <div class="chkbox-item">
+                      <input
+                        id="chkbox5"
+                        v-model="travelPurpose"
+                        type="radio"
+                        name="travelPurpose"
+                        value="etc"
+                      />
+                      <label for="chkbox5"></label>
+                      기타
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -366,6 +376,11 @@ export default {
   font-family: 'twayfly';
 }
 
+.chkbox-item {
+  display: flex;
+  align-items: center;
+  width: 90px;
+}
 .next-page {
   width: 20%;
   height: 60%;
@@ -375,7 +390,7 @@ export default {
 .title-items {
   width: 75%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .title-container {
@@ -422,6 +437,7 @@ export default {
   background-color: white;
 }
 .customform-title {
+  margin-left: 9%;
   font-size: xx-large;
   font-weight: bolder;
   text-align: center;
@@ -432,12 +448,12 @@ export default {
   padding: 3%;
   width: 100%;
   height: 75%;
-  background-color: #dadada;
+  background-color: #ffeab2;
   border-radius: 4px;
 }
 
 .custom-info-wrap input {
-  background-color: #dadada;
+  background-color: #ffeab2;
   border: none;
   outline: none;
 }
@@ -517,7 +533,8 @@ input[id='chkbox5'] + label {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  border: 2px solid #bcbcbc;
+  margin-right: 5px;
+  border: 2px solid #000000;
   cursor: pointer;
 }
 input[id='chkbox1']:checked + label,

@@ -322,13 +322,13 @@ export default {
 }
 .next-page[data-v-27638d97] {
   width: 15%;
-  height: 60%;
+  height: 50%;
   margin-bottom: 2%;
 }
 .title-items {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .title-container {
@@ -449,9 +449,9 @@ td {
 }
 
 .next-page {
-  width: 20%;
-  height: 60%;
-  margin-bottom: 2%;
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
 }
 .next-btn-wrap {
   margin-top: 2%;

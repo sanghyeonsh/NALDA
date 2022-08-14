@@ -29,7 +29,18 @@ export default {
         crossorigin: 'anonymous',
       },
     ],
-    css: [],
+    css: [
+      {
+        loaderOptions: {
+          sass: {
+            data: `
+            @import "@/styles/styles.scss";
+            //@는 /src 와 같다
+        `,
+          },
+        },
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

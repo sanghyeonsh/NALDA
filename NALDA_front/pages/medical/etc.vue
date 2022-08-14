@@ -26,23 +26,31 @@
           <!-- <button @click="etcCheck">확인</button> -->
         </div>
       </div>
-      <simple-keyboard
+      <!-- <simple-keyboard
         :input="input"
         @onChange="onChange"
         @onKeyPress="onKeyPress"
-      ></simple-keyboard>
+      ></simple-keyboard> -->
+      <div id="app">
+        <VirtualKeyboard
+          theme="white-shadow"
+          @getKeyValue="onChange"
+        ></VirtualKeyboard>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
+import VirtualKeyboard from '@/components/VirtualKeyboard'
+// import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
   name: 'OrdersMedicalEtc',
   components: {
-    SimpleKeyboard,
+    // SimpleKeyboard,
+    VirtualKeyboard,
   },
   data() {
     return {

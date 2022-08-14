@@ -213,7 +213,7 @@ export default {
   height: 200%;
 }
 .next-btn-wrap {
-  width: 80%;
+  width: 87%;
   margin-top: 2%;
   display: flex;
   flex-direction: row;
