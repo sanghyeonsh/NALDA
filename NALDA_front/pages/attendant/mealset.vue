@@ -216,6 +216,7 @@ export default {
         fligtNum: this.flightNum,
         mealMenu: meal.menu,
         total: meal.total,
+        status: 'PROGRESS',
       }
       console.log(info)
       if (this.select.length === 0) {

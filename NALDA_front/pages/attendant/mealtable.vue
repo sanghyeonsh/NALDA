@@ -164,7 +164,7 @@ export default {
     fixTotal() {
       this.selectedMealList = []
       this.mealList.forEach((meal) => {
-        if (meal.total !== null) {
+        if (meal.total > 0) {
           this.selectedMealList.push(meal)
         }
       })
