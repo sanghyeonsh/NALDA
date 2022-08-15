@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface MealRepository extends JpaRepository<Meal,Long> {
 
-    @Query("select m from Meal m join fetch MealStock s on m.id = s.meal.id where s.flight.id = (select f.id from Flight f where f.flightNum = :flightNum and f.status = 'PROGRESS') and s.status='PROGRESS'")
+    @Query("select m from Meal m join fetch MealStock s on m.id = s.meal.id where s.flight.id = (select f.id from Flight f where f.flightNum = :flightNum and f.status = 'PROGRESS')")
     List<Meal> findByFlightNum(@Param("flightNum") String flightNum);
 
     Meal findTopByMealMenu(String mealMenu);
