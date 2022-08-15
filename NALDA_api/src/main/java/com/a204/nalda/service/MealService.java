@@ -59,23 +59,30 @@ public class MealService {
 
     @Transactional
     public void mealCntInput(List<MealCntDto> mealCntDTOS){
-
-        for (MealCntDto mealCntDto : mealCntDTOS) {
-            Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
-            Meal meal = Meal.builder()
-                    .id(mealId)
-                    .build();
-            Long flightId = flightRepository.findByFlightNumAndStatus(mealCntDto.getFlightNum()).get().getId();
-            Flight flight = Flight.builder()
-                    .id(flightId)
-                    .build();
-            MealStock mealStock = MealStock.builder()
-                    .meal(meal)
-                    .flight(flight)
-                    .total(mealCntDto.getTotal())
-                    .status(mealCntDto.getStatus())
-                    .build();
-            mealStockRepository.save(mealStock);
+//        Optional<MealStock> mealValid = mealStockRepository.findTopByFlightNum(mealCntDTOS.get(0).getFlightNum());
+        List<MealStock> mealValid = mealStockRepository.findByFlightNum(mealCntDTOS.get(0).getFlightNum());
+        if(mealValid == null){
+            for (MealCntDto mealCntDto : mealCntDTOS) {
+                Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
+                Meal meal = Meal.builder()
+                        .id(mealId)
+                        .build();
+                Long flightId = flightRepository.findByFlightNumAndStatus(mealCntDto.getFlightNum()).get().getId();
+                Flight flight = Flight.builder()
+                        .id(flightId)
+                        .build();
+                MealStock mealStock = MealStock.builder()
+                        .meal(meal)
+                        .flight(flight)
+                        .total(mealCntDto.getTotal())
+                        .status(mealCntDto.getStatus())
+                        .build();
+                mealStockRepository.save(mealStock);
+            }
+        }else {
+            for (int i=0;i<mealValid.size();i++) {
+                mealValid.get(i).changeStatusInfo(mealCntDTOS.get(i).getStatus());
+            }
         }
     }
 
