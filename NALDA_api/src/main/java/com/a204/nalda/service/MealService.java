@@ -73,7 +73,7 @@ public class MealService {
                     .meal(meal)
                     .flight(flight)
                     .total(mealCntDto.getTotal())
-                    .status(Status.PROGRESS)
+                    .status(mealCntDto.getStatus())
                     .build();
             mealStockRepository.save(mealStock);
         }
@@ -106,7 +106,6 @@ public class MealService {
     @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
         List<Meal> mealList = mealRepository.findByFlightNum(flightNum);
-//        List<Meal> mealList = mealStockRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
         String fileName;
@@ -118,12 +117,14 @@ public class MealService {
             InputStream imageStream = new FileInputStream(filePath + fileName);
             imageStream.transferTo(bos);
             byte[] bytesData = bos.toByteArray();
+            MealStock mealStock = mealStockRepository.findByFlightNumAndMealId(flightNum,meal.getId());
             MealDto mealDto = MealDto.builder()
                     .mealId(meal.getId())
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
                     .content(meal.getContent())
                     .bytesdata(bytesData)
+                    .status(mealStock.getStatus())
                     .build();
             mealDTOS.add(mealDto);
         }
