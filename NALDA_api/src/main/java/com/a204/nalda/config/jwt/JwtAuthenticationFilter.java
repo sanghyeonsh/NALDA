@@ -1,11 +1,10 @@
 package com.a204.nalda.config.jwt;
 
 import com.a204.nalda.config.auth.PrincipalDetails;
-import com.a204.nalda.domain.entity.airplane.Airplane;
 import com.a204.nalda.domain.entity.airplane.Seat;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.dto.seatDTO.SeatDTO;
-import com.a204.nalda.repository.SeatRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
 import com.a204.nalda.service.UserService;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,8 +24,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
