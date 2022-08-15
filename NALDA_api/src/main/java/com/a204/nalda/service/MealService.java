@@ -10,7 +10,10 @@ import com.a204.nalda.domain.entity.inflightservice.MealStock;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.domain.enumtype.Status;
 import com.a204.nalda.dto.meal.*;
-import com.a204.nalda.repository.*;
+import com.a204.nalda.repository.flight.FlightRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
+import com.a204.nalda.repository.meal.*;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +34,7 @@ public class MealService {
     private final UserRepository userRepository;
     private final SeatRepository seatRepository;
     private final SeatMealRepository seatMealRepository;
+    private final SeatMealCntRepository seatMealCntRepository;
 
     @Transactional
     public List<MealDto> listMeal() throws IOException {
@@ -225,6 +228,10 @@ public class MealService {
         return seatMealDTOS;
     }
 
+    public List<SeatMealCntDto> seatMealCnt(String flightNum){
+        List<SeatMealCntDto> seatMealCntDTOS = seatMealCntRepository.findByFlightNumAndMealMenu(flightNum);
+        return seatMealCntDTOS;
+    }
 
 
 }
