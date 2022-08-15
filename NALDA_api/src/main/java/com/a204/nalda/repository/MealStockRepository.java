@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.parameters.P;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MealStockRepository extends JpaRepository<MealStock,Long> {
 
@@ -20,5 +21,7 @@ public interface MealStockRepository extends JpaRepository<MealStock,Long> {
     @Query("select s from MealStock s where s.flight.id=(select f.id from Flight f where f.flightNum=:flightNum and f.status='PROGRESS') and s.meal.id=:mealId")
     MealStock findByFlightNumAndMealId(@Param("flightNum") String flightNum, @Param("mealId") Long mealId);
 
-
+//    @Query("select s from MealStock s where s.flight.id=(select f.id from Flight f where f.flightNum=:flightNum and f.status='PROGRESS')")
+//    Optional<MealStock> findTopByFlightNum(@Param("flightNum") String flightNum);
+//
 }
