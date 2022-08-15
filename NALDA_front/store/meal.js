@@ -21,6 +21,7 @@ export const state = () => ({
   seatMealList: [],
   validMealList: [],
   flightMealList: [],
+  settedMealList: [],
   validMsg: null,
 })
 
@@ -111,6 +112,9 @@ export const mutations = {
       state.flightMealList.push(mealInfo)
     })
   },
+  SET_SETTEDMEAL_LIST(state, settedMealList) {
+    state.settedMealList = settedMealList
+  },
   UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
     // console.log('store')
     // console.log(validMeal)
@@ -148,6 +152,9 @@ export const mutations = {
   CLEAR_FLIGHTMEALS_LIST(state) {
     state.flightMealList = []
   },
+  CLEAR_SETTEDMEAL_LIST(state) {
+    state.settedMealList = []
+  },
 }
 export const getters = {}
 
@@ -174,18 +181,9 @@ export const actions = {
     )
   },
   registFlightMeal({ commit }, info) {
-    console.log('store')
-    console.log(info)
     inputMeal(
       info,
-      ({ data }) => {
-        console.log(11111)
-        console.log(data)
-        if (data.length > 0) {
-          console.log(2222)
-          commit('SET_FLIGHTMEAL_LIST', data)
-        }
-      },
+      ({ data }) => {},
       (error) => {
         console.log(error)
       }
@@ -211,11 +209,28 @@ export const actions = {
     commit('CLEAR_CHOICE_MEAL')
     commit('CLEAR_SEATMEAL_LIST')
     commit('CLEAR_VALID_MSG')
-
+    console.log(flightNum)
     endMeals(
       flightNum,
       ({ data }) => {
+        console.log(data)
         console.log(data.msg)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getSettedMeal({ commit }, flightNum) {
+    commit('CLEAR_SETTEDMEAL_LIST')
+    await listInput(
+      flightNum,
+      ({ data }) => {
+        if (data.meal.length > 0) {
+          data.meal.forEach((meal) => {
+            commit('SET_SETTEDMEAL_LIST', data)
+          })
+        }
       },
       (error) => {
         console.log(error)
@@ -229,6 +244,7 @@ export const actions = {
       ({ data }) => {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
+            commit('SET_FLIGHTMEALS_LIST', data)
             commit('SET_FLIGHTMEAL_LIST', {
               id: meal.mealId,
               menu: meal.mealMenu,

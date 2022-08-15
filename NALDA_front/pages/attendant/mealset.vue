@@ -78,10 +78,9 @@
         </div>
         <div class="meal-order-button">
           <v-btn
-            color="cyan"
             class="ma-2 white--text"
             x-large
-            style="width: 20%;"
+            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
             @click="setMeal"
           >기내식입력</v-btn>
         </div>
@@ -163,6 +162,7 @@ export default {
       'allergies',
       'validMsg',
       'flightMealList',
+      'settedMealList',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -173,16 +173,29 @@ export default {
     })
     promise.then(async () => {
       this.mealList = []
-      await this.flightMealList.forEach((meal) => {
-        const mealInfo = {
-          menu: meal.menu,
-          image: meal.image,
-          imageName: meal.imageName,
-          total: meal.total,
-          validated: meal.validated,
-        }
-        this.mealList.push(mealInfo)
-      })
+      await this.getSettedMeal()
+      if (this.settedMealList.length > 0) {
+        await this.settedMealList.forEach((meal) => {
+          const mealInfo = {
+            menu: meal.menu,
+            image: meal.bytesdata,
+            total: meal.total,
+            status: meal.status,
+          }
+          this.mealList.push(mealInfo)
+        })
+      } else {
+        await this.flightMealList.forEach((meal) => {
+          const mealInfo = {
+            menu: meal.menu,
+            image: meal.image,
+            imageName: meal.imageName,
+            total: meal.total,
+            validated: meal.validated,
+          }
+          this.mealList.push(mealInfo)
+        })
+      }
     })
   },
   methods: {
@@ -195,10 +208,12 @@ export default {
       'registFlightMeal',
       'registSeatMeal',
       'validMeal',
+      'getSettedMeal',
     ]),
     ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST']),
     test() {
       // console.log(this.mealList)
+      console.log(this.settedMealList)
       console.log(this.flightMealList)
       console.log(this.select)
     },
@@ -213,7 +228,7 @@ export default {
     setMealtotal(meal) {
       meal.validated = true
       const info = {
-        fligtNum: this.flightNum,
+        flightNum: this.flightNum,
         mealMenu: meal.menu,
         total: meal.total,
         status: 'PROGRESS',
@@ -251,9 +266,23 @@ export default {
       this.dialog = !this.dialog
     },
     setMeal() {
-      this.registFlightMeal(this.select)
+      const setting = []
+      this.flightMealList.forEach((flightMeal) => {
+        const info = {
+          flightNum: this.flightNum,
+          mealMenu: flightMeal.menu,
+          total: flightMeal.total,
+          status: 'DONE',
+        }
+        if (flightMeal.validated === true) {
+          info.status = 'PROGRESS'
+        }
+        setting.push(info)
+      })
+
+      this.registFlightMeal(setting)
       // this.select = []
-      console.log(this.select)
+      console.log(setting)
       console.log('기내식등록')
     },
     updateSelected(e) {

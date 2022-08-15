@@ -1,5 +1,5 @@
 <template>
-  <div class="login-main-container">
+  <div class="login-main-container" @click="hideKeyboard">
     <div class="login-main-wrap">
       <!-- <header>
         <div class="sel-lang-wrap">
@@ -8,7 +8,7 @@
             <option>English</option>
           </select>
         </div>
-      </header> -->
+      </header>-->
       <section class="login-input-section-wrap">
         <div class="login-input-wrap mb-3">
           <input
@@ -16,6 +16,7 @@
             placeholder="항공편명"
             type="text"
             @focus="flightKeyOn"
+            @blur="focusOut"
           />
         </div>
         <div class="login-input-wrap">
@@ -24,6 +25,7 @@
             placeholder="사용자 아이디"
             type="text"
             @focus="usernameKeyOn"
+            @blur="focusOut"
           />
         </div>
         <div class="login-input-wrap password-wrap">
@@ -32,6 +34,7 @@
             placeholder="패스워드"
             type="password"
             @focus="pwdKeyOn"
+            @blur="focusOut"
           />
         </div>
         <div class="login-button-wrap">
@@ -49,37 +52,24 @@
         <div class="d-block text-center">
           <h3>항공편명을 다시 확인해주세요.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
-        >
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">Close Me</b-button>
       </b-modal>
       <b-modal id="login-modal" hide-footer>
         <template #modal-title>알림</template>
         <div class="d-block text-center">
           <h3>일치하지 않는 정보가 있습니다.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
-        >
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">Close Me</b-button>
       </b-modal>
     </div>
     <div v-if="flightKeyboardView">
-      <VirtualKeyboard
-        theme="white-shadow"
-        @getKeyValue="changeFlight"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changeFlight"></VirtualKeyboard>
     </div>
     <div v-if="UsernameKeyboardView">
-      <VirtualKeyboard
-        theme="white-shadow"
-        @getKeyValue="changeUsername"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changeUsername"></VirtualKeyboard>
     </div>
     <div v-if="pwdKeyboardView">
-      <VirtualKeyboard
-        theme="white-shadow"
-        @getKeyValue="changePwd"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changePwd"></VirtualKeyboard>
     </div>
   </div>
 </template>
@@ -155,19 +145,22 @@ export default {
       }
     },
     flightKeyOn() {
-      // this.flightKeyboardView = true
-      // this.UsernameKeyboardView = false
-      // this.pwdKeyboardView = false
+      this.flightKeyboardView = true
+      this.UsernameKeyboardView = false
+      this.pwdKeyboardView = false
     },
     usernameKeyOn() {
-      // this.flightKeyboardView = false
-      // this.UsernameKeyboardView = true
-      // this.pwdKeyboardView = false
+      this.flightKeyboardView = false
+      this.UsernameKeyboardView = true
+      this.pwdKeyboardView = false
     },
     pwdKeyOn() {
-      // this.pwdKeyboardView = true
-      // this.flightKeyboardView = false
-      // this.UsernameKeyboardView = false
+      this.pwdKeyboardView = true
+      this.flightKeyboardView = false
+      this.UsernameKeyboardView = false
+    },
+    focusOut() {
+      this.$refs.keyboard.clearArray()
     },
   },
 }

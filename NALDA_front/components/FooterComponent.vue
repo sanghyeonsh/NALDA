@@ -63,7 +63,7 @@ export default {
       this.$router.push('/attendant/toilet')
     },
     endMeals() {
-      this.endMeal()
+      this.endMeal(this.flightNum)
     },
   },
 }
