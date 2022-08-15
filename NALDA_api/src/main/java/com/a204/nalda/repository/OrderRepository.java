@@ -16,4 +16,6 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
     @Query("select o from Orders o where o.id = :ordersId")
     Optional<Orders> findById(@Param("ordersId") Long ordersId);
 
+    @Query("select o from Orders o where o.flight.id = (select f.id from Flight f where f.flightNum=:flightNum and f.status='PROGRESS')")
+    List<Orders> findByFlightNum(@Param("flightNum") String flightNum);
 }
