@@ -71,6 +71,7 @@ public class UserService {
     public LoginDto loginUser(String username) {
         User user = userRepository.findUserByUsername(username);
         LoginDto loginDto = LoginDto.builder()
+                .userRole(user.getUserRole())
                 .birthday(user.getBirthday())
                 .fullName(user.getFullName())
                 .username(user.getUsername()).build();
@@ -102,6 +103,7 @@ public class UserService {
     }
     @Transactional
     public void modifyUser(UserModifyDto userModifyDto) {
+        System.out.println("modifyUser 실행됨");
         User user = userRepository.findUserByUsername(userModifyDto.getUsername());
 
         UserDetail userDetail = UserDetail.builder()
@@ -116,7 +118,7 @@ public class UserService {
 
         user.modifyUserDetail(userDetail);
         user.modifyUserInfo(userModifyDto.getFullName(), bCryptPasswordEncoder.encode(userModifyDto.getPassword()));
-
+        user.modifyBirthday(userModifyDto.getBirthday());
     }
 
 

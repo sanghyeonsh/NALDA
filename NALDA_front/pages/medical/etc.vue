@@ -4,45 +4,85 @@
       <div class="form-box">
         <div class="title">증상 및 요청사항을 입력해주세요.</div>
         <div class="content">
-          <input
+          <!-- <input
             :value="input"
             class="input"
             placeholder="Tap on the virtual keyboard to start"
             @input="onInputChange"
-          />
+          /> -->
+          <form class="add-form" @submit.prevent="doAdd">
+            <input
+              ref="comment"
+              type="text"
+              :value="input"
+              class="input"
+              placeholder="Tap on the virtual keyboard to start"
+              @input="onInputChange"
+            />
 
-          <button>확인</button>
+            <button @click="etcCheck">확인</button>
+          </form>
+
+          <!-- <button @click="etcCheck">확인</button> -->
         </div>
       </div>
-      <simple-keyboard
+      <!-- <simple-keyboard
         :input="input"
         @onChange="onChange"
         @onKeyPress="onKeyPress"
-      ></simple-keyboard>
+      ></simple-keyboard> -->
+      <div id="app">
+        <VirtualKeyboard
+          theme="white-shadow"
+          @getKeyValue="onChange"
+        ></VirtualKeyboard>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
+import { mapState, mapActions } from 'vuex'
+import VirtualKeyboard from '@/components/VirtualKeyboard'
+// import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
   name: 'OrdersMedicalEtc',
   components: {
-    SimpleKeyboard,
+    // SimpleKeyboard,
+    VirtualKeyboard,
   },
   data() {
     return {
       input: '',
     }
   },
+  computed: {
+    ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
+  },
   methods: {
+    ...mapActions('menu', ['postOrders']),
+    etcCheck() {
+      const order = {
+        orderMessage: this.input,
+        flightNum: this.flightNum,
+        seatNum: this.seatInfo.seatNum,
+        username: this.loginMember.username,
+        status: 'PROGRESS',
+        orderList: [
+          {
+            orderCode: 'B004',
+            cnt: 1,
+          },
+        ],
+      }
+      this.postOrders(order)
+      this.$router.push('/waiting')
+    },
     onChange(input) {
       this.input = input
     },
-    onKeyPress(button) {
-      // console.log('button', button)
-    },
+    onKeyPress(button) {},
     onInputChange(input) {
       this.input = input.target.value
     },
@@ -51,6 +91,20 @@ export default {
 </script>
 
 <style scoped>
+@font-face {
+  font-family: 'twayfly';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twayfly.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'twayfly';
+}
+
 .box {
   background-color: #f5f6f7;
   height: 600px;

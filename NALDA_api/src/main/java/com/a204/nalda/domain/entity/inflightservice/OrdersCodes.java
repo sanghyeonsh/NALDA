@@ -25,4 +25,10 @@ public class OrdersCodes {
 
     @Column(name = "order_code")
     private String orderCode;
+
+    private int cnt;
+    public void changeOrder(Orders orders) {
+        this.orders = orders;
+    }
+
 }

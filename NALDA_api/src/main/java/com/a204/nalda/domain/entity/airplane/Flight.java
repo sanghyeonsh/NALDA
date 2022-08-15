@@ -1,6 +1,7 @@
 package com.a204.nalda.domain.entity.airplane;
 
 import com.a204.nalda.domain.entity.user.User;
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,20 +25,19 @@ public class Flight {
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "airplane_id")
     private Airplane airplane;
-
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
 
     @Column(name = "flight_date")
     private LocalDateTime flightDate;
 
     @Column(name = "flight_num")
     private String flightNum;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public void changeStatusInfo(Status status){
+        this.status = status;
+    }
 }

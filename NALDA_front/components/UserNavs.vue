@@ -2,27 +2,23 @@
   <div class="usernav-container">
     <header class="profile-wrap">
       <div class="thumb-wrapper stagger-item">
-        <img class="thumb" src="../static/main/user_profile_w.png" />
+        <img class="thumb" src="/main/user_profile_w.png" />
         <!-- <div class="badge">7</div> -->
       </div>
 
       <div class="text-area">
-        <h3 class="greeting stagger-item">Hi, Anonymous-Ku</h3>
-        <div class="desc stagger-item">
-          Fly with nalda
-          <br />Nearest Airser-Line Service during in Airbus
-        </div>
+        <h3 class="greeting stagger-item">{{ fullname }}</h3>
       </div>
 
       <div class="modify mouse-effect stagger-item" @click="moveModify">
-        <button>modify</button>
+        <button>회원 정보 수정</button>
       </div>
     </header>
     <ul class="list">
       <li class="item mouse-effect stagger-item" @click="moveAccountInfo">
         <div class="left">
           <i class="fa-solid fa-user"></i>
-          <div class="name">Account Info</div>
+          <div class="name">회원 정보</div>
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -32,16 +28,7 @@
       <li class="item mouse-effect stagger-item" @click="movecustomList">
         <div class="left">
           <i class="fa-solid fa-suitcase-rolling"></i>
-          <div class="name">Past Journey</div>
-        </div>
-        <div class="right">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-      </li>
-      <li class="item mouse-effect stagger-item">
-        <div class="left">
-          <i class="fa-solid fa-bookmark"></i>
-          <div class="name">Bookmark</div>
+          <div class="name">세관신고서 목록</div>
         </div>
         <div class="right">
           <i class="fa-solid fa-chevron-right"></i>
@@ -52,9 +39,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'UserNavs',
   components: {},
+  computed: {
+    ...mapState('user', ['loginMember']),
+    fullname() {
+      let fullname = ''
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.lastName &&
+        (fullname += this.loginMember.fullName.lastName)
+      return fullname
+    },
+  },
   methods: {
     moveModify() {
       this.$router.push({ name: 'user-modify' })
@@ -221,6 +223,7 @@ header .modify {
 }
 
 .list .item {
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

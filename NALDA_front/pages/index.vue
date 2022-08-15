@@ -1,15 +1,28 @@
 <template>
   <div class="init-screen" @click="moveMain">
-    <img class="logo" src="../static/logo.png" />
+    <img class="logo" src="/logo.png" />
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'MainPage',
+  created() {
+    this.CLEAR_LOGIN_MEMBER()
+    this.CLEAR_SEATINFO()
+    this.CLEAR_MEMBER_DETAIL()
+    this.CLEAR_FLIGHTNUM()
+  },
   methods: {
+    ...mapMutations('user', [
+      'CLEAR_LOGIN_MEMBER',
+      'CLEAR_MEMBER_DETAIL',
+      'CLEAR_SEATINFO',
+      'CLEAR_FLIGHTNUM',
+    ]),
     moveMain() {
-      this.$router.push('/main')
+      this.$router.push('/user/login')
     },
   },
 }

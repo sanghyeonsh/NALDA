@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,11 +43,13 @@ public class UserController {
 
     @PutMapping("/userDetail")
     public ResponseEntity<?> modifyUser(@RequestBody UserModifyDto userModifyDto) {
+        System.out.println(userModifyDto);
         Map<String, Object> result = new HashMap<>();
         try {
             userService.modifyUser(userModifyDto);
             result.put("msg", "회원이 정상적으로 수정되었습니다.");
         } catch (Exception e) {
+            e.printStackTrace();
             result.put("msg", "오류가 발생했습니다.");
         }
         return new ResponseEntity<>(result,HttpStatus.OK);
