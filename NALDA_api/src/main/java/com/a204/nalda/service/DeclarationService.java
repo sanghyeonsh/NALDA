@@ -6,10 +6,9 @@ import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.dto.customdeclaration.*;
-import com.a204.nalda.repository.CustomsDeclarationRepository;
-import com.a204.nalda.repository.UserRepository;
+import com.a204.nalda.repository.user.CustomsDeclarationRepository;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
