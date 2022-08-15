@@ -68,11 +68,12 @@ public class MealService {
             Flight flight = Flight.builder()
                     .id(flightId)
                     .build();
+            System.out.println(mealId+"==========="+flightId);
             MealStock mealStock = MealStock.builder()
                     .meal(meal)
                     .flight(flight)
                     .total(mealCntDto.getTotal())
-                    .status(Status.PROGRESS)
+                    .status(mealCntDto.getStatus())
                     .build();
             mealStockRepository.save(mealStock);
         }
