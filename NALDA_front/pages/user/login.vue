@@ -42,7 +42,7 @@
         </div>
         <div class="login-stay-sign-in">
           <nuxt-link to="/user/termsuse" style="text-decoration: none">
-            <i class="far fa-check-circle"></i>
+            <img class="login-icon-check" src="/icon/check_mark.png" alt="check-icon" />
             <span>회원가입</span>
           </nuxt-link>
         </div>
@@ -293,8 +293,12 @@ input[type='password']::placeholder {
 }
 
 .login-stay-sign-in span {
-  padding-left: 5px;
+  /* padding-left: 5px; */
   line-height: 25px;
+}
+a {
+  display: flex;
+  align-items: center;
 }
 
 .non-member-wrap {
@@ -308,5 +312,10 @@ input[type='password']::placeholder {
   color: var(--font-color);
   font-size: 14px;
   padding-top: 10px;
+}
+.login-icon-check {
+  width: 30px;
+  height: 30px;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #007bff);
 }
 </style>

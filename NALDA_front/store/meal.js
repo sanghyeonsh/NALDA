@@ -113,7 +113,7 @@ export const mutations = {
     })
   },
   SET_SETTEDMEAL_LIST(state, settedMealList) {
-    state.settedMealList = settedMealList
+    state.settedMealList.push(settedMealList)
   },
   UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
     // console.log('store')
@@ -226,9 +226,11 @@ export const actions = {
     await listInput(
       flightNum,
       ({ data }) => {
+        console.log('store입니다')
+        console.log(data.meal)
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
-            commit('SET_SETTEDMEAL_LIST', data)
+            commit('SET_SETTEDMEAL_LIST', meal)
           })
         }
       },

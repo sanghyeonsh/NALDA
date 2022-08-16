@@ -78,11 +78,19 @@
         </div>
         <div class="meal-order-button">
           <v-btn
+            v-if="readyState===false"
             class="ma-2 white--text"
             x-large
             style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
             @click="setMeal"
           >기내식입력</v-btn>
+          <v-btn
+            v-else-if="readyState===true"
+            class="ma-2 white--text"
+            x-large
+            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
+            @click="setMeal"
+          >기내식좌석</v-btn>
         </div>
       </v-app>
     </div>
@@ -145,6 +153,7 @@ export default {
   components: {},
   data() {
     return {
+      readyState: false,
       valid: true,
       dialog: false,
       mealList: [],
@@ -173,7 +182,7 @@ export default {
     })
     promise.then(async () => {
       this.mealList = []
-      await this.getSettedMeal()
+      await this.getSettedMeal(this.flightNum)
       if (this.settedMealList.length > 0) {
         await this.settedMealList.forEach((meal) => {
           const mealInfo = {
@@ -181,9 +190,24 @@ export default {
             image: meal.bytesdata,
             total: meal.total,
             status: meal.status,
+            validated: false,
+          }
+          if (meal.status === 'PROGRESS' || meal.total === 0) {
+            mealInfo.validated = true
           }
           this.mealList.push(mealInfo)
         })
+        this.mealList.forEach((meal) => {
+          let cnt = 0
+          if (meal.status === 'PROGRESS') {
+            cnt++
+          }
+          if (cnt > 0) {
+            this.readyState = !this.readyState
+          }
+        })
+        console.log('settedMeal vue입니다')
+        console.log(this.mealList)
       } else {
         await this.flightMealList.forEach((meal) => {
           const mealInfo = {
@@ -195,6 +219,8 @@ export default {
           }
           this.mealList.push(mealInfo)
         })
+        console.log('flightmealList vue입니다')
+        console.log(this.mealList)
       }
     })
   },
@@ -214,8 +240,10 @@ export default {
     test() {
       // console.log(this.mealList)
       console.log(this.settedMealList)
-      console.log(this.flightMealList)
-      console.log(this.select)
+      // console.log(this.flightMealList)
+      // console.log(this.select)
+      // console.log(this.mealList)
+      console.log(this.readyState)
     },
     setMealSelected(meal) {
       if (meal.validate !== true) {
@@ -304,17 +332,18 @@ export default {
 * {
   font-family: 'twayfly';
 }
-.v-application--wrap {
+:deep(.v-application--wrap) {
   flex: 1 1 auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 0vh;
+  min-height: fit-content;
   max-width: 100%;
   position: relative;
   background-color: rgba(239, 239, 239, 0.511);
 }
+
 .airfood-container {
   height: 75vh;
   background-color: rgba(239, 239, 239, 0.511);

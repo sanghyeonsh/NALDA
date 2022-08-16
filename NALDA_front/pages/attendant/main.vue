@@ -14,7 +14,7 @@
     </div>
     <div class="main-container-box" @click="moveMealPage">
       <div>
-        <img class="image" src="/orders/food.png" alt="airport_info" />
+        <img class="image" src="/orders/lunchbox (1).png" alt="airport_info" />
         <h3>기내식관리</h3>
       </div>
     </div>
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapActions } from 'vuex'
 export default {
   name: 'AttendantMain',
   data() {
@@ -38,11 +38,16 @@ export default {
       'allergies',
       'validMsg',
       'flightMealList',
+      'settedMealList',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
-  created() {},
+  async created() {
+    await this.getFlightMeal(this.flightNum)
+    await this.getSettedMeal(this.flightNum)
+  },
   methods: {
+    ...mapActions('meal', ['getFlightMeal', 'getSettedMeal']),
     ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
     moveRequestPage() {
       this.$router.push('/attendant/request')
@@ -52,9 +57,12 @@ export default {
     },
     moveMealPage() {
       if (this.flightMeals?.length === 0) {
-        if (this.flightMealList?.length === 0) {
-          this.$router.push('/attendant/mealtable')
+        if (this.settedMealList?.length === 0) {
+          this.$router.push('attendant/mealtable')
         } else {
+          if (this.flightMealList?.length === 0) {
+            this.$router.push('/attendant/mealtable')
+          }
           this.$router.push('/attendant/mealset')
         }
       } else if (this.flightMeals?.length > 0) {
