@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { choiceMeal } from '@/api/meal'
 export default {
   name: 'TestPage2',
@@ -147,6 +147,8 @@ export default {
       'details',
       'allergies',
       'validMsg',
+      'stock',
+      'total',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -159,14 +161,22 @@ export default {
       await this.getFlightMeal(this.flightNum)
       this.getDetail(this.flightMeals)
       this.getAllergy(this.flightMeals)
+      await this.getMealCnt(this.flightNum)
+      await this.getMealOrderCnt(this.flightNum)
+      console.log(this.stock)
+      console.log(this.total)
+      this.calcStock()
     })
   },
   methods: {
+    ...mapMutations('meal', ['MEAL_CALC_STOCK']),
     ...mapActions('meal', [
       'getFlightMeal',
       'getSelectedMeal',
       'getDetail',
       'getAllergy',
+      'getMealCnt',
+      'getMealOrderCnt',
     ]),
 
     updateSelected(e) {
@@ -176,7 +186,9 @@ export default {
     updateCheck(e) {
       this.$store.commit('meal/updateCheck', e)
     },
-
+    calcStock() {
+      this.MEAL_CALC_STOCK()
+    },
     finalChoice() {
       this.info.flightNum = this.flightNum
       this.info.username = this.loginMember.username

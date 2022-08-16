@@ -62,10 +62,12 @@ export default {
       pillow: '',
       earplug: '',
       slipper: '',
+      cnt: { blanket: 0, pillow: 0, earplug: 0, slipper: 0 },
     }
   },
   computed: {
     ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
+    ...mapState('menu', ['stock', 'total']),
     orderList() {
       const orderList = []
       if (this.blanket !== '')
@@ -79,8 +81,45 @@ export default {
       return orderList
     },
   },
+  created() {
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.getOrderCnt(this.flightNum)
+      await this.getServiceCnt(this.flightNum)
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < this.total.length; j++) {
+          if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C001'
+          ) {
+            this.cnt.blanket = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C002'
+          ) {
+            this.cnt.pillow = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C003'
+          ) {
+            this.cnt.earplug = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C004'
+          ) {
+            this.cnt.slipper = this.stock[i + 30].total - this.total[j].total
+          }
+        }
+      }
+    })
+    console.log(this.cnt)
+  },
+
   methods: {
-    ...mapActions('menu', ['postOrders']),
+    ...mapActions('menu', ['postOrders', 'getOrderCnt', 'getServiceCnt']),
     movewaiting() {
       const order = {
         orderMessage: '',

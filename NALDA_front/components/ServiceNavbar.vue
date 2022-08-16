@@ -67,7 +67,7 @@
 
                   <!-- 품절부분 -->
                   <v-card
-                    v-else-if="item.cnt === 0"
+                    v-else-if="item.cnt <= 0"
                     style="
                       margin-bottom: 30px;
                       background-image: url('/orders/out-of-stock.png');
@@ -189,7 +189,7 @@
         x-large
         color="#0e0737"
         style="position: fixed; bottom: 10vh; right: 3vh"
-        @click=";[openSelectedModal, calcStock()]"
+        @click="openSelectedModal"
       >
         <v-icon dark> mdi-cart-heart </v-icon>
       </v-btn>
@@ -224,8 +224,6 @@ export default {
 
   created() {
     this.isSnack = true
-    this.getServiceCnt(this.flightNum)
-    this.getOrderCnt(this.flightNum)
     const promise = new Promise((resolve, reject) => {
       resolve()
     })
@@ -234,13 +232,12 @@ export default {
       await this.getSnack()
       await this.getAlcohols()
       await this.getNonAlcohols()
-
+      await this.getServiceCnt(this.flightNum)
+      await this.getOrderCnt(this.flightNum)
       this.snacks = this.items.snack
       this.alcohols = this.items.alcohol
       this.nonAlcohols = this.items.nonAlcohol
-      console.log(this.stock)
-      console.log(this.total)
-      console.log(this.items)
+      this.calcStock()
     })
   },
   methods: {

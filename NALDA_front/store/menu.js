@@ -42,11 +42,6 @@ export const mutations = {
     state.total = total
   },
   SET_SNACK(state, snacks) {
-    // 상현이가 만들면 지우기!
-    for (let i = 0; i < snacks.length; i++) {
-      snacks[i].cnt = 0
-    }
-    console.log(snacks)
     state.items.snack = snacks
   },
   SET_ALCOHOL(state, alcohol) {
@@ -93,7 +88,10 @@ export const mutations = {
     }
     for (let i = 0; i < state.items.alcohol.length; i++) {
       for (let j = 0; j < state.total.length; j++) {
-        if (state.stock[i].serviceCode === state.total[j].serviceCode) {
+        if (
+          state.stock[i + state.items.snack.length].serviceCode ===
+          state.total[j].serviceCode
+        ) {
           state.items.alcohol[i].cnt =
             state.stock[i + state.items.snack.length].total -
             state.total[j].total
@@ -102,7 +100,10 @@ export const mutations = {
     }
     for (let i = 0; i < state.items.nonAlcohol.length; i++) {
       for (let j = 0; j < state.total.length; j++) {
-        if (state.stock[i].serviceCode === state.total[j].serviceCode) {
+        if (
+          state.stock[i + state.items.snack.length + state.items.alcohol.length]
+            .serviceCode === state.total[j].serviceCode
+        ) {
           state.items.nonAlcohol[i].cnt =
             state.stock[
               i + state.items.snack.length + state.items.alcohol.length
@@ -110,7 +111,6 @@ export const mutations = {
         }
       }
     }
-    console.log(state.items)
   },
 
   CLEAR_ITEM(state) {
@@ -174,12 +174,11 @@ export const actions = {
       }
     )
   },
-  getOrderCnt({ commit }, flightNum) {
+  async getOrderCnt({ commit }, flightNum) {
     commit('CLEAR_TOTAL')
-    listOrderCnt(
+    await listOrderCnt(
       flightNum,
       ({ data }) => {
-        // console.log(data)
         commit('SET_TOTAL', data.orderCnt)
       },
       (error) => {
@@ -187,12 +186,11 @@ export const actions = {
       }
     )
   },
-  getServiceCnt({ commit }, flightNum) {
+  async getServiceCnt({ commit }, flightNum) {
     commit('CLEAR_STOCK')
-    listServiceCnt(
+    await listServiceCnt(
       flightNum,
       ({ data }) => {
-        // console.log(data)
         commit('SET_STOCK', data.cntList)
       },
       (error) => {
