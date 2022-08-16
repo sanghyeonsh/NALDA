@@ -1,4 +1,4 @@
-package com.a204.nalda.repository;
+package com.a204.nalda.repository.orders;
 
 
 import com.a204.nalda.domain.entity.inflightservice.OrdersCodes;

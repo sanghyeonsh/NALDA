@@ -31,7 +31,7 @@
             <div>
               <h4>세 관 신 고 사 항</h4>
             </div>
-            <div>─ 아래 질문의 해당 □ 에 "✓" 표시 하시기 바랍니다 ─</div>
+            <div>─ 아래 질문의 해당 □ 에 "■" 표시 하시기 바랍니다 ─</div>
           </div>
           <div></div>
           <div class="check-exceed-wrap">

@@ -1,4 +1,4 @@
-package com.a204.nalda.repository;
+package com.a204.nalda.repository.user;
 
 import com.a204.nalda.domain.entity.user.UserDetail;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,21 +1,21 @@
 <template>
   <div class="toilet-container">
-    <!-- <div class="toilet-wrap"> -->
     <div class="toilet-wrap">
-      <img class="b-777-toilet" src="../../static/icon/fl-777-200er-261-seatmap-pc.png" alt />
-      <div class="th-middle" :class="{inuse: th1 === 'default'}"></div>
-      <div class="tbr1-middle" :class="{inuse: tbr1}"></div>
-      <div class="tbl1-middle" :class="{inuse: tbl1}"></div>
-      <div class="tbr2-middle" :class="{inuse: tbr2}"></div>
-      <div class="tbm2-middle" :class="{inuse: tbm2}"></div>
-      <div class="tbl2-middle" :class="{inuse: tbl2}"></div>
-      <div class="ttr1-middle" :class="{inuse: ttr1}"></div>
-      <div class="ttr2-middle" :class="{inuse: ttr2}"></div>
-      <div class="ttl1-middle" :class="{inuse: ttl1}"></div>
-      <div class="ttl2-middle" :class="{inuse: ttl2}"></div>
-      <!-- </div> -->
+      <div class="toilet-wrap">
+        <img class="b-777-toilet" src="/icon/fl-777-200er-261-seatmap-pc.png" />
+        <div class="th-middle" :class="{ inuse: !th1 }"></div>
+        <div class="tbr1-middle" :class="{ inuse: !HR01 }"></div>
+        <div class="tbl1-middle" :class="{ inuse: !HL01 }"></div>
+        <div class="tbr2-middle" :class="{ inuse: !tbr2 }"></div>
+        <div class="tbm2-middle" :class="{ inuse: !tbm2 }"></div>
+        <div class="tbl2-middle" :class="{ inuse: !tbl2 }"></div>
+        <div class="ttr1-middle" :class="{ inuse: !ttr1 }"></div>
+        <div class="ttr2-middle" :class="{ inuse: !ttr2 }"></div>
+        <div class="ttl1-middle" :class="{ inuse: !ttl1 }"></div>
+        <div class="ttl2-middle" :class="{ inuse: !ttl2 }"></div>
+      </div>
       <div class="alert-wrap">
-        <div class="in-use" @click="test">
+        <div class="in-use">
           <div class="word">사용중</div>
           <div class="square-in-use"></div>
         </div>
@@ -29,13 +29,15 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'AttendantToilet',
   data() {
     return {
-      th1: 'default',
-      tbr1: true,
-      tbl1: true,
+      th1: true,
+      HR01: true,
+      HL01: true,
       tbr2: true,
       tbm2: true,
       tbl2: true,
@@ -45,27 +47,39 @@ export default {
       ttl2: true,
     }
   },
-  computed: {},
+  computed: {
+    ...mapState('toilet', ['toilet']),
+  },
+  async created() {
+    await this.callToiletLog('777-200ER-1')
+    this.toilet.forEach((element) => {
+      if (element.toiletCode === 'HR01') {
+        if (element.used === 1) this.HR01 = false
+        else this.HR01 = true
+      }
+      if (element.toiletCode === 'HL01') {
+        if (element.used === 1) this.HL01 = false
+        else this.HR01 = false
+      }
+    })
+    setInterval(async () => {
+      await this.callToiletLog('777-200ER-1')
+      this.toilet.forEach((element) => {
+        if (element.toiletCode === 'HR01') {
+          if (element.used === 1) this.HR01 = false
+          else this.HR01 = true
+        }
+        if (element.toiletCode === 'HL01') {
+          if (element.used === 1) this.HL01 = false
+          else this.HR01 = false
+        }
+      })
+    }, 5000)
+  },
   methods: {
-    test() {
-      this.th1 = !this.th1
-      console.log(1)
-    },
+    ...mapActions('toilet', ['callToiletLog']),
   },
 }
-</script>
-
-<script>
-// let browserPoint = (event) => {
-//   console.log(`브라우저 좌표 : (${event.pageX}, ${event.pageY})`)
-// }
-// let clientPoint = (event) => {
-//   console.log(`화면 좌표 : (${event.clientX}, ${event.clientY})`)
-// }
-// window.addEventListener('click', (e) => {
-//   browserPoint(e)
-//   clientPoint(e)
-// })
 </script>
 
 <style scoped>
@@ -137,7 +151,7 @@ export default {
 }
 
 .inuse {
-  background-color: rgb(242, 0, 255);
+  background-color: rgb(242, 0, 255) !important;
 }
 .th-middle {
   width: 2.2%;

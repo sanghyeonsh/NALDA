@@ -1,4 +1,4 @@
-package com.a204.nalda.repository;
+package com.a204.nalda.repository.flight;
 
 import com.a204.nalda.domain.entity.airplane.Flight;
 import org.springframework.data.jpa.repository.JpaRepository;

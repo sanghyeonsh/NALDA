@@ -1,6 +1,7 @@
 package com.a204.nalda.controller;
 
 import com.a204.nalda.dto.meal.*;
+import com.a204.nalda.dto.orders.OrderCntDto;
 import com.a204.nalda.service.MealService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -162,6 +163,20 @@ public class MealController {
             e.printStackTrace();
             result.put("msg", e.getMessage());
             return new ResponseEntity<>(result,HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/total/{flightNum}")
+    public ResponseEntity<?> getSeatMealCnt(@PathVariable("flightNum") String flightNum) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            List<SeatMealCntDto> seatMealCntDTOS = mealService.seatMealCnt(flightNum);
+            result.put("seatMealCnt",seatMealCntDTOS);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

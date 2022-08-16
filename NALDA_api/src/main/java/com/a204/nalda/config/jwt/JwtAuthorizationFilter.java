@@ -2,7 +2,7 @@ package com.a204.nalda.config.jwt;
 
 import com.a204.nalda.config.auth.PrincipalDetails;
 import com.a204.nalda.domain.entity.user.User;
-import com.a204.nalda.repository.UserRepository;
+import com.a204.nalda.repository.user.UserRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.security.authentication.AuthenticationManager;
