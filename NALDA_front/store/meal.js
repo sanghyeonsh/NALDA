@@ -30,6 +30,7 @@ export const mutations = {
     let selectCnt = 0
     state.flightMeals.forEach((flightMeal) => {
       flightMeal.choice && selectCnt++
+      state.selectedMeal = flightMeal.menu
     })
     if (selectCnt === 0) {
       state.flightMeals[select].choice = !state.flightMeals[select].choice

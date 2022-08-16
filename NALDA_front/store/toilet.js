@@ -17,7 +17,6 @@ export const getters = {}
 
 export const actions = {
   async callToiletLog({ commit }, airplaneKind) {
-    console.log(1)
     await getToiletLog(
       airplaneKind,
       ({ data }) => {
