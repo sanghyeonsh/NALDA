@@ -6,7 +6,14 @@
         <div class="customform-container">
           <div class="title-items">
             <v-app id="info-btn">
-              <v-btn class="mx-2 mb-5" fab dark medium color="#778899" @click="openAttentions">
+              <v-btn
+                class="mx-2 mb-5"
+                fab
+                dark
+                medium
+                color="#778899"
+                @click="openAttentions"
+              >
                 <v-icon large dark>mdi-information-outline</v-icon>
               </v-btn>
             </v-app>
@@ -15,13 +22,14 @@
               class="next-page"
               variant="info"
               @click="$router.push('/customs/checktwo')"
-            >다음 페이지</b-button>
+              >다음 페이지</b-button
+            >
           </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
             </div>
-            <div>─ 아래 질문의 해당 □ 에 "✓" 표시 하시기 바랍니다 ─</div>
+            <div>─ 아래 질문의 해당 □ 에 "■" 표시 하시기 바랍니다 ─</div>
           </div>
           <div></div>
           <div class="check-exceed-wrap">
@@ -32,7 +40,7 @@
                   <b>취득(구입, 기증, 선물 포함)</b>한 면세범위 초과
                   <b>물품(뒷면 1참조)</b>
                   [총금액: 약
-                  <input v-model="dutyfreeExceedValue" type="text" /> ]
+                  <input v-model="dutyfreeExceedValue" type="text" /> $]
                   <br />
                   <b id="exceed-warning">
                     *면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
@@ -67,8 +75,7 @@
               <tr>
                 <td class="details" rowspan="2">
                   2.
-                  <b>FTA 협정국가</b>의 원산지 물품으로
-                  <b>특혜관세</b>를
+                  <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
                   적용받으려는 물품
                 </td>
                 <td id="yorn">있음</td>
@@ -100,9 +107,8 @@
                 <td class="details" rowspan="2">
                   3. 미화로 환산하여
                   <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화,
-                  자기앞수표, 여행자수표, 및 그 밖의 유가증권)
-                  <br />[총금액: 약
-                  <input v-model="paymentExceedValue" type="text" /> ]
+                  자기앞수표, 여행자수표, 및 그 밖의 유가증권) <br />[총금액: 약
+                  <input v-model="paymentExceedValue" type="text" /> $]
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>

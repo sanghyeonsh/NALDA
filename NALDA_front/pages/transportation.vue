@@ -119,6 +119,10 @@ export default {
 </script>
 
 <style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+
 .v-tab--active {
   color: #ffe26f !important;
 }
@@ -126,8 +130,7 @@ export default {
   font-size: 25px;
 }
 .profile-img img {
-  width: 50%;
-  height: 50%;
+  width: 100%;
 }
 .header-container-userprofile {
   width: 20%;

@@ -26,23 +26,31 @@
           <!-- <button @click="etcCheck">확인</button> -->
         </div>
       </div>
-      <simple-keyboard
+      <!-- <simple-keyboard
         :input="input"
         @onChange="onChange"
         @onKeyPress="onKeyPress"
-      ></simple-keyboard>
+      ></simple-keyboard> -->
+      <div id="app">
+        <VirtualKeyboard
+          theme="white-shadow"
+          @getKeyValue="onChange"
+        ></VirtualKeyboard>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
+import VirtualKeyboard from '@/components/VirtualKeyboard'
+// import SimpleKeyboard from '../../components/SimpleKeyboard.vue'
 
 export default {
   name: 'OrdersMedicalEtc',
   components: {
-    SimpleKeyboard,
+    // SimpleKeyboard,
+    VirtualKeyboard,
   },
   data() {
     return {
@@ -55,9 +63,6 @@ export default {
   methods: {
     ...mapActions('menu', ['postOrders']),
     etcCheck() {
-      const comment = this.$refs.comment
-      console.log(111111)
-      console.log(comment)
       const order = {
         orderMessage: this.input,
         flightNum: this.flightNum,
@@ -75,13 +80,9 @@ export default {
       this.$router.push('/waiting')
     },
     onChange(input) {
-      console.log(111)
-      console.log(input)
       this.input = input
     },
-    onKeyPress(button) {
-      // console.log('button', button)
-    },
+    onKeyPress(button) {},
     onInputChange(input) {
       this.input = input.target.value
     },

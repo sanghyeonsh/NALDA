@@ -96,7 +96,6 @@ export default {
         return
       }
       this.MODIFY_DATE(this.date)
-      console.log(this.declaration)
       this.saveDeclaration()
     },
   },
@@ -214,7 +213,7 @@ export default {
   height: 200%;
 }
 .next-btn-wrap {
-  width: 80%;
+  width: 87%;
   margin-top: 2%;
   display: flex;
   flex-direction: row;

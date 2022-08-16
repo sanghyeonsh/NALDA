@@ -32,6 +32,10 @@ export default {
 </script>
 
 <style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+
 .waiting-page {
   height: 100vh;
   width: 100vw;

@@ -29,7 +29,7 @@
     <div class="content" :class="{ Time: isTime }">
       <SubwayTime />
     </div>
-    <FooterComponent />
+    <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
 </template>
 
@@ -51,10 +51,10 @@ export default {
       this.isTime = false
     },
     timeClick() {
-      document.getElementsByClassName('left-icon-time')[0].style.background =
-        '#206e95'
       document.getElementsByClassName('left-icon-map')[0].style.background =
         'rgb(69, 169, 200)'
+      document.getElementsByClassName('left-icon-time')[0].style.background =
+        '#206e95'
       this.isTime = true
       this.isMap = false
     },
@@ -74,6 +74,8 @@ export default {
 }
 
 .subway-container {
+  /* background-color: rgba(239, 239, 239, 0.511); */
+
   display: flex;
   width: 100vh;
   height: 85vh;
@@ -82,9 +84,11 @@ export default {
   display: flex;
   flex-direction: column;
   width: 20%;
-  height: 75vh;
+  height: 85vh;
   border-right: 3px solid rgb(69, 169, 200);
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
+  z-index: 999;
 }
 .left-icon-map {
   display: flex;
@@ -114,9 +118,13 @@ export default {
   display: none;
 }
 .Map {
+  height: 85vh;
   display: block;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 .Time {
+  height: 85vh;
   display: block;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 </style>
