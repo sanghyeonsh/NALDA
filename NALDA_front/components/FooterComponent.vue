@@ -9,11 +9,11 @@
     <button
       v-if="role === 'ROLE_ATTENDANT'"
       class="service-wrap"
-      style="background-color: #206e95"
+      style="background-color: #0e0737"
       @click="endMeals"
     >
       <img src="/main/flight_attendant_w.png" alt="toilet" />
-      <h3>기내식종료</h3>
+      <div>기내식종료</div>
     </button>
     <button v-else class="service-wrap" style="background-color: #0e0737" @click="MoveHelpcall">
       <img src="/main/flight_attendant_w.png" alt="toilet" />

@@ -274,6 +274,7 @@ export const actions = {
   },
   async getFlightMeal({ commit }, flightNum) {
     commit('CLEAR_FLIGHTMEAL_LIST')
+    commit('CLEAR_FLIGHTMEALS_LIST')
     await listInput(
       flightNum,
       ({ data }) => {

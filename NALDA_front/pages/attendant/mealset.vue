@@ -300,7 +300,7 @@ export default {
           flightNum: this.flightNum,
           mealMenu: flightMeal.menu,
           total: flightMeal.total,
-          status: 'DONE',
+          status: 'READY',
         }
         if (flightMeal.validated === true) {
           info.status = 'PROGRESS'
