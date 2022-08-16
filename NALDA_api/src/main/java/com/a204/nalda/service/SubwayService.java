@@ -2,7 +2,7 @@ package com.a204.nalda.service;
 
 import com.a204.nalda.domain.entity.inflightservice.Subway;
 import com.a204.nalda.dto.subway.SubwayDto;
-import com.a204.nalda.repository.SubwayRepository;
+import com.a204.nalda.repository.subway.SubwayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

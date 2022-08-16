@@ -2,6 +2,7 @@ package com.a204.nalda.controller;
 
 
 import com.a204.nalda.domain.entity.inflightservice.ServiceStock;
+import com.a204.nalda.dto.orders.OrderCntDto;
 import com.a204.nalda.dto.orders.OrderDto;
 import com.a204.nalda.dto.orders.ServiceCntDto;
 import com.a204.nalda.dto.orders.ServiceDto;
@@ -132,6 +133,20 @@ public class OrdersController {
         }catch (Exception e){
             e.printStackTrace();
             result.put("msg",e.getMessage());
+            return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/total/{flightNum}")
+    public ResponseEntity<?> getOrdersCnt(@PathVariable("flightNum") String flightNum) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+            List<OrderCntDto> orderCntDTOS = ordersService.orderCnt(flightNum);
+            result.put("orderCnt",orderCntDTOS);
+            return new ResponseEntity<>(result,HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("msg", e.getMessage());
             return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

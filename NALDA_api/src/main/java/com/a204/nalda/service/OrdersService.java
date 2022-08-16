@@ -5,11 +5,11 @@ import com.a204.nalda.domain.entity.airplane.Seat;
 import com.a204.nalda.domain.entity.inflightservice.*;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.domain.enumtype.Status;
-import com.a204.nalda.dto.orders.OrderDto;
-import com.a204.nalda.dto.orders.OrderListDto;
-import com.a204.nalda.dto.orders.ServiceCntDto;
-import com.a204.nalda.dto.orders.ServiceDto;
-import com.a204.nalda.repository.*;
+import com.a204.nalda.dto.orders.*;
+import com.a204.nalda.repository.flight.FlightRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
+import com.a204.nalda.repository.orders.*;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +33,8 @@ public class OrdersService {
     private final SeatRepository seatRepository;
 
     private final ServiceStockRepository serviceStockRepository;
+
+    private final OrderCntRepository orderCntRepository;
 
     @Transactional
     public List<ServiceDto> servicesByClass(String serviceClass) throws IOException {
@@ -193,4 +195,11 @@ public class OrdersService {
             optional.get().changeStatusInfo(Status.PROGRESS);
         }
     }
+
+    public List<OrderCntDto> orderCnt(String flightNum){
+        List<OrderCntDto> orderCntDTOS = orderCntRepository.findbyFlightNumAndOrderCode(flightNum);
+        return orderCntDTOS;
+
+    }
+
 }

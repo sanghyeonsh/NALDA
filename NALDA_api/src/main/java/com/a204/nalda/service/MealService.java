@@ -10,7 +10,10 @@ import com.a204.nalda.domain.entity.inflightservice.MealStock;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.domain.enumtype.Status;
 import com.a204.nalda.dto.meal.*;
-import com.a204.nalda.repository.*;
+import com.a204.nalda.repository.flight.FlightRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
+import com.a204.nalda.repository.meal.*;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +34,7 @@ public class MealService {
     private final UserRepository userRepository;
     private final SeatRepository seatRepository;
     private final SeatMealRepository seatMealRepository;
+    private final SeatMealCntRepository seatMealCntRepository;
 
     @Transactional
     public List<MealDto> listMeal() throws IOException {
@@ -59,23 +62,30 @@ public class MealService {
 
     @Transactional
     public void mealCntInput(List<MealCntDto> mealCntDTOS){
-
-        for (MealCntDto mealCntDto : mealCntDTOS) {
-            Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
-            Meal meal = Meal.builder()
-                    .id(mealId)
-                    .build();
-            Long flightId = flightRepository.findByFlightNumAndStatus(mealCntDto.getFlightNum()).get().getId();
-            Flight flight = Flight.builder()
-                    .id(flightId)
-                    .build();
-            MealStock mealStock = MealStock.builder()
-                    .meal(meal)
-                    .flight(flight)
-                    .total(mealCntDto.getTotal())
-                    .status(Status.PROGRESS)
-                    .build();
-            mealStockRepository.save(mealStock);
+//        Optional<MealStock> mealValid = mealStockRepository.findTopByFlightNum(mealCntDTOS.get(0).getFlightNum());
+        List<MealStock> mealValid = mealStockRepository.findByFlightNum(mealCntDTOS.get(0).getFlightNum());
+        if(mealValid == null){
+            for (MealCntDto mealCntDto : mealCntDTOS) {
+                Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
+                Meal meal = Meal.builder()
+                        .id(mealId)
+                        .build();
+                Long flightId = flightRepository.findByFlightNumAndStatus(mealCntDto.getFlightNum()).get().getId();
+                Flight flight = Flight.builder()
+                        .id(flightId)
+                        .build();
+                MealStock mealStock = MealStock.builder()
+                        .meal(meal)
+                        .flight(flight)
+                        .total(mealCntDto.getTotal())
+                        .status(mealCntDto.getStatus())
+                        .build();
+                mealStockRepository.save(mealStock);
+            }
+        }else {
+            for (int i=0;i<mealValid.size();i++) {
+                mealValid.get(i).changeStatusInfo(mealCntDTOS.get(i).getStatus());
+            }
         }
     }
 
@@ -106,7 +116,6 @@ public class MealService {
     @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
         List<Meal> mealList = mealRepository.findByFlightNum(flightNum);
-//        List<Meal> mealList = mealStockRepository.findByFlightId(flightId);
         List<MealDto> mealDTOS = new ArrayList<>();
         ByteArrayOutputStream bos;
         String fileName;
@@ -118,12 +127,14 @@ public class MealService {
             InputStream imageStream = new FileInputStream(filePath + fileName);
             imageStream.transferTo(bos);
             byte[] bytesData = bos.toByteArray();
+            MealStock mealStock = mealStockRepository.findByFlightNumAndMealId(flightNum,meal.getId());
             MealDto mealDto = MealDto.builder()
                     .mealId(meal.getId())
                     .mealMenu(meal.getMealMenu())
                     .imageName(meal.getImageName())
                     .content(meal.getContent())
                     .bytesdata(bytesData)
+                    .status(mealStock.getStatus())
                     .build();
             mealDTOS.add(mealDto);
         }
@@ -217,6 +228,10 @@ public class MealService {
         return seatMealDTOS;
     }
 
+    public List<SeatMealCntDto> seatMealCnt(String flightNum){
+        List<SeatMealCntDto> seatMealCntDTOS = seatMealCntRepository.findByFlightNumAndMealMenu(flightNum);
+        return seatMealCntDTOS;
+    }
 
 
 }
