@@ -23,7 +23,12 @@ async function confirmMeal(seatNum, success, fail) {
 async function listInput(flightNum, success, fail) {
   await api.get(`/meal/input/${flightNum}`).then(success).catch(fail)
 }
-
+async function listMealCnt(flightNum, success, fail) {
+  await api.get(`/meal/count/${flightNum}`).then(success).catch(fail)
+}
+async function mealOrderCnt(flightNum, success, fail) {
+  await api.get(`/meal/total/${flightNum}`).then(success).catch(fail)
+}
 async function selectMeal(mealId, success, fail) {
   await api.get(`/meal/select/${mealId}`).then(success).catch(fail)
 }
@@ -48,6 +53,8 @@ export {
   listInput,
   endMeals,
   confirmMeal,
+  listMealCnt,
+  mealOrderCnt,
   detailMeal,
   allergyMeal,
   choiceMeal,

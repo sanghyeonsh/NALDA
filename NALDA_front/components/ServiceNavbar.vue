@@ -67,7 +67,7 @@
 
                   <!-- 품절부분 -->
                   <v-card
-                    v-else-if="item.cnt === 0"
+                    v-else-if="item.cnt <= 0"
                     style="
                       margin-bottom: 30px;
                       background-image: url('/orders/out-of-stock.png');
@@ -218,7 +218,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('menu', ['items']),
+    ...mapState('menu', ['items', 'stock', 'total']),
+    ...mapState('user', ['flightNum']),
   },
 
   created() {
@@ -231,10 +232,12 @@ export default {
       await this.getSnack()
       await this.getAlcohols()
       await this.getNonAlcohols()
-
+      await this.getServiceCnt(this.flightNum)
+      await this.getOrderCnt(this.flightNum)
       this.snacks = this.items.snack
       this.alcohols = this.items.alcohol
       this.nonAlcohols = this.items.nonAlcohol
+      this.calcStock()
     })
   },
   methods: {
@@ -253,8 +256,17 @@ export default {
       this.SET_ITEM(data)
       this.$refs.serviceModal.toggle()
     },
-    ...mapMutations('menu', ['SET_ITEM']),
-    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
+    calcStock() {
+      this.CALC_STOCK()
+    },
+    ...mapMutations('menu', ['SET_ITEM', 'CALC_STOCK']),
+    ...mapActions('menu', [
+      'getSnack',
+      'getAlcohols',
+      'getNonAlcohols',
+      'getOrderCnt',
+      'getServiceCnt',
+    ]),
   },
 }
 </script>
