@@ -30,9 +30,8 @@
               <v-divider class="mx-4"></v-divider>
 
               <v-card-actions>
-                <!-- <v-spacer></v-spacer> -->
                 <div v-if="meal.total !== null">
-                  <v-btn text color="teal accent-4" @click="updateCheck(meal)">수량: {{meal.total}}</v-btn>
+                  <v-btn text color="teal accent-4">수량: {{meal.total}}</v-btn>
                 </div>
               </v-card-actions>
 
@@ -58,22 +57,9 @@
 
                     <hr />
                   </v-card-text>
-
-                  <!-- <v-card-actions class="pt-0">
-                    <v-spacer></v-spacer>
-                    <v-btn
-                      text
-                      color="teal accent-4"
-                      style="position: relative; top: 185px; right: 10px"
-                      @click="updateCheck(flightMeal)"
-                    >Close</v-btn>
-                  </v-card-actions>-->
                 </v-card>
               </v-expand-transition>
             </v-card>
-            <!-- <div>
-              <button @click="setMealSelected(meal)">선택</button>
-            </div>-->
           </div>
         </div>
         <div class="meal-order-button">
@@ -137,7 +123,7 @@
               style="height: 350px; width: 350px;"
             />
             <div style="margin-right: 17%; display: flex; flex-direction: column;">
-              <div style="font-size: xxx-large;">수량: {{selectedMeal.total}}</div>
+              <div style="font-size: xx-large;">수량: {{selectedMeal.total}}</div>
             </div>
           </v-card-text>
         </v-card>
@@ -157,7 +143,6 @@ export default {
       valid: true,
       dialog: false,
       mealList: [],
-      total: 0,
       totalRules: [(v) => /^[0-9]*$/.test(v) || '숫자만 입력해주세요.'],
       select: [],
       selectedMeal: [],
@@ -172,6 +157,8 @@ export default {
       'validMsg',
       'flightMealList',
       'settedMealList',
+      'total',
+      'stock',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -183,6 +170,10 @@ export default {
     promise.then(async () => {
       this.mealList = []
       await this.getSettedMeal(this.flightNum)
+      await this.getMealCnt(this.flightNum)
+      await this.getMealOrderCnt(this.flightNum)
+      await this.getFlightMeal(this.flightNum)
+      this.calcStock()
       if (this.settedMealList.length > 0) {
         await this.settedMealList.forEach((meal) => {
           const mealInfo = {
@@ -235,15 +226,27 @@ export default {
       'registSeatMeal',
       'validMeal',
       'getSettedMeal',
+      'getMealOrderCnt',
+      'getMealCnt',
     ]),
-    ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST']),
+    ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST', 'MEAL_CALC_STOCK']),
     test() {
       // console.log(this.mealList)
-      console.log(this.settedMealList)
-      // console.log(this.flightMealList)
-      // console.log(this.select)
-      // console.log(this.mealList)
-      console.log(this.readyState)
+      this.getSettedMeal(this.flightNum)
+      // console.log('이건 settedmeal')
+      // console.log(this.settedMealList)
+      // // console.log(this.flightMealList)
+      // // console.log(this.select)
+      // // console.log(this.mealList)
+      // console.log(this.readyState)
+      console.log('이건 토탈')
+      console.log(this.total)
+      console.log('이건스탁')
+      console.log(this.stock)
+      console.log(this.fligthMeals)
+    },
+    calcStock() {
+      this.MEAL_CALC_STOCK()
     },
     setMealSelected(meal) {
       if (meal.validate !== true) {
@@ -306,6 +309,7 @@ export default {
           info.status = 'PROGRESS'
         }
         setting.push(info)
+        console.log(info)
       })
 
       this.registFlightMeal(setting)
@@ -345,13 +349,15 @@ export default {
 }
 
 .airfood-container {
-  height: 75vh;
+  height: 85vh;
   background-color: rgba(239, 239, 239, 0.511);
+  /* padding-right: 10%; */
 }
 .airfood-container > h1 {
   text-align: center;
   vertical-align: middle;
-  margin-top: 3%;
+  /* margin-top: 3%; */
+  padding-top: 3%;
 }
 .wrapper {
   display: flex;
@@ -359,6 +365,7 @@ export default {
   align-items: center;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+  padding-right: 11%;
 }
 
 /* .wrapper {
@@ -415,7 +422,7 @@ export default {
   justify-content: center;
   align-items: center;
   /* gap: 10vw; */
-  background-color: rgba(239, 239, 239, 0.511);
+  /* background-color: rgba(239, 239, 239, 0.511); */
 }
 .v-card__title {
   justify-content: flex-start;
