@@ -1,37 +1,17 @@
 <template>
   <div v-if="!isloaded" class="page-loader">
-    <!-- <div class="square1"></div>
-    <div class="square2"></div>
-    <div class="square3"></div>
-    <div class="square4"></div>
-    <div class="plane">-->
-    <!--<img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon1.png"
-        alt="loading-plane"
-    />-->
-    <!--<img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon2.png"
-        alt="loading-plane"
-    />-->
-    <!-- <img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon3.png"
-        alt="loading-plane"
-      />
-    </div>-->
-    <!-- <div class="spinner">
-      <img class="load-spinner" src="../static/icon/load_spinner_icon.png" alt="loading-plane" />
-    </div>-->
     <div class="spinner">
       <div class="front">
-        <img class="load-spinner" src="../static/icon/load_spinner_earth.png" alt="loading-earth" />
+        <img
+          class="load-spinner"
+          src="/icon/load_spinner_earth.png"
+          alt="loading-earth"
+        />
       </div>
       <div class="back">
         <img
           class="load-spinner"
-          src="../static/icon/load_spinner_plane.png"
+          src="/icon/load_spinner_plane.png"
           alt="loading-spinner-plane"
         />
       </div>

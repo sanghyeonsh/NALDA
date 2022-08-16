@@ -35,6 +35,7 @@ export default {
   name: 'AttendantToilet',
   data() {
     return {
+      interval: null,
       th1: true,
       HR01: true,
       HL01: true,
@@ -62,7 +63,7 @@ export default {
         else this.HR01 = false
       }
     })
-    setInterval(async () => {
+    this.interval = setInterval(async () => {
       await this.callToiletLog('777-200ER-1')
       this.toilet.forEach((element) => {
         if (element.toiletCode === 'HR01') {
@@ -75,6 +76,9 @@ export default {
         }
       })
     }, 5000)
+  },
+  destroyed() {
+    clearInterval(this.interval)
   },
   methods: {
     ...mapActions('toilet', ['callToiletLog']),
@@ -155,9 +159,6 @@ export default {
   border-radius: 7px;
 }
 
-.inuse {
-  background-color: rgb(242, 0, 255) !important;
-}
 .th-middle {
   width: 2.2%;
   height: 3.5%;
