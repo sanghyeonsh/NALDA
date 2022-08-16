@@ -248,8 +248,6 @@ export default {
       this.getAllergy(this.flightMeals)
       await this.getMealCnt(this.flightNum)
       await this.getMealOrderCnt(this.flightNum)
-      console.log(this.stock)
-      console.log(this.total)
       this.calcStock()
     })
   },

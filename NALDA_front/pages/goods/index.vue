@@ -134,7 +134,7 @@ export default {
       pillow: '',
       earplug: '',
       slipper: '',
-      cnt: { blanket: 0, pillow: 0, earplug: 0, slipper: 0 },
+      cnt: { blanket: 100, pillow: 100, earplug: 100, slipper: 100 },
     }
   },
   computed: {
