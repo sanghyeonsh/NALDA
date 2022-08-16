@@ -291,7 +291,6 @@ export const actions = {
                 details: null,
                 allergies: null,
                 choice: false,
-                cnt: 0,
               })
             }
           })

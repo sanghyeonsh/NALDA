@@ -44,7 +44,6 @@
                     style="margin-bottom: 30px"
                     @click="ChoiceMenu(item)"
                   >
-                    <div>재고있음</div>
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -82,7 +81,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
-                      width="200px"
+                      width="210px"
                     >
                     </v-img>
 
@@ -116,7 +115,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
-                      width="200px"
+                      width="210px"
                     >
                     </v-img>
 
@@ -150,7 +149,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       width="200px"
-                      height="200px"
+                      height="210px"
                     >
                     </v-img>
 
