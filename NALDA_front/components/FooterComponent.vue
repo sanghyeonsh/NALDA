@@ -108,7 +108,7 @@ button {
 }
 
 button:hover {
-  background-color: #88c0c5 !important;
+  background-color: #88c0c5;
   box-shadow: 5px 5px 10px rgba(46, 205, 229, 0.4);
   color: #fff;
   transform: translateY(-7px);
@@ -140,7 +140,7 @@ button:hover {
 
 .service-wrap {
   margin-left: 1%;
-  background-color: #206e95 !important;
+  background-color: #206e95;
   color: white;
 }
 </style>

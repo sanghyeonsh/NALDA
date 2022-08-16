@@ -1,4 +1,4 @@
-package com.a204.nalda.repository;
+package com.a204.nalda.repository.orders;
 
 import com.a204.nalda.domain.entity.inflightservice.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +16,6 @@ public interface OrderRepository extends JpaRepository<Orders, Long> {
     @Query("select o from Orders o where o.id = :ordersId")
     Optional<Orders> findById(@Param("ordersId") Long ordersId);
 
+    @Query("select o from Orders o where o.flight.id = (select f.id from Flight f where f.flightNum=:flightNum and f.status='PROGRESS')")
+    List<Orders> findByFlightNum(@Param("flightNum") String flightNum);
 }

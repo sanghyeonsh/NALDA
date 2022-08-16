@@ -1,4 +1,4 @@
-package com.a204.nalda.repository;
+package com.a204.nalda.repository.user;
 
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.dto.user.LoginDto;

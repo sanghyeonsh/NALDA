@@ -102,12 +102,12 @@ export default {
     ...mapState('user', ['loginMember', 'memberDetail']),
     fullName() {
       let fullName = ''
-      this.loginMember.fullName.firstName &&
-        (fullName += this.loginMember.fullName.firstName)
+      this.loginMember?.fullName?.firstName &&
+        (fullName += this.loginMember?.fullName?.firstName)
       this.loginMember.fullName.middleName &&
-        (fullName += this.loginMember.fullName.middleName)
+        (fullName += this.loginMember?.fullName?.middleName)
       this.loginMember.fullName.lastName &&
-        (fullName += this.loginMember.fullName.lastName)
+        (fullName += this.loginMember?.fullName?.lastName)
 
       return fullName
     },
@@ -118,15 +118,15 @@ export default {
       resolve()
     })
     promise.then(async () => {
-      await this.callMemberDetail(this.loginMember.username)
-      this.tel = this.memberDetail.tel
-      this.email = this.memberDetail.email
-      this.gender = this.memberDetail.gender
-      this.mainAddress = this.memberDetail.address.mainAddress
-      this.detailAddress = this.memberDetail.address.detailAddress
-      this.passportNum = this.memberDetail.passportNum
-      this.job = this.memberDetail.job
-      this.nationality = this.memberDetail.nationality
+      await this.callMemberDetail(this.loginMember?.username)
+      this.tel = this.memberDetail?.tel
+      this.email = this.memberDetail?.email
+      this.gender = this.memberDetail?.gender
+      this.mainAddress = this.memberDetail?.address?.mainAddress
+      this.detailAddress = this.memberDetail?.address?.detailAddress
+      this.passportNum = this.memberDetail?.passportNum
+      this.job = this.memberDetail?.job
+      this.nationality = this.memberDetail?.nationality
     })
   },
   methods: {
