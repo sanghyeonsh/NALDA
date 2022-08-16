@@ -185,16 +185,18 @@ export const actions = {
       ({ data }) => {
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
-            commit('SET_FLIGHTMEAL_LIST', {
-              id: meal.mealId,
-              menu: meal.mealMenu,
-              content: meal.content,
-              image: meal.bytesdata,
-              check: false,
-              details: null,
-              allergies: null,
-              choice: false,
-            })
+            if (meal.status === 'PROGRESS') {
+              commit('SET_FLIGHTMEAL_LIST', {
+                id: meal.mealId,
+                menu: meal.mealMenu,
+                content: meal.content,
+                image: meal.bytesdata,
+                check: false,
+                details: null,
+                allergies: null,
+                choice: false,
+              })
+            }
           })
         }
       },

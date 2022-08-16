@@ -159,13 +159,13 @@ export default {
 }
 
 .order-button {
-  width: 15vw;
-  height: 10vh;
+  width: 12vw;
+  height: 5vh;
   position: fixed;
   margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: 16vh;
+  bottom: 20vh;
   border: none;
   color: white;
   font-size: 100%;
