@@ -11,7 +11,7 @@
             @click="() => keyEvent(key[shiftIndex])"
           >
             <!-- <span class="keyInfo" v-if="key[shiftIndex] === 'BackSpace'"><img class="keyInfo" src="../../assets/images/ic_backspace.png" /></span> -->
-            <span v-if="key[shiftIndex] === 'space'" class="keyInfo"> </span>
+            <span v-if="key[shiftIndex] === 'space'" class="keyInfo"></span>
             <span v-else class="keyInfo">{{ key[shiftIndex] }}</span>
           </li>
         </ul>
@@ -103,6 +103,9 @@ export default {
       await this.keyArr.pop()
       this.keyValue = await Hangul.assemble(this.keyArr)
       await this.$emit('getKeyValue', this.keyValue)
+    },
+    clearArray() {
+      this.keyArr = []
     },
   },
 }

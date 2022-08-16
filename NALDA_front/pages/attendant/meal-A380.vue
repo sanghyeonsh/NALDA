@@ -5771,11 +5771,12 @@ export default {
 
 <style scoped>
 .meal-list-wrap {
-  height: 70vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 /* 1층 */
 .first-floor {

@@ -62,6 +62,7 @@ public class MealService {
 
     @Transactional
     public void mealCntInput(List<MealCntDto> mealCntDTOS){
+
 //        Optional<MealStock> mealValid = mealStockRepository.findTopByFlightNum(mealCntDTOS.get(0).getFlightNum());
         List<MealStock> mealValid = mealStockRepository.findByFlightNum(mealCntDTOS.get(0).getFlightNum());
         if(mealValid == null){

@@ -8,20 +8,14 @@
       signup
     </div>-->
 
-    <div class="header-container-userprofile" @click="MoveMypage">
+    <div class="header-container-userprofile">
       <div class="profile-back">
-        <img
-          class="previous-icon"
-          src="/main/previous.png"
-          alt=""
-          @click="Movefrom"
-        />
+        <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
       </div>
-      <div class="profile-img">
+      <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
-      </div>
-      &nbsp;&nbsp;&nbsp;
-      <div class="profile-name">{{ fullname }}</div>
+      </div>&nbsp;&nbsp;&nbsp;
+      <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
 </template>
@@ -52,6 +46,8 @@ export default {
         this.$router.push('/main')
       } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
         this.$router.push('/attendant/main')
+      } else {
+        this.$router.push('/user/login')
       }
     },
     MoveSignup() {
@@ -65,6 +61,7 @@ export default {
       }
     },
     Movefrom() {
+      console.log(this.$nuxt.context.from.path)
       this.$router.push(this.$nuxt.context.from.path)
     },
   },

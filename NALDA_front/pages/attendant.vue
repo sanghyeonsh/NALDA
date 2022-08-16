@@ -12,6 +12,7 @@ import FooterComponent from '../components/FooterComponent.vue'
 export default {
   name: 'AttendantPage',
   components: { HeaderComponent, FooterComponent },
+  methods: {},
 }
 </script>
 
@@ -40,5 +41,6 @@ export default {
 
 * {
   font-family: 'twayfly';
+  /* background-color: rgba(239, 239, 239, 0.511); */
 }
 </style>
