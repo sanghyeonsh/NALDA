@@ -65,7 +65,7 @@ public class MealService {
 
 //        Optional<MealStock> mealValid = mealStockRepository.findTopByFlightNum(mealCntDTOS.get(0).getFlightNum());
         List<MealStock> mealValid = mealStockRepository.findByFlightNum(mealCntDTOS.get(0).getFlightNum());
-        if(mealValid == null){
+        if(mealValid.size()==0){
             for (MealCntDto mealCntDto : mealCntDTOS) {
                 Long mealId = mealRepository.findTopByMealMenu(mealCntDto.getMealMenu()).getId();
                 Meal meal = Meal.builder()
@@ -79,7 +79,7 @@ public class MealService {
                         .meal(meal)
                         .flight(flight)
                         .total(mealCntDto.getTotal())
-                        .status(mealCntDto.getStatus())
+                        .status(Status.READY)
                         .build();
                 mealStockRepository.save(mealStock);
             }
@@ -94,7 +94,9 @@ public class MealService {
     public void updateStatus(String flightNum){
         List<MealStock> mealStocks = mealStockRepository.findByFlightNum(flightNum);
         for (MealStock mealStock : mealStocks) {
-            mealStock.changeStatusInfo(Status.DONE);
+            if(mealStock.getStatus()==Status.PROGRESS){
+                mealStock.changeStatusInfo(Status.DONE);
+            }
         }
         List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
         for (SeatMeal seatMeal : seatMeals) {
