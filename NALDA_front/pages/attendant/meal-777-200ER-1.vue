@@ -20,7 +20,9 @@
               Acourse: firstClass[0].음식 === 'Acourse',
               Bcourse: firstClass[0].음식 === 'Bcourse',
             }"
-          >{{ firstClass[0].좌석 }}</div>
+          >
+            {{ firstClass[0].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -28,7 +30,9 @@
               Acourse: firstClass[1].음식 === 'Acourse',
               Bcourse: firstClass[1].음식 === 'Bcourse',
             }"
-          >{{ firstClass[1].좌석 }}</div>
+          >
+            {{ firstClass[1].좌석 }}
+          </div>
           <div class="space"></div>
           <div
             class="seat-first"
@@ -36,7 +40,9 @@
               Acourse: firstClass[2].음식 === 'Acourse',
               Bcourse: firstClass[2].음식 === 'Bcourse',
             }"
-          >{{ firstClass[2].좌석 }}</div>
+          >
+            {{ firstClass[2].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -44,7 +50,9 @@
               Acourse: firstClass[3].음식 === 'Acourse',
               Bcourse: firstClass[3].음식 === 'Bcourse',
             }"
-          >{{ firstClass[3].좌석 }}</div>
+          >
+            {{ firstClass[3].좌석 }}
+          </div>
         </div>
         <div class="seat-row-first">
           <div
@@ -53,7 +61,9 @@
               Acourse: firstClass[4].음식 === 'Acourse',
               Bcourse: firstClass[4].음식 === 'Bcourse',
             }"
-          >{{ firstClass[4].좌석 }}</div>
+          >
+            {{ firstClass[4].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -61,7 +71,9 @@
               Acourse: firstClass[5].음식 === 'Acourse',
               Bcourse: firstClass[5].음식 === 'Bcourse',
             }"
-          >{{ firstClass[5].좌석 }}</div>
+          >
+            {{ firstClass[5].좌석 }}
+          </div>
           <div class="space"></div>
           <div
             class="seat-first"
@@ -69,7 +81,9 @@
               Acourse: firstClass[6].음식 === 'Acourse',
               Bcourse: firstClass[6].음식 === 'Bcourse',
             }"
-          >{{ firstClass[6].좌석 }}</div>
+          >
+            {{ firstClass[6].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -77,7 +91,9 @@
               Acourse: firstClass[7].음식 === 'Acourse',
               Bcourse: firstClass[7].음식 === 'Bcourse',
             }"
-          >{{ firstClass[7].좌석 }}</div>
+          >
+            {{ firstClass[7].좌석 }}
+          </div>
         </div>
       </div>
     </div>
@@ -92,14 +108,18 @@
               Acourse: businessClass[0].음식 === 'Acourse',
               Bcourse: businessClass[0].음식 === 'Bcourse',
             }"
-          >{{ businessClass[0].좌석 }}</div>
+          >
+            {{ businessClass[0].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[1].음식 === 'Acourse',
               Bcourse: businessClass[1].음식 === 'Bcourse',
             }"
-          >{{ businessClass[1].좌석 }}</div>
+          >
+            {{ businessClass[1].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -107,21 +127,27 @@
               Acourse: businessClass[2].음식 === 'Acourse',
               Bcourse: businessClass[2].음식 === 'Bcourse',
             }"
-          >{{ businessClass[2].좌석 }}</div>
+          >
+            {{ businessClass[2].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[3].음식 === 'Acourse',
               Bcourse: businessClass[3].음식 === 'Bcourse',
             }"
-          >{{ businessClass[3].좌석 }}</div>
+          >
+            {{ businessClass[3].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[4].음식 === 'Acourse',
               Bcourse: businessClass[4].음식 === 'Bcourse',
             }"
-          >{{ businessClass[4].좌석 }}</div>
+          >
+            {{ businessClass[4].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -129,14 +155,18 @@
               Acourse: businessClass[5].음식 === 'Acourse',
               Bcourse: businessClass[5].음식 === 'Bcourse',
             }"
-          >{{ businessClass[5].좌석 }}</div>
+          >
+            {{ businessClass[5].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[6].음식 === 'Acourse',
               Bcourse: businessClass[6].음식 === 'Bcourse',
             }"
-          >{{ businessClass[6].좌석 }}</div>
+          >
+            {{ businessClass[6].좌석 }}
+          </div>
         </div>
         <div class="seat-row-business">
           <div
@@ -145,14 +175,18 @@
               Acourse: businessClass[7].음식 === 'Acourse',
               Bcourse: businessClass[7].음식 === 'Bcourse',
             }"
-          >{{ businessClass[7].좌석 }}</div>
+          >
+            {{ businessClass[7].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[8].음식 === 'Acourse',
               Bcourse: businessClass[8].음식 === 'Bcourse',
             }"
-          >{{ businessClass[8].좌석 }}</div>
+          >
+            {{ businessClass[8].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -160,21 +194,27 @@
               Acourse: businessClass[9].음식 === 'Acourse',
               Bcourse: businessClass[9].음식 === 'Bcourse',
             }"
-          >{{ businessClass[9].좌석 }}</div>
+          >
+            {{ businessClass[9].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[10].음식 === 'Acourse',
               Bcourse: businessClass[10].음식 === 'Bcourse',
             }"
-          >{{ businessClass[10].좌석 }}</div>
+          >
+            {{ businessClass[10].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[11].음식 === 'Acourse',
               Bcourse: businessClass[11].음식 === 'Bcourse',
             }"
-          >{{ businessClass[11].좌석 }}</div>
+          >
+            {{ businessClass[11].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -182,14 +222,18 @@
               Acourse: businessClass[12].음식 === 'Acourse',
               Bcourse: businessClass[12].음식 === 'Bcourse',
             }"
-          >{{ businessClass[12].좌석 }}</div>
+          >
+            {{ businessClass[12].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[13].음식 === 'Acourse',
               Bcourse: businessClass[13].음식 === 'Bcourse',
             }"
-          >{{ businessClass[13].좌석 }}</div>
+          >
+            {{ businessClass[13].좌석 }}
+          </div>
         </div>
         <div class="seat-row-business">
           <div
@@ -198,14 +242,18 @@
               Acourse: businessClass[14].음식 === 'Acourse',
               Bcourse: businessClass[14].음식 === 'Bcourse',
             }"
-          >{{ businessClass[14].좌석 }}</div>
+          >
+            {{ businessClass[14].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[15].음식 === 'Acourse',
               Bcourse: businessClass[15].음식 === 'Bcourse',
             }"
-          >{{ businessClass[15].좌석 }}</div>
+          >
+            {{ businessClass[15].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -213,21 +261,27 @@
               Acourse: businessClass[16].음식 === 'Acourse',
               Bcourse: businessClass[16].음식 === 'Bcourse',
             }"
-          >{{ businessClass[16].좌석 }}</div>
+          >
+            {{ businessClass[16].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[17].음식 === 'Acourse',
               Bcourse: businessClass[17].음식 === 'Bcourse',
             }"
-          >{{ businessClass[17].좌석 }}</div>
+          >
+            {{ businessClass[17].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[18].음식 === 'Acourse',
               Bcourse: businessClass[18].음식 === 'Bcourse',
             }"
-          >{{ businessClass[18].좌석 }}</div>
+          >
+            {{ businessClass[18].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -235,14 +289,18 @@
               Acourse: businessClass[19].음식 === 'Acourse',
               Bcourse: businessClass[19].음식 === 'Bcourse',
             }"
-          >{{ businessClass[19].좌석 }}</div>
+          >
+            {{ businessClass[19].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[20].음식 === 'Acourse',
               Bcourse: businessClass[20].음식 === 'Bcourse',
             }"
-          >{{ businessClass[20].좌석 }}</div>
+          >
+            {{ businessClass[20].좌석 }}
+          </div>
         </div>
         <div class="seat-row-business">
           <div
@@ -251,14 +309,18 @@
               Acourse: businessClass[21].음식 === 'Acourse',
               Bcourse: businessClass[21].음식 === 'Bcourse',
             }"
-          >{{ businessClass[21].좌석 }}</div>
+          >
+            {{ businessClass[21].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[22].음식 === 'Acourse',
               Bcourse: businessClass[22].음식 === 'Bcourse',
             }"
-          >{{ businessClass[22].좌석 }}</div>
+          >
+            {{ businessClass[22].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -266,21 +328,27 @@
               Acourse: businessClass[23].음식 === 'Acourse',
               Bcourse: businessClass[23].음식 === 'Bcourse',
             }"
-          >{{ businessClass[23].좌석 }}</div>
+          >
+            {{ businessClass[23].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[24].음식 === 'Acourse',
               Bcourse: businessClass[24].음식 === 'Bcourse',
             }"
-          >{{ businessClass[24].좌석 }}</div>
+          >
+            {{ businessClass[24].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[25].음식 === 'Acourse',
               Bcourse: businessClass[25].음식 === 'Bcourse',
             }"
-          >{{ businessClass[25].좌석 }}</div>
+          >
+            {{ businessClass[25].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -288,14 +356,18 @@
               Acourse: businessClass[26].음식 === 'Acourse',
               Bcourse: businessClass[26].음식 === 'Bcourse',
             }"
-          >{{ businessClass[26].좌석 }}</div>
+          >
+            {{ businessClass[26].좌석 }}
+          </div>
           <div
             class="seat-business"
             :class="{
               Acourse: businessClass[27].음식 === 'Acourse',
               Bcourse: businessClass[27].음식 === 'Bcourse',
             }"
-          >{{ businessClass[27].좌석 }}</div>
+          >
+            {{ businessClass[27].좌석 }}
+          </div>
         </div>
       </div>
     </div>
@@ -311,21 +383,27 @@
               Acourse: economyClass[0].음식 === 'Acourse',
               Bcourse: economyClass[0].음식 === 'Bcourse',
             }"
-          >{{ economyClass[0].좌석 }}</div>
+          >
+            {{ economyClass[0].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[1].음식 === 'Acourse',
               Bcourse: economyClass[1].음식 === 'Bcourse',
             }"
-          >{{ economyClass[1].좌석 }}</div>
+          >
+            {{ economyClass[1].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[2].음식 === 'Acourse',
               Bcourse: economyClass[2].음식 === 'Bcourse',
             }"
-          >{{ economyClass[2].좌석 }}</div>
+          >
+            {{ economyClass[2].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -333,21 +411,27 @@
               Acourse: economyClass[3].음식 === 'Acourse',
               Bcourse: economyClass[3].음식 === 'Bcourse',
             }"
-          >{{ economyClass[3].좌석 }}</div>
+          >
+            {{ economyClass[3].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[4].음식 === 'Acourse',
               Bcourse: economyClass[4].음식 === 'Bcourse',
             }"
-          >{{ economyClass[4].좌석 }}</div>
+          >
+            {{ economyClass[4].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[5].음식 === 'Acourse',
               Bcourse: economyClass[5].음식 === 'Bcourse',
             }"
-          >{{ economyClass[5].좌석 }}</div>
+          >
+            {{ economyClass[5].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -355,21 +439,27 @@
               Acourse: economyClass[6].음식 === 'Acourse',
               Bcourse: economyClass[6].음식 === 'Bcourse',
             }"
-          >{{ economyClass[6].좌석 }}</div>
+          >
+            {{ economyClass[6].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[7].음식 === 'Acourse',
               Bcourse: economyClass[7].음식 === 'Bcourse',
             }"
-          >{{ economyClass[7].좌석 }}</div>
+          >
+            {{ economyClass[7].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[8].음식 === 'Acourse',
               Bcourse: economyClass[8].음식 === 'Bcourse',
             }"
-          >{{ economyClass[8].좌석 }}</div>
+          >
+            {{ economyClass[8].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>29</div>
@@ -379,21 +469,27 @@
               Acourse: economyClass[9].음식 === 'Acourse',
               Bcourse: economyClass[9].음식 === 'Bcourse',
             }"
-          >{{ economyClass[9].좌석 }}</div>
+          >
+            {{ economyClass[9].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[10].음식 === 'Acourse',
               Bcourse: economyClass[10].음식 === 'Bcourse',
             }"
-          >{{ economyClass[10].좌석 }}</div>
+          >
+            {{ economyClass[10].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[11].음식 === 'Acourse',
               Bcourse: economyClass[11].음식 === 'Bcourse',
             }"
-          >{{ economyClass[11].좌석 }}</div>
+          >
+            {{ economyClass[11].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -401,21 +497,27 @@
               Acourse: economyClass[12].음식 === 'Acourse',
               Bcourse: economyClass[12].음식 === 'Bcourse',
             }"
-          >{{ economyClass[12].좌석 }}</div>
+          >
+            {{ economyClass[12].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[13].음식 === 'Acourse',
               Bcourse: economyClass[13].음식 === 'Bcourse',
             }"
-          >{{ economyClass[13].좌석 }}</div>
+          >
+            {{ economyClass[13].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[14].음식 === 'Acourse',
               Bcourse: economyClass[14].음식 === 'Bcourse',
             }"
-          >{{ economyClass[14].좌석 }}</div>
+          >
+            {{ economyClass[14].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -423,21 +525,27 @@
               Acourse: economyClass[15].음식 === 'Acourse',
               Bcourse: economyClass[15].음식 === 'Bcourse',
             }"
-          >{{ economyClass[15].좌석 }}</div>
+          >
+            {{ economyClass[15].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[16].음식 === 'Acourse',
               Bcourse: economyClass[16].음식 === 'Bcourse',
             }"
-          >{{ economyClass[16].좌석 }}</div>
+          >
+            {{ economyClass[16].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[17].음식 === 'Acourse',
               Bcourse: economyClass[17].음식 === 'Bcourse',
             }"
-          >{{ economyClass[17].좌석 }}</div>
+          >
+            {{ economyClass[17].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>30</div>
@@ -447,21 +555,27 @@
               Acourse: economyClass[18].음식 === 'Acourse',
               Bcourse: economyClass[18].음식 === 'Bcourse',
             }"
-          >{{ economyClass[18].좌석 }}</div>
+          >
+            {{ economyClass[18].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[19].음식 === 'Acourse',
               Bcourse: economyClass[19].음식 === 'Bcourse',
             }"
-          >{{ economyClass[19].좌석 }}</div>
+          >
+            {{ economyClass[19].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[20].음식 === 'Acourse',
               Bcourse: economyClass[20].음식 === 'Bcourse',
             }"
-          >{{ economyClass[20].좌석 }}</div>
+          >
+            {{ economyClass[20].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -469,21 +583,27 @@
               Acourse: economyClass[21].음식 === 'Acourse',
               Bcourse: economyClass[21].음식 === 'Bcourse',
             }"
-          >{{ economyClass[21].좌석 }}</div>
+          >
+            {{ economyClass[21].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[22].음식 === 'Acourse',
               Bcourse: economyClass[22].음식 === 'Bcourse',
             }"
-          >{{ economyClass[22].좌석 }}</div>
+          >
+            {{ economyClass[22].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[23].음식 === 'Acourse',
               Bcourse: economyClass[23].음식 === 'Bcourse',
             }"
-          >{{ economyClass[23].좌석 }}</div>
+          >
+            {{ economyClass[23].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -491,21 +611,27 @@
               Acourse: economyClass[24].음식 === 'Acourse',
               Bcourse: economyClass[24].음식 === 'Bcourse',
             }"
-          >{{ economyClass[24].좌석 }}</div>
+          >
+            {{ economyClass[24].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[25].음식 === 'Acourse',
               Bcourse: economyClass[25].음식 === 'Bcourse',
             }"
-          >{{ economyClass[25].좌석 }}</div>
+          >
+            {{ economyClass[25].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[26].음식 === 'Acourse',
               Bcourse: economyClass[26].음식 === 'Bcourse',
             }"
-          >{{ economyClass[26].좌석 }}</div>
+          >
+            {{ economyClass[26].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>31</div>
@@ -515,21 +641,27 @@
               Acourse: economyClass[27].음식 === 'Acourse',
               Bcourse: economyClass[27].음식 === 'Bcourse',
             }"
-          >{{ economyClass[27].좌석 }}</div>
+          >
+            {{ economyClass[27].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[28].음식 === 'Acourse',
               Bcourse: economyClass[28].음식 === 'Bcourse',
             }"
-          >{{ economyClass[28].좌석 }}</div>
+          >
+            {{ economyClass[28].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[29].음식 === 'Acourse',
               Bcourse: economyClass[29].음식 === 'Bcourse',
             }"
-          >{{ economyClass[29].좌석 }}</div>
+          >
+            {{ economyClass[29].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -537,21 +669,27 @@
               Acourse: economyClass[30].음식 === 'Acourse',
               Bcourse: economyClass[30].음식 === 'Bcourse',
             }"
-          >{{ economyClass[30].좌석 }}</div>
+          >
+            {{ economyClass[30].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[31].음식 === 'Acourse',
               Bcourse: economyClass[31].음식 === 'Bcourse',
             }"
-          >{{ economyClass[31].좌석 }}</div>
+          >
+            {{ economyClass[31].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[32].음식 === 'Acourse',
               Bcourse: economyClass[32].음식 === 'Bcourse',
             }"
-          >{{ economyClass[32].좌석 }}</div>
+          >
+            {{ economyClass[32].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -559,21 +697,27 @@
               Acourse: economyClass[33].음식 === 'Acourse',
               Bcourse: economyClass[33].음식 === 'Bcourse',
             }"
-          >{{ economyClass[33].좌석 }}</div>
+          >
+            {{ economyClass[33].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[34].음식 === 'Acourse',
               Bcourse: economyClass[34].음식 === 'Bcourse',
             }"
-          >{{ economyClass[34].좌석 }}</div>
+          >
+            {{ economyClass[34].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[35].음식 === 'Acourse',
               Bcourse: economyClass[35].음식 === 'Bcourse',
             }"
-          >{{ economyClass[35].좌석 }}</div>
+          >
+            {{ economyClass[35].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>32</div>
@@ -583,21 +727,27 @@
               Acourse: economyClass[36].음식 === 'Acourse',
               Bcourse: economyClass[36].음식 === 'Bcourse',
             }"
-          >{{ economyClass[36].좌석 }}</div>
+          >
+            {{ economyClass[36].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[37].음식 === 'Acourse',
               Bcourse: economyClass[37].음식 === 'Bcourse',
             }"
-          >{{ economyClass[37].좌석 }}</div>
+          >
+            {{ economyClass[37].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[38].음식 === 'Acourse',
               Bcourse: economyClass[38].음식 === 'Bcourse',
             }"
-          >{{ economyClass[38].좌석 }}</div>
+          >
+            {{ economyClass[38].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -605,21 +755,27 @@
               Acourse: economyClass[39].음식 === 'Acourse',
               Bcourse: economyClass[39].음식 === 'Bcourse',
             }"
-          >{{ economyClass[39].좌석 }}</div>
+          >
+            {{ economyClass[39].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[40].음식 === 'Acourse',
               Bcourse: economyClass[40].음식 === 'Bcourse',
             }"
-          >{{ economyClass[40].좌석 }}</div>
+          >
+            {{ economyClass[40].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[41].음식 === 'Acourse',
               Bcourse: economyClass[41].음식 === 'Bcourse',
             }"
-          >{{ economyClass[41].좌석 }}</div>
+          >
+            {{ economyClass[41].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -627,21 +783,27 @@
               Acourse: economyClass[42].음식 === 'Acourse',
               Bcourse: economyClass[42].음식 === 'Bcourse',
             }"
-          >{{ economyClass[42].좌석 }}</div>
+          >
+            {{ economyClass[42].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[43].음식 === 'Acourse',
               Bcourse: economyClass[43].음식 === 'Bcourse',
             }"
-          >{{ economyClass[43].좌석 }}</div>
+          >
+            {{ economyClass[43].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[44].음식 === 'Acourse',
               Bcourse: economyClass[44].음식 === 'Bcourse',
             }"
-          >{{ economyClass[44].좌석 }}</div>
+          >
+            {{ economyClass[44].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>33</div>
@@ -651,21 +813,27 @@
               Acourse: economyClass[45].음식 === 'Acourse',
               Bcourse: economyClass[45].음식 === 'Bcourse',
             }"
-          >{{ economyClass[45].좌석 }}</div>
+          >
+            {{ economyClass[45].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[46].음식 === 'Acourse',
               Bcourse: economyClass[46].음식 === 'Bcourse',
             }"
-          >{{ economyClass[46].좌석 }}</div>
+          >
+            {{ economyClass[46].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[47].음식 === 'Acourse',
               Bcourse: economyClass[47].음식 === 'Bcourse',
             }"
-          >{{ economyClass[47].좌석 }}</div>
+          >
+            {{ economyClass[47].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -673,21 +841,27 @@
               Acourse: economyClass[48].음식 === 'Acourse',
               Bcourse: economyClass[48].음식 === 'Bcourse',
             }"
-          >{{ economyClass[48].좌석 }}</div>
+          >
+            {{ economyClass[48].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[49].음식 === 'Acourse',
               Bcourse: economyClass[49].음식 === 'Bcourse',
             }"
-          >{{ economyClass[49].좌석 }}</div>
+          >
+            {{ economyClass[49].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[50].음식 === 'Acourse',
               Bcourse: economyClass[50].음식 === 'Bcourse',
             }"
-          >{{ economyClass[50].좌석 }}</div>
+          >
+            {{ economyClass[50].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -695,21 +869,27 @@
               Acourse: economyClass[51].음식 === 'Acourse',
               Bcourse: economyClass[51].음식 === 'Bcourse',
             }"
-          >{{ economyClass[51].좌석 }}</div>
+          >
+            {{ economyClass[51].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[52].음식 === 'Acourse',
               Bcourse: economyClass[52].음식 === 'Bcourse',
             }"
-          >{{ economyClass[52].좌석 }}</div>
+          >
+            {{ economyClass[52].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[53].음식 === 'Acourse',
               Bcourse: economyClass[53].음식 === 'Bcourse',
             }"
-          >{{ economyClass[53].좌석 }}</div>
+          >
+            {{ economyClass[53].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>34</div>
@@ -719,21 +899,27 @@
               Acourse: economyClass[54].음식 === 'Acourse',
               Bcourse: economyClass[54].음식 === 'Bcourse',
             }"
-          >{{ economyClass[54].좌석 }}</div>
+          >
+            {{ economyClass[54].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[55].음식 === 'Acourse',
               Bcourse: economyClass[55].음식 === 'Bcourse',
             }"
-          >{{ economyClass[55].좌석 }}</div>
+          >
+            {{ economyClass[55].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[56].음식 === 'Acourse',
               Bcourse: economyClass[56].음식 === 'Bcourse',
             }"
-          >{{ economyClass[56].좌석 }}</div>
+          >
+            {{ economyClass[56].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -741,21 +927,27 @@
               Acourse: economyClass[57].음식 === 'Acourse',
               Bcourse: economyClass[57].음식 === 'Bcourse',
             }"
-          >{{ economyClass[57].좌석 }}</div>
+          >
+            {{ economyClass[57].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[58].음식 === 'Acourse',
               Bcourse: economyClass[58].음식 === 'Bcourse',
             }"
-          >{{ economyClass[58].좌석 }}</div>
+          >
+            {{ economyClass[58].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[59].음식 === 'Acourse',
               Bcourse: economyClass[59].음식 === 'Bcourse',
             }"
-          >{{ economyClass[59].좌석 }}</div>
+          >
+            {{ economyClass[59].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -763,21 +955,27 @@
               Acourse: economyClass[60].음식 === 'Acourse',
               Bcourse: economyClass[60].음식 === 'Bcourse',
             }"
-          >{{ economyClass[60].좌석 }}</div>
+          >
+            {{ economyClass[60].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[61].음식 === 'Acourse',
               Bcourse: economyClass[61].음식 === 'Bcourse',
             }"
-          >{{ economyClass[61].좌석 }}</div>
+          >
+            {{ economyClass[61].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[62].음식 === 'Acourse',
               Bcourse: economyClass[62].음식 === 'Bcourse',
             }"
-          >{{ economyClass[62].좌석 }}</div>
+          >
+            {{ economyClass[62].좌석 }}
+          </div>
         </div>
       </div>
     </div>
@@ -793,21 +991,27 @@
               Acourse: economyClass[63].음식 === 'Acourse',
               Bcourse: economyClass[63].음식 === 'Bcourse',
             }"
-          >{{ economyClass[63].좌석 }}</div>
+          >
+            {{ economyClass[63].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[64].음식 === 'Acourse',
               Bcourse: economyClass[64].음식 === 'Bcourse',
             }"
-          >{{ economyClass[64].좌석 }}</div>
+          >
+            {{ economyClass[64].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[65].음식 === 'Acourse',
               Bcourse: economyClass[65].음식 === 'Bcourse',
             }"
-          >{{ economyClass[65].좌석 }}</div>
+          >
+            {{ economyClass[65].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -815,21 +1019,27 @@
               Acourse: economyClass[66].음식 === 'Acourse',
               Bcourse: economyClass[66].음식 === 'Bcourse',
             }"
-          >{{ economyClass[66].좌석 }}</div>
+          >
+            {{ economyClass[66].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[67].음식 === 'Acourse',
               Bcourse: economyClass[67].음식 === 'Bcourse',
             }"
-          >{{ economyClass[67].좌석 }}</div>
+          >
+            {{ economyClass[67].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[68].음식 === 'Acourse',
               Bcourse: economyClass[68].음식 === 'Bcourse',
             }"
-          >{{ economyClass[68].좌석 }}</div>
+          >
+            {{ economyClass[68].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -837,21 +1047,27 @@
               Acourse: economyClass[69].음식 === 'Acourse',
               Bcourse: economyClass[69].음식 === 'Bcourse',
             }"
-          >{{ economyClass[69].좌석 }}</div>
+          >
+            {{ economyClass[69].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[70].음식 === 'Acourse',
               Bcourse: economyClass[70].음식 === 'Bcourse',
             }"
-          >{{ economyClass[70].좌석 }}</div>
+          >
+            {{ economyClass[70].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[71].음식 === 'Acourse',
               Bcourse: economyClass[71].음식 === 'Bcourse',
             }"
-          >{{ economyClass[71].좌석 }}</div>
+          >
+            {{ economyClass[71].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>36</div>
@@ -861,21 +1077,27 @@
               Acourse: economyClass[72].음식 === 'Acourse',
               Bcourse: economyClass[72].음식 === 'Bcourse',
             }"
-          >{{ economyClass[72].좌석 }}</div>
+          >
+            {{ economyClass[72].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[73].음식 === 'Acourse',
               Bcourse: economyClass[73].음식 === 'Bcourse',
             }"
-          >{{ economyClass[73].좌석 }}</div>
+          >
+            {{ economyClass[73].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[74].음식 === 'Acourse',
               Bcourse: economyClass[74].음식 === 'Bcourse',
             }"
-          >{{ economyClass[74].좌석 }}</div>
+          >
+            {{ economyClass[74].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -883,21 +1105,27 @@
               Acourse: economyClass[75].음식 === 'Acourse',
               Bcourse: economyClass[75].음식 === 'Bcourse',
             }"
-          >{{ economyClass[75].좌석 }}</div>
+          >
+            {{ economyClass[75].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[76].음식 === 'Acourse',
               Bcourse: economyClass[76].음식 === 'Bcourse',
             }"
-          >{{ economyClass[76].좌석 }}</div>
+          >
+            {{ economyClass[76].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[77].음식 === 'Acourse',
               Bcourse: economyClass[77].음식 === 'Bcourse',
             }"
-          >{{ economyClass[77].좌석 }}</div>
+          >
+            {{ economyClass[77].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -905,21 +1133,27 @@
               Acourse: economyClass[78].음식 === 'Acourse',
               Bcourse: economyClass[78].음식 === 'Bcourse',
             }"
-          >{{ economyClass[78].좌석 }}</div>
+          >
+            {{ economyClass[78].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[79].음식 === 'Acourse',
               Bcourse: economyClass[79].음식 === 'Bcourse',
             }"
-          >{{ economyClass[79].좌석 }}</div>
+          >
+            {{ economyClass[79].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[80].음식 === 'Acourse',
               Bcourse: economyClass[80].음식 === 'Bcourse',
             }"
-          >{{ economyClass[80].좌석 }}</div>
+          >
+            {{ economyClass[80].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>37</div>
@@ -929,21 +1163,27 @@
               Acourse: economyClass[81].음식 === 'Acourse',
               Bcourse: economyClass[81].음식 === 'Bcourse',
             }"
-          >{{ economyClass[81].좌석 }}</div>
+          >
+            {{ economyClass[81].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[82].음식 === 'Acourse',
               Bcourse: economyClass[82].음식 === 'Bcourse',
             }"
-          >{{ economyClass[82].좌석 }}</div>
+          >
+            {{ economyClass[82].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[83].음식 === 'Acourse',
               Bcourse: economyClass[83].음식 === 'Bcourse',
             }"
-          >{{ economyClass[83].좌석 }}</div>
+          >
+            {{ economyClass[83].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -951,21 +1191,27 @@
               Acourse: economyClass[84].음식 === 'Acourse',
               Bcourse: economyClass[84].음식 === 'Bcourse',
             }"
-          >{{ economyClass[84].좌석 }}</div>
+          >
+            {{ economyClass[84].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[85].음식 === 'Acourse',
               Bcourse: economyClass[85].음식 === 'Bcourse',
             }"
-          >{{ economyClass[85].좌석 }}</div>
+          >
+            {{ economyClass[85].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[86].음식 === 'Acourse',
               Bcourse: economyClass[86].음식 === 'Bcourse',
             }"
-          >{{ economyClass[86].좌석 }}</div>
+          >
+            {{ economyClass[86].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -973,21 +1219,27 @@
               Acourse: economyClass[87].음식 === 'Acourse',
               Bcourse: economyClass[87].음식 === 'Bcourse',
             }"
-          >{{ economyClass[87].좌석 }}</div>
+          >
+            {{ economyClass[87].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[88].음식 === 'Acourse',
               Bcourse: economyClass[88].음식 === 'Bcourse',
             }"
-          >{{ economyClass[88].좌석 }}</div>
+          >
+            {{ economyClass[88].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[89].음식 === 'Acourse',
               Bcourse: economyClass[89].음식 === 'Bcourse',
             }"
-          >{{ economyClass[89].좌석 }}</div>
+          >
+            {{ economyClass[89].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>38</div>
@@ -997,21 +1249,27 @@
               Acourse: economyClass[90].음식 === 'Acourse',
               Bcourse: economyClass[90].음식 === 'Bcourse',
             }"
-          >{{ economyClass[90].좌석 }}</div>
+          >
+            {{ economyClass[90].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[91].음식 === 'Acourse',
               Bcourse: economyClass[91].음식 === 'Bcourse',
             }"
-          >{{ economyClass[91].좌석 }}</div>
+          >
+            {{ economyClass[91].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[92].음식 === 'Acourse',
               Bcourse: economyClass[92].음식 === 'Bcourse',
             }"
-          >{{ economyClass[92].좌석 }}</div>
+          >
+            {{ economyClass[92].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1019,21 +1277,27 @@
               Acourse: economyClass[93].음식 === 'Acourse',
               Bcourse: economyClass[93].음식 === 'Bcourse',
             }"
-          >{{ economyClass[93].좌석 }}</div>
+          >
+            {{ economyClass[93].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[94].음식 === 'Acourse',
               Bcourse: economyClass[94].음식 === 'Bcourse',
             }"
-          >{{ economyClass[94].좌석 }}</div>
+          >
+            {{ economyClass[94].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[95].음식 === 'Acourse',
               Bcourse: economyClass[95].음식 === 'Bcourse',
             }"
-          >{{ economyClass[95].좌석 }}</div>
+          >
+            {{ economyClass[95].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1041,21 +1305,27 @@
               Acourse: economyClass[96].음식 === 'Acourse',
               Bcourse: economyClass[96].음식 === 'Bcourse',
             }"
-          >{{ economyClass[96].좌석 }}</div>
+          >
+            {{ economyClass[96].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[97].음식 === 'Acourse',
               Bcourse: economyClass[97].음식 === 'Bcourse',
             }"
-          >{{ economyClass[97].좌석 }}</div>
+          >
+            {{ economyClass[97].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[98].음식 === 'Acourse',
               Bcourse: economyClass[98].음식 === 'Bcourse',
             }"
-          >{{ economyClass[98].좌석 }}</div>
+          >
+            {{ economyClass[98].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>39</div>
@@ -1065,21 +1335,27 @@
               Acourse: economyClass[99].음식 === 'Acourse',
               Bcourse: economyClass[99].음식 === 'Bcourse',
             }"
-          >{{ economyClass[99].좌석 }}</div>
+          >
+            {{ economyClass[99].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[100].음식 === 'Acourse',
               Bcourse: economyClass[100].음식 === 'Bcourse',
             }"
-          >{{ economyClass[100].좌석 }}</div>
+          >
+            {{ economyClass[100].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[101].음식 === 'Acourse',
               Bcourse: economyClass[101].음식 === 'Bcourse',
             }"
-          >{{ economyClass[101].좌석 }}</div>
+          >
+            {{ economyClass[101].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1087,21 +1363,27 @@
               Acourse: economyClass[102].음식 === 'Acourse',
               Bcourse: economyClass[102].음식 === 'Bcourse',
             }"
-          >{{ economyClass[102].좌석 }}</div>
+          >
+            {{ economyClass[102].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[103].음식 === 'Acourse',
               Bcourse: economyClass[103].음식 === 'Bcourse',
             }"
-          >{{ economyClass[103].좌석 }}</div>
+          >
+            {{ economyClass[103].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[104].음식 === 'Acourse',
               Bcourse: economyClass[104].음식 === 'Bcourse',
             }"
-          >{{ economyClass[104].좌석 }}</div>
+          >
+            {{ economyClass[104].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1109,21 +1391,27 @@
               Acourse: economyClass[105].음식 === 'Acourse',
               Bcourse: economyClass[105].음식 === 'Bcourse',
             }"
-          >{{ economyClass[105].좌석 }}</div>
+          >
+            {{ economyClass[105].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[106].음식 === 'Acourse',
               Bcourse: economyClass[106].음식 === 'Bcourse',
             }"
-          >{{ economyClass[106].좌석 }}</div>
+          >
+            {{ economyClass[106].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[107].음식 === 'Acourse',
               Bcourse: economyClass[107].음식 === 'Bcourse',
             }"
-          >{{ economyClass[107].좌석 }}</div>
+          >
+            {{ economyClass[107].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>40</div>
@@ -1133,21 +1421,27 @@
               Acourse: economyClass[108].음식 === 'Acourse',
               Bcourse: economyClass[108].음식 === 'Bcourse',
             }"
-          >{{ economyClass[108].좌석 }}</div>
+          >
+            {{ economyClass[108].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[109].음식 === 'Acourse',
               Bcourse: economyClass[109].음식 === 'Bcourse',
             }"
-          >{{ economyClass[109].좌석 }}</div>
+          >
+            {{ economyClass[109].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[110].음식 === 'Acourse',
               Bcourse: economyClass[110].음식 === 'Bcourse',
             }"
-          >{{ economyClass[110].좌석 }}</div>
+          >
+            {{ economyClass[110].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1155,21 +1449,27 @@
               Acourse: economyClass[111].음식 === 'Acourse',
               Bcourse: economyClass[111].음식 === 'Bcourse',
             }"
-          >{{ economyClass[111].좌석 }}</div>
+          >
+            {{ economyClass[111].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[112].음식 === 'Acourse',
               Bcourse: economyClass[112].음식 === 'Bcourse',
             }"
-          >{{ economyClass[112].좌석 }}</div>
+          >
+            {{ economyClass[112].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[113].음식 === 'Acourse',
               Bcourse: economyClass[113].음식 === 'Bcourse',
             }"
-          >{{ economyClass[113].좌석 }}</div>
+          >
+            {{ economyClass[113].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1177,21 +1477,27 @@
               Acourse: economyClass[114].음식 === 'Acourse',
               Bcourse: economyClass[114].음식 === 'Bcourse',
             }"
-          >{{ economyClass[114].좌석 }}</div>
+          >
+            {{ economyClass[114].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[115].음식 === 'Acourse',
               Bcourse: economyClass[115].음식 === 'Bcourse',
             }"
-          >{{ economyClass[115].좌석 }}</div>
+          >
+            {{ economyClass[115].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[116].음식 === 'Acourse',
               Bcourse: economyClass[116].음식 === 'Bcourse',
             }"
-          >{{ economyClass[116].좌석 }}</div>
+          >
+            {{ economyClass[116].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>41</div>
@@ -1201,14 +1507,18 @@
               Acourse: economyClass[117].음식 === 'Acourse',
               Bcourse: economyClass[117].음식 === 'Bcourse',
             }"
-          >{{ economyClass[117].좌석 }}</div>
+          >
+            {{ economyClass[117].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[118].음식 === 'Acourse',
               Bcourse: economyClass[118].음식 === 'Bcourse',
             }"
-          >{{ economyClass[118].좌석 }}</div>
+          >
+            {{ economyClass[118].좌석 }}
+          </div>
           <div class="seat-economy-space"></div>
           <div class="seat-space"></div>
           <div
@@ -1217,21 +1527,27 @@
               Acourse: economyClass[119].음식 === 'Acourse',
               Bcourse: economyClass[119].음식 === 'Bcourse',
             }"
-          >{{ economyClass[119].좌석 }}</div>
+          >
+            {{ economyClass[119].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[120].음식 === 'Acourse',
               Bcourse: economyClass[120].음식 === 'Bcourse',
             }"
-          >{{ economyClass[120].좌석 }}</div>
+          >
+            {{ economyClass[120].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[121].음식 === 'Acourse',
               Bcourse: economyClass[121].음식 === 'Bcourse',
             }"
-          >{{ economyClass[121].좌석 }}</div>
+          >
+            {{ economyClass[121].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div class="seat-economy-space"></div>
@@ -1251,21 +1567,27 @@
               Acourse: economyClass[122].음식 === 'Acourse',
               Bcourse: economyClass[122].음식 === 'Bcourse',
             }"
-          >{{ economyClass[122].좌석 }}</div>
+          >
+            {{ economyClass[122].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[123].음식 === 'Acourse',
               Bcourse: economyClass[123].음식 === 'Bcourse',
             }"
-          >{{ economyClass[123].좌석 }}</div>
+          >
+            {{ economyClass[123].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[124].음식 === 'Acourse',
               Bcourse: economyClass[124].음식 === 'Bcourse',
             }"
-          >{{ economyClass[124].좌석 }}</div>
+          >
+            {{ economyClass[124].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div class="seat-economy-space"></div>
@@ -1277,21 +1599,27 @@
               Acourse: economyClass[125].음식 === 'Acourse',
               Bcourse: economyClass[125].음식 === 'Bcourse',
             }"
-          >{{ economyClass[125].좌석 }}</div>
+          >
+            {{ economyClass[125].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[126].음식 === 'Acourse',
               Bcourse: economyClass[126].음식 === 'Bcourse',
             }"
-          >{{ economyClass[126].좌석 }}</div>
+          >
+            {{ economyClass[126].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[127].음식 === 'Acourse',
               Bcourse: economyClass[127].음식 === 'Bcourse',
             }"
-          >{{ economyClass[127].좌석 }}</div>
+          >
+            {{ economyClass[127].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>43</div>
@@ -1301,21 +1629,27 @@
               Acourse: economyClass[128].음식 === 'Acourse',
               Bcourse: economyClass[128].음식 === 'Bcourse',
             }"
-          >{{ economyClass[128].좌석 }}</div>
+          >
+            {{ economyClass[128].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[129].음식 === 'Acourse',
               Bcourse: economyClass[129].음식 === 'Bcourse',
             }"
-          >{{ economyClass[129].좌석 }}</div>
+          >
+            {{ economyClass[129].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[130].음식 === 'Acourse',
               Bcourse: economyClass[130].음식 === 'Bcourse',
             }"
-          >{{ economyClass[130].좌석 }}</div>
+          >
+            {{ economyClass[130].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1323,21 +1657,27 @@
               Acourse: economyClass[131].음식 === 'Acourse',
               Bcourse: economyClass[131].음식 === 'Bcourse',
             }"
-          >{{ economyClass[131].좌석 }}</div>
+          >
+            {{ economyClass[131].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[132].음식 === 'Acourse',
               Bcourse: economyClass[132].음식 === 'Bcourse',
             }"
-          >{{ economyClass[132].좌석 }}</div>
+          >
+            {{ economyClass[132].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[133].음식 === 'Acourse',
               Bcourse: economyClass[133].음식 === 'Bcourse',
             }"
-          >{{ economyClass[133].좌석 }}</div>
+          >
+            {{ economyClass[133].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1345,21 +1685,27 @@
               Acourse: economyClass[134].음식 === 'Acourse',
               Bcourse: economyClass[134].음식 === 'Bcourse',
             }"
-          >{{ economyClass[134].좌석 }}</div>
+          >
+            {{ economyClass[134].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[135].음식 === 'Acourse',
               Bcourse: economyClass[135].음식 === 'Bcourse',
             }"
-          >{{ economyClass[135].좌석 }}</div>
+          >
+            {{ economyClass[135].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[136].음식 === 'Acourse',
               Bcourse: economyClass[136].음식 === 'Bcourse',
             }"
-          >{{ economyClass[136].좌석 }}</div>
+          >
+            {{ economyClass[136].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>44</div>
@@ -1369,21 +1715,27 @@
               Acourse: economyClass[137].음식 === 'Acourse',
               Bcourse: economyClass[137].음식 === 'Bcourse',
             }"
-          >{{ economyClass[137].좌석 }}</div>
+          >
+            {{ economyClass[137].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[138].음식 === 'Acourse',
               Bcourse: economyClass[138].음식 === 'Bcourse',
             }"
-          >{{ economyClass[138].좌석 }}</div>
+          >
+            {{ economyClass[138].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[139].음식 === 'Acourse',
               Bcourse: economyClass[139].음식 === 'Bcourse',
             }"
-          >{{ economyClass[139].좌석 }}</div>
+          >
+            {{ economyClass[139].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1391,21 +1743,27 @@
               Acourse: economyClass[140].음식 === 'Acourse',
               Bcourse: economyClass[140].음식 === 'Bcourse',
             }"
-          >{{ economyClass[140].좌석 }}</div>
+          >
+            {{ economyClass[140].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[141].음식 === 'Acourse',
               Bcourse: economyClass[141].음식 === 'Bcourse',
             }"
-          >{{ economyClass[141].좌석 }}</div>
+          >
+            {{ economyClass[141].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[142].음식 === 'Acourse',
               Bcourse: economyClass[142].음식 === 'Bcourse',
             }"
-          >{{ economyClass[142].좌석 }}</div>
+          >
+            {{ economyClass[142].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1413,21 +1771,27 @@
               Acourse: economyClass[143].음식 === 'Acourse',
               Bcourse: economyClass[143].음식 === 'Bcourse',
             }"
-          >{{ economyClass[143].좌석 }}</div>
+          >
+            {{ economyClass[143].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[144].음식 === 'Acourse',
               Bcourse: economyClass[144].음식 === 'Bcourse',
             }"
-          >{{ economyClass[144].좌석 }}</div>
+          >
+            {{ economyClass[144].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[145].음식 === 'Acourse',
               Bcourse: economyClass[145].음식 === 'Bcourse',
             }"
-          >{{ economyClass[145].좌석 }}</div>
+          >
+            {{ economyClass[145].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>45</div>
@@ -1437,21 +1801,27 @@
               Acourse: economyClass[146].음식 === 'Acourse',
               Bcourse: economyClass[146].음식 === 'Bcourse',
             }"
-          >{{ economyClass[146].좌석 }}</div>
+          >
+            {{ economyClass[146].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[147].음식 === 'Acourse',
               Bcourse: economyClass[147].음식 === 'Bcourse',
             }"
-          >{{ economyClass[147].좌석 }}</div>
+          >
+            {{ economyClass[147].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[148].음식 === 'Acourse',
               Bcourse: economyClass[148].음식 === 'Bcourse',
             }"
-          >{{ economyClass[148].좌석 }}</div>
+          >
+            {{ economyClass[148].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1459,21 +1829,27 @@
               Acourse: economyClass[149].음식 === 'Acourse',
               Bcourse: economyClass[149].음식 === 'Bcourse',
             }"
-          >{{ economyClass[149].좌석 }}</div>
+          >
+            {{ economyClass[149].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[150].음식 === 'Acourse',
               Bcourse: economyClass[150].음식 === 'Bcourse',
             }"
-          >{{ economyClass[150].좌석 }}</div>
+          >
+            {{ economyClass[150].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[151].음식 === 'Acourse',
               Bcourse: economyClass[151].음식 === 'Bcourse',
             }"
-          >{{ economyClass[151].좌석 }}</div>
+          >
+            {{ economyClass[151].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1481,21 +1857,27 @@
               Acourse: economyClass[152].음식 === 'Acourse',
               Bcourse: economyClass[152].음식 === 'Bcourse',
             }"
-          >{{ economyClass[152].좌석 }}</div>
+          >
+            {{ economyClass[152].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[153].음식 === 'Acourse',
               Bcourse: economyClass[153].음식 === 'Bcourse',
             }"
-          >{{ economyClass[153].좌석 }}</div>
+          >
+            {{ economyClass[153].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[154].음식 === 'Acourse',
               Bcourse: economyClass[154].음식 === 'Bcourse',
             }"
-          >{{ economyClass[154].좌석 }}</div>
+          >
+            {{ economyClass[154].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>46</div>
@@ -1505,21 +1887,27 @@
               Acourse: economyClass[155].음식 === 'Acourse',
               Bcourse: economyClass[155].음식 === 'Bcourse',
             }"
-          >{{ economyClass[155].좌석 }}</div>
+          >
+            {{ economyClass[155].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[156].음식 === 'Acourse',
               Bcourse: economyClass[156].음식 === 'Bcourse',
             }"
-          >{{ economyClass[156].좌석 }}</div>
+          >
+            {{ economyClass[156].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[157].음식 === 'Acourse',
               Bcourse: economyClass[157].음식 === 'Bcourse',
             }"
-          >{{ economyClass[157].좌석 }}</div>
+          >
+            {{ economyClass[157].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1527,21 +1915,27 @@
               Acourse: economyClass[158].음식 === 'Acourse',
               Bcourse: economyClass[158].음식 === 'Bcourse',
             }"
-          >{{ economyClass[158].좌석 }}</div>
+          >
+            {{ economyClass[158].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[159].음식 === 'Acourse',
               Bcourse: economyClass[159].음식 === 'Bcourse',
             }"
-          >{{ economyClass[159].좌석 }}</div>
+          >
+            {{ economyClass[159].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[160].음식 === 'Acourse',
               Bcourse: economyClass[160].음식 === 'Bcourse',
             }"
-          >{{ economyClass[160].좌석 }}</div>
+          >
+            {{ economyClass[160].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1549,21 +1943,27 @@
               Acourse: economyClass[161].음식 === 'Acourse',
               Bcourse: economyClass[161].음식 === 'Bcourse',
             }"
-          >{{ economyClass[161].좌석 }}</div>
+          >
+            {{ economyClass[161].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[162].음식 === 'Acourse',
               Bcourse: economyClass[162].음식 === 'Bcourse',
             }"
-          >{{ economyClass[162].좌석 }}</div>
+          >
+            {{ economyClass[162].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[163].음식 === 'Acourse',
               Bcourse: economyClass[163].음식 === 'Bcourse',
             }"
-          >{{ economyClass[163].좌석 }}</div>
+          >
+            {{ economyClass[163].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>47</div>
@@ -1573,21 +1973,27 @@
               Acourse: economyClass[164].음식 === 'Acourse',
               Bcourse: economyClass[164].음식 === 'Bcourse',
             }"
-          >{{ economyClass[164].좌석 }}</div>
+          >
+            {{ economyClass[164].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[165].음식 === 'Acourse',
               Bcourse: economyClass[165].음식 === 'Bcourse',
             }"
-          >{{ economyClass[165].좌석 }}</div>
+          >
+            {{ economyClass[165].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[166].음식 === 'Acourse',
               Bcourse: economyClass[166].음식 === 'Bcourse',
             }"
-          >{{ economyClass[166].좌석 }}</div>
+          >
+            {{ economyClass[166].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1595,21 +2001,27 @@
               Acourse: economyClass[167].음식 === 'Acourse',
               Bcourse: economyClass[167].음식 === 'Bcourse',
             }"
-          >{{ economyClass[167].좌석 }}</div>
+          >
+            {{ economyClass[167].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[168].음식 === 'Acourse',
               Bcourse: economyClass[168].음식 === 'Bcourse',
             }"
-          >{{ economyClass[168].좌석 }}</div>
+          >
+            {{ economyClass[168].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[169].음식 === 'Acourse',
               Bcourse: economyClass[169].음식 === 'Bcourse',
             }"
-          >{{ economyClass[169].좌석 }}</div>
+          >
+            {{ economyClass[169].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1617,21 +2029,27 @@
               Acourse: economyClass[170].음식 === 'Acourse',
               Bcourse: economyClass[170].음식 === 'Bcourse',
             }"
-          >{{ economyClass[170].좌석 }}</div>
+          >
+            {{ economyClass[170].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[171].음식 === 'Acourse',
               Bcourse: economyClass[171].음식 === 'Bcourse',
             }"
-          >{{ economyClass[171].좌석 }}</div>
+          >
+            {{ economyClass[171].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[172].음식 === 'Acourse',
               Bcourse: economyClass[172].음식 === 'Bcourse',
             }"
-          >{{ economyClass[172].좌석 }}</div>
+          >
+            {{ economyClass[172].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>48</div>
@@ -1641,21 +2059,27 @@
               Acourse: economyClass[173].음식 === 'Acourse',
               Bcourse: economyClass[173].음식 === 'Bcourse',
             }"
-          >{{ economyClass[173].좌석 }}</div>
+          >
+            {{ economyClass[173].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[174].음식 === 'Acourse',
               Bcourse: economyClass[174].음식 === 'Bcourse',
             }"
-          >{{ economyClass[174].좌석 }}</div>
+          >
+            {{ economyClass[174].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[175].음식 === 'Acourse',
               Bcourse: economyClass[175].음식 === 'Bcourse',
             }"
-          >{{ economyClass[175].좌석 }}</div>
+          >
+            {{ economyClass[175].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1663,21 +2087,27 @@
               Acourse: economyClass[176].음식 === 'Acourse',
               Bcourse: economyClass[176].음식 === 'Bcourse',
             }"
-          >{{ economyClass[176].좌석 }}</div>
+          >
+            {{ economyClass[176].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[177].음식 === 'Acourse',
               Bcourse: economyClass[177].음식 === 'Bcourse',
             }"
-          >{{ economyClass[177].좌석 }}</div>
+          >
+            {{ economyClass[177].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[178].음식 === 'Acourse',
               Bcourse: economyClass[178].음식 === 'Bcourse',
             }"
-          >{{ economyClass[178].좌석 }}</div>
+          >
+            {{ economyClass[178].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1685,21 +2115,27 @@
               Acourse: economyClass[179].음식 === 'Acourse',
               Bcourse: economyClass[179].음식 === 'Bcourse',
             }"
-          >{{ economyClass[179].좌석 }}</div>
+          >
+            {{ economyClass[179].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[180].음식 === 'Acourse',
               Bcourse: economyClass[180].음식 === 'Bcourse',
             }"
-          >{{ economyClass[180].좌석 }}</div>
+          >
+            {{ economyClass[180].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[181].음식 === 'Acourse',
               Bcourse: economyClass[181].음식 === 'Bcourse',
             }"
-          >{{ economyClass[181].좌석 }}</div>
+          >
+            {{ economyClass[181].좌석 }}
+          </div>
         </div>
       </div>
     </div>
@@ -1715,21 +2151,27 @@
               Acourse: economyClass[182].음식 === 'Acourse',
               Bcourse: economyClass[182].음식 === 'Bcourse',
             }"
-          >{{ economyClass[182].좌석 }}</div>
+          >
+            {{ economyClass[182].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[183].음식 === 'Acourse',
               Bcourse: economyClass[183].음식 === 'Bcourse',
             }"
-          >{{ economyClass[183].좌석 }}</div>
+          >
+            {{ economyClass[183].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[184].음식 === 'Acourse',
               Bcourse: economyClass[184].음식 === 'Bcourse',
             }"
-          >{{ economyClass[184].좌석 }}</div>
+          >
+            {{ economyClass[184].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1737,21 +2179,27 @@
               Acourse: economyClass[185].음식 === 'Acourse',
               Bcourse: economyClass[185].음식 === 'Bcourse',
             }"
-          >{{ economyClass[185].좌석 }}</div>
+          >
+            {{ economyClass[185].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[186].음식 === 'Acourse',
               Bcourse: economyClass[186].음식 === 'Bcourse',
             }"
-          >{{ economyClass[186].좌석 }}</div>
+          >
+            {{ economyClass[186].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[187].음식 === 'Acourse',
               Bcourse: economyClass[187].음식 === 'Bcourse',
             }"
-          >{{ economyClass[187].좌석 }}</div>
+          >
+            {{ economyClass[187].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1759,21 +2207,27 @@
               Acourse: economyClass[188].음식 === 'Acourse',
               Bcourse: economyClass[188].음식 === 'Bcourse',
             }"
-          >{{ economyClass[188].좌석 }}</div>
+          >
+            {{ economyClass[188].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[189].음식 === 'Acourse',
               Bcourse: economyClass[189].음식 === 'Bcourse',
             }"
-          >{{ economyClass[189].좌석 }}</div>
+          >
+            {{ economyClass[189].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[190].음식 === 'Acourse',
               Bcourse: economyClass[190].음식 === 'Bcourse',
             }"
-          >{{ economyClass[190].좌석 }}</div>
+          >
+            {{ economyClass[190].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>50</div>
@@ -1783,21 +2237,27 @@
               Acourse: economyClass[191].음식 === 'Acourse',
               Bcourse: economyClass[191].음식 === 'Bcourse',
             }"
-          >{{ economyClass[191].좌석 }}</div>
+          >
+            {{ economyClass[191].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[192].음식 === 'Acourse',
               Bcourse: economyClass[192].음식 === 'Bcourse',
             }"
-          >{{ economyClass[192].좌석 }}</div>
+          >
+            {{ economyClass[192].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[193].음식 === 'Acourse',
               Bcourse: economyClass[193].음식 === 'Bcourse',
             }"
-          >{{ economyClass[193].좌석 }}</div>
+          >
+            {{ economyClass[193].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1805,21 +2265,27 @@
               Acourse: economyClass[194].음식 === 'Acourse',
               Bcourse: economyClass[194].음식 === 'Bcourse',
             }"
-          >{{ economyClass[194].좌석 }}</div>
+          >
+            {{ economyClass[194].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[195].음식 === 'Acourse',
               Bcourse: economyClass[195].음식 === 'Bcourse',
             }"
-          >{{ economyClass[195].좌석 }}</div>
+          >
+            {{ economyClass[195].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[196].음식 === 'Acourse',
               Bcourse: economyClass[196].음식 === 'Bcourse',
             }"
-          >{{ economyClass[196].좌석 }}</div>
+          >
+            {{ economyClass[196].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1827,21 +2293,27 @@
               Acourse: economyClass[197].음식 === 'Acourse',
               Bcourse: economyClass[197].음식 === 'Bcourse',
             }"
-          >{{ economyClass[197].좌석 }}</div>
+          >
+            {{ economyClass[197].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[198].음식 === 'Acourse',
               Bcourse: economyClass[198].음식 === 'Bcourse',
             }"
-          >{{ economyClass[198].좌석 }}</div>
+          >
+            {{ economyClass[198].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[199].음식 === 'Acourse',
               Bcourse: economyClass[199].음식 === 'Bcourse',
             }"
-          >{{ economyClass[199].좌석 }}</div>
+          >
+            {{ economyClass[199].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>51</div>
@@ -1851,21 +2323,27 @@
               Acourse: economyClass[200].음식 === 'Acourse',
               Bcourse: economyClass[200].음식 === 'Bcourse',
             }"
-          >{{ economyClass[200].좌석 }}</div>
+          >
+            {{ economyClass[200].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[201].음식 === 'Acourse',
               Bcourse: economyClass[201].음식 === 'Bcourse',
             }"
-          >{{ economyClass[201].좌석 }}</div>
+          >
+            {{ economyClass[201].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[202].음식 === 'Acourse',
               Bcourse: economyClass[202].음식 === 'Bcourse',
             }"
-          >{{ economyClass[202].좌석 }}</div>
+          >
+            {{ economyClass[202].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1873,21 +2351,27 @@
               Acourse: economyClass[203].음식 === 'Acourse',
               Bcourse: economyClass[203].음식 === 'Bcourse',
             }"
-          >{{ economyClass[203].좌석 }}</div>
+          >
+            {{ economyClass[203].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[204].음식 === 'Acourse',
               Bcourse: economyClass[204].음식 === 'Bcourse',
             }"
-          >{{ economyClass[204].좌석 }}</div>
+          >
+            {{ economyClass[204].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[205].음식 === 'Acourse',
               Bcourse: economyClass[205].음식 === 'Bcourse',
             }"
-          >{{ economyClass[205].좌석 }}</div>
+          >
+            {{ economyClass[205].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1895,21 +2379,27 @@
               Acourse: economyClass[206].음식 === 'Acourse',
               Bcourse: economyClass[206].음식 === 'Bcourse',
             }"
-          >{{ economyClass[206].좌석 }}</div>
+          >
+            {{ economyClass[206].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[207].음식 === 'Acourse',
               Bcourse: economyClass[207].음식 === 'Bcourse',
             }"
-          >{{ economyClass[207].좌석 }}</div>
+          >
+            {{ economyClass[207].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[208].음식 === 'Acourse',
               Bcourse: economyClass[208].음식 === 'Bcourse',
             }"
-          >{{ economyClass[208].좌석 }}</div>
+          >
+            {{ economyClass[208].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>52</div>
@@ -1919,21 +2409,27 @@
               Acourse: economyClass[209].음식 === 'Acourse',
               Bcourse: economyClass[209].음식 === 'Bcourse',
             }"
-          >{{ economyClass[209].좌석 }}</div>
+          >
+            {{ economyClass[209].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[210].음식 === 'Acourse',
               Bcourse: economyClass[210].음식 === 'Bcourse',
             }"
-          >{{ economyClass[210].좌석 }}</div>
+          >
+            {{ economyClass[210].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[211].음식 === 'Acourse',
               Bcourse: economyClass[211].음식 === 'Bcourse',
             }"
-          >{{ economyClass[211].좌석 }}</div>
+          >
+            {{ economyClass[211].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1941,21 +2437,27 @@
               Acourse: economyClass[212].음식 === 'Acourse',
               Bcourse: economyClass[212].음식 === 'Bcourse',
             }"
-          >{{ economyClass[212].좌석 }}</div>
+          >
+            {{ economyClass[212].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[213].음식 === 'Acourse',
               Bcourse: economyClass[213].음식 === 'Bcourse',
             }"
-          >{{ economyClass[213].좌석 }}</div>
+          >
+            {{ economyClass[213].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[214].음식 === 'Acourse',
               Bcourse: economyClass[214].음식 === 'Bcourse',
             }"
-          >{{ economyClass[214].좌석 }}</div>
+          >
+            {{ economyClass[214].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1963,21 +2465,27 @@
               Acourse: economyClass[215].음식 === 'Acourse',
               Bcourse: economyClass[215].음식 === 'Bcourse',
             }"
-          >{{ economyClass[215].좌석 }}</div>
+          >
+            {{ economyClass[215].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[216].음식 === 'Acourse',
               Bcourse: economyClass[216].음식 === 'Bcourse',
             }"
-          >{{ economyClass[216].좌석 }}</div>
+          >
+            {{ economyClass[216].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[217].음식 === 'Acourse',
               Bcourse: economyClass[217].음식 === 'Bcourse',
             }"
-          >{{ economyClass[217].좌석 }}</div>
+          >
+            {{ economyClass[217].좌석 }}
+          </div>
         </div>
         <div class="seat-row-economy">
           <div>53</div>
@@ -1987,14 +2495,18 @@
               Acourse: economyClass[218].음식 === 'Acourse',
               Bcourse: economyClass[218].음식 === 'Bcourse',
             }"
-          >{{ economyClass[218].좌석 }}</div>
+          >
+            {{ economyClass[218].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[219].음식 === 'Acourse',
               Bcourse: economyClass[219].음식 === 'Bcourse',
             }"
-          >{{ economyClass[219].좌석 }}</div>
+          >
+            {{ economyClass[219].좌석 }}
+          </div>
           <div class="seat-economy-space"></div>
           <div class="seat-space"></div>
           <div
@@ -2003,21 +2515,27 @@
               Acourse: economyClass[220].음식 === 'Acourse',
               Bcourse: economyClass[220].음식 === 'Bcourse',
             }"
-          >{{ economyClass[220].좌석 }}</div>
+          >
+            {{ economyClass[220].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[221].음식 === 'Acourse',
               Bcourse: economyClass[221].음식 === 'Bcourse',
             }"
-          >{{ economyClass[221].좌석 }}</div>
+          >
+            {{ economyClass[221].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[222].음식 === 'Acourse',
               Bcourse: economyClass[222].음식 === 'Bcourse',
             }"
-          >{{ economyClass[222].좌석 }}</div>
+          >
+            {{ economyClass[222].좌석 }}
+          </div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div
@@ -2026,14 +2544,18 @@
               Acourse: economyClass[223].음식 === 'Acourse',
               Bcourse: economyClass[223].음식 === 'Bcourse',
             }"
-          >{{ economyClass[223].좌석 }}</div>
+          >
+            {{ economyClass[223].좌석 }}
+          </div>
           <div
             class="seat-economy"
             :class="{
               Acourse: economyClass[224].음식 === 'Acourse',
               Bcourse: economyClass[224].음식 === 'Bcourse',
             }"
-          >{{ economyClass[224].좌석 }}</div>
+          >
+            {{ economyClass[224].좌석 }}
+          </div>
         </div>
       </div>
     </div>
@@ -3122,7 +3644,6 @@ export default {
     })
     promise.then(async () => {
       await this.getMealList(this.flightNum)
-      console.log('vue에서' + this.seatMealList.length)
       this.seatMealList.forEach((seatMeal) => {
         this.firstClass.forEach((seat) => {
           if (seatMeal.seatNum === seat.좌석) {
@@ -3181,11 +3702,6 @@ export default {
     },
     showSectionD() {
       this.section = 'EconomyD'
-    },
-    dataCheck() {
-      console.log(this.seatMealList)
-
-      console.log('저요' + this.economyClass[29].음식)
     },
   },
 }

@@ -11,7 +11,7 @@
           </div>
         </header>
         <section class="modify-input-section-wrap">
-          <h2>modify</h2>
+          <h2>회원정보 수정</h2>
           <div>
             <h6>아이디</h6>
             <div class="modify-input-id-wrap">
@@ -236,7 +236,7 @@
           </div>
 
           <div class="modify-button-wrap">
-            <button @click="modify">modify</button>
+            <button @click="modify">수정</button>
           </div>
           <!-- <div class="modify-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -304,31 +304,33 @@ export default {
     },
   },
   created() {
-    this.birthday =
-      this.loginMember.birthday[0] +
-      '-' +
-      (('00' + this.loginMember.birthday[1].toString()).slice(-2) +
+    if (this.loginMember.birthday !== null) {
+      this.birthday =
+        this.loginMember?.birthday[0] +
         '-' +
-        ('00' + this.loginMember.birthday[2].toString()).slice(-2))
-    this.username = this.loginMember.username
-    this.loginMember.fullName.firstName &&
-      (this.firstName = this.loginMember.fullName.firstName)
-    this.loginMember.fullName.middleName &&
-      (this.middleName = this.loginMember.fullName.middleName)
-    this.loginMember.fullName.lastName &&
-      (this.lastName = this.loginMember.fullName.lastName)
-    this.gender = this.memberDetail.gender
-    this.email1 = this.memberDetail.email.split('@')[0]
-    this.email2 = this.memberDetail.email.split('@')[1]
-    this.tel1 = this.memberDetail.tel.split('-')[0]
-    this.tel2 = this.memberDetail.tel.split('-')[1]
-    this.tel3 = this.memberDetail.tel.split('-')[2]
-    this.zipcode = this.memberDetail.address.zipcode
-    this.mainAddress = this.memberDetail.address.mainAddress
-    this.detailAddress = this.memberDetail.address.detailAddress
-    this.passportNum = this.memberDetail.passportNum
-    this.nationality = this.memberDetail.nationality
-    this.job = this.memberDetail.job
+        (('00' + this.loginMember?.birthday[1]?.toString()).slice(-2) +
+          '-' +
+          ('00' + this.loginMember?.birthday[2]?.toString()).slice(-2))
+    }
+    this.username = this.loginMember?.username
+    this.loginMember?.fullName?.firstName &&
+      (this.firstName = this.loginMember?.fullName?.firstName)
+    this.loginMember?.fullName?.middleName &&
+      (this.middleName = this.loginMember?.fullName?.middleName)
+    this.loginMember?.fullName?.lastName &&
+      (this.lastName = this.loginMember?.fullName?.lastName)
+    this.gender = this.memberDetail?.gender
+    this.email1 = this.memberDetail?.email?.split('@')[0]
+    this.email2 = this.memberDetail?.email?.split('@')[1]
+    this.tel1 = this.memberDetail?.tel?.split('-')[0]
+    this.tel2 = this.memberDetail?.tel?.split('-')[1]
+    this.tel3 = this.memberDetail?.tel?.split('-')[2]
+    this.zipcode = this.memberDetail?.address?.zipcode
+    this.mainAddress = this.memberDetail?.address?.mainAddress
+    this.detailAddress = this.memberDetail?.address?.detailAddress
+    this.passportNum = this.memberDetail?.passportNum
+    this.nationality = this.memberDetail?.nationality
+    this.job = this.memberDetail?.job
   },
   methods: {
     ...mapActions('user', ['modifyMember']),

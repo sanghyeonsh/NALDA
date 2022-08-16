@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;

@@ -91,10 +91,10 @@ export default {
   background-color: rgb(69, 169, 200);
 }
 .header-container-blank {
-  width: 20%;
+  width: 30%;
 }
 .header-container-image {
-  width: 80%;
+  width: 90%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -107,7 +107,7 @@ export default {
 }
 
 .header-container-userprofile {
-  width: 20%;
+  width: 25%;
   display: flex;
   align-items: center;
   color: azure;
@@ -124,7 +124,7 @@ export default {
 }
 
 .profile-img {
-  width: 30%;
+  width: 40%;
   height: 100%;
   display: flex;
   justify-content: flex-end;

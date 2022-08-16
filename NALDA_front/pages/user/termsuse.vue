@@ -1323,7 +1323,6 @@ export default {
         locationBased: this.first,
         promotionalInfo: this.second,
       }
-      console.log(this.requiredSecond)
       this.AGREE_TERMS(terms)
     },
     goBack() {

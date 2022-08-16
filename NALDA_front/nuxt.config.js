@@ -14,6 +14,10 @@ export default {
       },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        'http-equiv': 'Content-Security-Policy',
+        content: 'upgrade-insecure-requests',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
@@ -25,7 +29,18 @@ export default {
         crossorigin: 'anonymous',
       },
     ],
-    css: [],
+    css: [
+      {
+        loaderOptions: {
+          sass: {
+            data: `
+            @import "@/styles/styles.scss";
+            //@는 /src 와 같다
+        `,
+          },
+        },
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

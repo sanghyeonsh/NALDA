@@ -49,7 +49,6 @@ export const mutations = {
       document.getElementsByClassName('mx-auto my-12')[select].style.filter =
         'brightness(50%)'
     }
-    state.selectedMeal = state.flightMeals[select].menu
   },
   updateCheck(state, check) {
     for (let i = 0; i < state.flightMeals.length; i++) {

@@ -2,7 +2,7 @@
   <div class="goods-container">
     <div class="goods-container-box" @click="checkblanket">
       <div style="width: 100%">
-        <img src="/orders/blanket.png" alt="service" />
+        <img class="goods-img" src="/orders/blanket.png" alt="service" />
         <div class="check-box-items">
           <b-form-checkbox
             id="checkbox-1"
@@ -157,6 +157,7 @@ export default {
 .goods-container-box h3 {
   margin-top: 40px;
 }
+
 .order-button {
   width: 15vw;
   height: 10vh;

@@ -14,4 +14,5 @@ public interface AllergyRepository extends JpaRepository<Allergy, Long> {
     List<Allergy> findByMeal(@Param("mealId") Long mealId);
 
 
+
 }
