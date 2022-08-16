@@ -32,11 +32,6 @@ export const mutations = {
     state.item = select
   },
   SET_SNACK(state, snacks) {
-    // 상현이가 만들면 지우기!
-    for (let i = 0; i < snacks.length; i++) {
-      snacks[i].cnt = 0
-    }
-    console.log(snacks)
     state.items.snack = snacks
   },
   SET_ALCOHOL(state, alcohol) {
