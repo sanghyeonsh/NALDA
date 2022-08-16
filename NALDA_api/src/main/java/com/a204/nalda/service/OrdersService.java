@@ -5,11 +5,11 @@ import com.a204.nalda.domain.entity.airplane.Seat;
 import com.a204.nalda.domain.entity.inflightservice.*;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.domain.enumtype.Status;
-import com.a204.nalda.dto.orders.OrderDto;
-import com.a204.nalda.dto.orders.OrderListDto;
-import com.a204.nalda.dto.orders.ServiceCntDto;
-import com.a204.nalda.dto.orders.ServiceDto;
-import com.a204.nalda.repository.*;
+import com.a204.nalda.dto.orders.*;
+import com.a204.nalda.repository.flight.FlightRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
+import com.a204.nalda.repository.orders.*;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +33,8 @@ public class OrdersService {
     private final SeatRepository seatRepository;
 
     private final ServiceStockRepository serviceStockRepository;
+
+    private final OrderCntRepository orderCntRepository;
 
     @Transactional
     public List<ServiceDto> servicesByClass(String serviceClass) throws IOException {
@@ -63,20 +65,10 @@ public class OrdersService {
     @Transactional
     public void orderInput(OrderDto orderdto) {
 
-        Long userId = userRepository.findTopByUsername(orderdto.getUsername()).getId();
-        User user = User.builder()
-                .id(userId)
-                .build();
-        Long flightId = flightRepository.findByFlightNumAndStatus(orderdto.getFlightNum()).get().getId();
-        Flight flight = Flight.builder()
-                .id(flightId)
-                .build();
-        Long seatId = seatRepository.findTopBySeatNum(orderdto.getSeatNum()).getId();
-        Seat seat = Seat.builder()
-                .id(seatId)
-                .build();
+        User user = userRepository.findTopByUsername(orderdto.getUsername());
+        Flight flight = flightRepository.findByFlightNumAndStatus(orderdto.getFlightNum()).get();
+        Seat seat = seatRepository.findTopBySeatNum(orderdto.getSeatNum());
         Status status = Status.valueOf(orderdto.getStatus());
-
         Orders orders = Orders.builder()
                 .orderMessage(orderdto.getOrderMessage())
                 .orderTime(Optional.ofNullable(orderdto.getOrderTime()).orElse(LocalDateTime.now()))
@@ -86,9 +78,7 @@ public class OrdersService {
                 .status(status)
                 .ordersCodes(new ArrayList<>())
                 .build();
-        System.out.println(orders.getOrderMessage());
         for (OrderListDto orderList : orderdto.getOrderList()) {
-
             OrdersCodes ordersCodes = OrdersCodes.builder()
                     .orderCode(orderList.getOrderCode())
                     .cnt(orderList.getCnt())
@@ -100,13 +90,10 @@ public class OrdersService {
     }
 
     public List<ServiceCntDto> serviceCnt(String flightNum){
-
-        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
-        List<ServiceStock> serviceStocks = serviceStockRepository.findByFlightId(flightId);
+        List<ServiceStock> serviceStocks = serviceStockRepository.findByFlightNum(flightNum);
         List<ServiceCntDto> serviceCntDTOS = new ArrayList<>();
         for(ServiceStock serviceStock : serviceStocks){
-            Long serviceCodeId = serviceStockRepository.findById(serviceStock.getId()).get().getServiceCodes().getId();
-            String serviceCode = serviceRepository.findById(serviceCodeId).get().getCode();
+            String serviceCode = serviceRepository.findByServiceStockId(serviceStock.getId()).getCode();
             serviceCntDTOS.add(ServiceCntDto.builder()
                             .flightNum(flightNum)
                             .serviceCode(serviceCode)
@@ -122,14 +109,8 @@ public class OrdersService {
     public void serviceCntInput(List<ServiceCntDto> serviceCntDTOS) {
 
         for (ServiceCntDto serviceCntDto : serviceCntDTOS) {
-            Long serviceCodeId = serviceRepository.findByServiceCode(serviceCntDto.getServiceCode()).getId();
-            ServiceCodes serviceCodes = ServiceCodes.builder()
-                    .id(serviceCodeId)
-                    .build();
-            Long flightId = flightRepository.findByFlightNumAndStatus(serviceCntDto.getFlightNum()).get().getId();
-            Flight flight = Flight.builder()
-                    .id(flightId)
-                    .build();
+            ServiceCodes serviceCodes = serviceRepository.findByServiceCode(serviceCntDto.getServiceCode());
+            Flight flight = flightRepository.findByFlightNumAndStatus(serviceCntDto.getFlightNum()).get();
             ServiceStock serviceStock = ServiceStock.builder()
                     .serviceCodes(serviceCodes)
                     .flight(flight)
@@ -171,8 +152,7 @@ public class OrdersService {
 
     @Transactional
     public List<OrderDto> listOrders(String flightNum) {
-        Long flightId = flightRepository.findByFlightNumAndStatus(flightNum).get().getId();
-        List<Orders> orders = orderRepository.findByFlightId(flightId);
+        List<Orders> orders = orderRepository.findByFlightNum(flightNum);
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {
             List<OrdersCodes> ordersCodes = orderListRepository.findByOrdersId(order.getId());
@@ -215,4 +195,11 @@ public class OrdersService {
             optional.get().changeStatusInfo(Status.PROGRESS);
         }
     }
+
+    public List<OrderCntDto> orderCnt(String flightNum){
+        List<OrderCntDto> orderCntDTOS = orderCntRepository.findbyFlightNumAndOrderCode(flightNum);
+        return orderCntDTOS;
+
+    }
+
 }

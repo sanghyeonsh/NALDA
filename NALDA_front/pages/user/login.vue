@@ -14,7 +14,7 @@
           <input
             v-model="flightNum"
             placeholder="항공편명"
-            type="text"
+            type="search"
             @focus="flightKeyOn"
           />
         </div>

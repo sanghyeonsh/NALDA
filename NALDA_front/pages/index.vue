@@ -32,6 +32,9 @@ export default {
 .logo {
   cursor: pointer;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 .init-screen {
   height: 100vh;
   display: flex;

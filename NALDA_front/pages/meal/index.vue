@@ -1,48 +1,54 @@
 <template>
   <div class="airfood-container">
-    <h1>주 메뉴 선택</h1>
+    <!-- <h1>주 메뉴 선택</h1> -->
+    <div style="height: 6vh; font-size: 30px; text-align: center">
+      주메뉴선택
+    </div>
     <div id="app">
       <v-app id="inspire">
         <div class="wrapper">
           <div v-for="(flightMeal, i) in flightMeals" :key="i" class="food-box">
-            <v-card class="mx-auto my-12" max-width="374">
-              <template slot="progress">
-                <v-progress-linear
-                  color=""
-                  height="10"
-                  indeterminate
-                ></v-progress-linear>
-              </template>
-
+            <v-card class="mx-auto my-12" style="margin: 0; height: 100%">
               <v-img
-                height="250"
+                height="50%"
+                width="100%"
                 :src="'data:image/jpg;base64,' + flightMeal.image"
                 :alt="flightMeal.menu"
               ></v-img>
 
-              <v-card-title style="display: flex; justify-content: center">{{
-                flightMeal.menu
-              }}</v-card-title>
+              <v-card-title
+                style="
+                  display: flex;
+                  justify-content: center;
+                  font-size: 25px;
+                  height: 15%;
+                "
+                >{{ flightMeal.menu }}
+              </v-card-title>
 
-              <v-card-text>
-                <div>
+              <v-card-text style="height: 20%">
+                <div style="font-size: 17px">
                   {{ flightMeal.content }}
                 </div>
               </v-card-text>
+              <!-- <div v-if="flightMeal">남은수량: 10개</div> -->
 
               <v-divider class="mx-4"></v-divider>
 
-              <v-card-actions>
-                <v-spacer></v-spacer>
-
+              <v-card-actions style="margin-bottom: 10px">
                 <div>
                   <v-btn
                     text
                     color="teal accent-4"
+                    style="font-size: 20px"
                     @click="updateCheck(flightMeal)"
                   >
                     세부사항
                   </v-btn>
+                </div>
+                <v-spacer></v-spacer>
+                <div style="width: 50px; height: 100%; font-size: 20px">
+                  <button @click="updateSelected(i)">선택</button>
                 </div>
               </v-card-actions>
 
@@ -52,47 +58,61 @@
                   class="transition-fast-in-fast-out v-card--reveal"
                   style="height: 100%"
                 >
-                  <v-card-text class="pb-0">
-                    <div class="text-h4 text--primary">세부목록</div>
-                    <ul>
+                  <v-card-text class="pb-0" style="padding: 30px; height: 90%">
+                    <div class="text--primary" style="font-size: 40px">
+                      세부목록
+                    </div>
+                    <ul style="font-size: 20px; margin-top: 30px">
                       <li
                         v-for="(detail, idx) in flightMeals[i].details"
                         :key="idx"
+                        style="height: 35px"
                       >
                         {{ detail['mealName'] }}
                       </li>
                     </ul>
                     <hr />
-                    <div class="text-h4 text--primary">알레르기</div>
-                    <ul>
+                    <div class="text--primary" style="font-size: 40px">
+                      알레르기
+                    </div>
+                    <ul style="font-size: 20px; margin-top: 30px">
                       <li>
                         {{ flightMeals[i].allergies[0]['allergyType'] }}
                       </li>
                     </ul>
-
                     <hr />
                   </v-card-text>
-
-                  <v-card-actions class="pt-0">
+                  <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn
                       text
                       color="teal accent-4"
-                      style="position: relative; top: 185px; right: 10px"
+                      style="font-size: 20px"
                       @click="updateCheck(flightMeal)"
                     >
-                      Close
+                      닫기
                     </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-expand-transition>
             </v-card>
-            <div>
+            <!-- <div>
               <button @click="updateSelected(i)">선택</button>
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="meal-order-button" @click="finalChoice">주문하기</div>
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <v-btn
+            class="meal-order-button"
+            x-large
+            style="background-color: rgb(69, 169, 200); color: white"
+            @click="finalChoice"
+            >주문하기</v-btn
+          >
+          <!-- <div class="meal-order-button">주문하기</div> -->
+        </div>
       </v-app>
     </div>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
@@ -218,6 +238,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5vw;
 }
 .wrapper img {
   width: 400px;
@@ -252,6 +273,7 @@ export default {
 }
 .food-box {
   width: 35%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,5 +283,19 @@ export default {
 .meal-order-button {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 12vw;
+  height: 6vh;
+  background-color: rgb(69, 169, 200);
+  margin-top: 20px;
+  font-size: 25px;
+  border-radius: 60px;
+}
+.v-application .my-12 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+:deep(.v-application--wrap) {
+  min-height: fit-content;
 }
 </style>

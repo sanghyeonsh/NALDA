@@ -3,8 +3,8 @@ package com.a204.nalda.config;
 
 import com.a204.nalda.config.jwt.JwtAuthenticationFilter;
 import com.a204.nalda.config.jwt.JwtAuthorizationFilter;
-import com.a204.nalda.repository.SeatRepository;
-import com.a204.nalda.repository.UserRepository;
+import com.a204.nalda.repository.flight.SeatRepository;
+import com.a204.nalda.repository.user.UserRepository;
 import com.a204.nalda.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
