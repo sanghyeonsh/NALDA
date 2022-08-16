@@ -23,4 +23,7 @@ export default {
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 </style>
