@@ -16,6 +16,7 @@ public class ServiceDto {
     private String serviceCode;
     private String serviceClass;
     private byte[] bytesdata;
+    private int cnt;
 
 
 }

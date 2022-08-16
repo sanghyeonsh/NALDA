@@ -200,6 +200,15 @@
         </div>
       </v-app>
     </div>
+    <b-modal id="meal-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>이미 주문했습니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('meal-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
   </div>
 </template>
@@ -293,7 +302,7 @@ export default {
             }
           )
         } else {
-          alert('이미 주문했습니다.')
+          this.$bvModal.show('meal-modal')
         }
       })
     },

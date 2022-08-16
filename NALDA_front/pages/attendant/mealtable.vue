@@ -150,7 +150,7 @@ export default {
     test() {
       console.log(this.mealList)
       console.log(this.flightMealList)
-      console.log(this.selectedMealList)
+      // console.log(this.selectedMealList)
     },
     setTotal() {
       console.log(this.selectedMealList) // 얘를 넘겨줘야함
@@ -205,7 +205,7 @@ export default {
 }
 
 .stock-input-wrap {
-  height: 75vh;
+  height: 85vh;
   background-color: rgba(239, 239, 239, 0.511);
 }
 
