@@ -8,8 +8,8 @@ async function listMeal(success, fail) {
   await api.get(`/meal`).then(success).catch(fail)
 }
 
-async function inputMeal(meals, success, fail) {
-  await api.post(`/meal/input`, JSON.stringify(meals)).then(success).catch(fail)
+async function inputMeal(info, success, fail) {
+  await api.post(`/meal/input`, JSON.stringify(info)).then(success).catch(fail)
 }
 
 async function endMeals(flightNum, success, fail) {

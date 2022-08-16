@@ -1,6 +1,10 @@
 <template>
   <div class="goods-container">
-    <div class="goods-container-box" @click="checkblanket">
+    <div
+      v-if="cnt.blanket > 0"
+      class="goods-container-box"
+      @click="checkblanket"
+    >
       <div style="width: 100%">
         <img class="goods-img" src="/orders/blanket.png" alt="service" />
         <div class="check-box-items">
@@ -15,7 +19,23 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box" @click="checkpillow">
+
+    <div v-else-if="cnt.blanket <= 0" class="goods-container-box">
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">담요</div>
+      </div>
+    </div>
+
+    <div v-if="cnt.pillow > 0" class="goods-container-box" @click="checkpillow">
       <div style="width: 100%">
         <img src="/orders/pillow.png" alt="service" />
         <div class="check-box-items">
@@ -25,7 +45,26 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box" @click="checkearplug">
+    <div v-else-if="cnt.pillow <= 0" class="goods-container-box">
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">베개</div>
+      </div>
+    </div>
+
+    <div
+      v-if="cnt.earplug > 0"
+      class="goods-container-box"
+      @click="checkearplug"
+    >
       <div style="width: 100%">
         <img src="/orders/ear-plug.png" alt="service" />
         <div class="check-box-items">
@@ -35,7 +74,26 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box" @click="checkslipper">
+    <div v-else-if="cnt.earplug <= 0" class="goods-container-box">
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">귀마개</div>
+      </div>
+    </div>
+
+    <div
+      v-if="cnt.slipper > 0"
+      class="goods-container-box"
+      @click="checkslipper"
+    >
       <div style="width: 100%">
         <img src="/orders/slippers.png" alt="service" />
         <div class="check-box-items">
@@ -43,6 +101,20 @@
           </b-form-checkbox>
           슬리퍼
         </div>
+      </div>
+    </div>
+    <div v-else-if="cnt.slipper <= 0" class="goods-container-box">
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">슬리퍼</div>
       </div>
     </div>
     <b-button variant="primary" class="order-button" @click="movewaiting"
