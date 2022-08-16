@@ -19,6 +19,9 @@ export const state = () => ({
   allergies: [],
   choiceMeal: [],
   seatMealList: [],
+  validMealList: [],
+  flightMealList: [],
+  settedMealList: [],
   validMsg: null,
 })
 
@@ -94,9 +97,36 @@ export const mutations = {
   SET_VALID_MSG(state, validMsg) {
     state.validMsg = validMsg
   },
+  SET_VALIDMEAL_LIST(state, selectedMealList) {
+    console.log(state.validMealList)
+  },
+  SET_FLIGHTMEALS_LIST(state, selectedMealList) {
+    selectedMealList.forEach((selectedMeal) => {
+      const mealInfo = {
+        menu: selectedMeal.menu,
+        image: selectedMeal.image,
+        imageName: selectedMeal.imageName,
+        total: selectedMeal.total,
+        validated: false,
+      }
+      state.flightMealList.push(mealInfo)
+    })
+  },
+  SET_SETTEDMEAL_LIST(state, settedMealList) {
+    state.settedMealList.push(settedMealList)
+  },
+  UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
+    // console.log('store')
+    // console.log(validMeal)
+    state.flightMealList.forEach((flightMeal) => {
+      if (flightMeal.menu === validMeal.menu) {
+        flightMeal.validated = validMeal.validated
+      }
+    })
+  },
 
   CLEAR_MEAL_LIST(state) {
-    state.meals = [{ menu: null, image: null }]
+    state.meals = []
   },
   CLEAR_FLIGHTMEAL_LIST(state) {
     state.flightMeals = []
@@ -119,15 +149,31 @@ export const mutations = {
   CLEAR_VALID_MSG(state) {
     state.validMeal = null
   },
+  CLEAR_FLIGHTMEALS_LIST(state) {
+    state.flightMealList = []
+  },
+  CLEAR_SETTEDMEAL_LIST(state) {
+    state.settedMealList = []
+  },
 }
 export const getters = {}
 
 // console.log eslint rule수정 충돌방지
 export const actions = {
-  getMeal({ commit }) {
-    listMeal(
+  async getMeal({ commit }) {
+    commit('CLEAR_MEAL_LIST')
+    await listMeal(
       ({ data }) => {
-        commit('SET_MEAL_LIST', data)
+        // console.log(data)
+        if (data.mealList.length > 0) {
+          data.mealList.forEach((meal) => {
+            commit('SET_MEAL_LIST', {
+              menu: meal.mealMenu,
+              image: meal.bytesdata,
+              imageName: meal.imageName,
+            })
+          })
+        }
       },
       (error) => {
         console.log(error)
@@ -137,11 +183,7 @@ export const actions = {
   registFlightMeal({ commit }, info) {
     inputMeal(
       info,
-      ({ data }) => {
-        if (data.length > 0) {
-          commit('SET_FLIGHTMEAL_LIST', data)
-        }
-      },
+      ({ data }) => {},
       (error) => {
         console.log(error)
       }
@@ -167,11 +209,30 @@ export const actions = {
     commit('CLEAR_CHOICE_MEAL')
     commit('CLEAR_SEATMEAL_LIST')
     commit('CLEAR_VALID_MSG')
-
+    console.log(flightNum)
     endMeals(
       flightNum,
       ({ data }) => {
+        console.log(data)
         console.log(data.msg)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getSettedMeal({ commit }, flightNum) {
+    commit('CLEAR_SETTEDMEAL_LIST')
+    await listInput(
+      flightNum,
+      ({ data }) => {
+        console.log('store입니다')
+        console.log(data.meal)
+        if (data.meal.length > 0) {
+          data.meal.forEach((meal) => {
+            commit('SET_SETTEDMEAL_LIST', meal)
+          })
+        }
       },
       (error) => {
         console.log(error)
@@ -184,6 +245,7 @@ export const actions = {
       flightNum,
       ({ data }) => {
         if (data.meal.length > 0) {
+          commit('SET_FLIGHTMEALS_LIST', data.meal)
           data.meal.forEach((meal) => {
             if (meal.status === 'PROGRESS') {
               commit('SET_FLIGHTMEAL_LIST', {
