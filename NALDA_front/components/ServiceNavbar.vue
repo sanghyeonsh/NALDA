@@ -152,7 +152,7 @@
         x-large
         color="#0e0737"
         style="position: fixed; bottom: 10vh; right: 3vh"
-        @click="openSelectedModal"
+        @click=";[openSelectedModal, calcStock()]"
       >
         <v-icon dark> mdi-cart-heart </v-icon>
       </v-btn>
@@ -181,11 +181,14 @@ export default {
     }
   },
   computed: {
-    ...mapState('menu', ['items']),
+    ...mapState('menu', ['items', 'stock', 'total']),
+    ...mapState('user', ['flightNum']),
   },
 
   created() {
     this.isSnack = true
+    this.getServiceCnt(this.flightNum)
+    this.getOrderCnt(this.flightNum)
     const promise = new Promise((resolve, reject) => {
       resolve()
     })
@@ -198,6 +201,9 @@ export default {
       this.snacks = this.items.snack
       this.alcohols = this.items.alcohol
       this.nonAlcohols = this.items.nonAlcohol
+      console.log(this.stock)
+      console.log(this.total)
+      console.log(this.items)
     })
   },
   methods: {
@@ -216,8 +222,17 @@ export default {
       this.SET_ITEM(data)
       this.$refs.serviceModal.toggle()
     },
-    ...mapMutations('menu', ['SET_ITEM']),
-    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
+    calcStock() {
+      this.CALC_STOCK()
+    },
+    ...mapMutations('menu', ['SET_ITEM', 'CALC_STOCK']),
+    ...mapActions('menu', [
+      'getSnack',
+      'getAlcohols',
+      'getNonAlcohols',
+      'getOrderCnt',
+      'getServiceCnt',
+    ]),
   },
 }
 </script>
