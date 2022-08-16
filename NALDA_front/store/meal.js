@@ -287,11 +287,11 @@ export const actions = {
                 menu: meal.mealMenu,
                 content: meal.content,
                 image: meal.bytesdata,
-                cnt: -1,
                 check: false,
                 details: null,
                 allergies: null,
                 choice: false,
+                cnt: 100,
               })
             }
           })
