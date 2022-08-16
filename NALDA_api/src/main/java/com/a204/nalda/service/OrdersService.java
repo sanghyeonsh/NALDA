@@ -57,6 +57,7 @@ public class OrdersService {
                     .serviceCode(service.getCode())
                     .serviceClass(service.getServiceClass())
                     .bytesdata(bytesData)
+                    .cnt(0)
                     .build());
         }
         return serviceDto;
@@ -144,6 +145,7 @@ public class OrdersService {
                     .serviceName(serviceCode.getServiceName())
                     .serviceCode(serviceCode.getCode())
                     .serviceClass(serviceCode.getServiceClass())
+                    .cnt(0)
                     .build());
         }
         return serviceDto;

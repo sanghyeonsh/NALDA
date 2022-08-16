@@ -44,7 +44,6 @@
                     style="margin-bottom: 30px"
                     @click="ChoiceMenu(item)"
                   >
-                    <div>재고있음</div>
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -67,7 +66,7 @@
 
                   <!-- 품절부분 -->
                   <v-card
-                    v-else-if="item.cnt === 0"
+                    v-else-if="item.cnt <= 0"
                     style="
                       margin-bottom: 30px;
                       background-image: url('/orders/out-of-stock.png');
@@ -82,7 +81,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
-                      width="200px"
+                      width="210px"
                     >
                     </v-img>
 
@@ -116,7 +115,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
-                      width="200px"
+                      width="210px"
                     >
                     </v-img>
 
@@ -150,7 +149,7 @@
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       width="200px"
-                      height="200px"
+                      height="210px"
                     >
                     </v-img>
 
@@ -218,7 +217,8 @@ export default {
     }
   },
   computed: {
-    ...mapState('menu', ['items']),
+    ...mapState('menu', ['items', 'stock', 'total']),
+    ...mapState('user', ['flightNum']),
   },
 
   created() {
@@ -231,10 +231,12 @@ export default {
       await this.getSnack()
       await this.getAlcohols()
       await this.getNonAlcohols()
-
+      await this.getServiceCnt(this.flightNum)
+      await this.getOrderCnt(this.flightNum)
       this.snacks = this.items.snack
       this.alcohols = this.items.alcohol
       this.nonAlcohols = this.items.nonAlcohol
+      this.calcStock()
     })
   },
   methods: {
@@ -253,8 +255,17 @@ export default {
       this.SET_ITEM(data)
       this.$refs.serviceModal.toggle()
     },
-    ...mapMutations('menu', ['SET_ITEM']),
-    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
+    calcStock() {
+      this.CALC_STOCK()
+    },
+    ...mapMutations('menu', ['SET_ITEM', 'CALC_STOCK']),
+    ...mapActions('menu', [
+      'getSnack',
+      'getAlcohols',
+      'getNonAlcohols',
+      'getOrderCnt',
+      'getServiceCnt',
+    ]),
   },
 }
 </script>

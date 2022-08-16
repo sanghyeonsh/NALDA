@@ -1,6 +1,6 @@
 <template>
   <div class="goods-container">
-    <div class="goods-container-box" @click="checkblanket">
+    <div v-if="cnt.blanket > 0" class="goods-container-box" @click="checkblanket">
       <div style="height: 18vh"></div>
       <div style="width: 100%">
         <img
@@ -14,7 +14,23 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box" @click="checkpillow">
+    <div v-else-if="cnt.blanket <= 0" class="goods-container-box">
+      <div style="height: 18vh"></div>
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">담요</div>
+      </div>
+    </div>
+
+    <div v-if="cnt.pillow > 0" class="goods-container-box" @click="checkpillow">
       <div style="height: 18vh"></div>
       <div style="width: 100%">
         <img :class="{selected : isCheckPillow}" src="/orders/pillow.png" alt="service" />
@@ -23,7 +39,23 @@
         </div>
       </div>
     </div>
-    <div class="goods-container-box" @click="checkearplug">
+    <div v-else-if="cnt.pillow <= 0" class="goods-container-box">
+      <div style="height: 18vh"></div>
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">베개</div>
+      </div>
+    </div>
+
+    <div v-if="cnt.earplug > 0" class="goods-container-box" @click="checkearplug">
       <div style="height: 18vh"></div>
       <div style="width: 100%">
         <img :class="{selected : isCheckEarplug}" src="/orders/ear-plug.png" alt="service" />
@@ -33,13 +65,44 @@
       </div>
     </div>
 
-    <div class="goods-container-box" @click="checkslipper">
+    <div v-else-if="cnt.earplug <= 0" class="goods-container-box">
+      <div style="height: 18vh"></div>
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">귀마개</div>
+      </div>
+    </div>
+
+    <div v-if="cnt.slipper > 0" class="goods-container-box" @click="checkslipper">
       <div style="height: 18vh"></div>
       <div style="width: 100%">
         <img :class="{selected : isCheckSlipper}" src="/orders/slippers.png" alt="service" />
         <div class="check-box-items">
           <b-form-checkbox v-model="slipper" value="C004" size="lg"></b-form-checkbox>슬리퍼
         </div>
+      </div>
+    </div>
+    <div v-else-if="cnt.slipper <= 0" class="goods-container-box">
+      <div style="height: 18vh"></div>
+      <div style="width: 100%">
+        <img
+          class="goods-img"
+          src="/orders/free-icon-out-of-stock-5578604.png"
+          alt="service"
+          style="
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
+            filter: opacity(1) drop-shadow(0 0 0 #206e95);
+          "
+        />
+        <div class="check-box-items">슬리퍼</div>
       </div>
     </div>
     <b-button variant="primary" class="order-button" @click="movewaiting">요청하기</b-button>
@@ -61,10 +124,12 @@ export default {
       isCheckPillow: false,
       isCheckEarplug: false,
       isCheckSlipper: false,
+      cnt: { blanket: 0, pillow: 0, earplug: 0, slipper: 0 },
     }
   },
   computed: {
     ...mapState('user', ['loginMember', 'seatInfo', 'flightNum']),
+    ...mapState('menu', ['stock', 'total']),
     orderList() {
       const orderList = []
       if (this.blanket !== '')
@@ -83,9 +148,44 @@ export default {
     this.isCheckPillow = false
     this.isCheckEarplug = false
     this.isCheckSlipper = false
+
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+
+    promise.then(async () => {
+      await this.getOrderCnt(this.flightNum)
+      await this.getServiceCnt(this.flightNum)
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < this.total.length; j++) {
+          if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C001'
+          ) {
+            this.cnt.blanket = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C002'
+          ) {
+            this.cnt.pillow = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C003'
+          ) {
+            this.cnt.earplug = this.stock[i + 30].total - this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C004'
+          ) {
+            this.cnt.slipper = this.stock[i + 30].total - this.total[j].total
+          }
+        }
+      }
+    })
+    console.log(this.cnt)
   },
   methods: {
-    ...mapActions('menu', ['postOrders']),
+    ...mapActions('menu', ['postOrders', 'getOrderCnt', 'getServiceCnt']),
     movewaiting() {
       const order = {
         orderMessage: '',

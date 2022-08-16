@@ -115,6 +115,21 @@ public class MealService {
     }
 
     @Transactional
+    public List<MealCntDto> mealCnt(String flightNum){
+        List<MealStock> mealStocks = mealStockRepository.findByFlightNum(flightNum);
+        List<MealCntDto> mealCntDTOS = new ArrayList<>();
+        for(MealStock mealStock:mealStocks){
+            mealCntDTOS.add(MealCntDto.builder()
+                            .flightNum(mealStock.getFlight().getFlightNum())
+                            .mealMenu(mealStock.getMeal().getMealMenu())
+                            .status(mealStock.getStatus())
+                            .total(mealStock.getTotal())
+                            .build());
+        }
+        return mealCntDTOS;
+    }
+
+    @Transactional
     public List<MealDto> listInputMeal(String flightNum) throws IOException {
         List<Meal> mealList = mealRepository.findByFlightNum(flightNum);
         List<MealDto> mealDTOS = new ArrayList<>();

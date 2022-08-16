@@ -3,6 +3,8 @@ import {
   listAlcohols,
   listNonAlcohols,
   inputOrders,
+  listServiceCnt,
+  listOrderCnt,
 } from '@/api/menu'
 
 export const state = () => ({
@@ -10,6 +12,8 @@ export const state = () => ({
   item: { bytesdata: null, image: null, num: null },
   // items: 전체 메뉴 가져옴.
   items: {},
+  stock: {},
+  total: {},
   // selectedItem 장바구니에 담기.
   selectedItem: [],
 })
@@ -31,12 +35,13 @@ export const mutations = {
     select.num = 1
     state.item = select
   },
+  SET_STOCK(state, stock) {
+    state.stock = stock
+  },
+  SET_TOTAL(state, total) {
+    state.total = total
+  },
   SET_SNACK(state, snacks) {
-    // 상현이가 만들면 지우기!
-    for (let i = 0; i < snacks.length; i++) {
-      snacks[i].cnt = 0
-    }
-    console.log(snacks)
     state.items.snack = snacks
   },
   SET_ALCOHOL(state, alcohol) {
@@ -73,6 +78,40 @@ export const mutations = {
       state.item.num -= 1
     }
   },
+  CALC_STOCK(state) {
+    for (let i = 0; i < state.items.snack.length; i++) {
+      for (let j = 0; j < state.total.length; j++) {
+        if (state.stock[i].serviceCode === state.total[j].serviceCode) {
+          state.items.snack[i].cnt = state.stock[i].total - state.total[j].total
+        }
+      }
+    }
+    for (let i = 0; i < state.items.alcohol.length; i++) {
+      for (let j = 0; j < state.total.length; j++) {
+        if (
+          state.stock[i + state.items.snack.length].serviceCode ===
+          state.total[j].serviceCode
+        ) {
+          state.items.alcohol[i].cnt =
+            state.stock[i + state.items.snack.length].total -
+            state.total[j].total
+        }
+      }
+    }
+    for (let i = 0; i < state.items.nonAlcohol.length; i++) {
+      for (let j = 0; j < state.total.length; j++) {
+        if (
+          state.stock[i + state.items.snack.length + state.items.alcohol.length]
+            .serviceCode === state.total[j].serviceCode
+        ) {
+          state.items.nonAlcohol[i].cnt =
+            state.stock[
+              i + state.items.snack.length + state.items.alcohol.length
+            ].total - state.total[j].total
+        }
+      }
+    }
+  },
 
   CLEAR_ITEM(state) {
     state.item = []
@@ -83,12 +122,18 @@ export const mutations = {
   CLEAR_CHOICE_FOODS(state) {
     state.selectedItem = []
   },
+  CLEAR_STOCK(state) {
+    state.stock = {}
+  },
+  CLEAR_TOTAL(state) {
+    state.total = {}
+  },
 }
 
 export const getters = {}
 
 export const actions = {
-  async getSnack({ commit }) {
+  async getSnack({ commit, state }) {
     await listSnack(
       ({ data }) => {
         commit('SET_SNACK', data.service)
@@ -123,6 +168,30 @@ export const actions = {
       orders,
       ({ data }) => {
         console.log(data)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getOrderCnt({ commit }, flightNum) {
+    commit('CLEAR_TOTAL')
+    await listOrderCnt(
+      flightNum,
+      ({ data }) => {
+        commit('SET_TOTAL', data.orderCnt)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getServiceCnt({ commit }, flightNum) {
+    commit('CLEAR_STOCK')
+    await listServiceCnt(
+      flightNum,
+      ({ data }) => {
+        commit('SET_STOCK', data.cntList)
       },
       (error) => {
         console.log(error)

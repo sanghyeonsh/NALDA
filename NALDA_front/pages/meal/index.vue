@@ -8,7 +8,11 @@
       <v-app id="inspire">
         <div class="wrapper">
           <div v-for="(flightMeal, i) in flightMeals" :key="i" class="food-box">
-            <v-card class="mx-auto my-12" style="margin: 0; height: 100%">
+            <v-card
+              v-if="flightMeal.cnt > 0"
+              class="mx-auto my-12"
+              style="margin: 0; height: 100%"
+            >
               <v-img
                 height="50%"
                 width="100%"
@@ -33,22 +37,32 @@
               </v-card-text>
               <!-- <div v-if="flightMeal">남은수량: 10개</div> -->
 
-              <v-divider class="mx-4"></v-divider>
+              <v-divider style="margin: 10px"></v-divider>
 
-              <v-card-actions style="margin-bottom: 10px">
+              <v-card-actions style="height: 10%; padding: 0">
                 <div>
                   <v-btn
                     text
                     color="teal accent-4"
-                    style="font-size: 20px"
+                    style="
+                      font-size: 20px;
+                      width: 80px;
+                      height: 100%;
+                      margin-left: 10px;
+                    "
                     @click="updateCheck(flightMeal)"
                   >
                     세부사항
                   </v-btn>
                 </div>
                 <v-spacer></v-spacer>
-                <div style="width: 50px; height: 100%; font-size: 20px">
-                  <button @click="updateSelected(i)">선택</button>
+                <div>
+                  <button
+                    style="width: 80px; height: 100%; font-size: 20px"
+                    @click="updateSelected(i)"
+                  >
+                    선택
+                  </button>
                 </div>
               </v-card-actions>
 
@@ -58,7 +72,7 @@
                   class="transition-fast-in-fast-out v-card--reveal"
                   style="height: 100%"
                 >
-                  <v-card-text class="pb-0" style="padding: 30px; height: 90%">
+                  <v-card-text class="pb-0" style="padding: 30px; height: 89%">
                     <div class="text--primary" style="font-size: 40px">
                       세부목록
                     </div>
@@ -96,6 +110,77 @@
                 </v-card>
               </v-expand-transition>
             </v-card>
+
+            <!-- 품절 -->
+            <v-card
+              v-else-if="flightMeal.cnt <= 0"
+              class="mx-auto my-12"
+              style="
+                margin:0; height:100%
+                z-index: 3;
+                background-image: url('/orders/out-of-stock.png');
+                background-size: 40%;
+                background-position: center;
+                background-color: rgba(0, 0, 0, 0.5);
+              "
+            >
+              <v-img
+                height="50%"
+                width="100%"
+                :alt="flightMeal.menu"
+                style="filter: brightness(50%)"
+              ></v-img>
+
+              <v-card-title
+                style="
+                  display: flex;
+                  justify-content: center;
+                  font-size: 25px;
+                  height: 15%;
+                  opacity: 0.3;
+                "
+                >{{ flightMeal.menu }}
+              </v-card-title>
+
+              <v-card-text style="height: 20%">
+                <div style="font-size: 17px; opacity: 0.5">
+                  {{ flightMeal.content }}
+                </div>
+              </v-card-text>
+              <!-- <div v-if="flightMeal">남은수량: 10개</div> -->
+
+              <v-divider style="margin: 10px"></v-divider>
+
+              <v-card-actions style="height: 10%; padding: 0">
+                <div>
+                  <v-btn
+                    text
+                    style="
+                      font-size: 20px;
+                      width: 80px;
+                      height: 100%;
+                      margin-left: 10px;
+                      opacity: 0.5;
+                    "
+                  >
+                    세부사항
+                  </v-btn>
+                </div>
+                <v-spacer></v-spacer>
+                <div>
+                  <button
+                    style="
+                      width: 80px;
+                      height: 100%;
+                      font-size: 20px;
+                      opacity: 0.5;
+                    "
+                  >
+                    선택
+                  </button>
+                </div>
+              </v-card-actions>
+            </v-card>
             <!-- <div>
               <button @click="updateSelected(i)">선택</button>
             </div> -->
@@ -115,12 +200,21 @@
         </div>
       </v-app>
     </div>
+    <b-modal id="meal-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>이미 주문했습니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('meal-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 import { choiceMeal } from '@/api/meal'
 export default {
   name: 'TestPage2',
@@ -147,6 +241,8 @@ export default {
       'details',
       'allergies',
       'validMsg',
+      'stock',
+      'total',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
@@ -159,14 +255,22 @@ export default {
       await this.getFlightMeal(this.flightNum)
       this.getDetail(this.flightMeals)
       this.getAllergy(this.flightMeals)
+      await this.getMealCnt(this.flightNum)
+      await this.getMealOrderCnt(this.flightNum)
+      console.log(this.stock)
+      console.log(this.total)
+      this.calcStock()
     })
   },
   methods: {
+    ...mapMutations('meal', ['MEAL_CALC_STOCK']),
     ...mapActions('meal', [
       'getFlightMeal',
       'getSelectedMeal',
       'getDetail',
       'getAllergy',
+      'getMealCnt',
+      'getMealOrderCnt',
     ]),
 
     updateSelected(e) {
@@ -176,7 +280,9 @@ export default {
     updateCheck(e) {
       this.$store.commit('meal/updateCheck', e)
     },
-
+    calcStock() {
+      this.MEAL_CALC_STOCK()
+    },
     finalChoice() {
       this.info.flightNum = this.flightNum
       this.info.username = this.loginMember.username
@@ -198,7 +304,7 @@ export default {
             }
           )
         } else {
-          alert('이미 주문했습니다.')
+          this.$bvModal.show('meal-modal')
         }
       })
     },
