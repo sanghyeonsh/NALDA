@@ -58,7 +58,7 @@ export default {
     moveMealPage() {
       if (this.flightMeals?.length === 0) {
         if (this.settedMealList?.length === 0) {
-          this.$router.push('attendant/mealtable')
+          this.$router.push('/attendant/mealtable')
         } else {
           if (this.flightMealList?.length === 0) {
             this.$router.push('/attendant/mealtable')
@@ -81,7 +81,7 @@ export default {
 <style scoped>
 .main-container {
   display: flex;
-  height: 75vh;
+  height: 85vh;
   background-color: rgba(239, 239, 239, 0.511);
 }
 .main-container-box {
