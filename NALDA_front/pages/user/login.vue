@@ -191,6 +191,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 }
 
 .login-main-container .login-main-wrap {
