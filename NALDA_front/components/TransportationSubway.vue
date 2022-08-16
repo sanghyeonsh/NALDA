@@ -118,12 +118,12 @@ export default {
   display: none;
 }
 .Map {
-  height: 75vh;
+  height: 85vh;
   display: block;
   background-color: rgba(239, 239, 239, 0.511);
 }
 .Time {
-  height: 75vh;
+  height: 85vh;
   display: block;
   background-color: rgba(239, 239, 239, 0.511);
 }

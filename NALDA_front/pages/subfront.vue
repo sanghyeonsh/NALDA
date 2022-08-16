@@ -51,6 +51,10 @@ export default {
 }
 </script>
 <style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+
 .subway-container {
   display: flex;
   width: 100vh;

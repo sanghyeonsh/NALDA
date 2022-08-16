@@ -175,7 +175,7 @@ export default {
 }
 .table {
   /* width: 80%; */
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
