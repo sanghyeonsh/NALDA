@@ -278,6 +278,8 @@ export default {
     test() {
       console.log('여기')
       console.log(this.total)
+      console.log(this.flightNum)
+      console.log(this.TotalServiceQuantity)
     },
     setTotal() {
       this.TotalServiceQuantity = []
