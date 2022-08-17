@@ -203,28 +203,32 @@ export default {
     promise.then(async () => {
       await this.getOrderCnt(this.flightNum)
       await this.getServiceCnt(this.flightNum)
+      this.cnt.blanket = this.stock[30].total
+      this.cnt.pillow = this.stock[32].total
+      this.cnt.earplug = this.stock[31].total
+      this.cnt.slipper = this.stock[33].total
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < this.total.length; j++) {
           if (
             this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
             this.total[j].serviceCode === 'C001'
           ) {
-            this.cnt.blanket = this.stock[i + 30].total - this.total[j].total
-          } else if (
-            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
-            this.total[j].serviceCode === 'C002'
-          ) {
-            this.cnt.pillow = this.stock[i + 30].total - this.total[j].total
+            this.cnt.blanket -= this.total[j].total
           } else if (
             this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
             this.total[j].serviceCode === 'C003'
           ) {
-            this.cnt.earplug = this.stock[i + 30].total - this.total[j].total
+            this.cnt.pillow -= this.total[j].total
+          } else if (
+            this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
+            this.total[j].serviceCode === 'C002'
+          ) {
+            this.cnt.earplug -= this.total[j].total
           } else if (
             this.stock[i + 30].serviceCode === this.total[j].serviceCode &&
             this.total[j].serviceCode === 'C004'
           ) {
-            this.cnt.slipper = this.stock[i + 30].total - this.total[j].total
+            this.cnt.slipper -= this.total[j].total
           }
         }
       }

@@ -80,34 +80,37 @@ export const mutations = {
   },
   CALC_STOCK(state) {
     for (let i = 0; i < state.items.snack.length; i++) {
+      state.items.snack[i].cnt = state.stock[i].total
       for (let j = 0; j < state.total.length; j++) {
         if (state.stock[i].serviceCode === state.total[j].serviceCode) {
-          state.items.snack[i].cnt = state.stock[i].total - state.total[j].total
+          state.items.snack[i].cnt -= state.total[j].total
+          break
         }
       }
     }
     for (let i = 0; i < state.items.alcohol.length; i++) {
+      state.items.alcohol[i].cnt =
+        state.stock[i + state.items.snack.length].total
       for (let j = 0; j < state.total.length; j++) {
         if (
           state.stock[i + state.items.snack.length].serviceCode ===
           state.total[j].serviceCode
         ) {
-          state.items.alcohol[i].cnt =
-            state.stock[i + state.items.snack.length].total -
-            state.total[j].total
+          state.items.alcohol[i].cnt -= state.total[j].total
         }
       }
     }
     for (let i = 0; i < state.items.nonAlcohol.length; i++) {
+      state.items.nonAlcohol[i].cnt =
+        state.stock[
+          i + state.items.snack.length + state.items.alcohol.length
+        ].total
       for (let j = 0; j < state.total.length; j++) {
         if (
           state.stock[i + state.items.snack.length + state.items.alcohol.length]
             .serviceCode === state.total[j].serviceCode
         ) {
-          state.items.nonAlcohol[i].cnt =
-            state.stock[
-              i + state.items.snack.length + state.items.alcohol.length
-            ].total - state.total[j].total
+          state.items.nonAlcohol[i].cnt -= state.total[j].total
         }
       }
     }

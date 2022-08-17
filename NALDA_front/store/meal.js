@@ -73,13 +73,13 @@ export const mutations = {
     state.flightMeals.forEach((flightMeal) => {
       console.log(flightMeal)
       for (let i = 0; i < state.stock.length; i++) {
+        if (flightMeal.menu === state.stock[i].mealMenu) {
+          flightMeal.cnt = state.stock[i].total
+        }
         for (let j = 0; j < state.total.length; j++) {
-          if (flightMeal.menu === state.stock[i].mealMenu) {
-            flightMeal.cnt = state.stock[i].total
-            if (flightMeal.id === state.total[j].mealId) {
-              flightMeal.cnt -= state.total[j].total
-              break
-            }
+          if (flightMeal.id === state.total[j].mealId) {
+            flightMeal.cnt -= state.total[j].total
+            break
           }
         }
       }
