@@ -4,8 +4,8 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div v-bind="flightNum" class="caption-wrap">
-              <h3>항공편 {{ flightNum }} 재고 목록</h3>
+            <div class="caption-wrap">
+              <h3 @click="test">항공편 {{flightNum}} 재고 목록</h3>
               <!-- <div id="flight-num-input">
                 <b-form-input
                   v-model="flightNum"
@@ -53,6 +53,7 @@
                   id="snack-input"
                   v-model="snackQuantity[index]"
                   class="snack-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   :name="snack.serviceName"
                   placeholder="수량을 입력해주세요."
@@ -72,6 +73,7 @@
                 <b-form-input
                   v-model="alcoholQuantity[index]"
                   class="alcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                   @change="setAlcoholQuantity(alcohol, alcoholQuantity[index])"
@@ -90,6 +92,7 @@
                 <b-form-input
                   v-model="nonAlcoholQuantity[index]"
                   class="nonalcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -107,6 +110,7 @@
                 <b-form-input
                   v-model="amenityQuantity[index]"
                   class="amenity-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -119,15 +123,21 @@
               <b-td colspan="7" variant="secondary" class="text-right">
                 Total Rows:
                 <b v-if="ListType === 'snacks'">{{ snackList.length }}</b>
-                <b v-else-if="ListType === 'alcohols'">{{
+                <b v-else-if="ListType === 'alcohols'">
+                  {{
                   alcoholsList.length
-                }}</b>
-                <b v-else-if="ListType === 'nonalcohols'">{{
+                  }}
+                </b>
+                <b v-else-if="ListType === 'nonalcohols'">
+                  {{
                   nonalcoholosList.length
-                }}</b>
-                <b v-else-if="ListType === 'amenities'">{{
+                  }}
+                </b>
+                <b v-else-if="ListType === 'amenities'">
+                  {{
                   amenityList.length
-                }}</b>
+                  }}
+                </b>
               </b-td>
             </b-tr>
           </b-tfoot>
@@ -147,8 +157,9 @@
         <b-button @click="showAlcohol">Alcohol</b-button>
         <b-button @click="showNonAlcohol">Non-Alcohols</b-button>
         <b-button @click="showAmenity">Amenity</b-button>
-        <b-button variant="warning" @click="setTotal()">save</b-button>
-        <b-button @click="testStockCnt">test</b-button>
+        <b-button v-if="isValid" variant="warning" @click="setTotal()">save</b-button>
+        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()">modify</b-button>
+        <b-button @click="test">test</b-button>
       </div>
     </div>
   </div>
@@ -162,6 +173,7 @@ export default {
     return {
       // perPage: 10,
       // currentPage: 1,
+      isValid: true,
       ListType: 'snacks',
       snackQuantity: [],
       alcoholQuantity: [],
@@ -169,6 +181,7 @@ export default {
       amenityQuantity: [],
       TotalServiceQuantity: [],
       whole: [],
+      wholeQuantity: [],
     }
   },
   computed: {
@@ -187,7 +200,41 @@ export default {
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
-    this.getServiceList(this.flightNum)
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getServiceList(this.flightNum)
+      await this.getStockAmount(this.flightNum)
+      console.log(this.stockCnt)
+      console.log(this.setStock)
+      if (this.stockCnt?.cntList.length > 0) {
+        for (let i = 0; i < this.stockCnt.cntList.length; i++) {
+          const classification = this.stockCnt.cntList[i].serviceCode.substr(
+            0,
+            2
+          )
+          let idx = this.stockCnt.cntList[i].serviceCode.substr(3) - 1
+          if (idx < 0) {
+            idx += 10
+          }
+          if (classification === 'A0') {
+            this.$set(this.snackQuantity, idx, this.stockCnt.cntList[i].total)
+          } else if (classification === 'A1') {
+            this.$set(this.alcoholQuantity, idx, this.stockCnt.cntList[i].total)
+          } else if (classification === 'A2') {
+            this.$set(
+              this.nonAlcoholQuantity,
+              idx,
+              this.stockCnt.cntList[i].total
+            )
+          } else if (classification === 'C0') {
+            this.$set(this.amenityQuantity, idx, this.stockCnt.cntList[i].total)
+          }
+        }
+        this.isValid = !this.isValid
+      }
+    })
   },
   methods: {
     ...mapActions('attendant', [
@@ -214,59 +261,17 @@ export default {
     setAlcoholQuantity(alcohol, index, value) {
       // console.log(this.alcoholQuantity)
     },
-    testStockCnt() {
-      console.log(this.flightNum)
-      const promise = new Promise((resolve, reject) => {
-        resolve()
-      })
-      promise.then(async () => {
-        await this.getStockAmount(this.flightNum)
-        console.log(this.stockCnt)
-        console.log(this.setStock)
-        // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
-        for (let i = 0; i < this.stockCnt.cntList.length; i++) {
-          // console.log(this.stockCnt.cntList[i].serviceCode.substr(0, 2))
-          // console.log(this.stockCnt.cntList[i].serviceCode.substr(3))
-          const classification = this.stockCnt.cntList[i].serviceCode.substr(
-            0,
-            2
-          )
-          let idx = this.stockCnt.cntList[i].serviceCode.substr(3) - 1
-          if (idx < 0) {
-            idx += 10
-          }
-          if (classification === 'A0') {
-            this.$set(this.snackQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.snackQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'A1') {
-            this.$set(this.alcoholQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'A2') {
-            this.$set(
-              this.nonAlcoholQuantity,
-              idx,
-              this.stockCnt.cntList[i].total
-            )
-            // this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'C0') {
-            this.$set(this.amenityQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
-          }
-        }
-
-        // this.$forceUpdate()
-        console.log(this.amenityQuantity)
-        console.log(this.snackQuantity)
-        console.log(this.alcoholQuantity)
-      })
-    },
-    setTotal() {
+    test() {
       this.TotalServiceQuantity = []
       this.whole = []
       this.whole.push(this.snackList)
       this.whole.push(this.alcoholsList)
       this.whole.push(this.nonalcoholosList)
       this.whole.push(this.amenityList)
+      this.wholeQuantity.push(this.snackQuantity)
+      this.wholeQuantity.push(this.alcoholQuantity)
+      this.wholeQuantity.push(this.nonAlcoholQuantity)
+      this.wholeQuantity.push(this.amenityQuantity)
 
       // this.whole[type][i].serviceQuantity부분 수정 필요함
       // 0아니고 stock db에 있으면 그 값으로 다 바꿔야함..
@@ -275,12 +280,97 @@ export default {
 
       // console.log(this.amenityQuantity)
       // 1. 전체 재고 목록 배열을 하나 생성한다.
+      console.log(this.whole)
+      console.log('전체 수량')
+      console.log(this.wholeQuantity)
       for (let type = 0; type < this.whole.length; type++) {
         for (let i = 0; i < this.whole[type].length; i++) {
           const stock = {
             serviceCode: this.whole[type][i].serviceCode,
             flightNum: this.flightNum,
             total: this.whole[type][i].serviceQuantity,
+          }
+          if (this.wholeQuantity[type][i] >= 0) {
+            stock.total = this.wholeQuantity[type][i]
+          }
+          console.log(stock)
+          this.TotalServiceQuantity.push(stock)
+        }
+      }
+
+      // // 2. input 값들 해당 자리에 채워주기
+      // // snackQuantity, alcoholQuantity, nonAlcoholQuantity, amenityQuantity에 각각의 input 값들이 담겨있음
+      // for (
+      //   let codenum = 0;
+      //   codenum < this.TotalServiceQuantity.length;
+      //   codenum++
+      // ) {
+      //   if (codenum < this.snackList.length) {
+      //     // console.log('스낵수량입니다 ' + this.snackQuantity[codenum])
+      //     if (this.snackQuantity[codenum] !== undefined)
+      //       this.TotalServiceQuantity[codenum].total =
+      //         this.snackQuantity[codenum]
+      //   } else if (codenum < this.snackList.length + this.alcoholsList.length) {
+      //     if (this.alcoholQuantity[codenum] !== undefined)
+      //       this.TotalServiceQuantity[codenum].total =
+      //         this.alcoholQuantity[codenum - this.snackList.length]
+      //   } else if (
+      //     codenum <
+      //     this.snackList.length +
+      //       this.alcoholsList.length +
+      //       this.nonalcoholosList.length
+      //   ) {
+      //     if (this.nonAlcoholQuantity[codenum] !== undefined)
+      //       this.TotalServiceQuantity[codenum].total =
+      //         this.nonAlcoholQuantity[
+      //           codenum - (this.snackList.length + this.alcoholsList.length)
+      //         ]
+      //   } else if (
+      //     codenum <
+      //     this.snackList.length +
+      //       this.alcoholsList.length +
+      //       this.nonalcoholosList.length +
+      //       this.amenityList.length
+      //   ) {
+      //     if (this.amenityQuantity[codenum] !== undefined)
+      //       this.TotalServiceQuantity[codenum].total =
+      //         this.amenityQuantity[
+      //           codenum -
+      //             (this.snackList.length +
+      //               this.alcoholsList.length +
+      //               this.nonalcoholosList.length)
+      //         ]
+      //   }
+      // }
+      console.log(this.TotalServiceQuantity)
+      console.log(this.nonAlcoholQuantity)
+    },
+    setTotal() {
+      this.TotalServiceQuantity = []
+      this.whole = []
+      this.whole.push(this.snackList)
+      this.whole.push(this.alcoholsList)
+      this.whole.push(this.nonalcoholosList)
+      this.whole.push(this.amenityList)
+      this.wholeQuantity.push(this.snackQuantity)
+      this.wholeQuantity.push(this.alcoholQuantity)
+      this.wholeQuantity.push(this.nonAlcoholQuantity)
+      this.wholeQuantity.push(this.amenityQuantity)
+      // this.whole[type][i].serviceQuantity부분 수정 필요함
+      // 0아니고 stock db에 있으면 그 값으로 다 바꿔야함..
+      // store부분에서 수정 필요.. 말고 그냥 여기서 함수 불러서
+      // getStockAmount 해서 그거로 total에 넣어주는거로.
+      // console.log(this.amenityQuantity)
+      // 1. 전체 재고 목록 배열을 하나 생성한다.
+      for (let type = 0; type < this.whole.length; type++) {
+        for (let i = 0; i < this.whole[type].length; i++) {
+          const stock = {
+            serviceCode: this.whole[type][i].serviceCode,
+            flightNum: this.flightNum,
+            total: this.whole[type][i].serviceQuantity,
+          }
+          if (this.wholeQuantity[type][i] >= 0) {
+            stock.total = this.wholeQuantity[type][i]
           }
           console.log(stock)
           this.TotalServiceQuantity.push(stock)
@@ -332,7 +422,7 @@ export default {
         }
       }
       console.log(this.TotalServiceQuantity)
-
+      this.isValid = !this.isValid
       // 재고 입력 or 수정으로 보내기
       if (this.setStock === false) {
         this.$store.dispatch(
@@ -345,6 +435,9 @@ export default {
           this.TotalServiceQuantity
         )
       }
+    },
+    unSetTotal() {
+      this.isValid = !this.isValid
     },
   },
 }
@@ -366,7 +459,8 @@ export default {
 }
 
 .stock-input-wrap {
-  height: 70vh;
+  height: 75vh;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 .caption-wrap {
@@ -395,6 +489,7 @@ export default {
   width: 8%;
   background-color: #206e95;
   border-color: #206e95;
+  color: white;
 }
 .btn-warning {
   font-size: small;
