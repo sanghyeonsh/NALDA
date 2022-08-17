@@ -129,9 +129,10 @@ export const mutations = {
   SET_FLIGHTMEALS_LIST(state, selectedMealList) {
     selectedMealList.forEach((selectedMeal) => {
       const mealInfo = {
-        menu: selectedMeal.menu,
+        menu: selectedMeal.mealMenu,
         image: selectedMeal.image,
         imageName: selectedMeal.imageName,
+        mealId: selectedMeal.mealId,
         total: selectedMeal.total,
         validated: false,
       }
@@ -264,12 +265,11 @@ export const actions = {
   },
   async getFlightMeal({ commit }, flightNum) {
     commit('CLEAR_FLIGHTMEAL_LIST')
-    commit('CLEAR_FLIGHTMEALS_LIST')
     await listInput(
       flightNum,
       ({ data }) => {
         if (data.meal.length > 0) {
-          commit('SET_FLIGHTMEALS_LIST', data.meal)
+          console.log(data.meal)
           data.meal.forEach((meal) => {
             if (meal.status === 'PROGRESS') {
               commit('SET_FLIGHTMEAL_LIST', {
