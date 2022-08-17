@@ -7,7 +7,7 @@
           <div v-for="(meal, i) in mealList" :key="i" class="food-box">
             <v-card
               class="mx-auto my-12"
-              :class="{valid: meal.validated === true}"
+              :class="{valid: meal.validated === true, finish: meal.status === 'DONE'}"
               max-width="374"
               @click="setMealSelected(meal)"
             >
@@ -64,19 +64,19 @@
         </div>
         <div class="meal-order-button">
           <v-btn
-            v-if="readyState===false"
+            v-if="settedMealList.length === 0"
             class="ma-2 white--text"
             x-large
-            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
+            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large; position: fixed; bottom: 3% !important;"
             @click="setMeal"
           >기내식입력</v-btn>
           <v-btn
-            v-else-if="readyState===true"
+            v-else-if="settedMealList.length !== 0"
             class="ma-2 white--text"
             x-large
             style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
-            @click="setMeal"
-          >기내식좌석</v-btn>
+            @click="setMealUpdate"
+          >기내식입력</v-btn>
         </div>
       </v-app>
     </div>
@@ -170,22 +170,28 @@ export default {
     promise.then(async () => {
       this.mealList = []
       await this.getSettedMeal(this.flightNum)
-      // await this.getMealCnt(this.flightNum)
-      // await this.getMealOrderCnt(this.flightNum)
       await this.getFlightMeal(this.flightNum)
-      // this.calcStock()
       if (this.settedMealList.length > 0) {
+        await this.getMealCnt(this.flightNum)
+        await this.getMealOrderCnt(this.flightNum)
+        await this.calcStock()
         await this.settedMealList.forEach((meal) => {
           const mealInfo = {
             menu: meal.menu,
-            image: meal.bytesdata,
+            image: meal.image,
+            mealId: meal.mealId,
             total: meal.total,
             status: meal.status,
             validated: false,
+            readyState: true,
           }
-          if (meal.status === 'PROGRESS' || meal.total === 0) {
+          if (meal.status === 'PROGRESS') {
             mealInfo.validated = true
           }
+          if (meal.status === 'DONE') {
+            mealInfo.readyState = false
+          }
+
           this.mealList.push(mealInfo)
         })
 
@@ -193,6 +199,8 @@ export default {
         console.log(this.mealList)
       } else {
         await this.flightMealList.forEach((meal) => {
+          console.log(111)
+          console.log(meal)
           const mealInfo = {
             menu: meal.menu,
             image: meal.image,
@@ -221,40 +229,51 @@ export default {
       'getMealOrderCnt',
       'getMealCnt',
     ]),
-    ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST', 'MEAL_CALC_STOCK']),
+    ...mapMutations('meal', [
+      'UPDATE_FLIGHTMEALS_LIST',
+      'ATTENDANT_CALC_STOCK',
+    ]),
     test() {
       console.log('이건 meal List')
       console.log(this.mealList)
-      // this.getSettedMeal(this.flightNum)
-      // console.log('이건 settedmeal')
-      console.log(this.settedMealList)
+      // // this.getSettedMeal(this.flightNum)
+      // // console.log('이건 settedmeal')
+      // console.log(this.settedMealList)
+      // console.log(this.settedMealList.length)
       // console.log(this.flightMealList)
       console.log(this.select)
-      // // console.log(this.mealList)
+      // // // console.log(this.mealList)
       // console.log('이건 토탈')
       // console.log(this.total)
       // console.log('이건스탁')
       // console.log(this.stock)
-      console.log(this.flightMeals)
+      // console.log(this.flightMeals)
     },
     calcStock() {
-      this.MEAL_CALC_STOCK()
+      this.ATTENDANT_CALC_STOCK()
     },
     setMealSelected(meal) {
       if (meal.validated !== true) {
         this.dialog = !this.dialog
       }
       this.selectedMeal = meal
-      //   console.log(meal)
+      // console.log(meal)
       // console.log(this.selectedMeal)
     },
     setMealtotal(meal) {
       meal.validated = true
+      console.log(meal)
       const info = {
         flightNum: this.flightNum,
         mealMenu: meal.menu,
         total: meal.total,
-        status: 'PROGRESS',
+        status: 'READY',
+      }
+      if (meal.validated === true) {
+        info.status = 'PROGRESS'
+      }
+      if (meal.readyState === false) {
+        info.status = 'DONE'
       }
       console.log(info)
       if (this.select.length === 0) {
@@ -303,7 +322,6 @@ export default {
         setting.push(info)
         console.log(info)
       })
-
       this.registFlightMeal(setting)
       // this.select = []
       console.log(setting)
@@ -311,6 +329,27 @@ export default {
     },
     updateSelected(e) {
       this.$store.commit('meal/updateSelected', e)
+    },
+    setMealUpdate() {
+      const setting = []
+      this.mealList.forEach((flightMeal) => {
+        this.select.forEach((selected) => {
+          if (selected.mealMenu === flightMeal.menu) {
+            flightMeal.status = selected.status
+          }
+        })
+        const info = {
+          flightNum: this.flightNum,
+          mealMenu: flightMeal.menu,
+          total: flightMeal.total,
+          status: flightMeal.status,
+        }
+        console.log(info.status)
+        setting.push(info)
+      })
+
+      console.log(setting)
+      this.registFlightMeal(setting)
     },
   },
 }
@@ -403,10 +442,6 @@ export default {
   justify-content: flex-start;
 }
 
-.valid {
-  filter: brightness(50%);
-  /* pointer-events: none; */
-}
 .food-box {
   width: 20%;
   display: flex;
@@ -432,5 +467,17 @@ export default {
   min-width: 0px;
   width: 100%;
   text-align: center;
+}
+
+.finish {
+  /* margin-top: 30%; */
+  filter: brightness(50%);
+}
+.valid {
+  /* filter: brightness(50%); */
+  /* pointer-events: none; */
+  margin-top: -8% !important;
+  box-shadow: 0 0 30px rgb(47, 224, 255);
+  /* z-index: 999; */
 }
 </style>

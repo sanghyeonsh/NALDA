@@ -69,21 +69,41 @@ export const mutations = {
       }
     }
   },
-  MEAL_CALC_STOCK(state) {
+  PASSENGER_CALC_STOCK(state) {
     state.flightMeals.forEach((flightMeal) => {
       console.log(flightMeal)
       for (let i = 0; i < state.stock.length; i++) {
+        if (flightMeal.menu === state.stock[i].mealMenu) {
+          flightMeal.cnt = state.stock[i].total
+        }
         for (let j = 0; j < state.total.length; j++) {
-          if (flightMeal.menu === state.stock[i].mealMenu) {
-            flightMeal.cnt = state.stock[i].total
-            if (flightMeal.id === state.total[j].mealId) {
-              flightMeal.cnt -= state.total[j].total
-            }
+          if (flightMeal.id === state.total[j].mealId) {
+            flightMeal.cnt -= state.total[j].total
+            break
           }
         }
       }
     })
     console.log(state.flightMeals)
+  },
+  async ATTENDANT_CALC_STOCK(state) {
+    await state.settedMealList.forEach((flightMeal) => {
+      console.log(flightMeal)
+      for (let i = 0; i < state.stock.length; i++) {
+        for (let j = 0; j < state.total.length; j++) {
+          if (flightMeal.menu === state.stock[i].mealMenu) {
+            flightMeal.total = state.stock[i].total
+            if (flightMeal.mealId === state.total[j].mealId) {
+              console.log(2)
+              console.log('들어왔다.')
+              console.log(state.total[j].total)
+              flightMeal.total -= state.total[j].total
+              break
+            }
+          }
+        }
+      }
+    })
   },
   SET_MEAL_LIST(state, meals) {
     state.meals.push(meals)
@@ -127,10 +147,12 @@ export const mutations = {
   SET_VALIDMEAL_LIST(state, selectedMealList) {
     console.log(state.validMealList)
   },
-  SET_FLIGHTMEALS_LIST(state, selectedMealList) {
-    selectedMealList.forEach((selectedMeal) => {
+  async SET_FLIGHTMEALS_LIST(state, selectedMealList) {
+    await selectedMealList.forEach((selectedMeal) => {
+      console.log('store에서 11111')
+      console.log(selectedMeal)
       const mealInfo = {
-        menu: selectedMeal.mealMenu,
+        menu: selectedMeal.menu,
         image: selectedMeal.image,
         imageName: selectedMeal.imageName,
         mealId: selectedMeal.mealId,
@@ -140,12 +162,10 @@ export const mutations = {
       state.flightMealList.push(mealInfo)
     })
   },
-  SET_SETTEDMEAL_LIST(state, settedMealList) {
-    state.settedMealList.push(settedMealList)
+  SET_SETTEDMEAL_LIST(state, settedMeal) {
+    state.settedMealList.push(settedMeal)
   },
   UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
-    // console.log('store')
-    // console.log(validMeal)
     state.flightMealList.forEach((flightMeal) => {
       if (flightMeal.menu === validMeal.menu) {
         flightMeal.validated = validMeal.validated
@@ -198,7 +218,6 @@ export const actions = {
     commit('CLEAR_MEAL_LIST')
     await listMeal(
       ({ data }) => {
-        // console.log(data)
         if (data.mealList.length > 0) {
           data.mealList.forEach((meal) => {
             commit('SET_MEAL_LIST', {
@@ -243,13 +262,9 @@ export const actions = {
     commit('CLEAR_CHOICE_MEAL')
     commit('CLEAR_SEATMEAL_LIST')
     commit('CLEAR_VALID_MSG')
-    console.log(flightNum)
     endMeals(
       flightNum,
-      ({ data }) => {
-        console.log(data)
-        console.log(data.msg)
-      },
+      ({ data }) => {},
       (error) => {
         console.log(error)
       }
@@ -260,11 +275,16 @@ export const actions = {
     await listInput(
       flightNum,
       ({ data }) => {
-        console.log('store입니다')
-        console.log(data.meal)
         if (data.meal.length > 0) {
           data.meal.forEach((meal) => {
-            commit('SET_SETTEDMEAL_LIST', meal)
+            const settedMeal = {
+              menu: meal.mealMenu,
+              image: meal.bytesdata,
+              mealId: meal.mealId,
+              total: meal.total,
+              status: meal.status,
+            }
+            commit('SET_SETTEDMEAL_LIST', settedMeal)
           })
         }
       },
@@ -366,6 +386,7 @@ export const actions = {
     await getSeatMeal(
       flightNum,
       ({ data }) => {
+        console.log(data)
         if (data.seatMeal.length > 0) {
           commit('SET_SEATMEAL_LIST', data.seatMeal)
         }
