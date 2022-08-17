@@ -117,7 +117,6 @@ export default {
       this.items = [...this.selectedItem]
     },
     addNum(item) {
-      this.$bvModal.show('stock-modal')
       this.PLUS_SELECTED_ITEM(item)
       this.items = [...this.selectedItem]
     },
@@ -156,8 +155,9 @@ export default {
         this.postOrders(order)
         this.CLEAR_CHOICE_FOODS()
         this.$router.push('/waiting')
+      } else {
+        this.$bvModal.show('stock-modal')
       }
-      this.$bvModal.show('stock-modal')
     },
   },
 }
