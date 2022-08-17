@@ -60,6 +60,7 @@ export const mutations = {
   },
   updateCheck(state, check) {
     for (let i = 0; i < state.flightMeals.length; i++) {
+      console.log(i + '===' + state.flightMeals[i].menu + '===' + check.menu)
       if (state.flightMeals[i].menu === check.menu) {
         if (check.check === false) {
           check.check = true
