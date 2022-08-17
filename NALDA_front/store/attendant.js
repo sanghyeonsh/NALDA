@@ -136,7 +136,7 @@ export const getters = {
           좌석: state.completeList[i].seatNum,
           분류: state.completeList[i].classification,
           요청사항: orderDetail,
-          요청시각: state.completeList[i].orderTime.split('T')[1],
+          완료시각: state.completeList[i].completeTime.split('T')[1],
           상태: state.completeList[i].status,
           주문상세: state.completeList[i].orderList,
         }

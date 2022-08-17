@@ -148,9 +148,11 @@ export default {
   methods: {
     ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
     test() {
+      this.getFlightMeal(this.flightNum)
       console.log(this.mealList)
       console.log(this.flightMealList)
       // console.log(this.selectedMealList)
+      console.log(this.isValid)
     },
     setTotal() {
       console.log(this.selectedMealList) // 얘를 넘겨줘야함

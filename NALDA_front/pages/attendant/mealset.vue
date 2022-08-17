@@ -7,7 +7,7 @@
           <div v-for="(meal, i) in mealList" :key="i" class="food-box">
             <v-card
               class="mx-auto my-12"
-              :class="{valid: (flightMealList[i].validated === true || meal.validated === true)}"
+              :class="{valid: meal.validated === true}"
               max-width="374"
               @click="setMealSelected(meal)"
             >
@@ -170,10 +170,10 @@ export default {
     promise.then(async () => {
       this.mealList = []
       await this.getSettedMeal(this.flightNum)
-      await this.getMealCnt(this.flightNum)
-      await this.getMealOrderCnt(this.flightNum)
+      // await this.getMealCnt(this.flightNum)
+      // await this.getMealOrderCnt(this.flightNum)
       await this.getFlightMeal(this.flightNum)
-      this.calcStock()
+      // this.calcStock()
       if (this.settedMealList.length > 0) {
         await this.settedMealList.forEach((meal) => {
           const mealInfo = {
@@ -188,15 +188,7 @@ export default {
           }
           this.mealList.push(mealInfo)
         })
-        this.mealList.forEach((meal) => {
-          let cnt = 0
-          if (meal.status === 'PROGRESS') {
-            cnt++
-          }
-          if (cnt > 0) {
-            this.readyState = !this.readyState
-          }
-        })
+
         console.log('settedMeal vue입니다')
         console.log(this.mealList)
       } else {
@@ -231,25 +223,25 @@ export default {
     ]),
     ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST', 'MEAL_CALC_STOCK']),
     test() {
-      // console.log(this.mealList)
-      this.getSettedMeal(this.flightNum)
+      console.log('이건 meal List')
+      console.log(this.mealList)
+      // this.getSettedMeal(this.flightNum)
       // console.log('이건 settedmeal')
-      // console.log(this.settedMealList)
-      // // console.log(this.flightMealList)
-      // // console.log(this.select)
+      console.log(this.settedMealList)
+      // console.log(this.flightMealList)
+      console.log(this.select)
       // // console.log(this.mealList)
-      // console.log(this.readyState)
-      console.log('이건 토탈')
-      console.log(this.total)
-      console.log('이건스탁')
-      console.log(this.stock)
-      console.log(this.fligthMeals)
+      // console.log('이건 토탈')
+      // console.log(this.total)
+      // console.log('이건스탁')
+      // console.log(this.stock)
+      console.log(this.flightMeals)
     },
     calcStock() {
       this.MEAL_CALC_STOCK()
     },
     setMealSelected(meal) {
-      if (meal.validate !== true) {
+      if (meal.validated !== true) {
         this.dialog = !this.dialog
       }
       this.selectedMeal = meal
