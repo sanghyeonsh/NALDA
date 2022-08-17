@@ -63,12 +63,12 @@
       </div>
       <div class="stock-btn-group">
         <b-button v-if="isValid" variant="info" @click="fixTotal()"
-          >save</b-button
+          >저장</b-button
         >
         <b-button v-else-if="!isValid" variant="info" @click="unFixTotal()"
-          >modify</b-button
+          >수정</b-button
         >
-        <b-button variant="warning" @click="setTotal()">next</b-button>
+        <b-button variant="warning" @click="setTotal()">확인</b-button>
       </div>
     </div>
   </div>

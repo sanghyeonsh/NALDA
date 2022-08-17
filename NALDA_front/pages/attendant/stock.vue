@@ -421,10 +421,4 @@ input {
   outline: none;
   height: 3vh;
 }
-.table .thead-dark th {
-  font-size: larger;
-  color: #fff;
-  background-color: #45a9c8;
-  border-color: #45a9c8;
-}
 </style>
