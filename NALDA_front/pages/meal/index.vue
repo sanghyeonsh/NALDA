@@ -282,27 +282,31 @@ export default {
       this.MEAL_CALC_STOCK()
     },
     finalChoice() {
-      this.info.flightNum = this.flightNum
-      this.info.username = this.loginMember.username
-      this.info.seatNum = this.seatInfo.seatNum
-      this.info.mealMenu = this.selectedMeal
-      const promise = new Promise((resolve, reject) => {
-        resolve()
-      })
-      promise.then(async () => {
-        await this.validMeal(this.info.seatNum)
-        if (this.validMsg === '가능') {
-          choiceMeal(
-            this.info,
-            () => {
-              this.$router.push('/meal/result')
-            },
-            (error) => {
-              console.log(error)
+      this.flightMeals.forEach((flightMeal) => {
+        if (flightMeal.menu === this.selectMeal && flightMeal.cnt > 0) {
+          this.info.flightNum = this.flightNum
+          this.info.username = this.loginMember.username
+          this.info.seatNum = this.seatInfo.seatNum
+          this.info.mealMenu = this.selectedMeal
+          const promise = new Promise((resolve, reject) => {
+            resolve()
+          })
+          promise.then(async () => {
+            await this.validMeal(this.info.seatNum)
+            if (this.validMsg === '가능') {
+              choiceMeal(
+                this.info,
+                () => {
+                  this.$router.push('/meal/result')
+                },
+                (error) => {
+                  console.log(error)
+                }
+              )
+            } else {
+              this.$bvModal.show('meal-modal')
             }
-          )
-        } else {
-          this.$bvModal.show('meal-modal')
+          })
         }
       })
     },
