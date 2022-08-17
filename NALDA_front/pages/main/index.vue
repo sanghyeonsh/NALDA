@@ -8,13 +8,21 @@
     </div>
     <div class="main-container-box" @click="MoveLogin">
       <div class="main-container-box-image">
-        <img src="/main/custom_declaration.png" alt="custom_declaration" style="width: 35vh" />
+        <img
+          src="/main/custom_declaration.png"
+          alt="custom_declaration"
+          style="width: 35vh"
+        />
       </div>
       <div class="box-image-name">세관신고서</div>
     </div>
     <div class="main-container-box" @click="MoveTransportation">
       <div class="main-container-box-image">
-        <img src="/main/airport_info.png" alt="airport_info" style="width: 35vh" />
+        <img
+          src="/main/airport_info.png"
+          alt="airport_info"
+          style="width: 35vh"
+        />
       </div>
       <div class="box-image-name">공항정보</div>
     </div>
@@ -95,8 +103,6 @@ export default {
   align-items: center;
 }
 .main-container-box-image img {
-  width: 100%;
-  height: 100%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .box-image-name {
