@@ -109,7 +109,11 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -121,6 +125,37 @@
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+
+                  <v-card
+                    v-else-if="item.cnt <= 0"
+                    style="
+                      margin-bottom: 30px;
+                      background-image: url('/orders/out-of-stock.png');
+                      position: relative;
+                      background-size: 55%;
+                      background-position: center;
+                      background-color: rgba(0, 0, 0, 0.5);
+                    "
+                  >
+                    <div>품절</div>
+                    <v-img
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="210px"
+                    >
+                    </v-img>
+
+                    <v-card-actions class="ml-3">
+                      <div style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>
@@ -143,7 +178,11 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -155,6 +194,37 @@
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+
+                  <v-card
+                    v-else-if="item.cnt <= 0"
+                    style="
+                      margin-bottom: 30px;
+                      background-image: url('/orders/out-of-stock.png');
+                      position: relative;
+                      background-size: 55%;
+                      background-position: center;
+                      background-color: rgba(0, 0, 0, 0.5);
+                    "
+                  >
+                    <div>품절</div>
+                    <v-img
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="210px"
+                    >
+                    </v-img>
+
+                    <v-card-actions class="ml-3">
+                      <div style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>

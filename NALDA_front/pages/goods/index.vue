@@ -1,16 +1,26 @@
 <template>
   <div class="goods-container">
-    <div v-if="cnt.blanket > 0" class="goods-container-box" @click="checkblanket">
+    <div
+      v-if="cnt.blanket > 0"
+      class="goods-container-box"
+      @click="checkblanket"
+    >
       <div style="height: 18vh"></div>
       <div style="width: 100%">
         <img
           class="goods-img"
-          :class="{selected : isCheckBlanket}"
+          :class="{ selected: isCheckBlanket }"
           src="/orders/blanket.png"
           alt="service"
         />
         <div class="check-box-items">
-          <b-form-checkbox id="checkbox-1" v-model="blanket" value="C001" size="lg"></b-form-checkbox>담요
+          <b-form-checkbox
+            id="checkbox-1"
+            v-model="blanket"
+            value="C001"
+            size="lg"
+          ></b-form-checkbox
+          >담요
         </div>
       </div>
     </div>
@@ -33,9 +43,18 @@
     <div v-if="cnt.pillow > 0" class="goods-container-box" @click="checkpillow">
       <div style="height: 18vh"></div>
       <div style="width: 100%">
-        <img :class="{selected : isCheckPillow}" src="/orders/pillow.png" alt="service" />
+        <img
+          :class="{ selected: isCheckPillow }"
+          src="/orders/pillow.png"
+          alt="service"
+        />
         <div class="check-box-items">
-          <b-form-checkbox v-model="pillow" value="C003" size="lg"></b-form-checkbox>베개
+          <b-form-checkbox
+            v-model="pillow"
+            value="C003"
+            size="lg"
+          ></b-form-checkbox
+          >베개
         </div>
       </div>
     </div>
@@ -55,12 +74,25 @@
       </div>
     </div>
 
-    <div v-if="cnt.earplug > 0" class="goods-container-box" @click="checkearplug">
+    <div
+      v-if="cnt.earplug > 0"
+      class="goods-container-box"
+      @click="checkearplug"
+    >
       <div style="height: 18vh"></div>
       <div style="width: 100%">
-        <img :class="{selected : isCheckEarplug}" src="/orders/ear-plug.png" alt="service" />
+        <img
+          :class="{ selected: isCheckEarplug }"
+          src="/orders/ear-plug.png"
+          alt="service"
+        />
         <div class="check-box-items">
-          <b-form-checkbox v-model="earplug" value="C002" size="lg"></b-form-checkbox>귀마개
+          <b-form-checkbox
+            v-model="earplug"
+            value="C002"
+            size="lg"
+          ></b-form-checkbox
+          >귀마개
         </div>
       </div>
     </div>
@@ -81,12 +113,25 @@
       </div>
     </div>
 
-    <div v-if="cnt.slipper > 0" class="goods-container-box" @click="checkslipper">
+    <div
+      v-if="cnt.slipper > 0"
+      class="goods-container-box"
+      @click="checkslipper"
+    >
       <div style="height: 18vh"></div>
       <div style="width: 100%">
-        <img :class="{selected : isCheckSlipper}" src="/orders/slippers.png" alt="service" />
+        <img
+          :class="{ selected: isCheckSlipper }"
+          src="/orders/slippers.png"
+          alt="service"
+        />
         <div class="check-box-items">
-          <b-form-checkbox v-model="slipper" value="C004" size="lg"></b-form-checkbox>슬리퍼
+          <b-form-checkbox
+            v-model="slipper"
+            value="C004"
+            size="lg"
+          ></b-form-checkbox
+          >슬리퍼
         </div>
       </div>
     </div>
@@ -105,7 +150,9 @@
         <div class="check-box-items">슬리퍼</div>
       </div>
     </div>
-    <b-button variant="primary" class="order-button" @click="movewaiting">요청하기</b-button>
+    <b-button variant="primary" class="order-button" @click="movewaiting"
+      >요청하기</b-button
+    >
   </div>
 </template>
 
@@ -120,11 +167,11 @@ export default {
       pillow: '',
       earplug: '',
       slipper: '',
+      cnt: { blanket: 100, pillow: 100, earplug: 100, slipper: 100 },
       isCheckBlanket: false,
       isCheckPillow: false,
       isCheckEarplug: false,
       isCheckSlipper: false,
-      cnt: { blanket: 0, pillow: 0, earplug: 0, slipper: 0 },
     }
   },
   computed: {
