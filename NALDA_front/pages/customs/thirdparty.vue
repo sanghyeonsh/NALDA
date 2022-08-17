@@ -1,48 +1,18 @@
 <template>
   <div class="main-container">
     <div class="main-wrap">
-      <header>
-        <div class="sel-lang-wrap">
-          <select class="lang-select">
-            <option>Korean</option>
-            <option>English</option>
-          </select>
-        </div>
-      </header>
       <section class="terms-section-wrap">
-        <div class="all-terms-wrap">
+        <div class="necessary-terms-wrap">
           <div
             class="terms-title"
-            :class="{ active: !isActive }"
-            @click="agreeAll"
+            :class="{ active: second }"
+            @click="agreeOne"
           >
-            <!-- <span class="input-chk">
-                            <i class="far fa-check-circle"></i>
-                            <label for="terms-service"> 날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택), 프로모션 정보 수신(선택)에 모두
-                                동의합니다.</label>
-            </span> ---->
-            <!-- <div> 원래거
-                <i class="far fa-check-circle"></i> 
-            </div>-->
-            <div class="check-icon-wrap">
-              <img
-                class="check-all-icon"
-                src="../../static/icon/check_mark.png"
-                alt="check-icon"
-              />
-            </div>
-            <div>
-              &nbsp;날다 이용약관, 개인정보 수집 및 이용, 위치기반서비스
-              이용약관(선택), 프로모션 정보 수신(선택)에 모두 동의합니다.
-            </div>
-          </div>
-        </div>
-        <div class="necessary-terms-wrap">
-          <div class="terms-title" :class="{ active: !isActive }">
             <div class="check-icon-wrap">
               <img
                 class="check-mark-icon"
-                src="../../static/icon/check_mark.png"
+                :class="{ active: second }"
+                src="/icon/check_mark.png"
                 alt="check-icon"
               />
             </div>
@@ -285,6 +255,15 @@
           </div>
       </footer>-->
     </div>
+    <b-modal id="term-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>약관에 동의 해주세요.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('term-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
@@ -293,18 +272,22 @@ export default {
   name: 'CustomsThirdpartyTerms',
   data() {
     return {
-      isActive: true,
+      second: false,
     }
   },
   methods: {
-    agreeAll() {
-      this.isActive = !this.isActive
+    agreeOne() {
+      this.second = !this.second
     },
     moveDeclaration() {
-      this.$router.push('/customs/inform')
+      if (!this.second) {
+        this.$bvModal.show('term-modal')
+      } else {
+        this.$router.push('/customs/inform')
+      }
     },
     goBack() {
-      this.$router.go(-1)
+      this.$router.push(this.$nuxt.context.from.path)
     },
   },
 }
@@ -327,8 +310,9 @@ export default {
 }
 
 .main-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -386,6 +370,7 @@ export default {
 }
 
 .terms-title {
+  font-size: xx-large;
   display: flex;
   flex-direction: row;
   cursor: pointer;
@@ -397,7 +382,12 @@ export default {
 .active {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
+
+/* .active > img {
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #faab35);
+} */
 
 .terms-title:hover {
   /* background-color: #88c0c5; */
@@ -414,8 +404,8 @@ export default {
 .terms-box {
   position: relative;
   overflow: auto;
-  height: 88px;
-  margin-top: 10px;
+  height: 400px;
+  margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
@@ -476,7 +466,7 @@ p {
 
 /* terms-button-wrap CSS */
 .terms-button-wrap {
-  padding-top: 50px;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   /* width: 200px;
@@ -513,8 +503,8 @@ p {
 } */
 
 .check-mark-icon {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
 }
 
 .check-all-icon {

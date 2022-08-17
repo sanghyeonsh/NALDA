@@ -6,10 +6,9 @@ import com.a204.nalda.domain.entity.customsDeclaration.EtcExceed;
 import com.a204.nalda.domain.entity.customsDeclaration.VisitedCountry;
 import com.a204.nalda.domain.entity.user.User;
 import com.a204.nalda.dto.customdeclaration.*;
-import com.a204.nalda.repository.CustomsDeclarationRepository;
-import com.a204.nalda.repository.UserRepository;
+import com.a204.nalda.repository.user.CustomsDeclarationRepository;
+import com.a204.nalda.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,35 +22,38 @@ public class DeclarationService {
 
     private final CustomsDeclarationRepository customsDeclarationRepository;
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
+
+
     @Transactional
     public void saveDeclaration(DeclarationDTO declarationDTO) {
-
+        System.out.println(declarationDTO);
         User user = userRepository.findUserByUsername(declarationDTO.getUsername());
-
         CustomsDeclaration declaration = CustomsDeclaration.builder()
                 .user(user)
-                .accompany(declarationDTO.getAccompany())
+                .accompany(Optional.ofNullable(declarationDTO.getAccompany()).orElse(0))
                 .alcohols(declarationDTO.getAlcohols())
-                .cigarettes(declarationDTO.getCigarette())
+                .cigarettes(Optional.ofNullable(declarationDTO.getCigarette()).orElse(0))
                 .dutyfreeExceed(declarationDTO.getDutyfreeExceed())
                 .flightNum(declarationDTO.getFlightNum())
                 .livestockVisited(declarationDTO.getLivestockVisited())
                 .paymentExceed(declarationDTO.getPaymentExceed())
-                .perfumes(declarationDTO.getPerfumes())
+                .perfumes(Optional.ofNullable(declarationDTO.getPerfumes()).orElse(0))
                 .preferentialTariff(declarationDTO.getPreferentialTariff())
                 .prohibitGoods(declarationDTO.getProhibitGoods())
                 .purposeTravel(declarationDTO.getPurposeTravel())
-                .travelPeriod(declarationDTO.getTravelPeriod())
+                .travelPeriod(Optional.ofNullable(declarationDTO.getTravelPeriod()).orElse(0))
                 .salesGoods(declarationDTO.getSalesGoods())
+                .dutyfreeExceedValue(Optional.ofNullable(declarationDTO.getDutyfreeExceedValue()).orElse(0))
+                .paymentExceedValue(Optional.ofNullable(declarationDTO.getPaymentExceedValue()).orElse(0))
+                .date(declarationDTO.getDate())
                 .build();
-        System.out.println(declaration.getVisitedCountries());
-        if(declaration.getVisitedCountries().size() > 0) {
+
+        if(declarationDTO.getVisitedCountries().size() > 0) {
             for( VisitedCountry visitedcountry : declarationDTO.getVisitedCountries()) {
                 declaration.addVisitedCountry(visitedcountry);
             }
         }
-        if(declaration.getEtcExceeds().size() >0) {
+        if(declarationDTO.getEtcExceeds().size() >0) {
             for(EtcExceed etcExceed : declarationDTO.getEtcExceeds()) {
                 declaration.addEtcExceed(etcExceed);
             }
@@ -118,6 +120,9 @@ public class DeclarationService {
                     .alcohols(alcoholsDTO)
                     .etcExceeds(etcExceedList)
                     .visitedCountries(visitedCountryList)
+                    .dutyfreeExceedValue(customDeclaration.getDutyfreeExceedValue())
+                    .paymentExceedValue(customDeclaration.getPaymentExceedValue())
+                    .date(customDeclaration.getDate())
                     .build();
             list.add(declarationListDTO);
         }
@@ -130,7 +135,6 @@ public class DeclarationService {
 
         if(declaration.isPresent()) {
             CustomsDeclaration customsDeclaration = declaration.get();
-            System.out.println(customsDeclaration);
             Alcohols alcohols = customsDeclaration.getAlcohols();
             List<EtcExceed> etcExceeds = customsDeclaration.getEtcExceeds();
             List<VisitedCountry> visitedCountries = customsDeclaration.getVisitedCountries();
@@ -184,6 +188,9 @@ public class DeclarationService {
                     .purposeTravel(customsDeclaration.getPurposeTravel())
                     .salesGoods(customsDeclaration.getSalesGoods())
                     .travelPeriod(customsDeclaration.getTravelPeriod())
+                    .dutyfreeExceedValue(customsDeclaration.getDutyfreeExceedValue())
+                    .paymentExceedValue(customsDeclaration.getPaymentExceedValue())
+                    .date(customsDeclaration.getDate())
                     .build();
 
             return result;

@@ -1,80 +1,173 @@
 <template>
   <div class="login-main-container">
     <div class="login-main-wrap">
-      <header>
+      <!-- <header>
         <div class="sel-lang-wrap">
           <select class="lang-select">
             <option>Korean</option>
             <option>English</option>
           </select>
         </div>
-      </header>
+      </header> -->
       <section class="login-input-section-wrap">
-        <h2>Member</h2>
+        <div class="login-input-wrap mb-3">
+          <input
+            v-model="flightNum"
+            placeholder="항공편명"
+            type="search"
+            @focus="flightKeyOn"
+          />
+        </div>
         <div class="login-input-wrap">
-          <input v-model="userInfo.id" placeholder="Username" type="text" />
+          <input
+            v-model="userInfo.id"
+            placeholder="사용자 아이디"
+            type="text"
+            @focus="usernameKeyOn"
+          />
         </div>
         <div class="login-input-wrap password-wrap">
           <input
             v-model="userInfo.password"
-            placeholder="Password"
+            placeholder="패스워드"
             type="password"
+            @focus="pwdKeyOn"
           />
         </div>
         <div class="login-button-wrap">
-          <button @click="loginClick">Sign in</button>
+          <button @click="loginClick">로그인</button>
         </div>
         <div class="login-stay-sign-in">
           <nuxt-link to="/user/termsuse" style="text-decoration: none">
             <i class="far fa-check-circle"></i>
-            <span>Sign up</span>
+            <span>회원가입</span>
           </nuxt-link>
         </div>
       </section>
-      <!-- <section class="non-member-wrap">
-      <h2>Guest</h2>-->
-      <!-- <div class="guest-input-list">
-                    <li><button><i class="fas fa-qrcode"></i><span>Sign in with QR code</span></button></li>
-                    <li><button><i class="fab fa-facebook-square"></i><span>Facebook</span></button></li>
-                    <li><button><i class="fab fa-line"></i><span>line</span></button></li>
-      </div>-->
-      <!-- <section class="guest-input-section-wrap">
-            <div class="guest-input-wrap">
-              <input placeholder="Username" type="text" />
-            </div>
-            <div class="guest-input-wrap password-wrap">
-              <input placeholder="Password" type="password" />
-            </div>
-            <div class="guest-button-wrap">
-              <button>Use as guest</button>
-            </div>
-          </section>
-          <p class="forget-msg">Forgot your Username or Password? | Sign up</p>
-      </section>-->
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>항공편명을 다시 확인해주세요.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
+      <b-modal id="login-modal" hide-footer>
+        <template #modal-title>알림</template>
+        <div class="d-block text-center">
+          <h3>일치하지 않는 정보가 있습니다.</h3>
+        </div>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
+          >Close Me</b-button
+        >
+      </b-modal>
+    </div>
+    <div v-if="flightKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changeFlight"
+      ></VirtualKeyboard>
+    </div>
+    <div v-if="UsernameKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changeUsername"
+      ></VirtualKeyboard>
+    </div>
+    <div v-if="pwdKeyboardView">
+      <VirtualKeyboard
+        theme="white-shadow"
+        @getKeyValue="changePwd"
+      ></VirtualKeyboard>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations, mapGetters } from 'vuex'
+import VirtualKeyboard from '@/components/VirtualKeyboard'
+
 export default {
   name: 'LoginUser',
-
+  components: {
+    VirtualKeyboard,
+  },
   data() {
     return {
       userInfo: {
         id: null,
         password: null,
       },
+      flightNum: '',
+      flightKeyboardView: false,
+      UsernameKeyboardView: false,
+      pwdKeyboardView: false,
     }
   },
   computed: {
     ...mapState('user', ['loginMember']),
+    ...mapGetters('user', ['isLogin']),
+  },
+  created() {
+    this.CLEAR_LOGIN_MEMBER()
+    this.CLEAR_MEMBER_DETAIL()
   },
   methods: {
+    ...mapMutations('user', ['CLEAR_LOGIN_MEMBER', 'CLEAR_MEMBER_DETAIL']),
     ...mapActions('user', ['inputLogin']),
     loginClick() {
-      this.inputLogin(this.userInfo)
+      const object = {
+        id: this.userInfo.id,
+        password: this.userInfo.password,
+        flightNum: this.flightNum,
+      }
+      const promise = new Promise((resolve, reject) => {
+        resolve()
+      })
+      promise.then(async () => {
+        await this.inputLogin(object)
+        if (this.loginMember === null) {
+          this.$bvModal.show('login-modal')
+        }
+        if (this.loginMember.userRole === 'ROLE_USER') {
+          this.$router.push('/main')
+        }
+        if (this.loginMember.userRole === 'ROLE_ATTENDANT') {
+          this.$router.push('/attendant/main')
+        }
+      })
+    },
+    changeFlight(flightNum) {
+      this.flightNum = flightNum
+    },
+    changeUsername(username) {
+      this.userInfo.id = username
+    },
+    changePwd(pwd) {
+      this.userInfo.password = pwd
+    },
+    hideKeyboard(e) {
+      if (e.target.localName !== 'input' && e.y < 401) {
+        this.flightKeyboardView = false
+        this.UsernameKeyboardView = false
+        this.pwdKeyboardView = false
+      }
+    },
+    flightKeyOn() {
+      // this.flightKeyboardView = true
+      // this.UsernameKeyboardView = false
+      // this.pwdKeyboardView = false
+    },
+    usernameKeyOn() {
+      // this.flightKeyboardView = false
+      // this.UsernameKeyboardView = true
+      // this.pwdKeyboardView = false
+    },
+    pwdKeyOn() {
+      // this.pwdKeyboardView = true
+      // this.flightKeyboardView = false
+      // this.UsernameKeyboardView = false
     },
   },
 }
@@ -92,7 +185,7 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  /* font-family: 'twayfly'; */
+  font-family: 'twayfly';
 }
 
 body {
@@ -101,7 +194,7 @@ body {
 
 .login-main-container {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,10 +226,11 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 16%;
+  padding-top: 32%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin-top: ; */
 }
 
 .login-input-section-wrap h2 {
@@ -195,7 +289,8 @@ input[type='password']::placeholder {
   font-size: 25px;
   color: #4e4e4e;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  margin-right: 3%;
   border-bottom: solid 1px var(--border-gray-color);
 }
 

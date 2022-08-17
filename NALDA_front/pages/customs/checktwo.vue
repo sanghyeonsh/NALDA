@@ -4,21 +4,34 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="title-container">
+          <div class="title-coontainer">
             <div class="title-items">
-              <div class="customform-title">여행자 휴대품 신고서</div>
-              <nuxt-link to="/customs/detail">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
+              <v-app id="info-btn">
+                <v-btn
+                  class="mx-2 mb-5"
+                  fab
+                  dark
+                  medium
+                  color="#778899"
+                  @click="openAttentions"
                 >
-              </nuxt-link>
+                  <v-icon large dark>mdi-information-outline</v-icon>
+                </v-btn>
+              </v-app>
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <b-button
+                class="next-page"
+                variant="info"
+                @click="$router.push('/customs/detail')"
+                >다음 페이지</b-button
+              >
             </div>
           </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
             </div>
-            <div>─ 아래 질문의 해당 □ 에 "✓" 표시 하시기 바랍니다 ─</div>
+            <div>─ 아래 질문의 해당 □ 에 "■" 표시 하시기 바랍니다 ─</div>
           </div>
           <div></div>
           <div class="check-exceed-wrap">
@@ -34,11 +47,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box4-1" type="checkbox" value="bangoodsck" />
+                  <input
+                    id="box4-1"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box4-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box4-2" type="checkbox" value="bangoodsck" />
+                  <input
+                    id="box4-2"
+                    v-model="prohibitGoods"
+                    name="bangoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box4-2"></label>
                 </td>
               </tr>
@@ -55,11 +80,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box5-1" type="checkbox" value="livestockck" />
+                  <input
+                    id="box5-1"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box5-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box5-2" type="checkbox" value="livestockck" />
+                  <input
+                    id="box5-2"
+                    v-model="livestockVisited"
+                    name="livestockck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box5-2"></label>
                 </td>
               </tr>
@@ -74,11 +111,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box6-1" type="checkbox" value="salesgoodsck" />
+                  <input
+                    id="box6-1"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box6-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box6-2" type="checkbox" value="salesgoodsck" />
+                  <input
+                    id="box6-2"
+                    v-model="salesGoods"
+                    name="salesgoodsck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box6-2"></label>
                 </td>
               </tr>
@@ -87,15 +136,52 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
+import attentions from '../../components/attentions.vue'
 
 export default {
   name: 'CustomsChecktwo',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_PROHIBITGOODS(this.prohibitGoods)
+    this.MODIFY_LIVESTOCKVISITED(this.livestockVisited)
+    this.MODIFY_SALESGOODS(this.salesGoods)
+    next()
+  },
+  data() {
+    return {
+      prohibitGoods: '',
+      livestockVisited: '',
+      salesGoods: '',
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    if (this.declaration.prohibitGoods !== '')
+      this.prohibitGoods = this.declaration.prohibitGoods
+    if (this.declaration.livestockVisited !== '')
+      this.livestockVisited = this.declaration.livestockVisited
+    if (this.declaration.salesGoods !== '')
+      this.salesGoods = this.declaration.salesGoods
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_PROHIBITGOODS',
+      'MODIFY_LIVESTOCKVISITED',
+      'MODIFY_SALESGOODS',
+    ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
+  },
 }
 </script>
 
@@ -123,23 +209,26 @@ export default {
 }
 
 .next-page {
-  width: 200%;
-  height: 60%;
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
 }
 
 .title-items {
-  width: 75%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -164,6 +253,7 @@ export default {
   align-items: center;
 }
 .customform-container {
+  background-color: white;
   width: 100%;
   height: 80%;
   padding: 2%;
@@ -276,5 +366,8 @@ input[id='box5-2'],
 input[id='box6-1'],
 input[id='box6-2'] {
   display: none;
+}
+:deep(.v-application--wrap) {
+  min-height: fit-content;
 }
 </style>

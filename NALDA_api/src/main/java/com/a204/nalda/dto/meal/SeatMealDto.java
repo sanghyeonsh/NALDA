@@ -1,5 +1,6 @@
 package com.a204.nalda.dto.meal;
 
+import com.a204.nalda.domain.enumtype.Status;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,10 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SeatMealDto {
 
-    private Long flightId;
-    private Long mealId;
-    private Long seatId;
-    private Long userId;
+    private Status status;
+    private String flightNum;
+    private String mealMenu;
+    private String seatNum;
+    private String username;
 
 
 }

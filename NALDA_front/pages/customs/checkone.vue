@@ -4,21 +4,32 @@
     <div class="customform-wrap">
       <div class="customform-main-container">
         <div class="customform-container">
-          <div class="title-container">
-            <div class="title-items">
-              <div class="customform-title">여행자 휴대품 신고서</div>
-              <nuxt-link to="/customs/checktwo">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
-                >
-              </nuxt-link>
-            </div>
+          <div class="title-items">
+            <v-app id="info-btn">
+              <v-btn
+                class="mx-2 mb-5"
+                fab
+                dark
+                medium
+                color="#778899"
+                @click="openAttentions"
+              >
+                <v-icon large dark>mdi-information-outline</v-icon>
+              </v-btn>
+            </v-app>
+            <div class="customform-title">여행자 휴대품 신고서</div>
+            <b-button
+              class="next-page"
+              variant="info"
+              @click="$router.push('/customs/checktwo')"
+              >다음 페이지</b-button
+            >
           </div>
           <div class="to-declaration-wrap">
             <div>
               <h4>세 관 신 고 사 항</h4>
             </div>
-            <div>─ 아래 질문의 해당 □ 에 "✓" 표시 하시기 바랍니다 ─</div>
+            <div>─ 아래 질문의 해당 □ 에 "■" 표시 하시기 바랍니다 ─</div>
           </div>
           <div></div>
           <div class="check-exceed-wrap">
@@ -29,23 +40,35 @@
                   <b>취득(구입, 기증, 선물 포함)</b>한 면세범위 초과
                   <b>물품(뒷면 1참조)</b>
                   [총금액: 약
-                  <input type="text" /> ]
+                  <input v-model="dutyfreeExceedValue" type="text" /> $]
                   <br />
-                  <b id="exceed-warning"
-                    >*면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
-                    초과)가 감면됩니다.</b
-                  >
+                  <b id="exceed-warning">
+                    *면세범위 초과물품을 자진신고하시면 관세의 30%(15만원 한도
+                    초과)가 감면됩니다.
+                  </b>
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box1-1" type="checkbox" value="dutyfreeck" />
+                  <input
+                    id="box1-1"
+                    v-model="dutyfreeExceed"
+                    name="dutyfree"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box1-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box1-2" type="checkbox" value="dutyfreeck" />
+                  <input
+                    id="box1-2"
+                    v-model="dutyfreeExceed"
+                    name="dutyfree"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box1-2"></label>
                 </td>
               </tr>
@@ -60,11 +83,23 @@
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box2-1" type="checkbox" value="FTAck" />
+                  <input
+                    id="box2-1"
+                    v-model="preferentialTariff"
+                    name="FTAcheck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box2-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box2-2" type="checkbox" value="FTAck" />
+                  <input
+                    id="box2-2"
+                    v-model="preferentialTariff"
+                    name="FTAcheck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box2-2"></label>
                 </td>
               </tr>
@@ -73,18 +108,30 @@
                   3. 미화로 환산하여
                   <b>$10,000을 초과하는 지급수단</b> (원화ㆍ달러화 등 법정통화,
                   자기앞수표, 여행자수표, 및 그 밖의 유가증권) <br />[총금액: 약
-                  <input type="text" /> ]
+                  <input v-model="paymentExceedValue" type="text" /> $]
                 </td>
                 <td id="yorn">있음</td>
                 <td id="yorn">없음</td>
               </tr>
               <tr>
                 <td id="ckbox">
-                  <input id="box3-1" type="checkbox" value="paymentck" />
+                  <input
+                    id="box3-1"
+                    v-model="paymentExceed"
+                    name="paymentck"
+                    type="radio"
+                    value="Y"
+                  />
                   <label for="box3-1"></label>
                 </td>
                 <td id="ckbox">
-                  <input id="box3-2" type="checkbox" value="paymentck" />
+                  <input
+                    id="box3-2"
+                    v-model="paymentExceed"
+                    name="paymentck"
+                    type="radio"
+                    value="N"
+                  />
                   <label for="box3-2"></label>
                 </td>
               </tr>
@@ -93,15 +140,61 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
-
+import attentions from '../../components/attentions.vue'
 export default {
   name: 'CustomsCheckone',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_DUTYFREEEXCEED(this.dutyfreeExceed)
+    this.MODIFY_PREFERENTIALTARIFF(this.preferentialTariff)
+    this.MODIFY_PAYMENTEXCEED(this.paymentExceed)
+    this.MODIFY_PAYMENTEXCEEDVALUE(this.paymentExceedValue)
+    this.MODIFY_DUTYFREEEXCEEDVALUE(this.dutyfreeExceedValue)
+    next()
+  },
+  data() {
+    return {
+      dutyfreeExceed: '',
+      preferentialTariff: '',
+      paymentExceed: '',
+      paymentExceedValue: '',
+      dutyfreeExceedValue: '',
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    if (this.declaration.dutyfreeExceed !== '')
+      this.dutyfreeExceed = this.declaration.dutyfreeExceed
+    if (this.declaration.preferentialTariff !== '')
+      this.preferentialTariff = this.declaration.preferentialTariff
+    if (this.declaration.paymentExceed !== '')
+      this.paymentExceed = this.declaration.paymentExceed
+    if (this.declaration.dutyfreeExceedValue !== 0)
+      this.dutyfreeExceedValue = this.declaration.dutyfreeExceedValue
+    if (this.declaration.paymentExceedValue !== 0)
+      this.paymentExceedValue = this.declaration.paymentExceedValue
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_DUTYFREEEXCEED',
+      'MODIFY_PREFERENTIALTARIFF',
+      'MODIFY_PAYMENTEXCEED',
+      'MODIFY_DUTYFREEEXCEEDVALUE',
+      'MODIFY_PAYMENTEXCEEDVALUE',
+    ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
+  },
 }
 </script>
 
@@ -131,12 +224,26 @@ export default {
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+}
+
+.next-page {
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
+}
+
+.title-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -161,6 +268,7 @@ export default {
   align-items: center;
 }
 .customform-container {
+  background-color: white;
   width: 100%;
   height: 80%;
   padding: 2%;
@@ -171,6 +279,7 @@ export default {
   flex-direction: column;
 }
 .customform-title {
+  /* margin-left: 22%; */
   font-size: xx-large;
   font-weight: bolder;
   text-align: center;
@@ -277,5 +386,8 @@ input[id='box2-2'],
 input[id='box3-1'],
 input[id='box3-2'] {
   display: none;
+}
+:deep(.v-application--wrap) {
+  min-height: fit-content;
 }
 </style>

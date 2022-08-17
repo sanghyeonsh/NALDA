@@ -6,12 +6,25 @@
         <div class="customform-container">
           <div class="title-container">
             <div class="title-items">
-              <div class="customform-title">여행자 휴대품 신고서</div>
-              <nuxt-link to="/customs/complete">
-                <b-button class="next-page" variant="info"
-                  >다음 페이지</b-button
+              <v-app id="info-btn">
+                <v-btn
+                  class="mx-2 mb-5"
+                  fab
+                  dark
+                  medium
+                  color="#778899"
+                  @click="openAttentions"
                 >
-              </nuxt-link>
+                  <v-icon large dark>mdi-information-outline</v-icon>
+                </v-btn>
+              </v-app>
+              <div class="customform-title">여행자 휴대품 신고서</div>
+              <b-button
+                class="next-page"
+                variant="info"
+                @click="$router.push('/customs/complete')"
+                >다음 페이지</b-button
+              >
             </div>
           </div>
           <div class="declaration-detail-wrap">
@@ -26,22 +39,45 @@
                 <tr id="alcohols">
                   <td>주류</td>
                   <td colspan="3">
-                    <input id="alcohols" type="text" name="cnt" />병,
-                    <input id="alcohols" type="text" name="alcohols" />ℓ,
-                    <input id="alcohols" type="text" name="alcohols" />$
+                    <input
+                      v-model="alcoholsInfo.num"
+                      class="alcohols"
+                      type="text"
+                      name="cnt"
+                    />병,
+                    <input
+                      v-model="alcoholsInfo.liter"
+                      class="alcohols"
+                      type="text"
+                      name="alcohols"
+                    />ℓ,
+                    <input
+                      v-model="alcoholsInfo.dollar"
+                      class="alcohols"
+                      type="text"
+                      name="alcohols"
+                    />$
                   </td>
                 </tr>
                 <tr id="perfume-cigarette">
                   <td>담배</td>
                   <td>
                     <input
-                      id="cigarette"
+                      v-model="cigarette"
+                      class="cigarette"
                       type="text"
                       name="cigarette"
                     />갑(20개비 기준)
                   </td>
                   <td>향수</td>
-                  <td><input id="perfume" type="text" name="perfume" />㎖</td>
+                  <td>
+                    <input
+                      v-model="perfumes"
+                      class="perfume"
+                      type="text"
+                      name="perfume"
+                    />㎖
+                  </td>
                 </tr>
               </table>
             </div>
@@ -55,46 +91,94 @@
                 </thead>
                 <tr>
                   <td>
-                    <input id="goods-name" type="text" />
+                    <input
+                      v-model="etcExceed1.name"
+                      class="goods-name"
+                      type="text"
+                    />
                   </td>
                   <td>
-                    <input id="goods-cnt" type="text" />
+                    <input
+                      v-model="etcExceed1.num"
+                      class="goods-cnt"
+                      type="text"
+                    />
                   </td>
                   <td>
-                    <input id="goods-price" type="text" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input id="goods-name" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-cnt" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-price" type="text" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input id="goods-name" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-cnt" type="text" />
-                  </td>
-                  <td>
-                    <input id="goods-price" type="text" />
+                    <input
+                      v-model="etcExceed1.amount"
+                      class="goods-price"
+                      type="text"
+                    />
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <input id="goods-name" type="text" />
+                    <input
+                      v-model="etcExceed2.name"
+                      class="goods-name"
+                      type="text"
+                    />
                   </td>
                   <td>
-                    <input id="goods-cnt" type="text" />
+                    <input
+                      v-model="etcExceed2.num"
+                      class="goods-cnt"
+                      type="text"
+                    />
                   </td>
                   <td>
-                    <input id="goods-price" type="text" />
+                    <input
+                      v-model="etcExceed2.amount"
+                      class="goods-price"
+                      type="text"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      v-model="etcExceed3.name"
+                      class="goods-name"
+                      type="text"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      v-model="etcExceed3.num"
+                      class="goods-cnt"
+                      type="text"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      v-model="etcExceed3.amount"
+                      class="goods-price"
+                      type="text"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <input
+                      v-model="etcExceed4.name"
+                      class="goods-name"
+                      type="text"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      v-model="etcExceed4.num"
+                      class="goods-cnt"
+                      type="text"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      v-model="etcExceed4.amount"
+                      class="goods-price"
+                      type="text"
+                    />
                   </td>
                 </tr>
               </table>
@@ -103,14 +187,122 @@
         </div>
       </div>
     </div>
+    <attentions ref="attentions"></attentions>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex'
 import CustomNavs from '../../components/CustomNavs.vue'
+import attentions from '../../components/attentions.vue'
+
 export default {
   name: 'CustomsDetail',
-  components: { CustomNavs },
+  components: { CustomNavs, attentions },
+  beforeRouteLeave(to, from, next) {
+    this.MODIFY_ALCOHOLS(this.alcoholsInfo)
+    this.MODIFY_CIGARETTE(this.cigarette)
+    this.MODIFY_PERFUMES(this.perfumes)
+    const etcExceed = []
+    if (
+      this.etcExceed1.name !== '' &&
+      this.etcExceed1.num !== '' &&
+      this.etcExceed1.amount !== ''
+    )
+      etcExceed.push(this.etcExceed1)
+    if (
+      this.etcExceed2.name !== '' &&
+      this.etcExceed2.num !== '' &&
+      this.etcExceed2.amount !== ''
+    )
+      etcExceed.push(this.etcExceed2)
+    if (
+      this.etcExceed3.name !== '' &&
+      this.etcExceed3.num !== '' &&
+      this.etcExceed3.amount !== ''
+    )
+      etcExceed.push(this.etcExceed3)
+    if (
+      this.etcExceed4.name !== '' &&
+      this.etcExceed4.num !== '' &&
+      this.etcExceed4.amount !== ''
+    )
+      etcExceed.push(this.etcExceed4)
+    this.MODIFY_ETCEXCEEDS(etcExceed)
+
+    next()
+  },
+  data() {
+    return {
+      alcoholsInfo: {
+        num: '',
+        liter: '',
+        dollar: '',
+      },
+      cigarette: '',
+      perfumes: '',
+      etcExceed1: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed2: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed3: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+      etcExceed4: {
+        name: '',
+        num: '',
+        amount: '',
+      },
+    }
+  },
+  computed: {
+    ...mapState('customdeclaration', ['declaration']),
+  },
+  created() {
+    this.declaration.alcohols &&
+      (this.alcoholsInfo = JSON.parse(
+        JSON.stringify(this.declaration.alcohols)
+      ))
+    if (this.declaration.cigarette !== '')
+      this.cigarette = this.declaration.cigarette
+    if (this.declaration.perfumes !== '')
+      this.perfumes = this.declaration.perfumes
+    this.declaration.etcExceeds[0] &&
+      (this.etcExceed1 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[0])
+      ))
+    this.declaration.etcExceeds[1] &&
+      (this.etcExceed2 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[1])
+      ))
+    this.declaration.etcExceeds[2] &&
+      (this.etcExceed3 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[2])
+      ))
+    this.declaration.etcExceeds[3] &&
+      (this.etcExceed4 = JSON.parse(
+        JSON.stringify(this.declaration.etcExceeds[3])
+      ))
+  },
+  methods: {
+    ...mapMutations('customdeclaration', [
+      'MODIFY_ALCOHOLS',
+      'MODIFY_CIGARETTE',
+      'MODIFY_PERFUMES',
+      'MODIFY_ETCEXCEEDS',
+    ]),
+    openAttentions() {
+      this.$refs.attentions.toggle()
+    },
+  },
 }
 </script>
 
@@ -129,21 +321,24 @@ export default {
   font-family: 'twayfly';
 }
 .next-page[data-v-27638d97] {
-  width: 200%;
-  height: 60%;
+  width: 15%;
+  height: 50%;
+  margin-bottom: 2%;
 }
 .title-items {
-  width: 75%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
 }
 .title-container {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -168,6 +363,7 @@ export default {
   align-items: center;
 }
 .customform-container {
+  background-color: white;
   width: 100%;
   height: 80%;
   padding: 2%;
@@ -253,13 +449,17 @@ td {
 }
 
 .next-page {
-  width: 200%;
-  height: 140%;
+  width: 15%;
+  height: 5vh;
+  margin-bottom: 3%;
 }
 .next-btn-wrap {
   margin-top: 2%;
   display: flex;
   flex-direction: row;
   align-content: flex-end;
+}
+:deep(.v-application--wrap) {
+  min-height: fit-content;
 }
 </style>

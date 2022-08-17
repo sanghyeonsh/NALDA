@@ -16,6 +16,10 @@ export default {
 </script>
 
 <style>
+::-webkit-scrollbar {
+  display: none;
+}
+
 :root {
   --body-background-color: #f5f6f7;
   --font-color: #4e4e4e;
@@ -24,6 +28,9 @@ export default {
   --nalda-blue-color: #206e95;
   --nalda-blue-border-color: #88c0c5;
   --nalda-navy-color: #1b2f40;
+}
+.user-page {
+  background-color: rgba(239, 239, 239, 0.511);
 }
 /* .user-logo {
   width: 8%;

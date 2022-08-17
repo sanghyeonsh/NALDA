@@ -85,9 +85,6 @@
 <script>
 export default {
   name: 'CustomNavs',
-  props: {
-    basicInfo: {},
-  },
   data() {
     return {}
   },
@@ -98,12 +95,9 @@ export default {
     },
     moveFirstStep() {
       this.$router.push('/customs/basic')
-
-      console.log(1)
     },
     moveSecondStep1() {
       this.$router.push('/customs/checkone')
-      console.log(this.basicInfo)
     },
     moveSecondStep2() {
       this.$router.push('/customs/checktwo')
@@ -131,8 +125,8 @@ export default {
 .customform-nav-container {
   background-color: #206e95;
   color: #ffe6cf;
-  height: 70vh;
-  width: 30%;
+  height: 85vh;
+  width: 20%;
   /* padding-left: 1em;
   padding-right: 1em; */
   display: flex;
@@ -220,6 +214,7 @@ li {
 }
 
 .step-list .item {
+  height: 12vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

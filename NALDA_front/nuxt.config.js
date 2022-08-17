@@ -14,15 +14,33 @@ export default {
       },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        'http-equiv': 'Content-Security-Policy',
+        content: 'upgrade-insecure-requests',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [
       // 다음 주소 검색 API
       { src: '//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js' },
       // font awesome favicon
-      { src: 'https://kit.fontawesome.com/454a2244bd.js' },
+      {
+        src: 'https://kit.fontawesome.com/454a2244bd.js',
+        crossorigin: 'anonymous',
+      },
     ],
-    css: [],
+    css: [
+      {
+        loaderOptions: {
+          sass: {
+            data: `
+            @import "@/styles/styles.scss";
+            //@는 /src 와 같다
+        `,
+          },
+        },
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -38,6 +56,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,4 +78,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://apis.data.go.kr/B551177/BusInformation/getBusInfo',
+  //     changeOrigin: true,
+  //     secure: false,
+  //     pathRewrite: {
+  //       '^/api': '',
+  //     },
+  //   },
+  // },
 }

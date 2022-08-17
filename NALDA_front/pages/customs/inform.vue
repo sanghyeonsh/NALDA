@@ -18,11 +18,14 @@
             </ul>
           </div>
         </div>
-        <div class="next-btn-wrap">
-          <nuxt-link to="/customs/basic">
-            <b-button class="next-page" variant="info">확인했습니다.</b-button>
-          </nuxt-link>
-        </div>
+      </div>
+      <div class="next-btn-wrap">
+        <b-button
+          class="next-page"
+          variant="info"
+          @click="$router.push('/customs/basic')"
+          >확인했습니다.</b-button
+        >
       </div>
     </div>
   </div>
@@ -52,8 +55,9 @@ export default {
 }
 
 .customs-input-container {
+  background-color: rgba(239, 239, 239, 0.511);
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -62,7 +66,6 @@ export default {
 .customform-main-container {
   width: 90%;
   height: auto;
-  padding: 3%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,6 +89,7 @@ export default {
   transition: all 0.3s ease 0s;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 .customform-title {
   font-size: xx-large;
@@ -109,14 +113,15 @@ export default {
 }
 
 .next-page {
-  width: 200%;
-  height: 140%;
+  width: 20%;
+  height: 5vh;
 }
+
 .next-btn-wrap {
-  width: 80%;
+  width: 90%;
   margin-top: 2%;
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
 }
 </style>

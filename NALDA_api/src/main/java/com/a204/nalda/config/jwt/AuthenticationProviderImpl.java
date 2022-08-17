@@ -3,7 +3,7 @@
 //import com.a204.nalda.config.auth.PrincipalDetails;
 //import com.a204.nalda.config.auth.PrincipalDetailsService;
 //import com.a204.nalda.domain.entity.user.User;
-//import com.a204.nalda.repository.UserRepository;
+//import com.a204.nalda.repository.user.UserRepository;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.security.authentication.AuthenticationProvider;
 //import org.springframework.security.authentication.BadCredentialsException;

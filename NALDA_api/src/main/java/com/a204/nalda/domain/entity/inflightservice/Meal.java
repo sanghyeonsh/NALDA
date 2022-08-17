@@ -44,6 +44,7 @@ public class Meal {
     @Column(name = "seat_class")
     private SeatClass seatClass;
 
+    private String content;
 
     @OneToMany(mappedBy = "meal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Allergy> allergies = new ArrayList<>();
