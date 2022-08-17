@@ -78,7 +78,7 @@ public class MealService {
                         .meal(meal)
                         .flight(flight)
                         .total(mealCntDto.getTotal())
-                        .status(Status.READY)
+                        .status(mealCntDto.getStatus())
                         .build();
                 mealStockRepository.save(mealStock);
             }
