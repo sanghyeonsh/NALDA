@@ -16,7 +16,6 @@
       <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
-      &nbsp;&nbsp;&nbsp;
       <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
@@ -63,7 +62,6 @@ export default {
       }
     },
     Movefrom() {
-      console.log(this.$nuxt.context.from.path)
       this.$router.push(this.$nuxt.context.from.path)
     },
   },
@@ -105,8 +103,6 @@ export default {
   align-items: center;
 }
 .header-container-image img {
-  margin-right: 5%;
-  height: 100%;
   width: 19%;
   cursor: pointer;
 }

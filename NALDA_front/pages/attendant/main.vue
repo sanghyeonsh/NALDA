@@ -8,7 +8,11 @@
     </div>
     <div class="main-container-box" @click="moveStockPage">
       <div>
-        <img class="image" src="/main/excel_icon.png" alt="custom_declaration" />
+        <img
+          class="image"
+          src="/main/excel_icon.png"
+          alt="custom_declaration"
+        />
         <h3>재고목록</h3>
       </div>
     </div>
@@ -93,7 +97,7 @@ export default {
   cursor: pointer;
 }
 .main-container-box img {
-  width: 70%;
+  width: 100%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   /* filter: opacity(0.5) drop-shadow(#206e95); */
 }

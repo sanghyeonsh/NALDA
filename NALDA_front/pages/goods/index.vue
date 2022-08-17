@@ -233,7 +233,6 @@ export default {
         }
       }
     })
-    console.log(this.cnt)
   },
   methods: {
     ...mapActions('menu', ['postOrders', 'getOrderCnt', 'getServiceCnt']),

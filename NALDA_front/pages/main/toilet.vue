@@ -101,7 +101,7 @@ export default {
   font-family: 'twayfly';
 }
 .toilet-container {
-  height: 75vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   flex-direction: column;

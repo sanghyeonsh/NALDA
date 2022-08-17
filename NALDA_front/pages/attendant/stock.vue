@@ -5,7 +5,7 @@
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
             <div class="caption-wrap">
-              <h3 @click="test">항공편 {{flightNum}} 재고 목록</h3>
+              <h3>항공편 {{ flightNum }} 재고 목록</h3>
             </div>
           </caption>
           <colgroup>
@@ -114,19 +114,13 @@
                 Total Rows:
                 <b v-if="ListType === 'snacks'">{{ snackList.length }}</b>
                 <b v-else-if="ListType === 'alcohols'">
-                  {{
-                  alcoholsList.length
-                  }}
+                  {{ alcoholsList.length }}
                 </b>
                 <b v-else-if="ListType === 'nonalcohols'">
-                  {{
-                  nonalcoholosList.length
-                  }}
+                  {{ nonalcoholosList.length }}
                 </b>
                 <b v-else-if="ListType === 'amenities'">
-                  {{
-                  amenityList.length
-                  }}
+                  {{ amenityList.length }}
                 </b>
               </b-td>
             </b-tr>
@@ -147,8 +141,12 @@
         <b-button @click="showAlcohol">주류</b-button>
         <b-button @click="showNonAlcohol">비주류</b-button>
         <b-button @click="showAmenity">편의물품</b-button>
-        <b-button v-if="isValid" variant="warning" @click="setTotal()">입력</b-button>
-        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()">수정</b-button>
+        <b-button v-if="isValid" variant="warning" @click="setTotal()"
+          >입력</b-button
+        >
+        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()"
+          >수정</b-button
+        >
         <b-button variant="success" @click="setTotal">운항종료</b-button>
       </div>
     </div>
@@ -275,12 +273,6 @@ export default {
     showAmenity() {
       this.ListType = 'amenities'
     },
-    test() {
-      console.log('여기')
-      console.log(this.total)
-      console.log(this.flightNum)
-      console.log(this.TotalServiceQuantity)
-    },
     setTotal() {
       this.TotalServiceQuantity = []
       this.whole = []
@@ -303,7 +295,6 @@ export default {
           if (this.wholeQuantity[type][i] >= 0) {
             stock.total = this.wholeQuantity[type][i]
           }
-          console.log(stock)
           this.TotalServiceQuantity.push(stock)
         }
       }
@@ -344,7 +335,6 @@ export default {
               ]
         }
       }
-      console.log(this.TotalServiceQuantity)
       this.isValid = !this.isValid
 
       // 재고 입력 or 수정으로 보내기

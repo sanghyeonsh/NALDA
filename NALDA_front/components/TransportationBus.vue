@@ -1,5 +1,6 @@
 <template>
   <div class="transport-bus">
+    <page-loader :toggle="toggle" />
     <div class="bus-region">
       <div
         v-for="(area, idx) in areas"
@@ -164,8 +165,11 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-
+import PageLoader from './PageLoader.vue'
 export default {
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       areas: ['서울', '경기', '인천', '강원', '충청', '경상', '전라'],
@@ -179,6 +183,10 @@ export default {
   },
   computed: {
     ...mapState('transportation', ['info', 'time', 'stop']),
+    toggle() {
+      if (this.busNum.length === 0) return true
+      else return false
+    },
   },
   created() {
     // this.getInfo('1')

@@ -5,15 +5,7 @@
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
             <div class="caption-wrap">
-              <h3 @click="test">항공편 {{flightNum}} 기내식 목록</h3>
-              <!-- <div id="flight-num-input">
-                <b-form-input
-                  v-model="flightNum"
-                  type="text"
-                  disabled
-                  style="height: 5vh; font-size: x-large;"
-                />
-              </div>-->
+              <h3>항공편 {{ flightNum }} 기내식 목록</h3>
             </div>
           </caption>
           <colgroup>
@@ -42,10 +34,10 @@
           </b-thead>
           <b-tbody>
             <b-tr>
-              <b-th :rowspan="mealList.length+1">기내식</b-th>
+              <b-th :rowspan="mealList.length + 1">기내식</b-th>
             </b-tr>
-            <b-tr v-for="(meal,index) in mealList" :key="index">
-              <b-th colspan="2" class="text-right">{{meal.menu}}</b-th>
+            <b-tr v-for="(meal, index) in mealList" :key="index">
+              <b-th colspan="2" class="text-right">{{ meal.menu }}</b-th>
               <b-td>
                 <b-form-input
                   id="snack-input"
@@ -63,15 +55,19 @@
             <b-tr>
               <b-td colspan="7" variant="secondary" class="text-right">
                 Total Rows:
-                <b>{{mealList.length}}</b>
+                <b>{{ mealList.length }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
         </b-table-simple>
       </div>
       <div class="stock-btn-group">
-        <b-button v-if="isValid" variant="info" @click="fixTotal()">save</b-button>
-        <b-button v-else-if="!isValid" variant="info" @click="unFixTotal()">modify</b-button>
+        <b-button v-if="isValid" variant="info" @click="fixTotal()"
+          >save</b-button
+        >
+        <b-button v-else-if="!isValid" variant="info" @click="unFixTotal()"
+          >modify</b-button
+        >
         <b-button variant="warning" @click="setTotal()">next</b-button>
       </div>
     </div>
@@ -141,22 +137,11 @@ export default {
         })
         this.isValid = !this.isValid
       }
-      // this.getDetail(this.meals)
-      // this.getAllergy(this.meals)
     })
   },
   methods: {
     ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
-    test() {
-      this.getFlightMeal(this.flightNum)
-      console.log(this.mealList)
-      console.log(this.flightMealList)
-      // console.log(this.selectedMealList)
-      console.log(this.isValid)
-    },
     setTotal() {
-      console.log(this.selectedMealList) // 얘를 넘겨줘야함
-      //   console.log(this.meals)
       if (this.selectedMealList.length !== 0) {
         this.CLEAR_FLIGHTMEALS_LIST()
         this.SET_FLIGHTMEALS_LIST(this.selectedMealList)
@@ -170,7 +155,6 @@ export default {
           this.selectedMealList.push(meal)
         }
       })
-      // console.log(this.selectedMealList)
       this.isValid = !this.isValid
     },
     unFixTotal() {
@@ -189,7 +173,6 @@ export default {
   },
 }
 </script>
-
 
 <style scoped>
 @font-face {

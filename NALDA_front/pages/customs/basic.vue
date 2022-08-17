@@ -1,7 +1,7 @@
 <template>
   <div class="customs-input-container">
     <custom-navs></custom-navs>
-    <div class="customform-wrap">
+    <div class="customform-wrap fadeInUp">
       <div class="customform-main-container">
         <div class="customform-container">
           <div class="title-container">
@@ -569,5 +569,18 @@ input[id='chkbox5'] {
 .address-wrap {
   display: flex;
   justify-content: space-between;
+}
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>
