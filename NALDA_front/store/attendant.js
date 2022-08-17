@@ -53,6 +53,9 @@ export const mutations = {
     // console.log(state.setStock)
     console.log(data)
   },
+  SET_STOCK_STATUS(state) {
+    state.setStock = true
+  },
 
   GET_STOCK_AMOUNT(state, data) {
     state.stockCnt = data
@@ -92,11 +95,20 @@ export const getters = {
     // console.log(state.ordersList.length)
     if (state.ordersList.length > 0)
       for (let i = 0; i < state.ordersList.length; i++) {
+        let orderDetail = ''
+        if (state.ordersList[i].orderList.length > 1) {
+          orderDetail =
+            state.ordersList[i].orderList[0].orderName +
+            ' 외 ' +
+            (state.ordersList[i].orderList.length - 1)
+        } else {
+          orderDetail = state.ordersList[i].orderList[0].orderName
+        }
         const order = {
           id: state.ordersList[i].id,
           좌석: state.ordersList[i].seatNum,
           분류: state.ordersList[i].classification,
-          요청사항: '',
+          요청사항: orderDetail,
           요청시각: state.ordersList[i].orderTime.split('T')[1],
           상태: state.ordersList[i].status,
           주문상세: state.ordersList[i].orderList,
@@ -124,7 +136,7 @@ export const getters = {
           좌석: state.completeList[i].seatNum,
           분류: state.completeList[i].classification,
           요청사항: orderDetail,
-          요청시각: state.completeList[i].orderTime.split('T')[1],
+          완료시각: state.completeList[i].completeTime.split('T')[1],
           상태: state.completeList[i].status,
           주문상세: state.completeList[i].orderList,
         }
@@ -148,6 +160,7 @@ export const actions = {
   },
   setStockAmount({ commit }, totalQuantity) {
     console.log('나 재고입력 왔쩌염')
+    commit('SET_STOCK_STATUS')
     selectServices(
       totalQuantity,
       ({ data }) => {
@@ -186,13 +199,10 @@ export const actions = {
   },
   getListOrders({ commit }, flightNum) {
     commit('CREAR_ORDERS_LIST')
-    console.log(11111111111)
     listOrders(
       flightNum,
       ({ data }) => {
-        // console.log(222222222)
-        console.log('store입니다 ' + JSON.stringify(data))
-        // console.log('store입니다 ' + data)
+        console.log(data)
         commit('SET_ORDERS_LIST', data.serviceList)
         console.log('성공')
       },
@@ -202,12 +212,9 @@ export const actions = {
     )
   },
   async updateOrderStatus({ commit }, orderId) {
-    // console.log(33333333333)
     await updateStatus(
       orderId,
       ({ data }) => {
-        // console.log(44444444444)
-        // console.log('updateOrderStatus')
         console.log(data)
       },
       (error) => {

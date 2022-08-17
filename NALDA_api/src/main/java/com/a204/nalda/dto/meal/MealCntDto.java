@@ -15,6 +15,7 @@ import java.math.BigInteger;
 public class MealCntDto {
 
     private String flightNum;
+    private Long mealId;
     private String mealMenu;
     private int total;
     private Status status;
