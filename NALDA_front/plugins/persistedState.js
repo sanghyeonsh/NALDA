@@ -5,7 +5,7 @@ import cookie from 'cookie'
 export default ({ store, req, isDev }) => {
   createPersistedState({
     key: 'naldaStore',
-    paths: ['user'],
+    paths: ['user', 'meal'],
     storage: {
       getItem: (key) =>
         process.client

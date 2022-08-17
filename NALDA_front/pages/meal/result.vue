@@ -16,6 +16,11 @@ export default {
   computed: {
     ...mapState('goods', ['selected_goods']),
   },
+  created() {
+    setTimeout(() => {
+      this.$router.push('/main')
+    }, 3000)
+  },
 }
 </script>
 

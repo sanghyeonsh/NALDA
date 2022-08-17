@@ -19,5 +19,18 @@ async function inputOrders(orders, success, fail) {
     .then(success)
     .catch(fail)
 }
+async function listServiceCnt(flightNum, success, fail) {
+  await api.get(`orders/count/${flightNum}`).then(success).catch(fail)
+}
+async function listOrderCnt(flightNum, success, fail) {
+  await api.get(`orders/total/${flightNum}`).then(success).catch(fail)
+}
 
-export { listSnack, listAlcohols, listNonAlcohols, inputOrders }
+export {
+  listSnack,
+  listAlcohols,
+  listNonAlcohols,
+  inputOrders,
+  listServiceCnt,
+  listOrderCnt,
+}

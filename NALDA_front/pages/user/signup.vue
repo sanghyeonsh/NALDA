@@ -256,6 +256,33 @@
         </div>-->
       </section>
     </div>
+    <b-modal id="idCheck-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>사용 가능한 아이디 입니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheck-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
+    <b-modal id="idCheckFail-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>사용 불가능한 아이디 입니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheckFail-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
+    <b-modal id="NoIdCheck-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>아이디를 입력해주세요.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('NoIdCheck-modal')"
+        >Close Me</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
@@ -365,15 +392,21 @@ export default {
         '#10384b'
     },
     checkId() {
-      idCheck(
-        this.username,
-        ({ data }) => {
-          alert(data.msg)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+      if (!this.username) {
+        this.$bvModal.show('NoIdCheck-modal')
+      } else {
+        idCheck(
+          this.username,
+          ({ data }) => {
+            if (data.msg === '사용 가능한 아이디입니다.')
+              this.$bvModal.show('idCheck-modal')
+            else this.$bvModal.show('idCheckFail-modal')
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+      }
     },
 
     changeEmail(e) {

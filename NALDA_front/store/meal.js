@@ -4,6 +4,8 @@ import {
   endMeals,
   confirmMeal,
   listInput,
+  listMealCnt,
+  mealOrderCnt,
   detailMeal,
   allergyMeal,
   selectMeal,
@@ -19,7 +21,12 @@ export const state = () => ({
   allergies: [],
   choiceMeal: [],
   seatMealList: [],
+  validMealList: [],
+  flightMealList: [],
+  settedMealList: [],
   validMsg: null,
+  stock: {},
+  total: {},
 })
 
 export const mutations = {
@@ -27,6 +34,7 @@ export const mutations = {
     let selectCnt = 0
     state.flightMeals.forEach((flightMeal) => {
       flightMeal.choice && selectCnt++
+      state.selectedMeal = flightMeal.menu
     })
     if (selectCnt === 0) {
       state.flightMeals[select].choice = !state.flightMeals[select].choice
@@ -61,11 +69,33 @@ export const mutations = {
       }
     }
   },
+  MEAL_CALC_STOCK(state) {
+    state.flightMeals.forEach((flightMeal) => {
+      console.log(flightMeal)
+      for (let i = 0; i < state.stock.length; i++) {
+        for (let j = 0; j < state.total.length; j++) {
+          if (flightMeal.menu === state.stock[i].mealMenu) {
+            flightMeal.cnt = state.stock[i].total
+            if (flightMeal.id === state.total[j].mealId) {
+              flightMeal.cnt -= state.total[j].total
+            }
+          }
+        }
+      }
+    })
+    console.log(state.flightMeals)
+  },
   SET_MEAL_LIST(state, meals) {
     state.meals.push(meals)
   },
   SET_FLIGHTMEAL_LIST(state, flightMeals) {
     state.flightMeals.push(flightMeals)
+  },
+  SET_STOCK(state, stock) {
+    state.stock = stock
+  },
+  SET_TOTAL(state, total) {
+    state.total = total
   },
   SET_SELECTED_MEAL(state, selectedMeal) {
     state.selectedMeal = selectedMeal
@@ -94,12 +124,45 @@ export const mutations = {
   SET_VALID_MSG(state, validMsg) {
     state.validMsg = validMsg
   },
+  SET_VALIDMEAL_LIST(state, selectedMealList) {
+    console.log(state.validMealList)
+  },
+  SET_FLIGHTMEALS_LIST(state, selectedMealList) {
+    selectedMealList.forEach((selectedMeal) => {
+      const mealInfo = {
+        menu: selectedMeal.menu,
+        image: selectedMeal.image,
+        imageName: selectedMeal.imageName,
+        total: selectedMeal.total,
+        validated: false,
+      }
+      state.flightMealList.push(mealInfo)
+    })
+  },
+  SET_SETTEDMEAL_LIST(state, settedMealList) {
+    state.settedMealList.push(settedMealList)
+  },
+  UPDATE_FLIGHTMEALS_LIST(state, validMeal) {
+    // console.log('store')
+    // console.log(validMeal)
+    state.flightMealList.forEach((flightMeal) => {
+      if (flightMeal.menu === validMeal.menu) {
+        flightMeal.validated = validMeal.validated
+      }
+    })
+  },
 
   CLEAR_MEAL_LIST(state) {
-    state.meals = [{ menu: null, image: null }]
+    state.meals = []
   },
   CLEAR_FLIGHTMEAL_LIST(state) {
     state.flightMeals = []
+  },
+  CLEAR_STOCK(state) {
+    state.stock = {}
+  },
+  CLEAR_TOTAL(state) {
+    state.total = {}
   },
   CLEAR_SELECTED_MEAL(state) {
     state.selectedMeal = {}
@@ -119,15 +182,31 @@ export const mutations = {
   CLEAR_VALID_MSG(state) {
     state.validMeal = null
   },
+  CLEAR_FLIGHTMEALS_LIST(state) {
+    state.flightMealList = []
+  },
+  CLEAR_SETTEDMEAL_LIST(state) {
+    state.settedMealList = []
+  },
 }
 export const getters = {}
 
 // console.log eslint rule수정 충돌방지
 export const actions = {
-  getMeal({ commit }) {
-    listMeal(
+  async getMeal({ commit }) {
+    commit('CLEAR_MEAL_LIST')
+    await listMeal(
       ({ data }) => {
-        commit('SET_MEAL_LIST', data)
+        // console.log(data)
+        if (data.mealList.length > 0) {
+          data.mealList.forEach((meal) => {
+            commit('SET_MEAL_LIST', {
+              menu: meal.mealMenu,
+              image: meal.bytesdata,
+              imageName: meal.imageName,
+            })
+          })
+        }
       },
       (error) => {
         console.log(error)
@@ -137,11 +216,7 @@ export const actions = {
   registFlightMeal({ commit }, info) {
     inputMeal(
       info,
-      ({ data }) => {
-        if (data.length > 0) {
-          commit('SET_FLIGHTMEAL_LIST', data)
-        }
-      },
+      ({ data }) => {},
       (error) => {
         console.log(error)
       }
@@ -167,11 +242,30 @@ export const actions = {
     commit('CLEAR_CHOICE_MEAL')
     commit('CLEAR_SEATMEAL_LIST')
     commit('CLEAR_VALID_MSG')
-
+    console.log(flightNum)
     endMeals(
       flightNum,
       ({ data }) => {
+        console.log(data)
         console.log(data.msg)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getSettedMeal({ commit }, flightNum) {
+    commit('CLEAR_SETTEDMEAL_LIST')
+    await listInput(
+      flightNum,
+      ({ data }) => {
+        console.log('store입니다')
+        console.log(data.meal)
+        if (data.meal.length > 0) {
+          data.meal.forEach((meal) => {
+            commit('SET_SETTEDMEAL_LIST', meal)
+          })
+        }
       },
       (error) => {
         console.log(error)
@@ -184,17 +278,21 @@ export const actions = {
       flightNum,
       ({ data }) => {
         if (data.meal.length > 0) {
+          commit('SET_FLIGHTMEALS_LIST', data.meal)
           data.meal.forEach((meal) => {
-            commit('SET_FLIGHTMEAL_LIST', {
-              id: meal.mealId,
-              menu: meal.mealMenu,
-              content: meal.content,
-              image: meal.bytesdata,
-              check: false,
-              details: null,
-              allergies: null,
-              choice: false,
-            })
+            if (meal.status === 'PROGRESS') {
+              commit('SET_FLIGHTMEAL_LIST', {
+                id: meal.mealId,
+                menu: meal.mealMenu,
+                content: meal.content,
+                image: meal.bytesdata,
+                cnt: -1,
+                check: false,
+                details: null,
+                allergies: null,
+                choice: false,
+              })
+            }
           })
         }
       },
@@ -270,6 +368,30 @@ export const actions = {
         if (data.seatMeal.length > 0) {
           commit('SET_SEATMEAL_LIST', data.seatMeal)
         }
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getMealCnt({ commit }, flightNum) {
+    commit('CLEAR_STOCK')
+    await listMealCnt(
+      flightNum,
+      ({ data }) => {
+        commit('SET_STOCK', data.mealCntList)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  },
+  async getMealOrderCnt({ commit }, flightNum) {
+    commit('CLEAR_TOTAL')
+    await mealOrderCnt(
+      flightNum,
+      ({ data }) => {
+        commit('SET_TOTAL', data.seatMealCnt)
       },
       (error) => {
         console.log(error)
