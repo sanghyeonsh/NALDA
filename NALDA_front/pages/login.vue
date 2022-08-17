@@ -9,7 +9,8 @@
           </select>
         </div>
       </header>-->
-      <section class="login-input-section-wrap">
+      <section class="login-input-section-wrap fadeInUp">
+        <img class="logo" src="/logo.png" alt />
         <div class="login-input-wrap mb-3">
           <input
             v-model="flightNum"
@@ -40,15 +41,13 @@
         <div class="login-button-wrap">
           <button @click="loginClick">로그인</button>
         </div>
-        <div class="login-stay-sign-in">
-          <nuxt-link to="/user/termsuse" style="text-decoration: none">
-            <img
-              class="login-icon-check"
-              src="/icon/check_mark.png"
-              alt="check-icon"
-            />
-            <span>회원가입</span>
-          </nuxt-link>
+        <div class="login-stay-sign-in" @click="$router.push('/user/termsuse')">
+          <img
+            class="login-icon-check mr-3"
+            src="/icon/check_mark_w.png"
+            alt="check-icon"
+          />
+          <span>회원가입</span>
         </div>
       </section>
       <b-modal id="login-modal" hide-footer>
@@ -204,18 +203,21 @@ export default {
 body {
   background: var(--body-background-color);
 }
-
+.logo {
+  width: 60%;
+}
 .login-main-container {
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: scroll;
+  background-color: rgb(69, 169, 200);
 }
 
 .login-main-container .login-main-wrap {
-  width: 465px;
+  width: 400px;
   height: 100%;
 }
 
@@ -240,7 +242,7 @@ body {
 
 .guest-input-section-wrap,
 .login-input-section-wrap {
-  padding-top: 32%;
+  /* padding-top: 32%;   */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -253,11 +255,11 @@ body {
 
 .guest-input-wrap,
 .login-input-wrap {
-  width: 465px;
-  height: 55px;
+  width: 500px;
+  height: 90px;
   border: solid 1px var(--border-gray-color);
   background: white;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 input[type='password'] {
   font-family: '맑은고딕', '돋움';
@@ -271,12 +273,13 @@ input[type='password']::placeholder {
 .guest-input-wrap input,
 .login-input-wrap input {
   border: none;
-  width: 462px;
+  width: 500px;
+  height: 90px;
   /* margin-top: 10px; */
   font-size: 20px;
   /* margin-left: 10px; */
-  height: 53px;
-  border-radius: 10px;
+
+  border-radius: 30px;
   padding: 10px;
 }
 
@@ -287,18 +290,18 @@ input[type='password']::placeholder {
 
 .guest-button-wrap button,
 .login-button-wrap button {
-  width: 465px;
-  height: 55px;
+  width: 500px;
+  height: 90px;
   font-size: 20px;
-  background: var(--nalda-blue-color);
+  background: #206e95;
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .login-stay-sign-in {
-  width: 465px;
-  height: 52px;
+  width: 500px;
+  height: 90px;
   display: flex;
   font-size: 25px;
   color: #4e4e4e;
@@ -306,6 +309,7 @@ input[type='password']::placeholder {
   justify-content: flex-end;
   margin-right: 3%;
   border-bottom: solid 1px var(--border-gray-color);
+  color: white;
 }
 
 .login-stay-sign-in i {
@@ -337,6 +341,20 @@ a {
 .login-icon-check {
   width: 30px;
   height: 30px;
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #007bff);
+  -webkit-filter: drop-shadow(0 0 0 #ffffff);
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

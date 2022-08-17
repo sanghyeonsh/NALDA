@@ -2,20 +2,14 @@
   <div v-if="toggle" class="page-loader">
     <div class="spinner">
       <div class="front">
-        <img
-          class="load-spinner"
-          src="/icon/load_spinner_earth.png"
-          alt="loading-earth"
-        />
+        <img class="load-spinner" src="/icon/load_spinner_earth.png" alt="loading-earth" />
       </div>
       <div class="back">
-        <img
-          class="load-spinner"
-          src="/icon/load_spinner_plane.png"
-          alt="loading-spinner-plane"
-        />
+        <img class="load-spinner" src="/icon/load_spinner_plane.png" alt="loading-spinner-plane" />
       </div>
     </div>
+    <!-- <div id="spinner"></div> -->
+    <!-- <img class="spinner-logo" src="/logo.png" alt /> -->
   </div>
 </template>
 
@@ -33,7 +27,7 @@ export default {
   mounted() {
     document.onreadystatechange = () => {
       if (document.readyState === 'complete') {
-        // this.isloaded = true
+        this.isloaded = true
       }
     }
   },
@@ -95,11 +89,13 @@ export default {
   width: 100%;
   height: 100%;
   animation: spinner 2s linear infinite;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .spinner {
   width: 20%;
   margin-right: 0.5%;
   position: relative;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .front {
   position: absolute;
@@ -134,4 +130,25 @@ export default {
     transform: translateX(0);
   }
 }
-</style>
+/* 
+#spinner {
+  min-width: 200px;
+  min-height: 200px;
+  border: 10px solid rgba(255, 255, 255, 0.1);
+  border-right: 10px solid #88c0c5;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner-logo {
+  width: 10%;
+  position: fixed;
+} */
+</style> 

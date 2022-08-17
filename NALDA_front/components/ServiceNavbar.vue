@@ -51,8 +51,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="200px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions class="ml-3">
                       <div style="font-size: x-large">
@@ -83,8 +82,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="210px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions class="ml-3">
                       <div style="font-size: x-large">
@@ -121,8 +119,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="210px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
@@ -152,8 +149,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="210px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions class="ml-3">
                       <div style="font-size: x-large">
@@ -190,8 +186,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       width="200px"
                       height="210px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
@@ -221,8 +216,7 @@
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="210px"
-                    >
-                    </v-img>
+                    ></v-img>
 
                     <v-card-actions class="ml-3">
                       <div style="font-size: x-large">
@@ -249,9 +243,8 @@
         icon="mdi-cart-heart"
         style="z-index: 2; position: fixed; bottom: 0; width: 100%"
         transition="slide-y-transition"
+        >장바구니에 담았습니다!</v-alert
       >
-        장바구니에 담았습니다!
-      </v-alert>
       <v-btn
         class="mx-2"
         fab
@@ -261,7 +254,7 @@
         style="position: fixed; bottom: 10vh; right: 3vh"
         @click="openSelectedModal"
       >
-        <v-icon dark> mdi-cart-heart </v-icon>
+        <v-icon dark>mdi-cart-heart</v-icon>
       </v-btn>
     </v-app>
     <ServiceModal ref="serviceModal" @shoppingAlert="shoppingAlert" />

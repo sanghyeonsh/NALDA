@@ -22,7 +22,7 @@ export default {
       'CLEAR_FLIGHTNUM',
     ]),
     moveMain() {
-      this.$router.push('/user/login')
+      this.$router.push('/login')
     },
   },
 }

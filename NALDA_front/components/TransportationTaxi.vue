@@ -23,12 +23,17 @@
         </div>
       </div>
     </div>
-    <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
+    <div
+      v-if="page === 'map'"
+      class="Taxi-box-right fadeInUp"
+      :class="{ map: isMap }"
+    >
       <SubwayMap />
     </div>
+
     <div
       v-else-if="page === 'table'"
-      class="Taxi-box-right"
+      class="Taxi-box-right fadeInUp"
       :class="{ table: isTable }"
     >
       <h3 style="margin-bottom: 3%; font-size: xxx-large">
@@ -224,5 +229,19 @@ thead {
   background-color: #323648;
   color: white;
   /* background-color: rgb(105, 148, 157); */
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>
