@@ -114,6 +114,7 @@ export const actions = {
               data.userInfo.userRole === 'ROLE_ATTENDANT' &&
               data.msg === '로그인 성공'
             ) {
+              commit('SET_FLIGHTNUM', object.flightNum)
               const flightObject = {
                 flightNum: object.flightNum,
                 airplaneKind: data.seatInfo.airplaneKind,

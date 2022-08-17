@@ -43,8 +43,8 @@ export default {
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
   },
   async created() {
-    // await this.getFlightMeal(this.flightNum)
-    // await this.getSettedMeal(this.flightNum)
+    await this.getFlightMeal(this.flightNum)
+    await this.getSettedMeal(this.flightNum)
   },
   methods: {
     ...mapActions('meal', ['getFlightMeal', 'getSettedMeal']),
