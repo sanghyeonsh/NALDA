@@ -2,18 +2,6 @@
   <div class="toilet-container">
     <!-- <div class="toilet-wrap"> -->
     <div class="toilet-wrap">
-      <img class="b-777-toilet" src="/icon/fl-777-200er-261-seatmap-pc.png" />
-      <div class="th-middle"></div>
-      <div class="tbr1-middle"></div>
-      <div class="tbl1-middle"></div>
-      <div class="tbr2-middle"></div>
-      <div class="tbm2-middle"></div>
-      <div class="tbl2-middle"></div>
-      <div class="ttr1-middle"></div>
-      <div class="ttr2-middle"></div>
-      <div class="ttl1-middle"></div>
-      <div class="ttl2-middle"></div>
-      <!-- </div> -->
       <div class="alert-wrap">
         <div class="in-use">
           <div class="word">사용중</div>
@@ -25,6 +13,7 @@
         </div>
       </div>
     </div>
+    <PageLoader />
   </div>
 </template>
 
@@ -70,6 +59,7 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+
 .toilet-container {
   height: 70vh;
   width: 100%;

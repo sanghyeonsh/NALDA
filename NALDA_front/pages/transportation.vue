@@ -11,12 +11,7 @@
             height="15vh"
           >
             <div style="color: white; width: 11%; height: 100%">
-              <img
-                src="/logohome.png"
-                alt=""
-                style="width: 100%; height: 100%"
-                @click="MoveHome"
-              />
+              <img src="/logohome.png" alt style="width: 100%; height: 100%" @click="MoveHome" />
             </div>
             <v-tab
               v-for="(item, idx) in items"
@@ -24,21 +19,14 @@
               class="white--text"
               style="font-weight: bold"
               color="#ffe26f"
-            >
-              {{ item }}
-            </v-tab>
+            >{{ item }}</v-tab>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <div class="header-container-userprofile" @click="MoveMypage">
               <div class="profile-back">
-                <img
-                  class="previous-icon"
-                  src="/main/previous.png"
-                  alt=""
-                  @click="Movefrom"
-                />
+                <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
               </div>
               <div class="profile-img">
                 <img src="/main/user_profile_w.png" alt="profile-img" />
@@ -105,7 +93,7 @@ export default {
       if (this.loginMember != null) {
         this.$router.push('/user/mypage')
       } else {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       }
     },
     Movefrom() {
