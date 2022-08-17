@@ -20,6 +20,7 @@ public class OrderDto {
     private String classification;
     private String orderMessage;
     private LocalDateTime orderTime;
+    private LocalDateTime completeTime;
     private String flightNum;
     private String seatNum;
     private String username;
