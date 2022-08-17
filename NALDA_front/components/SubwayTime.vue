@@ -191,7 +191,6 @@ export default {
               parseInt(this.check.split(':')[1]) <= parseInt(temp[1]) &&
               this.min === 0
             ) {
-              console.log(this.time)
               this.cnt = i
               this.min = 1
             }

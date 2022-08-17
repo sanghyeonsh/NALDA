@@ -7,6 +7,7 @@
     <div id="app">
       <v-app id="inspire">
         <div class="wrapper">
+          <page-loader :toggle="toggle" />
           <div v-for="(flightMeal, i) in flightMeals" :key="i" class="food-box">
             <v-card
               v-if="flightMeal.cnt > 0"
@@ -42,12 +43,8 @@
                   <v-btn
                     text
                     color="teal accent-4"
-                    style="
-                      font-size: 20px;
-                      width: 80px;
-                      height: 100%;
-                      margin-left: 10px;
-                    "
+                    large
+                    style="font-size: 20px; margin-left: 10px"
                     @click="updateCheck(flightMeal)"
                     >세부사항</v-btn
                   >
@@ -55,6 +52,7 @@
                 <v-spacer></v-spacer>
                 <div>
                   <button
+                    class="mr-3"
                     style="width: 80px; height: 100%; font-size: 20px"
                     @click="updateSelected(i)"
                   >
@@ -162,6 +160,7 @@
                 <v-spacer></v-spacer>
                 <div>
                   <button
+                    class="mr-3"
                     style="
                       width: 80px;
                       height: 100%;
@@ -208,10 +207,14 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
+import PageLoader from '../../components/PageLoader.vue'
 import { choiceMeal } from '@/api/meal'
+
 export default {
   name: 'TestPage2',
-  components: {},
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       finalDetail: [],
@@ -238,6 +241,10 @@ export default {
       'total',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
+    toggle() {
+      if (this.flightMeals.length === 0) return true
+      else return false
+    },
   },
   created() {
     // flightNum받아와서 넣어야함
@@ -254,7 +261,7 @@ export default {
     })
   },
   methods: {
-    ...mapMutations('meal', ['MEAL_CALC_STOCK']),
+    ...mapMutations('meal', ['PASSENGER_CALC_STOCK']),
     ...mapActions('meal', [
       'getFlightMeal',
       'getSelectedMeal',
@@ -276,7 +283,7 @@ export default {
     },
     finalChoice() {
       this.flightMeals.forEach((flightMeal) => {
-        if (flightMeal.menu === this.selectMeal && flightMeal.cnt > 0) {
+        if (flightMeal.menu === this.selectedMeal && flightMeal.cnt > 0) {
           this.info.flightNum = this.flightNum
           this.info.username = this.loginMember.username
           this.info.seatNum = this.seatInfo.seatNum

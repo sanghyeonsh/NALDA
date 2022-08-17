@@ -2,14 +2,6 @@
   <div>
     <div class="modify-container">
       <div class="modify-wrap">
-        <header>
-          <div class="sel-lang-wrap">
-            <select class="lang-select">
-              <option>Korean</option>
-              <option>English</option>
-            </select>
-          </div>
-        </header>
         <section class="modify-input-section-wrap">
           <h2>회원정보 수정</h2>
           <div>

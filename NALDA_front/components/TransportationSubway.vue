@@ -75,7 +75,6 @@ export default {
 
 .subway-container {
   /* background-color: rgba(239, 239, 239, 0.511); */
-
   display: flex;
   width: 100vh;
   height: 85vh;

@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="main-wrap">
-      <section class="terms-section-wrap">
+      <section class="terms-section-wrap fadeInUp">
         <div class="necessary-terms-wrap">
           <div
             class="terms-title"
@@ -510,5 +510,19 @@ p {
 .check-all-icon {
   width: 30px;
   height: 30px;
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

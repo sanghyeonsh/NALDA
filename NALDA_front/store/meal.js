@@ -60,7 +60,6 @@ export const mutations = {
   },
   updateCheck(state, check) {
     for (let i = 0; i < state.flightMeals.length; i++) {
-      console.log(i + '===' + state.flightMeals[i].menu + '===' + check.menu)
       if (state.flightMeals[i].menu === check.menu) {
         if (check.check === false) {
           check.check = true
@@ -72,7 +71,6 @@ export const mutations = {
   },
   PASSENGER_CALC_STOCK(state) {
     state.flightMeals.forEach((flightMeal) => {
-      console.log(flightMeal)
       for (let i = 0; i < state.stock.length; i++) {
         if (flightMeal.menu === state.stock[i].mealMenu) {
           flightMeal.cnt = state.stock[i].total
@@ -85,19 +83,14 @@ export const mutations = {
         }
       }
     })
-    console.log(state.flightMeals)
   },
   async ATTENDANT_CALC_STOCK(state) {
     await state.settedMealList.forEach((flightMeal) => {
-      console.log(flightMeal)
       for (let i = 0; i < state.stock.length; i++) {
         for (let j = 0; j < state.total.length; j++) {
           if (flightMeal.menu === state.stock[i].mealMenu) {
             flightMeal.total = state.stock[i].total
             if (flightMeal.mealId === state.total[j].mealId) {
-              console.log(2)
-              console.log('들어왔다.')
-              console.log(state.total[j].total)
               flightMeal.total -= state.total[j].total
               break
             }
@@ -145,13 +138,9 @@ export const mutations = {
   SET_VALID_MSG(state, validMsg) {
     state.validMsg = validMsg
   },
-  SET_VALIDMEAL_LIST(state, selectedMealList) {
-    console.log(state.validMealList)
-  },
+
   async SET_FLIGHTMEALS_LIST(state, selectedMealList) {
     await selectedMealList.forEach((selectedMeal) => {
-      console.log('store에서 11111')
-      console.log(selectedMeal)
       const mealInfo = {
         menu: selectedMeal.menu,
         image: selectedMeal.image,
@@ -213,7 +202,6 @@ export const mutations = {
 }
 export const getters = {}
 
-// console.log eslint rule수정 충돌방지
 export const actions = {
   async getMeal({ commit }) {
     commit('CLEAR_MEAL_LIST')
@@ -300,7 +288,6 @@ export const actions = {
       flightNum,
       ({ data }) => {
         if (data.meal.length > 0) {
-          console.log(data.meal)
           data.meal.forEach((meal) => {
             if (meal.status === 'PROGRESS') {
               commit('SET_FLIGHTMEAL_LIST', {
@@ -387,7 +374,6 @@ export const actions = {
     await getSeatMeal(
       flightNum,
       ({ data }) => {
-        console.log(data)
         if (data.seatMeal.length > 0) {
           commit('SET_SEATMEAL_LIST', data.seatMeal)
         }

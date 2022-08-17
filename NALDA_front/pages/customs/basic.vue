@@ -1,7 +1,7 @@
 <template>
   <div class="customs-input-container">
     <custom-navs></custom-navs>
-    <div class="customform-wrap">
+    <div class="customform-wrap fadeInUp">
       <div class="customform-main-container">
         <div class="customform-container">
           <div class="title-container">
@@ -147,9 +147,10 @@
                 <td id="col-name">항공편명</td>
                 <td>
                   <input
-                    v-model="flightNum"
+                    v-model="flightNumber"
                     type="text"
                     placeholder="항공편을 입력해주세요."
+                    disabled
                   />
                 </td>
                 <td id="col-name">동반가족수</td>
@@ -256,7 +257,7 @@ export default {
     this.MODIFY_USERNAME(this.loginMember.username)
     this.MODIFY_TRAVELPERIOD(this.travelPeriod)
     this.MODIFY_PURPOSETRAVEL(this.travelPurpose)
-    this.MODIFY_FLIGHTNUM(this.flightNum)
+    this.MODIFY_FLIGHTNUM(this.flightNumber)
     this.MODIFY_ACCOMPANY(this.famillyNum)
     const visitedCountries = []
     if (this.country1 !== '')
@@ -278,7 +279,7 @@ export default {
       job: '',
       travelPeriod: '',
       travelPurpose: '',
-      flightNum: '',
+      flightNumber: '',
       famillyNum: '',
       countryNum: '',
       country1: '',
@@ -292,7 +293,7 @@ export default {
   },
   computed: {
     ...mapState('customdeclaration', ['declaration']),
-    ...mapState('user', ['loginMember', 'memberDetail']),
+    ...mapState('user', ['loginMember', 'memberDetail', 'flightNum']),
   },
   created() {
     const promise = new Promise((resolve, reject) => {
@@ -301,6 +302,7 @@ export default {
 
     promise.then(async () => {
       await this.callMemberDetail(this.loginMember.username)
+      this.flightNumber = this.flightNum
       this.loginMember.fullName.firstName &&
         (this.firstName = this.loginMember.fullName.firstName)
       this.loginMember.fullName.middleName &&
@@ -337,8 +339,8 @@ export default {
         ? (this.famillyNum = this.declaration.accompany)
         : (this.famillyNum = '')
       this.declaration.flightNum !== ''
-        ? (this.flightNum = this.declaration.flightNum)
-        : (this.flightNum = '')
+        ? (this.flightNumber = this.declaration.flightNum)
+        : (this.flightNumber = '')
       this.declaration.visitedCountries[0] &&
         (this.country1 = this.declaration.visitedCountries[0].countryName)
       this.declaration.visitedCountries[1] &&
@@ -567,5 +569,18 @@ input[id='chkbox5'] {
 .address-wrap {
   display: flex;
   justify-content: space-between;
+}
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

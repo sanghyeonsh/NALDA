@@ -1,9 +1,10 @@
 <template>
   <div class="request-container">
+    <page-loader :toggle="toggle" />
     <div class="request-wrap">
       <div class="request-uncomplete-wrap">
         <div class="title">
-          <h4 @click="test">대기</h4>
+          <h4>대기</h4>
         </div>
         <div class="overflow-auto">
           <div class="mt-3">
@@ -95,7 +96,9 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
+                <b-button variant="info" @click="completeRequest(selecteditems)"
+                  >완료처리</b-button
+                >
               </div>
             </div>
           </div>
@@ -107,8 +110,12 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
+import PageLoader from '../../components/PageLoader.vue'
 export default {
   name: 'AttendantRequest',
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       transProps: {
@@ -184,6 +191,10 @@ export default {
     detailsrows() {
       return this.details.length
     },
+    toggle() {
+      if (this.ordersObject.length === 0) return true
+      else return false
+    },
     ...mapState('attendant', ['ordersList']),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
@@ -194,7 +205,6 @@ export default {
     ...mapActions('attendant', ['getListOrders', 'updateOrderStatus']),
     showDetail(item) {
       this.details = []
-      console.log(item)
       for (let i = 0; i < item.주문상세.length; i++) {
         const orderDetail = {
           id: item.id,
@@ -230,7 +240,6 @@ export default {
 
       // 갯수가 세부사항 갯수와 같은경우 실제요청 상태값 바꾸기
       if (count === this.details.length && count !== 0) {
-        console.log(this.details[0].id)
         const promise = new Promise((resolve, reject) => {
           resolve()
         })
@@ -240,9 +249,6 @@ export default {
           this.details = []
         })
       }
-    },
-    test() {
-      console.log(this.ordersObject)
     },
   },
 }
