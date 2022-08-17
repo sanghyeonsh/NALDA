@@ -142,8 +142,8 @@ export default {
 }
 
 .profile-back {
-  height: 100%;
-  width: 40%;
+  height: 80%;
+  width: 30%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -158,12 +158,12 @@ export default {
   width: 20%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
 }
 .profile-img img {
-  width: 70%;
-  height: 25%;
+  width: 80%;
+  height: 30%;
 }
 
 .profile-name {
