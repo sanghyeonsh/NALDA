@@ -177,6 +177,7 @@ public class OrdersService {
                     .classification(serviceClass)
                     .orderMessage(order.getOrderMessage())
                     .orderTime(order.getOrderTime())
+                    .completeTime(order.getCompleteTime())
                     .flightNum(flightNum)
                     .seatNum(order.getSeat().getSeatNum())
                     .username(order.getUser().getUsername())
