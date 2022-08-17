@@ -122,6 +122,7 @@ public class MealService {
         for(MealStock mealStock:mealStocks){
             mealCntDTOS.add(MealCntDto.builder()
                             .flightNum(mealStock.getFlight().getFlightNum())
+                            .mealId(mealStock.getMeal().getId())
                             .mealMenu(mealStock.getMeal().getMealMenu())
                             .status(mealStock.getStatus())
                             .total(mealStock.getTotal())
