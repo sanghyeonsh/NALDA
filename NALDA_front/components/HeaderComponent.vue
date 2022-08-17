@@ -10,11 +10,17 @@
 
     <div class="header-container-userprofile">
       <div class="profile-back">
-        <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
+        <img
+          class="previous-icon"
+          src="/main/previous.png"
+          alt
+          @click="Movefrom"
+        />
       </div>
       <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
-      </div>&nbsp;&nbsp;&nbsp;
+      </div>
+      &nbsp;&nbsp;&nbsp;
       <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
@@ -98,6 +104,7 @@ export default {
   align-items: center;
 }
 .header-container-image img {
+  margin-right: 5%;
   width: 13%;
   height: 100%;
   cursor: pointer;

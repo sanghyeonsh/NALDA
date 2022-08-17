@@ -26,8 +26,14 @@
     <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
       <SubwayMap />
     </div>
-    <div v-else-if="page === 'table'" class="Taxi-box-right" :class="{ table: isTable }">
-      <h3 style="margin-bottom: 3%; font-size: xxx-large">이용 요금 및 승차장 번호</h3>
+    <div
+      v-else-if="page === 'table'"
+      class="Taxi-box-right"
+      :class="{ table: isTable }"
+    >
+      <h3 style="margin-bottom: 3%; font-size: xxx-large">
+        이용 요금 및 승차장 번호
+      </h3>
       <div class="taxi-info-wrap">
         <table class="taxi-table-wrap">
           <thead>

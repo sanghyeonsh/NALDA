@@ -34,6 +34,7 @@
               style="background-color: rgba(239, 239, 239, 0.511)"
             >
               <div class="tab-item">
+                <page-loader :toggle="toggle" />
                 <div
                   v-for="(item, idx) in snacks"
                   :key="idx"
@@ -270,8 +271,12 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import PageLoader from './PageLoader.vue'
 export default {
   name: 'ServiceNavbar',
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       isSnack: false,
@@ -289,6 +294,10 @@ export default {
   computed: {
     ...mapState('menu', ['items', 'stock', 'total']),
     ...mapState('user', ['flightNum']),
+    toggle() {
+      if (this.snacks.length === 0) return true
+      else return false
+    },
   },
 
   created() {

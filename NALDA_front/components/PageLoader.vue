@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isloaded" class="page-loader">
+  <div v-if="toggle" class="page-loader">
     <div class="spinner">
       <div class="front">
         <img
@@ -22,6 +22,9 @@
 <script>
 export default {
   name: 'PageLoader',
+  props: {
+    toggle: Boolean,
+  },
   data: () => {
     return {
       isloaded: false,
