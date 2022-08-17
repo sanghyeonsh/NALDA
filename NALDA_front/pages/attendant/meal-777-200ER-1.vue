@@ -5224,102 +5224,102 @@ export default {
     })
     promise.then(async () => {
       await this.getMealList(this.flightNum)
-      this.seatMealList.forEach((seatMeal) => {
-        if (seatMeal.음식 !== null && seatMeal.음식 !== this.mealList.Acourse) {
-          this.mealList.Acourse = seatMeal.음식
-        } else {
-          this.mealList.Bcourse = seatMeal.음식
-        }
-      })
-      this.seatMealList.forEach((seatMeal) => {
-        this.firstClass.forEach((seat) => {
-          if (seatMeal.seatNum === seat.좌석) {
-            seat.음식 = seatMeal.mealMenu
-            if (seat.음식 === this.mealList.Acourse) {
-              seat.음식 = 'Acourse'
-            } else if (seat.음식 === this.mealList.Bcourse) {
-              seat.음식 = 'Bcourse'
-            }
-          }
-        })
-        this.businessClass.forEach((seat) => {
-          if (seatMeal.seatNum === seat.좌석) {
-            seat.음식 = seatMeal.mealMenu
-            if (seat.음식 === this.mealList.Acourse) {
-              seat.음식 = 'Acourse'
-            } else if (seat.음식 === this.mealList.Bcourse) {
-              seat.음식 = 'Bcourse'
-            }
-          }
-        })
-        this.economyClass.forEach((seat) => {
-          if (seatMeal.seatNum === seat.좌석) {
-            seat.음식 = seatMeal.mealMenu
-            if (seat.음식 === this.mealList.Acourse) {
-              seat.음식 = 'Acourse'
-            } else if (seat.음식 === this.mealList.Bcourse) {
-              seat.음식 = 'Bcourse'
-            }
-          }
-        })
-      })
-
+      // this.seatMealList?.forEach((seatMeal) => {
+      //   if (seatMeal.음식 !== null && seatMeal.음식 !== this.mealList.Acourse) {
+      //     this.mealList.Acourse = seatMeal.음식
+      //   } else {
+      //     this.mealList.Bcourse = seatMeal.음식
+      //   }
+      // })
       // this.seatMealList.forEach((seatMeal) => {
       //   this.firstClass.forEach((seat) => {
       //     if (seatMeal.seatNum === seat.좌석) {
       //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === '제육덮밥') {
+      //       if (seat.음식 === this.mealList.Acourse) {
       //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === '카레라이스') {
+      //       } else if (seat.음식 === this.mealList.Bcourse) {
       //         seat.음식 = 'Bcourse'
-      //       } else if (seat.음식 === '소불고기비빔밥') {
-      //         seat.음식 = 'Ccourse'
-      //       } else if (seat.음식 === '치킨스테이크') {
-      //         seat.음식 = 'Dcourse'
-      //       } else if (seat.음식 === '새우파스타') {
-      //         seat.음식 = 'Ecourse'
-      //       } else if (seat.음식 === '두부버섯샐러드') {
-      //         seat.음식 = 'Fcourse'
       //       }
       //     }
       //   })
       //   this.businessClass.forEach((seat) => {
       //     if (seatMeal.seatNum === seat.좌석) {
       //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === '제육덮밥') {
+      //       if (seat.음식 === this.mealList.Acourse) {
       //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === '카레라이스') {
+      //       } else if (seat.음식 === this.mealList.Bcourse) {
       //         seat.음식 = 'Bcourse'
-      //       } else if (seat.음식 === '소불고기비빔밥') {
-      //         seat.음식 = 'Ccourse'
-      //       } else if (seat.음식 === '치킨스테이크') {
-      //         seat.음식 = 'Dcourse'
-      //       } else if (seat.음식 === '새우파스타') {
-      //         seat.음식 = 'Ecourse'
-      //       } else if (seat.음식 === '두부버섯샐러드') {
-      //         seat.음식 = 'Fcourse'
       //       }
       //     }
       //   })
       //   this.economyClass.forEach((seat) => {
       //     if (seatMeal.seatNum === seat.좌석) {
       //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === '제육덮밥') {
+      //       if (seat.음식 === this.mealList.Acourse) {
       //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === '카레라이스') {
+      //       } else if (seat.음식 === this.mealList.Bcourse) {
       //         seat.음식 = 'Bcourse'
-      //       } else if (seat.음식 === '소불고기비빔밥') {
-      //         seat.음식 = 'Ccourse'
-      //       } else if (seat.음식 === '치킨스테이크') {
-      //         seat.음식 = 'Dcourse'
-      //       } else if (seat.음식 === '새우파스타') {
-      //         seat.음식 = 'Ecourse'
-      //       } else if (seat.음식 === '두부버섯샐러드') {
-      //         seat.음식 = 'Fcourse'
       //       }
       //     }
       //   })
       // })
+      if (this.seatMealList?.length > 0)
+        this.seatMealList.forEach((seatMeal) => {
+          this.firstClass.forEach((seat) => {
+            if (seatMeal.seatNum === seat.좌석) {
+              seat.음식 = seatMeal.mealMenu
+              if (seat.음식 === '제육덮밥') {
+                seat.음식 = 'Acourse'
+              } else if (seat.음식 === '카레라이스') {
+                seat.음식 = 'Bcourse'
+              } else if (seat.음식 === '소불고기비빔밥') {
+                seat.음식 = 'Ccourse'
+              } else if (seat.음식 === '치킨스테이크') {
+                seat.음식 = 'Dcourse'
+              } else if (seat.음식 === '새우파스타') {
+                seat.음식 = 'Ecourse'
+              } else if (seat.음식 === '두부버섯샐러드') {
+                seat.음식 = 'Fcourse'
+              }
+            }
+          })
+          this.businessClass.forEach((seat) => {
+            if (seatMeal.seatNum === seat.좌석) {
+              seat.음식 = seatMeal.mealMenu
+              if (seat.음식 === '제육덮밥') {
+                seat.음식 = 'Acourse'
+              } else if (seat.음식 === '카레라이스') {
+                seat.음식 = 'Bcourse'
+              } else if (seat.음식 === '소불고기비빔밥') {
+                seat.음식 = 'Ccourse'
+              } else if (seat.음식 === '치킨스테이크') {
+                seat.음식 = 'Dcourse'
+              } else if (seat.음식 === '새우파스타') {
+                seat.음식 = 'Ecourse'
+              } else if (seat.음식 === '두부버섯샐러드') {
+                seat.음식 = 'Fcourse'
+              }
+            }
+          })
+          this.economyClass.forEach((seat) => {
+            if (seatMeal.seatNum === seat.좌석) {
+              seat.음식 = seatMeal.mealMenu
+              if (seat.음식 === '제육덮밥') {
+                seat.음식 = 'Acourse'
+              } else if (seat.음식 === '카레라이스') {
+                seat.음식 = 'Bcourse'
+              } else if (seat.음식 === '소불고기비빔밥') {
+                seat.음식 = 'Ccourse'
+              } else if (seat.음식 === '치킨스테이크') {
+                seat.음식 = 'Dcourse'
+              } else if (seat.음식 === '새우파스타') {
+                seat.음식 = 'Ecourse'
+              } else if (seat.음식 === '두부버섯샐러드') {
+                seat.음식 = 'Fcourse'
+              }
+            }
+          })
+        })
     })
   },
   methods: {
@@ -5356,7 +5356,7 @@ export default {
 
 <style scoped>
 .meal-list-wrap {
-  height: 75vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

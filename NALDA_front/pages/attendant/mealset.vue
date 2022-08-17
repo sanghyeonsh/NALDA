@@ -7,7 +7,7 @@
           <div v-for="(meal, i) in mealList" :key="i" class="food-box">
             <v-card
               class="mx-auto my-12"
-              :class="{valid: meal.validated === true}"
+              :class="{valid: meal.validated === true, finish: meal.status === 'DONE'}"
               max-width="374"
               @click="setMealSelected(meal)"
             >
@@ -67,7 +67,7 @@
             v-if="readyState===false"
             class="ma-2 white--text"
             x-large
-            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large;"
+            style="width: 15%; background-color:rgb(69, 169, 200); border-radius: 60px; font-size: x-large; position: fixed; bottom: 3% !important;"
             @click="setMeal"
           >기내식입력</v-btn>
           <v-btn
@@ -170,20 +170,22 @@ export default {
     promise.then(async () => {
       this.mealList = []
       await this.getSettedMeal(this.flightNum)
-      // await this.getMealCnt(this.flightNum)
-      // await this.getMealOrderCnt(this.flightNum)
       await this.getFlightMeal(this.flightNum)
-      // this.calcStock()
       if (this.settedMealList.length > 0) {
+        await this.getMealCnt(this.flightNum)
+        await this.getMealOrderCnt(this.flightNum)
+        await this.calcStock()
         await this.settedMealList.forEach((meal) => {
           const mealInfo = {
             menu: meal.menu,
-            image: meal.bytesdata,
+            image: meal.image,
+            mealId: meal.mealId,
             total: meal.total,
             status: meal.status,
             validated: false,
+            readyState: false,
           }
-          if (meal.status === 'PROGRESS' || meal.total === 0) {
+          if (meal.status === 'PROGRESS') {
             mealInfo.validated = true
           }
           this.mealList.push(mealInfo)
@@ -193,6 +195,8 @@ export default {
         console.log(this.mealList)
       } else {
         await this.flightMealList.forEach((meal) => {
+          console.log(111)
+          console.log(meal)
           const mealInfo = {
             menu: meal.menu,
             image: meal.image,
@@ -221,24 +225,28 @@ export default {
       'getMealOrderCnt',
       'getMealCnt',
     ]),
-    ...mapMutations('meal', ['UPDATE_FLIGHTMEALS_LIST', 'MEAL_CALC_STOCK']),
+    ...mapMutations('meal', [
+      'UPDATE_FLIGHTMEALS_LIST',
+      'ATTENDANT_CALC_STOCK',
+    ]),
     test() {
-      console.log('이건 meal List')
-      console.log(this.mealList)
-      // this.getSettedMeal(this.flightNum)
-      // console.log('이건 settedmeal')
+      // console.log('이건 meal List')
+      // console.log(this.mealList)
+      // // this.getSettedMeal(this.flightNum)
+      // // console.log('이건 settedmeal')
       console.log(this.settedMealList)
+      console.log(this.settedMealList.length)
       // console.log(this.flightMealList)
-      console.log(this.select)
-      // // console.log(this.mealList)
-      // console.log('이건 토탈')
-      // console.log(this.total)
+      // console.log(this.select)
+      // // // console.log(this.mealList)
+      console.log('이건 토탈')
+      console.log(this.total)
       // console.log('이건스탁')
       // console.log(this.stock)
-      console.log(this.flightMeals)
+      // console.log(this.flightMeals)
     },
     calcStock() {
-      this.MEAL_CALC_STOCK()
+      this.ATTENDANT_CALC_STOCK()
     },
     setMealSelected(meal) {
       if (meal.validated !== true) {
@@ -403,10 +411,6 @@ export default {
   justify-content: flex-start;
 }
 
-.valid {
-  filter: brightness(50%);
-  /* pointer-events: none; */
-}
 .food-box {
   width: 20%;
   display: flex;
@@ -432,5 +436,17 @@ export default {
   min-width: 0px;
   width: 100%;
   text-align: center;
+}
+
+.finish {
+  /* margin-top: 30%; */
+  filter: brightness(50%);
+}
+.valid {
+  /* filter: brightness(50%); */
+  /* pointer-events: none; */
+  margin-top: -8% !important;
+  box-shadow: 0 0 30px rgb(47, 224, 255);
+  /* z-index: 999; */
 }
 </style>
