@@ -1,20 +1,16 @@
 <template>
   <div class="header-container">
-    <div class="header-container-blank"></div>
+    <div class="space-wrap"></div>
     <div class="header-container-image">
       <img src="/logo.png" @click="MoveMain" />
     </div>
-    <!-- <div @click="MoveSignup">
-      signup
-    </div>-->
-
     <div class="header-container-userprofile">
       <div class="profile-back">
         <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
       </div>
       <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
-      </div>&nbsp;&nbsp;&nbsp;
+      </div>
       <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
@@ -47,7 +43,7 @@ export default {
       } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
         this.$router.push('/attendant/main')
       } else {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       }
     },
     MoveSignup() {
@@ -57,7 +53,7 @@ export default {
       if (this.loginMember != null) {
         this.$router.push('/user/mypage')
       } else {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       }
     },
     Movefrom() {
@@ -82,24 +78,28 @@ export default {
 }
 .header-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 100vw;
   height: 15vh;
   background-color: rgb(69, 169, 200);
 }
+.space-wrap {
+  width: 25%;
+}
+
 .header-container-blank {
   width: 30%;
 }
 .header-container-image {
-  width: 90%;
+  width: 50%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header-container-image img {
-  width: 13%;
-  height: 100%;
+  width: 19%;
   cursor: pointer;
 }
 
@@ -107,6 +107,7 @@ export default {
   width: 25%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   color: azure;
   cursor: pointer;
 }
