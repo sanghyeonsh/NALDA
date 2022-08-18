@@ -104,6 +104,7 @@ export default {
 }
 .main-container-box-image img {
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .box-image-name {
   height: 15%;

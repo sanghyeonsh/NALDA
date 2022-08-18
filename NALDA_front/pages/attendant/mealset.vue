@@ -80,34 +80,66 @@
           </div>
         </div>
         <div class="meal-order-button">
-          <v-btn
-            v-if="settedMealList.length === 0"
-            class="ma-2 white--text"
-            x-large
-            style="
-              width: 15%;
-              background-color: rgb(69, 169, 200);
-              border-radius: 60px;
-              font-size: x-large;
-              position: fixed;
-              bottom: 3% !important;
-            "
-            @click="setMeal"
-            >기내식입력</v-btn
-          >
-          <v-btn
-            v-else-if="settedMealList.length !== 0"
-            class="ma-2 white--text"
-            x-large
-            style="
-              width: 15%;
-              background-color: rgb(69, 169, 200);
-              border-radius: 60px;
-              font-size: x-large;
-            "
-            @click="setMealUpdate"
-            >기내식입력</v-btn
-          >
+          <v-dialog transition="dialog-top-transition" max-width="600">
+            <template #activator="{ on, attrs }">
+              <v-btn
+                v-if="settedMealList.length === 0"
+                v-bind="attrs"
+                class="ma-2 white--text"
+                x-large
+                style="
+                  width: 15%;
+                  background-color: rgb(69, 169, 200);
+                  border-radius: 60px;
+                  font-size: x-large;
+                  position: fixed;
+                  bottom: 3% !important;
+                "
+                @click="setMeal"
+                >기내식입력</v-btn
+              >
+              <v-btn
+                v-else-if="settedMealList.length !== 0"
+                v-bind="attrs"
+                class="ma-2 white--text"
+                x-large
+                style="
+                  width: 15%;
+                  background-color: rgb(69, 169, 200);
+                  border-radius: 60px;
+                  font-size: x-large;
+                "
+                @click="setMealUpdate"
+                v-on="on"
+                >기내식입력</v-btn
+              >
+            </template>
+            <template #default="dialog">
+              <v-card>
+                <v-toolbar flat dark color="rgb(69, 169, 200)">
+                  <v-toolbar-title> 항공편 {{ flightNum }} </v-toolbar-title>
+                </v-toolbar>
+
+                <v-card-text>
+                  <div
+                    class="text mt-16 mb-14 ml-5"
+                    style="font-size: xxx-large; font-family: 'twayfly'"
+                  >
+                    기내식 입력 완료!
+                  </div>
+                </v-card-text>
+                <v-card-actions class="justify-end">
+                  <v-btn
+                    x-large
+                    text
+                    style="font-size: xx-large; color: grey"
+                    @click=";[moveMain(), (dialog.value = false)]"
+                    >닫기</v-btn
+                  >
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
         </div>
       </v-app>
     </div>
@@ -243,7 +275,6 @@ export default {
 
           this.mealList.push(mealInfo)
         })
-
       } else {
         await this.flightMealList.forEach((meal) => {
           const mealInfo = {
@@ -276,7 +307,9 @@ export default {
       'UPDATE_FLIGHTMEALS_LIST',
       'ATTENDANT_CALC_STOCK',
     ]),
-    
+    moveMain() {
+      this.$router.push('/attendant/main')
+    },
     calcStock() {
       this.ATTENDANT_CALC_STOCK()
     },

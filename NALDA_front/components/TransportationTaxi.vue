@@ -23,23 +23,19 @@
         </div>
       </div>
     </div>
-    <div
-      v-if="page === 'map'"
-      class="Taxi-box-right fadeInUp"
-      :class="{ map: isMap }"
-    >
-      <SubwayMap />
+    <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
+      <SubwayMap class="fadeInUp" />
     </div>
 
     <div
       v-else-if="page === 'table'"
-      class="Taxi-box-right fadeInUp"
+      class="Taxi-box-right"
       :class="{ table: isTable }"
     >
-      <h3 style="margin-bottom: 3%; font-size: xxx-large">
+      <h3 class="fadeInUp" style="margin-bottom: 3%; font-size: xxx-large">
         이용 요금 및 승차장 번호
       </h3>
-      <div class="taxi-info-wrap">
+      <div class="taxi-info-wrap fadeInUp">
         <table class="taxi-table-wrap">
           <thead>
             <tr>
@@ -182,7 +178,9 @@ export default {
 }
 .map {
   display: block;
-  height: 75vh;
+
+  background-color: rgba(239, 239, 239, 0.511);
+  height: 85vh;
 }
 .table {
   /* width: 80%; */

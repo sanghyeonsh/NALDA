@@ -106,6 +106,7 @@ export default {
 .station-name-check img {
   width: 100%;
   height: 100%;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 cornflowerblue);
   filter: opacity(0.5) drop-shadow(0 0 0 cornflowerblue);
 }
 .check-left {

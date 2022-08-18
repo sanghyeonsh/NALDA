@@ -16,7 +16,8 @@
       <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
-      <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
+
+      <div class="mr-3 profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
 </template>
@@ -89,14 +90,14 @@ export default {
   background-color: rgb(69, 169, 200);
 }
 .space-wrap {
-  width: 25%;
+  width: 18%;
 }
 
 .header-container-blank {
   width: 30%;
 }
 .header-container-image {
-  width: 50%;
+  width: 64%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -108,7 +109,7 @@ export default {
 }
 
 .header-container-userprofile {
-  width: 25%;
+  width: 18%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -126,22 +127,22 @@ export default {
 }
 
 .profile-img {
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 .profile-img img {
-  width: 50%;
-  height: 50%;
+  width: 55%;
+  height: 55%;
 }
 
 .profile-name {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   font-size: 30px;
 }

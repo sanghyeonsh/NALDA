@@ -341,7 +341,7 @@ a {
 .login-icon-check {
   width: 30px;
   height: 30px;
-  -webkit-filter: drop-shadow(0 0 0 #ffffff);
+  filter: drop-shadow(0 0 0 #ffffff);
 }
 
 .fadeInUp {

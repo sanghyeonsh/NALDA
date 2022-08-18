@@ -2,10 +2,18 @@
   <div v-if="toggle" class="page-loader">
     <div class="spinner">
       <div class="front">
-        <img class="load-spinner" src="/icon/load_spinner_earth.png" alt="loading-earth" />
+        <img
+          class="load-spinner"
+          src="/icon/load_spinner_earth.png"
+          alt="loading-earth"
+        />
       </div>
       <div class="back">
-        <img class="load-spinner" src="/icon/load_spinner_plane.png" alt="loading-spinner-plane" />
+        <img
+          class="load-spinner"
+          src="/icon/load_spinner_plane.png"
+          alt="loading-spinner-plane"
+        />
       </div>
     </div>
     <!-- <div id="spinner"></div> -->
@@ -40,8 +48,9 @@ export default {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0;
+  top: 15vh;
   left: 0;
+  margin-bottom: 15vh;
   width: 100vw;
   height: 70vh;
   background-color: rgba(255, 255, 255, 0);
@@ -90,12 +99,15 @@ export default {
   height: 100%;
   animation: spinner 2s linear infinite;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .spinner {
   width: 20%;
   margin-right: 0.5%;
   position: relative;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  margin-bottom: 15%;
 }
 .front {
   position: absolute;
@@ -130,7 +142,7 @@ export default {
     transform: translateX(0);
   }
 }
-/* 
+/*
 #spinner {
   min-width: 200px;
   min-height: 200px;
@@ -151,4 +163,4 @@ export default {
   width: 10%;
   position: fixed;
 } */
-</style> 
+</style>
