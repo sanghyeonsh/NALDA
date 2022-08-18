@@ -9,7 +9,7 @@
             <div class="modify-input-id-wrap">
               <input
                 v-model="username"
-                placeholder="Username"
+                placeholder="아이디"
                 type="text"
                 disabled
               />
@@ -21,7 +21,7 @@
               <input
                 ref="password"
                 v-model="password"
-                placeholder="Password"
+                placeholder="비밀번호"
                 type="password"
               />
             </div>
@@ -31,7 +31,7 @@
             <div class="modify-input-wrap password-confirm-wrap">
               <input
                 v-model="passwordCheck"
-                placeholder="Password"
+                placeholder="비밀번호 확인"
                 type="password"
               />
             </div>
@@ -156,7 +156,7 @@
                 <input
                   id="postal-code"
                   v-model="zipcode"
-                  placeholder="postal code"
+                  placeholder="우편번호"
                   type="text"
                 />
                 <input
@@ -170,7 +170,7 @@
                 <input
                   id="address"
                   v-model="mainAddress"
-                  placeholder="address"
+                  placeholder="주소"
                   type="text"
                 />
               </div>
@@ -178,7 +178,7 @@
                 <input
                   id="address-detail"
                   v-model="detailAddress"
-                  placeholder="address detail"
+                  placeholder="상세주소"
                   type="text"
                 />
               </div>
@@ -187,21 +187,13 @@
           <div>
             <h6>여권번호</h6>
             <div class="modify-input-wrap passport-num-wrap">
-              <input
-                v-model="passportNum"
-                placeholder="passportnumber"
-                type="text"
-              />
+              <input v-model="passportNum" placeholder="여권번호" type="text" />
             </div>
           </div>
           <div>
             <h6>국적</h6>
             <div class="modify-input-wrap nationality-wrap">
-              <input
-                v-model="nationality"
-                placeholder="nationality"
-                type="text"
-              />
+              <input v-model="nationality" placeholder="국적" type="text" />
             </div>
           </div>
           <div>
@@ -240,7 +232,7 @@
               <h3>정보를 모두 채워주세요!</h3>
             </div>
             <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
-              >Close Me</b-button
+              >닫기</b-button
             >
           </b-modal>
         </section>

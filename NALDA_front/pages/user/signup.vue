@@ -1,51 +1,56 @@
 <template>
   <div class="singup-main-container">
     <div class="singup-main-wrap">
-      <header>
-        <div class="sel-lang-wrap">
-          <select class="lang-select">
-            <option>Korean</option>
-            <option>English</option>
-          </select>
-        </div>
-      </header>
       <section class="signup-input-section-wrap">
-        <h2>Sign up</h2>
+        <h2>회원가입</h2>
         <div>
           <h6>아이디</h6>
           <div class="signup-input-id-wrap">
-            <input id="input-id" v-model="username" placeholder="Username" type="text" />
-            <input id="id-check-btn" type="button" value="아이디 중복 검사" @click="checkId" />
+            <input
+              id="input-id"
+              v-model="username"
+              placeholder="아이디"
+              type="text"
+            />
+            <input
+              id="id-check-btn"
+              type="button"
+              value="아이디 중복 검사"
+              @click="checkId"
+            />
           </div>
         </div>
         <div>
           <h6>비밀번호</h6>
           <div class="signup-input-wrap password-wrap">
-            <input v-model="password" placeholder="Password" type="password" />
+            <input v-model="password" placeholder="비밀번호" type="password" />
           </div>
         </div>
         <div>
           <h6>비밀번호 확인</h6>
           <div class="signup-input-wrap password-confirm-wrap">
-            <input v-model="passconfirm" placeholder="Password" type="password" />
+            <input
+              v-model="passconfirm"
+              placeholder="비밀번호확인"
+              type="password"
+            />
           </div>
         </div>
         <div class="name-form-tag">
-          <h6>FirstName</h6>
-          <h6>MiddleName</h6>
-          <h6>LastName</h6>
+          <h6>Firstname</h6>
+          <h6>Middlename</h6>
+          <h6>Lastname</h6>
         </div>
 
         <div class="name-form-input">
           <div class="signup-input-wrap name-wrap">
-            <input v-model="firstName" placeholder="firstname" type="text" />
+            <input v-model="firstName" placeholder="First Name" type="text" />
           </div>
           <div class="signup-input-wrap name-wrap">
-            <input v-model="middleName" placeholder="middlename" type="text" />
+            <input v-model="middleName" placeholder="Middle Name" type="text" />
           </div>
-
           <div class="signup-input-wrap name-wrap">
-            <input v-model="lastName" placeholder="lastname" type="text" />
+            <input v-model="lastName" placeholder="Last Name" type="text" />
           </div>
         </div>
         <div>
@@ -83,10 +88,14 @@
           <h6>성별</h6>
           <div class="gender-wrap">
             <div>
-              <button class="gender-btn" value="MALE" @click="maleClick">남자</button>
+              <button class="gender-btn" value="MALE" @click="maleClick">
+                남자
+              </button>
             </div>
             <div>
-              <button class="gender-btn" value="FEMALE" @click="femaleClick">여자</button>
+              <button class="gender-btn" value="FEMALE" @click="femaleClick">
+                여자
+              </button>
             </div>
           </div>
         </div>
@@ -94,14 +103,29 @@
           <h6>이메일</h6>
           <div class="email-wrap">
             <div class="signup-input-email">
-              <input id="signup-email-id" v-model="emailId" type="text" placeholder="이메일아이디" />
+              <input
+                id="signup-email-id"
+                v-model="emailId"
+                type="text"
+                placeholder="이메일아이디"
+              />
             </div>
             <h5>@</h5>
             <div class="signup-input-email">
-              <input id="signup-email" v-model="emailDomain" type="text" placeholder="이메일주소" />
+              <input
+                id="signup-email"
+                v-model="emailDomain"
+                type="text"
+                placeholder="이메일주소"
+              />
             </div>
             <div class="signup-input-email" style="margin-left: 10px">
-              <select id="signup-email-select" class="selectbox" name="email" @change="changeEmail">
+              <select
+                id="signup-email-select"
+                class="selectbox"
+                name="email"
+                @change="changeEmail"
+              >
                 <option value>직접입력</option>
                 <option value="naver.com">naver.com</option>
                 <option value="gmail.com">gmail.com</option>
@@ -115,15 +139,30 @@
           <h6>전화번호</h6>
           <div class="mobile-num-wrap">
             <div class="signup-mobile-num">
-              <input v-model="firstNum" class="mobile-num" type="text" placeholder="000" />
+              <input
+                v-model="firstNum"
+                class="mobile-num"
+                type="text"
+                placeholder="000"
+              />
             </div>
             <h5>-</h5>
             <div class="signup-mobile-num">
-              <input v-model="secondNum" class="mobile-num" type="text" placeholder="0000" />
+              <input
+                v-model="secondNum"
+                class="mobile-num"
+                type="text"
+                placeholder="0000"
+              />
             </div>
             <h5>-</h5>
             <div class="signup-mobile-num">
-              <input v-model="thirdNum" class="mobile-num" type="text" placeholder="0000" />
+              <input
+                v-model="thirdNum"
+                class="mobile-num"
+                type="text"
+                placeholder="0000"
+              />
             </div>
           </div>
         </div>
@@ -131,17 +170,27 @@
           <h6>주소</h6>
           <div class="address-wrap">
             <div class="postal-wrap">
-              <input id="postal-code" placeholder="postal code" type="text" />
-              <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
+              <input id="postal-code" placeholder="우편번호" type="text" />
+              <input
+                id="postal-check-btn"
+                type="button"
+                value="주소검색"
+                @click="find_Postcode()"
+              />
             </div>
             <div class="signup-input-wrap">
-              <input id="address" v-model="mainAddress" placeholder="address" type="text" />
+              <input
+                id="address"
+                v-model="mainAddress"
+                placeholder="주소"
+                type="text"
+              />
             </div>
             <div class="signup-input-wrap" style="margin-top: 3px">
               <input
                 id="address-detail"
                 v-model="detailAddress"
-                placeholder="address detail"
+                placeholder="상세주소"
                 type="text"
               />
             </div>
@@ -150,19 +199,24 @@
         <div>
           <h6>여권번호</h6>
           <div class="signup-input-wrap passport-num-wrap">
-            <input v-model="passportNum" placeholder="passportnumber" type="text" />
+            <input v-model="passportNum" placeholder="여권번호" type="text" />
           </div>
         </div>
         <div>
           <h6>국적</h6>
           <div class="signup-input-wrap nationality-wrap">
-            <input v-model="nationality" placeholder="nationality" type="text" />
+            <input v-model="nationality" placeholder="국적" type="text" />
           </div>
         </div>
         <div>
           <h6>직업</h6>
           <div class="signup-input-wrap job-wrap">
-            <select id="signup-job-select" class="selectbox" name="job" onchange>
+            <select
+              id="signup-job-select"
+              class="selectbox"
+              name="job"
+              onchange
+            >
               <option value="student">학생</option>
               <option value="housewife">주부</option>
               <option value="soldier">군인</option>
@@ -177,7 +231,7 @@
         </div>
 
         <div class="signup-button-wrap">
-          <button @click="registMember">Sign up</button>
+          <button @click="registMember">회원가입</button>
         </div>
         <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -190,21 +244,27 @@
       <div class="d-block text-center">
         <h3>사용 가능한 아이디 입니다.</h3>
       </div>
-      <b-button class="mt-3" block @click="$bvModal.hide('idCheck-modal')">Close Me</b-button>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheck-modal')"
+        >닫기</b-button
+      >
     </b-modal>
     <b-modal id="idCheckFail-modal" hide-footer>
       <template #modal-title>알림</template>
       <div class="d-block text-center">
         <h3>사용 불가능한 아이디 입니다.</h3>
       </div>
-      <b-button class="mt-3" block @click="$bvModal.hide('idCheckFail-modal')">Close Me</b-button>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheckFail-modal')"
+        >닫기</b-button
+      >
     </b-modal>
     <b-modal id="NoIdCheck-modal" hide-footer>
       <template #modal-title>알림</template>
       <div class="d-block text-center">
         <h3>아이디를 입력해주세요.</h3>
       </div>
-      <b-button class="mt-3" block @click="$bvModal.hide('NoIdCheck-modal')">Close Me</b-button>
+      <b-button class="mt-3" block @click="$bvModal.hide('NoIdCheck-modal')"
+        >닫기</b-button
+      >
     </b-modal>
   </div>
 </template>
@@ -490,7 +550,7 @@ body {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
-  font-size: 20px;
+  font-size: 15px;
   /* margin-left: 10px; */
   height: 55px;
   border-radius: 10px;

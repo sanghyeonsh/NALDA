@@ -202,7 +202,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
       <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
   </div>
