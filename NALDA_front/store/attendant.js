@@ -127,7 +127,7 @@ export const getters = {
           좌석: state.completeList[i].seatNum,
           분류: state.completeList[i].classification,
           요청사항: orderDetail,
-          완료시각: state.completeList[i].completeTime.split('T')[1],
+          완료시각: state.completeList[i]?.completeTime?.split('T')[1],
           상태: state.completeList[i].status,
           주문상세: state.completeList[i].orderList,
         }
@@ -182,9 +182,9 @@ export const actions = {
       }
     )
   },
-  getListOrders({ commit }, flightNum) {
+  async getListOrders({ commit }, flightNum) {
     commit('CREAR_ORDERS_LIST')
-    listOrders(
+    await listOrders(
       flightNum,
       ({ data }) => {
         commit('SET_ORDERS_LIST', data.serviceList)

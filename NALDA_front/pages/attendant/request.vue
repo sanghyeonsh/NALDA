@@ -195,7 +195,7 @@ export default {
       if (this.ordersObject.length === 0) return true
       else return false
     },
-    ...mapState('attendant', ['ordersList']),
+    ...mapState('attendant', ['ordersList', 'completeList']),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
@@ -245,7 +245,7 @@ export default {
         })
         promise.then(async () => {
           await this.updateOrderStatus(this.details[0].id)
-          await this.getListOrders(this.flightNum)
+          // await this.getListOrders(this.flightNum)
           this.details = []
         })
       }
