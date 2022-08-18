@@ -28,6 +28,7 @@ public class OrdersService {
     private final OrderRepository orderRepository;
     private final OrderListRepository orderListRepository;
 
+    private final OrdersCodesRepository ordersCodesRepository;
     private final UserRepository userRepository;
     private final FlightRepository flightRepository;
     private final SeatRepository seatRepository;
@@ -154,6 +155,7 @@ public class OrdersService {
 
     @Transactional
     public List<OrderDto> listOrders(String flightNum) {
+
         List<Orders> orders = orderRepository.findByFlightNum(flightNum);
         List<OrderDto> orderDTOS = new ArrayList<>();
         for (Orders order : orders) {
@@ -177,11 +179,11 @@ public class OrdersService {
                     .classification(serviceClass)
                     .orderMessage(order.getOrderMessage())
                     .orderTime(order.getOrderTime())
-                    .completeTime(order.getCompleteTime())
                     .flightNum(flightNum)
                     .seatNum(order.getSeat().getSeatNum())
                     .username(order.getUser().getUsername())
                     .status(String.valueOf(order.getStatus()))
+                    .completeTime(order.getCompleteTime())
                     .orderList(orderLists)
                     .build());
         }

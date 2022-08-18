@@ -231,7 +231,6 @@ public class MealService {
     public List<SeatMealDto> listSeatMeal(String flightNum){
         List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
         List<SeatMealDto> seatMealDTOS = new ArrayList<>();
-
         for (SeatMeal seatMeal : seatMeals) {
             String mealMenu = mealRepository.findById(seatMeal.getMeal().getId()).get().getMealMenu();
             String seatNum = seatRepository.findById(seatMeal.getSeat().getId()).get().getSeatNum();
