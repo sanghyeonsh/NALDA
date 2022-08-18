@@ -1,23 +1,15 @@
 <template>
   <div class="singup-main-container">
     <div class="singup-main-wrap">
-      <header>
-        <div class="sel-lang-wrap">
-          <select class="lang-select">
-            <option>Korean</option>
-            <option>English</option>
-          </select>
-        </div>
-      </header>
       <section class="signup-input-section-wrap">
-        <h2>Sign up</h2>
+        <h2>회원가입</h2>
         <div>
           <h6>아이디</h6>
           <div class="signup-input-id-wrap">
             <input
               id="input-id"
               v-model="username"
-              placeholder="Username"
+              placeholder="아이디"
               type="text"
             />
             <input
@@ -31,7 +23,7 @@
         <div>
           <h6>비밀번호</h6>
           <div class="signup-input-wrap password-wrap">
-            <input v-model="password" placeholder="Password" type="password" />
+            <input v-model="password" placeholder="비밀번호" type="password" />
           </div>
         </div>
         <div>
@@ -39,27 +31,26 @@
           <div class="signup-input-wrap password-confirm-wrap">
             <input
               v-model="passconfirm"
-              placeholder="Password"
+              placeholder="비밀번호확인"
               type="password"
             />
           </div>
         </div>
         <div class="name-form-tag">
-          <h6>FirstName</h6>
-          <h6>MiddleName</h6>
-          <h6>LastName</h6>
+          <h6>Firstname</h6>
+          <h6>Middlename</h6>
+          <h6>Lastname</h6>
         </div>
 
         <div class="name-form-input">
           <div class="signup-input-wrap name-wrap">
-            <input v-model="firstName" placeholder="firstname" type="text" />
+            <input v-model="firstName" placeholder="First Name" type="text" />
           </div>
           <div class="signup-input-wrap name-wrap">
-            <input v-model="middleName" placeholder="middlename" type="text" />
+            <input v-model="middleName" placeholder="Middle Name" type="text" />
           </div>
-
           <div class="signup-input-wrap name-wrap">
-            <input v-model="lastName" placeholder="lastname" type="text" />
+            <input v-model="lastName" placeholder="Last Name" type="text" />
           </div>
         </div>
         <div>
@@ -135,7 +126,7 @@
                 name="email"
                 @change="changeEmail"
               >
-                <option value="">직접입력</option>
+                <option value>직접입력</option>
                 <option value="naver.com">naver.com</option>
                 <option value="gmail.com">gmail.com</option>
                 <option value="daum.com">daum.com</option>
@@ -179,7 +170,7 @@
           <h6>주소</h6>
           <div class="address-wrap">
             <div class="postal-wrap">
-              <input id="postal-code" placeholder="postal code" type="text" />
+              <input id="postal-code" placeholder="우편번호" type="text" />
               <input
                 id="postal-check-btn"
                 type="button"
@@ -191,7 +182,7 @@
               <input
                 id="address"
                 v-model="mainAddress"
-                placeholder="address"
+                placeholder="주소"
                 type="text"
               />
             </div>
@@ -199,7 +190,7 @@
               <input
                 id="address-detail"
                 v-model="detailAddress"
-                placeholder="address detail"
+                placeholder="상세주소"
                 type="text"
               />
             </div>
@@ -208,21 +199,13 @@
         <div>
           <h6>여권번호</h6>
           <div class="signup-input-wrap passport-num-wrap">
-            <input
-              v-model="passportNum"
-              placeholder="passportnumber"
-              type="text"
-            />
+            <input v-model="passportNum" placeholder="여권번호" type="text" />
           </div>
         </div>
         <div>
           <h6>국적</h6>
           <div class="signup-input-wrap nationality-wrap">
-            <input
-              v-model="nationality"
-              placeholder="nationality"
-              type="text"
-            />
+            <input v-model="nationality" placeholder="국적" type="text" />
           </div>
         </div>
         <div>
@@ -248,7 +231,7 @@
         </div>
 
         <div class="signup-button-wrap">
-          <button @click="registMember">Sign up</button>
+          <button @click="registMember">회원가입</button>
         </div>
         <!-- <div class="signup-stay-sign-in">
                     <i class="far fa-check-circle"></i>
@@ -256,6 +239,33 @@
         </div>-->
       </section>
     </div>
+    <b-modal id="idCheck-modal" hide-footer>
+      <template #modal-title>알림</template>
+      <div class="d-block text-center">
+        <h3>사용 가능한 아이디 입니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheck-modal')"
+        >닫기</b-button
+      >
+    </b-modal>
+    <b-modal id="idCheckFail-modal" hide-footer>
+      <template #modal-title>알림</template>
+      <div class="d-block text-center">
+        <h3>사용 불가능한 아이디 입니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('idCheckFail-modal')"
+        >닫기</b-button
+      >
+    </b-modal>
+    <b-modal id="NoIdCheck-modal" hide-footer>
+      <template #modal-title>알림</template>
+      <div class="d-block text-center">
+        <h3>아이디를 입력해주세요.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('NoIdCheck-modal')"
+        >닫기</b-button
+      >
+    </b-modal>
   </div>
 </template>
 
@@ -338,7 +348,7 @@ export default {
             promotionalInfo: this.terms.promotionalInfo,
           },
           ({ data }) => {
-            this.$router.push('/user/login')
+            this.$router.push('/login')
           },
           (error) => {
             console.log(error)
@@ -365,15 +375,21 @@ export default {
         '#10384b'
     },
     checkId() {
-      idCheck(
-        this.username,
-        ({ data }) => {
-          alert(data.msg)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
+      if (!this.username) {
+        this.$bvModal.show('NoIdCheck-modal')
+      } else {
+        idCheck(
+          this.username,
+          ({ data }) => {
+            if (data.msg === '사용 가능한 아이디입니다.')
+              this.$bvModal.show('idCheck-modal')
+            else this.$bvModal.show('idCheckFail-modal')
+          },
+          (error) => {
+            console.log(error)
+          }
+        )
+      }
     },
 
     changeEmail(e) {
@@ -534,7 +550,7 @@ body {
   border: none;
   width: 465px;
   /* margin-top: 10px; */
-  font-size: 20px;
+  font-size: 15px;
   /* margin-left: 10px; */
   height: 55px;
   border-radius: 10px;

@@ -1,7 +1,7 @@
 <template>
   <div class="mypage-container">
     <user-navs></user-navs>
-    <div class="user-page-wrap">
+    <div class="user-page-wrap fadeInUp">
       <div class="subindex-item">
         <div class="myInfo">내 정보</div>
         <div class="subindex-bluebox">
@@ -46,24 +46,18 @@
                         <button type="button" class="btn-accent">
                             <span class="text">등록</span>
                         </button>
-              </div>-->
+            </div>-->
             <div class="row-item gender">
               <i class="fa-solid fa-mobile-button"></i>
               <span class="item-text" v-text="'성별 : ' + gender"></span>
             </div>
             <div class="row-item address">
               <i class="fa-solid fa-location-dot"></i>
-              <span
-                class="item-text"
-                v-text="'주소 : ' + mainAddress + ' ' + detailAddress"
-              ></span>
+              <span class="item-text" v-text="'주소 : ' + mainAddress + ' ' + detailAddress"></span>
             </div>
             <div class="row-item passportnumber">
               <i class="fa-solid fa-passport"></i>
-              <span
-                class="item-text"
-                v-text="'여권번호 : ' + passportNum"
-              ></span>
+              <span class="item-text" v-text="'여권번호 : ' + passportNum"></span>
             </div>
             <div class="row-item job">
               <i class="fa-solid fa-briefcase"></i>
@@ -102,12 +96,12 @@ export default {
     ...mapState('user', ['loginMember', 'memberDetail']),
     fullName() {
       let fullName = ''
-      this.loginMember?.fullName?.firstName &&
-        (fullName += this.loginMember?.fullName?.firstName)
+      this.loginMember?.fullName?.lastName &&
+        (fullName += this.loginMember?.fullName?.lastName)
       this.loginMember.fullName.middleName &&
         (fullName += this.loginMember?.fullName?.middleName)
-      this.loginMember.fullName.lastName &&
-        (fullName += this.loginMember?.fullName?.lastName)
+      this.loginMember.fullName.firstName &&
+        (fullName += this.loginMember?.fullName?.firstName)
 
       return fullName
     },
@@ -306,4 +300,18 @@ i {
   display: flex;
   flex-direction: row;
 } */
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
+}
 </style>

@@ -4,16 +4,8 @@
       <div class="stock-input-table">
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
-            <div v-bind="flightNum" class="caption-wrap">
+            <div class="caption-wrap">
               <h3>항공편 {{ flightNum }} 재고 목록</h3>
-              <!-- <div id="flight-num-input">
-                <b-form-input
-                  v-model="flightNum"
-                  type="text"
-                  disabled
-                  style="height: 5vh; font-size: x-large;"
-                />
-              </div>-->
             </div>
           </caption>
           <colgroup>
@@ -31,19 +23,19 @@
           </colgroup>
           <b-thead head-variant="dark">
             <b-tr>
-              <b-th colspan="3">Stocks</b-th>
-              <b-th colspan="3">Item List</b-th>
+              <b-th colspan="3">재고</b-th>
+              <b-th colspan="3">상품 목록</b-th>
             </b-tr>
             <b-tr>
-              <b-th>Service Title</b-th>
-              <b-th>Name</b-th>
-              <b-th>Service Code</b-th>
-              <b-th>Quantity</b-th>
+              <b-th>서비스명</b-th>
+              <b-th>상품명</b-th>
+              <b-th>상품코드</b-th>
+              <b-th>수량</b-th>
             </b-tr>
           </b-thead>
           <b-tbody v-if="ListType === 'snacks'">
             <b-tr>
-              <b-th :rowspan="snackList.length + 1">Snacks</b-th>
+              <b-th :rowspan="snackList.length + 1">과자</b-th>
             </b-tr>
             <b-tr v-for="(snack, index) in snackList" :key="index">
               <b-th class="text-right">{{ snack.serviceName }}</b-th>
@@ -53,17 +45,17 @@
                   id="snack-input"
                   v-model="snackQuantity[index]"
                   class="snack-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   :name="snack.serviceName"
                   placeholder="수량을 입력해주세요."
-                  @change="setSnackQuantity(snack, snackQuantity[index])"
                 />
               </b-td>
             </b-tr>
           </b-tbody>
           <b-tbody v-else-if="ListType === 'alcohols'">
             <b-tr>
-              <b-th :rowspan="alcoholsList.length + 1">Alcohols</b-th>
+              <b-th :rowspan="alcoholsList.length + 1">주류</b-th>
             </b-tr>
             <b-tr v-for="(alcohol, index) in alcoholsList" :key="index">
               <b-th class="text-right">{{ alcohol.serviceName }}</b-th>
@@ -72,16 +64,16 @@
                 <b-form-input
                   v-model="alcoholQuantity[index]"
                   class="alcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
-                  @change="setAlcoholQuantity(alcohol, alcoholQuantity[index])"
                 />
               </b-td>
             </b-tr>
           </b-tbody>
           <b-tbody v-else-if="ListType === 'nonalcohols'">
             <b-tr>
-              <b-th :rowspan="nonalcoholosList.length + 1">Non-Alcohols</b-th>
+              <b-th :rowspan="nonalcoholosList.length + 1">비주류</b-th>
             </b-tr>
             <b-tr v-for="(nonalcohol, index) in nonalcoholosList" :key="index">
               <b-th class="text-right">{{ nonalcohol.serviceName }}</b-th>
@@ -90,6 +82,7 @@
                 <b-form-input
                   v-model="nonAlcoholQuantity[index]"
                   class="nonalcohol-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -98,7 +91,7 @@
           </b-tbody>
           <b-tbody v-else-if="ListType === 'amenities'">
             <b-tr>
-              <b-th :rowspan="amenityList.length + 1">Amenity</b-th>
+              <b-th :rowspan="amenityList.length + 1">편의물품</b-th>
             </b-tr>
             <b-tr v-for="(amenity, index) in amenityList" :key="index">
               <b-th class="text-right">{{ amenity.serviceName }}</b-th>
@@ -107,6 +100,7 @@
                 <b-form-input
                   v-model="amenityQuantity[index]"
                   class="amenity-input-wrap"
+                  :disabled="!isValid"
                   type="number"
                   placeholder="수량을 입력해주세요."
                 />
@@ -117,17 +111,11 @@
           <b-tfoot>
             <b-tr>
               <b-td colspan="7" variant="secondary" class="text-right">
-                Total Rows:
+                총 행:
                 <b v-if="ListType === 'snacks'">{{ snackList.length }}</b>
-                <b v-else-if="ListType === 'alcohols'">{{
-                  alcoholsList.length
-                }}</b>
-                <b v-else-if="ListType === 'nonalcohols'">{{
-                  nonalcoholosList.length
-                }}</b>
-                <b v-else-if="ListType === 'amenities'">{{
-                  amenityList.length
-                }}</b>
+                <b v-else-if="ListType === 'alcohols'">{{ alcoholsList.length }}</b>
+                <b v-else-if="ListType === 'nonalcohols'">{{ nonalcoholosList.length }}</b>
+                <b v-else-if="ListType === 'amenities'">{{ amenityList.length }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
@@ -143,25 +131,66 @@
         ></b-pagination>-->
       </div>
       <div class="stock-btn-group">
-        <b-button @click="showSnack">Snacks</b-button>
-        <b-button @click="showAlcohol">Alcohol</b-button>
-        <b-button @click="showNonAlcohol">Non-Alcohols</b-button>
-        <b-button @click="showAmenity">Amenity</b-button>
-        <b-button variant="warning" @click="setTotal()">save</b-button>
-        <b-button @click="testStockCnt">test</b-button>
+        <b-button @click="showSnack">과자</b-button>
+        <b-button @click="showAlcohol">주류</b-button>
+        <b-button @click="showNonAlcohol">비주류</b-button>
+        <b-button @click="showAmenity">편의물품</b-button>
+        <b-button
+          v-if="isValid"
+          v-b-modal.modal-1
+          variant="warning"
+          @click=";[setTotal(), $bvModal.show('modal-stock')]"
+        >입력</b-button>
+
+        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()">수정</b-button>
+        <b-modal id="modal-stock" hide-footer>
+          <template #modal-title>
+            항공편
+            <code>{{ flightNum }}</code>
+          </template>
+          <div class="d-block text-center">
+            <h3>재고 입력 성공!</h3>
+          </div>
+          <b-button
+            variant="dark"
+            style="color: aliceblue"
+            class="mt-3"
+            block
+            @click="$bvModal.hide('modal-stock')"
+          >닫기</b-button>
+        </b-modal>
+
+        <b-button variant="success" @click=";[setTotal(), $bvModal.show('modal-end')]">운항종료</b-button>
+        <b-modal id="modal-end" hide-footer>
+          <template #modal-title>
+            항공편
+            <code>{{ flightNum }}</code>
+          </template>
+          <div class="d-block text-center">
+            <h3>운항 종료 완료!</h3>
+          </div>
+          <b-button
+            variant="dark"
+            style="color: aliceblue"
+            class="mt-3"
+            block
+            @click="$bvModal.hide('modal-end')"
+          >닫기</b-button>
+        </b-modal>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
 export default {
   name: 'AttendantStock',
   data() {
     return {
       // perPage: 10,
       // currentPage: 1,
+      isValid: true,
       ListType: 'snacks',
       snackQuantity: [],
       alcoholQuantity: [],
@@ -169,6 +198,7 @@ export default {
       amenityQuantity: [],
       TotalServiceQuantity: [],
       whole: [],
+      wholeQuantity: [],
     }
   },
   computed: {
@@ -185,9 +215,67 @@ export default {
       'stockCnt',
     ]),
     ...mapState('user', ['loginMember', 'flightNum']),
+    ...mapState('menu', ['total', 'items', 'stock']),
   },
   created() {
-    this.getServiceList(this.flightNum)
+    const promise = new Promise((resolve, reject) => {
+      resolve()
+    })
+    promise.then(async () => {
+      await this.getServiceList(this.flightNum)
+      await this.getServiceCnt(this.flightNum)
+      await this.getOrderCnt(this.flightNum)
+
+      if (this.stock?.length > 0) {
+        this.stock.forEach((stockInfo) => {
+          const classification = stockInfo.serviceCode.substr(0, 2)
+          let idx = stockInfo.serviceCode.substr(3) - 1
+          if (idx < 0) {
+            idx += 10
+          }
+          if (classification === 'A0') {
+            this.$set(this.snackQuantity, idx, stockInfo.total)
+          } else if (classification === 'A1') {
+            this.$set(this.alcoholQuantity, idx, stockInfo.total)
+          } else if (classification === 'A2') {
+            this.$set(this.nonAlcoholQuantity, idx, stockInfo.total)
+          } else if (classification === 'C0') {
+            this.$set(this.amenityQuantity, idx, stockInfo.total)
+          }
+          if (this.total?.length > 0)
+            this.total.forEach((cntInfo) => {
+              if (cntInfo.serviceCode === stockInfo.serviceCode)
+                if (classification === 'A0') {
+                  this.$set(
+                    this.snackQuantity,
+                    idx,
+                    stockInfo.total - cntInfo.total
+                  )
+                } else if (classification === 'A1') {
+                  this.$set(
+                    this.alcoholQuantity,
+                    idx,
+                    stockInfo.total - cntInfo.total
+                  )
+                } else if (classification === 'A2') {
+                  this.$set(
+                    this.nonAlcoholQuantity,
+                    idx,
+                    stockInfo.total - cntInfo.total
+                  )
+                } else if (classification === 'C0') {
+                  this.$set(
+                    this.amenityQuantity,
+                    idx,
+                    stockInfo.total - cntInfo.total
+                  )
+                }
+            })
+        })
+        this.isValid = !this.isValid
+        this.SET_STOCK_STATUS()
+      }
+    })
   },
   methods: {
     ...mapActions('attendant', [
@@ -196,6 +284,12 @@ export default {
       'modifyStockAmount',
       'getStockAmount',
     ]),
+    ...mapActions('menu', ['getOrderCnt', 'getServiceCnt']),
+    ...mapMutations('attendant', ['SET_STOCK_STATUS']),
+    ...mapMutations('menu', ['SET_ITEM', 'CALC_STOCK']),
+    calcStock() {
+      this.CALC_STOCK()
+    },
     showSnack() {
       this.ListType = 'snacks'
     },
@@ -208,58 +302,6 @@ export default {
     showAmenity() {
       this.ListType = 'amenities'
     },
-    setSnackQuantity() {
-      // console.log(this.snackQuantity)
-    },
-    setAlcoholQuantity(alcohol, index, value) {
-      // console.log(this.alcoholQuantity)
-    },
-    testStockCnt() {
-      console.log(this.flightNum)
-      const promise = new Promise((resolve, reject) => {
-        resolve()
-      })
-      promise.then(async () => {
-        await this.getStockAmount(this.flightNum)
-        console.log(this.stockCnt)
-        console.log(this.setStock)
-        // console.log(this.stockCnt.cntList[2].serviceCode.substr(0, 2))
-        for (let i = 0; i < this.stockCnt.cntList.length; i++) {
-          // console.log(this.stockCnt.cntList[i].serviceCode.substr(0, 2))
-          // console.log(this.stockCnt.cntList[i].serviceCode.substr(3))
-          const classification = this.stockCnt.cntList[i].serviceCode.substr(
-            0,
-            2
-          )
-          let idx = this.stockCnt.cntList[i].serviceCode.substr(3) - 1
-          if (idx < 0) {
-            idx += 10
-          }
-          if (classification === 'A0') {
-            this.$set(this.snackQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.snackQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'A1') {
-            this.$set(this.alcoholQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.alcoholQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'A2') {
-            this.$set(
-              this.nonAlcoholQuantity,
-              idx,
-              this.stockCnt.cntList[i].total
-            )
-            // this.nonAlcoholQuantity[idx] = this.stockCnt.cntList[i].total
-          } else if (classification === 'C0') {
-            this.$set(this.amenityQuantity, idx, this.stockCnt.cntList[i].total)
-            // this.amenityQuantity[idx] = this.stockCnt.cntList[i].total
-          }
-        }
-
-        // this.$forceUpdate()
-        console.log(this.amenityQuantity)
-        console.log(this.snackQuantity)
-        console.log(this.alcoholQuantity)
-      })
-    },
     setTotal() {
       this.TotalServiceQuantity = []
       this.whole = []
@@ -267,14 +309,11 @@ export default {
       this.whole.push(this.alcoholsList)
       this.whole.push(this.nonalcoholosList)
       this.whole.push(this.amenityList)
+      this.wholeQuantity.push(this.snackQuantity)
+      this.wholeQuantity.push(this.alcoholQuantity)
+      this.wholeQuantity.push(this.nonAlcoholQuantity)
+      this.wholeQuantity.push(this.amenityQuantity)
 
-      // this.whole[type][i].serviceQuantity부분 수정 필요함
-      // 0아니고 stock db에 있으면 그 값으로 다 바꿔야함..
-      // store부분에서 수정 필요.. 말고 그냥 여기서 함수 불러서
-      // getStockAmount 해서 그거로 total에 넣어주는거로.
-
-      // console.log(this.amenityQuantity)
-      // 1. 전체 재고 목록 배열을 하나 생성한다.
       for (let type = 0; type < this.whole.length; type++) {
         for (let i = 0; i < this.whole[type].length; i++) {
           const stock = {
@@ -282,56 +321,50 @@ export default {
             flightNum: this.flightNum,
             total: this.whole[type][i].serviceQuantity,
           }
-          console.log(stock)
+          if (this.wholeQuantity[type][i] >= 0) {
+            stock.total = this.wholeQuantity[type][i]
+          }
           this.TotalServiceQuantity.push(stock)
         }
       }
 
-      // 2. input 값들 해당 자리에 채워주기
-      // snackQuantity, alcoholQuantity, nonAlcoholQuantity, amenityQuantity에 각각의 input 값들이 담겨있음
-      for (
-        let codenum = 0;
-        codenum < this.TotalServiceQuantity.length;
-        codenum++
-      ) {
-        if (codenum < this.snackList.length) {
-          // console.log('스낵수량입니다 ' + this.snackQuantity[codenum])
-          if (this.snackQuantity[codenum] !== undefined)
-            this.TotalServiceQuantity[codenum].total =
-              this.snackQuantity[codenum]
-        } else if (codenum < this.snackList.length + this.alcoholsList.length) {
-          if (this.alcoholQuantity[codenum] !== undefined)
-            this.TotalServiceQuantity[codenum].total =
-              this.alcoholQuantity[codenum - this.snackList.length]
+      for (let i = 0; i < this.TotalServiceQuantity.length; i++) {
+        if (i < this.snackList.length) {
+          if (this.snackQuantity[i] !== undefined)
+            this.TotalServiceQuantity[i].total = this.snackQuantity[i]
+        } else if (i < this.snackList.length + this.alcoholsList.length) {
+          if (this.alcoholQuantity[i] !== undefined)
+            this.TotalServiceQuantity[i].total =
+              this.alcoholQuantity[i - this.snackList.length]
         } else if (
-          codenum <
+          i <
           this.snackList.length +
             this.alcoholsList.length +
             this.nonalcoholosList.length
         ) {
-          if (this.nonAlcoholQuantity[codenum] !== undefined)
-            this.TotalServiceQuantity[codenum].total =
+          if (this.nonAlcoholQuantity[i] !== undefined)
+            this.TotalServiceQuantity[i].total =
               this.nonAlcoholQuantity[
-                codenum - (this.snackList.length + this.alcoholsList.length)
+                i - (this.snackList.length + this.alcoholsList.length)
               ]
         } else if (
-          codenum <
+          i <
           this.snackList.length +
             this.alcoholsList.length +
             this.nonalcoholosList.length +
             this.amenityList.length
         ) {
-          if (this.amenityQuantity[codenum] !== undefined)
-            this.TotalServiceQuantity[codenum].total =
+          if (this.amenityQuantity[i] !== undefined)
+            this.TotalServiceQuantity[i].total =
               this.amenityQuantity[
-                codenum -
+                i -
                   (this.snackList.length +
                     this.alcoholsList.length +
                     this.nonalcoholosList.length)
               ]
         }
       }
-      console.log(this.TotalServiceQuantity)
+      this.isValid = !this.isValid
 
       // 재고 입력 or 수정으로 보내기
       if (this.setStock === false) {
@@ -345,6 +378,9 @@ export default {
           this.TotalServiceQuantity
         )
       }
+    },
+    unSetTotal() {
+      this.isValid = !this.isValid
     },
   },
 }
@@ -366,7 +402,8 @@ export default {
 }
 
 .stock-input-wrap {
-  height: 70vh;
+  height: 85vh;
+  background-color: rgba(239, 239, 239, 0.511);
 }
 
 .caption-wrap {
@@ -386,20 +423,27 @@ export default {
 }
 
 .stock-btn-group {
-  margin-top: 0.5%;
+  margin-top: 2%;
   text-align: center;
 }
 .btn-secondary {
-  font-size: small;
+  font-size: large;
   height: 100%;
   width: 8%;
   background-color: #206e95;
   border-color: #206e95;
+  color: white;
 }
 .btn-warning {
-  font-size: small;
+  font-size: large;
   height: 100%;
   width: 8%;
+}
+.btn-success {
+  font-size: large;
+  height: 100%;
+  width: 8%;
+  color: white;
 }
 input {
   border: none;

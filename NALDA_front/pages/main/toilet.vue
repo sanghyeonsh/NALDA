@@ -35,6 +35,7 @@ export default {
   name: 'AttendantToilet',
   data() {
     return {
+      interval: null,
       th1: true,
       HR01: true,
       HL01: true,
@@ -54,27 +55,27 @@ export default {
     await this.callToiletLog('777-200ER-1')
     this.toilet.forEach((element) => {
       if (element.toiletCode === 'HR01') {
-        if (element.used === 1) this.HR01 = false
+        if (element.used === 0) this.HR01 = false
         else this.HR01 = true
       }
       if (element.toiletCode === 'HL01') {
-        if (element.used === 1) this.HL01 = false
-        else this.HR01 = false
+        if (element.used === 0) this.HL01 = false
+        else this.HL01 = true
       }
     })
-    setInterval(async () => {
+    this.interval = setInterval(async () => {
       await this.callToiletLog('777-200ER-1')
       this.toilet.forEach((element) => {
         if (element.toiletCode === 'HR01') {
-          if (element.used === 1) this.HR01 = false
+          if (element.used === 0) this.HR01 = false
           else this.HR01 = true
         }
         if (element.toiletCode === 'HL01') {
-          if (element.used === 1) this.HL01 = false
-          else this.HR01 = false
+          if (element.used === 0) this.HL01 = false
+          else this.HL01 = true
         }
       })
-    }, 5000)
+    }, 1000)
   },
   methods: {
     ...mapActions('toilet', ['callToiletLog']),
@@ -97,12 +98,13 @@ export default {
   font-family: 'twayfly';
 }
 .toilet-container {
-  height: 70vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: rgba(239, 239, 239, 0.511);
   /* overflow: scroll; */
 }
 /* .toilet-wrap {
@@ -110,12 +112,14 @@ export default {
   justify-content: center;
   align-items: center;
 } */
-
+.toilet-title {
+  font-size: xxx-large;
+}
 .toilet-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 65%;
   width: 100%;
 }
 
@@ -141,22 +145,21 @@ export default {
 }
 .square-not-use {
   width: 30%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   filter: opacity(0.6);
+  border-radius: 7px;
 }
 .square-in-use {
   width: 30%;
-  background-color: rgb(242, 0, 255);
-  filter: opacity(0.6);
+  background-color: #ee2c2a;
+  filter: opacity(0.7);
+  border-radius: 7px;
 }
 
-.inuse {
-  background-color: rgb(242, 0, 255) !important;
-}
 .th-middle {
   width: 2.2%;
   height: 3.5%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(-1625%, 11%);
@@ -165,7 +168,7 @@ export default {
 .tbr1-middle {
   width: 1.9%;
   height: 4.8%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(-885%, -150%);
@@ -174,7 +177,7 @@ export default {
 .tbl1-middle {
   width: 1.9%;
   height: 4.8%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(-885%, 165%);
@@ -183,7 +186,7 @@ export default {
 .tbr2-middle {
   width: 2.9%;
   height: 3.3%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(525%, -215%);
@@ -193,7 +196,7 @@ export default {
 .tbm2-middle {
   width: 1.9%;
   height: 4.2%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(835%, 36%);
@@ -202,7 +205,7 @@ export default {
 .tbl2-middle {
   width: 1.9%;
   height: 4.2%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(823%, 185%);
@@ -211,7 +214,7 @@ export default {
 .ttr1-middle {
   width: 1.9%;
   height: 4.2%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(1961%, -168%);
@@ -220,7 +223,7 @@ export default {
 .ttr2-middle {
   width: 1.8%;
   height: 3.3%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(2069%, -45%);
@@ -229,7 +232,7 @@ export default {
 .ttl1-middle {
   width: 1.8%;
   height: 3.3%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(2069%, 65%);
@@ -238,10 +241,14 @@ export default {
 .ttl2-middle {
   width: 1.9%;
   height: 4.2%;
-  background-color: aqua;
+  background-color: rgb(26, 255, 0);
   position: absolute;
   z-index: 999;
   transform: translate(1961%, 180%);
   filter: opacity(0.3);
+}
+
+.inuse {
+  background-color: #ee2c2a;
 }
 </style>

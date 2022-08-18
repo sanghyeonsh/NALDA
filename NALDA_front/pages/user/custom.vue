@@ -1,9 +1,9 @@
 <template>
   <div class="mycustom-container">
     <user-navs></user-navs>
-    <div class="custom-declaration-wrap">
+    <div class="custom-declaration-wrap fadeInUp">
       <div class="mycustom-subindex-item">
-        <h4>세관신고서 목록</h4>
+        <div class="custom-list">세관신고서 목록</div>
         <div class="mycustom-subindex-bluebox">
           <!-- <div class="overflow-auto"> -->
           <v-data-table
@@ -24,15 +24,14 @@
             :length="pageCount"
             :total-visivle="totalVisible"
             circle
-          >
-          </v-pagination>
+          ></v-pagination>
           <!-- </div> -->
         </div>
       </div>
     </div>
 
     <b-modal id="check-modal" size="xl" hide-footer centered>
-      <template #modal-title> 상세 정보 </template>
+      <template #modal-title>상세 정보</template>
       <v-expansion-panels inset>
         <v-expansion-panel>
           <v-expansion-panel-header>
@@ -121,8 +120,9 @@
           <v-expansion-panel-header>
             <div>
               미화로 환산하여
-              <b>$10,000을 초과하는 지급수단</b> <br />(원화ㆍ달러화 등
-              법정통화, 자기앞수표, 여행자수표, 및 그 밖의 유가증권)
+              <b>$10,000을 초과하는 지급수단</b>
+              <br />(원화ㆍ달러화 등 법정통화, 자기앞수표, 여행자수표, 및 그
+              밖의 유가증권)
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
@@ -202,7 +202,7 @@
         </v-expansion-panel>
       </v-expansion-panels>
       <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
   </div>
@@ -283,6 +283,11 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+.custom-list {
+  font-size: xx-large;
+  margin-bottom: 5px;
+}
+
 .panel-content {
   font-size: x-large;
 }
@@ -316,7 +321,7 @@ ul {
   justify-content: center;
 }
 .custom-declaration-wrap {
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: flex;
   /* flex-direction: column; */
@@ -371,5 +376,22 @@ ul {
 #my-table {
   color: #0f374b;
   cursor: pointer;
+}
+:deep(.theme--light.v-pagination .v-pagination__item--active) {
+  color: #31c3f4 !important;
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

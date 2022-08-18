@@ -1,47 +1,32 @@
 <template>
-  <div v-if="!isloaded" class="page-loader">
-    <!-- <div class="square1"></div>
-    <div class="square2"></div>
-    <div class="square3"></div>
-    <div class="square4"></div>
-    <div class="plane">-->
-    <!--<img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon1.png"
-        alt="loading-plane"
-    />-->
-    <!--<img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon2.png"
-        alt="loading-plane"
-    />-->
-    <!-- <img
-        class="loading-airplane"
-        src="../static/icon/airplane_load_icon3.png"
-        alt="loading-plane"
-      />
-    </div>-->
-    <!-- <div class="spinner">
-      <img class="load-spinner" src="../static/icon/load_spinner_icon.png" alt="loading-plane" />
-    </div>-->
+  <div v-if="toggle" class="page-loader">
     <div class="spinner">
       <div class="front">
-        <img class="load-spinner" src="../static/icon/load_spinner_earth.png" alt="loading-earth" />
+        <img
+          class="load-spinner"
+          src="/icon/load_spinner_earth.png"
+          alt="loading-earth"
+        />
       </div>
       <div class="back">
         <img
           class="load-spinner"
-          src="../static/icon/load_spinner_plane.png"
+          src="/icon/load_spinner_plane.png"
           alt="loading-spinner-plane"
         />
       </div>
     </div>
+    <!-- <div id="spinner"></div> -->
+    <!-- <img class="spinner-logo" src="/logo.png" alt /> -->
   </div>
 </template>
 
 <script>
 export default {
   name: 'PageLoader',
+  props: {
+    toggle: Boolean,
+  },
   data: () => {
     return {
       isloaded: false,
@@ -50,7 +35,7 @@ export default {
   mounted() {
     document.onreadystatechange = () => {
       if (document.readyState === 'complete') {
-        // this.isloaded = true
+        this.isloaded = true
       }
     }
   },
@@ -63,8 +48,9 @@ export default {
   justify-content: center;
   align-items: center;
   position: fixed;
-  top: 0;
+  top: 15vh;
   left: 0;
+  margin-bottom: 15vh;
   width: 100vw;
   height: 70vh;
   background-color: rgba(255, 255, 255, 0);
@@ -112,11 +98,16 @@ export default {
   width: 100%;
   height: 100%;
   animation: spinner 2s linear infinite;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .spinner {
   width: 20%;
   margin-right: 0.5%;
   position: relative;
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  margin-bottom: 15%;
 }
 .front {
   position: absolute;
@@ -151,4 +142,25 @@ export default {
     transform: translateX(0);
   }
 }
+/*
+#spinner {
+  min-width: 200px;
+  min-height: 200px;
+  border: 10px solid rgba(255, 255, 255, 0.1);
+  border-right: 10px solid #88c0c5;
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner-logo {
+  width: 10%;
+  position: fixed;
+} */
 </style>

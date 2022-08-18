@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div class="main-wrap">
-      <section class="terms-section-wrap">
+      <section class="terms-section-wrap fadeInUp">
         <div class="necessary-terms-wrap">
           <div
             class="terms-title"
@@ -235,12 +235,12 @@
         </div>
 
         <div class="terms-button-wrap">
-          <b-button id="btn-group" @click="goBack">back</b-button>
+          <b-button id="btn-group" @click="goBack">돌아가기</b-button>
           <b-button
             id="btn-group"
             variant="outline-primary"
             @click="moveDeclaration"
-            >agree and start</b-button
+            >동의 및 시작</b-button
           >
         </div>
       </section>
@@ -261,7 +261,7 @@
         <h3>약관에 동의 해주세요.</h3>
       </div>
       <b-button class="mt-3" block @click="$bvModal.hide('term-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
   </div>
@@ -382,7 +382,7 @@ export default {
 .active {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
-  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
+  filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
 
 /* .active > img {
@@ -510,5 +510,19 @@ p {
 .check-all-icon {
   width: 30px;
   height: 30px;
+}
+
+.fadeInUp {
+  animation: fadeInUp 1s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

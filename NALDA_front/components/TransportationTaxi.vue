@@ -24,22 +24,19 @@
       </div>
     </div>
     <div v-if="page === 'map'" class="Taxi-box-right" :class="{ map: isMap }">
-      <SubwayMap />
+      <SubwayMap class="fadeInUp" />
     </div>
-    <div
-      v-else-if="page === 'table'"
-      class="Taxi-box-right"
-      :class="{ table: isTable }"
-    >
-      <h3>이용 요금 및 승차장 번호</h3>
-      <div class="taxi-info-wrap">
+
+    <div v-else-if="page === 'table'" class="Taxi-box-right" :class="{ table: isTable }">
+      <h3 class="fadeInUp" style="margin-bottom: 3%; font-size: xxx-large">이용 요금 및 승차장 번호</h3>
+      <div class="taxi-info-wrap fadeInUp">
         <table class="taxi-table-wrap">
           <thead>
             <tr>
-              <th rowspan="2" style="padding-bottom: 35px">구분</th>
-              <th rowspan="2" style="padding-bottom: 35px">기본요금(원)</th>
+              <th rowspan="2">구분</th>
+              <th rowspan="2">기본요금(원)</th>
               <th colspan="2">승차장번호</th>
-              <th rowspan="2" style="padding-bottom: 35px">비고</th>
+              <th rowspan="2">비고</th>
             </tr>
             <tr>
               <th>제 1여객터미널</th>
@@ -175,7 +172,9 @@ export default {
 }
 .map {
   display: block;
-  height: 75vh;
+
+  background-color: rgba(239, 239, 239, 0.511);
+  height: 85vh;
 }
 .table {
   /* width: 80%; */
@@ -184,7 +183,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   background-color: rgba(239, 239, 239, 0.511);
 }
 
@@ -204,6 +203,11 @@ export default {
   /* border: solid 1px black; */
   width: 100%;
   height: 100%;
+  font-size: 1.13em;
+}
+
+.Taxi-box-right[data-v-656bb545] {
+  margin-bottom: 9%;
 }
 
 th,
@@ -214,6 +218,22 @@ td {
 }
 
 thead {
-  background-color: rgb(105, 148, 157);
+  background-color: #323648;
+  color: white;
+  /* background-color: rgb(105, 148, 157); */
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

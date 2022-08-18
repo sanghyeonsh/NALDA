@@ -5,6 +5,7 @@
       hide-overlay
       transition="dialog-bottom-transition"
       width="60%"
+      :retain-focus="false"
     >
       <v-card tile class="overflow-auto" height="80vh">
         <v-toolbar flat dark color="#0e0737">
@@ -71,7 +72,17 @@
           </v-card>
         </v-card-text>
       </v-card>
+      <!-- 모달 -->
     </v-dialog>
+    <b-modal id="stock-modal" hide-footer>
+      <template #modal-title> 알림 </template>
+      <div class="d-block text-center">
+        <h3>재고가 부족합니다.</h3>
+      </div>
+      <b-button class="mt-3" block @click="$bvModal.hide('stock-modal')"
+        >닫기</b-button
+      >
+    </b-modal>
   </v-app>
 </template>
 
@@ -108,6 +119,7 @@ export default {
     addNum(item) {
       this.PLUS_SELECTED_ITEM(item)
       this.items = [...this.selectedItem]
+      console.log(this.items)
     },
     minusNum(item) {
       this.MINUS_SELECTED_ITEM(item)
@@ -119,13 +131,17 @@ export default {
     },
     sendOrder() {
       const orderList = []
-
+      let check = false
       this.items.forEach((element) => {
         const object = {
           orderCode: element.serviceCode,
           cnt: element.num,
         }
-        orderList.push(object)
+        if (element.cnt - element.num >= 0) {
+          orderList.push(object)
+        } else {
+          check = true
+        }
       })
 
       const order = {
@@ -136,12 +152,12 @@ export default {
         status: 'PROGRESS',
         orderList: [...orderList],
       }
-      if (orderList.length > 0) {
+      if (orderList.length > 0 && !check) {
         this.postOrders(order)
         this.CLEAR_CHOICE_FOODS()
         this.$router.push('/waiting')
       } else {
-        // alert('장바구니에 담으세요')
+        this.$bvModal.show('stock-modal')
       }
     },
   },

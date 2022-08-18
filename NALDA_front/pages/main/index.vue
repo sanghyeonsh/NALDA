@@ -8,21 +8,13 @@
     </div>
     <div class="main-container-box" @click="MoveLogin">
       <div class="main-container-box-image">
-        <img
-          src="/main/custom_declaration.png"
-          alt="custom_declaration"
-          style="width: 35vh"
-        />
+        <img src="/main/custom_declaration.png" alt="custom_declaration" style="width: 35vh" />
       </div>
       <div class="box-image-name">세관신고서</div>
     </div>
     <div class="main-container-box" @click="MoveTransportation">
       <div class="main-container-box-image">
-        <img
-          src="/main/airport_info.png"
-          alt="airport_info"
-          style="width: 35vh"
-        />
+        <img src="/main/airport_info.png" alt="airport_info" style="width: 35vh" />
       </div>
       <div class="box-image-name">공항정보</div>
     </div>
@@ -49,7 +41,7 @@ export default {
     ...mapMutations('customdeclaration', ['CLEAR_DECLARATION']),
     MoveLogin() {
       if (this.loginMember === null) {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       } else {
         // 세관신고서 페이지로 바꿔야함
         this.$router.push('/customs/thirdparty')
@@ -57,7 +49,7 @@ export default {
     },
     MoveOrders() {
       if (this.loginMember === null) {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       } else {
         this.$router.push('/main/service')
       }
@@ -103,9 +95,11 @@ export default {
   align-items: center;
 }
 .main-container-box-image img {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
+
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .box-image-name {
   height: 15%;

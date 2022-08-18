@@ -34,20 +34,55 @@
               style="background-color: rgba(239, 239, 239, 0.511)"
             >
               <div class="tab-item">
+                <page-loader :toggle="toggle" />
                 <div
                   v-for="(item, idx) in snacks"
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
                       width="200px"
-                    >
-                    </v-img>
+                    ></v-img>
+
+                    <v-card-actions class="ml-3">
+                      <div style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+
+                  <!-- 품절부분 -->
+                  <v-card
+                    v-else-if="item.cnt <= 0"
+                    style="
+                      margin-bottom: 30px;
+                      background-image: url('/orders/out-of-stock.png');
+                      position: relative;
+                      background-size: 55%;
+                      background-position: center;
+                      background-color: rgba(0, 0, 0, 0.5);
+                    "
+                  >
+                    <div>품절</div>
+                    <v-img
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="210px"
+                    ></v-img>
 
                     <v-card-actions class="ml-3">
                       <div style="font-size: x-large">
@@ -73,18 +108,51 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       height="200px"
-                      width="200px"
-                    >
-                    </v-img>
+                      width="210px"
+                    ></v-img>
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+
+                  <v-card
+                    v-else-if="item.cnt <= 0"
+                    style="
+                      margin-bottom: 30px;
+                      background-image: url('/orders/out-of-stock.png');
+                      position: relative;
+                      background-size: 55%;
+                      background-position: center;
+                      background-color: rgba(0, 0, 0, 0.5);
+                    "
+                  >
+                    <div>품절</div>
+                    <v-img
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="210px"
+                    ></v-img>
+
+                    <v-card-actions class="ml-3">
+                      <div style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>
@@ -107,18 +175,51 @@
                   :key="idx"
                   class="snack-image"
                 >
-                  <v-card style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
                       width="200px"
-                      height="200px"
-                    >
-                    </v-img>
+                      height="210px"
+                    ></v-img>
 
                     <v-card-actions>
                       <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
+                      <v-spacer></v-spacer>
+                      <v-btn icon>
+                        <v-icon>mdi-heart</v-icon>
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+
+                  <v-card
+                    v-else-if="item.cnt <= 0"
+                    style="
+                      margin-bottom: 30px;
+                      background-image: url('/orders/out-of-stock.png');
+                      position: relative;
+                      background-size: 55%;
+                      background-position: center;
+                      background-color: rgba(0, 0, 0, 0.5);
+                    "
+                  >
+                    <div>품절</div>
+                    <v-img
+                      class="black--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.1)"
+                      height="200px"
+                      width="210px"
+                    ></v-img>
+
+                    <v-card-actions class="ml-3">
+                      <div style="font-size: x-large">
                         {{ item.serviceName }}
                       </div>
                       <v-spacer></v-spacer>
@@ -142,9 +243,8 @@
         icon="mdi-cart-heart"
         style="z-index: 2; position: fixed; bottom: 0; width: 100%"
         transition="slide-y-transition"
+        >장바구니에 담았습니다!</v-alert
       >
-        장바구니에 담았습니다!
-      </v-alert>
       <v-btn
         class="mx-2"
         fab
@@ -154,7 +254,7 @@
         style="position: fixed; bottom: 10vh; right: 3vh"
         @click="openSelectedModal"
       >
-        <v-icon dark> mdi-cart-heart </v-icon>
+        <v-icon dark>mdi-cart-heart</v-icon>
       </v-btn>
     </v-app>
     <ServiceModal ref="serviceModal" @shoppingAlert="shoppingAlert" />
@@ -164,8 +264,12 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import PageLoader from './PageLoader.vue'
 export default {
   name: 'ServiceNavbar',
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       isSnack: false,
@@ -181,7 +285,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('menu', ['items']),
+    ...mapState('menu', ['items', 'stock', 'total']),
+    ...mapState('user', ['flightNum']),
+    toggle() {
+      if (this.snacks.length === 0) return true
+      else return false
+    },
   },
 
   created() {
@@ -194,10 +303,12 @@ export default {
       await this.getSnack()
       await this.getAlcohols()
       await this.getNonAlcohols()
-
+      await this.getServiceCnt(this.flightNum)
+      await this.getOrderCnt(this.flightNum)
       this.snacks = this.items.snack
       this.alcohols = this.items.alcohol
       this.nonAlcohols = this.items.nonAlcohol
+      this.calcStock()
     })
   },
   methods: {
@@ -216,8 +327,17 @@ export default {
       this.SET_ITEM(data)
       this.$refs.serviceModal.toggle()
     },
-    ...mapMutations('menu', ['SET_ITEM']),
-    ...mapActions('menu', ['getSnack', 'getAlcohols', 'getNonAlcohols']),
+    calcStock() {
+      this.CALC_STOCK()
+    },
+    ...mapMutations('menu', ['SET_ITEM', 'CALC_STOCK']),
+    ...mapActions('menu', [
+      'getSnack',
+      'getAlcohols',
+      'getNonAlcohols',
+      'getOrderCnt',
+      'getServiceCnt',
+    ]),
   },
 }
 </script>

@@ -62,6 +62,7 @@ public class MealService {
 
     @Transactional
     public void mealCntInput(List<MealCntDto> mealCntDTOS){
+
 //        Optional<MealStock> mealValid = mealStockRepository.findTopByFlightNum(mealCntDTOS.get(0).getFlightNum());
         List<MealStock> mealValid = mealStockRepository.findByFlightNum(mealCntDTOS.get(0).getFlightNum());
         if(mealValid.size()==0){
@@ -230,7 +231,6 @@ public class MealService {
     public List<SeatMealDto> listSeatMeal(String flightNum){
         List<SeatMeal> seatMeals = seatMealRepository.findByFlightNum(flightNum);
         List<SeatMealDto> seatMealDTOS = new ArrayList<>();
-
         for (SeatMeal seatMeal : seatMeals) {
             String mealMenu = mealRepository.findById(seatMeal.getMeal().getId()).get().getMealMenu();
             String seatNum = seatRepository.findById(seatMeal.getSeat().getId()).get().getSeatNum();

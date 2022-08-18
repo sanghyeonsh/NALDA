@@ -109,17 +109,18 @@ export const actions = {
             username: object.id,
             password: object.password,
           },
-          ({ headers, data }) => {
+          async ({ headers, data }) => {
             if (
               data.userInfo.userRole === 'ROLE_ATTENDANT' &&
               data.msg === '로그인 성공'
             ) {
+              commit('SET_FLIGHTNUM', object.flightNum)
               const flightObject = {
                 flightNum: object.flightNum,
                 airplaneKind: data.seatInfo.airplaneKind,
                 status: 'PROGRESS',
               }
-              inputFlight(
+              await inputFlight(
                 flightObject,
                 ({ data }) => {
                   console.log(data.msg)

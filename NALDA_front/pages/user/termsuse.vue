@@ -1,14 +1,14 @@
 <template>
   <div class="main-container">
     <div class="main-wrap">
-      <header>
+      <!-- <header>
         <div class="sel-lang-wrap">
           <select class="lang-select">
             <option>Korean</option>
             <option>English</option>
           </select>
         </div>
-      </header>
+      </header> -->
       <section class="terms-section-wrap">
         <div class="all-terms-wrap">
           <div
@@ -1249,9 +1249,9 @@
           </div>
         </div>
         <div class="terms-button-wrap">
-          <b-button id="btn-group" @click="goBack">back</b-button>
+          <b-button id="btn-group" @click="goBack">돌아가기</b-button>
           <b-button id="btn-group" variant="outline-primary" @click="moveSignup"
-            >agree and start</b-button
+            >동의 및 시작</b-button
           >
         </div>
       </section>
@@ -1428,6 +1428,7 @@ export default {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
+  filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
 
 .terms-title:hover {

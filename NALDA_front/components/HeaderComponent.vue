@@ -1,27 +1,18 @@
 <template>
   <div class="header-container">
-    <div class="header-container-blank"></div>
+    <div class="space-wrap"></div>
     <div class="header-container-image">
       <img src="/logo.png" @click="MoveMain" />
     </div>
-    <!-- <div @click="MoveSignup">
-      signup
-    </div>-->
-
-    <div class="header-container-userprofile" @click="MoveMypage">
+    <div class="header-container-userprofile">
       <div class="profile-back">
-        <img
-          class="previous-icon"
-          src="/main/previous.png"
-          alt=""
-          @click="Movefrom"
-        />
+        <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
       </div>
-      <div class="profile-img">
+      <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
-      &nbsp;&nbsp;&nbsp;
-      <div class="profile-name">{{ fullname }}</div>
+
+      <div class="mr-3 profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
 </template>
@@ -37,12 +28,12 @@ export default {
     fullname() {
       if (this.loginMember == null) return '비회원'
       let fullname = ''
-      this.loginMember.fullName.firstName &&
-        (fullname += this.loginMember.fullName.firstName)
-      this.loginMember.fullName.middleName &&
-        (fullname += this.loginMember.fullName.middleName)
       this.loginMember.fullName.lastName &&
         (fullname += this.loginMember.fullName.lastName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
       return fullname
     },
   },
@@ -52,6 +43,8 @@ export default {
         this.$router.push('/main')
       } else if (this.loginMember?.userRole === 'ROLE_ATTENDANT') {
         this.$router.push('/attendant/main')
+      } else {
+        this.$router.push('/login')
       }
     },
     MoveSignup() {
@@ -61,7 +54,7 @@ export default {
       if (this.loginMember != null) {
         this.$router.push('/user/mypage')
       } else {
-        this.$router.push('/user/login')
+        this.$router.push('/login')
       }
     },
     Movefrom() {
@@ -85,31 +78,36 @@ export default {
 }
 .header-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 100vw;
   height: 15vh;
   background-color: rgb(69, 169, 200);
 }
+.space-wrap {
+  width: 18%;
+}
+
 .header-container-blank {
   width: 30%;
 }
 .header-container-image {
-  width: 90%;
+  width: 64%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header-container-image img {
-  width: 13%;
-  height: 100%;
+  width: 15%;
   cursor: pointer;
 }
 
 .header-container-userprofile {
-  width: 25%;
+  width: 18%;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   color: azure;
   cursor: pointer;
 }
@@ -124,22 +122,22 @@ export default {
 }
 
 .profile-img {
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 .profile-img img {
-  width: 50%;
-  height: 50%;
+  width: 55%;
+  height: 55%;
 }
 
 .profile-name {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   font-size: 30px;
 }

@@ -24,10 +24,10 @@
       </div>
     </div>
     <div class="content" :class="{ Map: isMap }">
-      <SubwayMap />
+      <SubwayMap class="fadeInUp" />
     </div>
     <div class="content" :class="{ Time: isTime }">
-      <SubwayTime />
+      <SubwayTime class="fadeInUp" />
     </div>
     <FooterComponent style="background-color: rgba(239, 239, 239, 0.511)" />
   </div>
@@ -75,7 +75,6 @@ export default {
 
 .subway-container {
   /* background-color: rgba(239, 239, 239, 0.511); */
-
   display: flex;
   width: 100vh;
   height: 85vh;
@@ -126,5 +125,18 @@ export default {
   height: 85vh;
   display: block;
   background-color: rgba(239, 239, 239, 0.511);
+}
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>
