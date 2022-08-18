@@ -95,8 +95,8 @@ export default {
   align-items: center;
 }
 .main-container-box-image img {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .box-image-name {
