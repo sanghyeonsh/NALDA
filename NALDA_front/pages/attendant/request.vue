@@ -245,7 +245,7 @@ export default {
         })
         promise.then(async () => {
           await this.updateOrderStatus(this.details[0].id)
-          // await this.getListOrders(this.flightNum)
+          await this.getListOrders(this.flightNum)
           this.details = []
         })
       }
