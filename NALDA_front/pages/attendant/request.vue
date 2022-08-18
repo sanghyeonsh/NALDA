@@ -88,6 +88,15 @@
                 </template>
               </template>
             </b-table>
+            <b-pagination
+              v-if="detailsrows > 6"
+              v-model="detailCurrentPage"
+              :total-rows="detailsrows"
+              :per-page="perPagedetails"
+              first-number
+              last-number
+              size="sm"
+            ></b-pagination>
             <div class="checked-num">
               선택된 요청사항:
               {{ selecteditems.length }}
@@ -123,7 +132,7 @@ export default {
         name: 'flip-list',
       },
       rows: null,
-      perPagedetails: 8,
+      perPagedetails: 6,
       perPage: 4,
       requestCurrentPage: 1,
       completedCurrentPage: 1,

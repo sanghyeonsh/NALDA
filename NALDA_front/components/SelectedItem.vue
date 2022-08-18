@@ -119,6 +119,7 @@ export default {
     addNum(item) {
       this.PLUS_SELECTED_ITEM(item)
       this.items = [...this.selectedItem]
+      console.log(this.items)
     },
     minusNum(item) {
       this.MINUS_SELECTED_ITEM(item)

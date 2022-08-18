@@ -31,10 +31,7 @@
           class="goods-img"
           src="/orders/free-icon-out-of-stock-5578604.png"
           alt="service"
-          style="
-            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
-            filter: opacity(1) drop-shadow(0 0 0 #206e95);
-          "
+          style="filter: opacity(1) drop-shadow(0 0 0 #206e95)"
         />
         <div class="check-box-items">담요</div>
       </div>
@@ -104,10 +101,7 @@
           class="goods-img"
           src="/orders/free-icon-out-of-stock-5578604.png"
           alt="service"
-          style="
-            -webkit-filter: opacity(1) drop-shadow(0 0 0 #206e95);
-            filter: opacity(1) drop-shadow(0 0 0 #206e95);
-          "
+          style="filter: opacity(1) drop-shadow(0 0 0 #206e95)"
         />
         <div class="check-box-items">귀마개</div>
       </div>
@@ -303,6 +297,7 @@ export default {
 .goods-container-box img {
   width: 80%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
   padding: 10%;
   margin-bottom: 10%;
   /* border: solid; */

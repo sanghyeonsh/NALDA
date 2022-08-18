@@ -15,7 +15,7 @@
       <div
         v-for="(bus, idx) in busNum"
         :key="idx"
-        class="bus-number-click"
+        class="bus-number-click fadeInUp"
         @click=";[showTime(bus), checkBus(idx)]"
       >
         {{ bus }}
@@ -117,6 +117,7 @@
                     background-color: rgb(69, 169, 200);
                     color: white;
                     margin-top: 7%;
+                    border-radius: 25px;
                   "
                   class="treminal-map2"
                   v-on="on"
@@ -144,7 +145,7 @@
           </v-app>
         </div>
       </div>
-      <div class="bus-detail-map">
+      <div class="bus-detail-map fadeInUp">
         <TransportationBusMap :stations="choiceStation" />
       </div>
     </div>
@@ -639,5 +640,19 @@ export default {
 .terminal-image-box img {
   width: 75%;
   height: 100%;
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

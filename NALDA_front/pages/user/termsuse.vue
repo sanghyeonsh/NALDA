@@ -1428,6 +1428,7 @@ export default {
   text-shadow: 5px 5px 10px rgba(219, 152, 35, 0.61);
   color: rgba(224, 145, 26, 0.943);
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
+  filter: opacity(0.5) drop-shadow(0 0 0 #ffa91e);
 }
 
 .terms-title:hover {

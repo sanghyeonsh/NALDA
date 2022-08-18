@@ -141,12 +141,34 @@
         <b-button @click="showAlcohol">주류</b-button>
         <b-button @click="showNonAlcohol">비주류</b-button>
         <b-button @click="showAmenity">편의물품</b-button>
-        <b-button v-if="isValid" variant="warning" @click="setTotal()"
+        <b-button
+          v-if="isValid"
+          v-b-modal.modal-1
+          variant="warning"
+          @click=";[setTotal(), $bvModal.show('modal-stock')]"
           >입력</b-button
         >
+
         <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()"
           >수정</b-button
         >
+        <b-modal id="modal-stock" hide-footer>
+          <template #modal-title>
+            항공편 <code>{{ flightNum }}</code>
+          </template>
+          <div class="d-block text-center">
+            <h3>재고 입력 성공!</h3>
+          </div>
+          <b-button
+            variant="dark"
+            style="color: aliceblue"
+            class="mt-3"
+            block
+            @click="$bvModal.hide('modal-stock')"
+            >닫기</b-button
+          >
+        </b-modal>
+
         <b-button variant="success" @click="setTotal">운항종료</b-button>
       </div>
     </div>
