@@ -55,30 +55,27 @@ export default {
     await this.callToiletLog('777-200ER-1')
     this.toilet.forEach((element) => {
       if (element.toiletCode === 'HR01') {
-        if (element.used === 1) this.HR01 = false
+        if (element.used === 0) this.HR01 = false
         else this.HR01 = true
       }
       if (element.toiletCode === 'HL01') {
-        if (element.used === 1) this.HL01 = false
-        else this.HR01 = false
+        if (element.used === 0) this.HL01 = false
+        else this.HL01 = true
       }
     })
     this.interval = setInterval(async () => {
       await this.callToiletLog('777-200ER-1')
       this.toilet.forEach((element) => {
         if (element.toiletCode === 'HR01') {
-          if (element.used === 1) this.HR01 = false
+          if (element.used === 0) this.HR01 = false
           else this.HR01 = true
         }
         if (element.toiletCode === 'HL01') {
-          if (element.used === 1) this.HL01 = false
-          else this.HR01 = false
+          if (element.used === 0) this.HL01 = false
+          else this.HL01 = true
         }
       })
-    }, 5000)
-  },
-  destroyed() {
-    clearInterval(this.interval)
+    }, 1000)
   },
   methods: {
     ...mapActions('toilet', ['callToiletLog']),
