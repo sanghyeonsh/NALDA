@@ -204,7 +204,7 @@ export default {
       if (this.ordersObject.length === 0) return true
       else return false
     },
-    ...mapState('attendant', ['ordersList']),
+    ...mapState('attendant', ['ordersList', 'completeList']),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
