@@ -155,45 +155,38 @@ public class OrdersService {
 
     @Transactional
     public List<OrderDto> listOrders(String flightNum) {
+
+        List<Orders> orders = orderRepository.findByFlightNum(flightNum);
         List<OrderDto> orderDTOS = new ArrayList<>();
-
-            List<OrdersCodes> ordersCodes = ordersCodesRepository.findByFlightNum(flightNum);
+        for (Orders order : orders) {
+            List<OrdersCodes> ordersCodes = orderListRepository.findByOrdersId(order.getId());
             List<OrderListDto> orderLists = new ArrayList<>();
-            for (OrdersCodes ordersCode : ordersCodes) {
-
-                Orders order  = ordersCode.getOrders();
+            for(OrdersCodes ordersCode: ordersCodes){
                 orderLists.add(OrderListDto.builder()
                         .orderCode(ordersCode.getOrderCode())
                         .orderName(serviceRepository.findByServiceCode(ordersCode.getOrderCode()).getServiceName())
                         .cnt(ordersCode.getCnt())
                         .build());
-
-                String serviceClass;
-
-                if (orderLists.get(0).getOrderCode().charAt(0) == 'A' && !orderLists.get(0).getOrderCode().equals("A000")) {
-                    serviceClass = "SNACK&DRINK";
-                } else {
-                    serviceClass = serviceRepository.findByServiceCode(orderLists.get(0).getOrderCode()).getServiceClass();
-                }
-
-
-
-                orderDTOS.add(OrderDto.builder()
-                        .id(order.getId())
-                        .classification(serviceClass)
-                        .orderMessage(order.getOrderMessage())
-                        .orderTime(order.getOrderTime())
-                        .completeTime(order.getCompleteTime())
-                        .flightNum(flightNum)
-                        .seatNum(order.getSeat().getSeatNum())
-                        .username(order.getUser().getUsername())
-                        .status(String.valueOf(order.getStatus()))
-                        .orderList(orderLists)
-                        .build());
-
             }
-
-
+            String serviceClass;
+            if(orderLists.get(0).getOrderCode().charAt(0)=='A' && !orderLists.get(0).getOrderCode().equals("A000")){
+                serviceClass = "SNACK&DRINK";
+            }else{
+                serviceClass = serviceRepository.findByServiceCode(orderLists.get(0).getOrderCode()).getServiceClass();
+            }
+            orderDTOS.add(OrderDto.builder()
+                    .id(order.getId())
+                    .classification(serviceClass)
+                    .orderMessage(order.getOrderMessage())
+                    .orderTime(order.getOrderTime())
+                    .flightNum(flightNum)
+                    .seatNum(order.getSeat().getSeatNum())
+                    .username(order.getUser().getUsername())
+                    .status(String.valueOf(order.getStatus()))
+                    .completeTime(order.getCompleteTime())
+                    .orderList(orderLists)
+                    .build());
+        }
         return orderDTOS;
     }
 

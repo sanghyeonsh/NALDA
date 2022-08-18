@@ -104,7 +104,7 @@ export default {
   align-items: center;
 }
 .header-container-image img {
-  width: 19%;
+  width: 15%;
   cursor: pointer;
 }
 

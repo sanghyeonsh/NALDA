@@ -56,7 +56,7 @@
           <h3>항공편명을 다시 확인해주세요.</h3>
         </div>
         <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
+          >닫기</b-button
         >
       </b-modal>
       <b-modal id="login-modal" hide-footer>
@@ -65,7 +65,7 @@
           <h3>일치하지 않는 정보가 있습니다.</h3>
         </div>
         <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
+          >닫기</b-button
         >
       </b-modal>
     </div>

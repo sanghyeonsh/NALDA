@@ -1,14 +1,14 @@
 <template>
   <div class="main-container">
     <div class="main-wrap">
-      <header>
+      <!-- <header>
         <div class="sel-lang-wrap">
           <select class="lang-select">
             <option>Korean</option>
             <option>English</option>
           </select>
         </div>
-      </header>
+      </header> -->
       <section class="terms-section-wrap">
         <div class="all-terms-wrap">
           <div
@@ -1249,9 +1249,9 @@
           </div>
         </div>
         <div class="terms-button-wrap">
-          <b-button id="btn-group" @click="goBack">back</b-button>
+          <b-button id="btn-group" @click="goBack">돌아가기</b-button>
           <b-button id="btn-group" variant="outline-primary" @click="moveSignup"
-            >agree and start</b-button
+            >동의 및 시작</b-button
           >
         </div>
       </section>

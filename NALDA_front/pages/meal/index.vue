@@ -198,7 +198,7 @@
         <h3>이미 주문했습니다.</h3>
       </div>
       <b-button class="mt-3" block @click="$bvModal.hide('meal-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
