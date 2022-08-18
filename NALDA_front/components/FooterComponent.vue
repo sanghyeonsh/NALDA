@@ -15,13 +15,17 @@
       <img src="/main/flight_attendant_w.png" alt="toilet" />
       <div>기내식종료</div>
     </button>
-    <button v-else class="service-wrap" style="background-color: #0e0737" @click="MoveHelpcall">
+    <button
+      v-else
+      class="service-wrap"
+      style="background-color: #0e0737"
+      @click="MoveHelpcall"
+    >
       <img src="/main/flight_attendant_w.png" alt="toilet" />
       <div>승무원호출</div>
     </button>
   </div>
 </template>
-
 
 <script>
 import { mapActions, mapState } from 'vuex'
@@ -60,7 +64,7 @@ export default {
       this.$router.push({ name: 'main-helpcall' })
     },
     MoveToilet() {
-      this.$router.push('/attendant/toilet')
+      this.$router.push('/main/toilet')
     },
     endMeals() {
       this.endMeal(this.flightNum)
@@ -68,7 +72,6 @@ export default {
   },
 }
 </script>
-
 
 <style scoped>
 @font-face {

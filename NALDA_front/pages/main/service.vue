@@ -71,6 +71,7 @@ export default {
 .service-container-box img {
   width: 70%;
   -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
+  filter: opacity(0.5) drop-shadow(0 0 0 #206e95);
 }
 .service-container-box h3 {
   margin-top: 40px;

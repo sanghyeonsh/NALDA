@@ -1,12 +1,19 @@
 <template>
   <div class="airfood-container">
     <!-- <h1>주 메뉴 선택</h1> -->
-    <div style="height: 6vh; font-size: 30px; text-align: center">주메뉴선택</div>
+    <div style="height: 6vh; font-size: 30px; text-align: center">
+      주메뉴선택
+    </div>
     <div id="app">
       <v-app id="inspire">
         <div class="wrapper">
+          <page-loader :toggle="toggle" />
           <div v-for="(flightMeal, i) in flightMeals" :key="i" class="food-box">
-            <v-card v-if="flightMeal.cnt > 0" class="mx-auto my-12" style="margin: 0; height: 100%">
+            <v-card
+              v-if="flightMeal.cnt > 0"
+              class="mx-auto my-12"
+              style="margin: 0; height: 100%"
+            >
               <v-img
                 height="50%"
                 width="100%"
@@ -21,7 +28,8 @@
                   font-size: 25px;
                   height: 15%;
                 "
-              >{{ flightMeal.menu }}</v-card-title>
+                >{{ flightMeal.menu }}</v-card-title
+              >
 
               <v-card-text style="height: 20%">
                 <div style="font-size: 17px">{{ flightMeal.content }}</div>
@@ -35,21 +43,21 @@
                   <v-btn
                     text
                     color="teal accent-4"
-                    style="
-                      font-size: 20px;
-                      width: 80px;
-                      height: 100%;
-                      margin-left: 10px;
-                    "
+                    large
+                    style="font-size: 20px; margin-left: 10px"
                     @click="updateCheck(flightMeal)"
-                  >세부사항</v-btn>
+                    >세부사항</v-btn
+                  >
                 </div>
                 <v-spacer></v-spacer>
                 <div>
                   <button
+                    class="mr-3"
                     style="width: 80px; height: 100%; font-size: 20px"
                     @click="updateSelected(i)"
-                  >선택</button>
+                  >
+                    선택
+                  </button>
                 </div>
               </v-card-actions>
 
@@ -60,16 +68,22 @@
                   style="height: 100%"
                 >
                   <v-card-text class="pb-0" style="padding: 30px; height: 89%">
-                    <div class="text--primary" style="font-size: 40px">세부목록</div>
+                    <div class="text--primary" style="font-size: 40px">
+                      세부목록
+                    </div>
                     <ul style="font-size: 20px; margin-top: 30px">
                       <li
                         v-for="(detail, idx) in flightMeals[i].details"
                         :key="idx"
                         style="height: 35px"
-                      >{{ detail['mealName'] }}</li>
+                      >
+                        {{ detail['mealName'] }}
+                      </li>
                     </ul>
                     <hr />
-                    <div class="text--primary" style="font-size: 40px">알레르기</div>
+                    <div class="text--primary" style="font-size: 40px">
+                      알레르기
+                    </div>
                     <ul style="font-size: 20px; margin-top: 30px">
                       <li>{{ flightMeals[i].allergies[0]['allergyType'] }}</li>
                     </ul>
@@ -82,7 +96,8 @@
                       color="teal accent-4"
                       style="font-size: 20px"
                       @click="updateCheck(flightMeal)"
-                    >닫기</v-btn>
+                      >닫기</v-btn
+                    >
                   </v-card-actions>
                 </v-card>
               </v-expand-transition>
@@ -116,10 +131,13 @@
                   height: 15%;
                   opacity: 0.3;
                 "
-              >{{ flightMeal.menu }}</v-card-title>
+                >{{ flightMeal.menu }}</v-card-title
+              >
 
               <v-card-text style="height: 20%">
-                <div style="font-size: 17px; opacity: 0.5">{{ flightMeal.content }}</div>
+                <div style="font-size: 17px; opacity: 0.5">
+                  {{ flightMeal.content }}
+                </div>
               </v-card-text>
               <!-- <div v-if="flightMeal">남은수량: 10개</div> -->
 
@@ -136,18 +154,22 @@
                       margin-left: 10px;
                       opacity: 0.5;
                     "
-                  >세부사항</v-btn>
+                    >세부사항</v-btn
+                  >
                 </div>
                 <v-spacer></v-spacer>
                 <div>
                   <button
+                    class="mr-3"
                     style="
                       width: 80px;
                       height: 100%;
                       font-size: 20px;
                       opacity: 0.5;
                     "
-                  >선택</button>
+                  >
+                    선택
+                  </button>
                 </div>
               </v-card-actions>
             </v-card>
@@ -156,13 +178,16 @@
             </div>-->
           </div>
         </div>
-        <div style="display: flex; justify-content: center; align-items: center">
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
           <v-btn
             class="meal-order-button"
             x-large
             style="background-color: rgb(69, 169, 200); color: white"
             @click="finalChoice"
-          >주문하기</v-btn>
+            >주문하기</v-btn
+          >
           <!-- <div class="meal-order-button">주문하기</div> -->
         </div>
       </v-app>
@@ -172,7 +197,9 @@
       <div class="d-block text-center">
         <h3>이미 주문했습니다.</h3>
       </div>
-      <b-button class="mt-3" block @click="$bvModal.hide('meal-modal')">Close Me</b-button>
+      <b-button class="mt-3" block @click="$bvModal.hide('meal-modal')"
+        >닫기</b-button
+      >
     </b-modal>
     <!-- <button class="choice-button" @click="MoveDetail">선택</button> -->
   </div>
@@ -180,10 +207,14 @@
 
 <script>
 import { mapState, mapActions, mapMutations } from 'vuex'
+import PageLoader from '../../components/PageLoader.vue'
 import { choiceMeal } from '@/api/meal'
+
 export default {
   name: 'TestPage2',
-  components: {},
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       finalDetail: [],
@@ -210,6 +241,10 @@ export default {
       'total',
     ]),
     ...mapState('user', ['loginMember', 'flightNum', 'seatInfo']),
+    toggle() {
+      if (this.flightMeals.length === 0) return true
+      else return false
+    },
   },
   created() {
     // flightNum받아와서 넣어야함
@@ -226,7 +261,7 @@ export default {
     })
   },
   methods: {
-    ...mapMutations('meal', ['MEAL_CALC_STOCK']),
+    ...mapMutations('meal', ['PASSENGER_CALC_STOCK']),
     ...mapActions('meal', [
       'getFlightMeal',
       'getSelectedMeal',
@@ -248,7 +283,7 @@ export default {
     },
     finalChoice() {
       this.flightMeals.forEach((flightMeal) => {
-        if (flightMeal.menu === this.selectMeal && flightMeal.cnt > 0) {
+        if (flightMeal.menu === this.selectedMeal && flightMeal.cnt > 0) {
           this.info.flightNum = this.flightNum
           this.info.username = this.loginMember.username
           this.info.seatNum = this.seatInfo.seatNum

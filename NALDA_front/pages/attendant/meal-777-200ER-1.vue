@@ -1,8 +1,7 @@
 <template>
   <div class="meal-list-wrap">
-    <!-- <PageLoader />123 -->
     <div v-if="section === 'First'" class="seats-first-container">
-      <div class="first-meal-wrap">
+      <!-- <div class="first-meal-wrap">
         <div class="course-wrap">
           <div v-if="mealList.Acourse" class="A-course" :class="Acourse">
             <h5>제육덮밥</h5>
@@ -23,7 +22,8 @@
             <h5>두부버섯샐러드</h5>
           </div>
         </div>
-      </div>
+      </div>-->
+
       <h1>{{ section }}</h1>
       <div v-bind="firstClass" class="seat-wrap1">
         <div class="seat-row-first">
@@ -1345,7 +1345,6 @@
               Dcourse: economyClass[76].음식 === 'Dcourse',
               Ecourse: economyClass[76].음식 === 'Ecourse',
               Fcourse: economyClass[76].음식 === 'Fcourse',
-              
             }"
           >{{ economyClass[76].좌석 }}</div>
           <div
@@ -3077,17 +3076,14 @@
       <b-button @click="showSectionB">Economy Section B</b-button>
       <b-button @click="showSectionC">Economy Section C</b-button>
       <b-button @click="showSectionD">Economy Section D</b-button>
-      <b-button variant="warning" @click="dataCheck">test</b-button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-// import PageLoader from '../../components/PageLoader.vue'
 export default {
   name: 'AttendantMeal777200ER',
-  // components: { PageLoader },
   data() {
     return {
       section: 'First',
@@ -5319,13 +5315,6 @@ export default {
             }
           })
         })
-      // this.settedMealList.forEach((meal)=> {
-      //   this.mealList.forEach((seatMeal)=> {
-      //     if(meal.menu === seatMeal) {
-
-      //     }
-      //   })
-      // })
     })
   },
   methods: {
@@ -5353,9 +5342,6 @@ export default {
     },
     showSectionD() {
       this.section = 'EconomyD'
-    },
-    dataCheck() {
-      console.log(this.seatMealList)
     },
   },
 }

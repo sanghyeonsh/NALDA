@@ -1,9 +1,10 @@
 <template>
   <div class="request-container">
+    <page-loader :toggle="toggle" />
     <div class="request-wrap">
       <div class="request-uncomplete-wrap">
         <div class="title">
-          <h4 @click="test">대기</h4>
+          <h4>대기</h4>
         </div>
         <div class="overflow-auto">
           <div class="mt-3">
@@ -87,6 +88,15 @@
                 </template>
               </template>
             </b-table>
+            <b-pagination
+              v-if="detailsrows > 6"
+              v-model="detailCurrentPage"
+              :total-rows="detailsrows"
+              :per-page="perPagedetails"
+              first-number
+              last-number
+              size="sm"
+            ></b-pagination>
             <div class="checked-num">
               선택된 요청사항:
               {{ selecteditems.length }}
@@ -95,7 +105,23 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)">완료처리</b-button>
+                <b-button
+                  variant="info"
+                  @click=";[completeRequest(selecteditems), $bvModal.show('modal-end')]"
+                >완료처리</b-button>
+                <b-modal id="modal-end" hide-footer>
+                  <template #modal-title>요청 처리 완료!</template>
+                  <div class="d-block text-center">
+                    <h3>요청을 완료했습니다.</h3>
+                  </div>
+                  <b-button
+                    variant="dark"
+                    style="color: aliceblue"
+                    class="mt-3"
+                    block
+                    @click="$bvModal.hide('modal-end')"
+                  >닫기</b-button>
+                </b-modal>
               </div>
             </div>
           </div>
@@ -107,8 +133,12 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex'
+import PageLoader from '../../components/PageLoader.vue'
 export default {
   name: 'AttendantRequest',
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       transProps: {
@@ -116,7 +146,7 @@ export default {
         name: 'flip-list',
       },
       rows: null,
-      perPagedetails: 8,
+      perPagedetails: 6,
       perPage: 4,
       requestCurrentPage: 1,
       completedCurrentPage: 1,
@@ -184,7 +214,11 @@ export default {
     detailsrows() {
       return this.details.length
     },
-    ...mapState('attendant', ['ordersList']),
+    toggle() {
+      if (this.ordersObject.length === 0) return true
+      else return false
+    },
+    ...mapState('attendant', ['ordersList', 'completeList']),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
   created() {
@@ -194,7 +228,6 @@ export default {
     ...mapActions('attendant', ['getListOrders', 'updateOrderStatus']),
     showDetail(item) {
       this.details = []
-      console.log(item)
       for (let i = 0; i < item.주문상세.length; i++) {
         const orderDetail = {
           id: item.id,
@@ -230,7 +263,6 @@ export default {
 
       // 갯수가 세부사항 갯수와 같은경우 실제요청 상태값 바꾸기
       if (count === this.details.length && count !== 0) {
-        console.log(this.details[0].id)
         const promise = new Promise((resolve, reject) => {
           resolve()
         })
@@ -240,9 +272,6 @@ export default {
           this.details = []
         })
       }
-    },
-    test() {
-      console.log(this.ordersObject)
     },
   },
 }

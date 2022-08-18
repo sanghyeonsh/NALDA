@@ -3,7 +3,7 @@
     <user-navs></user-navs>
     <div class="custom-declaration-wrap fadeInUp">
       <div class="mycustom-subindex-item">
-        <h4>세관신고서 목록</h4>
+        <div class="custom-list">세관신고서 목록</div>
         <div class="mycustom-subindex-bluebox">
           <!-- <div class="overflow-auto"> -->
           <v-data-table
@@ -82,7 +82,9 @@
               v-for="(item, idx) in declaration.visitedCountries"
               :key="idx"
               class="panel-content"
-            >{{ item.countryName }}</div>
+            >
+              {{ item.countryName }}
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
@@ -93,20 +95,25 @@
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="panel-content">초과 여부 : {{ declaration.dutyfreeExceed }}</div>
-            <div class="panel-content">총금액 : 약 {{ declaration.dutyfreeExceedValue }} $</div>
+            <div class="panel-content">
+              초과 여부 : {{ declaration.dutyfreeExceed }}
+            </div>
+            <div class="panel-content">
+              총금액 : 약 {{ declaration.dutyfreeExceedValue }} $
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
           <v-expansion-panel-header>
             <div>
-              <b>FTA 협정국가</b>의 원산지 물품으로
-              <b>특혜관세</b>를
+              <b>FTA 협정국가</b>의 원산지 물품으로 <b>특혜관세</b>를
               적용받으려는 물품
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="panel-content">여부 : {{ declaration.preferentialTariff }}</div>
+            <div class="panel-content">
+              여부 : {{ declaration.preferentialTariff }}
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
@@ -114,13 +121,17 @@
             <div>
               미화로 환산하여
               <b>$10,000을 초과하는 지급수단</b>
-              <br />(원화ㆍ달러화 등
-              법정통화, 자기앞수표, 여행자수표, 및 그 밖의 유가증권)
+              <br />(원화ㆍ달러화 등 법정통화, 자기앞수표, 여행자수표, 및 그
+              밖의 유가증권)
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="panel-content">여부 : {{ declaration.paymentExceed }}</div>
-            <div class="panel-content">총금액 : 약 {{ declaration.paymentExceedValue }} $</div>
+            <div class="panel-content">
+              여부 : {{ declaration.paymentExceed }}
+            </div>
+            <div class="panel-content">
+              총금액 : 약 {{ declaration.paymentExceedValue }} $
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
@@ -132,7 +143,9 @@
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="panel-content">여부 : {{ declaration.prohibitGoods }}</div>
+            <div class="panel-content">
+              여부 : {{ declaration.prohibitGoods }}
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
@@ -144,7 +157,9 @@
             </div>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-            <div class="panel-content">여부 : {{ declaration.livestockVisited }}</div>
+            <div class="panel-content">
+              여부 : {{ declaration.livestockVisited }}
+            </div>
           </v-expansion-panel-content>
         </v-expansion-panel>
         <v-expansion-panel>
@@ -168,9 +183,15 @@
               {{ declaration.alcohols.liter }}리터 &nbsp;
               {{ declaration.alcohols.dollar }}$
             </div>
-            <div class="panel-content">담배 : {{ declaration.cigarette }} 갑</div>
-            <div class="panel-content">향수 : {{ declaration.perfumes }} ㎖</div>
-            <div class="panel-content">▶그 밖의 면세범위 (US $600) 초과 물품</div>
+            <div class="panel-content">
+              담배 : {{ declaration.cigarette }} 갑
+            </div>
+            <div class="panel-content">
+              향수 : {{ declaration.perfumes }} ㎖
+            </div>
+            <div class="panel-content">
+              ▶그 밖의 면세범위 (US $600) 초과 물품
+            </div>
             <div v-for="(item, idx) in declaration.etcExceeds" :key="idx">
               <div class="panel-content">
                 &emsp;&emsp;&emsp;&emsp; 품명 : {{ item.name }} &nbsp; 수(증)량
@@ -180,7 +201,9 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <b-button class="mt-3" block @click="$bvModal.hide('check-modal')">Close Me</b-button>
+      <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
+        >닫기</b-button
+      >
     </b-modal>
   </div>
 </template>
@@ -260,6 +283,11 @@ export default {
   padding: 0;
   font-family: 'twayfly';
 }
+.custom-list {
+  font-size: xx-large;
+  margin-bottom: 5px;
+}
+
 .panel-content {
   font-size: x-large;
 }
@@ -293,7 +321,7 @@ ul {
   justify-content: center;
 }
 .custom-declaration-wrap {
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: flex;
   /* flex-direction: column; */

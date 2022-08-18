@@ -1,5 +1,6 @@
 <template>
   <div class="transport-bus">
+    <page-loader :toggle="toggle" />
     <div class="bus-region">
       <div
         v-for="(area, idx) in areas"
@@ -14,7 +15,7 @@
       <div
         v-for="(bus, idx) in busNum"
         :key="idx"
-        class="bus-number-click"
+        class="bus-number-click fadeInUp"
         @click=";[showTime(bus), checkBus(idx)]"
       >
         {{ bus }}
@@ -116,6 +117,7 @@
                     background-color: rgb(69, 169, 200);
                     color: white;
                     margin-top: 7%;
+                    border-radius: 25px;
                   "
                   class="treminal-map2"
                   v-on="on"
@@ -143,7 +145,7 @@
           </v-app>
         </div>
       </div>
-      <div class="bus-detail-map">
+      <div class="bus-detail-map fadeInUp">
         <TransportationBusMap :stations="choiceStation" />
       </div>
     </div>
@@ -164,8 +166,11 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-
+import PageLoader from './PageLoader.vue'
 export default {
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       areas: ['서울', '경기', '인천', '강원', '충청', '경상', '전라'],
@@ -179,6 +184,10 @@ export default {
   },
   computed: {
     ...mapState('transportation', ['info', 'time', 'stop']),
+    toggle() {
+      if (this.busNum.length === 0) return true
+      else return false
+    },
   },
   created() {
     // this.getInfo('1')
@@ -631,5 +640,19 @@ export default {
 .terminal-image-box img {
   width: 75%;
   height: 100%;
+}
+
+.fadeInUp {
+  animation: fadeInUp 2s ease backwards;
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0px, 0);
+    opacity: 1;
+  }
 }
 </style>

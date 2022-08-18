@@ -5,15 +5,7 @@
         <b-table-simple id="stocks-table" hover small caption-top responsive>
           <caption>
             <div class="caption-wrap">
-              <h3 @click="test">항공편 {{flightNum}} 기내식 목록</h3>
-              <!-- <div id="flight-num-input">
-                <b-form-input
-                  v-model="flightNum"
-                  type="text"
-                  disabled
-                  style="height: 5vh; font-size: x-large;"
-                />
-              </div>-->
+              <h3>항공편 {{ flightNum }} 기내식 목록</h3>
             </div>
           </caption>
           <colgroup>
@@ -31,21 +23,21 @@
           </colgroup>
           <b-thead head-variant="dark">
             <b-tr>
-              <b-th colspan="3">Stocks</b-th>
-              <b-th colspan="3">Item List</b-th>
+              <b-th colspan="3">재고</b-th>
+              <b-th colspan="3">기내식 목록</b-th>
             </b-tr>
             <b-tr>
-              <b-th>Service Title</b-th>
-              <b-th colspan="2">Name</b-th>
-              <b-th>Quantity</b-th>
+              <b-th>서비스명</b-th>
+              <b-th colspan="2">메뉴명</b-th>
+              <b-th>수량</b-th>
             </b-tr>
           </b-thead>
           <b-tbody>
             <b-tr>
-              <b-th :rowspan="mealList.length+1">기내식</b-th>
+              <b-th :rowspan="mealList.length + 1">기내식</b-th>
             </b-tr>
-            <b-tr v-for="(meal,index) in mealList" :key="index">
-              <b-th colspan="2" class="text-right">{{meal.menu}}</b-th>
+            <b-tr v-for="(meal, index) in mealList" :key="index">
+              <b-th colspan="2" class="text-right">{{ meal.menu }}</b-th>
               <b-td>
                 <b-form-input
                   id="snack-input"
@@ -62,17 +54,35 @@
           <b-tfoot>
             <b-tr>
               <b-td colspan="7" variant="secondary" class="text-right">
-                Total Rows:
-                <b>{{mealList.length}}</b>
+                총 행:
+                <b>{{ mealList.length }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
         </b-table-simple>
       </div>
       <div class="stock-btn-group">
-        <b-button v-if="isValid" variant="info" @click="fixTotal()">save</b-button>
-        <b-button v-else-if="!isValid" variant="info" @click="unFixTotal()">modify</b-button>
-        <b-button variant="warning" @click="setTotal()">next</b-button>
+        <b-button v-if="isValid" variant="info" @click="fixTotal()">저장</b-button>
+        <b-button v-else-if="!isValid" variant="info" @click="unFixTotal()">수정</b-button>
+        <b-button v-if="!isNotSaved" variant="warning" @click="setTotal()">확인</b-button>
+        <b-button
+          v-else-if="isNotSaved"
+          variant="warning"
+          @click="$bvModal.show('modal-save-alert')"
+        >확인</b-button>
+        <b-modal v-if="isNotSaved" id="modal-save-alert" hide-footer>
+          <template #modal-title>주의</template>
+          <div class="d-block text-center">
+            <h3>저장이 필요합니다!</h3>
+          </div>
+          <b-button
+            variant="dark"
+            style="color: aliceblue"
+            class="mt-3"
+            block
+            @click="$bvModal.hide('modal-save-alert')"
+          >닫기</b-button>
+        </b-modal>
       </div>
     </div>
   </div>
@@ -85,6 +95,7 @@ export default {
   components: {},
   data() {
     return {
+      isNotSaved: true,
       isValid: true,
       dialog: false,
       mealList: [],
@@ -141,22 +152,11 @@ export default {
         })
         this.isValid = !this.isValid
       }
-      // this.getDetail(this.meals)
-      // this.getAllergy(this.meals)
     })
   },
   methods: {
     ...mapMutations('meal', ['SET_FLIGHTMEALS_LIST', 'CLEAR_FLIGHTMEALS_LIST']),
-    test() {
-      this.getFlightMeal(this.flightNum)
-      console.log(this.mealList)
-      console.log(this.flightMealList)
-      // console.log(this.selectedMealList)
-      console.log(this.isValid)
-    },
     setTotal() {
-      console.log(this.selectedMealList) // 얘를 넘겨줘야함
-      //   console.log(this.meals)
       if (this.selectedMealList.length !== 0) {
         this.CLEAR_FLIGHTMEALS_LIST()
         this.SET_FLIGHTMEALS_LIST(this.selectedMealList)
@@ -170,11 +170,12 @@ export default {
           this.selectedMealList.push(meal)
         }
       })
-      // console.log(this.selectedMealList)
       this.isValid = !this.isValid
+      this.isNotSaved = !this.isNotSaved
     },
     unFixTotal() {
       this.isValid = !this.isValid
+      this.isNotSaved = !this.isNotSaved
     },
     ...mapActions('meal', [
       'getMeal',
@@ -189,7 +190,6 @@ export default {
   },
 }
 </script>
-
 
 <style scoped>
 @font-face {

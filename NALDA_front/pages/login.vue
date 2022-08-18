@@ -51,14 +51,14 @@
         <div class="d-block text-center">
           <h3>항공편명을 다시 확인해주세요.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">Close Me</b-button>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">닫기</b-button>
       </b-modal>
       <b-modal id="login-modal" hide-footer>
         <template #modal-title>알림</template>
         <div class="d-block text-center">
           <h3>일치하지 않는 정보가 있습니다.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">Close Me</b-button>
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">닫기</b-button>
       </b-modal>
     </div>
     <div v-if="flightKeyboardView">
@@ -273,7 +273,7 @@ input[type='password']::placeholder {
   width: 500px;
   height: 90px;
   font-size: 20px;
-  background: var(--nalda-blue-color);
+  background: #206e95;
   color: white;
   border: solid 1px var(--nalda-blue-border-color);
   border-radius: 30px;
@@ -290,6 +290,7 @@ input[type='password']::placeholder {
   margin-right: 3%;
   border-bottom: solid 1px var(--border-gray-color);
   color: white;
+  cursor: pointer;
 }
 
 .login-stay-sign-in i {
@@ -321,7 +322,7 @@ a {
 .login-icon-check {
   width: 30px;
   height: 30px;
-  -webkit-filter: drop-shadow(0 0 0 #ffffff);
+  filter: drop-shadow(0 0 0 #ffffff);
 }
 
 .fadeInUp {

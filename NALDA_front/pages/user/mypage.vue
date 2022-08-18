@@ -96,12 +96,12 @@ export default {
     ...mapState('user', ['loginMember', 'memberDetail']),
     fullName() {
       let fullName = ''
-      this.loginMember?.fullName?.firstName &&
-        (fullName += this.loginMember?.fullName?.firstName)
+      this.loginMember?.fullName?.lastName &&
+        (fullName += this.loginMember?.fullName?.lastName)
       this.loginMember.fullName.middleName &&
         (fullName += this.loginMember?.fullName?.middleName)
-      this.loginMember.fullName.lastName &&
-        (fullName += this.loginMember?.fullName?.lastName)
+      this.loginMember.fullName.firstName &&
+        (fullName += this.loginMember?.fullName?.firstName)
 
       return fullName
     },

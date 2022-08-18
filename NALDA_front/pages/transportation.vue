@@ -31,7 +31,7 @@
               <div class="profile-img">
                 <img src="/main/user_profile_w.png" alt="profile-img" />
               </div>
-              <div class="profile-name">{{ fullname }}</div>
+              <div class="ml-1 profile-name">{{ fullname }}</div>
             </div>
             <v-tab-item>
               <v-card>
@@ -76,12 +76,12 @@ export default {
     fullname() {
       if (this.loginMember == null) return '비회원'
       let fullname = ''
-      this.loginMember.fullName.firstName &&
-        (fullname += this.loginMember.fullName.firstName)
-      this.loginMember.fullName.middleName &&
-        (fullname += this.loginMember.fullName.middleName)
       this.loginMember.fullName.lastName &&
         (fullname += this.loginMember.fullName.lastName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
       return fullname
     },
   },

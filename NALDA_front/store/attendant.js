@@ -50,8 +50,6 @@ export const mutations = {
 
   SET_STOCK_AMOUNT(state, data) {
     state.setStock = true
-    // console.log(state.setStock)
-    console.log(data)
   },
   SET_STOCK_STATUS(state) {
     state.setStock = true
@@ -62,9 +60,6 @@ export const mutations = {
   },
 
   SET_ORDERS_LIST(state, data) {
-    // console.log('데이터' + data)
-    console.log('안나와  SET_ORDERS_LIST')
-    // console.log('store입니다 ' + data.length)
     for (let i = 0; i < data.length; i++) {
       if (data[i].classification === 'SNACK&DRINK') {
         data[i].classification = '취식 및 음료'
@@ -74,10 +69,8 @@ export const mutations = {
         data[i].classification = '편의물품'
       }
       if (data[i].status === 'PROGRESS') {
-        // console.log('푸쉬')
         state.ordersList.push(data[i])
       } else if (data[i].status === 'DONE') {
-        // console.log('done푸쉬')
         state.completeList.push(data[i])
       }
     }
@@ -92,7 +85,6 @@ export const mutations = {
 export const getters = {
   ordersObject(state) {
     const request = []
-    // console.log(state.ordersList.length)
     if (state.ordersList.length > 0)
       for (let i = 0; i < state.ordersList.length; i++) {
         let orderDetail = ''
@@ -119,7 +111,6 @@ export const getters = {
   },
   completeObject(state) {
     const complete = []
-    console.log(state.completeList.length)
     if (state.completeList.length > 0)
       for (let i = 0; i < state.completeList.length; i++) {
         let orderDetail = ''
@@ -136,7 +127,7 @@ export const getters = {
           좌석: state.completeList[i].seatNum,
           분류: state.completeList[i].classification,
           요청사항: orderDetail,
-          완료시각: state.completeList[i].completeTime.split('T')[1],
+          완료시각: state.completeList[i]?.completeTime?.split('T')[1],
           상태: state.completeList[i].status,
           주문상세: state.completeList[i].orderList,
         }
@@ -146,7 +137,6 @@ export const getters = {
   },
 }
 
-// console.log eslint rule수정 충돌방지
 export const actions = {
   getServiceList({ commit }) {
     listServices(
@@ -159,13 +149,11 @@ export const actions = {
     )
   },
   setStockAmount({ commit }, totalQuantity) {
-    console.log('나 재고입력 왔쩌염')
     commit('SET_STOCK_STATUS')
     selectServices(
       totalQuantity,
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
-        console.log('성공')
       },
       (error) => {
         console.log(error)
@@ -173,12 +161,10 @@ export const actions = {
     )
   },
   modifyStockAmount({ commit }, totalQuantity) {
-    console.log('나 재고수정 왔쩌염')
     modifyServices(
       totalQuantity,
       ({ data }) => {
         commit('SET_STOCK_AMOUNT', data)
-        console.log('성공')
       },
       (error) => {
         console.log(error)
@@ -190,21 +176,18 @@ export const actions = {
       flightNum,
       ({ data }) => {
         commit('GET_STOCK_AMOUNT', data)
-        console.log('성공')
       },
       (error) => {
         console.log(error)
       }
     )
   },
-  getListOrders({ commit }, flightNum) {
+  async getListOrders({ commit }, flightNum) {
     commit('CREAR_ORDERS_LIST')
-    listOrders(
+    await listOrders(
       flightNum,
       ({ data }) => {
-        console.log(data)
         commit('SET_ORDERS_LIST', data.serviceList)
-        console.log('성공')
       },
       (error) => {
         console.log(error)

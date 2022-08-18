@@ -80,7 +80,7 @@
         <h3>재고가 부족합니다.</h3>
       </div>
       <b-button class="mt-3" block @click="$bvModal.hide('stock-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
   </v-app>
@@ -117,9 +117,9 @@ export default {
       this.items = [...this.selectedItem]
     },
     addNum(item) {
-      this.$bvModal.show('stock-modal')
       this.PLUS_SELECTED_ITEM(item)
       this.items = [...this.selectedItem]
+      console.log(this.items)
     },
     minusNum(item) {
       this.MINUS_SELECTED_ITEM(item)
@@ -156,8 +156,9 @@ export default {
         this.postOrders(order)
         this.CLEAR_CHOICE_FOODS()
         this.$router.push('/waiting')
+      } else {
+        this.$bvModal.show('stock-modal')
       }
-      this.$bvModal.show('stock-modal')
     },
   },
 }

@@ -11,7 +11,8 @@
       <div class="profile-img" @click="MoveMypage">
         <img src="/main/user_profile_w.png" alt="profile-img" />
       </div>
-      <div class="profile-name" @click="MoveMypage">{{ fullname }}</div>
+
+      <div class="mr-3 profile-name" @click="MoveMypage">{{ fullname }}</div>
     </div>
   </div>
 </template>
@@ -27,12 +28,12 @@ export default {
     fullname() {
       if (this.loginMember == null) return '비회원'
       let fullname = ''
-      this.loginMember.fullName.firstName &&
-        (fullname += this.loginMember.fullName.firstName)
-      this.loginMember.fullName.middleName &&
-        (fullname += this.loginMember.fullName.middleName)
       this.loginMember.fullName.lastName &&
         (fullname += this.loginMember.fullName.lastName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
       return fullname
     },
   },
@@ -57,7 +58,6 @@ export default {
       }
     },
     Movefrom() {
-      console.log(this.$nuxt.context.from.path)
       this.$router.push(this.$nuxt.context.from.path)
     },
   },
@@ -85,26 +85,26 @@ export default {
   background-color: rgb(69, 169, 200);
 }
 .space-wrap {
-  width: 25%;
+  width: 18%;
 }
 
 .header-container-blank {
   width: 30%;
 }
 .header-container-image {
-  width: 50%;
+  width: 64%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header-container-image img {
-  width: 19%;
+  width: 15%;
   cursor: pointer;
 }
 
 .header-container-userprofile {
-  width: 25%;
+  width: 18%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -122,22 +122,22 @@ export default {
 }
 
 .profile-img {
-  width: 40%;
+  width: 30%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 .profile-img img {
-  width: 50%;
-  height: 50%;
+  width: 55%;
+  height: 55%;
 }
 
 .profile-name {
-  width: 50%;
+  width: 40%;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   font-size: 30px;
 }

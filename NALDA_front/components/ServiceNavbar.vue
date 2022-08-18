@@ -34,8 +34,17 @@
               style="background-color: rgba(239, 239, 239, 0.511)"
             >
               <div class="tab-item">
-                <div v-for="(item, idx) in snacks" :key="idx" class="snack-image">
-                  <v-card v-if="item.cnt > 0" style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                <page-loader :toggle="toggle" />
+                <div
+                  v-for="(item, idx) in snacks"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -45,7 +54,9 @@
                     ></v-img>
 
                     <v-card-actions class="ml-3">
-                      <div style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -74,7 +85,9 @@
                     ></v-img>
 
                     <v-card-actions class="ml-3">
-                      <div style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -90,8 +103,16 @@
               style="background-color: rgba(239, 239, 239, 0.511)"
             >
               <div class="tab-item">
-                <div v-for="(item, idx) in alcohols" :key="idx" class="snack-image">
-                  <v-card v-if="item.cnt > 0" style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                <div
+                  v-for="(item, idx) in alcohols"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -101,7 +122,9 @@
                     ></v-img>
 
                     <v-card-actions>
-                      <div class="ml-3" style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -129,7 +152,9 @@
                     ></v-img>
 
                     <v-card-actions class="ml-3">
-                      <div style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -145,8 +170,16 @@
               style="background-color: rgba(239, 239, 239, 0.511)"
             >
               <div class="tab-item">
-                <div v-for="(item, idx) in nonAlcohols" :key="idx" class="snack-image">
-                  <v-card v-if="item.cnt > 0" style="margin-bottom: 30px" @click="ChoiceMenu(item)">
+                <div
+                  v-for="(item, idx) in nonAlcohols"
+                  :key="idx"
+                  class="snack-image"
+                >
+                  <v-card
+                    v-if="item.cnt > 0"
+                    style="margin-bottom: 30px"
+                    @click="ChoiceMenu(item)"
+                  >
                     <v-img
                       :src="'data:image/jpg;base64,' + item.bytesdata"
                       class="black--text align-end"
@@ -156,7 +189,9 @@
                     ></v-img>
 
                     <v-card-actions>
-                      <div class="ml-3" style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div class="ml-3" style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -184,7 +219,9 @@
                     ></v-img>
 
                     <v-card-actions class="ml-3">
-                      <div style="font-size: x-large">{{ item.serviceName }}</div>
+                      <div style="font-size: x-large">
+                        {{ item.serviceName }}
+                      </div>
                       <v-spacer></v-spacer>
                       <v-btn icon>
                         <v-icon>mdi-heart</v-icon>
@@ -206,7 +243,8 @@
         icon="mdi-cart-heart"
         style="z-index: 2; position: fixed; bottom: 0; width: 100%"
         transition="slide-y-transition"
-      >장바구니에 담았습니다!</v-alert>
+        >장바구니에 담았습니다!</v-alert
+      >
       <v-btn
         class="mx-2"
         fab
@@ -226,9 +264,12 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import PageLoader from './PageLoader.vue'
 export default {
   name: 'ServiceNavbar',
-
+  components: {
+    PageLoader,
+  },
   data() {
     return {
       isSnack: false,
@@ -246,6 +287,10 @@ export default {
   computed: {
     ...mapState('menu', ['items', 'stock', 'total']),
     ...mapState('user', ['flightNum']),
+    toggle() {
+      if (this.snacks.length === 0) return true
+      else return false
+    },
   },
 
   created() {
