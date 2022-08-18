@@ -7,33 +7,19 @@
           <div>
             <h6>아이디</h6>
             <div class="modify-input-id-wrap">
-              <input
-                v-model="username"
-                placeholder="Username"
-                type="text"
-                disabled
-              />
+              <input v-model="username" placeholder="아이디" type="text" disabled />
             </div>
           </div>
           <div>
             <h6>비밀번호</h6>
             <div class="modify-input-wrap password-wrap">
-              <input
-                ref="password"
-                v-model="password"
-                placeholder="Password"
-                type="password"
-              />
+              <input ref="password" v-model="password" placeholder="비밀번호" type="password" />
             </div>
           </div>
           <div>
             <h6>비밀번호 확인</h6>
             <div class="modify-input-wrap password-confirm-wrap">
-              <input
-                v-model="passwordCheck"
-                placeholder="Password"
-                type="password"
-              />
+              <input v-model="passwordCheck" placeholder="비밀번호 확인" type="password" />
             </div>
           </div>
           <div class="modify-name-form-tag">
@@ -46,11 +32,7 @@
               <input v-model="firstName" placeholder="firstname" type="text" />
             </div>
             <div class="modify-input-wrap name-wrap">
-              <input
-                v-model="middleName"
-                placeholder="middlename"
-                type="text"
-              />
+              <input v-model="middleName" placeholder="middlename" type="text" />
             </div>
 
             <div class="modify-input-wrap name-wrap">
@@ -86,21 +68,11 @@
             <h6>이메일</h6>
             <div class="email-wrap">
               <div class="modify-input-email">
-                <input
-                  id="modify-email-id"
-                  v-model="email1"
-                  type="text"
-                  placeholder="이메일아이디"
-                />
+                <input id="modify-email-id" v-model="email1" type="text" placeholder="이메일아이디" />
               </div>
               <h5>@</h5>
               <div class="modify-input-email">
-                <input
-                  id="modify-email"
-                  v-model="email2"
-                  type="text"
-                  placeholder="이메일주소"
-                />
+                <input id="modify-email" v-model="email2" type="text" placeholder="이메일주소" />
               </div>
               <div class="modify-input-email" style="margin-left: 10px">
                 <select
@@ -109,7 +81,7 @@
                   name="email"
                   @change="changeEmail"
                 >
-                  <option value="">직접입력</option>
+                  <option value>직접입력</option>
                   <option value="naver.com">naver.com</option>
                   <option value="gmail.com">gmail.com</option>
                   <option value="daum.com">daum.com</option>
@@ -122,30 +94,15 @@
             <h6>전화번호</h6>
             <div class="mobile-num-wrap">
               <div class="modify-mobile-num">
-                <input
-                  v-model="tel1"
-                  class="mobile-num"
-                  type="text"
-                  placeholder="000"
-                />
+                <input v-model="tel1" class="mobile-num" type="text" placeholder="000" />
               </div>
               <h5>-</h5>
               <div class="modify-mobile-num">
-                <input
-                  v-model="tel2"
-                  class="mobile-num"
-                  type="text"
-                  placeholder="0000"
-                />
+                <input v-model="tel2" class="mobile-num" type="text" placeholder="0000" />
               </div>
               <h5>-</h5>
               <div class="modify-mobile-num">
-                <input
-                  v-model="tel3"
-                  class="mobile-num"
-                  type="text"
-                  placeholder="0000"
-                />
+                <input v-model="tel3" class="mobile-num" type="text" placeholder="0000" />
               </div>
             </div>
           </div>
@@ -153,67 +110,33 @@
             <h6>주소</h6>
             <div class="address-wrap">
               <div class="postal-wrap">
-                <input
-                  id="postal-code"
-                  v-model="zipcode"
-                  placeholder="postal code"
-                  type="text"
-                />
-                <input
-                  id="postal-check-btn"
-                  type="button"
-                  value="주소검색"
-                  @click="find_Postcode()"
-                />
+                <input id="postal-code" v-model="zipcode" placeholder="우편번호" type="text" />
+                <input id="postal-check-btn" type="button" value="주소검색" @click="find_Postcode()" />
               </div>
               <div class="modify-input-wrap">
-                <input
-                  id="address"
-                  v-model="mainAddress"
-                  placeholder="address"
-                  type="text"
-                />
+                <input id="address" v-model="mainAddress" placeholder="주소" type="text" />
               </div>
               <div class="modify-input-wrap" style="margin-top: 3px">
-                <input
-                  id="address-detail"
-                  v-model="detailAddress"
-                  placeholder="address detail"
-                  type="text"
-                />
+                <input id="address-detail" v-model="detailAddress" placeholder="상세주소" type="text" />
               </div>
             </div>
           </div>
           <div>
             <h6>여권번호</h6>
             <div class="modify-input-wrap passport-num-wrap">
-              <input
-                v-model="passportNum"
-                placeholder="passportnumber"
-                type="text"
-              />
+              <input v-model="passportNum" placeholder="여권번호" type="text" />
             </div>
           </div>
           <div>
             <h6>국적</h6>
             <div class="modify-input-wrap nationality-wrap">
-              <input
-                v-model="nationality"
-                placeholder="nationality"
-                type="text"
-              />
+              <input v-model="nationality" placeholder="국적" type="text" />
             </div>
           </div>
           <div>
             <h6>직업</h6>
             <div class="modify-input-wrap job-wrap">
-              <select
-                id="modify-job-select"
-                v-model="job"
-                class="selectbox"
-                name="job"
-                onchange
-              >
+              <select id="modify-job-select" v-model="job" class="selectbox" name="job" onchange>
                 <option value="학생">학생</option>
                 <option value="주부">주부</option>
                 <option value="군인">군인</option>
@@ -235,13 +158,11 @@
                     <span>modify</span>
           </div>-->
           <b-modal id="check-modal" hide-footer>
-            <template #modal-title> 알림 </template>
+            <template #modal-title>알림</template>
             <div class="d-block text-center">
               <h3>정보를 모두 채워주세요!</h3>
             </div>
-            <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
-              >Close Me</b-button
-            >
+            <b-button class="mt-3" block @click="$bvModal.hide('check-modal')">닫기</b-button>
           </b-modal>
         </section>
       </div>

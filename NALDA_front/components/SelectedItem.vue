@@ -80,7 +80,7 @@
         <h3>재고가 부족합니다.</h3>
       </div>
       <b-button class="mt-3" block @click="$bvModal.hide('stock-modal')"
-        >Close Me</b-button
+        >닫기</b-button
       >
     </b-modal>
   </v-app>

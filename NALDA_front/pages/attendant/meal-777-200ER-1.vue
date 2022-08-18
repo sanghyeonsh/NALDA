@@ -1,6 +1,29 @@
 <template>
   <div class="meal-list-wrap">
     <div v-if="section === 'First'" class="seats-first-container">
+      <!-- <div class="first-meal-wrap">
+        <div class="course-wrap">
+          <div v-if="mealList.Acourse" class="A-course" :class="Acourse">
+            <h5>제육덮밥</h5>
+          </div>
+          <div v-else-if="mealList.Bcourse" class="B-course" :class="Bcourse">
+            <h5>카레라이스</h5>
+          </div>
+          <div v-else-if="mealList.Ccourse" class="C-course" :class="Ccourse">
+            <h5>소불고기비빔밥</h5>
+          </div>
+          <div v-else-if="mealList.Dcourse" class="D-course" :class="Dcourse">
+            <h5>치킨스테이크</h5>
+          </div>
+          <div v-else-if="mealList.Ecourse" class="E-course" :class="Ecourse">
+            <h5>새우파스타</h5>
+          </div>
+          <div v-else-if="mealList.Fcourse" class="F-course" :class="Fcourse">
+            <h5>두부버섯샐러드</h5>
+          </div>
+        </div>
+      </div>-->
+
       <h1>{{ section }}</h1>
       <div v-bind="firstClass" class="seat-wrap1">
         <div class="seat-row-first">
@@ -14,9 +37,7 @@
               Ecourse: firstClass[0].음식 === 'Ecourse',
               Fcourse: firstClass[0].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[0].좌석 }}
-          </div>
+          >{{ firstClass[0].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -28,9 +49,7 @@
               Ecourse: firstClass[1].음식 === 'Ecourse',
               Fcourse: firstClass[1].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[1].좌석 }}
-          </div>
+          >{{ firstClass[1].좌석 }}</div>
           <div class="space"></div>
           <div
             class="seat-first"
@@ -42,9 +61,7 @@
               Ecourse: firstClass[2].음식 === 'Ecourse',
               Fcourse: firstClass[2].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[2].좌석 }}
-          </div>
+          >{{ firstClass[2].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -56,9 +73,7 @@
               Ecourse: firstClass[3].음식 === 'Ecourse',
               Fcourse: firstClass[3].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[3].좌석 }}
-          </div>
+          >{{ firstClass[3].좌석 }}</div>
         </div>
         <div class="seat-row-first">
           <div
@@ -71,9 +86,7 @@
               Ecourse: firstClass[4].음식 === 'Ecourse',
               Fcourse: firstClass[4].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[4].좌석 }}
-          </div>
+          >{{ firstClass[4].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -85,9 +98,7 @@
               Ecourse: firstClass[5].음식 === 'Ecourse',
               Fcourse: firstClass[5].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[5].좌석 }}
-          </div>
+          >{{ firstClass[5].좌석 }}</div>
           <div class="space"></div>
           <div
             class="seat-first"
@@ -99,9 +110,7 @@
               Ecourse: firstClass[6].음식 === 'Ecourse',
               Fcourse: firstClass[6].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[6].좌석 }}
-          </div>
+          >{{ firstClass[6].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-first"
@@ -113,9 +122,7 @@
               Ecourse: firstClass[7].음식 === 'Ecourse',
               Fcourse: firstClass[7].음식 === 'Fcourse',
             }"
-          >
-            {{ firstClass[7].좌석 }}
-          </div>
+          >{{ firstClass[7].좌석 }}</div>
         </div>
       </div>
     </div>
@@ -134,9 +141,7 @@
               Ecourse: businessClass[0].음식 === 'Ecourse',
               Fcourse: businessClass[0].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[0].좌석 }}
-          </div>
+          >{{ businessClass[0].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -147,9 +152,7 @@
               Ecourse: businessClass[1].음식 === 'Ecourse',
               Fcourse: businessClass[1].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[1].좌석 }}
-          </div>
+          >{{ businessClass[1].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -161,9 +164,7 @@
               Ecourse: businessClass[2].음식 === 'Ecourse',
               Fcourse: businessClass[2].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[2].좌석 }}
-          </div>
+          >{{ businessClass[2].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -174,9 +175,7 @@
               Ecourse: businessClass[3].음식 === 'Ecourse',
               Fcourse: businessClass[3].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[3].좌석 }}
-          </div>
+          >{{ businessClass[3].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -187,9 +186,7 @@
               Ecourse: businessClass[4].음식 === 'Ecourse',
               Fcourse: businessClass[4].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[4].좌석 }}
-          </div>
+          >{{ businessClass[4].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -201,9 +198,7 @@
               Ecourse: businessClass[5].음식 === 'Ecourse',
               Fcourse: businessClass[5].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[5].좌석 }}
-          </div>
+          >{{ businessClass[5].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -214,9 +209,7 @@
               Ecourse: businessClass[6].음식 === 'Ecourse',
               Fcourse: businessClass[6].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[6].좌석 }}
-          </div>
+          >{{ businessClass[6].좌석 }}</div>
         </div>
         <div class="seat-row-business">
           <div
@@ -229,9 +222,7 @@
               Ecourse: businessClass[7].음식 === 'Ecourse',
               Fcourse: businessClass[7].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[7].좌석 }}
-          </div>
+          >{{ businessClass[7].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -242,9 +233,7 @@
               Ecourse: businessClass[8].음식 === 'Ecourse',
               Fcourse: businessClass[8].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[8].좌석 }}
-          </div>
+          >{{ businessClass[8].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -256,9 +245,7 @@
               Ecourse: businessClass[9].음식 === 'Ecourse',
               Fcourse: businessClass[9].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[9].좌석 }}
-          </div>
+          >{{ businessClass[9].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -269,9 +256,7 @@
               Ecourse: businessClass[10].음식 === 'Ecourse',
               Fcourse: businessClass[10].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[10].좌석 }}
-          </div>
+          >{{ businessClass[10].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -282,9 +267,7 @@
               Ecourse: businessClass[11].음식 === 'Ecourse',
               Fcourse: businessClass[11].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[11].좌석 }}
-          </div>
+          >{{ businessClass[11].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -296,9 +279,7 @@
               Ecourse: businessClass[12].음식 === 'Ecourse',
               Fcourse: businessClass[12].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[12].좌석 }}
-          </div>
+          >{{ businessClass[12].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -309,9 +290,7 @@
               Ecourse: businessClass[13].음식 === 'Ecourse',
               Fcourse: businessClass[13].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[13].좌석 }}
-          </div>
+          >{{ businessClass[13].좌석 }}</div>
         </div>
         <div class="seat-row-business">
           <div
@@ -324,9 +303,7 @@
               Ecourse: businessClass[14].음식 === 'Ecourse',
               Fcourse: businessClass[14].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[14].좌석 }}
-          </div>
+          >{{ businessClass[14].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -337,9 +314,7 @@
               Ecourse: businessClass[15].음식 === 'Ecourse',
               Fcourse: businessClass[15].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[15].좌석 }}
-          </div>
+          >{{ businessClass[15].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -351,9 +326,7 @@
               Ecourse: businessClass[16].음식 === 'Ecourse',
               Fcourse: businessClass[16].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[16].좌석 }}
-          </div>
+          >{{ businessClass[16].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -364,9 +337,7 @@
               Ecourse: businessClass[17].음식 === 'Ecourse',
               Fcourse: businessClass[17].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[17].좌석 }}
-          </div>
+          >{{ businessClass[17].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -377,9 +348,7 @@
               Ecourse: businessClass[18].음식 === 'Ecourse',
               Fcourse: businessClass[18].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[18].좌석 }}
-          </div>
+          >{{ businessClass[18].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -391,9 +360,7 @@
               Ecourse: businessClass[19].음식 === 'Ecourse',
               Fcourse: businessClass[19].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[19].좌석 }}
-          </div>
+          >{{ businessClass[19].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -404,9 +371,7 @@
               Ecourse: businessClass[20].음식 === 'Ecourse',
               Fcourse: businessClass[20].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[20].좌석 }}
-          </div>
+          >{{ businessClass[20].좌석 }}</div>
         </div>
         <div class="seat-row-business">
           <div
@@ -419,9 +384,7 @@
               Ecourse: businessClass[21].음식 === 'Ecourse',
               Fcourse: businessClass[21].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[21].좌석 }}
-          </div>
+          >{{ businessClass[21].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -432,9 +395,7 @@
               Ecourse: businessClass[22].음식 === 'Ecourse',
               Fcourse: businessClass[22].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[22].좌석 }}
-          </div>
+          >{{ businessClass[22].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -446,9 +407,7 @@
               Ecourse: businessClass[23].음식 === 'Ecourse',
               Fcourse: businessClass[23].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[23].좌석 }}
-          </div>
+          >{{ businessClass[23].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -459,9 +418,7 @@
               Ecourse: businessClass[24].음식 === 'Ecourse',
               Fcourse: businessClass[24].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[24].좌석 }}
-          </div>
+          >{{ businessClass[24].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -472,9 +429,7 @@
               Ecourse: businessClass[25].음식 === 'Ecourse',
               Fcourse: businessClass[25].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[25].좌석 }}
-          </div>
+          >{{ businessClass[25].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-business"
@@ -486,9 +441,7 @@
               Ecourse: businessClass[26].음식 === 'Ecourse',
               Fcourse: businessClass[26].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[26].좌석 }}
-          </div>
+          >{{ businessClass[26].좌석 }}</div>
           <div
             class="seat-business"
             :class="{
@@ -499,9 +452,7 @@
               Ecourse: businessClass[27].음식 === 'Ecourse',
               Fcourse: businessClass[27].음식 === 'Fcourse',
             }"
-          >
-            {{ businessClass[27].좌석 }}
-          </div>
+          >{{ businessClass[27].좌석 }}</div>
         </div>
       </div>
     </div>
@@ -520,9 +471,7 @@
               Ecourse: economyClass[0].음식 === 'Ecourse',
               Fcourse: economyClass[0].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[0].좌석 }}
-          </div>
+          >{{ economyClass[0].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -533,9 +482,7 @@
               Ecourse: economyClass[1].음식 === 'Ecourse',
               Fcourse: economyClass[1].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[1].좌석 }}
-          </div>
+          >{{ economyClass[1].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -546,9 +493,7 @@
               Ecourse: economyClass[2].음식 === 'Ecourse',
               Fcourse: economyClass[2].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[2].좌석 }}
-          </div>
+          >{{ economyClass[2].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -560,9 +505,7 @@
               Ecourse: economyClass[3].음식 === 'Ecourse',
               Fcourse: economyClass[3].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[3].좌석 }}
-          </div>
+          >{{ economyClass[3].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -573,9 +516,7 @@
               Ecourse: economyClass[4].음식 === 'Ecourse',
               Fcourse: economyClass[4].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[4].좌석 }}
-          </div>
+          >{{ economyClass[4].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -586,9 +527,7 @@
               Ecourse: economyClass[5].음식 === 'Ecourse',
               Fcourse: economyClass[5].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[5].좌석 }}
-          </div>
+          >{{ economyClass[5].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -600,9 +539,7 @@
               Ecourse: economyClass[6].음식 === 'Ecourse',
               Fcourse: economyClass[6].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[6].좌석 }}
-          </div>
+          >{{ economyClass[6].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -613,9 +550,7 @@
               Ecourse: economyClass[7].음식 === 'Ecourse',
               Fcourse: economyClass[7].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[7].좌석 }}
-          </div>
+          >{{ economyClass[7].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -626,9 +561,7 @@
               Ecourse: economyClass[8].음식 === 'Ecourse',
               Fcourse: economyClass[8].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[8].좌석 }}
-          </div>
+          >{{ economyClass[8].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -641,9 +574,7 @@
               Ecourse: economyClass[9].음식 === 'Ecourse',
               Fcourse: economyClass[9].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[9].좌석 }}
-          </div>
+          >{{ economyClass[9].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -654,9 +585,7 @@
               Ecourse: economyClass[10].음식 === 'Ecourse',
               Fcourse: economyClass[10].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[10].좌석 }}
-          </div>
+          >{{ economyClass[10].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -667,9 +596,7 @@
               Ecourse: economyClass[11].음식 === 'Ecourse',
               Fcourse: economyClass[11].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[11].좌석 }}
-          </div>
+          >{{ economyClass[11].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -681,9 +608,7 @@
               Ecourse: economyClass[12].음식 === 'Ecourse',
               Fcourse: economyClass[12].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[12].좌석 }}
-          </div>
+          >{{ economyClass[12].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -694,9 +619,7 @@
               Ecourse: economyClass[13].음식 === 'Ecourse',
               Fcourse: economyClass[13].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[13].좌석 }}
-          </div>
+          >{{ economyClass[13].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -707,9 +630,7 @@
               Ecourse: economyClass[14].음식 === 'Ecourse',
               Fcourse: economyClass[14].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[14].좌석 }}
-          </div>
+          >{{ economyClass[14].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -721,9 +642,7 @@
               Ecourse: economyClass[15].음식 === 'Ecourse',
               Fcourse: economyClass[15].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[15].좌석 }}
-          </div>
+          >{{ economyClass[15].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -734,9 +653,7 @@
               Ecourse: economyClass[16].음식 === 'Ecourse',
               Fcourse: economyClass[16].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[16].좌석 }}
-          </div>
+          >{{ economyClass[16].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -747,9 +664,7 @@
               Ecourse: economyClass[17].음식 === 'Ecourse',
               Fcourse: economyClass[17].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[17].좌석 }}
-          </div>
+          >{{ economyClass[17].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -762,9 +677,7 @@
               Ecourse: economyClass[18].음식 === 'Ecourse',
               Fcourse: economyClass[18].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[18].좌석 }}
-          </div>
+          >{{ economyClass[18].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -775,9 +688,7 @@
               Ecourse: economyClass[19].음식 === 'Ecourse',
               Fcourse: economyClass[19].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[19].좌석 }}
-          </div>
+          >{{ economyClass[19].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -788,9 +699,7 @@
               Ecourse: economyClass[20].음식 === 'Ecourse',
               Fcourse: economyClass[20].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[20].좌석 }}
-          </div>
+          >{{ economyClass[20].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -802,9 +711,7 @@
               Ecourse: economyClass[21].음식 === 'Ecourse',
               Fcourse: economyClass[21].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[21].좌석 }}
-          </div>
+          >{{ economyClass[21].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -815,9 +722,7 @@
               Ecourse: economyClass[22].음식 === 'Ecourse',
               Fcourse: economyClass[22].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[22].좌석 }}
-          </div>
+          >{{ economyClass[22].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -828,9 +733,7 @@
               Ecourse: economyClass[23].음식 === 'Ecourse',
               Fcourse: economyClass[23].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[23].좌석 }}
-          </div>
+          >{{ economyClass[23].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -842,9 +745,7 @@
               Ecourse: economyClass[24].음식 === 'Ecourse',
               Fcourse: economyClass[24].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[24].좌석 }}
-          </div>
+          >{{ economyClass[24].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -855,9 +756,7 @@
               Ecourse: economyClass[25].음식 === 'Ecourse',
               Fcourse: economyClass[25].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[25].좌석 }}
-          </div>
+          >{{ economyClass[25].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -868,9 +767,7 @@
               Ecourse: economyClass[26].음식 === 'Ecourse',
               Fcourse: economyClass[26].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[26].좌석 }}
-          </div>
+          >{{ economyClass[26].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -883,9 +780,7 @@
               Ecourse: economyClass[27].음식 === 'Ecourse',
               Fcourse: economyClass[27].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[27].좌석 }}
-          </div>
+          >{{ economyClass[27].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -896,9 +791,7 @@
               Ecourse: economyClass[28].음식 === 'Ecourse',
               Fcourse: economyClass[28].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[28].좌석 }}
-          </div>
+          >{{ economyClass[28].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -909,9 +802,7 @@
               Ecourse: economyClass[29].음식 === 'Ecourse',
               Fcourse: economyClass[29].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[29].좌석 }}
-          </div>
+          >{{ economyClass[29].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -923,9 +814,7 @@
               Ecourse: economyClass[30].음식 === 'Ecourse',
               Fcourse: economyClass[30].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[30].좌석 }}
-          </div>
+          >{{ economyClass[30].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -936,9 +825,7 @@
               Ecourse: economyClass[31].음식 === 'Ecourse',
               Fcourse: economyClass[31].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[31].좌석 }}
-          </div>
+          >{{ economyClass[31].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -949,9 +836,7 @@
               Ecourse: economyClass[32].음식 === 'Ecourse',
               Fcourse: economyClass[32].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[32].좌석 }}
-          </div>
+          >{{ economyClass[32].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -963,9 +848,7 @@
               Ecourse: economyClass[33].음식 === 'Ecourse',
               Fcourse: economyClass[33].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[33].좌석 }}
-          </div>
+          >{{ economyClass[33].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -976,9 +859,7 @@
               Ecourse: economyClass[34].음식 === 'Ecourse',
               Fcourse: economyClass[34].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[34].좌석 }}
-          </div>
+          >{{ economyClass[34].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -989,9 +870,7 @@
               Ecourse: economyClass[35].음식 === 'Ecourse',
               Fcourse: economyClass[35].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[35].좌석 }}
-          </div>
+          >{{ economyClass[35].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1004,9 +883,7 @@
               Ecourse: economyClass[36].음식 === 'Ecourse',
               Fcourse: economyClass[36].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[36].좌석 }}
-          </div>
+          >{{ economyClass[36].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1017,9 +894,7 @@
               Ecourse: economyClass[37].음식 === 'Ecourse',
               Fcourse: economyClass[37].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[37].좌석 }}
-          </div>
+          >{{ economyClass[37].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1030,9 +905,7 @@
               Ecourse: economyClass[38].음식 === 'Ecourse',
               Fcourse: economyClass[38].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[38].좌석 }}
-          </div>
+          >{{ economyClass[38].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1044,9 +917,7 @@
               Ecourse: economyClass[39].음식 === 'Ecourse',
               Fcourse: economyClass[39].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[39].좌석 }}
-          </div>
+          >{{ economyClass[39].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1057,9 +928,7 @@
               Ecourse: economyClass[40].음식 === 'Ecourse',
               Fcourse: economyClass[40].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[40].좌석 }}
-          </div>
+          >{{ economyClass[40].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1070,9 +939,7 @@
               Ecourse: economyClass[41].음식 === 'Ecourse',
               Fcourse: economyClass[41].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[41].좌석 }}
-          </div>
+          >{{ economyClass[41].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1084,9 +951,7 @@
               Ecourse: economyClass[42].음식 === 'Ecourse',
               Fcourse: economyClass[42].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[42].좌석 }}
-          </div>
+          >{{ economyClass[42].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1097,9 +962,7 @@
               Ecourse: economyClass[43].음식 === 'Ecourse',
               Fcourse: economyClass[43].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[43].좌석 }}
-          </div>
+          >{{ economyClass[43].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1110,9 +973,7 @@
               Ecourse: economyClass[44].음식 === 'Ecourse',
               Fcourse: economyClass[44].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[44].좌석 }}
-          </div>
+          >{{ economyClass[44].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1125,9 +986,7 @@
               Ecourse: economyClass[45].음식 === 'Ecourse',
               Fcourse: economyClass[45].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[45].좌석 }}
-          </div>
+          >{{ economyClass[45].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1138,9 +997,7 @@
               Ecourse: economyClass[46].음식 === 'Ecourse',
               Fcourse: economyClass[46].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[46].좌석 }}
-          </div>
+          >{{ economyClass[46].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1151,9 +1008,7 @@
               Ecourse: economyClass[47].음식 === 'Ecourse',
               Fcourse: economyClass[47].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[47].좌석 }}
-          </div>
+          >{{ economyClass[47].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1165,9 +1020,7 @@
               Ecourse: economyClass[48].음식 === 'Ecourse',
               Fcourse: economyClass[48].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[48].좌석 }}
-          </div>
+          >{{ economyClass[48].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1178,9 +1031,7 @@
               Ecourse: economyClass[49].음식 === 'Ecourse',
               Fcourse: economyClass[49].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[49].좌석 }}
-          </div>
+          >{{ economyClass[49].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1191,9 +1042,7 @@
               Ecourse: economyClass[50].음식 === 'Ecourse',
               Fcourse: economyClass[50].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[50].좌석 }}
-          </div>
+          >{{ economyClass[50].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1205,9 +1054,7 @@
               Ecourse: economyClass[51].음식 === 'Ecourse',
               Fcourse: economyClass[51].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[51].좌석 }}
-          </div>
+          >{{ economyClass[51].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1218,9 +1065,7 @@
               Ecourse: economyClass[52].음식 === 'Ecourse',
               Fcourse: economyClass[52].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[52].좌석 }}
-          </div>
+          >{{ economyClass[52].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1231,9 +1076,7 @@
               Ecourse: economyClass[53].음식 === 'Ecourse',
               Fcourse: economyClass[53].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[53].좌석 }}
-          </div>
+          >{{ economyClass[53].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1246,9 +1089,7 @@
               Ecourse: economyClass[54].음식 === 'Ecourse',
               Fcourse: economyClass[54].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[54].좌석 }}
-          </div>
+          >{{ economyClass[54].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1259,9 +1100,7 @@
               Ecourse: economyClass[55].음식 === 'Ecourse',
               Fcourse: economyClass[55].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[55].좌석 }}
-          </div>
+          >{{ economyClass[55].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1272,9 +1111,7 @@
               Ecourse: economyClass[56].음식 === 'Ecourse',
               Fcourse: economyClass[56].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[56].좌석 }}
-          </div>
+          >{{ economyClass[56].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1286,9 +1123,7 @@
               Ecourse: economyClass[57].음식 === 'Ecourse',
               Fcourse: economyClass[57].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[57].좌석 }}
-          </div>
+          >{{ economyClass[57].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1299,9 +1134,7 @@
               Ecourse: economyClass[58].음식 === 'Ecourse',
               Fcourse: economyClass[58].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[58].좌석 }}
-          </div>
+          >{{ economyClass[58].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1312,9 +1145,7 @@
               Ecourse: economyClass[59].음식 === 'Ecourse',
               Fcourse: economyClass[59].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[59].좌석 }}
-          </div>
+          >{{ economyClass[59].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1326,9 +1157,7 @@
               Ecourse: economyClass[60].음식 === 'Ecourse',
               Fcourse: economyClass[60].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[60].좌석 }}
-          </div>
+          >{{ economyClass[60].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1339,9 +1168,7 @@
               Ecourse: economyClass[61].음식 === 'Ecourse',
               Fcourse: economyClass[61].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[61].좌석 }}
-          </div>
+          >{{ economyClass[61].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1352,9 +1179,7 @@
               Ecourse: economyClass[62].음식 === 'Ecourse',
               Fcourse: economyClass[62].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[62].좌석 }}
-          </div>
+          >{{ economyClass[62].좌석 }}</div>
         </div>
       </div>
     </div>
@@ -1373,9 +1198,7 @@
               Ecourse: economyClass[63].음식 === 'Ecourse',
               Fcourse: economyClass[63].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[63].좌석 }}
-          </div>
+          >{{ economyClass[63].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1386,9 +1209,7 @@
               Ecourse: economyClass[64].음식 === 'Ecourse',
               Fcourse: economyClass[64].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[64].좌석 }}
-          </div>
+          >{{ economyClass[64].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1399,9 +1220,7 @@
               Ecourse: economyClass[65].음식 === 'Ecourse',
               Fcourse: economyClass[65].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[65].좌석 }}
-          </div>
+          >{{ economyClass[65].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1413,9 +1232,7 @@
               Ecourse: economyClass[66].음식 === 'Ecourse',
               Fcourse: economyClass[66].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[66].좌석 }}
-          </div>
+          >{{ economyClass[66].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1426,9 +1243,7 @@
               Ecourse: economyClass[67].음식 === 'Ecourse',
               Fcourse: economyClass[67].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[67].좌석 }}
-          </div>
+          >{{ economyClass[67].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1439,9 +1254,7 @@
               Ecourse: economyClass[68].음식 === 'Ecourse',
               Fcourse: economyClass[68].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[68].좌석 }}
-          </div>
+          >{{ economyClass[68].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1453,9 +1266,7 @@
               Ecourse: economyClass[69].음식 === 'Ecourse',
               Fcourse: economyClass[69].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[69].좌석 }}
-          </div>
+          >{{ economyClass[69].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1466,9 +1277,7 @@
               Ecourse: economyClass[70].음식 === 'Ecourse',
               Fcourse: economyClass[70].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[70].좌석 }}
-          </div>
+          >{{ economyClass[70].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1479,9 +1288,7 @@
               Ecourse: economyClass[71].음식 === 'Ecourse',
               Fcourse: economyClass[71].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[71].좌석 }}
-          </div>
+          >{{ economyClass[71].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1494,9 +1301,7 @@
               Ecourse: economyClass[72].음식 === 'Ecourse',
               Fcourse: economyClass[72].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[72].좌석 }}
-          </div>
+          >{{ economyClass[72].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1507,9 +1312,7 @@
               Ecourse: economyClass[73].음식 === 'Ecourse',
               Fcourse: economyClass[73].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[73].좌석 }}
-          </div>
+          >{{ economyClass[73].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1520,9 +1323,7 @@
               Ecourse: economyClass[74].음식 === 'Ecourse',
               Fcourse: economyClass[74].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[74].좌석 }}
-          </div>
+          >{{ economyClass[74].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1534,9 +1335,7 @@
               Ecourse: economyClass[75].음식 === 'Ecourse',
               Fcourse: economyClass[75].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[75].좌석 }}
-          </div>
+          >{{ economyClass[75].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1547,9 +1346,7 @@
               Ecourse: economyClass[76].음식 === 'Ecourse',
               Fcourse: economyClass[76].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[76].좌석 }}
-          </div>
+          >{{ economyClass[76].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1560,9 +1357,7 @@
               Ecourse: economyClass[77].음식 === 'Ecourse',
               Fcourse: economyClass[77].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[77].좌석 }}
-          </div>
+          >{{ economyClass[77].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1574,9 +1369,7 @@
               Ecourse: economyClass[78].음식 === 'Ecourse',
               Fcourse: economyClass[78].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[78].좌석 }}
-          </div>
+          >{{ economyClass[78].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1587,9 +1380,7 @@
               Ecourse: economyClass[79].음식 === 'Ecourse',
               Fcourse: economyClass[79].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[79].좌석 }}
-          </div>
+          >{{ economyClass[79].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1600,9 +1391,7 @@
               Ecourse: economyClass[80].음식 === 'Ecourse',
               Fcourse: economyClass[80].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[80].좌석 }}
-          </div>
+          >{{ economyClass[80].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1615,9 +1404,7 @@
               Ecourse: economyClass[81].음식 === 'Ecourse',
               Fcourse: economyClass[81].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[81].좌석 }}
-          </div>
+          >{{ economyClass[81].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1628,9 +1415,7 @@
               Ecourse: economyClass[82].음식 === 'Ecourse',
               Fcourse: economyClass[82].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[82].좌석 }}
-          </div>
+          >{{ economyClass[82].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1641,9 +1426,7 @@
               Ecourse: economyClass[83].음식 === 'Ecourse',
               Fcourse: economyClass[83].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[83].좌석 }}
-          </div>
+          >{{ economyClass[83].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1655,9 +1438,7 @@
               Ecourse: economyClass[84].음식 === 'Ecourse',
               Fcourse: economyClass[84].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[84].좌석 }}
-          </div>
+          >{{ economyClass[84].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1668,9 +1449,7 @@
               Ecourse: economyClass[85].음식 === 'Ecourse',
               Fcourse: economyClass[85].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[85].좌석 }}
-          </div>
+          >{{ economyClass[85].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1681,9 +1460,7 @@
               Ecourse: economyClass[86].음식 === 'Ecourse',
               Fcourse: economyClass[86].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[86].좌석 }}
-          </div>
+          >{{ economyClass[86].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1695,9 +1472,7 @@
               Ecourse: economyClass[87].음식 === 'Ecourse',
               Fcourse: economyClass[87].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[87].좌석 }}
-          </div>
+          >{{ economyClass[87].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1708,9 +1483,7 @@
               Ecourse: economyClass[88].음식 === 'Ecourse',
               Fcourse: economyClass[88].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[88].좌석 }}
-          </div>
+          >{{ economyClass[88].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1721,9 +1494,7 @@
               Ecourse: economyClass[89].음식 === 'Ecourse',
               Fcourse: economyClass[89].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[89].좌석 }}
-          </div>
+          >{{ economyClass[89].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1736,9 +1507,7 @@
               Ecourse: economyClass[90].음식 === 'Ecourse',
               Fcourse: economyClass[90].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[90].좌석 }}
-          </div>
+          >{{ economyClass[90].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1749,9 +1518,7 @@
               Ecourse: economyClass[91].음식 === 'Ecourse',
               Fcourse: economyClass[91].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[91].좌석 }}
-          </div>
+          >{{ economyClass[91].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1762,9 +1529,7 @@
               Ecourse: economyClass[92].음식 === 'Ecourse',
               Fcourse: economyClass[92].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[92].좌석 }}
-          </div>
+          >{{ economyClass[92].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1776,9 +1541,7 @@
               Ecourse: economyClass[93].음식 === 'Ecourse',
               Fcourse: economyClass[93].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[93].좌석 }}
-          </div>
+          >{{ economyClass[93].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1789,9 +1552,7 @@
               Ecourse: economyClass[94].음식 === 'Ecourse',
               Fcourse: economyClass[94].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[94].좌석 }}
-          </div>
+          >{{ economyClass[94].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1802,9 +1563,7 @@
               Ecourse: economyClass[95].음식 === 'Ecourse',
               Fcourse: economyClass[95].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[95].좌석 }}
-          </div>
+          >{{ economyClass[95].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1816,9 +1575,7 @@
               Ecourse: economyClass[96].음식 === 'Ecourse',
               Fcourse: economyClass[96].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[96].좌석 }}
-          </div>
+          >{{ economyClass[96].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1829,9 +1586,7 @@
               Ecourse: economyClass[97].음식 === 'Ecourse',
               Fcourse: economyClass[97].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[97].좌석 }}
-          </div>
+          >{{ economyClass[97].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1842,9 +1597,7 @@
               Ecourse: economyClass[98].음식 === 'Ecourse',
               Fcourse: economyClass[98].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[98].좌석 }}
-          </div>
+          >{{ economyClass[98].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1857,9 +1610,7 @@
               Ecourse: economyClass[99].음식 === 'Ecourse',
               Fcourse: economyClass[99].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[99].좌석 }}
-          </div>
+          >{{ economyClass[99].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1870,9 +1621,7 @@
               Ecourse: economyClass[100].음식 === 'Ecourse',
               Fcourse: economyClass[100].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[100].좌석 }}
-          </div>
+          >{{ economyClass[100].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1883,9 +1632,7 @@
               Ecourse: economyClass[101].음식 === 'Ecourse',
               Fcourse: economyClass[101].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[101].좌석 }}
-          </div>
+          >{{ economyClass[101].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1897,9 +1644,7 @@
               Ecourse: economyClass[102].음식 === 'Ecourse',
               Fcourse: economyClass[102].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[102].좌석 }}
-          </div>
+          >{{ economyClass[102].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1910,9 +1655,7 @@
               Ecourse: economyClass[103].음식 === 'Ecourse',
               Fcourse: economyClass[103].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[103].좌석 }}
-          </div>
+          >{{ economyClass[103].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1923,9 +1666,7 @@
               Ecourse: economyClass[104].음식 === 'Ecourse',
               Fcourse: economyClass[104].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[104].좌석 }}
-          </div>
+          >{{ economyClass[104].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -1937,9 +1678,7 @@
               Ecourse: economyClass[105].음식 === 'Ecourse',
               Fcourse: economyClass[105].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[105].좌석 }}
-          </div>
+          >{{ economyClass[105].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1950,9 +1689,7 @@
               Ecourse: economyClass[106].음식 === 'Ecourse',
               Fcourse: economyClass[106].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[106].좌석 }}
-          </div>
+          >{{ economyClass[106].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1963,9 +1700,7 @@
               Ecourse: economyClass[107].음식 === 'Ecourse',
               Fcourse: economyClass[107].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[107].좌석 }}
-          </div>
+          >{{ economyClass[107].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -1978,9 +1713,7 @@
               Ecourse: economyClass[108].음식 === 'Ecourse',
               Fcourse: economyClass[108].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[108].좌석 }}
-          </div>
+          >{{ economyClass[108].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -1991,9 +1724,7 @@
               Ecourse: economyClass[109].음식 === 'Ecourse',
               Fcourse: economyClass[109].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[109].좌석 }}
-          </div>
+          >{{ economyClass[109].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2004,9 +1735,7 @@
               Ecourse: economyClass[110].음식 === 'Ecourse',
               Fcourse: economyClass[110].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[110].좌석 }}
-          </div>
+          >{{ economyClass[110].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2018,9 +1747,7 @@
               Ecourse: economyClass[111].음식 === 'Ecourse',
               Fcourse: economyClass[111].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[111].좌석 }}
-          </div>
+          >{{ economyClass[111].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2031,9 +1758,7 @@
               Ecourse: economyClass[112].음식 === 'Ecourse',
               Fcourse: economyClass[112].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[112].좌석 }}
-          </div>
+          >{{ economyClass[112].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2044,9 +1769,7 @@
               Ecourse: economyClass[113].음식 === 'Ecourse',
               Fcourse: economyClass[113].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[113].좌석 }}
-          </div>
+          >{{ economyClass[113].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2058,9 +1781,7 @@
               Ecourse: economyClass[114].음식 === 'Ecourse',
               Fcourse: economyClass[114].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[114].좌석 }}
-          </div>
+          >{{ economyClass[114].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2071,9 +1792,7 @@
               Ecourse: economyClass[115].음식 === 'Ecourse',
               Fcourse: economyClass[115].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[115].좌석 }}
-          </div>
+          >{{ economyClass[115].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2084,9 +1803,7 @@
               Ecourse: economyClass[116].음식 === 'Ecourse',
               Fcourse: economyClass[116].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[116].좌석 }}
-          </div>
+          >{{ economyClass[116].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2099,9 +1816,7 @@
               Ecourse: economyClass[117].음식 === 'Ecourse',
               Fcourse: economyClass[117].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[117].좌석 }}
-          </div>
+          >{{ economyClass[117].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2112,9 +1827,7 @@
               Ecourse: economyClass[118].음식 === 'Ecourse',
               Fcourse: economyClass[118].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[118].좌석 }}
-          </div>
+          >{{ economyClass[118].좌석 }}</div>
           <div class="seat-economy-space"></div>
           <div class="seat-space"></div>
           <div
@@ -2127,9 +1840,7 @@
               Ecourse: economyClass[119].음식 === 'Ecourse',
               Fcourse: economyClass[119].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[119].좌석 }}
-          </div>
+          >{{ economyClass[119].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2140,9 +1851,7 @@
               Ecourse: economyClass[120].음식 === 'Ecourse',
               Fcourse: economyClass[120].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[120].좌석 }}
-          </div>
+          >{{ economyClass[120].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2153,9 +1862,7 @@
               Ecourse: economyClass[121].음식 === 'Ecourse',
               Fcourse: economyClass[121].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[121].좌석 }}
-          </div>
+          >{{ economyClass[121].좌석 }}</div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div class="seat-economy-space"></div>
@@ -2178,9 +1885,7 @@
               Ecourse: economyClass[122].음식 === 'Ecourse',
               Fcourse: economyClass[122].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[122].좌석 }}
-          </div>
+          >{{ economyClass[122].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2191,9 +1896,7 @@
               Ecourse: economyClass[123].음식 === 'Ecourse',
               Fcourse: economyClass[123].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[123].좌석 }}
-          </div>
+          >{{ economyClass[123].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2204,9 +1907,7 @@
               Ecourse: economyClass[124].음식 === 'Ecourse',
               Fcourse: economyClass[124].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[124].좌석 }}
-          </div>
+          >{{ economyClass[124].좌석 }}</div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div class="seat-economy-space"></div>
@@ -2222,9 +1923,7 @@
               Ecourse: economyClass[125].음식 === 'Ecourse',
               Fcourse: economyClass[125].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[125].좌석 }}
-          </div>
+          >{{ economyClass[125].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2235,9 +1934,7 @@
               Ecourse: economyClass[126].음식 === 'Ecourse',
               Fcourse: economyClass[126].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[126].좌석 }}
-          </div>
+          >{{ economyClass[126].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2248,9 +1945,7 @@
               Ecourse: economyClass[127].음식 === 'Ecourse',
               Fcourse: economyClass[127].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[127].좌석 }}
-          </div>
+          >{{ economyClass[127].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2263,9 +1958,7 @@
               Ecourse: economyClass[128].음식 === 'Ecourse',
               Fcourse: economyClass[128].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[128].좌석 }}
-          </div>
+          >{{ economyClass[128].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2276,9 +1969,7 @@
               Ecourse: economyClass[129].음식 === 'Ecourse',
               Fcourse: economyClass[129].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[129].좌석 }}
-          </div>
+          >{{ economyClass[129].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2289,9 +1980,7 @@
               Ecourse: economyClass[130].음식 === 'Ecourse',
               Fcourse: economyClass[130].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[130].좌석 }}
-          </div>
+          >{{ economyClass[130].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2303,9 +1992,7 @@
               Ecourse: economyClass[131].음식 === 'Ecourse',
               Fcourse: economyClass[131].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[131].좌석 }}
-          </div>
+          >{{ economyClass[131].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2316,9 +2003,7 @@
               Ecourse: economyClass[132].음식 === 'Ecourse',
               Fcourse: economyClass[132].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[132].좌석 }}
-          </div>
+          >{{ economyClass[132].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2329,9 +2014,7 @@
               Ecourse: economyClass[133].음식 === 'Ecourse',
               Fcourse: economyClass[133].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[133].좌석 }}
-          </div>
+          >{{ economyClass[133].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2343,9 +2026,7 @@
               Ecourse: economyClass[134].음식 === 'Ecourse',
               Fcourse: economyClass[134].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[134].좌석 }}
-          </div>
+          >{{ economyClass[134].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2356,9 +2037,7 @@
               Ecourse: economyClass[135].음식 === 'Ecourse',
               Fcourse: economyClass[135].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[135].좌석 }}
-          </div>
+          >{{ economyClass[135].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2369,9 +2048,7 @@
               Ecourse: economyClass[136].음식 === 'Ecourse',
               Fcourse: economyClass[136].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[136].좌석 }}
-          </div>
+          >{{ economyClass[136].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2384,9 +2061,7 @@
               Ecourse: economyClass[137].음식 === 'Ecourse',
               Fcourse: economyClass[137].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[137].좌석 }}
-          </div>
+          >{{ economyClass[137].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2397,9 +2072,7 @@
               Ecourse: economyClass[138].음식 === 'Ecourse',
               Fcourse: economyClass[138].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[138].좌석 }}
-          </div>
+          >{{ economyClass[138].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2410,9 +2083,7 @@
               Ecourse: economyClass[139].음식 === 'Ecourse',
               Fcourse: economyClass[139].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[139].좌석 }}
-          </div>
+          >{{ economyClass[139].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2424,9 +2095,7 @@
               Ecourse: economyClass[140].음식 === 'Ecourse',
               Fcourse: economyClass[140].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[140].좌석 }}
-          </div>
+          >{{ economyClass[140].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2437,9 +2106,7 @@
               Ecourse: economyClass[141].음식 === 'Ecourse',
               Fcourse: economyClass[141].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[141].좌석 }}
-          </div>
+          >{{ economyClass[141].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2450,9 +2117,7 @@
               Ecourse: economyClass[142].음식 === 'Ecourse',
               Fcourse: economyClass[142].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[142].좌석 }}
-          </div>
+          >{{ economyClass[142].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2464,9 +2129,7 @@
               Ecourse: economyClass[143].음식 === 'Ecourse',
               Fcourse: economyClass[143].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[143].좌석 }}
-          </div>
+          >{{ economyClass[143].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2477,9 +2140,7 @@
               Ecourse: economyClass[144].음식 === 'Ecourse',
               Fcourse: economyClass[144].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[144].좌석 }}
-          </div>
+          >{{ economyClass[144].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2490,9 +2151,7 @@
               Ecourse: economyClass[145].음식 === 'Ecourse',
               Fcourse: economyClass[145].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[145].좌석 }}
-          </div>
+          >{{ economyClass[145].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2505,9 +2164,7 @@
               Ecourse: economyClass[146].음식 === 'Ecourse',
               Fcourse: economyClass[146].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[146].좌석 }}
-          </div>
+          >{{ economyClass[146].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2518,9 +2175,7 @@
               Ecourse: economyClass[147].음식 === 'Ecourse',
               Fcourse: economyClass[147].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[147].좌석 }}
-          </div>
+          >{{ economyClass[147].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2531,9 +2186,7 @@
               Ecourse: economyClass[148].음식 === 'Ecourse',
               Fcourse: economyClass[148].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[148].좌석 }}
-          </div>
+          >{{ economyClass[148].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2545,9 +2198,7 @@
               Ecourse: economyClass[149].음식 === 'Ecourse',
               Fcourse: economyClass[149].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[149].좌석 }}
-          </div>
+          >{{ economyClass[149].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2558,9 +2209,7 @@
               Ecourse: economyClass[150].음식 === 'Ecourse',
               Fcourse: economyClass[150].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[150].좌석 }}
-          </div>
+          >{{ economyClass[150].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2571,9 +2220,7 @@
               Ecourse: economyClass[151].음식 === 'Ecourse',
               Fcourse: economyClass[151].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[151].좌석 }}
-          </div>
+          >{{ economyClass[151].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2585,9 +2232,7 @@
               Ecourse: economyClass[152].음식 === 'Ecourse',
               Fcourse: economyClass[152].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[152].좌석 }}
-          </div>
+          >{{ economyClass[152].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2598,9 +2243,7 @@
               Ecourse: economyClass[153].음식 === 'Ecourse',
               Fcourse: economyClass[153].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[153].좌석 }}
-          </div>
+          >{{ economyClass[153].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2611,9 +2254,7 @@
               Ecourse: economyClass[154].음식 === 'Ecourse',
               Fcourse: economyClass[154].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[154].좌석 }}
-          </div>
+          >{{ economyClass[154].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2626,9 +2267,7 @@
               Ecourse: economyClass[155].음식 === 'Ecourse',
               Fcourse: economyClass[155].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[155].좌석 }}
-          </div>
+          >{{ economyClass[155].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2639,9 +2278,7 @@
               Ecourse: economyClass[156].음식 === 'Ecourse',
               Fcourse: economyClass[156].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[156].좌석 }}
-          </div>
+          >{{ economyClass[156].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2652,9 +2289,7 @@
               Ecourse: economyClass[157].음식 === 'Ecourse',
               Fcourse: economyClass[157].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[157].좌석 }}
-          </div>
+          >{{ economyClass[157].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2666,9 +2301,7 @@
               Ecourse: economyClass[158].음식 === 'Ecourse',
               Fcourse: economyClass[158].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[158].좌석 }}
-          </div>
+          >{{ economyClass[158].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2679,9 +2312,7 @@
               Ecourse: economyClass[159].음식 === 'Ecourse',
               Fcourse: economyClass[159].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[159].좌석 }}
-          </div>
+          >{{ economyClass[159].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2692,9 +2323,7 @@
               Ecourse: economyClass[160].음식 === 'Ecourse',
               Fcourse: economyClass[160].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[160].좌석 }}
-          </div>
+          >{{ economyClass[160].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2706,9 +2335,7 @@
               Ecourse: economyClass[161].음식 === 'Ecourse',
               Fcourse: economyClass[161].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[161].좌석 }}
-          </div>
+          >{{ economyClass[161].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2719,9 +2346,7 @@
               Ecourse: economyClass[162].음식 === 'Ecourse',
               Fcourse: economyClass[162].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[162].좌석 }}
-          </div>
+          >{{ economyClass[162].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2732,9 +2357,7 @@
               Ecourse: economyClass[163].음식 === 'Ecourse',
               Fcourse: economyClass[163].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[163].좌석 }}
-          </div>
+          >{{ economyClass[163].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2747,9 +2370,7 @@
               Ecourse: economyClass[164].음식 === 'Ecourse',
               Fcourse: economyClass[164].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[164].좌석 }}
-          </div>
+          >{{ economyClass[164].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2760,9 +2381,7 @@
               Ecourse: economyClass[165].음식 === 'Ecourse',
               Fcourse: economyClass[165].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[165].좌석 }}
-          </div>
+          >{{ economyClass[165].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2773,9 +2392,7 @@
               Ecourse: economyClass[166].음식 === 'Ecourse',
               Fcourse: economyClass[166].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[166].좌석 }}
-          </div>
+          >{{ economyClass[166].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2787,9 +2404,7 @@
               Ecourse: economyClass[167].음식 === 'Ecourse',
               Fcourse: economyClass[167].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[167].좌석 }}
-          </div>
+          >{{ economyClass[167].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2800,9 +2415,7 @@
               Ecourse: economyClass[168].음식 === 'Ecourse',
               Fcourse: economyClass[168].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[168].좌석 }}
-          </div>
+          >{{ economyClass[168].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2813,9 +2426,7 @@
               Ecourse: economyClass[169].음식 === 'Ecourse',
               Fcourse: economyClass[169].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[169].좌석 }}
-          </div>
+          >{{ economyClass[169].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2827,9 +2438,7 @@
               Ecourse: economyClass[170].음식 === 'Ecourse',
               Fcourse: economyClass[170].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[170].좌석 }}
-          </div>
+          >{{ economyClass[170].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2840,9 +2449,7 @@
               Ecourse: economyClass[171].음식 === 'Ecourse',
               Fcourse: economyClass[171].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[171].좌석 }}
-          </div>
+          >{{ economyClass[171].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2853,9 +2460,7 @@
               Ecourse: economyClass[172].음식 === 'Ecourse',
               Fcourse: economyClass[172].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[172].좌석 }}
-          </div>
+          >{{ economyClass[172].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -2868,9 +2473,7 @@
               Ecourse: economyClass[173].음식 === 'Ecourse',
               Fcourse: economyClass[173].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[173].좌석 }}
-          </div>
+          >{{ economyClass[173].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2881,9 +2484,7 @@
               Ecourse: economyClass[174].음식 === 'Ecourse',
               Fcourse: economyClass[174].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[174].좌석 }}
-          </div>
+          >{{ economyClass[174].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2894,9 +2495,7 @@
               Ecourse: economyClass[175].음식 === 'Ecourse',
               Fcourse: economyClass[175].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[175].좌석 }}
-          </div>
+          >{{ economyClass[175].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2908,9 +2507,7 @@
               Ecourse: economyClass[176].음식 === 'Ecourse',
               Fcourse: economyClass[176].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[176].좌석 }}
-          </div>
+          >{{ economyClass[176].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2921,9 +2518,7 @@
               Ecourse: economyClass[177].음식 === 'Ecourse',
               Fcourse: economyClass[177].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[177].좌석 }}
-          </div>
+          >{{ economyClass[177].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2934,9 +2529,7 @@
               Ecourse: economyClass[178].음식 === 'Ecourse',
               Fcourse: economyClass[178].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[178].좌석 }}
-          </div>
+          >{{ economyClass[178].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -2948,9 +2541,7 @@
               Ecourse: economyClass[179].음식 === 'Ecourse',
               Fcourse: economyClass[179].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[179].좌석 }}
-          </div>
+          >{{ economyClass[179].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2961,9 +2552,7 @@
               Ecourse: economyClass[180].음식 === 'Ecourse',
               Fcourse: economyClass[180].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[180].좌석 }}
-          </div>
+          >{{ economyClass[180].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -2974,9 +2563,7 @@
               Ecourse: economyClass[181].음식 === 'Ecourse',
               Fcourse: economyClass[181].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[181].좌석 }}
-          </div>
+          >{{ economyClass[181].좌석 }}</div>
         </div>
       </div>
     </div>
@@ -2995,9 +2582,7 @@
               Ecourse: economyClass[182].음식 === 'Ecourse',
               Fcourse: economyClass[182].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[182].좌석 }}
-          </div>
+          >{{ economyClass[182].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3008,9 +2593,7 @@
               Ecourse: economyClass[183].음식 === 'Ecourse',
               Fcourse: economyClass[183].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[183].좌석 }}
-          </div>
+          >{{ economyClass[183].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3021,9 +2604,7 @@
               Ecourse: economyClass[184].음식 === 'Ecourse',
               Fcourse: economyClass[184].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[184].좌석 }}
-          </div>
+          >{{ economyClass[184].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3035,9 +2616,7 @@
               Ecourse: economyClass[185].음식 === 'Ecourse',
               Fcourse: economyClass[185].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[185].좌석 }}
-          </div>
+          >{{ economyClass[185].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3048,9 +2627,7 @@
               Ecourse: economyClass[186].음식 === 'Ecourse',
               Fcourse: economyClass[186].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[186].좌석 }}
-          </div>
+          >{{ economyClass[186].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3061,9 +2638,7 @@
               Ecourse: economyClass[187].음식 === 'Ecourse',
               Fcourse: economyClass[187].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[187].좌석 }}
-          </div>
+          >{{ economyClass[187].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3075,9 +2650,7 @@
               Ecourse: economyClass[188].음식 === 'Ecourse',
               Fcourse: economyClass[188].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[188].좌석 }}
-          </div>
+          >{{ economyClass[188].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3088,9 +2661,7 @@
               Ecourse: economyClass[189].음식 === 'Ecourse',
               Fcourse: economyClass[189].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[189].좌석 }}
-          </div>
+          >{{ economyClass[189].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3101,9 +2672,7 @@
               Ecourse: economyClass[190].음식 === 'Ecourse',
               Fcourse: economyClass[190].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[190].좌석 }}
-          </div>
+          >{{ economyClass[190].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -3116,9 +2685,7 @@
               Ecourse: economyClass[191].음식 === 'Ecourse',
               Fcourse: economyClass[191].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[191].좌석 }}
-          </div>
+          >{{ economyClass[191].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3129,9 +2696,7 @@
               Ecourse: economyClass[192].음식 === 'Ecourse',
               Fcourse: economyClass[192].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[192].좌석 }}
-          </div>
+          >{{ economyClass[192].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3142,9 +2707,7 @@
               Ecourse: economyClass[193].음식 === 'Ecourse',
               Fcourse: economyClass[193].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[193].좌석 }}
-          </div>
+          >{{ economyClass[193].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3156,9 +2719,7 @@
               Ecourse: economyClass[194].음식 === 'Ecourse',
               Fcourse: economyClass[194].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[194].좌석 }}
-          </div>
+          >{{ economyClass[194].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3169,9 +2730,7 @@
               Ecourse: economyClass[195].음식 === 'Ecourse',
               Fcourse: economyClass[195].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[195].좌석 }}
-          </div>
+          >{{ economyClass[195].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3182,9 +2741,7 @@
               Ecourse: economyClass[196].음식 === 'Ecourse',
               Fcourse: economyClass[196].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[196].좌석 }}
-          </div>
+          >{{ economyClass[196].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3196,9 +2753,7 @@
               Ecourse: economyClass[197].음식 === 'Ecourse',
               Fcourse: economyClass[197].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[197].좌석 }}
-          </div>
+          >{{ economyClass[197].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3209,9 +2764,7 @@
               Ecourse: economyClass[198].음식 === 'Ecourse',
               Fcourse: economyClass[198].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[198].좌석 }}
-          </div>
+          >{{ economyClass[198].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3222,9 +2775,7 @@
               Ecourse: economyClass[199].음식 === 'Ecourse',
               Fcourse: economyClass[199].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[199].좌석 }}
-          </div>
+          >{{ economyClass[199].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -3237,9 +2788,7 @@
               Ecourse: economyClass[200].음식 === 'Ecourse',
               Fcourse: economyClass[200].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[200].좌석 }}
-          </div>
+          >{{ economyClass[200].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3250,9 +2799,7 @@
               Ecourse: economyClass[201].음식 === 'Ecourse',
               Fcourse: economyClass[201].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[201].좌석 }}
-          </div>
+          >{{ economyClass[201].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3263,9 +2810,7 @@
               Ecourse: economyClass[202].음식 === 'Ecourse',
               Fcourse: economyClass[202].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[202].좌석 }}
-          </div>
+          >{{ economyClass[202].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3277,9 +2822,7 @@
               Ecourse: economyClass[203].음식 === 'Ecourse',
               Fcourse: economyClass[203].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[203].좌석 }}
-          </div>
+          >{{ economyClass[203].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3290,9 +2833,7 @@
               Ecourse: economyClass[204].음식 === 'Ecourse',
               Fcourse: economyClass[204].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[204].좌석 }}
-          </div>
+          >{{ economyClass[204].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3303,9 +2844,7 @@
               Ecourse: economyClass[205].음식 === 'Ecourse',
               Fcourse: economyClass[205].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[205].좌석 }}
-          </div>
+          >{{ economyClass[205].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3317,9 +2856,7 @@
               Ecourse: economyClass[206].음식 === 'Ecourse',
               Fcourse: economyClass[206].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[206].좌석 }}
-          </div>
+          >{{ economyClass[206].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3330,9 +2867,7 @@
               Ecourse: economyClass[207].음식 === 'Ecourse',
               Fcourse: economyClass[207].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[207].좌석 }}
-          </div>
+          >{{ economyClass[207].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3343,9 +2878,7 @@
               Ecourse: economyClass[208].음식 === 'Ecourse',
               Fcourse: economyClass[208].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[208].좌석 }}
-          </div>
+          >{{ economyClass[208].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -3358,9 +2891,7 @@
               Ecourse: economyClass[209].음식 === 'Ecourse',
               Fcourse: economyClass[209].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[209].좌석 }}
-          </div>
+          >{{ economyClass[209].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3371,9 +2902,7 @@
               Ecourse: economyClass[210].음식 === 'Ecourse',
               Fcourse: economyClass[210].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[210].좌석 }}
-          </div>
+          >{{ economyClass[210].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3384,9 +2913,7 @@
               Ecourse: economyClass[211].음식 === 'Ecourse',
               Fcourse: economyClass[211].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[211].좌석 }}
-          </div>
+          >{{ economyClass[211].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3398,9 +2925,7 @@
               Ecourse: economyClass[212].음식 === 'Ecourse',
               Fcourse: economyClass[212].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[212].좌석 }}
-          </div>
+          >{{ economyClass[212].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3411,9 +2936,7 @@
               Ecourse: economyClass[213].음식 === 'Ecourse',
               Fcourse: economyClass[213].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[213].좌석 }}
-          </div>
+          >{{ economyClass[213].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3424,9 +2947,7 @@
               Ecourse: economyClass[214].음식 === 'Ecourse',
               Fcourse: economyClass[214].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[214].좌석 }}
-          </div>
+          >{{ economyClass[214].좌석 }}</div>
           <div class="seat-space"></div>
           <div
             class="seat-economy"
@@ -3438,9 +2959,7 @@
               Ecourse: economyClass[215].음식 === 'Ecourse',
               Fcourse: economyClass[215].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[215].좌석 }}
-          </div>
+          >{{ economyClass[215].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3451,9 +2970,7 @@
               Ecourse: economyClass[216].음식 === 'Ecourse',
               Fcourse: economyClass[216].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[216].좌석 }}
-          </div>
+          >{{ economyClass[216].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3464,9 +2981,7 @@
               Ecourse: economyClass[217].음식 === 'Ecourse',
               Fcourse: economyClass[217].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[217].좌석 }}
-          </div>
+          >{{ economyClass[217].좌석 }}</div>
         </div>
         <div class="seat-row-economy">
           <div
@@ -3479,9 +2994,7 @@
               Ecourse: economyClass[218].음식 === 'Ecourse',
               Fcourse: economyClass[218].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[218].좌석 }}
-          </div>
+          >{{ economyClass[218].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3492,9 +3005,7 @@
               Ecourse: economyClass[219].음식 === 'Ecourse',
               Fcourse: economyClass[219].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[219].좌석 }}
-          </div>
+          >{{ economyClass[219].좌석 }}</div>
           <div class="seat-economy-space"></div>
           <div class="seat-space"></div>
           <div
@@ -3507,9 +3018,7 @@
               Ecourse: economyClass[220].음식 === 'Ecourse',
               Fcourse: economyClass[220].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[220].좌석 }}
-          </div>
+          >{{ economyClass[220].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3520,9 +3029,7 @@
               Ecourse: economyClass[221].음식 === 'Ecourse',
               Fcourse: economyClass[221].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[221].좌석 }}
-          </div>
+          >{{ economyClass[221].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3533,9 +3040,7 @@
               Ecourse: economyClass[222].음식 === 'Ecourse',
               Fcourse: economyClass[222].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[222].좌석 }}
-          </div>
+          >{{ economyClass[222].좌석 }}</div>
           <div class="seat-space"></div>
           <div class="seat-economy-space"></div>
           <div
@@ -3548,9 +3053,7 @@
               Ecourse: economyClass[223].음식 === 'Ecourse',
               Fcourse: economyClass[223].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[223].좌석 }}
-          </div>
+          >{{ economyClass[223].좌석 }}</div>
           <div
             class="seat-economy"
             :class="{
@@ -3561,9 +3064,7 @@
               Ecourse: economyClass[224].음식 === 'Ecourse',
               Fcourse: economyClass[224].음식 === 'Fcourse',
             }"
-          >
-            {{ economyClass[224].좌석 }}
-          </div>
+          >{{ economyClass[224].좌석 }}</div>
         </div>
       </div>
     </div>
@@ -5690,8 +5191,12 @@ export default {
         },
       ],
       mealList: {
-        Acourse: '',
-        Bcourse: '',
+        Acourse: false,
+        Bcourse: false,
+        Ccourse: false,
+        Dcourse: false,
+        Ecourse: false,
+        Fcourse: false,
       },
     }
   },
@@ -5708,6 +5213,7 @@ export default {
       'allergies',
       'validMsg',
       'flightMealList',
+      'settedMealList',
     ]),
     ...mapState('user', ['loginMember', 'flightNum']),
   },
@@ -5732,45 +5238,8 @@ export default {
     })
     promise.then(async () => {
       await this.getMealList(this.flightNum)
-      // this.seatMealList?.forEach((seatMeal) => {
-      //   if (seatMeal.음식 !== null && seatMeal.음식 !== this.mealList.Acourse) {
-      //     this.mealList.Acourse = seatMeal.음식
-      //   } else {
-      //     this.mealList.Bcourse = seatMeal.음식
-      //   }
-      // })
-      // this.seatMealList.forEach((seatMeal) => {
-      //   this.firstClass.forEach((seat) => {
-      //     if (seatMeal.seatNum === seat.좌석) {
-      //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === this.mealList.Acourse) {
-      //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === this.mealList.Bcourse) {
-      //         seat.음식 = 'Bcourse'
-      //       }
-      //     }
-      //   })
-      //   this.businessClass.forEach((seat) => {
-      //     if (seatMeal.seatNum === seat.좌석) {
-      //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === this.mealList.Acourse) {
-      //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === this.mealList.Bcourse) {
-      //         seat.음식 = 'Bcourse'
-      //       }
-      //     }
-      //   })
-      //   this.economyClass.forEach((seat) => {
-      //     if (seatMeal.seatNum === seat.좌석) {
-      //       seat.음식 = seatMeal.mealMenu
-      //       if (seat.음식 === this.mealList.Acourse) {
-      //         seat.음식 = 'Acourse'
-      //       } else if (seat.음식 === this.mealList.Bcourse) {
-      //         seat.음식 = 'Bcourse'
-      //       }
-      //     }
-      //   })
-      // })
+      await this.getSettedMeal(this.flightNum)
+
       if (this.seatMealList?.length > 0)
         this.seatMealList.forEach((seatMeal) => {
           this.firstClass.forEach((seat) => {
@@ -5778,16 +5247,22 @@ export default {
               seat.음식 = seatMeal.mealMenu
               if (seat.음식 === '제육덮밥') {
                 seat.음식 = 'Acourse'
+                this.mealList.Acourse = true
               } else if (seat.음식 === '카레라이스') {
                 seat.음식 = 'Bcourse'
+                this.mealList.Bcourse = true
               } else if (seat.음식 === '소불고기비빔밥') {
                 seat.음식 = 'Ccourse'
+                this.mealList.Ccourse = true
               } else if (seat.음식 === '치킨스테이크') {
                 seat.음식 = 'Dcourse'
+                this.mealList.Dcourse = true
               } else if (seat.음식 === '새우파스타') {
                 seat.음식 = 'Ecourse'
+                this.mealList.Ecourse = true
               } else if (seat.음식 === '두부버섯샐러드') {
                 seat.음식 = 'Fcourse'
+                this.mealList.Fcourse = true
               }
             }
           })
@@ -5796,16 +5271,22 @@ export default {
               seat.음식 = seatMeal.mealMenu
               if (seat.음식 === '제육덮밥') {
                 seat.음식 = 'Acourse'
+                this.mealList.Acourse = true
               } else if (seat.음식 === '카레라이스') {
                 seat.음식 = 'Bcourse'
+                this.mealList.Bcourse = true
               } else if (seat.음식 === '소불고기비빔밥') {
                 seat.음식 = 'Ccourse'
+                this.mealList.Ccourse = true
               } else if (seat.음식 === '치킨스테이크') {
                 seat.음식 = 'Dcourse'
+                this.mealList.Dcourse = true
               } else if (seat.음식 === '새우파스타') {
                 seat.음식 = 'Ecourse'
+                this.mealList.Ecourse = true
               } else if (seat.음식 === '두부버섯샐러드') {
                 seat.음식 = 'Fcourse'
+                this.mealList.Fcourse = true
               }
             }
           })
@@ -5814,16 +5295,22 @@ export default {
               seat.음식 = seatMeal.mealMenu
               if (seat.음식 === '제육덮밥') {
                 seat.음식 = 'Acourse'
+                this.mealList.Acourse = true
               } else if (seat.음식 === '카레라이스') {
                 seat.음식 = 'Bcourse'
+                this.mealList.Bcourse = true
               } else if (seat.음식 === '소불고기비빔밥') {
                 seat.음식 = 'Ccourse'
+                this.mealList.Ccourse = true
               } else if (seat.음식 === '치킨스테이크') {
                 seat.음식 = 'Dcourse'
+                this.mealList.Dcourse = true
               } else if (seat.음식 === '새우파스타') {
                 seat.음식 = 'Ecourse'
+                this.mealList.Ecourse = true
               } else if (seat.음식 === '두부버섯샐러드') {
                 seat.음식 = 'Fcourse'
+                this.mealList.Fcourse = true
               }
             }
           })
@@ -5836,6 +5323,7 @@ export default {
       'getFlightMeal',
       'getChoiceMeal',
       'getMealList',
+      'getSettedMeal',
     ]),
     showFirstClass() {
       this.section = 'First'
@@ -5889,20 +5377,14 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.A-course {
-  background-color: #a3d5d5;
-  height: 100%;
-  width: 5%;
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
-}
 
-.B-course {
-  background-color: #a3d5d5;
-  height: 100%;
-  width: 5%;
-  border-top-left-radius: 35px;
-  border-top-right-radius: 35px;
+.A-course .B-course,
+.C-course,
+.D-course,
+.E-course,
+.F-course {
+  height: 50%;
+  width: 40%;
 }
 
 .special-course {

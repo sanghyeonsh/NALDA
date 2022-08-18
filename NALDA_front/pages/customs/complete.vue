@@ -54,7 +54,7 @@
             <h3>정보를 모두 채워주세요!</h3>
           </div>
           <b-button class="mt-3" block @click="$bvModal.hide('check-modal')"
-            >Close Me</b-button
+            >닫기</b-button
           >
         </b-modal>
       </div>

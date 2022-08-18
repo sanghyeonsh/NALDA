@@ -42,11 +42,7 @@
           <button @click="loginClick">로그인</button>
         </div>
         <div class="login-stay-sign-in" @click="$router.push('/user/termsuse')">
-          <img
-            class="login-icon-check mr-3"
-            src="/icon/check_mark_w.png"
-            alt="check-icon"
-          />
+          <img class="login-icon-check mr-3" src="/icon/check_mark_w.png" alt="check-icon" />
           <span>회원가입</span>
         </div>
       </section>
@@ -55,40 +51,24 @@
         <div class="d-block text-center">
           <h3>항공편명을 다시 확인해주세요.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
-        >
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">닫기</b-button>
       </b-modal>
       <b-modal id="login-modal" hide-footer>
         <template #modal-title>알림</template>
         <div class="d-block text-center">
           <h3>일치하지 않는 정보가 있습니다.</h3>
         </div>
-        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')"
-          >Close Me</b-button
-        >
+        <b-button class="mt-3" block @click="$bvModal.hide('login-modal')">닫기</b-button>
       </b-modal>
     </div>
     <div v-if="flightKeyboardView">
-      <VirtualKeyboard
-        ref="keyboard"
-        theme="white-shadow"
-        @getKeyValue="changeFlight"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changeFlight"></VirtualKeyboard>
     </div>
     <div v-if="UsernameKeyboardView">
-      <VirtualKeyboard
-        ref="keyboard"
-        theme="white-shadow"
-        @getKeyValue="changeUsername"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changeUsername"></VirtualKeyboard>
     </div>
     <div v-if="pwdKeyboardView">
-      <VirtualKeyboard
-        ref="keyboard"
-        theme="white-shadow"
-        @getKeyValue="changePwd"
-      ></VirtualKeyboard>
+      <VirtualKeyboard ref="keyboard" theme="white-shadow" @getKeyValue="changePwd"></VirtualKeyboard>
     </div>
   </div>
 </template>
@@ -310,6 +290,7 @@ input[type='password']::placeholder {
   margin-right: 3%;
   border-bottom: solid 1px var(--border-gray-color);
   color: white;
+  cursor: pointer;
 }
 
 .login-stay-sign-in i {

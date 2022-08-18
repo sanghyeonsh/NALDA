@@ -166,7 +166,7 @@ export default {
   position: absolute;
   z-index: 999;
   transform: translate(-1625%, 11%);
-  filter: opacity(0.5);
+  filter: opacity(0.3);
 }
 .tbr1-middle {
   width: 1.9%;
