@@ -27,14 +27,8 @@
       <SubwayMap class="fadeInUp" />
     </div>
 
-    <div
-      v-else-if="page === 'table'"
-      class="Taxi-box-right"
-      :class="{ table: isTable }"
-    >
-      <h3 class="fadeInUp" style="margin-bottom: 3%; font-size: xxx-large">
-        이용 요금 및 승차장 번호
-      </h3>
+    <div v-else-if="page === 'table'" class="Taxi-box-right" :class="{ table: isTable }">
+      <h3 class="fadeInUp" style="margin-bottom: 3%; font-size: xxx-large">이용 요금 및 승차장 번호</h3>
       <div class="taxi-info-wrap fadeInUp">
         <table class="taxi-table-wrap">
           <thead>

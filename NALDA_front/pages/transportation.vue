@@ -11,12 +11,7 @@
             height="15vh"
           >
             <div style="color: white; width: 11%; height: 100%">
-              <img
-                src="/logohome.png"
-                alt
-                style="width: 100%; height: 100%"
-                @click="MoveHome"
-              />
+              <img src="/logohome.png" alt style="width: 100%; height: 100%" @click="MoveHome" />
             </div>
             <v-tab
               v-for="(item, idx) in items"
@@ -24,20 +19,14 @@
               class="white--text"
               style="font-weight: bold"
               color="#ffe26f"
-              >{{ item }}</v-tab
-            >
+            >{{ item }}</v-tab>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <v-spacer></v-spacer>
             <div class="header-container-userprofile" @click="MoveMypage">
               <div class="profile-back">
-                <img
-                  class="previous-icon"
-                  src="/main/previous.png"
-                  alt
-                  @click="Movefrom"
-                />
+                <img class="previous-icon" src="/main/previous.png" alt @click="Movefrom" />
               </div>
               <div class="profile-img">
                 <img src="/main/user_profile_w.png" alt="profile-img" />
@@ -87,12 +76,12 @@ export default {
     fullname() {
       if (this.loginMember == null) return '비회원'
       let fullname = ''
-      this.loginMember.fullName.firstName &&
-        (fullname += this.loginMember.fullName.firstName)
-      this.loginMember.fullName.middleName &&
-        (fullname += this.loginMember.fullName.middleName)
       this.loginMember.fullName.lastName &&
         (fullname += this.loginMember.fullName.lastName)
+      this.loginMember.fullName.middleName &&
+        (fullname += this.loginMember.fullName.middleName)
+      this.loginMember.fullName.firstName &&
+        (fullname += this.loginMember.fullName.firstName)
       return fullname
     },
   },

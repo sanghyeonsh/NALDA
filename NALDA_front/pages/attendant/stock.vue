@@ -23,19 +23,19 @@
           </colgroup>
           <b-thead head-variant="dark">
             <b-tr>
-              <b-th colspan="3">Stocks</b-th>
-              <b-th colspan="3">Item List</b-th>
+              <b-th colspan="3">재고</b-th>
+              <b-th colspan="3">상품 목록</b-th>
             </b-tr>
             <b-tr>
-              <b-th>Service Title</b-th>
-              <b-th>Name</b-th>
-              <b-th>Service Code</b-th>
-              <b-th>Quantity</b-th>
+              <b-th>서비스명</b-th>
+              <b-th>상품명</b-th>
+              <b-th>상품코드</b-th>
+              <b-th>수량</b-th>
             </b-tr>
           </b-thead>
           <b-tbody v-if="ListType === 'snacks'">
             <b-tr>
-              <b-th :rowspan="snackList.length + 1">Snacks</b-th>
+              <b-th :rowspan="snackList.length + 1">과자</b-th>
             </b-tr>
             <b-tr v-for="(snack, index) in snackList" :key="index">
               <b-th class="text-right">{{ snack.serviceName }}</b-th>
@@ -55,7 +55,7 @@
           </b-tbody>
           <b-tbody v-else-if="ListType === 'alcohols'">
             <b-tr>
-              <b-th :rowspan="alcoholsList.length + 1">Alcohols</b-th>
+              <b-th :rowspan="alcoholsList.length + 1">주류</b-th>
             </b-tr>
             <b-tr v-for="(alcohol, index) in alcoholsList" :key="index">
               <b-th class="text-right">{{ alcohol.serviceName }}</b-th>
@@ -73,7 +73,7 @@
           </b-tbody>
           <b-tbody v-else-if="ListType === 'nonalcohols'">
             <b-tr>
-              <b-th :rowspan="nonalcoholosList.length + 1">Non-Alcohols</b-th>
+              <b-th :rowspan="nonalcoholosList.length + 1">비주류</b-th>
             </b-tr>
             <b-tr v-for="(nonalcohol, index) in nonalcoholosList" :key="index">
               <b-th class="text-right">{{ nonalcohol.serviceName }}</b-th>
@@ -91,7 +91,7 @@
           </b-tbody>
           <b-tbody v-else-if="ListType === 'amenities'">
             <b-tr>
-              <b-th :rowspan="amenityList.length + 1">Amenity</b-th>
+              <b-th :rowspan="amenityList.length + 1">편의물품</b-th>
             </b-tr>
             <b-tr v-for="(amenity, index) in amenityList" :key="index">
               <b-th class="text-right">{{ amenity.serviceName }}</b-th>
@@ -111,17 +111,11 @@
           <b-tfoot>
             <b-tr>
               <b-td colspan="7" variant="secondary" class="text-right">
-                Total Rows:
+                총 행:
                 <b v-if="ListType === 'snacks'">{{ snackList.length }}</b>
-                <b v-else-if="ListType === 'alcohols'">
-                  {{ alcoholsList.length }}
-                </b>
-                <b v-else-if="ListType === 'nonalcohols'">
-                  {{ nonalcoholosList.length }}
-                </b>
-                <b v-else-if="ListType === 'amenities'">
-                  {{ amenityList.length }}
-                </b>
+                <b v-else-if="ListType === 'alcohols'">{{ alcoholsList.length }}</b>
+                <b v-else-if="ListType === 'nonalcohols'">{{ nonalcoholosList.length }}</b>
+                <b v-else-if="ListType === 'amenities'">{{ amenityList.length }}</b>
               </b-td>
             </b-tr>
           </b-tfoot>
@@ -146,15 +140,13 @@
           v-b-modal.modal-1
           variant="warning"
           @click=";[setTotal(), $bvModal.show('modal-stock')]"
-          >입력</b-button
-        >
+        >입력</b-button>
 
-        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()"
-          >수정</b-button
-        >
+        <b-button v-else-if="!isValid" variant="warning" @click="unSetTotal()">수정</b-button>
         <b-modal id="modal-stock" hide-footer>
           <template #modal-title>
-            항공편 <code>{{ flightNum }}</code>
+            항공편
+            <code>{{ flightNum }}</code>
           </template>
           <div class="d-block text-center">
             <h3>재고 입력 성공!</h3>
@@ -165,11 +157,26 @@
             class="mt-3"
             block
             @click="$bvModal.hide('modal-stock')"
-            >닫기</b-button
-          >
+          >닫기</b-button>
         </b-modal>
 
-        <b-button variant="success" @click="setTotal">운항종료</b-button>
+        <b-button variant="success" @click=";[setTotal(), $bvModal.show('modal-end')]">운항종료</b-button>
+        <b-modal id="modal-end" hide-footer>
+          <template #modal-title>
+            항공편
+            <code>{{ flightNum }}</code>
+          </template>
+          <div class="d-block text-center">
+            <h3>운항 종료 완료!</h3>
+          </div>
+          <b-button
+            variant="dark"
+            style="color: aliceblue"
+            class="mt-3"
+            block
+            @click="$bvModal.hide('modal-end')"
+          >닫기</b-button>
+        </b-modal>
       </div>
     </div>
   </div>

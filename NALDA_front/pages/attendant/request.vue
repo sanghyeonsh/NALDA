@@ -105,9 +105,23 @@
               <div class="button-wrap">
                 <b-button @click="selectAllRows">전체선택</b-button>
                 <b-button @click="clearSelected">전체선택해제</b-button>
-                <b-button variant="info" @click="completeRequest(selecteditems)"
-                  >완료처리</b-button
-                >
+                <b-button
+                  variant="info"
+                  @click=";[completeRequest(selecteditems), $bvModal.show('modal-end')]"
+                >완료처리</b-button>
+                <b-modal id="modal-end" hide-footer>
+                  <template #modal-title>요청 처리 완료!</template>
+                  <div class="d-block text-center">
+                    <h3>요청을 완료했습니다.</h3>
+                  </div>
+                  <b-button
+                    variant="dark"
+                    style="color: aliceblue"
+                    class="mt-3"
+                    block
+                    @click="$bvModal.hide('modal-end')"
+                  >닫기</b-button>
+                </b-modal>
               </div>
             </div>
           </div>
