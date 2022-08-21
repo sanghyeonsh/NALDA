@@ -7,6 +7,7 @@
 ## FRONT-END🖥️
 
 ### Skills
+
 <p display="inline-block">
 <img src="https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=CSS3&logoColor=white">
@@ -22,10 +23,10 @@
 - 김정아
 - 정형진
 
-
 ## BACK-END💽
 
 ### Skills
+
 <p display="inline-block">
 <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring%20boot&logoColor=white">
 <img src="https://img.shields.io/badge/Spring_Security-6DB33F?style=for-the-badge&logo=spring%20Security&logoColor=white">
@@ -35,6 +36,7 @@
 </p>
 
 ### Developer
+
 - 김상현
 - 박명규
 
@@ -53,12 +55,14 @@
 </p>
 
 ### Developer
+
 - 김혜수
-- 곽영후  
+- 곽영후
 
 ## Server📤
 
 ### Skills
+
 <p display="inline-block">
 <img src="https://img.shields.io/badge/Amazon_EC2-FF9900?style=for-the-badge&logo=amazon%20ec2&logoColor=white">
 <img src="https://img.shields.io/badge/Amazon_RDS-527FFF?style=for-the-badge&logo=amazon%20rds&logoColor=white">
@@ -66,6 +70,7 @@
 </p>
 
 ### Developer
+
 - 박명규
 - 김혜수
 
@@ -82,15 +87,16 @@
 - [요구사항정의서](/Wiki/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C.xlsx)
 
 ### Wireframe은 아래 링크를 참고해주세요.
-- [Wireframe](/Wiki/wireframe.md)  
+
+- [Wireframe](/Wiki/wireframe.md)
 
 ### 기능 상세 내용은 아래 링크를 참고해주세요.
+
 - [기능상세](/Wiki/%EA%B8%B0%EB%8A%A5%EC%83%81%EC%84%B8.md)
 
 ### DB 상세 내용은 아래 링크를 참고해주세요.
-- [DB상세](/Wiki/DB%EC%83%81%EC%84%B8.md)
-- [ERD](/Wiki/ERdiagram.mwb)
-- [ERD2](/Wiki/ERdiagram.mwb.bak)
+
+- [ERD](/ERD/NALDA_ERD.mwb)
 
 # 디자인🎨
 
@@ -150,3 +156,93 @@
 ### 2. Naming Convention
 
 - [Naming Convention](/Wiki/%F0%9F%93%8FNaming%20Rule.md)
+
+## 2. 기능 상세
+
+### 세관신고서 작성
+
+![세관신고서작성](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EC%84%B8%EA%B4%80%EC%8B%A0%EA%B3%A0%EC%84%9C%20%EC%9E%91%EC%84%B1.gif)
+
+- 승객은 세관신고서를 작성할 수 있습니다.
+- 작성한 세관신고서는 마이페이지에서 확인할 수 있습니다.
+
+### 승객 마이페이지
+
+![승객_마이페이지](/uploads/0db12126ac842e5882aaecd292b2cf30/승객_마이페이지.gif)
+
+- 마이페이지에서는 승객의 정보 및 이전에 기록했던 세관신고서 정보를 불러올 수 있습니다.
+
+### 간식 및 음료 주문
+
+![간식 및 음료주문](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EC%8A%A4%EB%82%B5%20%EB%B0%8F%20%EC%9D%8C%EB%A3%8C%20%EC%A3%BC%EB%AC%B8.gif)
+
+- 승객은 승무원을 부를 필요없이 간식과 음료를 주문 할 수 있습니다.
+
+### 승객 편의 물품 주문
+
+![승객 편의물품 주문](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%ED%8E%B8%EC%9D%98%EB%AC%BC%ED%92%88%20%EC%A3%BC%EB%AC%B8.gif)
+
+- 승객은 이어플러그와 담요와 같은 편의 물품을 요청할 수 있습니다.
+
+### 승객 기내식 주문
+
+![승객 기내식 주문](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EA%B8%B0%EB%82%B4%EC%8B%9D%20%EC%A3%BC%EB%AC%B8.gif)
+
+- 승객은 기내식을 알레르기와 성분을 확인하여 주문할 수 있습니다.
+
+### 승객 약 주문
+
+![승객 약 주문](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EC%95%BD%20%EC%A3%BC%EB%AC%B8.gif)
+
+- 승객은 본인의 증상을 요청하여 승무원이 증상에 맞는 약을 가져올 수 있도록 합니다.
+
+### 승객 공항 정보
+
+![승객 공항 정보](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EA%B3%B5%ED%95%AD%EC%A0%95%EB%B3%B4.gif)
+
+- 승객은 실시간으로 공항 버스의 위치 및 시간정보, 택시 승강장의 정보, 지하철역의 도착 정보를 확인할 수 있습니다.
+
+### 승객 승무원 호출
+
+![승객 승무원 호출](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%EC%8A%B9%EB%AC%B4%EC%9B%90%20%ED%98%B8%EC%B6%9C.gif)
+
+- 승객은 위와 같은 서비스 외에 승무원을 불러야 할때, 호출 버튼을 이용하여 부를 수 있습니다.
+
+### 승객 화장실 정보
+
+![승객 화장실 정보](/Wiki/gif/%EC%8A%B9%EA%B0%9D%20%ED%99%94%EC%9E%A5%EC%8B%A4%20%EC%A0%95%EB%B3%B4.gif)
+
+- 승객은 어느 화장실이 사용중인지 확인 할 수 있습니다.
+
+### 승무원 주문 리스트
+
+![승무원 주문리스트](/Wiki/gif/%EC%8A%B9%EB%AC%B4%EC%9B%90%20%EC%A3%BC%EB%AC%B8%EB%A6%AC%EC%8A%A4%ED%8A%B8.gif)
+
+- 승무원은 주문 리스트를 확인해서 승객으로 부터 온 주문을 확인할 수 있습니다.
+
+### 승무원 서비스 재고 입력
+
+![승무원 서비스 재고 입력](/Wiki/gif/%EC%8A%B9%EB%AC%B4%EC%9B%90%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%9E%AC%EA%B3%A0%20%EC%9E%85%EB%A0%A5.gif)
+
+- 승무원은 기내 서비스들의 재고를 확인하여 미리 입력해서 승객들이 주문이 가능한지 알려줍니다.
+- 재고가 없는 서비스는 sold out 처리하여 보여주도록 합니다.
+
+### 승무원 기내식 재고 입력
+
+![승무원 기내식 재고 입력](/Wiki/gif/%EC%8A%B9%EB%AC%B4%EC%9B%90%20%EA%B8%B0%EB%82%B4%EC%8B%9D%20%EC%9E%AC%EA%B3%A0%20%EC%9E%85%EB%A0%A5.gif)
+
+- 승무원은 기내식재고를 미리 입력해서 승객들이 선택할 수 있게 합니다.
+
+### 승무원 기내식 확인 및 종료
+
+![승무원 기내식 확인 및 종료](/Wiki/gif/%EC%8A%B9%EB%AC%B4%EC%9B%90%20%EA%B8%B0%EB%82%B4%EC%8B%9D%20%ED%99%95%EC%9D%B8%20%EB%B0%8F%20%EC%A2%85%EB%A3%8C.gif)
+
+- 승무원은 승객분들이 고른 기내식을 확인할 수 있고, 한 식사가 끝나면 기내식 서비스를 종료 할 수 있습니다.
+
+## 발표 자료
+
+- [NALDA_PPT](/Wiki/%EC%84%9C%EC%9A%B8_2%EB%B0%98_A204_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pptx)
+
+## UCC
+
+- [UCC](https://www.youtube.com/watch?v=WJesG5Mbypc)
